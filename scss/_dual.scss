@@ -1,0 +1,172 @@
+// フォントの設定
+$dual_regular: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+$dual_bold: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+
+$darkgray: #111111;
+$white: #ffffff;
+// スコアボードの色を変更したい場合、下記を変更してください
+$dual_scorecolor: $white;
+$dual_playercolor: $white;
+$dual_statuscolor: $darkgray;
+
+// フォントの太さの設定（ライトウェイト）
+@mixin dual_regularWeight {
+  font-family: $dual_regular;
+  font-variation-settings: 'wght'400;
+  font-weight: 400;
+}
+
+// フォントの太さの設定（ボールドウェイト）
+@mixin dual_boldWeight {
+  font-family: $dual_bold;
+  font-variation-settings: 'wght'900;
+  font-weight: 900;
+}
+
+// スコアの設定
+@mixin dual_scoreText {
+  @include dual_boldWeight;
+  margin: 0;
+  width: 75px;
+  color: $dual_scorecolor;
+  text-align: center;
+  font-size: 54px;
+  position: fixed;
+}
+
+// スコアの位置指定
+#dual_numberleft {
+  @include dual_scoreText;
+  left: 365px;
+  top: 48px;
+}
+
+#dual_numberright {
+  @include dual_scoreText;
+  right: 365px;
+  top: 48px;
+}
+
+// チーム名及びプレイヤー名の設定
+@mixin dual_teamText {
+  color: $dual_playercolor;
+  text-align: center;
+  font-size: 23px;
+  letter-spacing: 1px;
+  line-height: 23px;
+  @include dual_regularWeight;
+}
+
+@mixin dual_nameText {
+  color: $dual_playercolor;
+  text-align: center;
+  font-size: 23px;
+  line-height: 23px;
+  letter-spacing: 1px;
+  @include dual_boldWeight;
+}
+
+// プレイヤー名の位置指定
+.dual_player {
+  margin: 0;
+  width: 410px;
+  height: 50px;
+  position: fixed;
+  text-align: center;
+
+  span {
+    margin-left: 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+#dual_playerleft {
+  left: 460px;
+  top: 62px;
+}
+
+#dual_playerright {
+  right: 460px;
+  top: 62px;
+}
+
+#dual_nameleft,
+#dual_nameright {
+  @include dual_nameText;
+}
+
+#dual_teamleft,
+#dual_teamright {
+  @include dual_teamText
+}
+
+// 試合ステータス（Winners Semis, Best of 3など）の設定
+@mixin dual_statusText {
+  @include dual_boldWeight;
+  width: 410px;
+  margin: 0;
+  color: $dual_statuscolor;
+  text-align: center;
+  font-size: 17px;
+  position: fixed;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+// 試合ステータスの位置設定
+#dual_prtextleft {
+  @include dual_statusText;
+  left: 465px;
+  top: 99px;
+}
+
+#dual_prtextright {
+  @include dual_statusText;
+  right: 465px;
+  top: 99px;
+}
+
+.dual_optionbox {
+  width: 180px;
+  height: 50px;
+  position: fixed;
+  left: 870px;
+  top: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#dual_option {
+  @include dual_regularWeight;
+  color: $dual_playercolor;
+  text-align: center;
+  font-size: 17px;
+  line-height: 19px;
+  letter-spacing: 2px;
+}
+
+// 大会ロゴの設定
+.dual_logobox {
+  height: 120px;
+  width: 220px;
+  position: fixed;
+  left: 850px;
+  top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dual_logo {
+  max-height: 100%;
+  max-width: 100%;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
+}

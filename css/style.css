@@ -1,0 +1,298 @@
+#dual_numberleft {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  margin: 0;
+  width: 75px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 54px;
+  position: fixed;
+  left: 365px;
+  top: 48px;
+}
+
+#dual_numberright {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  margin: 0;
+  width: 75px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 54px;
+  position: fixed;
+  right: 365px;
+  top: 48px;
+}
+
+.dual_player {
+  margin: 0;
+  width: 410px;
+  height: 50px;
+  position: fixed;
+  text-align: center;
+}
+.dual_player span {
+  margin-left: 10px;
+}
+.dual_player span:first-child {
+  margin-left: 0;
+}
+
+#dual_playerleft {
+  left: 460px;
+  top: 62px;
+}
+
+#dual_playerright {
+  right: 460px;
+  top: 62px;
+}
+
+#dual_nameleft,
+#dual_nameright {
+  color: #ffffff;
+  text-align: center;
+  font-size: 23px;
+  line-height: 23px;
+  letter-spacing: 1px;
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+}
+
+#dual_teamleft,
+#dual_teamright {
+  color: #ffffff;
+  text-align: center;
+  font-size: 23px;
+  letter-spacing: 1px;
+  line-height: 23px;
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 400;
+  font-weight: 400;
+}
+
+#dual_prtextleft {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  width: 410px;
+  margin: 0;
+  color: #111111;
+  text-align: center;
+  font-size: 17px;
+  position: fixed;
+  font-style: italic;
+  letter-spacing: 2px;
+  left: 465px;
+  top: 99px;
+}
+
+#dual_prtextright {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  width: 410px;
+  margin: 0;
+  color: #111111;
+  text-align: center;
+  font-size: 17px;
+  position: fixed;
+  font-style: italic;
+  letter-spacing: 2px;
+  right: 465px;
+  top: 99px;
+}
+
+.dual_optionbox {
+  width: 180px;
+  height: 50px;
+  position: fixed;
+  left: 870px;
+  top: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#dual_option {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 400;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  font-size: 17px;
+  line-height: 19px;
+  letter-spacing: 2px;
+}
+
+.dual_logobox {
+  height: 120px;
+  width: 220px;
+  position: fixed;
+  left: 850px;
+  top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dual_logo {
+  max-height: 100%;
+  max-width: 100%;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
+}
+
+#single_numberleft {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  margin: 0;
+  width: 60px;
+  color: #111111;
+  text-align: center;
+  font-size: 40px;
+  position: fixed;
+  left: 800px;
+  top: 47px;
+}
+
+#single_numberright {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  margin: 0;
+  width: 60px;
+  color: #111111;
+  text-align: center;
+  font-size: 40px;
+  position: fixed;
+  right: 800px;
+  top: 47px;
+}
+
+.single_player {
+  margin: 0;
+  width: 460px;
+  height: 60px;
+  position: fixed;
+  text-align: center;
+}
+.single_player span {
+  margin-left: 10px;
+}
+.single_player span:first-child {
+  margin-left: 0;
+}
+
+#single_playerleft {
+  left: 320px;
+  top: 60px;
+}
+
+#single_playerright {
+  right: 320px;
+  top: 60px;
+}
+
+#single_nameleft,
+#single_nameright {
+  color: #111111;
+  text-align: center;
+  font-size: 27px;
+  line-height: 27px;
+  letter-spacing: 1px;
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+}
+
+#single_teamleft,
+#single_teamright {
+  color: #111111;
+  text-align: center;
+  font-size: 27px;
+  letter-spacing: 1px;
+  line-height: 27px;
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 400;
+  font-weight: 400;
+}
+
+.single_prbox {
+  width: 215px;
+  height: 60px;
+  position: fixed;
+  top: 44px;
+  left: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#single_prtextleft {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  width: 215px;
+  margin-left: 15px;
+  margin: 0;
+  color: #ffffff;
+  text-align: left;
+  font-size: 17px;
+  line-height: 20px;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+#single_prtextright {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  width: 215px;
+  margin-left: 15px;
+  margin: 0;
+  color: #ffffff;
+  text-align: left;
+  font-size: 17px;
+  line-height: 20px;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+.single_logobox {
+  height: 100px;
+  width: 200px;
+  position: fixed;
+  left: 860px;
+  top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single_logo {
+  max-height: 100%;
+  max-width: 100%;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
+}
+
+html {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.board {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.95;
+}
+
+.disable {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */

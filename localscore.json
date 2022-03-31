@@ -1,0 +1,15 @@
+[
+{
+  "name": "PlayerName1",
+  "team": "チーム",
+  "score": "0",
+  "status": "WINNERS FINALS",
+  "option": "大会名Text<br>#25"
+},
+{
+  "name": "プレイヤーネーム",
+  "team": "Team",
+  "score": "0",
+  "status": "BEST OF 5",
+  "option": ""
+}]

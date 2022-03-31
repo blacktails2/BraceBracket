@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='ja'>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BraceBracket</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://api.fontshare.com/css?f[]=satoshi@1,2&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <img class='board' src="image/dualmain.png" alt=""> <!-- スコアボードのデザインの画像 -->
+  <div class="dual_logobox"><img src="image/logo.png" alt="" class="dual_logo"></div><!-- 大会ロゴ なしの場合はクラスにdisableを追加 -->
+  <p id="dual_numberleft"></p> <!-- 1Pスコア -->
+  <p id="dual_numberright"></p> <!-- 2Pスコア -->
+  <p class="dual_player" id="dual_playerleft"><span id="dual_teamleft"></span><span id="dual_nameleft"></span></p>
+  <p class="dual_player" id="dual_playerright"><span id="dual_teamright"></span><span id="dual_nameright"></span></p>
+  <p id="dual_prtextleft"></p>
+  <p id="dual_prtextright"></p>
+  <div class="dual_optionbox">
+    <p id="dual_option"></p>
+  </div>
+</body>
+<script>
+//ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
+const endpoint = "localscore.json";
+
+//APIを使って非同期データを取得する
+function remoteScore() {
+  fetch(endpoint)
+    .then(response => response.json())
+    /*成功した処理*/
+    .then(data => {
+      //JSONから配列に変換
+      const object = data;
+      console.log(data);
+      document.getElementById("dual_numberleft").innerHTML = data[0]['score'];
+      document.getElementById("dual_nameleft").innerHTML = data[0]['name'];
+      document.getElementById("dual_teamleft").innerHTML = data[0]['team'];
+      document.getElementById("dual_prtextleft").innerHTML = data[0]['status'];
+      document.getElementById("dual_numberright").innerHTML = data[1]['score'];
+      document.getElementById("dual_nameright").innerHTML = data[1]['name'];
+      document.getElementById("dual_teamright").innerHTML = data[1]['team'];
+      document.getElementById("dual_prtextright").innerHTML = data[1]['status'];
+      document.getElementById("dual_option").innerHTML = data[0]['option'];
+      //inputタグそれぞれに取得したデータを設定
+    });
+}
+remoteScore();
+window.setInterval(remoteScore, 3000);
+</script>
+
+</html>

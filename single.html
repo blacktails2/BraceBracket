@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='ja'>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BraceBracket</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://api.fontshare.com/css?f[]=satoshi@1,2&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <img class='board' src="image/singlemain.png" alt=""> <!-- スコアボードのデザインの画像 -->
+  <div class="single_logobox"><img src="image/logo.png" alt="" class="single_logo"></div><!-- 大会ロゴ なしの場合はクラスにdisableを追加 -->
+  <p id="single_numberleft"></p> <!-- 1Pスコア -->
+  <p id="single_numberright"></p> <!-- 2Pスコア -->
+  <p class="single_player" id="single_playerleft"><span id="single_teamleft"></span><span id="single_nameleft"></span></p>
+  <p class="single_player" id="single_playerright"><span id="single_teamright"></span><span id="single_nameright"></span></p>
+  <div class="single_prbox">
+    <p id="single_prtextleft"></p>
+    <p id="single_prtextright"></p>
+  </div>
+</body>
+<script>
+//ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
+const endpoint = "localscore.json";
+
+//APIを使って非同期データを取得する
+function remoteScore() {
+  fetch(endpoint)
+    .then(response => response.json())
+    /*成功した処理*/
+    .then(data => {
+      //JSONから配列に変換
+      const object = data;
+      console.log(data);
+      document.getElementById("single_numberleft").innerHTML = data[0]['score'];
+      document.getElementById("single_nameleft").innerHTML = data[0]['name'];
+      document.getElementById("single_teamleft").innerHTML = data[0]['team'];
+      document.getElementById("single_prtextleft").innerHTML = data[0]['status'];
+      document.getElementById("single_numberright").innerHTML = data[1]['score'];
+      document.getElementById("single_nameright").innerHTML = data[1]['name'];
+      document.getElementById("single_teamright").innerHTML = data[1]['team'];
+      document.getElementById("single_prtextright").innerHTML = data[1]['status'];
+      //inputタグそれぞれに取得したデータを設定
+    });
+}
+remoteScore();
+window.setInterval(remoteScore, 3000);
+</script>
+
+</html>
