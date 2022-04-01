@@ -182,7 +182,7 @@ $single_statuscolor: $darkgray;
 
 ## 開発への参加
 
-本ソフトウェアは現在ベータ版です。開発に参加してくださる方は<a href="contribution.md">こちらのページ</a>を参照してください。
+本ソフトウェアは現在ベータ版です。開発に参加してくださる方は<a href="CONTRIBUTION.md">こちらのページ</a>を参照してください。
 
 ## ライセンス
 
