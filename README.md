@@ -38,7 +38,7 @@ BraceBracketでは大きく分けて**Dualレイアウト**（画像上）と**S
 
 #### データの更新方法の設定
 
-BraceBracketではjsonとGoogleスプレッドシートを扱いデータの更新ができます。
+BraceBracketではjsonとGoogleスプレッドシートを扱いデータの更新ができます。optionの欄では、`<br>`を入れることで改行できます。
 
 ##### A.配信者がデータを編集する場合（ローカルでjsonデータを編集）
 
@@ -102,6 +102,9 @@ function doGet() {
 
 最後に、`index.html`もしくは`single.html`をエディタで開き、下部にある`const endpoint = "localscore.json";`の`localscore`部分をコピーしたGoogle Apps ScriptのURLをペーストし保存します。これで設定は完了です。
 
+##### 注意点
+Googleスプレッドシートを複数人で編集する場合、リンクでアクセスする人は匿名として表示されますが、**スプレッドシートの製作者はアカウント名が表示されてしまいます**。そのため、複数人で編集する場合は他人に見られても問題ないアカウント名のGoogleアカウントでスプレッドシートを作成すると良いでしょう。
+
 ```javascript
 const endpoint = "localscore.json";
 ↓
@@ -124,10 +127,63 @@ const endpoint = "https://script.google.com/macros/…";
 
 ### デモ
 
+以下のURLをOBSに配置し、<a href="https://docs.google.com/spreadsheets/d/1EGa5Ha1ERYAZ_GW9ImiHcn19v29xSExyKtJCGGpDqXs/edit?usp=sharing">こちらのスプレッドシート</a>を編集してみてください。スコアの編集を試すことができます。
+```bracebracket-demo.surge.sh```
+
 ### カスタマイズ
 
-### デザイン
+デザインのカスタマイズや要素の追加をする場合はscssのコンパイルが必要になります。yarnもしくはnpmを導入し、`npm run`や`yarn watch`を使いながら確認すると良いでしょう。
+
+#### スコアボードのデザイン
+
+##### 既存デザインテンプレートを利用する
+
+<img src="https://wolphtype.com/img/materials/variations.png" style="width:auto;height:auto;">
+
+`image/scoreboards`に入っているデザインを利用することができます。使用したいデザインを`image`フォルダにコピーし、`dualmain.png`および`singlemain.png`にファイル名を変更してください。（既存の`dualmain.png`および`singlemain.png`は削除してください。）
+
+<img src="https://wolphtype.com/img/materials/maindesign.png" style="width:800px;height:auto;">
+
+デザインによっては文字の色の変更が必要です。`scss/_dual.scss`および`scss/_single.scss`の変数を編集することで文字色が変更できます。
+
+```scss
+$darkgray: #111111;
+$white: #ffffff;
+// スコア色:ダークグレー、プレイヤー名:ダークグレー、ステータス:白の場合
+$single_scorecolor: $darkgray;
+$single_playercolor: $darkgray;
+$single_statuscolor: $white;
+```
+デフォルトで用意された`$white`と`$darkgray`およびHEXでの指定ができます。
+
+```scss
+$darkgray: #111111;
+$white: #ffffff;
+// スコア色:ベージュ、プレイヤー名:白、ステータス:ダークグレーの場合
+$single_scorecolor: #CCB280;
+$single_playercolor: $white;
+$single_statuscolor: $darkgray;
+```
+
+##### オリジナルのデザインを制作する
+
+オリジナルのデザインを制作する場合は`image/design_sample.ai`をベースに制作することができます。ボックスのサイズや位置を変更する場合は後述するSCSSの編集も必要となります。
+また、`Sample Text`レイヤーと`Sample Image`レイヤーはプレビュー用のレイヤーなので書き出す際は`Design(Export)`レイヤーのみを表示して書き出してください。書き出しの際は三階ラボさんの<a href="https://onthehead.com/ais/export001/">Artboard Exporter</a>を使い、倍率100%の透過pngで書き出すのが便利です。
+
+#### 要素の追加、スタイルの編集
+
+情報を追加したり文字情報のフォントや位置情報を変更する場合は`index.html, single.html, _dual.scss, _single.scss`を編集してください。位置の指定は全て`position: fixed;`の絶対値指定が便利です。
 
 ### 大会ロゴ
 
-## Contribution
+大会のロゴをスコアボードの中央に表示することができます。透過pngのロゴのファイル名を`logo.png`にして`image`フォルダに配置することで、自動でサイズと位置の調整を行なわれ配置されます。デフォルトでドロップシャドウがかかっている状態になっており、細かい調整はSCSSから行うことができます。
+
+大会ロゴを非表示にしたい場合は、`image/logo.png`を削除するか`index.html, single.html`内の`<div class='xxx_logobox'>`に`disable`クラスを追加してください。
+
+## 開発への参加
+
+本ソフトウェアは現在ベータ版です。開発に参加してくださる方は<a href="contribution.md">こちらのページ</a>を参照してください。
+
+## ライセンス
+
+本プロジェクトは<a href="https://github.com/blacktails2/BraceBracket/blob/main/LICENSE">Apache License 2.0</a>でライセンスされています。
