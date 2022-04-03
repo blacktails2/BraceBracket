@@ -14,7 +14,7 @@ BraceBracketは格闘ゲームにおけるスコアボードを動的に表示�
 - jsonおよびGoogleスプレッドシートを使ってデータを編集するため、Mac、Windows、LinuxなどのOSに依存せず使用可能
 - Googleスプレッドシートを用いた編集により、配信者ではなく遠隔の協力者や視聴者がデータを更新できる
 - HTMLおよびCSSの知識があれば文字要素の追加やデザインの変更が可能
-- デザインテンプレートを複数（ver.0.1現在9種）用意。Adobe Illustratorデータのサンプルを用いてオリジナルのデザインも製作可能
+- デザインテンプレートを複数（ver.1.0現在15種）用意。Adobe Illustratorデータのサンプルを用いてオリジナルのデザインも製作可能
 
 ### デメリット
 - HTML、CSS、Google Apps Scriptなどの複数ツールを使うため軽い前提知識が必要（手順通りにやればそんなに難しくないです）
@@ -34,7 +34,7 @@ BraceBracketは格闘ゲームにおけるスコアボードを動的に表示�
 #### 2種類のレイアウトについて
 
 ダウンロードしたzipを解凍します。その中の`index.html`, `single.html`, `image`フォルダが主に扱うものになります。
-BraceBracketでは大きく分けて**Dualレイアウト**（画像上）と**Singleレイアウト**（画像下）があり、`index.html`を指定するとDualレイアウトを、`single.html`を指定するとSingleレイアウトを使うことができます。（データは同じものを参照します。）そのため、OBSでの指定やカスタマイズは使用したいレイアウトのhtmlを扱ってください。
+BraceBracketでは大きく分けて**Dualレイアウト**（画像上）と**Singleレイアウト**（画像中央）、**Solidレイアウト**（画面下）があり、`index.html`を指定するとDualレイアウトを、`single.html`を指定するとSingleレイアウト、`solid.html`を指定するとSolidレイアウトを使うことができます。（データは同じものを参照します。）そのため、OBSでの指定やカスタマイズは使用したいレイアウトのhtmlを扱ってください。
 
 <img src="https://wolphtype.com/img/materials/dual_single.png" style="width:auto;height:auto;">
 
@@ -174,7 +174,7 @@ $single_statuscolor: $darkgray;
 
 #### 要素の追加、スタイルの編集
 
-情報を追加したり文字情報のフォントや位置情報を変更する場合は`index.html, single.html, _dual.scss, _single.scss`を編集してください。位置の指定は全て`position: fixed;`の絶対値指定が便利です。
+情報を追加したり文字情報のフォントや位置情報を変更する場合は`index.html, single.html, solid.html, _dual.scss, _single.scss, _solid.scss`を編集してください。位置の指定は全て`position: fixed;`の絶対値指定が便利です。
 
 ### 大会ロゴ
 
