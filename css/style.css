@@ -279,6 +279,138 @@
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
 }
 
+#solid_numberleft {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  margin: 0;
+  width: 60px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 50px;
+  position: fixed;
+  left: 770px;
+  top: 40px;
+}
+
+#solid_numberright {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  margin: 0;
+  width: 60px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 50px;
+  position: fixed;
+  right: 770px;
+  top: 40px;
+}
+
+.solid_player {
+  margin: 0;
+  width: 460px;
+  height: 60px;
+  position: fixed;
+  text-align: center;
+}
+.solid_player span {
+  margin-left: 10px;
+}
+.solid_player span:first-child {
+  margin-left: 0;
+}
+
+#solid_playerleft {
+  left: 315px;
+  top: 60px;
+}
+
+#solid_playerright {
+  right: 315px;
+  top: 60px;
+}
+
+#solid_nameleft,
+#solid_nameright {
+  color: #111111;
+  text-align: center;
+  font-size: 27px;
+  line-height: 27px;
+  letter-spacing: 1px;
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+}
+
+#solid_teamleft,
+#solid_teamright {
+  color: #111111;
+  text-align: center;
+  font-size: 27px;
+  letter-spacing: 1px;
+  line-height: 27px;
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 400;
+  font-weight: 400;
+}
+
+.solid_prbox {
+  width: 200px;
+  height: 60px;
+  position: fixed;
+  top: 44px;
+  left: 860px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#solid_prtextleft {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  width: 200px;
+  margin: 0;
+  color: #ffffff;
+  text-align: center;
+  font-size: 17px;
+  line-height: 20px;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+#solid_prtextright {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  width: 200px;
+  margin: 0;
+  color: #ffffff;
+  text-align: center;
+  font-size: 17px;
+  line-height: 20px;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.solid_logobox {
+  height: 160px;
+  width: 280px;
+  position: fixed;
+  left: 820px;
+  top: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.solid_logo {
+  max-height: 100%;
+  max-width: 100%;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
+}
+
 html {
   background-color: rgba(0, 0, 0, 0);
 }
