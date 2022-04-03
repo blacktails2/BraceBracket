@@ -30,7 +30,7 @@ $ yarn watch
 
 ### 改善点
 
-- データの更新を3秒ごとにjsonをfetchするやり方から変更（賢くなさそうなので）
+- データの更新を5秒ごとにjsonをXMLHttpRequestするやり方から変更（賢くなさそうなので）
 ```js
 window.setInterval(remoteScore, 3000);
 ```

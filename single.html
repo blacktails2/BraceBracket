@@ -28,28 +28,30 @@
 //ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
 const endpoint = "localscore.json";
 
+
 //APIを使って非同期データを取得する
 function remoteScore() {
-  fetch(endpoint)
-    .then(response => response.json())
-    /*成功した処理*/
-    .then(data => {
-      //JSONから配列に変換
-      const object = data;
-      console.log(data);
-      document.getElementById("single_numberleft").innerHTML = data[0]['score'];
-      document.getElementById("single_nameleft").innerHTML = data[0]['name'];
-      document.getElementById("single_teamleft").innerHTML = data[0]['team'];
-      document.getElementById("single_prtextleft").innerHTML = data[0]['status'];
-      document.getElementById("single_numberright").innerHTML = data[1]['score'];
-      document.getElementById("single_nameright").innerHTML = data[1]['name'];
-      document.getElementById("single_teamright").innerHTML = data[1]['team'];
-      document.getElementById("single_prtextright").innerHTML = data[1]['status'];
-      //inputタグそれぞれに取得したデータを設定
-    });
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", endpoint);
+  xhr.send();
+  xhr.onreadystatechange = function() {
+    //JSONから配列に変換
+    const data = JSON.parse(xhr.response);
+    console.log(data);
+    document.getElementById("single_numberleft").innerHTML = data[0]['score'];
+    document.getElementById("single_nameleft").innerHTML = data[0]['name'];
+    document.getElementById("single_teamleft").innerHTML = data[0]['team'];
+    document.getElementById("single_prtextleft").innerHTML = data[0]['status'];
+    document.getElementById("single_numberright").innerHTML = data[1]['score'];
+    document.getElementById("single_nameright").innerHTML = data[1]['name'];
+    document.getElementById("single_teamright").innerHTML = data[1]['team'];
+    document.getElementById("single_prtextright").innerHTML = data[1]['status'];
+    document.getElementById("single_option").innerHTML = data[0]['option'];
+    //inputタグそれぞれに取得したデータを設定
+  }
 }
 remoteScore();
-window.setInterval(remoteScore, 3000);
+window.setInterval(remoteScore, 5000);
 </script>
 
 </html>
