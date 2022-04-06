@@ -41,13 +41,13 @@ $solid_statuscolor: $white;
 // スコアの位置指定
 #solid_numberleft {
   @include solid_scoreText;
-  left: 770px;
+  left: 760px;
   top: 40px;
 }
 
 #solid_numberright {
   @include solid_scoreText;
-  right: 770px;
+  right: 760px;
   top: 40px;
 }
 
@@ -55,17 +55,17 @@ $solid_statuscolor: $white;
 @mixin solid_teamText {
   color: $solid_playercolor;
   text-align: center;
-  font-size: 27px;
+  font-size: 24px;
   letter-spacing: 1px;
-  line-height: 27px;
+  line-height: 24px;
   @include solid_regularWeight;
 }
 
 @mixin solid_nameText {
   color: $solid_playercolor;
   text-align: center;
-  font-size: 27px;
-  line-height: 27px;
+  font-size: 24px;
+  line-height: 24px;
   letter-spacing: 1px;
   @include solid_boldWeight;
 }
@@ -88,13 +88,13 @@ $solid_statuscolor: $white;
 }
 
 #solid_playerleft {
-  left: 315px;
-  top: 60px;
+  left: 310px;
+  top: 61px;
 }
 
 #solid_playerright {
-  right: 315px;
-  top: 60px;
+  right: 310px;
+  top: 61px;
 }
 
 #solid_nameleft,
@@ -110,7 +110,7 @@ $solid_statuscolor: $white;
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin solid_statusText {
   @include solid_boldWeight;
-  width: 200px;
+  width: 220px;
   margin: 0;
   color: $solid_statuscolor;
   text-align: center;
@@ -121,11 +121,11 @@ $solid_statuscolor: $white;
 }
 
 .solid_prbox {
-  width: 200px;
+  width: 220px;
   height: 60px;
   position: fixed;
   top: 44px;
-  left: 860px;
+  left: 850px;
   display: flex;
   flex-direction: column;
   justify-content: center;
