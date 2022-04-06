@@ -289,7 +289,7 @@
   text-align: center;
   font-size: 50px;
   position: fixed;
-  left: 770px;
+  left: 760px;
   top: 40px;
 }
 
@@ -303,7 +303,7 @@
   text-align: center;
   font-size: 50px;
   position: fixed;
-  right: 770px;
+  right: 760px;
   top: 40px;
 }
 
@@ -322,21 +322,21 @@
 }
 
 #solid_playerleft {
-  left: 315px;
-  top: 60px;
+  left: 310px;
+  top: 61px;
 }
 
 #solid_playerright {
-  right: 315px;
-  top: 60px;
+  right: 310px;
+  top: 61px;
 }
 
 #solid_nameleft,
 #solid_nameright {
   color: #111111;
   text-align: center;
-  font-size: 27px;
-  line-height: 27px;
+  font-size: 24px;
+  line-height: 24px;
   letter-spacing: 1px;
   font-family: "Satoshi", "Noto Sans JP", sans-serif;
   font-variation-settings: "wght" 900;
@@ -347,20 +347,20 @@
 #solid_teamright {
   color: #111111;
   text-align: center;
-  font-size: 27px;
+  font-size: 24px;
   letter-spacing: 1px;
-  line-height: 27px;
+  line-height: 24px;
   font-family: "Satoshi", "Noto Sans JP", sans-serif;
   font-variation-settings: "wght" 400;
   font-weight: 400;
 }
 
 .solid_prbox {
-  width: 200px;
+  width: 220px;
   height: 60px;
   position: fixed;
   top: 44px;
-  left: 860px;
+  left: 850px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -370,7 +370,7 @@
   font-family: "Satoshi", "Noto Sans JP", sans-serif;
   font-variation-settings: "wght" 900;
   font-weight: 900;
-  width: 200px;
+  width: 220px;
   margin: 0;
   color: #ffffff;
   text-align: center;
@@ -384,7 +384,7 @@
   font-family: "Satoshi", "Noto Sans JP", sans-serif;
   font-variation-settings: "wght" 900;
   font-weight: 900;
-  width: 200px;
+  width: 220px;
   margin: 0;
   color: #ffffff;
   text-align: center;
@@ -417,6 +417,7 @@ html {
 
 .board {
   position: fixed;
+  width: 100%;
   top: 0;
   left: 0;
   z-index: -1;
