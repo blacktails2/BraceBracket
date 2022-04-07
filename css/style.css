@@ -323,12 +323,12 @@
 
 #solid_playerleft {
   left: 310px;
-  top: 61px;
+  top: 62px;
 }
 
 #solid_playerright {
   right: 310px;
-  top: 61px;
+  top: 62px;
 }
 
 #solid_nameleft,
@@ -426,6 +426,10 @@ html {
 
 .disable {
   display: none;
+}
+
+#__bs_notify__ {
+  display: none !important;
 }
 
 /*# sourceMappingURL=style.css.map */
