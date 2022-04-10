@@ -1,8 +1,10 @@
-<img src="https://wolphtype.com/img/materials/bracebracket.png" style="width:150px;height:auto;margin-left: auto;margin-right: auto;display: block;">
+<img src="https://wolphtype.com/img/materials/bracebracket.png" style="width:auto;height:auto;">
 
 # BraceBracket
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/blacktails2/BraceBracket?type-example-CCB280&include_prereleases)
+
+<a href="https://github.com/blacktails2/BraceBracket/releases">ダウンロードページ</a>
 
 <img src="https://wolphtype.com/img/materials/example.png" style="width:600px;height:auto;">
 
@@ -33,8 +35,8 @@ BraceBracketは格闘ゲームにおけるスコアボードを動的に表示�
 
 #### 2種類のレイアウトについて
 
-ダウンロードしたzipを解凍します。その中の`index.html`, `single.html`, `image`フォルダが主に扱うものになります。
-BraceBracketでは大きく分けて**Dualレイアウト**（画像上）と**Singleレイアウト**（画像中央）、**Solidレイアウト**（画面下）があり、`index.html`を指定するとDualレイアウトを、`single.html`を指定するとSingleレイアウト、`solid.html`を指定するとSolidレイアウトを使うことができます。（データは同じものを参照します。）そのため、OBSでの指定やカスタマイズは使用したいレイアウトのhtmlを扱ってください。
+ダウンロードしたzipを解凍します。その中の`index.html`, `single.html`, `solid.html`, `image`フォルダが主に扱うものになります。
+BraceBracketでは大きく分けて**Dualレイアウト**（画像上）と**Singleレイアウト**（画像中央）、**Solidレイアウト**（画面下）があり、`index.html`を指定するとDualレイアウトを、`single.html`を指定するとSingleレイアウト、`solid.html`を指定するとSolidレイアウトを使うことができます。そのため、OBSでの指定やカスタマイズは使用したいレイアウトのhtmlを扱ってください。
 
 <img src="https://wolphtype.com/img/materials/dual_single.png" style="width:auto;height:auto;">
 
@@ -44,7 +46,7 @@ BraceBracketではjsonとGoogleスプレッドシートを扱いデータの更�
 
 ##### A.配信者がデータを編集する場合（ローカルでjsonデータを編集）
 
-フォルダ内にある`localscore.json`を編集することでデータの更新ができます。
+フォルダ内にある`localscore.json`を編集することでデータの更新ができます。`""`は削除せず記入・保存してください。テキストエディタを持っていない場合は <a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/">VSCode</a>などをインストールすると良いでしょう。
 ```json
 [
 {
@@ -59,21 +61,21 @@ BraceBracketではjsonとGoogleスプレッドシートを扱いデータの更�
   "team": "2Pのチーム名（なしでもOK）",
   "score": "2Pのスコア（数字）",
   "status": "2P側、singleレイアウトでは下に表示される大会ステータス（Best of 3など）",
-  "option": "こちらは使用しないため記入なし"
+  "option": "使用しません"
 }]
 ```
 
-##### B.遠隔でデータを編集する場合（リモートでGoogleスプレッドシートを編集）
+##### B.やや上級者向け・遠隔でデータを編集する場合（リモートでGoogleスプレッドシートを編集）
 
 Googleスプレッドシートでデータの編集をする場合はいくつか作業が必要です。
 
-<a href="https://docs.google.com/spreadsheets">Googleスプレッドシート</a>で空白新規スプレッドシートを作成します。もしくは、<a href="https://docs.google.com/spreadsheets/d/1EGa5Ha1ERYAZ_GW9ImiHcn19v29xSExyKtJCGGpDqXs/edit?usp=sharing">こちらのデモ</a>を複製でもOKです。
+<img src="https://wolphtype.com/img/materials/copy.png" style="width:800px;height:auto;">
+
+まず、<a href="https://docs.google.com/spreadsheets/d/1EGa5Ha1ERYAZ_GW9ImiHcn19v29xSExyKtJCGGpDqXs/edit?usp=sharing">こちらのスプレッドシート</a>を開き`ファイル>コピーを作成`を選択してください。
 
 <img src="https://wolphtype.com/img/materials/spreadsheets.png" style="width:800px;height:auto;">
 
-上記の画像のように入力します。1行目の内容（name, team, score, status, option）は変更しないでください。
-
-次に、Googleスプレッドシートのツールバーから`拡張機能>Apps Script`を選択します。Apps Scriptのページが開くので、デフォルトで入力されている`function myFunction() {}`を削除し、フォルダ内にある`appsscript.gs`、もしくは下のコードをコピーペーストします。
+次に、Googleスプレッドシートのツールバーから`拡張機能>Apps Script`を選択します。Apps Scriptのページが開くので、下記のコードが入力されていることを確認してください。
 ```javascript
 function getData(sheetName) {
   var sheet = SpreadsheetApp.getActive().getSheetByName(sheetName);
@@ -96,13 +98,19 @@ function doGet() {
 
 <img src="https://wolphtype.com/img/materials/appsscript.png" style="width:800px;height:auto;">
 
-右上のデプロイボタンを選択し、左上の「種類の選択」からウェブアプリを選択します。
+右上の「デプロイ」→「新しいデプロイ」を選択し、左上の「種類の選択」からウェブアプリを選択します。
 
 <img src="https://wolphtype.com/img/materials/deploy.png" style="width:800px;height:auto;">
 
-説明文は適当に記入し、実行するユーザーは「自分」、アクセスできるユーザーは「全員」にしデプロイします。するとウェブアプリのURLが表示されるため、こちらをコピーします。（試しにこのURLを開いてみるとスプレッドシートの内容がjsonで出力されているはずです）
+実行するユーザーは「自分」、アクセスできるユーザーは「全員」にしデプロイします。
 
-最後に、`index.html`もしくは`single.html`をエディタで開き、下部にある`const endpoint = "localscore.json";`の`localscore`部分をコピーしたGoogle Apps ScriptのURLをペーストし保存します。これで設定は完了です。
+場合によっては**「このウェブアプリケーションを使用するには、データへのアクセスを許可する必要があります」**というダイアログが出てくるので、画像の通り「アクセスの承認」をクリックし、次に「このアプリは Googleで確認されていません」という画面が出てきたら左下の「詳細」→「xxx（安全ではないページ）に移動」をクリックします。すると認証画面が出てくるので、右下の「許可」をクリックします。
+
+<img src="https://wolphtype.com/img/materials/accept.png" style="width:800px;height:auto;">
+
+するとウェブアプリのURLが表示されるため、こちらをコピーします。（試しにこのURLを開いてみるとスプレッドシートの内容がjsonで出力されているはずです）
+
+最後に、`index.html`もしくは`single.html`、`solid.html`をエディタで開き、下部にある`const endpoint = "localscore.json";`の`localscore`部分をコピーしたGoogle Apps ScriptのURLをペーストし保存します。これで設定は完了です。
 
 ##### 注意点
 Googleスプレッドシートを複数人で編集する場合、リンクでアクセスする人は匿名として表示されますが、**スプレッドシートの製作者はアカウント名が表示されてしまいます**。そのため、複数人で編集する場合は他人に見られても問題ないアカウント名のGoogleアカウントでスプレッドシートを作成すると良いでしょう。
@@ -119,11 +127,13 @@ const endpoint = "https://script.google.com/macros/…";
 
 ##### A.htmlファイルを直接指定する
 
-ソースからブラウザ（Webページ）を追加し、ローカルファイルにチェックを入れます。フォルダ内の`index.html`もしくは`single.html`を選択し、幅を1920px、高さを1080pxにして配置します。
+ソースからブラウザ（Webページ）を追加し、ローカルファイルにチェックを入れます。フォルダ内の`index.html`もしくは`single.html`、`solid.html`を選択し、幅を1920px、高さを1080pxにして配置します。
 
-##### B.サーバーにアップロードして指定する
+<img src="https://wolphtype.com/img/materials/obs.png" style="width:800px;height:auto;">
 
-フォルダをサーバーにアップロードします。（npmやyarnを使っているならば<a href="https://surge.sh">Surge</a>などが良いでしょう）配信ソフトでソースからブラウザ（Webページ）を追加し、アップロードしたURLを指定します。（`http://xxx.xxx/index.html`もしくは`http://xxx.xxx/single.html`のようになります。）幅を1920px、高さを1080pxにして配置します。
+##### B.上級者向け・サーバーにアップロードして指定する
+
+フォルダをサーバーにアップロードします。（npmやyarnを使っているならば<a href="https://surge.sh">Surge</a>などが良いでしょう）配信ソフトでソースからブラウザ（Webページ）を追加し、アップロードしたURLを指定します。（`http://xxx.xxx/index.html`もしくは`http://xxx.xxx/single.html`、`http://xxx.xxx/solid.html`のようになります。）幅を1920px、高さを1080pxにして配置します。
 
 この方法は、視聴者が設定やデータの更新を行い、配信者にはOBSの設定だけを行ってもらうなど、配信者に手間をかけたくない場合に有効です。
 
@@ -132,9 +142,9 @@ const endpoint = "https://script.google.com/macros/…";
 以下のURLをOBSに配置し、<a href="https://docs.google.com/spreadsheets/d/1EGa5Ha1ERYAZ_GW9ImiHcn19v29xSExyKtJCGGpDqXs/edit?usp=sharing">こちらのスプレッドシート</a>を編集してみてください。スコアの編集を試すことができます。
 ```bracebracket-demo.surge.sh```
 
-### カスタマイズ
+### カスタマイズ（上級者向け）
 
-デザインのカスタマイズや要素の追加をする場合はscssのコンパイルが必要になります。yarnもしくはnpmを導入し、`npm run`や`yarn watch`を使いながら確認すると良いでしょう。
+デザインのカスタマイズや要素の追加をする場合はscssのコンパイルが必要になります。yarnを導入し、`yarn watch`を使いながら確認すると良いでしょう。
 
 #### スコアボードのデザイン
 
@@ -142,11 +152,11 @@ const endpoint = "https://script.google.com/macros/…";
 
 <img src="https://wolphtype.com/img/materials/variations.png" style="width:auto;height:auto;">
 
-`image/scoreboards`に入っているデザインを利用することができます。使用したいデザインを`image`フォルダにコピーし、`dualmain.png`および`singlemain.png`にファイル名を変更してください。（既存の`dualmain.png`および`singlemain.png`は削除してください。）
+`image/scoreboards`に入っているデザインを利用することができます。使用したいデザインを`image`フォルダにコピーし、`dualmain.png`および`singlemain.png`、`solidmain.png`にファイル名を変更してください。（既存の`dualmain.png`および`singlemain.png`、`solidmain.png`は削除してください。）
 
 <img src="https://wolphtype.com/img/materials/maindesign.png" style="width:800px;height:auto;">
 
-デザインによっては文字の色の変更が必要です。`scss/_dual.scss`および`scss/_single.scss`の変数を編集することで文字色が変更できます。
+デザインによっては文字の色の変更が必要です。`scss/_dual.scss`および`scss/_single.scss`、`scss/_solid.scss`の変数を編集することで文字色が変更できます。
 
 ```scss
 $darkgray: #111111;
