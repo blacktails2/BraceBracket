@@ -34,6 +34,11 @@ BraceBracketは格闘ゲームにおけるスコアボードを動的に表示�
 
 ## チュートリアル
 
+Youtubeに解説動画をアップロードしたのでこちらもご参照ください。
+
+[![](https://img.youtube.com/vi/wnK_T8ZJjTk/0.jpg)](https://www.youtube.com/watch?v=wnK_T8ZJjTk)
+
+
 ### 導入方法
 
 特に内容のカスタマイズを行わない場合の設定方法を解説します。
