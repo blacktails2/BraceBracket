@@ -12,6 +12,11 @@ BraceBracketは格闘ゲームにおけるスコアボードを動的に表示�
 
 中–大規模の大会よりも、小規模な大会や対戦会、窓対抗戦やサーバー内大会などをターゲットに制作しています。
 
+### デモ
+
+以下のURLをOBSに配置し、<a href="https://docs.google.com/spreadsheets/d/1EGa5Ha1ERYAZ_GW9ImiHcn19v29xSExyKtJCGGpDqXs/edit?usp=sharing">こちらのスプレッドシート</a>を編集してみてください。スコアの編集を試すことができます。
+```bracebracket-demo.surge.sh```
+
 ### メリット
 - jsonおよびGoogleスプレッドシートを使ってデータを編集するため、Mac、Windows、LinuxなどのOSに依存せず使用可能
 - Googleスプレッドシートを用いた編集により、配信者ではなく遠隔の協力者や視聴者がデータを更新できる
@@ -136,11 +141,6 @@ const endpoint = "https://script.google.com/macros/…";
 フォルダをサーバーにアップロードします。（npmやyarnを使っているならば<a href="https://surge.sh">Surge</a>などが良いでしょう）配信ソフトでソースからブラウザ（Webページ）を追加し、アップロードしたURLを指定します。（`http://xxx.xxx/index.html`もしくは`http://xxx.xxx/single.html`、`http://xxx.xxx/solid.html`のようになります。）幅を1920px、高さを1080pxにして配置します。
 
 この方法は、視聴者が設定やデータの更新を行い、配信者にはOBSの設定だけを行ってもらうなど、配信者に手間をかけたくない場合に有効です。
-
-### デモ
-
-以下のURLをOBSに配置し、<a href="https://docs.google.com/spreadsheets/d/1EGa5Ha1ERYAZ_GW9ImiHcn19v29xSExyKtJCGGpDqXs/edit?usp=sharing">こちらのスプレッドシート</a>を編集してみてください。スコアの編集を試すことができます。
-```bracebracket-demo.surge.sh```
 
 ### カスタマイズ（上級者向け）
 
