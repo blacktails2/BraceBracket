@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang='ja'>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BraceBracket</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://api.fontshare.com/css?f[]=satoshi@1,2&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="image/MC1.png" as="image">
+  <link rel="preload" href="image/MC2.png" as="image">
+  <link rel="preload" href="image/MC3.png" as="image">
+  <link rel="preload" href="image/MC4.png" as="image">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="mc_setting">
+    <!-- MC設定 表示しない場合はクラスにdisableを追加 -->
+    <div id="mc_background"></div>
+    <p id="mc_one"><span class="mc_team" id="mc_team_one"></span><span id="mc_name_one" class="mc_name"></span></p>
+    <p id="id_one"></p>
+    <p id="mc_two"><span class="mc_team" id="mc_team_two"></span><span id="mc_name_two" class="mc_name"></span></p>
+    <p id="id_two"></p>
+    <p id="mc_three"><span class="mc_team" id="mc_team_three"></span><span id="mc_name_three" class="mc_name"></span></p>
+    <p id="id_three"></p>
+    <p id="mc_four"><span class="mc_team" id="mc_team_four"></span><span id="mc_name_four" class="mc_name"></span></p>
+    <p id="id_four"></p>
+  </div>
+</body>
+<script>
+//ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
+const endpoint = "https://script.google.com/macros/s/AKfycbzOmyvMmEm11lBI2TZeZ_PdK6P-xqz-Bsw8OWjmYgn7QRD62NunjEaUh_VFE1sQKMRZ-A/exec";
+
+
+//APIを使って非同期データを取得する
+function remoteMc() {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", endpoint);
+  xhr.send();
+  xhr.onreadystatechange = function() {
+    //JSONから配列に変換
+    const data = JSON.parse(xhr.response);
+    console.log(data);
+    //inputタグそれぞれに取得したデータを設定
+    var mc1 = data[4]['name'];
+    var mc2 = data[5]['name'];
+    var mc3 = data[6]['name'];
+    var mc4 = data[7]['name'];
+    document.getElementById("mc_name_one").innerHTML = mc1;
+    document.getElementById("mc_name_two").innerHTML = mc2;
+    document.getElementById("mc_name_three").innerHTML = mc3;
+    document.getElementById("mc_name_four").innerHTML = mc4;
+    document.getElementById("mc_team_one").innerHTML = data[4]['team'];
+    document.getElementById("mc_team_two").innerHTML = data[5]['team'];
+    document.getElementById("mc_team_three").innerHTML = data[6]['team'];
+    document.getElementById("mc_team_four").innerHTML = data[7]['team'];
+    document.getElementById("id_one").innerHTML = data[4]['id'];
+    document.getElementById("id_two").innerHTML = data[5]['id'];
+    document.getElementById("id_three").innerHTML = data[6]['id'];
+    document.getElementById("id_four").innerHTML = data[7]['id'];
+    if (!!mc4) {
+      document.querySelector('#mc_background').style.backgroundImage = "url(image/MC4.png)";
+      document.querySelector('.mc_setting').classList.add("mc4_layout");
+      document.querySelector('.mc_setting').classList.remove("mc3_layout", "mc2_layout", "mc1_layout");
+    } else if (!!mc3) {
+      document.querySelector('#mc_background').style.backgroundImage = "url(image/MC3.png)";
+      document.querySelector('.mc_setting').classList.add("mc3_layout");
+      document.querySelector('.mc_setting').classList.remove("mc4_layout", "mc2_layout", "mc1_layout");
+    } else if (!!mc2) {
+      document.querySelector('#mc_background').style.backgroundImage = "url(image/MC2.png)";
+      document.querySelector('.mc_setting').classList.add("mc2_layout");
+      document.querySelector('.mc_setting').classList.remove("mc4_layout", "mc3_layout", "mc1_layout");
+    } else if (!!mc1) {
+      document.querySelector('#mc_background').style.backgroundImage = "url(image/MC1.png)";
+      document.querySelector('.mc_setting').classList.add("mc1_layout");
+      document.querySelector('.mc_setting').classList.remove("mc4_layout", "mc3_layout", "mc2_layout");
+    } else if (!mc1) {
+      document.querySelector('#mc_background').style.backgroundImage = "none";
+      document.querySelector('.mc_setting').classList.remove("mc4_layout", "mc3_layout", "mc2_layout", "mc1_layout");
+    }
+  }
+}
+remoteMc();
+window.setInterval(remoteMc, 5000);
+</script>
+
+</html>

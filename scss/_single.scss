@@ -141,6 +141,32 @@ $single_statuscolor: $white;
   @include single_statusText;
 }
 
+// 選手IDの位置設定
+@mixin single_idText {
+  @include single_boldWeight;
+  width: 220px;
+  height: 30px;
+  margin: 0;
+  color: $white;
+  text-align: center;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  position: fixed;
+}
+
+#camera_left {
+  @include single_idText;
+  left: 20px;
+  top: 845px;
+}
+
+#camera_right {
+  @include single_idText;
+  right: 20px;
+  top: 845px;
+}
+
 .single_logobox {
   height: 100px;
   width: 200px;
