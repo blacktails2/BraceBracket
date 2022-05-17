@@ -61,7 +61,7 @@ document.querySelector("#create").addEventListener("click", async () => {
   if (!pass || pass === "") return;
 
   const id = await sha1(pass);
-  document.querySelector("#url").innerText = location.origin + "?id=" + id
+  document.querySelector("#url").innerText = location.href.replace("admin.html", "") + "?id=" + id
   const scoreRef = ref(db, "scores/" + id);
 
   // sync ボタンがクリックされたら DB のスコアを更新する
