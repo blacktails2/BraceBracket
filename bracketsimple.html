@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang='ja'>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BraceBracket</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://api.fontshare.com/css?f[]=satoshi@1,2&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <img class="board" src="image/brackets_simple.png" alt=""><!-- 試合情報のデザインの画像 -->
+  <div class="sp_bracketsbox" id="sp_winners_semis1">
+    <div class="sp_bracketsbox__name">
+      <p><span class="bracketsp_team" id="sp_wsemis1_p1_team"></span><span class="bracketsp_name" id="sp_wsemis1_p1_name"></span></p>
+      <p><span class="bracketsp_team" id="sp_wsemis1_p2_team"></span><span class="bracketsp_name" id="sp_wsemis1_p2_name"></span></p>
+    </div>
+    <div class="bracketbox_score">
+      <p><span id="sp_wsemis1_p1_score"></span></p>
+      <p><span id="sp_wsemis1_p2_score"></span></p>
+    </div>
+  </div>
+  <div class="sp_bracketsbox" id="sp_winners_semis2">
+    <div class="sp_bracketsbox__name">
+      <p><span class="bracketsp_team" id="sp_wsemis2_p1_team"></span><span class="bracketsp_name" id="sp_wsemis2_p1_name"></span></p>
+      <p><span class="bracketsp_team" id="sp_wsemis2_p2_team"></span><span class="bracketsp_name" id="sp_wsemis2_p2_name"></span></p>
+    </div>
+    <div class="bracketbox_score">
+      <p><span id="sp_wsemis2_p1_score"></span></p>
+      <p><span id="sp_wsemis2_p2_score"></span></p>
+    </div>
+  </div>
+  <div class="sp_bracketsbox" id="sp_winners_finals">
+    <div class="sp_bracketsbox__name">
+      <p><span class="bracketsp_team" id="sp_wfinals_p1_team"></span><span class="bracketsp_name" id="sp_wfinals_p1_name"></span></p>
+      <p><span class="bracketsp_team" id="sp_wfinals_p2_team"></span><span class="bracketsp_name" id="sp_wfinals_p2_name"></span></p>
+    </div>
+    <div class="bracketbox_score">
+      <p><span id="sp_wfinals_p1_score"></span></p>
+      <p><span id="sp_wfinals_p2_score"></span></p>
+    </div>
+  </div>
+  <div class="sp_bracketsbox" id="sp_grand_finals">
+    <div class="sp_bracketsbox__name">
+      <p><span class="bracketsp_team" id="sp_gfinals_p1_team"></span><span class="bracketsp_name" id="sp_gfinals_p1_name"></span></p>
+      <p><span class="bracketsp_team" id="sp_gfinals_p2_team"></span><span class="bracketsp_name" id="sp_gfinals_p2_name"></span></p>
+    </div>
+    <div class="bracketbox_score">
+      <p><span id="sp_gfinals_p1_score"></span></p>
+      <p><span id="sp_gfinals_p2_score"></span></p>
+    </div>
+  </div>
+  <div class="sp_bracketsbox" id="sp_losers_81">
+    <div class="sp_bracketsbox__name">
+      <p><span class="bracketsp_team" id="sp_l81_p1_team"></span><span class="bracketsp_name" id="sp_l81_p1_name"></span></p>
+      <p><span class="bracketsp_team" id="sp_l81_p2_team"></span><span class="bracketsp_name" id="sp_l81_p2_name"></span></p>
+    </div>
+    <div class="bracketbox_score">
+      <p><span id="sp_l81_p1_score"></span></p>
+      <p><span id="sp_l81_p2_score"></span></p>
+    </div>
+  </div>
+  <div class="sp_bracketsbox" id="sp_losers_82">
+    <div class="sp_bracketsbox__name">
+      <p><span class="bracketsp_team" id="sp_l82_p1_team"></span><span class="bracketsp_name" id="sp_l82_p1_name"></span></p>
+      <p><span class="bracketsp_team" id="sp_l82_p2_team"></span><span class="bracketsp_name" id="sp_l82_p2_name"></span></p>
+    </div>
+    <div class="bracketbox_score">
+      <p><span id="sp_l82_p1_score"></span></p>
+      <p><span id="sp_l82_p2_score"></span></p>
+    </div>
+  </div>
+  <div class="sp_bracketsbox" id="sp_losers_quarters1">
+    <div class="sp_bracketsbox__name">
+      <p><span class="bracketsp_team" id="sp_lquarters1_p1_team"></span><span class="bracketsp_name" id="sp_lquarters1_p1_name"></span></p>
+      <p><span class="bracketsp_team" id="sp_lquarters1_p2_team"></span><span class="bracketsp_name" id="sp_lquarters1_p2_name"></span></p>
+    </div>
+    <div class="bracketbox_score">
+      <p><span id="sp_lquarters1_p1_score"></span></p>
+      <p><span id="sp_lquarters1_p2_score"></span></p>
+    </div>
+  </div>
+  <div class="sp_bracketsbox" id="sp_losers_quarters2">
+    <div class="sp_bracketsbox__name">
+      <p><span class="bracketsp_team" id="sp_lquarters2_p1_team"></span><span class="bracketsp_name" id="sp_lquarters2_p1_name"></span></p>
+      <p><span class="bracketsp_team" id="sp_lquarters2_p2_team"></span><span class="bracketsp_name" id="sp_lquarters2_p2_name"></span></p>
+    </div>
+    <div class="bracketbox_score">
+      <p><span id="sp_lquarters2_p1_score"></span></p>
+      <p><span id="sp_lquarters2_p2_score"></span></p>
+    </div>
+  </div>
+  <div class="sp_bracketsbox" id="sp_losers_semis">
+    <div class="sp_bracketsbox__name">
+      <p><span class="bracketsp_team" id="sp_lsemis_p1_team"></span><span class="bracketsp_name" id="sp_lsemis_p1_name"></span></p>
+      <p><span class="bracketsp_team" id="sp_lsemis_p2_team"></span><span class="bracketsp_name" id="sp_lsemis_p2_name"></span></p>
+    </div>
+    <div class="bracketbox_score">
+      <p><span id="sp_lsemis_p1_score"></span></p>
+      <p><span id="sp_lsemis_p2_score"></span></p>
+    </div>
+  </div>
+  <div class="sp_bracketsbox" id="sp_losers_finals">
+    <div class="sp_bracketsbox__name">
+      <p><span class="bracketsp_team" id="sp_lfinals_p1_team"></span><span class="bracketsp_name" id="sp_lfinals_p1_name"></span></p>
+      <p><span class="bracketsp_team" id="sp_lfinals_p2_team"></span><span class="bracketsp_name" id="sp_lfinals_p2_name"></span></p>
+    </div>
+    <div class="bracketbox_score">
+      <p><span id="sp_lfinals_p1_score"></span></p>
+      <p><span id="sp_lfinals_p2_score"></span></p>
+    </div>
+  </div>
+</body>
+<script>
+function topbracket() {
+  return fetch('https://api.smash.gg/gql/alpha', {
+      method: 'POST',
+      headers: {
+        "Authorization": "Bearer 4c55422a25fb010184f6eb3612292f01",
+        "content-Type": "application/json",
+        "Accept": "application/json",
+        'encoding': 'utf-8'
+      },
+      body: JSON.stringify({
+        query: `
+        query PhaseGroupSets{
+  phaseGroup(id: 1710751){
+    id
+    displayIdentifier
+    sets(
+      sortType: ROUND
+    ){
+      pageInfo{
+        total
+      }
+      nodes{
+        fullRoundText
+        slots{
+          entrant{
+            name
+          }
+          standing {
+            placement
+            stats {
+              score {
+                value
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+      `,
+        variables: {
+          now: new Date().toISOString(),
+        },
+      }),
+    })
+    .then((res) => res.json())
+    .then((result) => {
+      console.log(result);
+      console.log(JSON.stringify(result));
+      // 結果を記入 LosersFinals
+      const jsonBracket = result;
+    })
+}
+topbracket();
+// async function init() {
+//   var data = await topbracket();
+//   console.log(data);
+//   const bracketData = JSON.parse(data);
+//   console.log(bracketData);
+// }
+</script>
+<!-- <script>
+//ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
+const endpoint = "https://script.google.com/macros/s/AKfycbzOmyvMmEm11lBI2TZeZ_PdK6P-xqz-Bsw8OWjmYgn7QRD62NunjEaUh_VFE1sQKMRZ-A/exec";
+
+
+//APIを使って非同期データを取得する
+function remoteBreak() {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", endpoint);
+  xhr.send();
+  xhr.onreadystatechange = function() {
+    //JSONから配列に変換
+    const data = JSON.parse(xhr.response);
+    console.log(data);
+    var nextnow = data[2]['option'];
+    console.log(nextnow);
+    if (nextnow == 'NOW') {
+      document.getElementById("nextnow_sp").innerHTML = data[2]['option'];
+      document.getElementById("nextsp_scoreleft").innerHTML = data[0]['score'];
+      document.getElementById("nextsp_scoreright").innerHTML = data[1]['score'];
+      document.getElementById("nextsp_playerleft").innerHTML = data[0]['name'];
+      document.getElementById("nextsp_playerright").innerHTML = data[1]['name'];
+      document.getElementById("nextsp_round").innerHTML = data[0]['status'];
+      document.getElementById("nextsp_bo").innerHTML = data[1]['status'];
+    } else if (nextnow == 'NEXT') {
+      document.getElementById("nextnow").innerHTML = data[2]['option'];
+      document.getElementById("nextsp_scoreleft").innerHTML = data[2]['score'];
+      document.getElementById("nextsp_scoreright").innerHTML = data[3]['score'];
+      document.getElementById("nextsp_playerleft").innerHTML = data[2]['name'];
+      document.getElementById("nextsp_playerright").innerHTML = data[3]['name'];
+      document.getElementById("nextsp_round").innerHTML = data[2]['status'];
+      document.getElementById("nextsp_bo").innerHTML = data[3]['status'];
+    }
+    //inputタグそれぞれに取得したデータを設定
+  }
+}
+remoteBreak();
+window.setInterval(remoteBreak, 5000);
+</script> -->
+
+</html>
