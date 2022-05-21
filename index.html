@@ -14,12 +14,6 @@
 
 <body>
   <img class='board' src="image/dualmain.png" alt=""> <!-- スコアボードのデザインの画像 -->
-  <div class="camera_setting">
-    <!-- カメラ設定 なしの場合はクラスにdisableを追加 -->
-    <img class="board" src="image/camera.png" alt=""><!-- カメラレイアウトのデザインの画像 -->
-    <p id="camera_left"></p>
-    <p id="camera_right"></p>
-  </div>
   <div class="dual_logobox"><img src="image/logo.png" alt="" class="dual_logo disable"></div><!-- 大会ロゴ なしの場合はクラスにdisableを追加 -->
   <p id="dual_numberleft"></p> <!-- 1Pスコア -->
   <p id="dual_numberright"></p> <!-- 2Pスコア -->
@@ -31,36 +25,47 @@
     <p id="dual_option"></p>
   </div>
 </body>
-<script>
-//ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
-const endpoint = "localscore.json";
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js'
 
+import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js'
 
-//APIを使って非同期データを取得する
-function remoteScore() {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", endpoint);
-  xhr.send();
-  xhr.onreadystatechange = function() {
-    //JSONから配列に変換
-    const data = JSON.parse(xhr.response);
-    console.log(data);
-    document.getElementById("dual_numberleft").innerHTML = data[0]['score'];
-    document.getElementById("dual_nameleft").innerHTML = data[0]['name'];
-    document.getElementById("dual_teamleft").innerHTML = data[0]['team'];
-    document.getElementById("dual_prtextleft").innerHTML = data[0]['status'];
-    document.getElementById("dual_numberright").innerHTML = data[1]['score'];
-    document.getElementById("dual_nameright").innerHTML = data[1]['name'];
-    document.getElementById("dual_teamright").innerHTML = data[1]['team'];
-    document.getElementById("dual_prtextright").innerHTML = data[1]['status'];
-    document.getElementById("dual_option").innerHTML = data[0]['option'];
-    document.getElementById("camera_left").innerHTML = data[0]['id'];
-    document.getElementById("camera_right").innerHTML = data[1]['id'];
-    //inputタグそれぞれに取得したデータを設定
-  }
-}
-remoteScore();
-window.setInterval(remoteScore, 5000);
+// Firebase 設定（公開してもよい）
+const firebaseConfig = {
+  apiKey: "AIzaSyD-Nzhi2nzBgFhoK44B_bnKefnuEXGqgow",
+  authDomain: "bracebracket-24d9f.firebaseapp.com",
+  databaseURL: "https://bracebracket-24d9f-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "bracebracket-24d9f",
+  storageBucket: "bracebracket-24d9f.appspot.com",
+  messagingSenderId: "844635716199",
+  appId: "1:844635716199:web:afe5e7c533f2604878b2c2"
+};
+
+// Firebase の初期化
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+// クエリパラメータから ID を取得する
+const params = new URLSearchParams(location.search);
+const id = params.get('id');
+
+// Firebase Realtime DB からの変更をリッスンする
+const scoreRef = ref(db, "scores/" + id);
+onValue(scoreRef, (snapshot) => {
+  const data = snapshot.val();
+  console.log(data);
+
+  // データの反映
+  document.getElementById("dual_numberleft").innerHTML = data[0]['score'];
+  document.getElementById("dual_nameleft").innerHTML = data[0]['name'];
+  document.getElementById("dual_teamleft").innerHTML = data[0]['team'];
+  document.getElementById("dual_prtextleft").innerHTML = data[0]['status'];
+  document.getElementById("dual_numberright").innerHTML = data[1]['score'];
+  document.getElementById("dual_nameright").innerHTML = data[1]['name'];
+  document.getElementById("dual_teamright").innerHTML = data[1]['team'];
+  document.getElementById("dual_prtextright").innerHTML = data[1]['status'];
+  document.getElementById("dual_option").innerHTML = data[0]['option'];
+});
 </script>
 
 </html>

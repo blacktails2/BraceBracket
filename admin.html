@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang='ja'>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BraceBracket</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://api.fontshare.com/css?f[]=satoshi@1,2&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div>
+  <label for="pass"> pass </label>
+  <input type="text" id="pass" />
+  <button id="create">作成</button>
+</div>
+
+<div>
+  <span>OBS用URL:</span><span id="url"></span>
+</div>
+
+<div>
+  <textarea id="score" cols="60" rows="30"></textarea>
+  <button id="sync"> sync </button>
+</div>
+</body>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js'
+
+import { getDatabase, ref, get, set, onValue } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js'
+
+// ID 生成用ハッシュ関数
+const sha1 = async str =>  {
+  const buff = new Uint8Array([].map.call(str, (c) => c.charCodeAt(0))).buffer;
+  const digest = await crypto.subtle.digest('SHA-1', buff);
+  return [].map.call(new Uint8Array(digest), x => ('00' + x.toString(16)).slice(-2)).join('');
+};
+
+// Firebase 設定（公開してもよい）
+const firebaseConfig = {
+  apiKey: "AIzaSyD-Nzhi2nzBgFhoK44B_bnKefnuEXGqgow",
+  authDomain: "bracebracket-24d9f.firebaseapp.com",
+  databaseURL: "https://bracebracket-24d9f-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "bracebracket-24d9f",
+  storageBucket: "bracebracket-24d9f.appspot.com",
+  messagingSenderId: "844635716199",
+  appId: "1:844635716199:web:afe5e7c533f2604878b2c2"
+};
+
+// Firebase の初期化
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+// スコア作成時の処理
+document.querySelector("#create").addEventListener("click", async () => {
+  const pass = document.querySelector("#pass").value;
+  if (!pass || pass === "") return;
+
+  const id = await sha1(pass);
+  document.querySelector("#url").innerText = location.origin + "?id=" + id
+  const scoreRef = ref(db, "scores/" + id);
+
+  // sync ボタンがクリックされたら DB のスコアを更新する
+  document.querySelector("#sync").addEventListener("click", () => {
+    const scoreStr = document.querySelector("#score").value;
+    let score
+    try {
+      score = JSON.parse(scoreStr);
+      console.log(score);
+    } catch (e) {
+      console.log(e);
+      alert("jsonが正しくありません");
+    }
+
+    try {
+      set(scoreRef, score);
+    } catch (e) {
+      console.log(e);
+      alert("scoreの更新に失敗しました");
+    }
+  });
+
+  // ほかのページで更新されたときに追従するようにする
+  onValue(scoreRef, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data);
+    document.querySelector("#score").value = JSON.stringify(data, null, "  ");
+  });
+
+  const snapshot = await get(scoreRef);
+  if (snapshot.exists()) {
+    // すでに初期化されている場合は値を取得してくる
+    const data = snapshot.val();
+    document.querySelector("#score").value = JSON.stringify(data, null, "  ");
+  } else {
+    // スコアの初期化
+    set(scoreRef,
+            [
+              {
+                "name": "PlayerName1",
+                "team": "チーム",
+                "score": "0",
+                "status": "WINNERS FINALS",
+                "option": "大会名Text<br>#25"
+              },
+              {
+                "name": "プレイヤーネーム",
+                "team": "Team",
+                "score": "0",
+                "status": "BEST OF 5",
+                "option": ""
+              }
+            ]
+    );
+  }
+})
+
+</script>
+
+</html>
