@@ -83,19 +83,25 @@ export const useSceneChanger = (
       if (!scenes) return
       console.log("scenes", scenes)
 
-      if (!connect && scenes.sceneList) {
+      if (
+        !connect &&
+        scenes.sceneList &&
+        JSON.stringify(scenes.sceneList) !== JSON.stringify(sceneList)
+      ) {
         setSceneList(scenes.sceneList)
       }
       setCurrentScene(scenes.currentScene)
     })
     return () => unsubscribe()
-  }, [id, connect, setCurrentScene])
+  }, [id, connect, sceneList, setCurrentScene])
 
   useEffect(() => {
     if (!id) return
     const obsCurrentSceneRef = ref(db, `tournaments/${id}/obs/currentScene`)
     console.log("current scene", currentScene)
-    set(obsCurrentSceneRef, currentScene)
+    if (sceneList.includes(currentScene)) {
+      set(obsCurrentSceneRef, currentScene)
+    }
   }, [id, currentScene])
 
   useEffect(() => {
@@ -103,7 +109,7 @@ export const useSceneChanger = (
     const obsSceneListRef = ref(db, `tournaments/${id}/obs/sceneList`)
     console.log("scene list", sceneList)
     set(obsSceneListRef, sceneList)
-  }, [id, sceneList, currentScene])
+  }, [id, connect, sceneList, currentScene])
 
   return [currentScene, setCurrentScene, sceneList]
 }
