@@ -20,11 +20,143 @@
 </div>
 
 <div>
+  <div>
+    <div>タイプ</div>
+    <div style="display: flex;">
+      <input type="radio" name="type" value="dual" id="dual" checked>
+      <img src="./image/dualmain.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+    </div>
+    <div style="display: flex;">
+      <input type="radio" name="type" value="single" id="single">
+      <img src="./image/singlemain.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+    </div>
+    <div style="display: flex;">
+      <input type="radio" name="type" value="solid" id="solid">
+      <img src="./image/solidmain.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+    </div>
+  </div>
+  <div>
+    <div>スタイル</div>
+    <div id="type_dual">
+      <div style="display: flex;">
+        <input type="radio" name="dual_style" value="01-dual_white_black_color.png" checked>
+        <img src="./image/scoreboards/01-dual_white_black_color.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="dual_style" value="02-dual_white_black_mono.png">
+        <img src="./image/scoreboards/02-dual_white_black_mono.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="dual_style" value="03-dual_black_white_color.png">
+        <img src="./image/scoreboards/03-dual_black_white_color.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="dual_style" value="04-dual_black_white_mono.png">
+        <img src="./image/scoreboards/04-dual_white__black_mono.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="dual_style" value="05-dual_white_white_mono.png">
+        <img src="./image/scoreboards/05-dual_white_white_mono.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+    </div>
+    <div id="type_single" style="display: none;">
+      <div style="display: flex;">
+        <input type="radio" name="single_style" value="06-single_white_black_color.png" checked>
+        <img src="./image/scoreboards/06-single_white_black_color.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="single_style" value="07-single_white_black_mono.png">
+        <img src="./image/scoreboards/07-single_white_black_mono.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="single_style" value="08-single_black_white_color.png">
+        <img src="./image/scoreboards/08-single_black_white_color.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="single_style" value="09-single_black_white_mono.png">
+        <img src="./image/scoreboards/09-single_black_white_mono.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="single_style" value="12-single_black_white_beige.png">
+        <img src="./image/scoreboards/12-single_black_white_beige.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+    </div>
+    <div id="type_solid" style="display: none;">
+      <div style="display: flex;">
+        <input type="radio" name="solid_style" value="13-solid_white_black_color.png" checked>
+        <img src="./image/scoreboards/13-solid_white_black_color.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="solid_style" value="14-solid_white_white_mono.png">
+        <img src="./image/scoreboards/14-solid_white_white_mono.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="solid_style" value="15-solid_black_white_color.png">
+        <img src="./image/scoreboards/15-solid_black_white_color.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="solid_style" value="16-solid_black_black_mono.png">
+        <img src="./image/scoreboards/16-solid_black_black_mono.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+      <div style="display: flex;">
+        <input type="radio" name="solid_style" value="17-solid_black_white_beige.png">
+        <img src="./image/scoreboards/17-solid_black_white_beige.png" style="width: 700px; height: 80px; object-fit: cover; object-position: center top;"/>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <button id="setting">設定</button>
+</div>
+
+
+<div>
   <span>OBS用URL:</span><span id="url"></span>
 </div>
 
 <div>
-  <textarea id="score" cols="60" rows="30"></textarea>
+  <div style="display: flex;">
+    <div>
+      <div>1Pチーム名</div>
+      <input type="text" id="p1_team">
+    </div>
+    <div>
+      <div>1Pプレイヤー名</div>
+      <input type="text" id="p1_player_name">
+    </div>
+    <div>
+      <div>1Pスコア</div>
+      <input type="number" id="p1_score">
+    </div>
+  </div>
+  <div style="display: flex;">
+    <div>
+      <div>2Pチーム名</div>
+      <input type="text" id="p2_team">
+    </div>
+    <div>
+      <div>2Pプレイヤー名</div>
+      <input type="text" id="p2_player_name">
+    </div>
+    <div>
+      <div>2Pスコア</div>
+      <input type="number" id="p2_score">
+    </div>
+  </div>
+  <div style="display: flex;">
+    <div>
+      <div>ラウンド</div>
+      <input type="text" id="round">
+    </div>
+    <div>
+      <div>試合形式</div>
+      <input type="text" id="match_type">
+    </div>
+    <div>
+      <div>大会名</div>
+      <input type="text" id="tournament_name">
+    </div>
+  </div>
   <button id="sync"> sync </button>
 </div>
 </body>
@@ -32,13 +164,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js'
 
 import { getDatabase, ref, get, set, onValue } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js'
-
-// ID 生成用ハッシュ関数
-const sha1 = async str =>  {
-  const buff = new Uint8Array([].map.call(str, (c) => c.charCodeAt(0))).buffer;
-  const digest = await crypto.subtle.digest('SHA-1', buff);
-  return [].map.call(new Uint8Array(digest), x => ('00' + x.toString(16)).slice(-2)).join('');
-};
 
 // Firebase 設定（公開してもよい）
 const firebaseConfig = {
@@ -55,26 +180,148 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// スコア作成時の処理
-document.querySelector("#create").addEventListener("click", async () => {
-  const pass = document.querySelector("#pass").value;
-  if (!pass || pass === "") return;
+// util系
+// ID 生成用ハッシュ関数
+const sha1 = async str =>  {
+  const buff = new Uint8Array([].map.call(str, (c) => c.charCodeAt(0))).buffer;
+  const digest = await crypto.subtle.digest('SHA-1', buff);
+  return [].map.call(new Uint8Array(digest), x => ('00' + x.toString(16)).slice(-2)).join('');
+};
 
-  const id = await sha1(pass);
-  document.querySelector("#url").innerText = location.href.replace("admin.html", "") + "?id=" + id
-  const scoreRef = ref(db, "scores/" + id);
+// スタイル設定回り
+const types = ["dual", "single", "solid"];
+for (const type of types) {
+  const radioDom = document.querySelector("#" + type);
+  radioDom.addEventListener("change", e => {
+    if (e.target.value) {
+      document.querySelector("#type_" + type).style.display = "block";
+      for (const t of types) {
+        if (t !== type) {
+          document.querySelector("#type_" + t).style.display = "none";
+        }
+      }
+    }
+  });
+}
 
+const applySetting = data => {
+  for (const type of document.getElementsByName("type")) {
+    console.log(type)
+    if (type.value === data.type) {
+      type.checked = true;
+      document.querySelector("#type_" + data.type).style.display = "block";
+      for (const t of types) {
+        if (t !== data.type) {
+          document.querySelector("#type_" + t).style.display = "none";
+        }
+      }
+    } else {
+      type.checked = false;
+    }
+  }
+  for (const style of document.getElementsByName(data.type + "_style")) {
+    style.checked = style.value === data.style;
+  }
+}
+
+const getSetting = () => {
+  let selectedType = "dual";
+  for (const type of document.getElementsByName("type")) {
+    if (type.checked) {
+      selectedType = type.value;
+    }
+  }
+  let filename;
+  switch (selectedType) {
+    case "dual":
+      filename = "";
+      break;
+    case "single":
+      filename = "single.html";
+      break;
+    case "solid":
+      filename = "solid.html";
+      break;
+  }
+
+  let selectedStyle;
+  for (const style of document.getElementsByName(selectedType + "_style")) {
+    if (!selectedStyle) {
+      selectedStyle = style.value;
+    }
+    if (style.checked) {
+      selectedStyle = style.value;
+    }
+  }
+  return {type: selectedType, filename: filename, style: selectedStyle};
+}
+
+async function initializeSetting(settingRef, id) {
+  // settingの初期化
+  document.querySelector("button#setting").addEventListener("click", () => {
+    const setting = getSetting();
+    set(settingRef, setting);
+    document.querySelector("#url").innerText = location.href.replace("admin.html", "") + setting.filename + "?id=" + id
+  });
+  // ほかのページで更新されたときに追従するようにする
+  onValue(settingRef, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data);
+    applySetting(data);
+    const setting = getSetting();
+    document.querySelector("#url").innerText = location.href.replace("admin.html", "") + setting.filename + "?id=" + id
+  });
+
+  const settingSnapshot = await get(settingRef);
+  if (settingSnapshot.exists()) {
+    // すでに初期化されている場合は値を取得してくる
+    const data = settingSnapshot.val();
+    applySetting(data);
+    const setting = getSetting();
+    document.querySelector("#url").innerText = location.href.replace("admin.html", "") + setting.filename + "?id=" + id
+  } else {
+    // スコアの初期化
+    const setting = getSetting();
+    set(settingRef, setting);
+  }
+}
+
+// スコア回り
+const applyScore = data => {
+  document.querySelector("input#p1_team").value = data[0].team;
+  document.querySelector("input#p1_player_name").value = data[0].name;
+  document.querySelector("input#p1_score").value = data[0].score;
+
+  document.querySelector("input#p2_team").value = data[1].team;
+  document.querySelector("input#p2_player_name").value = data[1].name;
+  document.querySelector("input#p2_score").value = data[1].score;
+
+  document.querySelector("input#round").value = data[0].status;
+  document.querySelector("input#match_type").value = data[1].status;
+  document.querySelector("input#tournament_name").value = data[0].option;
+}
+
+const getScore = () => {
+  const data = [{}, {}];
+  data[0].team = document.querySelector("input#p1_team").value;
+  data[0].name = document.querySelector("input#p1_player_name").value;
+  data[0].score = document.querySelector("input#p1_score").value;
+
+  data[1].team = document.querySelector("input#p2_team").value;
+  data[1].name = document.querySelector("input#p2_player_name").value;
+  data[1].score = document.querySelector("input#p2_score").value;
+
+  data[0].status = document.querySelector("input#round").value;
+  data[1].status = document.querySelector("input#match_type").value;
+  data[0].option = document.querySelector("input#tournament_name").value;
+  return data;
+}
+
+async function initializeScore(scoreRef) {
+  // score関連の初期化
   // sync ボタンがクリックされたら DB のスコアを更新する
   document.querySelector("#sync").addEventListener("click", () => {
-    const scoreStr = document.querySelector("#score").value;
-    let score
-    try {
-      score = JSON.parse(scoreStr);
-      console.log(score);
-    } catch (e) {
-      console.log(e);
-      alert("jsonが正しくありません");
-    }
+    const score = getScore();
 
     try {
       set(scoreRef, score);
@@ -88,14 +335,14 @@ document.querySelector("#create").addEventListener("click", async () => {
   onValue(scoreRef, (snapshot) => {
     const data = snapshot.val();
     console.log(data);
-    document.querySelector("#score").value = JSON.stringify(data, null, "  ");
+    applyScore(data);
   });
 
-  const snapshot = await get(scoreRef);
-  if (snapshot.exists()) {
+  const scoreSnapshot = await get(scoreRef);
+  if (scoreSnapshot.exists()) {
     // すでに初期化されている場合は値を取得してくる
-    const data = snapshot.val();
-    document.querySelector("#score").value = JSON.stringify(data, null, "  ");
+    const data = scoreSnapshot.val();
+    applyScore(data);
   } else {
     // スコアの初期化
     set(scoreRef,
@@ -117,8 +364,19 @@ document.querySelector("#create").addEventListener("click", async () => {
             ]
     );
   }
+}
+
+// トーナメント作成時の処理
+document.querySelector("#create").addEventListener("click", async () => {
+  const pass = document.querySelector("#pass").value;
+  if (!pass || pass === "") return;
+
+  const id = await sha1(pass);
+  const settingRef = ref(db, "tournaments/" + id + "/setting");
+  const scoreRef = ref(db, "tournaments/" + id + "/score");
+
+  await initializeSetting(settingRef, id);
+  await initializeScore(scoreRef);
 })
-
 </script>
-
 </html>

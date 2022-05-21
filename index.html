@@ -25,37 +25,13 @@
     <p id="dual_option"></p>
   </div>
 </body>
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js'
-
-import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js'
-
-// Firebase 設定（公開してもよい）
-const firebaseConfig = {
-  apiKey: "AIzaSyD-Nzhi2nzBgFhoK44B_bnKefnuEXGqgow",
-  authDomain: "bracebracket-24d9f.firebaseapp.com",
-  databaseURL: "https://bracebracket-24d9f-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "bracebracket-24d9f",
-  storageBucket: "bracebracket-24d9f.appspot.com",
-  messagingSenderId: "844635716199",
-  appId: "1:844635716199:web:afe5e7c533f2604878b2c2"
-};
-
-// Firebase の初期化
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-
-// クエリパラメータから ID を取得する
-const params = new URLSearchParams(location.search);
-const id = params.get('id');
-
-// Firebase Realtime DB からの変更をリッスンする
-const scoreRef = ref(db, "scores/" + id);
-onValue(scoreRef, (snapshot) => {
-  const data = snapshot.val();
-  console.log(data);
-
-  // データの反映
+<script>
+// 設定の反映
+const applySetting = data => {
+  document.querySelector(".board").src = "./image/scoreboards/" + data.style;
+}
+// データの反映
+const applyScore = data => {
   document.getElementById("dual_numberleft").innerHTML = data[0]['score'];
   document.getElementById("dual_nameleft").innerHTML = data[0]['name'];
   document.getElementById("dual_teamleft").innerHTML = data[0]['team'];
@@ -65,7 +41,65 @@ onValue(scoreRef, (snapshot) => {
   document.getElementById("dual_teamright").innerHTML = data[1]['team'];
   document.getElementById("dual_prtextright").innerHTML = data[1]['status'];
   document.getElementById("dual_option").innerHTML = data[0]['option'];
-});
+}
 </script>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js'
 
+import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js'
+
+// クエリパラメータから ID を取得する
+const params = new URLSearchParams(location.search);
+const id = params.get("id");
+
+if (id && id !== "") {
+  // Firebase 設定（公開してもよい）
+  const firebaseConfig = {
+    apiKey: "AIzaSyD-Nzhi2nzBgFhoK44B_bnKefnuEXGqgow",
+    authDomain: "bracebracket-24d9f.firebaseapp.com",
+    databaseURL: "https://bracebracket-24d9f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "bracebracket-24d9f",
+    storageBucket: "bracebracket-24d9f.appspot.com",
+    messagingSenderId: "844635716199",
+    appId: "1:844635716199:web:afe5e7c533f2604878b2c2"
+  };
+
+  // Firebase の初期化
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // Firebase Realtime DB からの変更をリッスンする
+  const settingRef = ref(db, "tournaments/" + id + "/setting");
+  const scoreRef = ref(db, "tournaments/" + id + "/score");
+  onValue(settingRef, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data);
+    applySetting(data);
+  });
+
+  onValue(scoreRef, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data);
+    applyScore(data);
+  });
+} else {
+  //ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
+  const endpoint = "localscore.json";
+
+  //APIを使って非同期データを取得する
+  function remoteScore() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", endpoint);
+    xhr.send();
+    xhr.onreadystatechange = function() {
+      //JSONから配列に変換
+      const data = JSON.parse(xhr.response);
+      console.log(data);
+      applyScore(data);
+    }
+  }
+  remoteScore();
+  window.setInterval(remoteScore, 5000);
+}
+</script>
 </html>
