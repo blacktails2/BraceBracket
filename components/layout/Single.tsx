@@ -1,7 +1,6 @@
 import { FC } from "react"
 import { Score, Setting } from "../../libs/const"
 import styles from "../../styles/Single.module.scss"
-import Image from "next/image"
 
 export const Single: FC<{ setting: Setting; score: Score }> = ({
   setting,
@@ -10,14 +9,14 @@ export const Single: FC<{ setting: Setting; score: Score }> = ({
   return (
     <div className={setting.scoreboard_style}>
       {/* スコアボードのデザインの画像 */}
-      <Image
+      <img
         className={styles.board}
         src={`/image/scoreboards/${setting.scoreboard_style}`}
         alt=""
       />
       {/*大会ロゴ なしの場合はクラスにdisableを追加 */}
       <div className={styles.single_logobox}>
-        <Image
+        <img
           src="/image/logo.png"
           alt=""
           className={[styles.single_logo, styles.disable].join(" ")}

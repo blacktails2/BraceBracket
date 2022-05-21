@@ -2,7 +2,6 @@ import { FC } from "react"
 import { Score, Setting } from "../../libs/const"
 import styles from "../../styles/Dual.module.scss"
 import { CSSTransition, SwitchTransition } from "react-transition-group"
-import Image from "next/image"
 
 export const Dual: FC<{ setting: Setting; score: Score }> = ({
   setting,
@@ -11,14 +10,14 @@ export const Dual: FC<{ setting: Setting; score: Score }> = ({
   return (
     <div className={setting.scoreboard_style}>
       {/*スコアボードのデザインの画像*/}
-      <Image
+      <img
         className={styles.board}
         src={`/image/scoreboards/${setting.scoreboard_style}`}
         alt=""
       />
       <div className={styles.dual_logobox}>
         {/* 大会ロゴ なしの場合はクラスにdisableを追加*/}
-        <Image
+        <img
           src="/image/logo.png"
           alt=""
           className={`${styles.dual_logo} ${styles.disable}`}

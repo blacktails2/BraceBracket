@@ -1,7 +1,6 @@
 import { FC } from "react"
 import { Controller, useFormContext } from "react-hook-form"
 import { ScoreboardStylesMap, ScoreboardType } from "../../libs/const"
-import Image from "next/image"
 
 export const StyleSelector: FC<{ selectedType: ScoreboardType }> = ({
   selectedType,
@@ -32,7 +31,7 @@ export const StyleSelector: FC<{ selectedType: ScoreboardType }> = ({
                             : idx === 0
                         }
                       />
-                      <Image
+                      <img
                         src={`/image/scoreboards/${style}`}
                         style={{
                           width: "700px",
