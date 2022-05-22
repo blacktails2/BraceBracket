@@ -1,0 +1,203 @@
+// フォントの設定
+$simple_regular: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+$simple_black: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+$simple_bold: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+
+$darkgray: #111111;
+$white: #ffffff;
+// スコアボードの色を変更したい場合、下記を変更してください
+$simple_scorecolor: $darkgray;
+$simple_playercolor: $white;
+$simple_statuscolor: $white;
+
+// フォントの太さの設定（ライトウェイト）
+@mixin simple_regularWeight {
+  font-family: $simple_regular;
+  font-variation-settings: 'wght'400;
+  font-weight: 400;
+}
+
+// フォントの太さの設定（ボールドウェイト）
+@mixin simple_boldWeight {
+  font-family: $simple_bold;
+  font-variation-settings: 'wght'700;
+  font-weight: 700;
+}
+
+// フォントの太さの設定（ブラックウェイト）
+@mixin simple_blackWeight {
+  font-family: $simple_black;
+  font-variation-settings: 'wght'900;
+  font-weight: 900;
+}
+
+
+
+// スコアの設定
+@mixin simple_scoreText {
+  @include simple_boldWeight;
+  margin: 0;
+  width: 50px;
+  color: $simple_scorecolor;
+  text-align: center;
+  font-size: 42px;
+  position: fixed;
+  font-variant-numeric: tabular-nums;
+}
+
+// スコアの位置指定
+#simple_numberleft {
+  @include simple_scoreText;
+  left: 905px;
+  top: 47px;
+}
+
+#simple_numberright {
+  @include simple_scoreText;
+  right: 905px;
+  top: 47px;
+}
+
+// チーム名及びプレイヤー名の設定
+@mixin simple_teamText {
+  color: $simple_playercolor;
+  font-size: 34px;
+  letter-spacing: 1px;
+  line-height: 34px;
+  @include simple_regularWeight;
+}
+
+@mixin simple_nameText {
+  color: $simple_playercolor;
+  font-size: 34px;
+  line-height: 34px;
+  letter-spacing: 1px;
+  @include simple_blackWeight;
+}
+
+// プレイヤー名の位置指定
+.simple_player {
+  margin: 0;
+  width: 500px;
+  height: 50px;
+  position: fixed;
+
+  span {
+    margin-left: 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+#simple_playerleft {
+  left: 390px;
+  top: 59px;
+  text-align: right;
+}
+
+#simple_playerright {
+  right: 390px;
+  top: 59px;
+  text-align-last: left;
+}
+
+#simple_nameleft,
+#simple_nameright {
+  @include simple_nameText;
+}
+
+#simple_teamleft,
+#simple_teamright {
+  @include simple_teamText
+}
+
+// 試合ステータス（Winners Semis, Best of 3など）の設定
+@mixin simple_statusText {
+  @include simple_boldWeight;
+  color: $simple_statuscolor;
+  font-size: 21px;
+  line-height: 21px;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+@mixin simple_boText {
+  @include simple_regularWeight;
+  color: $simple_statuscolor;
+  font-size: 21px;
+  line-height: 21px;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.simple_prbox {
+  width: 600px;
+  height: 25px;
+  position: fixed;
+  text-align: center;
+  color: $simple_statuscolor;
+  top: 4px;
+  left: 660px;
+}
+
+// 試合ステータスの位置設定
+#simple_prtextleft {
+  @include simple_statusText;
+  margin-right: 3px;
+}
+
+#simple_prtextright {
+  @include simple_boText;
+}
+
+// 選手IDの位置設定
+@mixin simple_idText {
+  @include simple_blackWeight;
+  width: 320px;
+  height: 22px;
+  margin: 0;
+  color: $white;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  position: fixed;
+}
+
+#sp_camera_left {
+  @include simple_idText;
+  text-align: left;
+  left: 26px;
+  top: 859px;
+}
+
+#sp_camera_right {
+  @include simple_idText;
+  text-align: right;
+  right: 26px;
+  top: 859px;
+}
+
+.simple_logobox {
+  height: 160px;
+  width: 280px;
+  position: fixed;
+  left: 820px;
+  top: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.simple_logo {
+  max-height: 100%;
+  max-width: 100%;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
+}

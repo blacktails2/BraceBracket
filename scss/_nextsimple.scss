@@ -1,0 +1,358 @@
+// フォントの設定
+$nextsp_regular: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+$nextsp_bold: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+$nextsp_black: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+
+$darkgray: #111111;
+$white: #ffffff;
+// スコアボードの色を変更したい場合、下記を変更してください
+$nextsp_maincolor: $darkgray;
+$nextsp_subcolor: $white;
+
+// フォントの太さの設定（ライトウェイト）
+@mixin nextsp_regularWeight {
+  font-family: $nextsp_regular;
+  font-variation-settings: 'wght'400;
+  font-weight: 400;
+}
+
+// フォントの太さの設定（ミディアムウェイト）
+@mixin nextsp_mediumWeight {
+  font-family: $nextsp_regular;
+  font-variation-settings: 'wght'500;
+  font-weight: 500;
+}
+
+@mixin nextsp_boldWeight {
+  font-family: $nextsp_bold;
+  font-variation-settings: 'wght'700;
+  font-weight: 700;
+}
+
+// フォントの太さの設定（ブラックウェイト）
+@mixin nextsp_blackWeight {
+  font-family: $nextsp_black;
+  font-variation-settings: 'wght'900;
+  font-weight: 900;
+}
+
+#nextnow_sp {
+  @include nextsp_blackWeight;
+  width: 260px;
+  height: 95px;
+  font-size: 72px;
+  text-align: center;
+  color: $nextsp_subcolor;
+  position: fixed;
+  left: 40px;
+  top: 810px;
+  letter-spacing: 0.05em;
+}
+
+.nextsp_statusbox {
+  width: 320px;
+  height: 65px;
+  position: fixed;
+  left: 315px;
+  top: 884px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin nextsp_statusText {
+  @include nextsp_boldWeight;
+  width: 320px;
+  margin: 0;
+  color: $nextsp_subcolor;
+  text-align: left;
+  font-size: 26px;
+  line-height: 26px;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+@mixin nextsp_boText {
+  @include nextsp_regularWeight;
+  width: 320px;
+  margin: 0;
+  color: $nextsp_subcolor;
+  text-align: left;
+  font-size: 26px;
+  line-height: 26px;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+#nextsp_round {
+  @include nextsp_statusText;
+}
+
+#nextsp_bo {
+  @include nextsp_boText;
+}
+
+// スコアの設定
+@mixin nextsp_scoreText {
+  @include nextsp_boldWeight;
+  margin: 0;
+  width: 85px;
+  color: $nextsp_subcolor;
+  text-align: center;
+  font-size: 60px;
+  position: fixed;
+  font-variant-numeric: tabular-nums;
+}
+
+// スコアの位置指定
+#nextsp_scoreleft {
+  @include nextsp_scoreText;
+  left: 450px;
+  top: 956px;
+}
+
+#nextsp_scoreright {
+  @include nextsp_scoreText;
+  left: 535px;
+  top: 956px;
+}
+
+// チーム名及びプレイヤー名の設定
+@mixin nextsp_nameText {
+  color: $nextsp_subcolor;
+  font-size: 34px;
+  line-height: 34px;
+  letter-spacing: 1px;
+  @include nextsp_blackWeight;
+}
+
+// プレイヤー名の位置指定
+.nextsp_player {
+  margin: 0;
+  width: 400px;
+  height: 50px;
+  position: fixed;
+}
+
+#nextsp_playerleft {
+  left: 25px;
+  top: 996px;
+  text-align: right;
+}
+
+#nextsp_playerright {
+  left: 645px;
+  top: 996px;
+  text-align: left;
+}
+
+#nextsp_playerleft,
+#nextsp_playerright {
+  @include nextsp_nameText;
+}
+
+#localsetting {
+  @include nextsp_mediumWeight;
+  text-align: right;
+  font-size: 24px;
+  line-height: 24px;
+  position: fixed;
+  color: $nextsp_subcolor;
+  left: 1570px;
+  top: 951px;
+  letter-spacing: 1px;
+}
+
+#localtime {
+  @include nextsp_boldWeight;
+  font-size: 52px;
+  text-align: right;
+  color: $nextsp_subcolor;
+  position: fixed;
+  right: 57px;
+  top: 912px;
+  font-variant-numeric: tabular-nums;
+}
+
+// MC情報の設定
+
+#sp_mc_background {
+  z-index: -10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  background-size: contain;
+}
+
+@mixin nextsp_mcidText {
+  color: $nextsp_maincolor;
+  font-size: 21px;
+  line-height: 21px;
+  letter-spacing: 1px;
+  width: 220px;
+  height: 25px;
+  @include nextsp_boldWeight;
+}
+
+#sp_mc_one,
+#sp_mc_two,
+#sp_mc_three,
+#sp_mc_four {
+  color: $nextsp_subcolor;
+  text-align: center;
+  font-size: 34px;
+  line-height: 34px;
+  letter-spacing: 2px;
+  width: 400px;
+  height: 50px;
+  position: fixed;
+  top: 693px;
+
+  span {
+    margin-left: 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.sp_mc_team {
+  @include nextsp_regularWeight;
+}
+
+.sp_mc_name {
+  @include nextsp_blackWeight;
+}
+
+#sp_id_one,
+#sp_id_two,
+#sp_id_three,
+#sp_id_four {
+  @include nextsp_mcidText;
+  position: fixed;
+  top: 675px;
+}
+
+.sp_mc1_layout {
+  #sp_mc_one {
+    left: 760px;
+  }
+
+  #sp_id_one {
+    text-align: left;
+    left: 765px;
+  }
+
+  #sp_mc_two,
+  #sp_id_two,
+  #sp_mc_three,
+  #sp_id_three,
+  #sp_mc_four,
+  #sp_id_four {
+    display: none;
+  }
+}
+
+.sp_mc2_layout {
+  #sp_mc_one {
+    left: 380px;
+  }
+
+  #sp_id_one {
+    left: 385px;
+    text-align: left;
+  }
+
+  #sp_mc_two {
+    left: 1140px;
+  }
+
+  #sp_id_two {
+    text-align: right;
+    left: 1315px;
+  }
+
+  #sp_mc_four,
+  #sp_id_four,
+  #sp_mc_three,
+  #sp_id_three {
+    display: none;
+  }
+}
+
+.sp_mc3_layout {
+  #sp_mc_one {
+    left: 240px;
+  }
+
+  #sp_id_one {
+    left: 245px;
+  }
+
+  #sp_mc_two {
+    left: 760px;
+  }
+
+  #sp_id_two {
+    left: 765px;
+  }
+
+  #sp_mc_three {
+    left: 1280px;
+  }
+
+  #sp_id_three {
+    text-align: right;
+    left: 1455px;
+  }
+
+  #sp_mc_four,
+  #sp_id_four {
+    display: none;
+  }
+}
+
+.sp_mc4_layout {
+  #sp_mc_one {
+    left: 130px;
+  }
+
+  #sp_id_one {
+    left: 165px;
+  }
+
+  #sp_mc_two {
+    left: 550px;
+  }
+
+  #sp_id_two {
+    left: 585px;
+  }
+
+  #sp_mc_three {
+    left: 970px;
+  }
+
+  #sp_id_three {
+    text-align: right;
+    left: 1115px;
+  }
+
+  #sp_mc_four {
+    left: 1390px;
+  }
+
+  #sp_id_four {
+    text-align: right;
+    left: 1535px;
+  }
+}

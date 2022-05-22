@@ -153,6 +153,32 @@ $dual_statuscolor: $darkgray;
   letter-spacing: 2px;
 }
 
+// 選手IDの位置設定
+@mixin dual_idText {
+  @include dual_boldWeight;
+  width: 220px;
+  height: 30px;
+  margin: 0;
+  color: $white;
+  text-align: center;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  position: fixed;
+}
+
+#camera_left {
+  @include dual_idText;
+  left: 20px;
+  top: 845px;
+}
+
+#camera_right {
+  @include dual_idText;
+  right: 20px;
+  top: 845px;
+}
+
 // 大会ロゴの設定
 .dual_logobox {
   height: 120px;

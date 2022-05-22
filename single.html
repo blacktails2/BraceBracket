@@ -14,6 +14,12 @@
 
 <body>
   <img class='board' src="image/singlemain.png" alt=""> <!-- スコアボードのデザインの画像 -->
+  <div class="camera_setting">
+    <!-- カメラ設定 なしの場合はクラスにdisableを追加 -->
+    <img class="board" src="image/camera.png" alt=""><!-- カメラレイアウトのデザインの画像 -->
+    <p id="camera_left"></p>
+    <p id="camera_right"></p>
+  </div>
   <div class="single_logobox"><img src="image/logo.png" alt="" class="single_logo disable"></div><!-- 大会ロゴ なしの場合はクラスにdisableを追加 -->
   <p id="single_numberleft"></p> <!-- 1Pスコア -->
   <p id="single_numberright"></p> <!-- 2Pスコア -->
@@ -46,7 +52,8 @@ function remoteScore() {
     document.getElementById("single_nameright").innerHTML = data[1]['name'];
     document.getElementById("single_teamright").innerHTML = data[1]['team'];
     document.getElementById("single_prtextright").innerHTML = data[1]['status'];
-    document.getElementById("single_option").innerHTML = data[0]['option'];
+    document.getElementById("camera_left").innerHTML = data[0]['id'];
+    document.getElementById("camera_right").innerHTML = data[1]['id'];
     //inputタグそれぞれに取得したデータを設定
   }
 }

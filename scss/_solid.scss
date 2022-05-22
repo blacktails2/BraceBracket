@@ -34,28 +34,28 @@ $solid_statuscolor: $white;
   width: 60px;
   color: $solid_scorecolor;
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   position: fixed;
 }
 
 // スコアの位置指定
 #solid_numberleft {
   @include solid_scoreText;
-  left: 760px;
-  top: 40px;
+  left: 770px;
+  top: 46px;
 }
 
 #solid_numberright {
   @include solid_scoreText;
-  right: 760px;
-  top: 40px;
+  right: 770px;
+  top: 46px;
 }
 
 // チーム名及びプレイヤー名の設定
 @mixin solid_teamText {
   color: $solid_playercolor;
   text-align: center;
-  font-size: 24px;
+  font-size: 27px;
   letter-spacing: 1px;
   line-height: 24px;
   @include solid_regularWeight;
@@ -64,7 +64,7 @@ $solid_statuscolor: $white;
 @mixin solid_nameText {
   color: $solid_playercolor;
   text-align: center;
-  font-size: 24px;
+  font-size: 27px;
   line-height: 24px;
   letter-spacing: 1px;
   @include solid_boldWeight;
@@ -73,7 +73,7 @@ $solid_statuscolor: $white;
 // プレイヤー名の位置指定
 .solid_player {
   margin: 0;
-  width: 460px;
+  width: 430px;
   height: 60px;
   position: fixed;
   text-align: center;
@@ -88,12 +88,12 @@ $solid_statuscolor: $white;
 }
 
 #solid_playerleft {
-  left: 310px;
+  left: 320px;
   top: 62px;
 }
 
 #solid_playerright {
-  right: 310px;
+  right: 320px;
   top: 62px;
 }
 
@@ -140,6 +140,32 @@ $solid_statuscolor: $white;
   @include solid_statusText;
 }
 
+// 選手IDの位置設定
+@mixin solid_idText {
+  @include solid_boldWeight;
+  width: 220px;
+  height: 30px;
+  margin: 0;
+  color: $white;
+  text-align: center;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  position: fixed;
+}
+
+#camera_left {
+  @include solid_idText;
+  left: 20px;
+  top: 845px;
+}
+
+#camera_right {
+  @include solid_idText;
+  right: 20px;
+  top: 845px;
+}
+
 .solid_logobox {
   height: 160px;
   width: 280px;
@@ -153,6 +179,6 @@ $solid_statuscolor: $white;
 
 .solid_logo {
   max-height: 100%;
-  max-width: 100%;
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
+max-width: 100%;
+filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
 }
