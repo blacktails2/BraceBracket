@@ -199,6 +199,62 @@ $single_statuscolor: $darkgray;
 
 大会ロゴを非表示にしたい場合は、`image/logo.png`を削除するか`index.html, single.html, solid.html, simple.html`内の`<div class='xxx_logobox'>`に`disable`クラスを追加してください。
 
+### MC情報
+
+`mc.html` および `mcsimple.html` を配置すると、試合間にMCが映っている際などに使える情報を表示できます。`dual, single, solidレイアウト`を使う場合は`mc.html`, `simpleレイアウト`を使う場合は`mcsimple.html`を使用するとデザインのテイストが揃います。
+こちらも、`localscore.json`およびGoogleスプレッドシートで内容を編集できます。
+
+```json
+{
+  "name": "MCの名前1人目",
+  "team": "MCの所属団体",
+  "score": "",
+  "id": "MCのTwitterID",
+  "status": "",
+  "option": "",
+  "information": "実況者1の情報"
+},
+{
+  "name": "MCの名前2人目",
+  "team": "MCの所属団体",
+  "score": "",
+  "id": "MCのTwitterID",
+  "status": "",
+  "option": "",
+  "information": "実況者2の情報"
+},
+```
+
+4人まで設定することができ、記入した人数によってレイアウトも自動で変わります。
+
+### 試合間に表示する情報（現在の試合の情報/次の試合の情報）
+
+`next.html` および `nextsimple.html` を配置すると、試合間に現在の試合の情報もしくは次の配信台の情報を表示できます。`dual, single, solidレイアウト`を使う場合は`next.html`, `simpleレイアウト`を使う場合は`nextsimple.html`を使用するとデザインのテイストが揃います。
+こちらも、`localscore.json`およびGoogleスプレッドシートで内容を編集できます。プレイヤー1の`option`を`NEXT`にすると次の試合の情報を参照して表示し、`NOW`に変更すると**スコアボードと同じ情報**を表示します。この挙動は少し難解なので、Googleスプレッドシートを用いて編集し、テストを行うことを推奨します。
+
+```json
+{
+  "name": "次の配信台プレイヤー1の名前",
+  "team": "",
+  "score": "",
+  "id": "",
+  "status": "LOSERS FINALS",
+  "option": "NEXT",
+  "information": "次の配信台のプレイヤー1の情報"
+},
+{
+  "name": "次の配信台プレイヤー2の名前",
+  "team": "",
+  "score": "",
+  "id": "",
+  "status": "BEST OF 5",
+  "option": "",
+  "information": "次の配信台のプレイヤー2の情報"
+},
+```
+
+こちらのレイアウトはMCレイアウトと同時に使用できます。
+
 ## 開発への参加
 
 本ソフトウェアは現在ベータ版です。開発に参加してくださる方は<a href="https://github.com/blacktails2/BraceBracket/blob/main/contribution.md">こちらのページ</a>を参照してください。
