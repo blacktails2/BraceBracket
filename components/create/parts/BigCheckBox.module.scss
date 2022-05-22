@@ -1,0 +1,16 @@
+.bigCheckBox {
+  input {
+    display: none;
+
+    & + label>div {
+      margin: 0;
+      width: 30px;
+      height: 30px;
+      background-image: url("https://placehold.jp/cccccc/ffffff/30x30.png");
+    }
+
+    &:checked + label>div {
+      background-image: url("https://placehold.jp/00ff00/ffffff/30x30.png");
+    }
+  }
+}

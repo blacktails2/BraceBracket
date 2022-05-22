@@ -1,17 +1,17 @@
-import { Score, Setting } from "../../libs/const"
+import { Score, Setting } from "../../../libs/const"
 import { FC } from "react"
-import styles from "../../styles/Solid.module.scss"
+import styles from "./Solid.module.scss"
 
 export const Solid: FC<{ setting: Setting; score: Score }> = ({
   setting,
   score,
 }) => {
   return (
-    <div className={setting.scoreboard_style}>
+    <div className={setting.scoreboard.design.layout}>
       {/* スコアボードのデザインの画像 */}
       <img
         className={styles.board}
-        src={`/image/scoreboards/${setting.scoreboard_style}`}
+        src={`/image/scoreboards/${setting.scoreboard.design.color}`}
         alt=""
       />
       {/* 大会ロゴ なしの場合はクラスにdisableを追加 */}

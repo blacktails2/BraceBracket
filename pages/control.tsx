@@ -1,35 +1,20 @@
-import type { NextPage } from "next"
-import { useSetting } from "../hooks/settingHook"
 import { useEffect } from "react"
-import {
-  Controller,
-  FormProvider,
-  SubmitHandler,
-  useForm,
-} from "react-hook-form"
-import { Score, Setting } from "../libs/const"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import { NextPageWithLayout, Score } from "../libs/const"
 import { useScore } from "../hooks/scoreHook"
-import { TypeSelector } from "../components/controll/TypeSelector"
-import { StyleSelector } from "../components/controll/StyleSelector"
-import { useRouter } from "next/router"
 import Link from "next/link"
 import { useSceneChanger } from "../hooks/sceneChangerHook"
+import { DefaultLayout } from "../components/layouts/DefaultLayout"
+import styles from "./control.module.scss"
+import { Button } from "../components/parts/Button"
+import { ControlCard } from "../components/control/parts/ControlCard"
+import { MockImg } from "../components/parts/MockImg"
+import { useLoadBracket } from "../hooks/bracketHook"
+import { useRouter } from "next/router"
 
-const Controll: NextPage = () => {
+const Control: NextPageWithLayout = () => {
   const router = useRouter()
   const id = router.query.id as string
-
-  const [setting, setSetting] = useSetting(id)
-  const settingForm = useForm<Setting>()
-  settingForm.watch("scoreboard_type")
-  const onSettingSubmit: SubmitHandler<Setting> = (data) => {
-    setSetting(data)
-  }
-
-  useEffect(() => {
-    settingForm.setValue("scoreboard_type", setting.scoreboard_type)
-    settingForm.setValue("scoreboard_style", setting.scoreboard_style)
-  }, [setting, settingForm])
 
   const [score, setScore] = useScore(id)
   const scoreForm = useForm<Score>()
@@ -37,16 +22,19 @@ const Controll: NextPage = () => {
     setScore(data)
   }
   useEffect(() => {
-    scoreForm.setValue("p1_team", score.p1_team)
-    scoreForm.setValue("p1_player_name", score.p1_player_name)
-    scoreForm.setValue("p1_score", score.p1_score)
-    scoreForm.setValue("p2_team", score.p2_team)
-    scoreForm.setValue("p2_player_name", score.p2_player_name)
-    scoreForm.setValue("p2_score", score.p2_score)
-    scoreForm.setValue("round", score.round)
-    scoreForm.setValue("match_type", score.match_type)
-    scoreForm.setValue("tournament_name", score.tournament_name)
+    scoreForm.reset(score)
   }, [scoreForm, score])
+
+  const [loadBracket, requestLoad] = useLoadBracket(id)
+  const loadBracketForm = useForm<{ phaseGroupId: number }>()
+  const onLoadBracketSubmit: SubmitHandler<{ phaseGroupId: number }> = ({
+    phaseGroupId,
+  }) => {
+    requestLoad(phaseGroupId)
+  }
+  useEffect(() => {
+    loadBracketForm.reset({ phaseGroupId: loadBracket.phaseGroupId })
+  }, [loadBracketForm, loadBracket])
 
   const [currentScene, setCurrentScene, sceneList] = useSceneChanger(id, false)
   const sceneForm = useForm<{ currentScene: string }>()
@@ -60,29 +48,41 @@ const Controll: NextPage = () => {
   }, [sceneForm, currentScene])
 
   return (
-    <div>
-      <FormProvider {...settingForm}>
-        <form onSubmit={settingForm.handleSubmit(onSettingSubmit)}>
-          <div>
-            <TypeSelector />
-            <StyleSelector
-              selectedType={settingForm.getValues("scoreboard_type")}
-            />
-            <button type="submit">設定</button>
-          </div>
-        </form>
-      </FormProvider>
+    <div className={styles.container}>
       <div>
         <Link
           href={{
-            pathname: "/layout",
+            pathname: "/create",
+            query: {
+              id: id,
+            },
+          }}
+        >
+          設定に戻る
+        </Link>
+      </div>
+      <div>
+        <Link
+          href={{
+            pathname: "/obs/score",
             query: {
               id: id,
             },
           }}
           passHref
         >
-          <a target="_blank">OBS用ページ</a>
+          <a target="_blank">Score OBS用ページ</a>
+        </Link>
+        <Link
+          href={{
+            pathname: "/obs/bracket",
+            query: {
+              id: id,
+            },
+          }}
+          passHref
+        >
+          <a target="_blank">Bracket OBS用ページ</a>
         </Link>
       </div>
       <form onSubmit={scoreForm.handleSubmit(onScoreSubmit)}>
@@ -132,7 +132,17 @@ const Controll: NextPage = () => {
           <button type="submit">反映</button>
         </div>
       </form>
+      <form onSubmit={loadBracketForm.handleSubmit(onLoadBracketSubmit)}>
+        Top8 読み込み
+        <input
+          type="text"
+          inputMode="decimal"
+          {...loadBracketForm.register("phaseGroupId")}
+        />
+        <button type="submit">読み込み</button>
+      </form>
       <form onSubmit={sceneForm.handleSubmit(onSceneSubmit)}>
+        OBSのシーン切り替え
         <Controller
           control={sceneForm.control}
           name="currentScene"
@@ -160,6 +170,32 @@ const Controll: NextPage = () => {
       </form>
     </div>
   )
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.right}>
+          <h2>スコアを編集</h2>
+        </div>
+        <div className={styles.left}>
+          <Button>全ての情報を適用</Button>
+          <div>クリップ</div>
+          <div>歯車</div>
+        </div>
+      </div>
+      <div className={styles.controlsContainer}>
+        <ControlCard>
+          <div className={styles.imageContainer}>
+            <MockImg width={398} height={223} />
+          </div>
+          <div className={styles.cardTitle}>スコア&カメラ</div>
+        </ControlCard>
+      </div>
+    </div>
+  )
+}
+Control.getLayout = (page) => {
+  return <DefaultLayout>{page}</DefaultLayout>
 }
 
-export default Controll
+export default Control

@@ -1,0 +1,40 @@
+.header {
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid #EEEEEE;
+  z-index: 1000;
+  background-color: #FFFFFF;
+  height: 100px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 100px;
+}
+
+.navbarLeft {
+  display: flex;
+  align-items: center;
+}
+
+.navbarRight {
+  display: flex;
+  align-items: center;
+}
+
+.headerLink {
+  font-size: 18px;
+  margin: 30px 15px;
+  color: var(--black);
+}
+
+.createLink {
+  font-size: 14px;
+  margin: 30px 15px;
+  padding: 6px 15px;
+  color: var(--black);
+  background-color: var(--primary);
+  border-radius: 15px;
+}
