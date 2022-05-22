@@ -1,15 +1,36 @@
 {
+  "name": "bracebracket",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
-    "sass": "^1.49.8",
-    "surge": "^0.23.1"
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.24.5",
-    "npm-run-all": "^4.1.3"
-  },
-  "scripts": {
-    "watch": "npm-run-all --parallel watch:*",
-    "watch:sass": "sass -w scss/style.scss css/style.css",
-    "watch:sync": "browser-sync start -ws --index index.html -f css/*.css --ss public"
+    "@types/node": "17.0.35",
+    "@types/react": "18.0.9",
+    "@types/react-dom": "18.0.4",
+    "@types/react-transition-group": "^4.4.4",
+    "crypto-random-string": "^5.0.0",
+    "eslint": "8.16.0",
+    "eslint-config-next": "12.1.6",
+    "eslint-config-prettier": "^8.5.0",
+    "firebase": "^9.8.1",
+    "next-i18next": "^11.0.0",
+    "next-seo": "^5.4.0",
+    "obs-websocket-js": "^5.0.0-beta.1",
+    "prettier": "^2.6.2",
+    "react-hook-form": "^7.31.2",
+    "react-transition-group": "^4.4.2",
+    "react-use": "^17.4.0",
+    "sass": "^1.52.1",
+    "typescript": "4.6.4"
   }
 }
