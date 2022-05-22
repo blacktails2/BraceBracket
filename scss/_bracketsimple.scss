@@ -1,0 +1,155 @@
+// フォントの設定
+$bracketsp_regular: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+$bracketsp_bold: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+$bracketsp_black: "Satoshi",
+'Noto Sans JP',
+sans-serif;
+
+$darkgray: #111111;
+$white: #ffffff;
+// スコアボードの色を変更したい場合、下記を変更してください
+$bracketsp_maincolor: $darkgray;
+$bracketsp_subcolor: $white;
+
+// フォントの太さの設定（ライトウェイト）
+@mixin bracketsp_regularWeight {
+  font-family: $bracketsp_regular;
+  font-variation-settings: 'wght'400;
+  font-weight: 400;
+}
+
+// フォントの太さの設定（ミディアムウェイト）
+@mixin bracketsp_mediumWeight {
+  font-family: $bracketsp_regular;
+  font-variation-settings: 'wght'500;
+  font-weight: 500;
+}
+
+@mixin bracketsp_boldWeight {
+  font-family: $bracketsp_bold;
+  font-variation-settings: 'wght'700;
+  font-weight: 700;
+}
+
+// フォントの太さの設定（ブラックウェイト）
+@mixin bracketsp_blackWeight {
+  font-family: $bracketsp_black;
+  font-variation-settings: 'wght'900;
+  font-weight: 900;
+}
+
+.sp_bracketsbox {
+  width: 294px;
+  height: 85px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 11px;
+
+  p {
+    margin: 0;
+
+    span {
+      margin-left: 6px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+#sp_winners_semis1 {
+  left: 117px;
+  top: 122px;
+}
+
+#sp_winners_semis2 {
+  left: 117px;
+  top: 276px;
+}
+
+#sp_winners_finals {
+  left: 807px;
+  top: 199px;
+}
+
+#sp_grand_finals {
+  left: 1498px;
+  top: 400px;
+}
+
+#sp_losers_81 {
+  left: 117px;
+  top: 524px;
+}
+
+#sp_losers_82 {
+  left: 117px;
+  top: 678px;
+}
+
+#sp_losers_quarters1 {
+  left: 462px;
+  top: 524px;
+}
+
+#sp_losers_quarters2 {
+  left: 462px;
+  top: 678px;
+}
+
+#sp_losers_semis {
+  left: 807px;
+  top: 601px;
+}
+
+#sp_losers_finals {
+  left: 1152px;
+  top: 601px;
+}
+
+@mixin bracketsp_teamText {
+  color: $bracketsp_maincolor;
+  font-size: 21px;
+  letter-spacing: 1px;
+  line-height: 42px;
+  @include bracketsp_regularWeight;
+}
+
+@mixin bracketsp_nameText {
+  color: $bracketsp_maincolor;
+  font-size: 21px;
+  line-height: 42px;
+  letter-spacing: 1px;
+  @include bracketsp_blackWeight;
+}
+
+.bracketsp_team {
+  @include bracketsp_teamText;
+}
+
+.bracketsp_name {
+  @include bracketsp_nameText;
+}
+
+
+// スコアの設定
+@mixin bracketsp_scoreText {
+  @include bracketsp_boldWeight;
+  margin: 0;
+  width: 40px;
+  line-height: 42px;
+  color: $bracketsp_maincolor;
+  text-align: center;
+  font-size: 30px;
+  font-variant-numeric: tabular-nums;
+}
+
+.bracketbox_score {
+  @include bracketsp_scoreText;
+}

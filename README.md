@@ -21,7 +21,7 @@ BraceBracketは格闘ゲームにおけるスコアボードを動的に表示�
 - jsonおよびGoogleスプレッドシートを使ってデータを編集するため、Mac、Windows、LinuxなどのOSに依存せず使用可能
 - Googleスプレッドシートを用いた編集により、配信者ではなく遠隔の協力者や視聴者がデータを更新できる
 - HTMLおよびCSSの知識があれば文字要素の追加やデザインの変更が可能
-- デザインテンプレートを複数（ver.1.0現在15種）用意。Adobe Illustratorデータのサンプルを用いてオリジナルのデザインも製作可能
+- デザインテンプレートを複数（ver.1.1現在17種）用意。Adobe Illustratorデータのサンプルを用いてオリジナルのデザインも製作可能
 
 ### デメリット
 - HTML、CSS、Google Apps Scriptなどの複数ツールを使うため軽い前提知識が必要（手順通りにやればそんなに難しくないです）
@@ -30,7 +30,7 @@ BraceBracketは格闘ゲームにおけるスコアボードを動的に表示�
 
 ## ダウンロード
 
-<a href="https://github.com/blacktails2/BraceBracket/releases">リリースページ</a>よりダウンロードできます。正式版ではチュートリアルなどを含めたWebサイトを製作予定です。
+<a href="https://github.com/blacktails2/BraceBracket/releases">リリースページ</a>よりダウンロードできます。正式版では使い方などを載せ、またWeb上でスコアボードを作成・編集できるWebサイトを製作予定です。
 
 ## チュートリアル
 
@@ -45,8 +45,8 @@ Youtubeに解説動画をアップロードしたのでこちらもご参照く�
 
 #### 2種類のレイアウトについて
 
-ダウンロードしたzipを解凍します。その中の`index.html`, `single.html`, `solid.html`, `image`フォルダが主に扱うものになります。
-BraceBracketでは大きく分けて**Dualレイアウト**（画像上）と**Singleレイアウト**（画像中央）、**Solidレイアウト**（画面下）があり、`index.html`を指定するとDualレイアウトを、`single.html`を指定するとSingleレイアウト、`solid.html`を指定するとSolidレイアウトを使うことができます。そのため、OBSでの指定やカスタマイズは使用したいレイアウトのhtmlを扱ってください。
+ダウンロードしたzipを解凍します。その中の`index.html`, `single.html`, `solid.html`, `simple.html`, `image`フォルダが主に扱うものになります。
+BraceBracketでは大きく分けて**Dualレイアウト**と**Singleレイアウト**、**Solidレイアウト**、**Simpleレイアウト**があり、`index.html`を指定するとDualレイアウトを、`single.html`を指定するとSingleレイアウト、`solid.html`を指定するとSolidレイアウト、`simple.html`を指定するとSimpleレイアウトを使うことができます。そのため、OBSでの指定やカスタマイズは使用したいレイアウトのhtmlを扱ってください。
 
 <img src="https://wolphtype.com/img/materials/dual_single.png" style="width:auto;height:auto;">
 
@@ -63,6 +63,7 @@ BraceBracketではjsonとGoogleスプレッドシートを扱いデータの更�
   "name": "1Pのプレイヤー名",
   "team": "1Pのチーム名（なしでもOK）",
   "score": "1Pのスコア（数字）",
+  "id": "1PのTwitterID（カメラレイアウトを使用する場合）",
   "status": "1P側、singleレイアウトでは上に表示される大会ステータス（Winners Semiなど）",
   "option": "スコアボード中央に表示される大会名、企画名（ロゴ画像を配置する場合はなし）"
 },
@@ -70,6 +71,7 @@ BraceBracketではjsonとGoogleスプレッドシートを扱いデータの更�
   "name": "2Pのプレイヤー名",
   "team": "2Pのチーム名（なしでもOK）",
   "score": "2Pのスコア（数字）",
+  "id": "2PのTwitterID（カメラレイアウトを使用する場合）",
   "status": "2P側、singleレイアウトでは下に表示される大会ステータス（Best of 3など）",
   "option": "使用しません"
 }]
@@ -120,7 +122,7 @@ function doGet() {
 
 するとウェブアプリのURLが表示されるため、こちらをコピーします。（試しにこのURLを開いてみるとスプレッドシートの内容がjsonで出力されているはずです）
 
-最後に、`index.html`もしくは`single.html`、`solid.html`をエディタで開き、下部にある`const endpoint = "localscore.json";`の`localscore`部分をコピーしたGoogle Apps ScriptのURLをペーストし保存します。これで設定は完了です。
+最後に、`index.html`もしくは`single.html`、`solid.html`、`simple.html`をエディタで開き、下部にある`const endpoint = "localscore.json";`の`localscore`部分をコピーしたGoogle Apps ScriptのURLをペーストし保存します。これで設定は完了です。
 
 ##### 注意点
 Googleスプレッドシートを複数人で編集する場合、リンクでアクセスする人は匿名として表示されますが、**スプレッドシートの製作者はアカウント名が表示されてしまいます**。そのため、複数人で編集する場合は他人に見られても問題ないアカウント名のGoogleアカウントでスプレッドシートを作成すると良いでしょう。
@@ -137,13 +139,13 @@ const endpoint = "https://script.google.com/macros/…";
 
 ##### A.htmlファイルを直接指定する
 
-ソースからブラウザ（Webページ）を追加し、ローカルファイルにチェックを入れます。フォルダ内の`index.html`もしくは`single.html`、`solid.html`を選択し、幅を1920px、高さを1080pxにして配置します。
+ソースからブラウザ（Webページ）を追加し、ローカルファイルにチェックを入れます。フォルダ内の`index.html`もしくは`single.html`、`solid.html`、`simple.html`を選択し、幅を1920px、高さを1080pxにして配置します。
 
 <img src="https://wolphtype.com/img/materials/obs.png" style="width:800px;height:auto;">
 
 ##### B.上級者向け・サーバーにアップロードして指定する
 
-フォルダをサーバーにアップロードします。（npmやyarnを使っているならば<a href="https://surge.sh">Surge</a>などが良いでしょう）配信ソフトでソースからブラウザ（Webページ）を追加し、アップロードしたURLを指定します。（`http://xxx.xxx/index.html`もしくは`http://xxx.xxx/single.html`、`http://xxx.xxx/solid.html`のようになります。）幅を1920px、高さを1080pxにして配置します。
+フォルダをサーバーにアップロードします。（npmやyarnを使っているならば<a href="https://surge.sh">Surge</a>などが良いでしょう）配信ソフトでソースからブラウザ（Webページ）を追加し、アップロードしたURLを指定します。（`http://xxx.xxx/index.html`もしくは`http://xxx.xxx/single.html`、`http://xxx.xxx/solid.html`、`http://xxx.xxx/simple.html`のようになります。）幅を1920px、高さを1080pxにして配置します。
 
 この方法は、視聴者が設定やデータの更新を行い、配信者にはOBSの設定だけを行ってもらうなど、配信者に手間をかけたくない場合に有効です。
 
@@ -157,11 +159,11 @@ const endpoint = "https://script.google.com/macros/…";
 
 <img src="https://wolphtype.com/img/materials/variations.png" style="width:auto;height:auto;">
 
-`image/scoreboards`に入っているデザインを利用することができます。使用したいデザインを`image`フォルダにコピーし、`dualmain.png`および`singlemain.png`、`solidmain.png`にファイル名を変更してください。（既存の`dualmain.png`および`singlemain.png`、`solidmain.png`は削除してください。）
+`image/scoreboards`に入っているデザインを利用することができます。使用したいデザインを`image`フォルダにコピーし、`dualmain.png`および`singlemain.png`、`solidmain.png`、`simplemain.png`にファイル名を変更してください。（既存の`dualmain.png`および`singlemain.png`、`solidmain.png`、`simplemain.png`は削除してください。）
 
 <img src="https://wolphtype.com/img/materials/maindesign.png" style="width:800px;height:auto;">
 
-デザインによっては文字の色の変更が必要です。`scss/_dual.scss`および`scss/_single.scss`、`scss/_solid.scss`の変数を編集することで文字色が変更できます。
+デザインによっては文字の色の変更が必要です。`scss/_dual.scss`および`scss/_single.scss`、`scss/_solid.scss`、`scss/_simple.scss`の変数を編集することで文字色が変更できます。
 
 ```scss
 $darkgray: #111111;
@@ -185,21 +187,81 @@ $single_statuscolor: $darkgray;
 ##### オリジナルのデザインを制作する
 
 オリジナルのデザインを制作する場合は`image/design_sample.ai`をベースに制作することができます。ボックスのサイズや位置を変更する場合は後述するSCSSの編集も必要となります。
-また、`Sample Text`レイヤーと`Sample Image`レイヤーはプレビュー用のレイヤーなので書き出す際は`Design(Export)`レイヤーのみを表示して書き出してください。書き出しの際は三階ラボさんの<a href="https://onthehead.com/ais/export001/">Artboard Exporter</a>を使い、倍率100%の透過pngで書き出すのが便利です。
+また、`Sample Text`レイヤーと`Sample Image`レイヤーはプレビュー用のレイヤーなので書き出す際は`Design(Export)`レイヤーのみを表示して書き出してください。書き出しの際は三階ラボさんの<a href="https://onthehead.com/ais/export001/">Artboard Exporter</a>を使い、倍率200%の透過pngで書き出すのが便利です。
 
 #### 要素の追加、スタイルの編集
 
-情報を追加したり文字情報のフォントや位置情報を変更する場合は`index.html, single.html, solid.html, _dual.scss, _single.scss, _solid.scss`を編集してください。位置の指定は全て`position: fixed;`の絶対値指定が便利です。
+情報を追加したり文字情報のフォントや位置情報を変更する場合は`index.html, single.html, solid.html, simple.html, _dual.scss, _single.scss, _solid.scss, _simple.scss`を編集してください。位置の指定は全て`position: fixed;`の絶対値指定が便利です。
 
 ### 大会ロゴ
 
 大会のロゴをスコアボードの中央に表示することができます。透過pngのロゴのファイル名を`logo.png`にして`image`フォルダに配置することで、自動でサイズと位置の調整を行なわれ配置されます。デフォルトでドロップシャドウがかかっている状態になっており、細かい調整はSCSSから行うことができます。
 
-大会ロゴを非表示にしたい場合は、`image/logo.png`を削除するか`index.html, single.html`内の`<div class='xxx_logobox'>`に`disable`クラスを追加してください。
+大会ロゴを非表示にしたい場合は、`image/logo.png`を削除するか`index.html, single.html, solid.html, simple.html`内の`<div class='xxx_logobox'>`に`disable`クラスを追加してください。
+
+### MC情報
+
+`mc.html` および `mcsimple.html` を配置すると、試合間にMCが映っている際などに使える情報を表示できます。`dual, single, solidレイアウト`を使う場合は`mc.html`, `simpleレイアウト`を使う場合は`mcsimple.html`を使用するとデザインのテイストが揃います。
+こちらも、`localscore.json`およびGoogleスプレッドシートで内容を編集できます。
+
+```json
+{
+  "name": "MCの名前1人目",
+  "team": "MCの所属団体",
+  "score": "",
+  "id": "MCのTwitterID",
+  "status": "",
+  "option": "",
+  "information": "実況者1の情報"
+},
+{
+  "name": "MCの名前2人目",
+  "team": "MCの所属団体",
+  "score": "",
+  "id": "MCのTwitterID",
+  "status": "",
+  "option": "",
+  "information": "実況者2の情報"
+},
+```
+
+4人まで設定することができ、記入した人数によってレイアウトも自動で変わります。
+
+### 試合間に表示する情報（現在の試合の情報/次の試合の情報）
+
+`next.html` および `nextsimple.html` を配置すると、試合間に現在の試合の情報もしくは次の配信台の情報を表示できます。`dual, single, solidレイアウト`を使う場合は`next.html`, `simpleレイアウト`を使う場合は`nextsimple.html`を使用するとデザインのテイストが揃います。
+こちらも、`localscore.json`およびGoogleスプレッドシートで内容を編集できます。プレイヤー1の`option`を`NEXT`にすると次の試合の情報を参照して表示し、`NOW`に変更すると**スコアボードと同じ情報**を表示します。この挙動は少し難解なので、Googleスプレッドシートを用いて編集し、テストを行うことを推奨します。
+
+```json
+{
+  "name": "次の配信台プレイヤー1の名前",
+  "team": "",
+  "score": "",
+  "id": "",
+  "status": "LOSERS FINALS",
+  "option": "NEXT",
+  "information": "次の配信台のプレイヤー1の情報"
+},
+{
+  "name": "次の配信台プレイヤー2の名前",
+  "team": "",
+  "score": "",
+  "id": "",
+  "status": "BEST OF 5",
+  "option": "",
+  "information": "次の配信台のプレイヤー2の情報"
+},
+```
+
+こちらのレイアウトはMCレイアウトと同時に使用できます。
 
 ## 開発への参加
 
 本ソフトウェアは現在ベータ版です。開発に参加してくださる方は<a href="https://github.com/blacktails2/BraceBracket/blob/main/contribution.md">こちらのページ</a>を参照してください。
+
+## コミュニティ
+
+ユーザーサポートおよび開発コミュニティをDiscordサーバーとして設立しました。詳しくは<a href="https://twitter.com/wolphtype/status/1527251462421553154" title="">こちら</a>をご覧ください。
 
 ## ライセンス
 
