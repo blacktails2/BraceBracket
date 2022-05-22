@@ -1,16 +1,18 @@
 import type { NextPage } from "next"
-import { useSearchParam } from "react-use"
-import { useScore } from "../hooks/scoreHook"
-import { useSetting } from "../hooks/settingHook"
-import { Dual } from "../components/layout/Dual"
-import { Single } from "../components/layout/Single"
-import { Solid } from "../components/layout/Solid"
+import { useScore } from "../../hooks/scoreHook"
+import { useSetting } from "../../hooks/settingHook"
+import { Dual } from "../../components/obs/score/Dual"
+import { Single } from "../../components/obs/score/Single"
+import { Solid } from "../../components/obs/score/Solid"
 import { useEffect } from "react"
-import { useSceneChanger } from "../hooks/sceneChangerHook"
+import { useSceneChanger } from "../../hooks/sceneChangerHook"
+import { useRouter } from "next/router"
+import { ScoreboardLayout } from "../../libs/const"
 
 const Layout: NextPage = () => {
-  const id = useSearchParam("id")
-  const obs = useSearchParam("obs")
+  const router = useRouter()
+  const id = router.query.id as string
+  const obs = router.query.obs as string
   const [setting] = useSetting(id)
   const [score] = useScore(id)
   const [currentScene, _, sceneList] = useSceneChanger(id, obs === "on")
@@ -23,20 +25,20 @@ const Layout: NextPage = () => {
     console.log(currentScene, sceneList)
   }, [currentScene, sceneList])
 
-  const getScoreBoard = (type: string) => {
+  const getScoreBoard = (type: ScoreboardLayout) => {
     switch (type) {
-      case "dual":
+      case "Dual":
         return <Dual setting={setting} score={score} />
-      case "single":
+      case "Single":
         return <Single setting={setting} score={score} />
-      case "solid":
+      case "Solid":
         return <Solid setting={setting} score={score} />
       default:
         return <Dual setting={setting} score={score} />
     }
   }
 
-  return getScoreBoard(setting.scoreboard_type)
+  return getScoreBoard(setting.scoreboard.design.layout)
 }
 
 export default Layout

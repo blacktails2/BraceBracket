@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  margin-bottom: 50px;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

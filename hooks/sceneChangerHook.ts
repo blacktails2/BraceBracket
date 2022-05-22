@@ -57,7 +57,6 @@ export const useSceneChanger = (
     }
 
     obs.call("GetSceneList").then((data: OBSResponseTypes["GetSceneList"]) => {
-      console.log("GetSceneList", data)
       setSceneList(
         data.scenes
           .map((s) =>

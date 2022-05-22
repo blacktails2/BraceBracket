@@ -1,12 +1,21 @@
-import { ScoreboardStylesMap, Setting } from "../libs/const"
+import { ScoreboardColorsMap, Setting } from "../libs/const"
 import { useCallback, useEffect, useState } from "react"
 import { db } from "../libs/firebase"
 import { get, onValue, set } from "@firebase/database"
 import { ref } from "firebase/database"
 
-const initialState = {
-  scoreboard_type: "dual",
-  scoreboard_style: ScoreboardStylesMap["dual"][0],
+const initialState: Setting = {
+  scoreboard: {
+    design: {
+      layout: "Dual",
+      color: ScoreboardColorsMap["Dual"][0].filename,
+    },
+    cameraAndLogo: {
+      displayCameraAndTwitterID: false,
+      useLogo: false,
+      dropShadow: "none",
+    },
+  },
 }
 
 export const useSetting = (

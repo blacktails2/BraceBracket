@@ -1,33 +1,103 @@
-export const ScoreboardTypes = ["dual", "single", "solid"]
-export type ScoreboardType = typeof ScoreboardTypes[number]
+import { NextPage } from "next"
+import { ReactElement, ReactNode } from "react"
+import { AppProps } from "next/app"
 
-export const ScoreboardStylesMap: { [string: ScoreboardType]: string[] } = {
-  dual: [
-    "01-dual_white_black_color.png",
-    "02-dual_white_black_mono.png",
-    "03-dual_black_white_color.png",
-    "04-dual_white__black_mono.png",
-    "05-dual_white_white_mono.png",
-  ],
-  single: [
-    "06-single_white_black_color.png",
-    "07-single_white_black_mono.png",
-    "08-single_black_white_color.png",
-    "09-single_black_white_mono.png",
-    "12-single_black_white_beige.png",
-  ],
-  solid: [
-    "13-solid_white_black_color.png",
-    "14-solid_white_white_mono.png",
-    "15-solid_black_white_color.png",
-    "16-solid_black_black_mono.png",
-    "17-solid_black_white_beige.png",
-  ],
+export type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
 }
 
+export type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+export const ScoreboardLayouts = ["Dual", "Single", "Solid", "Simple"]
+export type ScoreboardLayout = typeof ScoreboardLayouts[number]
+
+export const ScoreboardColorsMap: {
+  [string: ScoreboardLayout]: { label: string; filename: string }[]
+} = {
+  Dual: [
+    {
+      label: "Dark / Color",
+      filename: "01-dual_white_black_color.png",
+    },
+    {
+      label: "Dark / Mono",
+      filename: "02-dual_white_black_mono.png",
+    },
+    {
+      label: "Light / Color",
+      filename: "03-dual_black_white_color.png",
+    },
+    {
+      label: "Light / Mono",
+      filename: "04-dual_white__black_mono.png",
+    },
+    {
+      label: "Gradient",
+      filename: "05-dual_white_white_mono.png",
+    },
+  ],
+  Single: [
+    {
+      label: "Dark / Color",
+      filename: "06-single_white_black_color.png",
+    },
+    {
+      label: "Dark / Mono",
+      filename: "07-single_white_black_mono.png",
+    },
+    {
+      label: "Light / Color",
+      filename: "08-single_black_white_color.png",
+    },
+    {
+      label: "Light / Mono",
+      filename: "09-single_black_white_mono.png",
+    },
+    {
+      label: "Beige",
+      filename: "12-single_black_white_beige.png",
+    },
+  ],
+  Solid: [
+    {
+      label: "Dark / Color",
+      filename: "13-solid_white_black_color.png",
+    },
+    {
+      label: "Dark / Mono",
+      filename: "14-solid_white_white_mono.png",
+    },
+    {
+      label: "Light / Color",
+      filename: "15-solid_black_white_color.png",
+    },
+    {
+      label: "Light / Mono",
+      filename: "16-solid_black_black_mono.png",
+    },
+    {
+      label: "Beige",
+      filename: "17-solid_black_white_beige.png",
+    },
+  ],
+}
+export type ScoreboardColor =
+  typeof ScoreboardColorsMap[ScoreboardLayout][number]["label"]
+
 export type Setting = {
-  scoreboard_type: string
-  scoreboard_style: string
+  scoreboard: {
+    design: {
+      layout: ScoreboardLayout
+      color: ScoreboardColor
+    }
+    cameraAndLogo: {
+      displayCameraAndTwitterID: boolean
+      useLogo: boolean
+      dropShadow: "none" | "light" | "dark"
+    }
+  }
 }
 
 export type Score = {
@@ -45,4 +115,23 @@ export type Score = {
 export type Scenes = {
   sceneList: string[]
   currentScene: string
+}
+
+export type LoadBracket = {
+  phaseGroupId: number
+  loaded: boolean
+  lastRequestedAt: number
+}
+
+export type BracketScore = {
+  player1: {
+    team: string
+    name: string
+    score: number
+  }
+  player2: {
+    team: string
+    name: string
+    score: number
+  }
 }

@@ -1,16 +1,10 @@
 // フォントの設定
-$nextsp_regular: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$nextsp_bold: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$nextsp_black: "Satoshi",
-'Noto Sans JP',
-sans-serif;
+$nextsp_regular: "Satoshi", "Noto Sans JP", sans-serif;
+$nextsp_bold: "Satoshi", "Noto Sans JP", sans-serif;
+$nextsp_black: "Satoshi", "Noto Sans JP", sans-serif;
+$darkgray: #111;
+$white: #fff;
 
-$darkgray: #111111;
-$white: #ffffff;
 // スコアボードの色を変更したい場合、下記を変更してください
 $nextsp_maincolor: $darkgray;
 $nextsp_subcolor: $white;
@@ -18,32 +12,33 @@ $nextsp_subcolor: $white;
 // フォントの太さの設定（ライトウェイト）
 @mixin nextsp_regularWeight {
   font-family: $nextsp_regular;
-  font-variation-settings: 'wght'400;
+  font-variation-settings: "wght" 400;
   font-weight: 400;
 }
 
 // フォントの太さの設定（ミディアムウェイト）
 @mixin nextsp_mediumWeight {
   font-family: $nextsp_regular;
-  font-variation-settings: 'wght'500;
+  font-variation-settings: "wght" 500;
   font-weight: 500;
 }
 
 @mixin nextsp_boldWeight {
   font-family: $nextsp_bold;
-  font-variation-settings: 'wght'700;
+  font-variation-settings: "wght" 700;
   font-weight: 700;
 }
 
 // フォントの太さの設定（ブラックウェイト）
 @mixin nextsp_blackWeight {
   font-family: $nextsp_black;
-  font-variation-settings: 'wght'900;
+  font-variation-settings: "wght" 900;
   font-weight: 900;
 }
 
 #nextnow_sp {
   @include nextsp_blackWeight;
+
   width: 260px;
   height: 95px;
   font-size: 72px;
@@ -68,6 +63,7 @@ $nextsp_subcolor: $white;
 
 @mixin nextsp_statusText {
   @include nextsp_boldWeight;
+
   width: 320px;
   margin: 0;
   color: $nextsp_subcolor;
@@ -80,6 +76,7 @@ $nextsp_subcolor: $white;
 
 @mixin nextsp_boText {
   @include nextsp_regularWeight;
+
   width: 320px;
   margin: 0;
   color: $nextsp_subcolor;
@@ -101,6 +98,7 @@ $nextsp_subcolor: $white;
 // スコアの設定
 @mixin nextsp_scoreText {
   @include nextsp_boldWeight;
+
   margin: 0;
   width: 85px;
   color: $nextsp_subcolor;
@@ -113,12 +111,14 @@ $nextsp_subcolor: $white;
 // スコアの位置指定
 #nextsp_scoreleft {
   @include nextsp_scoreText;
+
   left: 450px;
   top: 956px;
 }
 
 #nextsp_scoreright {
   @include nextsp_scoreText;
+
   left: 535px;
   top: 956px;
 }
@@ -159,6 +159,7 @@ $nextsp_subcolor: $white;
 
 #localsetting {
   @include nextsp_mediumWeight;
+
   text-align: right;
   font-size: 24px;
   line-height: 24px;
@@ -171,6 +172,7 @@ $nextsp_subcolor: $white;
 
 #localtime {
   @include nextsp_boldWeight;
+
   font-size: 52px;
   text-align: right;
   color: $nextsp_subcolor;
@@ -238,6 +240,7 @@ $nextsp_subcolor: $white;
 #sp_id_three,
 #sp_id_four {
   @include nextsp_mcidText;
+
   position: fixed;
   top: 675px;
 }

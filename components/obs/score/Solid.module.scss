@@ -1,13 +1,9 @@
 // フォントの設定
-$solid_regular: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$solid_bold: "Satoshi",
-'Noto Sans JP',
-sans-serif;
+$solid_regular: "Satoshi", "Noto Sans JP", sans-serif;
+$solid_bold: "Satoshi", "Noto Sans JP", sans-serif;
+$darkgray: #111;
+$white: #fff;
 
-$darkgray: #111111;
-$white: #ffffff;
 // スコアボードの色を変更したい場合、下記を変更してください
 $solid_scorecolor: $white;
 $solid_playercolor: $darkgray;
@@ -16,20 +12,21 @@ $solid_statuscolor: $white;
 // フォントの太さの設定（ライトウェイト）
 @mixin solid_regularWeight {
   font-family: $solid_regular;
-  font-variation-settings: 'wght'400;
+  font-variation-settings: "wght" 400;
   font-weight: 400;
 }
 
 // フォントの太さの設定（ボールドウェイト）
 @mixin solid_boldWeight {
   font-family: $solid_bold;
-  font-variation-settings: 'wght'900;
+  font-variation-settings: "wght" 900;
   font-weight: 900;
 }
 
 // スコアの設定
 @mixin solid_scoreText {
   @include solid_boldWeight;
+
   margin: 0;
   width: 60px;
   color: $solid_scorecolor;
@@ -58,12 +55,14 @@ $solid_statuscolor: $white;
 // スコアの位置指定
 .solid_numberleft {
   @include solid_scoreText;
+
   left: 760px;
   top: 40px;
 }
 
 .solid_numberright {
   @include solid_scoreText;
+
   right: 760px;
   top: 40px;
 }
@@ -121,12 +120,13 @@ $solid_statuscolor: $white;
 
 .solid_teamleft,
 .solid_teamright {
-  @include solid_teamText
+  @include solid_teamText;
 }
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin solid_statusText {
   @include solid_boldWeight;
+
   width: 220px;
   margin: 0;
   color: $solid_statuscolor;
@@ -170,6 +170,6 @@ $solid_statuscolor: $white;
 
 .solid_logo {
   max-height: 100%;
-max-width: 100%;
-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
+  max-width: 100%;
+  filter: drop-shadow(0 0 4px rgb(0 0 0 / 30%));
 }
