@@ -166,23 +166,6 @@ $next_subcolor: $white;
   background-size: contain;
 }
 
-.mc1 {
-  background-image: url('../image/MC1.png');
-}
-
-.mc2 {
-  background-image: url('../image/MC2.png');
-}
-
-.mc3 {
-  background-image: url('../image/MC3.png');
-}
-
-.mc4 {
-  background-image: url('../image/MC4.png');
-}
-
-
 @mixin next_mcidText {
   color: $next_subcolor;
   text-align: center;

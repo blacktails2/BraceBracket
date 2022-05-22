@@ -31,7 +31,7 @@
 </body>
 <script>
 //ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
-const endpoint = "https://script.google.com/macros/s/AKfycbzOmyvMmEm11lBI2TZeZ_PdK6P-xqz-Bsw8OWjmYgn7QRD62NunjEaUh_VFE1sQKMRZ-A/exec";
+const endpoint = "localscore.json";
 
 
 //APIを使って非同期データを取得する
@@ -54,7 +54,7 @@ function remoteBreak() {
       document.getElementById("nextsp_round").innerHTML = data[0]['status'];
       document.getElementById("nextsp_bo").innerHTML = data[1]['status'];
     } else if (nextnow == 'NEXT') {
-      document.getElementById("nextnow").innerHTML = data[2]['option'];
+      document.getElementById("nextnow_sp").innerHTML = data[2]['option'];
       document.getElementById("nextsp_scoreleft").innerHTML = data[2]['score'];
       document.getElementById("nextsp_scoreright").innerHTML = data[3]['score'];
       document.getElementById("nextsp_playerleft").innerHTML = data[2]['name'];

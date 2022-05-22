@@ -120,7 +120,7 @@ function topbracket() {
   return fetch('https://api.smash.gg/gql/alpha', {
       method: 'POST',
       headers: {
-        "Authorization": "Bearer 4c55422a25fb010184f6eb3612292f01",
+        "Authorization": "Bearer <token>",
         "content-Type": "application/json",
         "Accept": "application/json",
         'encoding': 'utf-8'
@@ -180,7 +180,7 @@ topbracket();
 </script>
 <!-- <script>
 //ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
-const endpoint = "https://script.google.com/macros/s/AKfycbzOmyvMmEm11lBI2TZeZ_PdK6P-xqz-Bsw8OWjmYgn7QRD62NunjEaUh_VFE1sQKMRZ-A/exec";
+const endpoint = "localscore.json";
 
 
 //APIを使って非同期データを取得する

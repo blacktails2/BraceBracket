@@ -809,22 +809,6 @@
   background-size: contain;
 }
 
-.mc1 {
-  background-image: url("../image/MC1.png");
-}
-
-.mc2 {
-  background-image: url("../image/MC2.png");
-}
-
-.mc3 {
-  background-image: url("../image/MC3.png");
-}
-
-.mc4 {
-  background-image: url("../image/MC4.png");
-}
-
 #mc_one,
 #mc_two,
 #mc_three,
@@ -1116,24 +1100,10 @@
   background-size: contain;
 }
 
-.sp_mc1 {
-  background-image: url("../image/MC1.png");
-}
-
-.sp_mc2 {
-  background-image: url("../image/MC2.png");
-}
-
-.sp_mc3 {
-  background-image: url("../image/MC3.png");
-}
-
-.sp_mc4 {
-  background-image: url("../image/MC4.png");
-}
-
 #sp_mc_one,
-#sp_mc_two {
+#sp_mc_two,
+#sp_mc_three,
+#sp_mc_four {
   color: #ffffff;
   text-align: center;
   font-size: 34px;
@@ -1145,11 +1115,15 @@
   top: 693px;
 }
 #sp_mc_one span,
-#sp_mc_two span {
+#sp_mc_two span,
+#sp_mc_three span,
+#sp_mc_four span {
   margin-left: 10px;
 }
 #sp_mc_one span:first-child,
-#sp_mc_two span:first-child {
+#sp_mc_two span:first-child,
+#sp_mc_three span:first-child,
+#sp_mc_four span:first-child {
   margin-left: 0;
 }
 
@@ -1166,7 +1140,9 @@
 }
 
 #sp_id_one,
-#sp_id_two {
+#sp_id_two,
+#sp_id_three,
+#sp_id_four {
   color: #111111;
   font-size: 21px;
   line-height: 21px;
@@ -1188,7 +1164,11 @@
   left: 765px;
 }
 .sp_mc1_layout #sp_mc_two,
-.sp_mc1_layout #sp_id_two {
+.sp_mc1_layout #sp_id_two,
+.sp_mc1_layout #sp_mc_three,
+.sp_mc1_layout #sp_id_three,
+.sp_mc1_layout #sp_mc_four,
+.sp_mc1_layout #sp_id_four {
   display: none;
 }
 
@@ -1205,6 +1185,164 @@
 .sp_mc2_layout #sp_id_two {
   text-align: right;
   left: 1315px;
+}
+.sp_mc2_layout #sp_mc_four,
+.sp_mc2_layout #sp_id_four,
+.sp_mc2_layout #sp_mc_three,
+.sp_mc2_layout #sp_id_three {
+  display: none;
+}
+
+.sp_mc3_layout #sp_mc_one {
+  left: 240px;
+}
+.sp_mc3_layout #sp_id_one {
+  left: 245px;
+}
+.sp_mc3_layout #sp_mc_two {
+  left: 760px;
+}
+.sp_mc3_layout #sp_id_two {
+  left: 765px;
+}
+.sp_mc3_layout #sp_mc_three {
+  left: 1280px;
+}
+.sp_mc3_layout #sp_id_three {
+  text-align: right;
+  left: 1455px;
+}
+.sp_mc3_layout #sp_mc_four,
+.sp_mc3_layout #sp_id_four {
+  display: none;
+}
+
+.sp_mc4_layout #sp_mc_one {
+  left: 130px;
+}
+.sp_mc4_layout #sp_id_one {
+  left: 165px;
+}
+.sp_mc4_layout #sp_mc_two {
+  left: 550px;
+}
+.sp_mc4_layout #sp_id_two {
+  left: 585px;
+}
+.sp_mc4_layout #sp_mc_three {
+  left: 970px;
+}
+.sp_mc4_layout #sp_id_three {
+  text-align: right;
+  left: 1115px;
+}
+.sp_mc4_layout #sp_mc_four {
+  left: 1390px;
+}
+.sp_mc4_layout #sp_id_four {
+  text-align: right;
+  left: 1535px;
+}
+
+.sp_bracketsbox {
+  width: 294px;
+  height: 85px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 11px;
+}
+.sp_bracketsbox p {
+  margin: 0;
+}
+.sp_bracketsbox p span {
+  margin-left: 6px;
+}
+.sp_bracketsbox p span:first-child {
+  margin-left: 0;
+}
+
+#sp_winners_semis1 {
+  left: 117px;
+  top: 122px;
+}
+
+#sp_winners_semis2 {
+  left: 117px;
+  top: 276px;
+}
+
+#sp_winners_finals {
+  left: 807px;
+  top: 199px;
+}
+
+#sp_grand_finals {
+  left: 1498px;
+  top: 400px;
+}
+
+#sp_losers_81 {
+  left: 117px;
+  top: 524px;
+}
+
+#sp_losers_82 {
+  left: 117px;
+  top: 678px;
+}
+
+#sp_losers_quarters1 {
+  left: 462px;
+  top: 524px;
+}
+
+#sp_losers_quarters2 {
+  left: 462px;
+  top: 678px;
+}
+
+#sp_losers_semis {
+  left: 807px;
+  top: 601px;
+}
+
+#sp_losers_finals {
+  left: 1152px;
+  top: 601px;
+}
+
+.bracketsp_team {
+  color: #111111;
+  font-size: 21px;
+  letter-spacing: 1px;
+  line-height: 42px;
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 400;
+  font-weight: 400;
+}
+
+.bracketsp_name {
+  color: #111111;
+  font-size: 21px;
+  line-height: 42px;
+  letter-spacing: 1px;
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+}
+
+.bracketbox_score {
+  font-family: "Satoshi", "Noto Sans JP", sans-serif;
+  font-variation-settings: "wght" 700;
+  font-weight: 700;
+  margin: 0;
+  width: 40px;
+  line-height: 42px;
+  color: #111111;
+  text-align: center;
+  font-size: 30px;
+  font-variant-numeric: tabular-nums;
 }
 
 html {

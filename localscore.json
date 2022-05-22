@@ -1,18 +1,18 @@
 [
 {
-  "name": "Kurotei",
-  "team": "WT",
+  "name": "TestPlayer",
+  "team": "TE",
   "score": "0",
-  "id": "@wolphtype",
+  "id": "@testtest",
   "status": "Winners Finals",
   "option": "大会名#5",
   "information": "プレイヤー1の情報"
 },
 {
-  "name": "Wolphtype",
-  "team": "MAU",
+  "name": "テストプレイヤー2",
+  "team": "ST",
   "score": "1",
-  "id": "@wolphtype",
+  "id": "@testtest",
   "status": "Best of 5",
   "option": "",
   "information": "プレイヤー2の情報"
@@ -37,7 +37,7 @@
 },
 {
   "name": "MCNAME1",
-  "team": "EGS",
+  "team": "Test",
   "score": "",
   "id": "@mcname",
   "status": "",
