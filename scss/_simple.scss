@@ -1,16 +1,10 @@
 // フォントの設定
-$simple_regular: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$simple_black: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$simple_bold: "Satoshi",
-'Noto Sans JP',
-sans-serif;
+$simple_regular: "Satoshi", "Noto Sans JP", sans-serif;
+$simple_black: "Satoshi", "Noto Sans JP", sans-serif;
+$simple_bold: "Satoshi", "Noto Sans JP", sans-serif;
+$darkgray: #111;
+$white: #fff;
 
-$darkgray: #111111;
-$white: #ffffff;
 // スコアボードの色を変更したい場合、下記を変更してください
 $simple_scorecolor: $darkgray;
 $simple_playercolor: $white;
@@ -19,29 +13,28 @@ $simple_statuscolor: $white;
 // フォントの太さの設定（ライトウェイト）
 @mixin simple_regularWeight {
   font-family: $simple_regular;
-  font-variation-settings: 'wght'400;
+  font-variation-settings: "wght" 400;
   font-weight: 400;
 }
 
 // フォントの太さの設定（ボールドウェイト）
 @mixin simple_boldWeight {
   font-family: $simple_bold;
-  font-variation-settings: 'wght'700;
+  font-variation-settings: "wght" 700;
   font-weight: 700;
 }
 
 // フォントの太さの設定（ブラックウェイト）
 @mixin simple_blackWeight {
   font-family: $simple_black;
-  font-variation-settings: 'wght'900;
+  font-variation-settings: "wght" 900;
   font-weight: 900;
 }
-
-
 
 // スコアの設定
 @mixin simple_scoreText {
   @include simple_boldWeight;
+
   margin: 0;
   width: 50px;
   color: $simple_scorecolor;
@@ -54,12 +47,14 @@ $simple_statuscolor: $white;
 // スコアの位置指定
 #simple_numberleft {
   @include simple_scoreText;
+
   left: 905px;
   top: 47px;
 }
 
 #simple_numberright {
   @include simple_scoreText;
+
   right: 905px;
   top: 47px;
 }
@@ -116,12 +111,13 @@ $simple_statuscolor: $white;
 
 #simple_teamleft,
 #simple_teamright {
-  @include simple_teamText
+  @include simple_teamText;
 }
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin simple_statusText {
   @include simple_boldWeight;
+
   color: $simple_statuscolor;
   font-size: 21px;
   line-height: 21px;
@@ -131,6 +127,7 @@ $simple_statuscolor: $white;
 
 @mixin simple_boText {
   @include simple_regularWeight;
+
   color: $simple_statuscolor;
   font-size: 21px;
   line-height: 21px;
@@ -151,6 +148,7 @@ $simple_statuscolor: $white;
 // 試合ステータスの位置設定
 #simple_prtextleft {
   @include simple_statusText;
+
   margin-right: 3px;
 }
 
@@ -161,6 +159,7 @@ $simple_statuscolor: $white;
 // 選手IDの位置設定
 @mixin simple_idText {
   @include simple_blackWeight;
+
   width: 320px;
   height: 22px;
   margin: 0;
@@ -173,6 +172,7 @@ $simple_statuscolor: $white;
 
 #sp_camera_left {
   @include simple_idText;
+
   text-align: left;
   left: 26px;
   top: 859px;
@@ -180,6 +180,7 @@ $simple_statuscolor: $white;
 
 #sp_camera_right {
   @include simple_idText;
+
   text-align: right;
   right: 26px;
   top: 859px;
@@ -199,5 +200,5 @@ $simple_statuscolor: $white;
 .simple_logo {
   max-height: 100%;
   max-width: 100%;
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 0 4px rgb(0 0 0 / 30%));
 }

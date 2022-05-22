@@ -1,13 +1,9 @@
 // フォントの設定
-$single_regular: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$single_bold: "Satoshi",
-'Noto Sans JP',
-sans-serif;
+$single_regular: "Satoshi", "Noto Sans JP", sans-serif;
+$single_bold: "Satoshi", "Noto Sans JP", sans-serif;
+$darkgray: #111;
+$white: #fff;
 
-$darkgray: #111111;
-$white: #ffffff;
 // スコアボードの色を変更したい場合、下記を変更してください
 $single_scorecolor: $darkgray;
 $single_playercolor: $darkgray;
@@ -16,20 +12,21 @@ $single_statuscolor: $white;
 // フォントの太さの設定（ライトウェイト）
 @mixin single_regularWeight {
   font-family: $single_regular;
-  font-variation-settings: 'wght'400;
+  font-variation-settings: "wght" 400;
   font-weight: 400;
 }
 
 // フォントの太さの設定（ボールドウェイト）
 @mixin single_boldWeight {
   font-family: $single_bold;
-  font-variation-settings: 'wght'900;
+  font-variation-settings: "wght" 900;
   font-weight: 900;
 }
 
 // スコアの設定
 @mixin single_scoreText {
   @include single_boldWeight;
+
   margin: 0;
   width: 60px;
   color: $single_scorecolor;
@@ -41,12 +38,14 @@ $single_statuscolor: $white;
 // スコアの位置指定
 .single_numberleft {
   @include single_scoreText;
+
   left: 800px;
   top: 47px;
 }
 
 .single_numberright {
   @include single_scoreText;
+
   right: 800px;
   top: 47px;
 }
@@ -121,15 +120,15 @@ $single_statuscolor: $white;
 
 .single_teamleft,
 .single_teamright {
-  @include single_teamText
+  @include single_teamText;
 }
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin single_statusText {
   @include single_boldWeight;
+
   width: 215px;
-  margin-left: 15px;
-  margin: 0;
+  margin: 0 0 0 15px;
   color: $single_statuscolor;
   text-align: left;
   font-size: 17px;
@@ -161,6 +160,7 @@ $single_statuscolor: $white;
 // 選手IDの位置設定
 @mixin single_idText {
   @include single_boldWeight;
+
   width: 220px;
   height: 30px;
   margin: 0;
@@ -174,12 +174,14 @@ $single_statuscolor: $white;
 
 #camera_left {
   @include single_idText;
+
   left: 20px;
   top: 845px;
 }
 
 #camera_right {
   @include single_idText;
+
   right: 20px;
   top: 845px;
 }
@@ -198,5 +200,5 @@ $single_statuscolor: $white;
 .single_logo {
   max-height: 100%;
   max-width: 100%;
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 0 4px rgb(0 0 0 / 30%));
 }

@@ -1,16 +1,10 @@
 // フォントの設定
-$regular: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$bold: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$black: "Satoshi",
-'Noto Sans JP',
-sans-serif;
+$regular: "Satoshi", "Noto Sans JP", sans-serif;
+$bold: "Satoshi", "Noto Sans JP", sans-serif;
+$black: "Satoshi", "Noto Sans JP", sans-serif;
+$darkgray: #111;
+$white: #fff;
 
-$darkgray: #111111;
-$white: #ffffff;
 // スコアボードの色を変更したい場合、下記を変更してください
 $maincolor: $darkgray;
 $subcolor: $white;
@@ -18,27 +12,27 @@ $subcolor: $white;
 // フォントの太さの設定（ライトウェイト）
 @mixin regularWeight {
   font-family: $regular;
-  font-variation-settings: 'wght'400;
+  font-variation-settings: "wght" 400;
   font-weight: 400;
 }
 
 // フォントの太さの設定（ミディアムウェイト）
 @mixin mediumWeight {
   font-family: $regular;
-  font-variation-settings: 'wght'500;
+  font-variation-settings: "wght" 500;
   font-weight: 500;
 }
 
 @mixin boldWeight {
   font-family: $bold;
-  font-variation-settings: 'wght'700;
+  font-variation-settings: "wght" 700;
   font-weight: 700;
 }
 
 // フォントの太さの設定（ブラックウェイト）
 @mixin blackWeight {
   font-family: $black;
-  font-variation-settings: 'wght'900;
+  font-variation-settings: "wght" 900;
   font-weight: 900;
 }
 
@@ -52,6 +46,7 @@ $subcolor: $white;
 
   p {
     margin: 0;
+
     span {
       margin-left: 6px;
 
@@ -86,10 +81,10 @@ $subcolor: $white;
   @include nameText;
 }
 
-
 // スコアの設定
 @mixin scoreText {
   @include boldWeight;
+
   margin: 0;
   width: 40px;
   line-height: 42px;

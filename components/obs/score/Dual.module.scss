@@ -1,13 +1,9 @@
 // フォントの設定
-$dual_regular: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$dual_bold: "Satoshi",
-'Noto Sans JP',
-sans-serif;
+$dual_regular: "Satoshi", "Noto Sans JP", sans-serif;
+$dual_bold: "Satoshi", "Noto Sans JP", sans-serif;
+$darkgray: #111;
+$white: #fff;
 
-$darkgray: #111111;
-$white: #ffffff;
 // スコアボードの色を変更したい場合、下記を変更してください
 $dual_scorecolor: $white;
 $dual_playercolor: $white;
@@ -16,20 +12,21 @@ $dual_statuscolor: $darkgray;
 // フォントの太さの設定（ライトウェイト）
 @mixin dual_regularWeight {
   font-family: $dual_regular;
-  font-variation-settings: 'wght'400;
+  font-variation-settings: "wght" 400;
   font-weight: 400;
 }
 
 // フォントの太さの設定（ボールドウェイト）
 @mixin dual_boldWeight {
   font-family: $dual_bold;
-  font-variation-settings: 'wght'900;
+  font-variation-settings: "wght" 900;
   font-weight: 900;
 }
 
 // スコアの設定
 @mixin dual_scoreText {
   @include dual_boldWeight;
+
   margin: 0;
   width: 75px;
   color: $dual_scorecolor;
@@ -58,12 +55,14 @@ $dual_statuscolor: $darkgray;
 // スコアの位置指定
 .dual_numberleft {
   @include dual_scoreText;
+
   left: 365px;
   top: 48px;
 }
 
 .dual_numberright {
   @include dual_scoreText;
+
   right: 365px;
   top: 48px;
 }
@@ -121,12 +120,13 @@ $dual_statuscolor: $darkgray;
 
 .dual_teamleft,
 .dual_teamright {
-  @include dual_teamText
+  @include dual_teamText;
 }
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin dual_statusText {
   @include dual_boldWeight;
+
   width: 410px;
   margin: 0;
   color: $dual_statuscolor;
@@ -140,12 +140,14 @@ $dual_statuscolor: $darkgray;
 // 試合ステータスの位置設定
 .dual_prtextleft {
   @include dual_statusText;
+
   left: 465px;
   top: 99px;
 }
 
 .dual_prtextright {
   @include dual_statusText;
+
   right: 465px;
   top: 99px;
 }
@@ -163,6 +165,7 @@ $dual_statuscolor: $darkgray;
 
 .dual_option {
   @include dual_regularWeight;
+
   color: $dual_playercolor;
   text-align: center;
   font-size: 17px;
@@ -174,6 +177,7 @@ $dual_statuscolor: $darkgray;
 // 選手IDの位置設定
 @mixin dual_idText {
   @include dual_boldWeight;
+
   width: 220px;
   height: 30px;
   margin: 0;
@@ -187,12 +191,14 @@ $dual_statuscolor: $darkgray;
 
 #camera_left {
   @include dual_idText;
+
   left: 20px;
   top: 845px;
 }
 
 #camera_right {
   @include dual_idText;
+
   right: 20px;
   top: 845px;
 }
@@ -212,5 +218,5 @@ $dual_statuscolor: $darkgray;
 .dual_logo {
   max-height: 100%;
   max-width: 100%;
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 0 4px rgb(0 0 0 / 30%));
 }

@@ -6,4 +6,5 @@ module.exports = {
         .join(" --file ")}`,
     "prettier --write",
   ],
+  "**/*.scss": ["stylelint --fix --max-warnings 0", "prettier --write"],
 }

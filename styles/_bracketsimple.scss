@@ -1,16 +1,10 @@
 // フォントの設定
-$bracketsp_regular: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$bracketsp_bold: "Satoshi",
-'Noto Sans JP',
-sans-serif;
-$bracketsp_black: "Satoshi",
-'Noto Sans JP',
-sans-serif;
+$bracketsp_regular: "Satoshi", "Noto Sans JP", sans-serif;
+$bracketsp_bold: "Satoshi", "Noto Sans JP", sans-serif;
+$bracketsp_black: "Satoshi", "Noto Sans JP", sans-serif;
+$darkgray: #111;
+$white: #fff;
 
-$darkgray: #111111;
-$white: #ffffff;
 // スコアボードの色を変更したい場合、下記を変更してください
 $bracketsp_maincolor: $darkgray;
 $bracketsp_subcolor: $white;
@@ -18,27 +12,27 @@ $bracketsp_subcolor: $white;
 // フォントの太さの設定（ライトウェイト）
 @mixin bracketsp_regularWeight {
   font-family: $bracketsp_regular;
-  font-variation-settings: 'wght'400;
+  font-variation-settings: "wght" 400;
   font-weight: 400;
 }
 
 // フォントの太さの設定（ミディアムウェイト）
 @mixin bracketsp_mediumWeight {
   font-family: $bracketsp_regular;
-  font-variation-settings: 'wght'500;
+  font-variation-settings: "wght" 500;
   font-weight: 500;
 }
 
 @mixin bracketsp_boldWeight {
   font-family: $bracketsp_bold;
-  font-variation-settings: 'wght'700;
+  font-variation-settings: "wght" 700;
   font-weight: 700;
 }
 
 // フォントの太さの設定（ブラックウェイト）
 @mixin bracketsp_blackWeight {
   font-family: $bracketsp_black;
-  font-variation-settings: 'wght'900;
+  font-variation-settings: "wght" 900;
   font-weight: 900;
 }
 
@@ -137,10 +131,10 @@ $bracketsp_subcolor: $white;
   @include bracketsp_nameText;
 }
 
-
 // スコアの設定
 @mixin bracketsp_scoreText {
   @include bracketsp_boldWeight;
+
   margin: 0;
   width: 40px;
   line-height: 42px;
