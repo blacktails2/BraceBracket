@@ -23,20 +23,20 @@ export const Solid: FC<{ setting: Setting; score: Score }> = ({
         />
       </div>
       {/* 1Pスコア */}
-      <p className={styles.solid_numberleft}>{score.p1_score}</p>
+      <p className={styles.solid_numberleft}>{score.p1.score}</p>
       {/* 2Pスコア */}
-      <p className={styles.solid_numberright}>{score.p2_score}</p>
+      <p className={styles.solid_numberright}>{score.p2.score}</p>
       <p className={[styles.solid_player, styles.solid_playerleft].join(" ")}>
-        <span className={styles.solid_teamleft}>{score.p1_team}</span>
-        <span className={styles.solid_nameleft}>{score.p1_player_name}</span>
+        <span className={styles.solid_teamleft}>{score.p1.team}</span>
+        <span className={styles.solid_nameleft}>{score.p1.playerName}</span>
       </p>
       <p className={[styles.solid_player, styles.solid_playerright].join(" ")}>
-        <span className={styles.solid_teamright}>{score.p2_team}</span>
-        <span className={styles.solid_nameright}>{score.p2_player_name}</span>
+        <span className={styles.solid_teamright}>{score.p2.team}</span>
+        <span className={styles.solid_nameright}>{score.p2.playerName}</span>
       </p>
       <div className={styles.solid_prbox}>
         <p className={styles.solid_prtextleft}>{score.round}</p>
-        <p className={styles.solid_prtextright}>{score.match_type}</p>
+        <p className={styles.solid_prtextright}>{score.matchType}</p>
       </div>
     </div>
   )

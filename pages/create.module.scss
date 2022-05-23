@@ -1,6 +1,12 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 400px;
+
+  hr {
+    background-color: var(--gray);
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
 }
 
 .settingFormContainer {

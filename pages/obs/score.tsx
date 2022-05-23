@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
-import { useScore } from "../../hooks/scoreHook"
-import { useSetting } from "../../hooks/settingHook"
+import { useScore } from "../../hooks/useScore"
+import { useSetting } from "../../hooks/useSetting"
 import { Dual } from "../../components/obs/score/Dual"
 import { Single } from "../../components/obs/score/Single"
 import { Solid } from "../../components/obs/score/Solid"
@@ -25,7 +25,8 @@ const Layout: NextPage = () => {
     console.log(currentScene, sceneList)
   }, [currentScene, sceneList])
 
-  const getScoreBoard = (type: ScoreboardLayout) => {
+  const getScoreBoard = (type: ScoreboardLayout | undefined) => {
+    if (!setting || !score || !type) return null
     switch (type) {
       case "Dual":
         return <Dual setting={setting} score={score} />
@@ -38,7 +39,7 @@ const Layout: NextPage = () => {
     }
   }
 
-  return getScoreBoard(setting.scoreboard.design.layout)
+  return getScoreBoard(setting?.scoreboard.design.layout)
 }
 
 export default Layout

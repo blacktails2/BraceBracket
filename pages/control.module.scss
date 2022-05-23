@@ -3,13 +3,21 @@
   padding-left: 48px;
   padding-right: 48px;
 
+  h2 {
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .left {
-      display: flex;
+      div {
+        display: flex;
+        justify-content: flex-end;
+      }
     }
   }
 }

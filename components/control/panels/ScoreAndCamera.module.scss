@@ -1,0 +1,161 @@
+.checkboxContainer {
+  margin-top: 10px;
+
+  > label {
+    margin-left: -5px;
+  }
+}
+
+.checkbox {
+  label {
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--light-primary);
+    border-radius: 5px;
+  }
+
+  input {
+    display: none;
+  }
+
+  input[type="checkbox"] {
+    &:checked + label {
+      background-color: var(--bb-black);
+      border-color: var(--bb-black);
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 5px;
+        height: 13px;
+        border-right: 2px solid var(--bb-white);
+        border-bottom: 2px solid var(--bb-white);
+        top: 0;
+        left: 5px;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+.buttonContainer {
+  width: 194px;
+  margin-top: 30px;
+
+  > button {
+    width: 100%;
+  }
+}
+
+.twitterIDContainer {
+  margin-top: 20px;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  > div {
+    input {
+      width: 194px;
+    }
+
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.statusContainer {
+  margin-top: 20px;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  > div {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.playersContainer {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+
+  .playerContainer {
+    h4 {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+
+    > div {
+      display: flex;
+      gap: 10px;
+
+      .team > input {
+        width: 100px;
+      }
+
+      .playerName > input {
+        width: 218px;
+      }
+
+      .score > input {
+        width: 60px;
+      }
+    }
+  }
+}
+
+.selectContainer {
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-color: var(--bb-beige);
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 5px;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border-right: 1px solid var(--bb-black);
+    border-bottom: 1px solid var(--bb-black);
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+
+  select {
+    width: 194px;
+    height: 30px;
+    padding: 5px 10px;
+    border: 1px solid var(--light-primary);
+    background-color: rgb(255 255 255 / 0%);
+    border-radius: 5px;
+    appearance: none;
+    position: relative;
+  }
+
+  option {
+    height: 30px;
+    padding: 5px 10px;
+    border: 1px solid var(--light-primary);
+    border-radius: 5px;
+  }
+}

@@ -100,16 +100,20 @@ export type Setting = {
   }
 }
 
+export type PlayerScore = {
+  team: string
+  playerName: string
+  score: number
+  twitterID: string
+}
+
 export type Score = {
-  p1_team: string
-  p1_player_name: string
-  p1_score: number
-  p2_team: string
-  p2_player_name: string
-  p2_score: number
+  p1: PlayerScore
+  p2: PlayerScore
   round: string
-  match_type: string
-  tournament_name: string
+  matchType: string
+  tournamentName: string
+  uppercase: boolean
 }
 
 export type Scenes = {

@@ -1,0 +1,50 @@
+.container {
+  padding: 15px;
+  border: 1px solid var(--bb-beige);
+  border-radius: 15px;
+
+  details summary::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 2px solid var(--primary);
+    border-right: 2px solid var(--primary);
+    position: absolute;
+    top: 40px;
+    right: 55px;
+    transform: rotate(45deg);
+    transition-duration: 0.5s;
+  }
+
+  details[open] summary::after {
+    transform: translateY(15px) rotate(225deg);
+  }
+
+  summary {
+    list-style: none;
+    position: relative;
+
+    &::marker {
+      display: none;
+    }
+
+    .title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .url {
+      h4 {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  hr {
+    margin: 30px 0;
+    height: 1px;
+    background-color: var(--bb-light);
+    border: none;
+  }
+}
