@@ -1,7 +1,6 @@
 import { FC, useEffect } from "react"
 import { ControlPanel } from "../parts/ControlPanel"
 import { Button } from "../../parts/Button"
-import styles from "./ScoreAndCamera.module.scss"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 import { useScore } from "../../../hooks/useScore"
 import { Score } from "../../../libs/const"
@@ -9,6 +8,8 @@ import { useRouter } from "next/router"
 import { useOrigin } from "../../../hooks/useOrigin"
 import { TextForm } from "../../parts/TextForm"
 import { NumberForm } from "../../parts/NumberForm"
+import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { SelectForm } from "../../parts/SelectForm"
 
 export const ScoreAndCamera: FC = () => {
   const router = useRouter()
@@ -30,63 +31,63 @@ export const ScoreAndCamera: FC = () => {
           <hr />
           <Button>start.ggから配信代の情報を取得</Button>
           <div>
-            <div className={styles.playersContainer}>
-              <div className={styles.playerContainer}>
+            <div className="flex flex-wrap gap-[30px] mt-[20px]">
+              <div>
                 <h4>1Pデータ</h4>
-                <div>
+                <div className="flex gap-[10px]">
                   <TextForm
-                    className={styles.team}
+                    className="w-[100px]"
                     label="チーム名"
                     name="p1.team"
                     placeholder="Team"
                   />
                   <TextForm
-                    className={styles.playerName}
+                    className="w-[218px]"
                     label="プレイヤー名"
                     name="p1.playerName"
                     placeholder="Player"
                   />
                   <NumberForm
+                    className="w-[60px]"
                     label={"スコア"}
                     name={"p1.score"}
-                    className={styles.score}
                   />
                 </div>
               </div>
-              <div className={styles.playerContainer}>
+              <div>
                 <h4>2Pデータ</h4>
-                <div>
+                <div className="flex gap-[10px]">
                   <TextForm
-                    className={styles.team}
+                    className="w-[100px]"
                     label="チーム名"
                     name="p2.team"
                     placeholder="Team"
                   />
                   <TextForm
-                    className={styles.playerName}
+                    className="w-[218px]"
                     label="プレイヤー名"
                     name="p2.playerName"
                     placeholder="Player"
                   />
                   <NumberForm
+                    className="w-[60px]"
                     label="スコア"
                     name="p2.score"
-                    className={styles.score}
                   />
                 </div>
               </div>
             </div>
-            <div className={styles.twitterIDContainer}>
-              <h4>Twitter ID</h4>
-              <div>
+            <div className="mt-[20px]">
+              <h4 className="mt-0 mb-[5px]">Twitter ID</h4>
+              <div className="flex flex-wrap gap-[10px]">
                 <TextForm
-                  className={styles.playerName}
+                  className="w-[194px]"
                   label="1P"
                   name="p1.twitterID"
                   placeholder="@user_name"
                 />
                 <TextForm
-                  className={styles.playerName}
+                  className="w-[194px]"
                   label="2P"
                   name="p2.twitterID"
                   placeholder="@user_name"
@@ -95,41 +96,29 @@ export const ScoreAndCamera: FC = () => {
             </div>
           </div>
           <hr />
-          <div className={styles.statusContainer}>
-            <h4>ステータス</h4>
-            <div>
-              <div>
-                <label>ラウンド</label>
-                <div className={styles.selectContainer}>
-                  <select {...register("round")}>
-                    <option value="Pools">Pools</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label>試合形式</label>
-                <div className={styles.selectContainer}>
-                  <select {...register("matchType")}>
-                    <option value="Best of 5">Best of 5</option>
-                  </select>
-                </div>
-              </div>
+          <div>
+            <h4 className="mt-0 mb-[5px]">ステータス</h4>
+            <div className="flex flex-wrap gap-[10px]">
+              <SelectForm
+                label="ラウンド"
+                name="round"
+                options={[{ text: "Pools", value: "Pools" }]}
+              />
+              <SelectForm
+                label="試合形式"
+                name="matchType"
+                options={[{ text: "Best of 5", value: "Best of 5" }]}
+              />
             </div>
-            <div className={styles.checkboxContainer}>
-              <div className={styles.checkbox}>
-                <input
-                  type="checkbox"
-                  id="uppercase"
-                  {...register("uppercase")}
-                />
-                <label htmlFor="uppercase"></label>
-              </div>
-              <label htmlFor="uppercase">すべて大文字にする</label>
-            </div>
+            <CheckBoxForm
+              className="mt-[10px]"
+              label="すべて大文字にする"
+              name="uppercase"
+            />
           </div>
-          <div className={styles.buttonContainer}>
-            <Button type="submit">適用する</Button>
-          </div>
+          <Button type="submit" className="w-[194px] mt-[30px]" full>
+            適用する
+          </Button>
         </form>
       </FormProvider>
     </ControlPanel>

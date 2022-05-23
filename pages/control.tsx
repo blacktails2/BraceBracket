@@ -10,6 +10,9 @@ import { useRouter } from "next/router"
 import { TextboxWithCopy } from "../components/parts/TextboxWithCopy"
 import { ScoreAndCamera } from "../components/control/panels/ScoreAndCamera"
 import { useOrigin } from "../hooks/useOrigin"
+import { Top8Bracket } from "../components/control/panels/Top8Bracket"
+import { MatchIntervalInfo } from "../components/control/panels/MatchIntervalInfo"
+import { MC } from "../components/control/panels/MC"
 
 const Control: NextPageWithLayout = () => {
   const router = useRouter()
@@ -66,6 +69,9 @@ const Control: NextPageWithLayout = () => {
       </div>
       <div className={styles.controlsContainer}>
         <ScoreAndCamera />
+        <MatchIntervalInfo />
+        <MC />
+        <Top8Bracket />
       </div>
     </div>
   )

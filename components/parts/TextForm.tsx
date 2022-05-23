@@ -11,12 +11,15 @@ export const TextForm: FC<{
   const { register } = useFormContext()
   return (
     <div className={className}>
-      <label className={styles.label}>{label}</label>
+      <label className={styles.label} htmlFor={name}>
+        {label}
+      </label>
       <input
         type="text"
         {...register(name)}
         placeholder={placeholder}
         className={styles.input}
+        id={name}
       />
     </div>
   )

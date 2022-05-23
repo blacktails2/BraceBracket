@@ -13,7 +13,12 @@ export const NumberForm: FC<{
       <label htmlFor={name} className={styles.label}>
         {label}
       </label>
-      <input type="number" {...register(name)} className={styles.input} />
+      <input
+        type="number"
+        {...register(name)}
+        className={styles.input}
+        id={name}
+      />
     </div>
   )
 }

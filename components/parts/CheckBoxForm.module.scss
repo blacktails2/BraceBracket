@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  gap: 5px;
+}
+
+.dummyLabel {
+  display: block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--light-primary);
+  border-radius: 5px;
+}
+
+.input {
+  display: none;
+
+  &:checked + .dummyLabel {
+    background-color: var(--bb-black);
+    border-color: var(--bb-black);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 13px;
+      border-right: 2px solid var(--bb-white);
+      border-bottom: 2px solid var(--bb-white);
+      top: 0;
+      left: 5px;
+      transform: rotate(45deg);
+    }
+  }
+}

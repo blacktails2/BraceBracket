@@ -139,3 +139,10 @@ export type BracketScore = {
     score: number
   }
 }
+
+export type MatchIntervalInfo = {
+  p1: PlayerScore
+  p2: PlayerScore
+  round: string
+  matchType: string
+}
