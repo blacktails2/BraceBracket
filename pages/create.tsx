@@ -11,7 +11,7 @@ import { UseLogo } from "../components/create/settingForms/UseLogo"
 import { SelectLogo } from "../components/create/settingForms/SelectLogo"
 import { DropShadow } from "../components/create/settingForms/DropShadow"
 import cryptoRandomString from "crypto-random-string"
-import { ref } from "firebase/database"
+import { child, get, ref, serverTimestamp, update } from "firebase/database"
 import { db } from "../libs/firebase"
 import { set } from "@firebase/database"
 import { useRouter } from "next/router"
@@ -40,8 +40,16 @@ const Create: NextPageWithLayout = () => {
     } else {
       _id = id
     }
-    const settingRef = ref(db, `tournaments/${_id}/setting`)
-    set(settingRef, data)
+    const rootRef = ref(db, `tournaments/${_id}`)
+    if ((await get(rootRef)).exists()) {
+      update(child(rootRef, "setting"), data)
+    } else {
+      set(rootRef, {
+        createdAt: serverTimestamp(),
+        setting: data,
+      })
+    }
+
     await router.push({
       pathname: `/control`,
       query: { id: _id },

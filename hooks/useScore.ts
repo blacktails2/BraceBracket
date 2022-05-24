@@ -1,7 +1,9 @@
 import { Score } from "../libs/const"
 import { genUseDatabaseValue } from "./useDatabaseValue"
+import { serverTimestamp } from "firebase/database"
 
 const defaultValue: Score = {
+  createdAt: serverTimestamp(),
   matchType: "BO5",
   p1: {
     playerName: "P1 Name",

@@ -54,7 +54,7 @@ export const MatchIntervalInfo: FC = () => {
                 />
                 <TextForm
                   label="P2"
-                  name="nextPlayer1"
+                  name="nextPlayer2"
                   placeholder="PlayerName"
                 />
               </div>

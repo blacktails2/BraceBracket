@@ -1,0 +1,33 @@
+path / {
+    read() { false }
+    write() { false }
+}
+
+path /tournaments/{id} is Timestamped<Tournament> {
+    read() { true }
+    create() { id.length == 32 }
+    update() { true }
+    delete() { false }
+}
+
+type Tournament {
+    // 生成した後に $other のフィールドを削除して回る
+    setting: Timestamped<Object> | Null,
+    score: Timestamped<Object> | Null,
+    loadBracket: Timestamped<Object> | Null,
+    matchIntervalInfo: Timestamped<Object> | Null,
+}
+
+type Timestamped<T> extends T {
+  read() { true }
+  create() { true }
+  update() { true }
+  delete() { false }
+  createdAt: InitialTimestamp
+}
+
+type InitialTimestamp extends Number {
+  validate() { initial(this, now) }
+}
+
+initial(value, init) { value == (prior(value) == null ? init : prior(value)) }

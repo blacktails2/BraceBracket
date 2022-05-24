@@ -1,8 +1,10 @@
 import { LoadBracket } from "../libs/const"
 import { genUseDatabaseValue } from "./useDatabaseValue"
 import { useCallback } from "react"
+import { serverTimestamp } from "firebase/database"
 
 const defaultValue: LoadBracket = {
+  createdAt: serverTimestamp(),
   phaseGroupId: 0,
   loaded: true,
   lastRequestedAt: 0,
@@ -20,10 +22,10 @@ export const useLoadBracket = (
 
   const requestLoad = useCallback(
     (phaseGroupId: number) => {
-      if (!id) return
+      if (!id || !loadBracket || loading) return
       const next: LoadBracket = {
+        ...loadBracket,
         phaseGroupId,
-        loaded: true,
         lastRequestedAt: new Date().valueOf(),
       }
       _setLoadBracket(next)

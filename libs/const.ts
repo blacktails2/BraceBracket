@@ -1,6 +1,7 @@
 import { NextPage } from "next"
 import { ReactElement, ReactNode } from "react"
 import { AppProps } from "next/app"
+import { serverTimestamp } from "firebase/database"
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -87,6 +88,7 @@ export type ScoreboardColor =
   typeof ScoreboardColorsMap[ScoreboardLayout][number]["label"]
 
 export type Setting = {
+  createdAt: number | ReturnType<typeof serverTimestamp>
   scoreboard: {
     design: {
       layout: ScoreboardLayout
@@ -108,6 +110,7 @@ export type PlayerScore = {
 }
 
 export type Score = {
+  createdAt: number | ReturnType<typeof serverTimestamp>
   p1: PlayerScore
   p2: PlayerScore
   round: string
@@ -122,6 +125,7 @@ export type Scenes = {
 }
 
 export type LoadBracket = {
+  createdAt: number | ReturnType<typeof serverTimestamp>
   phaseGroupId: number
   loaded: boolean
   lastRequestedAt: number
@@ -141,8 +145,17 @@ export type BracketScore = {
 }
 
 export type MatchIntervalInfo = {
+  createdAt: number | ReturnType<typeof serverTimestamp>
   p1: PlayerScore
   p2: PlayerScore
   round: string
   matchType: string
+}
+
+export type Tournament = {
+  createdAt: number | ReturnType<typeof serverTimestamp>
+  setting: Setting
+  score: Score
+  loadBracket: LoadBracket
+  matchIntervalInfo: MatchIntervalInfo
 }
