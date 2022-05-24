@@ -20,7 +20,11 @@ export function genUseDatabaseValue<T>(
       [id]
     )
     useEffect(() => {
-      if (!id) return
+      if (!id) {
+        _setValue(defaultValue)
+        setLoading(false)
+        return
+      }
       const valueRef = ref(db, getPath(id))
       const unsubscribe = onValue(valueRef, (snapshot) => {
         const value = snapshot.val()
