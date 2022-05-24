@@ -2,7 +2,7 @@ import { FC, useState } from "react"
 import { useAsync } from "react-use"
 import { BracketScore } from "../../libs/const"
 import { BracketBox } from "../../components/obs/bracket/BracketBox"
-import { useLoadBracket } from "../../hooks/bracketHook"
+import { useLoadBracket } from "../../hooks/useLoadBracket"
 import { useRouter } from "next/router"
 
 const query = `

@@ -22,6 +22,7 @@
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.4",
     "@types/react-transition-group": "^4.4.4",
+    "autoprefixer": "^10.4.7",
     "crypto-random-string": "^5.0.0",
     "eslint": "8.16.0",
     "eslint-config-next": "12.1.6",
@@ -32,6 +33,7 @@
     "next-i18next": "^11.0.0",
     "next-seo": "^5.4.0",
     "obs-websocket-js": "^5.0.0-beta.1",
+    "postcss": "^8.4.14",
     "prettier": "^2.6.2",
     "react-hook-form": "^7.31.2",
     "react-transition-group": "^4.4.2",
@@ -42,6 +44,7 @@
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-config-standard-scss": "^3.0.0",
+    "tailwindcss": "^0.0.0-insiders.50024e4",
     "typescript": "4.6.4"
   },
   "nextBundleAnalysis": {

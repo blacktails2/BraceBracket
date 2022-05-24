@@ -23,22 +23,22 @@ export const Single: FC<{ setting: Setting; score: Score }> = ({
         />
       </div>
       {/* 1Pスコア */}
-      <p className={styles.single_numberleft}>{score.p1_score}</p>
+      <p className={styles.single_numberleft}>{score.p1.score}</p>
       {/* 2Pスコア */}
-      <p className={styles.single_numberright}>{score.p2_score}</p>
+      <p className={styles.single_numberright}>{score.p2.score}</p>
       <p className={[styles.single_player, styles.single_playerleft].join(" ")}>
-        <span className={styles.single_teamleft}>{score.p1_team}</span>
-        <span className={styles.single_nameleft}>{score.p1_player_name}</span>
+        <span className={styles.single_teamleft}>{score.p1.team}</span>
+        <span className={styles.single_nameleft}>{score.p1.playerName}</span>
       </p>
       <p
         className={[styles.single_player, styles.single_playerright].join(" ")}
       >
-        <span className={styles.single_teamright}>{score.p2_team}</span>
-        <span className={styles.single_nameright}>{score.p2_player_name}</span>
+        <span className={styles.single_teamright}>{score.p2.team}</span>
+        <span className={styles.single_nameright}>{score.p2.playerName}</span>
       </p>
       <div className={styles.single_prbox}>
         <p className={styles.single_prtextleft}>{score.round}</p>
-        <p className={styles.single_prtextright}>{score.match_type}</p>
+        <p className={styles.single_prtextright}>{score.matchType}</p>
       </div>
     </div>
   )

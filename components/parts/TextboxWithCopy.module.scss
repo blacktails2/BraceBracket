@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  position: relative;
+}
+
+.text {
+  height: 30px;
+  width: 100%;
+  border: 1px solid var(--light-primary);
+  padding: 5px 10px;
+  border-radius: 5px 0 0 5px;
+  border-right: none;
+}
+
+.button {
+  position: relative;
+  height: 30px;
+  width: 48px;
+  left: -5px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--bb-beige);
+  color: var(--bb-black);
+}

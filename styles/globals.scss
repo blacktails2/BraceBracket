@@ -1,8 +1,20 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable */
+
 :root {
   --black: #202025;
   --gray: #c4c4c4;
   --white: #fff;
   --primary: #ccb280;
+  --light-primary: #eedfc2;
+  --bb-black: #202025;
+  --bb-beige: #ccb280;
+  --bb-gray: #86868f;
+  --bb-light: #eee;
+  --bb-white: #fff;
 }
 
 html,
@@ -38,10 +50,6 @@ h3 {
 
 h4 {
   font-size: 1.25rem;
-}
-
-hr {
-  background-color: var(--gray);
 }
 
 .board {

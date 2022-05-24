@@ -15,8 +15,9 @@ import { ref } from "firebase/database"
 import { db } from "../libs/firebase"
 import { set } from "@firebase/database"
 import { useRouter } from "next/router"
-import { useSetting } from "../hooks/settingHook"
+import { useSetting } from "../hooks/useSetting"
 import { useEffect, useMemo } from "react"
+import { IntegrateStartGG } from "../components/create/settingForms/IntegrateStartGG"
 
 const Create: NextPageWithLayout = () => {
   const router = useRouter()
@@ -69,6 +70,9 @@ const Create: NextPageWithLayout = () => {
             <UseLogo />
             <SelectLogo />
             <DropShadow />
+            <hr />
+            <h3>トーナメント管理ツール連携</h3>
+            <IntegrateStartGG />
             <Button type="submit">{submitText}</Button>
           </div>
           <div>

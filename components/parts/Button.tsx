@@ -5,10 +5,19 @@ export const Button: FC<{
   children?: ReactNode
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   type?: "button" | "submit" | "reset"
-}> = ({ children, onClick, type }) => {
+  className?: string
+  full?: boolean
+}> = ({ children, onClick, type, className, full }) => {
   return (
-    <button className={styles.button} onClick={onClick} type={type}>
-      {children}
-    </button>
+    <div className={className}>
+      <button
+        className={styles.button}
+        onClick={onClick}
+        type={type}
+        style={full ? { width: "100%" } : undefined}
+      >
+        {children}
+      </button>
+    </div>
   )
 }

@@ -1,0 +1,30 @@
+.container {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: flex-start;
+
+  div {
+    margin-right: 15px;
+  }
+
+  .text {
+    width: 100%;
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+
+    p {
+      margin: 0 0 10px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      max-width: 700px;
+      height: 30px;
+      border: 1px solid var(--light-primary);
+      border-radius: 5px;
+    }
+  }
+}
