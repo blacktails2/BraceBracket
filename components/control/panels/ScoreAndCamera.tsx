@@ -99,6 +99,7 @@ export const ScoreAndCamera: FC = () => {
                           "p2.twitterID",
                           stream.p2?.twitterID ?? ""
                         )
+                        scoreForm.setValue("round", stream.fullRoundText)
                       }}
                     />
                   </td>
@@ -190,7 +191,22 @@ export const ScoreAndCamera: FC = () => {
               <SelectForm
                 label="ラウンド"
                 name="round"
-                options={[{ text: "Pools", value: "Pools" }]}
+                options={[
+                  { text: "Pools", value: "Pools" },
+                  {
+                    text: "Losers Quarter-Final",
+                    value: "Losers Quarter-Final",
+                  },
+                  { text: "Losers Semi-Final", value: "Losers Semi-Final" },
+                  { text: "Losers Final", value: "Losers Final" },
+                  {
+                    text: "Winners Quarter-Final",
+                    value: "Winners Quarter-Final",
+                  },
+                  { text: "Winners Semi-Final", value: "Winners Semi-Final" },
+                  { text: "Winners Final", value: "Winners Final" },
+                  { text: "Grand Final", value: "Grand Final" },
+                ]}
               />
               <SelectForm
                 label="試合形式"
