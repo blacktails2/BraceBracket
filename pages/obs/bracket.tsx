@@ -4,6 +4,7 @@ import { BracketScore } from "../../libs/const"
 import { BracketBox } from "../../components/obs/bracket/BracketBox"
 import { useLoadBracket } from "../../hooks/useLoadBracket"
 import { useRouter } from "next/router"
+import { getNameAndTeamtag } from "../../libs/utils"
 
 const query = `
 query PhaseGroupSets($phaseGroupId: ID!) {
@@ -172,7 +173,7 @@ export const Bracket: FC = () => {
       if (!rounds.includes(n.fullRoundText)) return
       const key = rounds2Key[n.fullRoundText]
       const players = n.slots.map((s) => {
-        const [team, name] = s.entrant.name.split(" | ")
+        const { team, name } = getNameAndTeamtag(s.entrant.name)
         return {
           team: name ? team : "",
           name: name ? name : team,
