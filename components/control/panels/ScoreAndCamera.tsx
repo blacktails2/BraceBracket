@@ -211,7 +211,10 @@ export const ScoreAndCamera: FC = () => {
               <SelectForm
                 label="試合形式"
                 name="matchType"
-                options={[{ text: "Best of 5", value: "Best of 5" }]}
+                options={[
+                  { text: "Best of 3", value: "Best of 3" },
+                  { text: "Best of 5", value: "Best of 5" },
+                ]}
               />
             </div>
             <CheckBoxForm
