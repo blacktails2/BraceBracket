@@ -1,12 +1,12 @@
 import { FC } from "react"
 import styles from "./IntegrateStartGG.module.scss"
 import { BigCheckBox } from "../parts/BigCheckBox"
-import { useForm } from "react-hook-form"
+import { useFormContext } from "react-hook-form"
 
 export const IntegrateStartGG: FC = () => {
-  const { register } = useForm()
-  const key = "scoreboard.integrateStartGG.enabled"
-  const textKey = "scoreboard.integrateStartGG.url"
+  const { register } = useFormContext()
+  const key = "integrateStartGG.enabled"
+  const textKey = "integrateStartGG.url"
   return (
     <div className={styles.container}>
       <BigCheckBox id={key} name={key} />

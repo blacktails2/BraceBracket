@@ -100,6 +100,10 @@ export type Setting = {
       dropShadow: "none" | "light" | "dark"
     }
   }
+  integrateStartGG: {
+    enabled: boolean
+    url: string
+  }
 }
 
 export type PlayerScore = {
