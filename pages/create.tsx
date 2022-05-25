@@ -2,7 +2,7 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 import { NextPageWithLayout, Setting } from "../libs/const"
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import styles from "./create.module.scss"
-import { Button } from "../components/parts/Button"
+import { PrimaryButton } from "../components/parts/PrimaryButton"
 import { MockImg } from "../components/parts/MockImg"
 import { Layout } from "../components/create/settingForms/Layout"
 import { Color } from "../components/create/settingForms/Color"
@@ -81,7 +81,7 @@ const Create: NextPageWithLayout = () => {
             <hr />
             <h3>トーナメント管理ツール連携</h3>
             <IntegrateStartGG />
-            <Button type="submit">{submitText}</Button>
+            <PrimaryButton type="submit">{submitText}</PrimaryButton>
           </div>
           <div>
             <div className={styles.previewContainer}>
@@ -98,7 +98,7 @@ const Create: NextPageWithLayout = () => {
                 <div className={styles.previewImageContainer}>
                   <MockImg width={340} height={190} />
                 </div>
-                <Button type="submit">{submitText}</Button>
+                <PrimaryButton type="submit">{submitText}</PrimaryButton>
               </div>
             </div>
           </div>

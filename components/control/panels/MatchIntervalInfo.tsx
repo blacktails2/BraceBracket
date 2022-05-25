@@ -2,7 +2,7 @@ import { FC, useEffect } from "react"
 import { ControlPanel } from "../parts/ControlPanel"
 import { useOrigin } from "../../../hooks/useOrigin"
 import { useRouter } from "next/router"
-import { Button } from "../../parts/Button"
+import { PrimaryButton } from "../../parts/PrimaryButton"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 import { useMatchIntervalInfo } from "../../../hooks/useMatchIntervalInfo"
@@ -35,9 +35,9 @@ export const MatchIntervalInfo: FC = () => {
       <FormProvider {...form}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <hr />
-          <Button type="submit" className="w-full">
+          <PrimaryButton type="submit" className="w-full">
             start.ggから配信台の情報を取得
-          </Button>
+          </PrimaryButton>
           <CheckBoxForm
             label="現在の試合状況を表示する"
             name="autoUpdate"
@@ -82,9 +82,9 @@ export const MatchIntervalInfo: FC = () => {
               </div>
             </div>
           </div>
-          <Button type="submit" className="w-[194px] mt-[30px]" full>
+          <PrimaryButton type="submit" className="w-[194px] mt-[30px]" full>
             適用する
-          </Button>
+          </PrimaryButton>
         </form>
       </FormProvider>
     </ControlPanel>

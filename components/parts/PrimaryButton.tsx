@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react"
-import styles from "./Button.module.scss"
+import styles from "./PrimaryButton.module.scss"
 
-export const Button: FC<{
+export const PrimaryButton: FC<{
   children?: ReactNode
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   type?: "button" | "submit" | "reset"
