@@ -7,12 +7,13 @@ export const Dual: FC<{ setting: Setting; score: Score }> = ({
   setting,
   score,
 }) => {
+  const { layout, color } = setting.scoreboard.design
   return (
-    <div className={setting.scoreboard.design.color}>
+    <div className={color}>
       {/*スコアボードのデザインの画像*/}
       <img
         className={styles.board}
-        src={`/image/scoreboards/${setting.scoreboard.design.color}.png`}
+        src={`/image/scoreboards/${layout}/${layout}_${color}.png`}
         alt=""
       />
       <div className={styles.dual_logobox}>

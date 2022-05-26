@@ -11,81 +11,60 @@ export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-export const ScoreboardLayouts = ["Dual", "Single", "Solid", "Simple"]
+export const ScoreboardLayouts = ["dual", "single", "solid", "simple"]
+
 export type ScoreboardLayout = typeof ScoreboardLayouts[number]
 
 export const ScoreboardColorsMap: {
-  [string: ScoreboardLayout]: { label: string; filename: string }[]
+  [string: ScoreboardLayout]: string[]
 } = {
-  Dual: [
-    {
-      label: "Dark / Color",
-      filename: "01-dual_white_black_color",
-    },
-    {
-      label: "Dark / Mono",
-      filename: "02-dual_white_black_mono",
-    },
-    {
-      label: "Light / Color",
-      filename: "03-dual_black_white_color",
-    },
-    {
-      label: "Light / Mono",
-      filename: "04-dual_white__black_mono",
-    },
-    {
-      label: "Gradient",
-      filename: "05-dual_white_white_mono",
-    },
-  ],
-  Single: [
-    {
-      label: "Dark / Color",
-      filename: "06-single_white_black_color",
-    },
-    {
-      label: "Dark / Mono",
-      filename: "07-single_white_black_mono",
-    },
-    {
-      label: "Light / Color",
-      filename: "08-single_black_white_color",
-    },
-    {
-      label: "Light / Mono",
-      filename: "09-single_black_white_mono",
-    },
-    {
-      label: "Beige",
-      filename: "12-single_black_white_beige",
-    },
-  ],
-  Solid: [
-    {
-      label: "Dark / Color",
-      filename: "13-solid_white_black_color",
-    },
-    {
-      label: "Dark / Mono",
-      filename: "14-solid_white_white_mono",
-    },
-    {
-      label: "Light / Color",
-      filename: "15-solid_black_white_color",
-    },
-    {
-      label: "Light / Mono",
-      filename: "16-solid_black_black_mono",
-    },
-    {
-      label: "Beige",
-      filename: "17-solid_black_white_beige",
-    },
-  ],
+  dual: ["dark_color", "dark_mono", "light_color", "light_mono", "gradient"],
+  single: ["dark_color", "dark_mono", "light_color", "light_mono", "beige"],
+  solid: ["dark_color", "dark_mono", "light_color", "light_mono", "beige"],
+  simple: ["white", "black"],
 }
 export type ScoreboardColor =
-  typeof ScoreboardColorsMap[ScoreboardLayout][number]["label"]
+  typeof ScoreboardColorsMap[ScoreboardLayout][number]
+
+export const getCameraFilename: (
+  layout: ScoreboardLayout,
+  color: ScoreboardColor
+) => string = (layout, color) => {
+  if (layout === "simple") {
+    return `simple_camera_${color}.png`
+  }
+  return `camera_black.png`
+}
+
+export const getMCFilename: (
+  layout: ScoreboardLayout,
+  color: ScoreboardColor
+) => string = (layout, color, count = 2) => {
+  if (layout === "simple") {
+    return `MC_simple_${count}_${color}.png`
+  }
+  return `MC_${count}_${color.startsWith("light") ? "light" : "dark"}.png`
+}
+
+export const getNextFilename: (
+  layout: ScoreboardLayout,
+  color: ScoreboardColor
+) => string = (layout, color) => {
+  if (layout === "simple") {
+    return `upnext_simple_${color}.png`
+  }
+  return `upnext_${color.startsWith("light") ? "light" : "dark"}.png`
+}
+
+export const getBracketFilename: (
+  layout: ScoreboardLayout,
+  color: ScoreboardColor
+) => string = (layout, color, count = 2) => {
+  if (layout === "simple") {
+    return `brackets_simple.png`
+  }
+  return `brackets.png`
+}
 
 export type Setting = {
   createdAt: number | ReturnType<typeof serverTimestamp>

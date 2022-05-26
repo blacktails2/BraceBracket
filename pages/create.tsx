@@ -3,7 +3,6 @@ import { NextPageWithLayout, Setting } from "../libs/const"
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import styles from "./create.module.scss"
 import { PrimaryButton } from "../components/parts/PrimaryButton"
-import { MockImg } from "../components/parts/MockImg"
 import { Layout } from "../components/create/settingForms/Layout"
 import { Color } from "../components/create/settingForms/Color"
 import { DisplayCameraAndTwitterID } from "../components/create/settingForms/DisplayCameraAndTwitterID"
@@ -18,6 +17,7 @@ import { useRouter } from "next/router"
 import { useSetting } from "../hooks/useSetting"
 import { useEffect, useMemo } from "react"
 import { IntegrateStartGG } from "../components/create/settingForms/IntegrateStartGG"
+import { Preview } from "../components/create/parts/Preview"
 
 const Create: NextPageWithLayout = () => {
   const router = useRouter()
@@ -84,23 +84,7 @@ const Create: NextPageWithLayout = () => {
             <PrimaryButton type="submit">{submitText}</PrimaryButton>
           </div>
           <div>
-            <div className={styles.previewContainer}>
-              <div>
-                <div className={styles.previewImageContainer}>
-                  <MockImg width={340} height={190} />
-                </div>
-                <div className={styles.previewImageContainer}>
-                  <MockImg width={340} height={190} />
-                </div>
-                <div className={styles.previewImageContainer}>
-                  <MockImg width={340} height={190} />
-                </div>
-                <div className={styles.previewImageContainer}>
-                  <MockImg width={340} height={190} />
-                </div>
-                <PrimaryButton type="submit">{submitText}</PrimaryButton>
-              </div>
-            </div>
+            <Preview />
           </div>
         </FormProvider>
       </div>
