@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useEffect } from "react"
 import { DesignRadioButton } from "../parts/DesignRadioButton"
 import { Controller, useFormContext } from "react-hook-form"
 import { ScoreboardColorsMap } from "../../../libs/const"
@@ -11,14 +11,24 @@ const color2Label = (color: string) => {
 }
 
 export const Color: FC<{ selectedLayout: string }> = ({ selectedLayout }) => {
-  const { control } = useFormContext()
+  const key = "scoreboard.design.color"
+  const { control, setValue, getValues } = useFormContext()
+  useEffect(() => {
+    if (!getValues(key)) return
+    setValue(
+      key,
+      ScoreboardColorsMap[selectedLayout]
+        ? ScoreboardColorsMap[selectedLayout][0]
+        : getValues(key)
+    )
+  }, [selectedLayout, setValue, getValues])
   return (
     <div className={styles.form}>
       <h4>カラー</h4>
       <div className={styles.colorList}>
         <Controller
           control={control}
-          name="scoreboard.design.color"
+          name={key}
           render={({ field }) => {
             return (
               <>
