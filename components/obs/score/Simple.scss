@@ -1,0 +1,179 @@
+@import "./base";
+
+// スコアの設定
+@mixin score {
+  @include midWeight;
+
+  margin: 0;
+  width: 50px;
+  color: var(--score-color);
+  text-align: center;
+  font-size: 42px;
+  position: fixed;
+  font-variant-numeric: tabular-nums;
+}
+
+@mixin player {
+  margin: 0;
+  width: 500px;
+  height: 50px;
+  position: fixed;
+  top: 59px;
+}
+
+// チーム名及びプレイヤー名の設定
+@mixin team {
+  color: var(--player-color);
+  font-size: 34px;
+  letter-spacing: 1px;
+  line-height: 34px;
+  @include regularWeight;
+}
+
+@mixin name {
+  color: var(--player-color);
+  font-size: 34px;
+  line-height: 34px;
+  letter-spacing: 1px;
+  @include boldWeight;
+}
+
+// 試合ステータス（Winners Semis, Best of 3など）の設定
+@mixin status {
+  @include midWeight;
+
+  color: var(--status-color);
+  font-size: 21px;
+  line-height: 21px;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.simple {
+  // スコアの位置指定
+  .p1Score,
+  .p2Score {
+    @include score;
+
+    top: 45px;
+  }
+
+  .p1Score {
+    left: 905px;
+  }
+
+  .p2Score {
+    right: 905px;
+  }
+
+  .player1Name,
+  .player2Name {
+    @include player;
+  }
+
+  .player1Name {
+    left: 390px;
+    text-align: right;
+  }
+
+  .player2Name {
+    right: 390px;
+    text-align-last: left;
+  }
+
+  .p1PlayerName,
+  .p2PlayerName {
+    @include name;
+
+    margin-left: 10px;
+  }
+
+  .p1Team,
+  .p2Team {
+    @include team;
+  }
+
+  @mixin boText {
+    @include regularWeight;
+
+    color: var(--status-color);
+    font-size: 21px;
+    line-height: 21px;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+
+  .box {
+    width: 600px;
+    height: 25px;
+    position: fixed;
+    text-align: center;
+    color: var(--status-color);
+    top: 19px;
+    left: 660px;
+    display: flex;
+    justify-content: center;
+  }
+
+  // 試合ステータスの位置設定
+  .round {
+    @include status;
+
+    margin-right: 3px;
+
+    &::after {
+      content: "—";
+    }
+  }
+
+  .matchType {
+    @include boText;
+  }
+
+  // 選手IDの位置設定
+  @mixin idText {
+    @include boldWeight;
+
+    width: 320px;
+    height: 22px;
+    margin: 0;
+    color: var(--player-color);
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 1px;
+    position: fixed;
+  }
+
+  .cameraLeft {
+    @include idText;
+
+    text-align: left;
+    left: 26px;
+    top: 859px;
+  }
+
+  .cameraRight {
+    @include idText;
+
+    text-align: right;
+    right: 26px;
+    top: 859px;
+  }
+
+  .logobox {
+    height: 160px;
+    width: 280px;
+    position: fixed;
+    left: 820px;
+    top: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    max-height: 100%;
+    max-width: 100%;
+    filter: drop-shadow(0 0 4px rgb(0 0 0 / 30%));
+  }
+}

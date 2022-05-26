@@ -1,0 +1,149 @@
+@import "./base";
+
+// スコアの設定
+@mixin score {
+  @include boldWeight;
+
+  margin: 0;
+  width: 75px;
+  color: var(--score-color);
+  text-align: center;
+  font-size: 54px;
+  position: fixed;
+  top: 44px;
+}
+
+@mixin player {
+  margin: 0 0 0 10px;
+  position: fixed;
+  text-align: center;
+  width: 410px;
+  height: 50px;
+  top: 62px;
+}
+
+// チーム名及びプレイヤー名の設定
+@mixin team {
+  color: var(--player-color);
+  text-align: center;
+  font-size: 23px;
+  letter-spacing: 1px;
+  line-height: 23px;
+  @include regularWeight;
+}
+
+@mixin name {
+  color: var(--player-color);
+  text-align: center;
+  font-size: 23px;
+  line-height: 23px;
+  letter-spacing: 1px;
+  @include boldWeight;
+}
+
+// 試合ステータス（Winners Semis, Best of 3など）の設定
+@mixin status {
+  @include boldWeight;
+
+  width: 410px;
+  margin: 0;
+  color: var(--status-color);
+  text-align: center;
+  font-size: 17px;
+  position: fixed;
+  font-style: italic;
+  letter-spacing: 2px;
+  top: 99px;
+}
+
+.dual {
+  // スコアの位置指定
+  .p1Score {
+    @include score;
+
+    left: 365px;
+  }
+
+  .p2Score {
+    @include score;
+
+    right: 365px;
+  }
+
+  .p1Team,
+  .p2Team {
+    @include team;
+  }
+
+  .player1Name {
+    @include player;
+
+    left: 460px;
+  }
+
+  .player2Name {
+    @include player;
+
+    right: 460px;
+  }
+
+  .p1PlayerName,
+  .p2PlayerName {
+    @include name;
+
+    margin-left: 10px;
+  }
+
+  // 試合ステータスの位置設定
+  .round {
+    @include status;
+
+    left: 465px;
+  }
+
+  .matchType {
+    @include status;
+
+    right: 465px;
+  }
+
+  .tournamentNameBox {
+    width: 180px;
+    height: 50px;
+    position: fixed;
+    left: 870px;
+    top: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .tournamentName {
+    @include regularWeight;
+
+    color: var(--player-color);
+    text-align: center;
+    font-size: 17px;
+    line-height: 19px;
+    letter-spacing: 2px;
+    white-space: pre;
+  }
+
+  // 大会ロゴの設定
+  .logobox {
+    height: 120px;
+    width: 220px;
+    position: fixed;
+    left: 850px;
+    top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    max-height: 100%;
+    max-width: 100%;
+    filter: drop-shadow(0 0 4px rgb(0 0 0 / 30%));
+  }
+}
