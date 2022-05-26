@@ -112,6 +112,11 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
                     display: setting.scoreboard.cameraAndLogo.useLogo
                       ? ""
                       : "none",
+                    filter: {
+                      none: "",
+                      light: "drop-shadow(0 0 6px rgb(255 255 255 / 70%))",
+                      dark: "drop-shadow(0 0 4px rgb(0 0 0 / 30%))",
+                    }[setting.scoreboard.cameraAndLogo.dropShadow],
                   }}
                 />
               </CSSTransition>
