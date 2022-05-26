@@ -24,10 +24,15 @@ export const ScoreAndCamera: FC = () => {
   const [setting] = useSetting(id)
   const [streamQueue, setStreamQueue] = useState<StreamQueue>([])
   const [attendee, setAttendee] = useState<Attendee>([])
+  const [showTooltip, setShowTooltip] = useState(false)
   const scoreForm = useForm<Score>()
   const { handleSubmit, reset } = scoreForm
   const onScoreSubmit: SubmitHandler<Score> = (data) => {
     setScore(data)
+    setShowTooltip(true)
+    setTimeout(() => {
+      setShowTooltip(false)
+    }, 3000)
   }
   useEffect(() => {
     reset(score)
@@ -223,9 +228,17 @@ export const ScoreAndCamera: FC = () => {
               name="uppercase"
             />
           </div>
-          <PrimaryButton type="submit" className="w-[194px] mt-[30px]" full>
-            適用する
-          </PrimaryButton>
+          <div className="relative flex">
+            <PrimaryButton type="submit" className="w-[194px] mt-[30px]" full>
+              適用する
+            </PrimaryButton>
+            <div
+              className={styles.popup}
+              style={{ display: showTooltip ? "block" : "none" }}
+            >
+              適用されました
+            </div>
+          </div>
         </form>
       </FormProvider>
     </ControlPanel>
