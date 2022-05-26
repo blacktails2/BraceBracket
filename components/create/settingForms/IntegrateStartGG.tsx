@@ -9,7 +9,7 @@ export const IntegrateStartGG: FC = () => {
   const textKey = "integrateStartGG.url"
   return (
     <div className={styles.container}>
-      <BigCheckBox id={key} name={key} />
+      <BigCheckBox name={key} className="mr-[15px]" />
       <div className={styles.text}>
         <label htmlFor={key}>
           <h4>start.ggと連携する</h4>

@@ -13,6 +13,7 @@ const defaultValue: Setting = {
       displayCameraAndTwitterID: false,
       useLogo: false,
       dropShadow: "none",
+      logoURLs: [],
     },
   },
   integrateStartGG: {

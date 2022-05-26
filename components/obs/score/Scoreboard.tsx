@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 import {
   getCameraFilename,
   Score,
@@ -8,6 +8,7 @@ import {
 } from "../../../libs/const"
 import styles from "./Score.module.scss"
 import { CSSTransition, SwitchTransition } from "react-transition-group"
+import { useInterval } from "react-use"
 
 const getLayoutClass = (layout: ScoreboardLayout) => {
   switch (layout) {
@@ -52,12 +53,27 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
   score,
 }) => {
   const { layout, color } = setting.scoreboard.design
+  const [logoIdx, setLogoIdx] = useState(0)
+  useInterval(() => {
+    if (
+      setting.scoreboard.cameraAndLogo.useLogo &&
+      setting.scoreboard.cameraAndLogo.logoURLs.length > 0
+    ) {
+      setLogoIdx(
+        (logoIdx + 1) % setting.scoreboard.cameraAndLogo.logoURLs.length
+      )
+    }
+    setLogoIdx((logoIdx + 1) % setting.scoreboard.cameraAndLogo.logoURLs.length)
+  }, 5000)
 
   return (
     <div
       className={`${styles.container} ${getLayoutClass(layout)} ${getColorClass(
         color
       )}`}
+      style={{
+        textTransform: score.uppercase ? "uppercase" : "none",
+      }}
     >
       {/*スコアボードのデザインの画像*/}
       <img
@@ -78,14 +94,29 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
       )}
       <div className={styles.logobox}>
         {/* 大会ロゴ なしの場合はクラスにdisableを追加*/}
-        <img
-          src="/image/logo.png"
-          alt=""
-          className={styles.logo}
-          style={{
-            display: setting.scoreboard.cameraAndLogo.useLogo ? "" : "none",
-          }}
-        />
+        {setting.scoreboard.cameraAndLogo.useLogo &&
+          setting.scoreboard.cameraAndLogo.logoURLs.length > 0 && (
+            <SwitchTransition mode="out-in">
+              <CSSTransition
+                key={setting.scoreboard.cameraAndLogo.logoURLs[logoIdx]}
+                addEndListener={(node: HTMLElement, done: () => void) => {
+                  node.addEventListener("transitionend", done, false)
+                }}
+                classNames="fade"
+              >
+                <img
+                  src={setting.scoreboard.cameraAndLogo.logoURLs[logoIdx]}
+                  alt=""
+                  className={styles.logo}
+                  style={{
+                    display: setting.scoreboard.cameraAndLogo.useLogo
+                      ? ""
+                      : "none",
+                  }}
+                />
+              </CSSTransition>
+            </SwitchTransition>
+          )}
       </div>
       {/*1Pスコア*/}
       <div className={styles.p1Score}>{score.p1.score}</div>

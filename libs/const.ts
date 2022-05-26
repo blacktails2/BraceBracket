@@ -30,6 +30,9 @@ export const getCameraFilename: (
   layout: ScoreboardLayout,
   color: ScoreboardColor
 ) => string = (layout, color) => {
+  if (!layout || !color) {
+    return "camera_black.png"
+  }
   if (layout === "simple") {
     return `simple_camera_${color}.png`
   }
@@ -37,9 +40,12 @@ export const getCameraFilename: (
 }
 
 export const getMCFilename: (
-  layout: ScoreboardLayout,
-  color: ScoreboardColor
+  layout?: ScoreboardLayout,
+  color?: ScoreboardColor
 ) => string = (layout, color, count = 2) => {
+  if (!layout || !color) {
+    return "MC_dark_color.png"
+  }
   if (layout === "simple") {
     return `MC_simple_${count}_${color}.png`
   }
@@ -47,9 +53,12 @@ export const getMCFilename: (
 }
 
 export const getNextFilename: (
-  layout: ScoreboardLayout,
-  color: ScoreboardColor
+  layout?: ScoreboardLayout,
+  color?: ScoreboardColor
 ) => string = (layout, color) => {
+  if (!layout || !color) {
+    return "upnext_dark_color.png"
+  }
   if (layout === "simple") {
     return `upnext_simple_${color}.png`
   }
@@ -77,6 +86,7 @@ export type Setting = {
       displayCameraAndTwitterID: boolean
       useLogo: boolean
       dropShadow: "none" | "light" | "dark"
+      logoURLs: string[]
     }
   }
   integrateStartGG: {

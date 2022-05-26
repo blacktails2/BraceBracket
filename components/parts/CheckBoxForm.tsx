@@ -14,7 +14,7 @@ export const CheckBoxForm: FC<{
         <div className={styles.checkbox}>
           <input
             type="checkbox"
-            {...register("uppercase")}
+            {...register(name)}
             id={name}
             className={styles.input}
           />

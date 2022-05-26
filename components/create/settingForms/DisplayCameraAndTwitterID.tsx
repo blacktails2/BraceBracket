@@ -7,7 +7,7 @@ export const DisplayCameraAndTwitterID: FC = () => {
   const key = "scoreboard.cameraAndLogo.displayCameraAndTwitterID"
   return (
     <div className={styles.container}>
-      <BigCheckBox id={key} name={key} />
+      <BigCheckBox name={key} className="mr-[15px]" />
       <label htmlFor={key}>
         <h4>カメラ及び選手のTwitter IDを表示する</h4>
         <p>
