@@ -20,67 +20,67 @@ export const ScoreboardColorsMap: {
   Dual: [
     {
       label: "Dark / Color",
-      filename: "01-dual_white_black_color.png",
+      filename: "01-dual_white_black_color",
     },
     {
       label: "Dark / Mono",
-      filename: "02-dual_white_black_mono.png",
+      filename: "02-dual_white_black_mono",
     },
     {
       label: "Light / Color",
-      filename: "03-dual_black_white_color.png",
+      filename: "03-dual_black_white_color",
     },
     {
       label: "Light / Mono",
-      filename: "04-dual_white__black_mono.png",
+      filename: "04-dual_white__black_mono",
     },
     {
       label: "Gradient",
-      filename: "05-dual_white_white_mono.png",
+      filename: "05-dual_white_white_mono",
     },
   ],
   Single: [
     {
       label: "Dark / Color",
-      filename: "06-single_white_black_color.png",
+      filename: "06-single_white_black_color",
     },
     {
       label: "Dark / Mono",
-      filename: "07-single_white_black_mono.png",
+      filename: "07-single_white_black_mono",
     },
     {
       label: "Light / Color",
-      filename: "08-single_black_white_color.png",
+      filename: "08-single_black_white_color",
     },
     {
       label: "Light / Mono",
-      filename: "09-single_black_white_mono.png",
+      filename: "09-single_black_white_mono",
     },
     {
       label: "Beige",
-      filename: "12-single_black_white_beige.png",
+      filename: "12-single_black_white_beige",
     },
   ],
   Solid: [
     {
       label: "Dark / Color",
-      filename: "13-solid_white_black_color.png",
+      filename: "13-solid_white_black_color",
     },
     {
       label: "Dark / Mono",
-      filename: "14-solid_white_white_mono.png",
+      filename: "14-solid_white_white_mono",
     },
     {
       label: "Light / Color",
-      filename: "15-solid_black_white_color.png",
+      filename: "15-solid_black_white_color",
     },
     {
       label: "Light / Mono",
-      filename: "16-solid_black_black_mono.png",
+      filename: "16-solid_black_black_mono",
     },
     {
       label: "Beige",
-      filename: "17-solid_black_white_beige.png",
+      filename: "17-solid_black_white_beige",
     },
   ],
 }
