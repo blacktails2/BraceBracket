@@ -38,6 +38,19 @@ export const Preview: FC = () => {
       <div>
         <div className={styles.previewImageContainer}>
           <div className={styles.outer}>
+            {displayCameraAndTwitterID && (
+              <div className="absolute z-10">
+                <Image
+                  src={`/image/create/samples/camera/${getCameraFilename(
+                    layout,
+                    color
+                  )}`}
+                  width={340}
+                  height={190}
+                  alt="カメラ"
+                />
+              </div>
+            )}
             <Image
               src={`/image/create/samples/layout/${layout}/${layout}_${color}.png`}
               width={340}
@@ -45,35 +58,27 @@ export const Preview: FC = () => {
               alt="スコアボードプレビュー"
             />
           </div>
-          {displayCameraAndTwitterID && (
-            <div className="absolute">
-              <Image
-                src={`/image/create/samples/camera/${getCameraFilename(
-                  layout,
-                  color
-                )}`}
-                width={340}
-                height={190}
-                alt="カメラ"
-              />
-            </div>
-          )}
         </div>
         <div className={styles.previewImageContainer}>
-          <Image
-            src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
-            width={340}
-            height={190}
-            alt="MCプレビュー"
-          />
-        </div>
-        <div className={styles.previewImageContainer}>
-          <Image
-            src={`/image/create/samples/next/${getNextFilename(layout, color)}`}
-            width={340}
-            height={190}
-            alt="Nextプレビュー"
-          />
+          <div className="absolute z-10">
+            <Image
+              src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
+              width={340}
+              height={190}
+              alt="MCプレビュー"
+            />
+          </div>
+          <div className={styles.outer}>
+            <Image
+              src={`/image/create/samples/next/${getNextFilename(
+                layout,
+                color
+              )}`}
+              width={340}
+              height={190}
+              alt="Nextプレビュー"
+            />
+          </div>
         </div>
         <div className={styles.previewImageContainer}>
           <Image
