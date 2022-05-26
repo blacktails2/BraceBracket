@@ -7,11 +7,11 @@ export const Single: FC<{ setting: Setting; score: Score }> = ({
   score,
 }) => {
   return (
-    <div className={setting.scoreboard.design.layout}>
+    <div className={setting.scoreboard.design.color}>
       {/* スコアボードのデザインの画像 */}
       <img
         className={styles.board}
-        src={`/image/scoreboards/${setting.scoreboard.design.color}`}
+        src={`/image/scoreboards/${setting.scoreboard.design.color}.png`}
         alt=""
       />
       {/*大会ロゴ なしの場合はクラスにdisableを追加 */}

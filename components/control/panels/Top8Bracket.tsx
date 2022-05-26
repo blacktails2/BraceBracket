@@ -2,7 +2,7 @@ import { FC } from "react"
 import { ControlPanel } from "../parts/ControlPanel"
 import { useOrigin } from "../../../hooks/useOrigin"
 import { useRouter } from "next/router"
-import { Button } from "../../parts/Button"
+import { PrimaryButton } from "../../parts/PrimaryButton"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { FormProvider, useForm } from "react-hook-form"
 import { useLoadBracket } from "../../../hooks/useLoadBracket"
@@ -22,15 +22,15 @@ export const Top8Bracket: FC = () => {
       <FormProvider {...bracketForm}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <hr />
-          <Button type="submit">start.ggから情報を取得</Button>
+          <PrimaryButton type="submit">start.ggから情報を取得</PrimaryButton>
           <CheckBoxForm
             label="自動で情報を更新"
             name="autoUpdate"
             className="mt-[10px]"
           />
-          <Button type="submit" className="mt-[30px] w-[194px]" full>
+          <PrimaryButton type="submit" className="mt-[30px] w-[194px]" full>
             適用する
-          </Button>
+          </PrimaryButton>
         </form>
       </FormProvider>
     </ControlPanel>

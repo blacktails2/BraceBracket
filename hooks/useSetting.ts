@@ -15,6 +15,10 @@ const defaultValue: Setting = {
       dropShadow: "none",
     },
   },
+  integrateStartGG: {
+    enabled: false,
+    url: "",
+  },
 }
 
 export const useSetting = genUseDatabaseValue<Setting>(

@@ -6,3 +6,12 @@ export const sha1 = async (str: string) => {
     .map((x) => ("00" + x.toString(16)).slice(-2))
     .join("")
 }
+
+export const getNameAndTeamtag = (str?: string) => {
+  if (!str) return { team: "", name: "" }
+  const [team, name] = str.split(" | ")
+  return {
+    team: name ? team : "",
+    name: name ? name : team,
+  }
+}

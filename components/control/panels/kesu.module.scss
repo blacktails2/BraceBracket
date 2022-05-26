@@ -1,0 +1,17 @@
+.table {
+  border-bottom: 1px solid var(--bb-beige);
+
+  th {
+    text-align: left;
+    border-bottom: 1px solid var(--bb-beige);
+  }
+
+  th,
+  td {
+    padding: 5px 10px;
+  }
+
+  td:nth-child(1) {
+    width: 20px;
+  }
+}

@@ -7,7 +7,8 @@ export const TextForm: FC<{
   name: string
   placeholder: string
   className?: string
-}> = ({ label, name, placeholder, className }) => {
+  autocomplete?: string
+}> = ({ label, name, placeholder, className, autocomplete }) => {
   const { register } = useFormContext()
   return (
     <div className={className}>
@@ -20,6 +21,8 @@ export const TextForm: FC<{
         placeholder={placeholder}
         className={styles.input}
         id={name}
+        autoComplete={autocomplete ? "on" : "off"}
+        list={autocomplete}
       />
     </div>
   )

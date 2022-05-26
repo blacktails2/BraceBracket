@@ -4,7 +4,7 @@ import { useOrigin } from "../../../hooks/useOrigin"
 import { useRouter } from "next/router"
 import { TextForm } from "../../parts/TextForm"
 import { FormProvider, useForm } from "react-hook-form"
-import { Button } from "../../parts/Button"
+import { PrimaryButton } from "../../parts/PrimaryButton"
 
 export const MC: FC = () => {
   const router = useRouter()
@@ -111,9 +111,9 @@ export const MC: FC = () => {
               </div>
             </div>
           </div>
-          <Button type="submit" className="mt-[30px] w-[194px]" full>
+          <PrimaryButton type="submit" className="mt-[30px] w-[194px]" full>
             適用する
-          </Button>
+          </PrimaryButton>
         </form>
       </FormProvider>
     </ControlPanel>
