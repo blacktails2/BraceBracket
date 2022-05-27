@@ -29,6 +29,7 @@
     "eslint-config-prettier": "^8.5.0",
     "firebase": "^9.8.1",
     "husky": ">=6",
+    "imgur": "^2.2.0",
     "lint-staged": ">=10",
     "next-i18next": "^11.0.0",
     "next-seo": "^5.4.0",

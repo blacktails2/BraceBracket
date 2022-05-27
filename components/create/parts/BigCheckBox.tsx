@@ -1,22 +1,25 @@
 import { useFormContext } from "react-hook-form"
 import styles from "./BigCheckBox.module.scss"
+import { FC } from "react"
 
-export function BigCheckBox<T extends string>({
-  id,
-  name,
-}: {
-  id: string
+export const BigCheckBox: FC<{
   name: string
-}) {
+  className?: string
+}> = ({ name, className }) => {
   const { register } = useFormContext()
   return (
-    <>
-      <div className={styles.bigCheckBox}>
-        <input type="checkbox" {...register(name)} id={id} />
-        <label htmlFor={id}>
-          <div></div>
-        </label>
+    <div className={className}>
+      <div className={styles.container}>
+        <div className={styles.checkbox}>
+          <input
+            type="checkbox"
+            {...register(name)}
+            id={name}
+            className={styles.input}
+          />
+          <label htmlFor={name} className={styles.dummyLabel}></label>
+        </div>
       </div>
-    </>
+    </div>
   )
 }

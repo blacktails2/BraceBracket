@@ -1,9 +1,10 @@
 import { FC } from "react"
 import styles from "./Layout.module.scss"
 import { DesignRadioButton } from "../parts/DesignRadioButton"
-import { MockImg } from "../../parts/MockImg"
 import { Controller, useFormContext } from "react-hook-form"
 import { ScoreboardLayouts } from "../../../libs/const"
+import { capitalize } from "../../../libs/utils"
+import Image from "next/image"
 
 export const Layout: FC = () => {
   const { control } = useFormContext()
@@ -21,8 +22,15 @@ export const Layout: FC = () => {
                   return (
                     <DesignRadioButton
                       key={layout}
-                      imageSrc={<MockImg width={274} height={80} />}
-                      label={`${layout} Layout`}
+                      imageSrc={
+                        <Image
+                          src={`/image/create/${layout}/${layout}_image.png`}
+                          width={274}
+                          height={80}
+                          alt={`${layout}_image.png`}
+                        />
+                      }
+                      label={`${capitalize(layout)} Layout`}
                       value={layout}
                       field={field}
                     />

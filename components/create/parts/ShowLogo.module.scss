@@ -1,0 +1,16 @@
+.container {
+  div {
+    height: 120px;
+    width: 142px;
+    margin-bottom: 10px;
+    background-color: #f2eadb;
+    border-radius: 5px;
+  }
+
+  button {
+    color: var(--white);
+    background-color: var(--black);
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+}

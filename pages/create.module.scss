@@ -27,25 +27,3 @@
     margin-bottom: 10px;
   }
 }
-
-.previewContainer {
-  background-color: #202025;
-  padding: 130px 30px 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: sticky;
-  top: 0;
-
-  .previewImageContainer {
-    &:nth-of-type(1) {
-      padding-top: 0;
-    }
-
-    padding: 15px 0;
-  }
-
-  button {
-    width: 100%;
-  }
-}

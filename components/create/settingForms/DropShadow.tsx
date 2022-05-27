@@ -1,7 +1,7 @@
 import styles from "./DropShadow.module.scss"
 import { DesignRadioButton } from "../parts/DesignRadioButton"
 import { Controller, useFormContext } from "react-hook-form"
-import { MockImg } from "../../parts/MockImg"
+import Image from "next/image"
 
 export const DropShadow = () => {
   const { control } = useFormContext()
@@ -20,19 +20,65 @@ export const DropShadow = () => {
                   field={field}
                   label="シャドウなし"
                   value="none"
-                  imageSrc={<MockImg width={193} height={103} />}
+                  imageSrc={
+                    <div
+                      className="pt-[25px] pb-[25px] pl-[42px] pr-[42px]"
+                      style={{
+                        backgroundColor: "rgb(0 0 0 / 10%)",
+                      }}
+                    >
+                      <Image
+                        src="/image/symbol.svg"
+                        width={110}
+                        height={53}
+                        alt="symbol"
+                      />
+                    </div>
+                  }
                 />
                 <DesignRadioButton
                   field={field}
                   label="シャドウ（白）"
                   value="light"
-                  imageSrc={<MockImg width={193} height={103} />}
+                  imageSrc={
+                    <div
+                      className="pt-[25px] pb-[25px] pl-[42px] pr-[42px]"
+                      style={{
+                        backgroundColor: "rgb(0 0 0 / 40%)",
+                        filter: "drop-shadow(0 0 6px rgb(255 255 255 / 70%))",
+                      }}
+                    >
+                      <Image
+                        src="/image/symbol.svg"
+                        width={110}
+                        height={53}
+                        alt="symbol"
+                        className="fill-black"
+                      />
+                    </div>
+                  }
                 />
                 <DesignRadioButton
                   field={field}
                   label="シャドウ（黒）"
                   value="dark"
-                  imageSrc={<MockImg width={193} height={103} />}
+                  imageSrc={
+                    <div
+                      className="pt-[25px] pb-[25px] pl-[42px] pr-[42px]"
+                      style={{
+                        backgroundColor: "rgb(0 0 0 / 10%)",
+                        filter: "drop-shadow(0 0 4px rgb(0 0 0 / 30%))",
+                      }}
+                    >
+                      <Image
+                        src="/image/symbol.svg"
+                        width={110}
+                        height={53}
+                        alt="symbol"
+                        className="fill-black"
+                      />
+                    </div>
+                  }
                 />
               </>
             )

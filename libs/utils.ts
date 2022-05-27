@@ -15,3 +15,7 @@ export const getNameAndTeamtag = (str?: string) => {
     name: name ? name : team,
   }
 }
+
+export const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}

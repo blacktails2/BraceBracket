@@ -1,16 +1,36 @@
-.bigCheckBox {
-  input {
-    display: none;
+.container {
+  display: flex;
+  gap: 5px;
+  margin: 0;
+}
 
-    & + label>div {
-      margin: 0;
-      width: 30px;
-      height: 30px;
-      background-image: url("https://placehold.jp/cccccc/ffffff/30x30.png");
-    }
+.dummyLabel {
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--light-primary);
+  border-radius: 5px;
+}
 
-    &:checked + label>div {
-      background-image: url("https://placehold.jp/00ff00/ffffff/30x30.png");
+.input {
+  display: none;
+
+  &:checked + .dummyLabel {
+    background-color: var(--bb-black);
+    border-color: var(--bb-black);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 20px;
+      border-right: 2px solid var(--bb-white);
+      border-bottom: 2px solid var(--bb-white);
+      top: 2px;
+      left: 10px;
+      transform: rotate(45deg);
     }
   }
 }

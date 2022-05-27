@@ -1,7 +1,7 @@
 import { FC } from "react"
 import styles from "./Header.module.scss"
 import Link from "next/link"
-import { MockImg } from "../parts/MockImg"
+import Image from "next/image"
 
 export const Header: FC = () => {
   return (
@@ -9,7 +9,12 @@ export const Header: FC = () => {
       <div>
         <nav className={styles.navbar}>
           <div className={styles.navbarRight}>
-            <MockImg width={292} height={30} text="BraceBracket" />
+            <Image
+              src="/image/logotype.svg"
+              width={292}
+              height={30}
+              alt="ロゴ"
+            />
           </div>
           <div className={styles.navbarLeft}>
             <div className={styles.headerLinkContainer}>

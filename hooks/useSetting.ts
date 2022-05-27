@@ -6,13 +6,14 @@ const defaultValue: Setting = {
   createdAt: serverTimestamp(),
   scoreboard: {
     design: {
-      layout: "Dual",
-      color: ScoreboardColorsMap["Dual"][0].filename,
+      layout: "dual",
+      color: ScoreboardColorsMap["dual"][0],
     },
     cameraAndLogo: {
       displayCameraAndTwitterID: false,
       useLogo: false,
       dropShadow: "none",
+      logoURLs: [],
     },
   },
   integrateStartGG: {
