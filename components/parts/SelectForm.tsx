@@ -13,13 +13,19 @@ export const SelectForm: FC<{
     <div className={className}>
       <label>{label}</label>
       <div className={styles.selectContainer}>
-        <select {...register(name)}>
+        <input
+          type="text"
+          {...register(name)}
+          list={name}
+          className={styles.input}
+        />
+        <datalist id={name}>
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.text}
             </option>
           ))}
-        </select>
+        </datalist>
       </div>
     </div>
   )
