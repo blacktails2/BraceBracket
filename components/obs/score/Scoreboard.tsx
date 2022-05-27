@@ -71,9 +71,6 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
       className={`${styles.container} ${getLayoutClass(layout)} ${getColorClass(
         color
       )}`}
-      style={{
-        textTransform: score.uppercase ? "uppercase" : "none",
-      }}
     >
       {/*スコアボードのデザインの画像*/}
       <img
@@ -88,8 +85,14 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
             src={`/image/camera/${getCameraFilename(layout, color)}`}
             alt=""
           />
-          <p className={styles.cameraLeft}>{score.p1.twitterID}</p>
-          <p className={styles.cameraRight}>{score.p2.twitterID}</p>
+          <p className={styles.cameraLeft}>
+            {score.p1.twitterID.startsWith("@") ? "" : "@"}
+            {score.p1.twitterID}
+          </p>
+          <p className={styles.cameraRight}>
+            {score.p2.twitterID.startsWith("@") ? "" : "@"}
+            {score.p2.twitterID}
+          </p>
         </div>
       )}
       <div className={styles.logobox}>
@@ -124,9 +127,29 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
           )}
       </div>
       {/*1Pスコア*/}
-      <div className={styles.p1Score}>{score.p1.score}</div>
+      <SwitchTransition mode="out-in">
+        <CSSTransition
+          key={`${score.p1.playerName}-${score.p1.score}`}
+          addEndListener={(node: HTMLElement, done: () => void) => {
+            node.addEventListener("transitionend", done, false)
+          }}
+          classNames="fade"
+        >
+          <div className={styles.p1Score}>{score.p1.score}</div>
+        </CSSTransition>
+      </SwitchTransition>
       {/*2Pスコア*/}
-      <div className={styles.p2Score}>{score.p2.score}</div>
+      <SwitchTransition mode="out-in">
+        <CSSTransition
+          key={`${score.p2.playerName}-${score.p2.score}`}
+          addEndListener={(node: HTMLElement, done: () => void) => {
+            node.addEventListener("transitionend", done, false)
+          }}
+          classNames="fade"
+        >
+          <div className={styles.p2Score}>{score.p2.score}</div>
+        </CSSTransition>
+      </SwitchTransition>
       <div className={styles.player1Name}>
         <SwitchTransition mode="out-in">
           <CSSTransition
@@ -164,8 +187,22 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
           case "dual":
             return (
               <>
-                <div className={styles.round}>{score.round}</div>
-                <div className={styles.matchType}>{score.matchType}</div>
+                <div
+                  className={styles.round}
+                  style={{
+                    textTransform: score.uppercase ? "uppercase" : "none",
+                  }}
+                >
+                  {score.round}
+                </div>
+                <div
+                  className={styles.matchType}
+                  style={{
+                    textTransform: score.uppercase ? "uppercase" : "none",
+                  }}
+                >
+                  {score.matchType}
+                </div>
                 <div className={styles.tournamentNameBox}>
                   <div className={styles.tournamentName}>
                     {score.tournamentName}
@@ -177,7 +214,12 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
           case "solid":
           case "simple":
             return (
-              <div className={styles.box}>
+              <div
+                className={styles.box}
+                style={{
+                  textTransform: score.uppercase ? "uppercase" : "none",
+                }}
+              >
                 <p className={styles.round}>{score.round}</p>
                 <p className={styles.matchType}>{score.matchType}</p>
               </div>
