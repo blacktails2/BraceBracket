@@ -11,12 +11,11 @@ import { TextboxWithCopy } from "../components/parts/TextboxWithCopy"
 import { ScoreAndCamera } from "../components/control/panels/ScoreAndCamera"
 import { useOrigin } from "../hooks/useOrigin"
 import { Top8Bracket } from "../components/control/panels/Top8Bracket"
-import { MatchIntervalInfo } from "../components/control/panels/MatchIntervalInfo"
+import { Next } from "../components/control/panels/Next"
 import { MC } from "../components/control/panels/MC"
 
 const Control: NextPageWithLayout = () => {
   const router = useRouter()
-  const id = router.query.id as string
   const origin = useOrigin()
   useEffect(() => {
     const params = new URLSearchParams(location.search)
@@ -24,29 +23,6 @@ const Control: NextPageWithLayout = () => {
       router.replace("/create")
     }
   }, [router])
-
-  const [loadBracket, requestLoad, loading] = useLoadBracket(id)
-  const loadBracketForm = useForm<{ phaseGroupId: number }>()
-  const onLoadBracketSubmit: SubmitHandler<{ phaseGroupId: number }> = ({
-    phaseGroupId,
-  }) => {
-    requestLoad(phaseGroupId)
-  }
-  useEffect(() => {
-    if (loading) return
-    loadBracketForm.reset({ phaseGroupId: loadBracket?.phaseGroupId })
-  }, [loading, loadBracketForm, loadBracket])
-
-  const [currentScene, setCurrentScene, sceneList] = useSceneChanger(id, false)
-  const sceneForm = useForm<{ currentScene: string }>()
-  const onSceneSubmit: SubmitHandler<{ currentScene: string }> = ({
-    currentScene,
-  }) => {
-    setCurrentScene(currentScene)
-  }
-  useEffect(() => {
-    sceneForm.setValue("currentScene", currentScene)
-  }, [sceneForm, currentScene])
 
   return (
     <div className={styles.container}>
@@ -69,87 +45,10 @@ const Control: NextPageWithLayout = () => {
       </div>
       <div className={styles.controlsContainer}>
         <ScoreAndCamera />
-        <MatchIntervalInfo />
+        <Next />
         <MC />
         <Top8Bracket />
       </div>
-    </div>
-  )
-
-  return (
-    <div className={styles.container}>
-      <div>
-        <Link
-          href={{
-            pathname: "/create",
-            query: {
-              id: id,
-            },
-          }}
-        >
-          設定に戻る
-        </Link>
-      </div>
-      <div>
-        <Link
-          href={{
-            pathname: "/obs/score",
-            query: {
-              id: id,
-            },
-          }}
-          passHref
-        >
-          <a target="_blank">Score OBS用ページ</a>
-        </Link>
-        <Link
-          href={{
-            pathname: "/obs/bracket",
-            query: {
-              id: id,
-            },
-          }}
-          passHref
-        >
-          <a target="_blank">Bracket OBS用ページ</a>
-        </Link>
-      </div>
-      <form onSubmit={loadBracketForm.handleSubmit(onLoadBracketSubmit)}>
-        Top8 読み込み
-        <input
-          type="text"
-          inputMode="decimal"
-          {...loadBracketForm.register("phaseGroupId")}
-        />
-        <button type="submit">読み込み</button>
-      </form>
-      <form onSubmit={sceneForm.handleSubmit(onSceneSubmit)}>
-        OBSのシーン切り替え
-        <Controller
-          control={sceneForm.control}
-          name="currentScene"
-          render={({ field }) => (
-            <>
-              {sceneList.map((scene) => {
-                return (
-                  <div key={scene}>
-                    <label>
-                      <input
-                        type="radio"
-                        {...field}
-                        value={scene}
-                        checked={field.value === scene}
-                      />
-                      {scene}
-                    </label>
-                  </div>
-                )
-              })}
-            </>
-          )}
-        />
-        <button type="submit">反映</button>
-      </form>
     </div>
   )
 }

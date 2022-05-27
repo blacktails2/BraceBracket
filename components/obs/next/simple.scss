@@ -1,0 +1,179 @@
+// フォントの設定
+$next_regular: "Satoshi", "Noto Sans JP", sans-serif;
+$next_bold: "Satoshi", "Noto Sans JP", sans-serif;
+$next_black: "Satoshi", "Noto Sans JP", sans-serif;
+
+.simple {
+  // フォントの太さの設定（ライトウェイト）
+  @mixin nextsp_regularWeight {
+    font-family: $next_regular;
+    font-variation-settings: "wght" 400;
+    font-weight: 400;
+  }
+
+  // フォントの太さの設定（ミディアムウェイト）
+  @mixin nextsp_mediumWeight {
+    font-family: $next_regular;
+    font-variation-settings: "wght" 500;
+    font-weight: 500;
+  }
+
+  @mixin nextsp_boldWeight {
+    font-family: $next_black;
+    font-variation-settings: "wght" 700;
+    font-weight: 700;
+  }
+
+  // フォントの太さの設定（ブラックウェイト）
+  @mixin nextsp_blackWeight {
+    font-family: $next_black;
+    font-variation-settings: "wght" 900;
+    font-weight: 900;
+  }
+
+  .nextnow {
+    @include nextsp_blackWeight;
+
+    width: 260px;
+    height: 95px;
+    font-size: 72px;
+    text-align: center;
+    color: var(--sub-color);
+    position: fixed;
+    left: 40px;
+    top: 875px;
+    letter-spacing: 0.05em;
+  }
+
+  .statusBox {
+    width: 320px;
+    height: 65px;
+    position: fixed;
+    left: 315px;
+    top: 884px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @mixin nextsp_statusText {
+    @include nextsp_boldWeight;
+
+    width: 320px;
+    margin: 0;
+    color: var(--sub-color);
+    text-align: left;
+    font-size: 26px;
+    line-height: 26px;
+    font-style: italic;
+    letter-spacing: 2px;
+  }
+
+  @mixin nextsp_boText {
+    @include nextsp_regularWeight;
+
+    width: 320px;
+    margin: 0;
+    color: var(--sub-color);
+    text-align: left;
+    font-size: 26px;
+    line-height: 26px;
+    font-style: italic;
+    letter-spacing: 2px;
+  }
+
+  .round {
+    @include nextsp_statusText;
+  }
+
+  .bo {
+    @include nextsp_boText;
+  }
+
+  // スコアの設定
+  @mixin nextsp_scoreText {
+    @include nextsp_boldWeight;
+
+    margin: 0;
+    width: 85px;
+    color: var(--sub-color);
+    text-align: center;
+    font-size: 60px;
+    position: fixed;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // スコアの位置指定
+  .scoreLeft {
+    @include nextsp_scoreText;
+
+    left: 450px;
+    top: 956px;
+  }
+
+  .scoreRight {
+    @include nextsp_scoreText;
+
+    left: 535px;
+    top: 956px;
+  }
+
+  // チーム名及びプレイヤー名の設定
+  @mixin nextsp_nameText {
+    color: var(--sub-color);
+    font-size: 34px;
+    line-height: 34px;
+    letter-spacing: 1px;
+    @include nextsp_blackWeight;
+  }
+
+  // プレイヤー名の位置指定
+  @mixin player {
+    @include nextsp_nameText;
+
+    margin: 0;
+    width: 400px;
+    height: 50px;
+    position: fixed;
+    top: 996px;
+  }
+
+  .playerLeft {
+    @include player;
+
+    left: 25px;
+    text-align: right;
+  }
+
+  .playerRight {
+    @include player;
+
+    left: 645px;
+    text-align: left;
+  }
+
+  .localsetting {
+    @include nextsp_mediumWeight;
+
+    text-align: right;
+    font-size: 24px;
+    line-height: 24px;
+    position: fixed;
+    color: var(--sub-color);
+    left: 1570px;
+    top: 975px;
+    letter-spacing: 1px;
+  }
+
+  .localtime {
+    @include nextsp_boldWeight;
+
+    font-size: 52px;
+    text-align: right;
+    color: var(--sub-color);
+    position: fixed;
+    right: 57px;
+    top: 960px;
+    font-variant-numeric: tabular-nums;
+  }
+}

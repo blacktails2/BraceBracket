@@ -9,8 +9,10 @@ import { useMatchIntervalInfo } from "../../../hooks/useMatchIntervalInfo"
 import { MatchIntervalInfo as FormType } from "../../../libs/const"
 import { TextForm } from "../../parts/TextForm"
 import { SelectForm } from "../../parts/SelectForm"
+import { Button } from "../../parts/Button"
+import { StreamQueueTable } from "../parts/StreamQueueTable"
 
-export const MatchIntervalInfo: FC = () => {
+export const Next: FC = () => {
   const router = useRouter()
   const id = router.query.id as string
   const origin = useOrigin()
@@ -28,19 +30,21 @@ export const MatchIntervalInfo: FC = () => {
   }, [loading, matchIntervalInfo, reset])
 
   return (
-    <ControlPanel
-      title="試合間情報"
-      url={`${origin}/obs/matchIntervalInfo?id=${id}`}
-    >
+    <ControlPanel title="試合間情報" url={`${origin}/obs/next/?id=${id}`}>
       <FormProvider {...form}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <hr />
-          <PrimaryButton type="submit" className="w-full">
-            start.ggから配信台の情報を取得
-          </PrimaryButton>
+          <StreamQueueTable
+            onChange={(queue) => {
+              form.setValue("p1.playerName", queue.p1?.playerName ?? "")
+              form.setValue("p2.playerName", queue.p2?.playerName ?? "")
+
+              form.setValue("round", queue.fullRoundText)
+            }}
+          />
           <CheckBoxForm
             label="現在の試合状況を表示する"
-            name="autoUpdate"
+            name="isNow"
             className="mt-[10px]"
           />
           <div className="flex gap-[30px]">
@@ -49,13 +53,15 @@ export const MatchIntervalInfo: FC = () => {
               <div className="flex flex-col gap-[10px]">
                 <TextForm
                   label="P1"
-                  name="nextPlayer1"
+                  name="p1.playerName"
                   placeholder="PlayerName"
+                  autocomplete="playerName"
                 />
                 <TextForm
                   label="P2"
-                  name="nextPlayer2"
+                  name="p2.playerName"
                   placeholder="PlayerName"
+                  autocomplete="playerName"
                 />
               </div>
             </div>
@@ -66,17 +72,39 @@ export const MatchIntervalInfo: FC = () => {
                   <SelectForm
                     label="ラウンド"
                     name="round"
-                    options={[{ text: "Pools", value: "Pools" }]}
+                    options={[
+                      { text: "Pools", value: "Pools" },
+                      {
+                        text: "Losers Quarter-Final",
+                        value: "Losers Quarter-Final",
+                      },
+                      { text: "Losers Semi-Final", value: "Losers Semi-Final" },
+                      { text: "Losers Final", value: "Losers Final" },
+                      {
+                        text: "Winners Quarter-Final",
+                        value: "Winners Quarter-Final",
+                      },
+                      {
+                        text: "Winners Semi-Final",
+                        value: "Winners Semi-Final",
+                      },
+                      { text: "Winners Final", value: "Winners Final" },
+                      { text: "Grand Final", value: "Grand Final" },
+                    ]}
                   />
                   <SelectForm
                     label="試合形式"
                     name="matchType"
-                    options={[{ text: "Best of 5", value: "Best of 5" }]}
+                    options={[
+                      { text: "Best of 3", value: "Best of 3" },
+                      { text: "Best of 5", value: "Best of 5" },
+                    ]}
                   />
                 </div>
                 <CheckBoxForm
                   label="すべて大文字にする"
                   name="uppercase"
+                  id="next.uppercase"
                   className="mt-[10px]"
                 />
               </div>

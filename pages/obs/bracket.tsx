@@ -1,10 +1,11 @@
 import { FC, useState } from "react"
-import { useAsync } from "react-use"
+import { useAsync, useInterval } from "react-use"
 import { BracketScore } from "../../libs/const"
 import { BracketBox } from "../../components/obs/bracket/BracketBox"
 import { useLoadBracket } from "../../hooks/useLoadBracket"
 import { useRouter } from "next/router"
 import { getNameAndTeamtag } from "../../libs/utils"
+import { useSetting } from "../../hooks/useSetting"
 
 const query = `
 query PhaseGroupSets($phaseGroupId: ID!) {
@@ -48,16 +49,16 @@ type Data = {
           fullRoundText: string
           slots: {
             entrant: {
-              name: string
-            }
+              name: string | null
+            } | null
             standing: {
               placement: number
               stats: {
                 score: {
                   value: number
-                }
-              }
-            }
+                } | null
+              } | null
+            } | null
           }[]
         }[]
       }
@@ -113,11 +114,78 @@ const keys2Pos: { [key: string]: { top: string; left: string }[] } = {
   ],
 }
 
+const loadTop8Bracket = async (phaseGroupId: string) => {
+  const res = (await fetch("https://api.smash.gg/gql/alpha", {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer 4c55422a25fb010184f6eb3612292f01",
+      "content-Type": "application/json",
+      Accept: "application/json",
+      encoding: "utf-8",
+    },
+    body: JSON.stringify({
+      query,
+      variables: { phaseGroupId: phaseGroupId },
+    }),
+  }).then((res) => res.json())) as Data
+  const maxLosersRound = getMaxLosersRound(res)
+  const rounds = [
+    // "Grand Final Reset",
+    "Grand Final",
+    "Winners Final",
+    "Winners Semi-Final",
+    "Losers Final",
+    "Losers Semi-Final",
+    "Losers Quarter-Final",
+    maxLosersRound,
+  ]
+  const tmp: { [key: string]: string } = {}
+  tmp[maxLosersRound] = "losersRound"
+  const rounds2Key = Object.assign(tmp, fullRoundText2Keys)
+  const bracket: Bracket = {
+    grandFinal: [],
+    grandFinalReset: [],
+    losersFinal: [],
+    losersQuarterFinal: [],
+    losersRound: [],
+    losersSemiFinal: [],
+    winnersFinal: [],
+    winnersSemiFinal: [],
+  }
+  res.data.phaseGroup.sets.nodes.forEach((n) => {
+    if (!rounds.includes(n.fullRoundText)) return
+    const key = rounds2Key[n.fullRoundText]
+    const players = n.slots.map((s) => {
+      const { team, name } = getNameAndTeamtag(s?.entrant?.name)
+      return {
+        team: team,
+        name: name,
+        score: s?.standing?.stats?.score?.value,
+      }
+    })
+    const score: BracketScore = {
+      player1: {
+        team: players[0]?.team,
+        name: players[0]?.name,
+        score: players[0]?.score,
+      },
+      player2: {
+        team: players[1]?.team,
+        name: players[1]?.name,
+        score: players[1]?.score,
+      },
+    }
+    bracket[key].push(score)
+  })
+  return bracket
+}
+
 export const Bracket: FC = () => {
   const router = useRouter()
   const id = router.query.id as string
   const [loadBracket] = useLoadBracket(id)
-  const [lastLoadedAt] = useState(0)
+  const [setting] = useSetting(id)
+  const [lastLoadedAt, setLastLoadedAt] = useState(0)
   const [bracket, setBracket] = useState<Bracket>({
     grandFinalReset: [],
     grandFinal: [],
@@ -129,73 +197,27 @@ export const Bracket: FC = () => {
     losersRound: [],
   })
   useAsync(async () => {
-    if (!loadBracket) return
+    console.log({ setting, loadBracket })
+    if (!setting?.integrateStartGG.enabled || !loadBracket) return
     if (loadBracket.lastRequestedAt < lastLoadedAt) return
+    const phaseGroupId = setting?.integrateStartGG.url.split("/").pop()
+    if (!phaseGroupId) return
+    const bracket = await loadTop8Bracket(phaseGroupId)
 
-    const res = (await fetch("https://api.smash.gg/gql/alpha", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer 4c55422a25fb010184f6eb3612292f01",
-        "content-Type": "application/json",
-        Accept: "application/json",
-        encoding: "utf-8",
-      },
-      body: JSON.stringify({
-        query,
-        variables: { phaseGroupId: loadBracket.phaseGroupId },
-      }),
-    }).then((res) => res.json())) as Data
-    const maxLosersRound = getMaxLosersRound(res)
-    const rounds = [
-      // "Grand Final Reset",
-      "Grand Final",
-      "Winners Final",
-      "Winners Semi-Final",
-      "Losers Final",
-      "Losers Semi-Final",
-      "Losers Quarter-Final",
-      maxLosersRound,
-    ]
-    const tmp: { [key: string]: string } = {}
-    tmp[maxLosersRound] = "losersRound"
-    const rounds2Key = Object.assign(tmp, fullRoundText2Keys)
-    const bracket: Bracket = {
-      grandFinal: [],
-      grandFinalReset: [],
-      losersFinal: [],
-      losersQuarterFinal: [],
-      losersRound: [],
-      losersSemiFinal: [],
-      winnersFinal: [],
-      winnersSemiFinal: [],
-    }
-    res.data.phaseGroup.sets.nodes.forEach((n) => {
-      if (!rounds.includes(n.fullRoundText)) return
-      const key = rounds2Key[n.fullRoundText]
-      const players = n.slots.map((s) => {
-        const { team, name } = getNameAndTeamtag(s.entrant.name)
-        return {
-          team: name ? team : "",
-          name: name ? name : team,
-          score: s.standing.stats.score.value,
-        }
-      })
-      const score: BracketScore = {
-        player1: {
-          team: players[0]?.team,
-          name: players[0]?.name,
-          score: players[0]?.score,
-        },
-        player2: {
-          team: players[1]?.team,
-          name: players[1]?.name,
-          score: players[1]?.score,
-        },
-      }
-      bracket[key].push(score)
-    })
     setBracket(bracket)
-  }, [loadBracket, lastLoadedAt])
+    setLastLoadedAt(new Date().valueOf())
+  }, [loadBracket, lastLoadedAt, setting])
+
+  useInterval(
+    async () => {
+      const phaseGroupId = setting?.integrateStartGG.url.split("/").pop()
+      if (!phaseGroupId) return
+      const bracket = await loadTop8Bracket(phaseGroupId)
+      setBracket(bracket)
+      setLastLoadedAt(new Date().valueOf())
+    },
+    setting?.integrateStartGG.enabled && loadBracket?.autoUpdate ? 10000 : null
+  )
 
   return (
     <>

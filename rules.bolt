@@ -16,6 +16,7 @@ type Tournament {
     score: Timestamped<Object> | Null,
     loadBracket: Timestamped<Object> | Null,
     matchIntervalInfo: Timestamped<Object> | Null,
+    mc: Timestamped<Object> | Null,
 }
 
 type Timestamped<T> extends T {

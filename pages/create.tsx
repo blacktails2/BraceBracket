@@ -83,9 +83,7 @@ const Create: NextPageWithLayout = () => {
             <IntegrateStartGG />
             <PrimaryButton type="submit">{submitText}</PrimaryButton>
           </div>
-          <div>
-            <Preview />
-          </div>
+          <Preview />
         </FormProvider>
       </div>
     </form>

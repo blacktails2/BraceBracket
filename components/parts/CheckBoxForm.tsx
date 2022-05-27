@@ -5,8 +5,9 @@ import styles from "./CheckBoxForm.module.scss"
 export const CheckBoxForm: FC<{
   label: string
   name: string
+  id?: string
   className?: string
-}> = ({ label, name, className }) => {
+}> = ({ label, name, className, id }) => {
   const { register } = useFormContext()
   return (
     <div className={className}>
@@ -15,12 +16,12 @@ export const CheckBoxForm: FC<{
           <input
             type="checkbox"
             {...register(name)}
-            id={name}
+            id={id ?? name}
             className={styles.input}
           />
-          <label htmlFor={name} className={styles.dummyLabel}></label>
+          <label htmlFor={id ?? name} className={styles.dummyLabel}></label>
         </div>
-        <label htmlFor={name} className={styles.label}>
+        <label htmlFor={id ?? name} className={styles.label}>
           {label}
         </label>
       </div>

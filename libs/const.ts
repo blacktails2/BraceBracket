@@ -41,7 +41,8 @@ export const getCameraFilename: (
 
 export const getMCFilename: (
   layout?: ScoreboardLayout,
-  color?: ScoreboardColor
+  color?: ScoreboardColor,
+  count?: number
 ) => string = (layout, color, count = 2) => {
   if (!layout || !color) {
     return "MC_dark_color.png"
@@ -57,7 +58,7 @@ export const getNextFilename: (
   color?: ScoreboardColor
 ) => string = (layout, color) => {
   if (!layout || !color) {
-    return "upnext_dark_color.png"
+    return "upnext_dark.png"
   }
   if (layout === "simple") {
     return `upnext_simple_${color}.png`
@@ -119,8 +120,7 @@ export type Scenes = {
 
 export type LoadBracket = {
   createdAt: number | ReturnType<typeof serverTimestamp>
-  phaseGroupId: number
-  loaded: boolean
+  autoUpdate: boolean
   lastRequestedAt: number
 }
 
@@ -128,12 +128,12 @@ export type BracketScore = {
   player1: {
     team: string
     name: string
-    score: number
+    score?: number
   }
   player2: {
     team: string
     name: string
-    score: number
+    score?: number
   }
 }
 
@@ -143,6 +143,13 @@ export type MatchIntervalInfo = {
   p2: PlayerScore
   round: string
   matchType: string
+  isNow: boolean
+  uppercase: boolean
+}
+
+export type MC = {
+  createdAt: number | ReturnType<typeof serverTimestamp>
+  mcList: PlayerScore[]
 }
 
 export type Tournament = {

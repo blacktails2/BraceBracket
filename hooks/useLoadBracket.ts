@@ -5,8 +5,7 @@ import { serverTimestamp } from "firebase/database"
 
 const defaultValue: LoadBracket = {
   createdAt: serverTimestamp(),
-  phaseGroupId: 0,
-  loaded: true,
+  autoUpdate: false,
   lastRequestedAt: 0,
 }
 
@@ -17,20 +16,20 @@ const _useLoadBracket = genUseDatabaseValue(
 
 export const useLoadBracket = (
   id?: string | null
-): [LoadBracket | undefined, (phaseGroupId: number) => void, boolean] => {
+): [LoadBracket | undefined, (autoUpdate: boolean) => void, boolean] => {
   const [loadBracket, _setLoadBracket, loading] = _useLoadBracket(id)
 
   const requestLoad = useCallback(
-    (phaseGroupId: number) => {
+    (autoUpdate: boolean) => {
       if (!id || !loadBracket || loading) return
       const next: LoadBracket = {
         ...loadBracket,
-        phaseGroupId,
+        autoUpdate,
         lastRequestedAt: new Date().valueOf(),
       }
       _setLoadBracket(next)
     },
-    [id, _setLoadBracket]
+    [id, loadBracket, loading, _setLoadBracket]
   )
 
   return [loadBracket, requestLoad, loading]

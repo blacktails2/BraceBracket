@@ -82,3 +82,22 @@ h4 {
 .fade-exit-active {
   transition: opacity 300ms;
 }
+
+.markdown ol {
+  @apply list-decimal;
+}
+
+.markdown ul {
+  @apply list-disc;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply mb-4 ml-8;
+}
+
+.markdown li > p,
+.markdown li > ul,
+.markdown li > ol {
+  @apply mb-0;
+}

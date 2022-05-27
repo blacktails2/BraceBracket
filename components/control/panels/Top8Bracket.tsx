@@ -6,23 +6,24 @@ import { PrimaryButton } from "../../parts/PrimaryButton"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { FormProvider, useForm } from "react-hook-form"
 import { useLoadBracket } from "../../../hooks/useLoadBracket"
+import { Button } from "../../parts/Button"
 
 export const Top8Bracket: FC = () => {
   const router = useRouter()
   const id = router.query.id as string
   const origin = useOrigin()
   const [_, requestLoad] = useLoadBracket(id)
-  const bracketForm = useForm<{ phaseGroupId: number }>()
+  const bracketForm = useForm<{ autoUpdate: boolean }>()
   const { handleSubmit } = bracketForm
-  const onSubmit = ({ phaseGroupId }: { phaseGroupId: number }) => {
-    requestLoad(phaseGroupId)
+  const onSubmit = ({ autoUpdate }: { autoUpdate: boolean }) => {
+    requestLoad(autoUpdate)
   }
   return (
-    <ControlPanel title="Top8" url={`${origin}/obs/bracket?id=${id}`}>
+    <ControlPanel title="Top8" url={`${origin}/obs/bracket/?id=${id}`}>
       <FormProvider {...bracketForm}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <hr />
-          <PrimaryButton type="submit">start.ggから情報を取得</PrimaryButton>
+          <Button type="submit">start.ggから情報を取得</Button>
           <CheckBoxForm
             label="自動で情報を更新"
             name="autoUpdate"

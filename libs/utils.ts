@@ -7,7 +7,7 @@ export const sha1 = async (str: string) => {
     .join("")
 }
 
-export const getNameAndTeamtag = (str?: string) => {
+export const getNameAndTeamtag = (str?: string | null) => {
   if (!str) return { team: "", name: "" }
   const [team, name] = str.split(" | ")
   return {

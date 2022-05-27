@@ -38,6 +38,14 @@ export const Preview: FC = () => {
       <div>
         <div className={styles.previewImageContainer}>
           <div className={styles.outer}>
+            <div className="absolute">
+              <Image
+                src="/image/create/samples/sample_image1.jpg"
+                width={340}
+                height={190}
+                alt="カメラ"
+              />
+            </div>
             {displayCameraAndTwitterID && (
               <div className="absolute z-10">
                 <Image
@@ -60,6 +68,14 @@ export const Preview: FC = () => {
           </div>
         </div>
         <div className={styles.previewImageContainer}>
+          <div className="absolute">
+            <Image
+              src="/image/create/samples/sample_image2.jpg"
+              width={340}
+              height={190}
+              alt="カメラ"
+            />
+          </div>
           <div className="absolute z-10">
             <Image
               src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
@@ -81,6 +97,14 @@ export const Preview: FC = () => {
           </div>
         </div>
         <div className={styles.previewImageContainer}>
+          <div className="absolute">
+            <Image
+              src="/image/create/samples/sample_image2.jpg"
+              width={340}
+              height={190}
+              alt="カメラ"
+            />
+          </div>
           <Image
             src={`/image/create/samples/top8/${getBracketFilename(
               layout,
