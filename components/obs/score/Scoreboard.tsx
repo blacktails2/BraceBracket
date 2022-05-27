@@ -85,14 +85,18 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
             src={`/image/camera/${getCameraFilename(layout, color)}`}
             alt=""
           />
-          <p className={styles.cameraLeft}>
-            {score.p1.twitterID.startsWith("@") ? "" : "@"}
-            {score.p1.twitterID}
-          </p>
-          <p className={styles.cameraRight}>
-            {score.p2.twitterID.startsWith("@") ? "" : "@"}
-            {score.p2.twitterID}
-          </p>
+          {score.p1.twitterID && (
+            <p className={styles.cameraLeft}>
+              {score.p1.twitterID.startsWith("@") ? "" : "@"}
+              {score.p1.twitterID}
+            </p>
+          )}
+          {score.p2.twitterID && (
+            <p className={styles.cameraRight}>
+              {score.p2.twitterID.startsWith("@") ? "" : "@"}
+              {score.p2.twitterID}
+            </p>
+          )}
         </div>
       )}
       <div className={styles.logobox}>
