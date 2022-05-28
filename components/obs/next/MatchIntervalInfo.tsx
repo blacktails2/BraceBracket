@@ -24,7 +24,17 @@ export const MatchInterval: FC<{
   }, [matchIntervalInfo])
 
   return (
-    <div className={layout === "simple" ? styles.simple : styles.other}>
+    <div
+      className={`${
+        layout === "simple" ? styles.simple : styles.other
+      } ${(() => {
+        if (layout === "simple") {
+          return color === "white" ? styles.white : styles.black
+        } else {
+          return color.startsWith("light") ? styles.light : styles.dark
+        }
+      })()}`}
+    >
       <img
         className={styles.board}
         src={`/image/next/${getNextFilename(layout, color)}`}

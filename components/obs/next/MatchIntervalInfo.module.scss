@@ -11,25 +11,25 @@
 }
 
 .other {
-  .dark {
-    --main-color: $white;
-    --sub-color: $darkgray;
+  &.dark {
+    --main-color: var(--dark-gray);
+    --sub-color: var(--white);
   }
 
-  .light {
-    --main-color: $darkgray;
-    --sub-color: $white;
+  &.light {
+    --main-color: var(--white);
+    --sub-color: var(--dark-gray);
   }
 }
 
 .simple {
-  .black {
-    --main-color: $white;
-    --sub-color: $darkgray;
+  &.black {
+    --main-color: var(--dark-gray);
+    --sub-color: var(--white);
   }
 
-  .white {
-    --main-color: $darkgray;
-    --sub-color: $white;
+  &.white {
+    --main-color: var(--white);
+    --sub-color: var(--dark-gray);
   }
 }

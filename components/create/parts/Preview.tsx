@@ -34,88 +34,90 @@ export const Preview: FC = () => {
   }, [id])
 
   return (
-    <div className={styles.previewContainer}>
-      <div>
-        <div className={styles.previewImageContainer}>
-          <div className={styles.outer}>
-            <div className="absolute">
-              <Image
-                src="/image/create/samples/sample_image1.jpg"
-                width={340}
-                height={190}
-                alt="カメラ"
-              />
-            </div>
-            {displayCameraAndTwitterID && (
-              <div className="absolute z-10">
+    <div className={styles.container}>
+      <div className={styles.previewContainer}>
+        <div>
+          <div className={styles.previewImageContainer}>
+            <div className={styles.outer}>
+              <div className="absolute">
                 <Image
-                  src={`/image/create/samples/camera/${getCameraFilename(
-                    layout,
-                    color
-                  )}`}
+                  src="/image/create/samples/sample_image1.jpg"
                   width={340}
                   height={190}
                   alt="カメラ"
                 />
               </div>
-            )}
-            <Image
-              src={`/image/create/samples/layout/${layout}/${layout}_${color}.png`}
-              width={340}
-              height={190}
-              alt="スコアボードプレビュー"
-            />
+              {displayCameraAndTwitterID && (
+                <div className="absolute z-10">
+                  <Image
+                    src={`/image/create/samples/camera/${getCameraFilename(
+                      layout,
+                      color
+                    )}`}
+                    width={340}
+                    height={190}
+                    alt="カメラ"
+                  />
+                </div>
+              )}
+              <Image
+                src={`/image/create/samples/layout/${layout}/${layout}_${color}.png`}
+                width={340}
+                height={190}
+                alt="スコアボードプレビュー"
+              />
+            </div>
           </div>
-        </div>
-        <div className={styles.previewImageContainer}>
-          <div className="absolute">
-            <Image
-              src="/image/create/samples/sample_image2.jpg"
-              width={340}
-              height={190}
-              alt="カメラ"
-            />
+          <div className={styles.previewImageContainer}>
+            <div className="absolute">
+              <Image
+                src="/image/create/samples/sample_image2.jpg"
+                width={340}
+                height={190}
+                alt="カメラ"
+              />
+            </div>
+            <div className="absolute z-10">
+              <Image
+                src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
+                width={340}
+                height={190}
+                alt="MCプレビュー"
+              />
+            </div>
+            <div className={styles.outer}>
+              <Image
+                src={`/image/create/samples/next/${getNextFilename(
+                  layout,
+                  color
+                )}`}
+                width={340}
+                height={190}
+                alt="Nextプレビュー"
+              />
+            </div>
           </div>
-          <div className="absolute z-10">
+          <div className={styles.previewImageContainer}>
+            <div className="absolute">
+              <Image
+                src="/image/create/samples/sample_image2.jpg"
+                width={340}
+                height={190}
+                alt="カメラ"
+              />
+            </div>
             <Image
-              src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
-              width={340}
-              height={190}
-              alt="MCプレビュー"
-            />
-          </div>
-          <div className={styles.outer}>
-            <Image
-              src={`/image/create/samples/next/${getNextFilename(
+              src={`/image/create/samples/top8/${getBracketFilename(
                 layout,
                 color
               )}`}
               width={340}
               height={190}
-              alt="Nextプレビュー"
+              alt="Top8プレビュー"
             />
           </div>
+          <PrimaryButton type="submit">{submitText}</PrimaryButton>
         </div>
-        <div className={styles.previewImageContainer}>
-          <div className="absolute">
-            <Image
-              src="/image/create/samples/sample_image2.jpg"
-              width={340}
-              height={190}
-              alt="カメラ"
-            />
-          </div>
-          <Image
-            src={`/image/create/samples/top8/${getBracketFilename(
-              layout,
-              color
-            )}`}
-            width={340}
-            height={190}
-            alt="Top8プレビュー"
-          />
-        </div>
-        <PrimaryButton type="submit">{submitText}</PrimaryButton>
       </div>
     </div>
   )
