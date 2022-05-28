@@ -5,6 +5,7 @@
 /* stylelint-enable */
 
 :root {
+  --dark-gray: #111;
   --black: #202025;
   --gray: #c4c4c4;
   --white: #fff;
@@ -81,4 +82,23 @@ h4 {
 .fade-enter-active,
 .fade-exit-active {
   transition: opacity 300ms;
+}
+
+.markdown ol {
+  @apply list-decimal;
+}
+
+.markdown ul {
+  @apply list-disc;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply mb-4 ml-8;
+}
+
+.markdown li > p,
+.markdown li > ul,
+.markdown li > ol {
+  @apply mb-0;
 }

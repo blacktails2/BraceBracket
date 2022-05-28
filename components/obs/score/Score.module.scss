@@ -3,11 +3,6 @@
 @import "./Solid";
 @import "./Simple";
 
-.container {
-  --dark-gray: #111;
-  --white: #fff;
-}
-
 .darkColor,
 .darkMono {
   --score-color: var(--white);

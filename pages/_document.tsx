@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
           <link
             rel="stylesheet"
             href="https://api.fontshare.com/css?f[]=satoshi@1,2&display=swap"

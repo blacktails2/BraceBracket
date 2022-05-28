@@ -18,6 +18,8 @@ const defaultValue: MatchIntervalInfo = {
   },
   round: "Pools",
   matchType: "Best of 5",
+  isNow: false,
+  uppercase: false,
 }
 
 export const useMatchIntervalInfo = genUseDatabaseValue<MatchIntervalInfo>(

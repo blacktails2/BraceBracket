@@ -15,15 +15,13 @@ import { useSetting } from "../../../hooks/useSetting"
 import styles from "./kesu.module.scss"
 import { Button } from "../../parts/Button"
 import { Attendee, getAttendee } from "../../../libs/getAttendee"
+import { StreamQueueTable } from "../parts/StreamQueueTable"
 
 export const ScoreAndCamera: FC = () => {
   const router = useRouter()
   const id = router.query.id as string
   const origin = useOrigin()
   const [score, setScore] = useScore(id)
-  const [setting] = useSetting(id)
-  const [streamQueue, setStreamQueue] = useState<StreamQueue>([])
-  const [attendee, setAttendee] = useState<Attendee>([])
   const [showTooltip, setShowTooltip] = useState(false)
   const scoreForm = useForm<Score>()
   const { handleSubmit, reset } = scoreForm
@@ -38,86 +36,23 @@ export const ScoreAndCamera: FC = () => {
     reset(score)
   }, [reset, score])
   return (
-    <ControlPanel title="スコア&カメラ" url={`${origin}/obs/score?id=${id}`}>
+    <ControlPanel title="スコア&カメラ" url={`${origin}/obs/score/?id=${id}`}>
       <hr />
-      {setting?.integrateStartGG?.enabled && (
-        <>
-          <Button
-            onClick={() => {
-              getStreamQueue(setting?.integrateStartGG?.url).then(
-                setStreamQueue
-              )
-              getAttendee(setting?.integrateStartGG?.url).then(setAttendee)
-            }}
-            className="mb-[20px]"
-          >
-            配信台の情報を読み込み
-          </Button>
-          <datalist id="playerName">
-            {Array.from(new Set(attendee.map((a) => a.playerName))).map(
-              (playerName) => (
-                <option key={playerName} value={playerName} />
-              )
-            )}
-          </datalist>
-          <datalist id="team">
-            {Array.from(new Set(attendee.map((a) => a.team))).map((team) => (
-              <option key={team} value={team} />
-            ))}
-          </datalist>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Round</th>
-                <th>1P Player</th>
-                <th>2P Player</th>
-                <th>Stream Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {streamQueue.map((stream, index) => (
-                <tr key={stream.id}>
-                  <td>
-                    <input
-                      type="radio"
-                      name="stream"
-                      onChange={() => {
-                        scoreForm.setValue("p1.team", stream.p1?.team ?? "")
-                        scoreForm.setValue(
-                          "p1.playerName",
-                          stream.p1?.playerName ?? ""
-                        )
-                        scoreForm.setValue("p1.score", stream.p1?.score ?? 0)
-                        scoreForm.setValue(
-                          "p1.twitterID",
-                          stream.p1?.twitterID ?? ""
-                        )
+      <StreamQueueTable
+        onChange={(queue) => {
+          scoreForm.setValue("p1.team", queue.p1?.team ?? "")
+          scoreForm.setValue("p1.playerName", queue.p1?.playerName ?? "")
+          scoreForm.setValue("p1.score", queue.p1?.score ?? 0)
+          scoreForm.setValue("p1.twitterID", queue.p1?.twitterID ?? "")
 
-                        scoreForm.setValue("p2.team", stream.p2?.team ?? "")
-                        scoreForm.setValue(
-                          "p2.playerName",
-                          stream.p2?.playerName ?? ""
-                        )
-                        scoreForm.setValue("p2.score", stream.p2?.score ?? 0)
-                        scoreForm.setValue(
-                          "p2.twitterID",
-                          stream.p2?.twitterID ?? ""
-                        )
-                        scoreForm.setValue("round", stream.fullRoundText)
-                      }}
-                    />
-                  </td>
-                  <td>{stream.fullRoundText}</td>
-                  <td>{stream.p1?.playerName}</td>
-                  <td>{stream.p2?.playerName}</td>
-                  <td>{stream.streamName}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
-      )}
+          scoreForm.setValue("p2.team", queue.p2?.team ?? "")
+          scoreForm.setValue("p2.playerName", queue.p2?.playerName ?? "")
+          scoreForm.setValue("p2.score", queue.p2?.score ?? 0)
+          scoreForm.setValue("p2.twitterID", queue.p2?.twitterID ?? "")
+          scoreForm.setValue("round", queue.roundText)
+        }}
+      />
+
       <FormProvider {...scoreForm}>
         <form onSubmit={handleSubmit(onScoreSubmit)}>
           <div>
@@ -199,16 +134,16 @@ export const ScoreAndCamera: FC = () => {
                 options={[
                   { text: "Pools", value: "Pools" },
                   {
-                    text: "Losers Quarter-Final",
-                    value: "Losers Quarter-Final",
+                    text: "Losers Quarters",
+                    value: "Losers Quarters",
                   },
-                  { text: "Losers Semi-Final", value: "Losers Semi-Final" },
+                  { text: "Losers Semis", value: "Losers Semis" },
                   { text: "Losers Final", value: "Losers Final" },
                   {
-                    text: "Winners Quarter-Final",
-                    value: "Winners Quarter-Final",
+                    text: "Winners Quarters",
+                    value: "Winners Quarters",
                   },
-                  { text: "Winners Semi-Final", value: "Winners Semi-Final" },
+                  { text: "Winners Semis", value: "Winners Semis" },
                   { text: "Winners Final", value: "Winners Final" },
                   { text: "Grand Final", value: "Grand Final" },
                 ]}

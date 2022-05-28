@@ -3,11 +3,22 @@ import { getNameAndTeamtag } from "./utils"
 
 export type StreamQueue = {
   id: number
-  fullRoundText: string
+  roundText: string
   streamName: string
   p1?: PlayerScore
   p2?: PlayerScore
 }[]
+
+const fullRoundText2Shorts: { [key: string]: string } = {
+  "Grand Final Reset": "Grand Final",
+  "Grand Final": "Grand Final",
+  "Winners Final": "Winners Final",
+  "Winners Semi-Final": "Winners Semis",
+  "Winners Quarter-Final": "Winners Quarters",
+  "Losers Final": "Losers Final",
+  "Losers Semi-Final": "Losers Semis",
+  "Losers Quarter-Final": "Losers Quarters",
+}
 
 const streamQueueQuery = `
 query StreamQueueOnTournament($tourneySlug: String!) {
@@ -97,7 +108,7 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
       })
       return {
         id: set.id,
-        fullRoundText: set.fullRoundText,
+        roundText: fullRoundText2Shorts[set.fullRoundText] ?? set.fullRoundText,
         streamName: stream.stream.streamName,
         p1: players[0],
         p2: players[1],

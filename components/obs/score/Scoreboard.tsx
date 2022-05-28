@@ -9,6 +9,7 @@ import {
 import styles from "./Score.module.scss"
 import { CSSTransition, SwitchTransition } from "react-transition-group"
 import { useInterval } from "react-use"
+import { Transition } from "../../parts/Transition"
 
 const getLayoutClass = (layout: ScoreboardLayout) => {
   switch (layout) {
@@ -86,16 +87,20 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
             alt=""
           />
           {score.p1.twitterID && (
-            <p className={styles.cameraLeft}>
-              {score.p1.twitterID.startsWith("@") ? "" : "@"}
-              {score.p1.twitterID}
-            </p>
+            <Transition keyName={score.p1.twitterID}>
+              <p className={styles.cameraLeft}>
+                {score.p1.twitterID.startsWith("@") ? "" : "@"}
+                {score.p1.twitterID}
+              </p>
+            </Transition>
           )}
           {score.p2.twitterID && (
-            <p className={styles.cameraRight}>
-              {score.p2.twitterID.startsWith("@") ? "" : "@"}
-              {score.p2.twitterID}
-            </p>
+            <Transition keyName={score.p2.twitterID}>
+              <p className={styles.cameraRight}>
+                {score.p2.twitterID.startsWith("@") ? "" : "@"}
+                {score.p2.twitterID}
+              </p>
+            </Transition>
           )}
         </div>
       )}
@@ -103,115 +108,88 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
         {/* 大会ロゴ なしの場合はクラスにdisableを追加*/}
         {setting.scoreboard.cameraAndLogo.useLogo &&
           setting.scoreboard.cameraAndLogo.logoURLs.length > 0 && (
-            <SwitchTransition mode="out-in">
-              <CSSTransition
-                key={setting.scoreboard.cameraAndLogo.logoURLs[logoIdx]}
-                addEndListener={(node: HTMLElement, done: () => void) => {
-                  node.addEventListener("transitionend", done, false)
+            <Transition
+              keyName={setting.scoreboard.cameraAndLogo.logoURLs[logoIdx]}
+            >
+              <img
+                src={setting.scoreboard.cameraAndLogo.logoURLs[logoIdx]}
+                alt=""
+                className={styles.logo}
+                style={{
+                  display: setting.scoreboard.cameraAndLogo.useLogo
+                    ? ""
+                    : "none",
+                  filter: {
+                    none: "",
+                    light: "drop-shadow(0 0 6px rgb(255 255 255 / 70%))",
+                    dark: "drop-shadow(0 0 4px rgb(0 0 0 / 30%))",
+                  }[setting.scoreboard.cameraAndLogo.dropShadow],
                 }}
-                classNames="fade"
-              >
-                <img
-                  src={setting.scoreboard.cameraAndLogo.logoURLs[logoIdx]}
-                  alt=""
-                  className={styles.logo}
-                  style={{
-                    display: setting.scoreboard.cameraAndLogo.useLogo
-                      ? ""
-                      : "none",
-                    filter: {
-                      none: "",
-                      light: "drop-shadow(0 0 6px rgb(255 255 255 / 70%))",
-                      dark: "drop-shadow(0 0 4px rgb(0 0 0 / 30%))",
-                    }[setting.scoreboard.cameraAndLogo.dropShadow],
-                  }}
-                />
-              </CSSTransition>
-            </SwitchTransition>
+              />
+            </Transition>
           )}
       </div>
       {/*1Pスコア*/}
-      <SwitchTransition mode="out-in">
-        <CSSTransition
-          key={`${score.p1.playerName}-${score.p1.score}`}
-          addEndListener={(node: HTMLElement, done: () => void) => {
-            node.addEventListener("transitionend", done, false)
-          }}
-          classNames="fade"
-        >
-          <div className={styles.p1Score}>{score.p1.score}</div>
-        </CSSTransition>
-      </SwitchTransition>
+      <Transition keyName={`${score.p1.playerName}-${score.p1.score}`}>
+        <div className={styles.p1Score}>{score.p1.score}</div>
+      </Transition>
       {/*2Pスコア*/}
-      <SwitchTransition mode="out-in">
-        <CSSTransition
-          key={`${score.p2.playerName}-${score.p2.score}`}
-          addEndListener={(node: HTMLElement, done: () => void) => {
-            node.addEventListener("transitionend", done, false)
-          }}
-          classNames="fade"
-        >
-          <div className={styles.p2Score}>{score.p2.score}</div>
-        </CSSTransition>
-      </SwitchTransition>
+      <Transition keyName={`${score.p2.playerName}-${score.p2.score}`}>
+        <div className={styles.p2Score}>{score.p2.score}</div>
+      </Transition>
       <div className={styles.player1Name}>
-        <SwitchTransition mode="out-in">
-          <CSSTransition
-            key={`${score.p1.team}-${score.p1.playerName}`}
-            addEndListener={(node: HTMLElement, done: () => void) => {
-              node.addEventListener("transitionend", done, false)
-            }}
-            classNames="fade"
-          >
-            <div>
-              <span className={styles.p1Team}>{score.p1.team}</span>
-              <span className={styles.p1PlayerName}>{score.p1.playerName}</span>
-            </div>
-          </CSSTransition>
-        </SwitchTransition>
+        <Transition keyName={`${score.p1.team}-${score.p1.playerName}`}>
+          <div>
+            <span className={styles.p1Team}>{score.p1.team}</span>
+            <span className={styles.p1PlayerName}>{score.p1.playerName}</span>
+          </div>
+        </Transition>
       </div>
       <div className={styles.player2Name}>
-        <SwitchTransition mode="out-in">
-          <CSSTransition
-            key={`${score.p2.team}-${score.p2.playerName}`}
-            addEndListener={(node: HTMLElement, done: () => void) => {
-              node.addEventListener("transitionend", done, false)
-            }}
-            classNames="fade"
-          >
-            <div>
-              <span className={styles.p2Team}>{score.p2.team}</span>
-              <span className={styles.p2PlayerName}>{score.p2.playerName}</span>
-            </div>
-          </CSSTransition>
-        </SwitchTransition>
+        <Transition keyName={`${score.p2.team}-${score.p2.playerName}`}>
+          <div>
+            <span className={styles.p2Team}>{score.p2.team}</span>
+            <span className={styles.p2PlayerName}>{score.p2.playerName}</span>
+          </div>
+        </Transition>
       </div>
       {((layout: string) => {
         switch (layout) {
           case "dual":
             return (
               <>
-                <div
-                  className={styles.round}
-                  style={{
-                    textTransform: score.uppercase ? "uppercase" : "none",
-                  }}
-                >
-                  {score.round}
-                </div>
-                <div
-                  className={styles.matchType}
-                  style={{
-                    textTransform: score.uppercase ? "uppercase" : "none",
-                  }}
-                >
-                  {score.matchType}
-                </div>
-                <div className={styles.tournamentNameBox}>
-                  <div className={styles.tournamentName}>
-                    {score.tournamentName}
+                <Transition keyName={score.round}>
+                  <div
+                    className={styles.round}
+                    style={{
+                      textTransform: score.uppercase ? "uppercase" : "none",
+                    }}
+                  >
+                    {score.round}
                   </div>
-                </div>
+                </Transition>
+                <Transition keyName={score.matchType}>
+                  <div
+                    className={styles.matchType}
+                    style={{
+                      textTransform: score.uppercase ? "uppercase" : "none",
+                    }}
+                  >
+                    {score.matchType}
+                  </div>
+                </Transition>
+                {!(
+                  setting.scoreboard.cameraAndLogo.useLogo &&
+                  setting.scoreboard.cameraAndLogo.logoURLs.length > 0
+                ) && (
+                  <Transition keyName={score.tournamentName}>
+                    <div className={styles.tournamentNameBox}>
+                      <div className={styles.tournamentName}>
+                        {score.tournamentName}
+                      </div>
+                    </div>
+                  </Transition>
+                )}
               </>
             )
           case "single":

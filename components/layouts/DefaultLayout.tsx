@@ -11,7 +11,9 @@ export const DefaultLayout = ({ children }: LayoutProps) => {
   return (
     <div className={styles.container}>
       <Header />
-      <main className={styles.main}>{children}</main>
+      <main className={styles.main}>
+        <div className={styles.content}>{children}</div>
+      </main>
       <Footer />
     </div>
   )
