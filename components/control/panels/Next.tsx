@@ -39,7 +39,7 @@ export const Next: FC = () => {
               form.setValue("p1.playerName", queue.p1?.playerName ?? "")
               form.setValue("p2.playerName", queue.p2?.playerName ?? "")
 
-              form.setValue("round", queue.fullRoundText)
+              form.setValue("round", queue.roundText)
             }}
           />
           <CheckBoxForm

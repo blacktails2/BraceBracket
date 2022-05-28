@@ -10,7 +10,7 @@ import { PlayerScore } from "../../../libs/const"
 export const StreamQueueTable: FC<{
   onChange: (queue: {
     id: number
-    fullRoundText: string
+    roundText: string
     streamName: string
     p1?: PlayerScore
     p2?: PlayerScore
@@ -69,7 +69,7 @@ export const StreamQueueTable: FC<{
                         onChange={() => onChange(queue)}
                       />
                     </td>
-                    <td>{queue.fullRoundText}</td>
+                    <td>{queue.roundText}</td>
                     <td>{queue.p1?.playerName}</td>
                     <td>{queue.p2?.playerName}</td>
                     <td>{queue.streamName}</td>

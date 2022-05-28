@@ -49,7 +49,7 @@ export const ScoreAndCamera: FC = () => {
           scoreForm.setValue("p2.playerName", queue.p2?.playerName ?? "")
           scoreForm.setValue("p2.score", queue.p2?.score ?? 0)
           scoreForm.setValue("p2.twitterID", queue.p2?.twitterID ?? "")
-          scoreForm.setValue("round", queue.fullRoundText)
+          scoreForm.setValue("round", queue.roundText)
         }}
       />
 
@@ -134,16 +134,16 @@ export const ScoreAndCamera: FC = () => {
                 options={[
                   { text: "Pools", value: "Pools" },
                   {
-                    text: "Losers Quarter-Final",
-                    value: "Losers Quarter-Final",
+                    text: "Losers Quarters",
+                    value: "Losers Quarters",
                   },
-                  { text: "Losers Semi-Final", value: "Losers Semi-Final" },
+                  { text: "Losers Semis", value: "Losers Semis" },
                   { text: "Losers Final", value: "Losers Final" },
                   {
-                    text: "Winners Quarter-Final",
-                    value: "Winners Quarter-Final",
+                    text: "Winners Quarters",
+                    value: "Winners Quarters",
                   },
-                  { text: "Winners Semi-Final", value: "Winners Semi-Final" },
+                  { text: "Winners Semis", value: "Winners Semis" },
                   { text: "Winners Final", value: "Winners Final" },
                   { text: "Grand Final", value: "Grand Final" },
                 ]}
