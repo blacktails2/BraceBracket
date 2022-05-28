@@ -7,7 +7,8 @@ export const SelectForm: FC<{
   name: string
   options: { text: string; value: string }[]
   className?: string
-}> = ({ label, name, options, className }) => {
+  disabled?: boolean
+}> = ({ label, name, options, className, disabled }) => {
   const { register } = useFormContext()
   return (
     <div className={className}>
@@ -18,6 +19,7 @@ export const SelectForm: FC<{
           {...register(name)}
           list={name}
           className={styles.input}
+          disabled={disabled}
         />
         <datalist id={name}>
           {options.map((option) => (

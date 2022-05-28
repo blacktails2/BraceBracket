@@ -7,7 +7,8 @@ export const CheckBoxForm: FC<{
   name: string
   id?: string
   className?: string
-}> = ({ label, name, className, id }) => {
+  disabled?: boolean
+}> = ({ label, name, className, id, disabled }) => {
   const { register } = useFormContext()
   return (
     <div className={className}>
@@ -18,6 +19,7 @@ export const CheckBoxForm: FC<{
             {...register(name)}
             id={id ?? name}
             className={styles.input}
+            disabled={disabled}
           />
           <label htmlFor={id ?? name} className={styles.dummyLabel}></label>
         </div>

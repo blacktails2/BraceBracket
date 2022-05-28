@@ -19,7 +19,7 @@ export const Next: FC = () => {
   const [matchIntervalInfo, setMatchIntervalInfo, loading] =
     useMatchIntervalInfo(id)
   const form = useForm<FormType>()
-  const { reset, handleSubmit } = form
+  const { reset, handleSubmit, watch, getValues } = form
   const onSubmit: SubmitHandler<FormType> = (data) => {
     setMatchIntervalInfo(data)
   }
@@ -28,6 +28,8 @@ export const Next: FC = () => {
 
     reset(matchIntervalInfo)
   }, [loading, matchIntervalInfo, reset])
+
+  watch("isNow")
 
   return (
     <ControlPanel title="試合間情報" url={`${origin}/obs/next/?id=${id}`}>
@@ -47,66 +49,80 @@ export const Next: FC = () => {
             name="isNow"
             className="mt-[10px]"
           />
-          <div className="flex gap-[30px]">
-            <div>
-              <h4 className="mt-[20px] mb-[5px]">次の試合のプレイヤー名</h4>
-              <div className="flex flex-col gap-[10px]">
-                <TextForm
-                  label="P1"
-                  name="p1.playerName"
-                  placeholder="PlayerName"
-                  autocomplete="playerName"
-                />
-                <TextForm
-                  label="P2"
-                  name="p2.playerName"
-                  placeholder="PlayerName"
-                  autocomplete="playerName"
-                />
-              </div>
-            </div>
-            <div>
-              <h4 className="mt-[20px] mb-[5px]">次の試合のステータス</h4>
+          <div
+            style={{
+              opacity: getValues("isNow") ? 0.3 : 1,
+            }}
+          >
+            <div className="flex gap-[30px]">
               <div>
-                <div className="flex gap-[10px]">
-                  <SelectForm
-                    label="ラウンド"
-                    name="round"
-                    options={[
-                      { text: "Pools", value: "Pools" },
-                      {
-                        text: "Losers Quarter-Final",
-                        value: "Losers Quarter-Final",
-                      },
-                      { text: "Losers Semi-Final", value: "Losers Semi-Final" },
-                      { text: "Losers Final", value: "Losers Final" },
-                      {
-                        text: "Winners Quarter-Final",
-                        value: "Winners Quarter-Final",
-                      },
-                      {
-                        text: "Winners Semi-Final",
-                        value: "Winners Semi-Final",
-                      },
-                      { text: "Winners Final", value: "Winners Final" },
-                      { text: "Grand Final", value: "Grand Final" },
-                    ]}
+                <h4 className="mt-[20px] mb-[5px]">次の試合のプレイヤー名</h4>
+                <div className="flex flex-col gap-[10px]">
+                  <TextForm
+                    label="P1"
+                    name="p1.playerName"
+                    placeholder="PlayerName"
+                    autocomplete="playerName"
+                    disabled={getValues("isNow")}
                   />
-                  <SelectForm
-                    label="試合形式"
-                    name="matchType"
-                    options={[
-                      { text: "Best of 3", value: "Best of 3" },
-                      { text: "Best of 5", value: "Best of 5" },
-                    ]}
+                  <TextForm
+                    label="P2"
+                    name="p2.playerName"
+                    placeholder="PlayerName"
+                    autocomplete="playerName"
+                    disabled={getValues("isNow")}
                   />
                 </div>
-                <CheckBoxForm
-                  label="すべて大文字にする"
-                  name="uppercase"
-                  id="next.uppercase"
-                  className="mt-[10px]"
-                />
+              </div>
+              <div>
+                <h4 className="mt-[20px] mb-[5px]">次の試合のステータス</h4>
+                <div>
+                  <div className="flex gap-[10px]">
+                    <SelectForm
+                      label="ラウンド"
+                      name="round"
+                      options={[
+                        { text: "Pools", value: "Pools" },
+                        {
+                          text: "Losers Quarter-Final",
+                          value: "Losers Quarter-Final",
+                        },
+                        {
+                          text: "Losers Semi-Final",
+                          value: "Losers Semi-Final",
+                        },
+                        { text: "Losers Final", value: "Losers Final" },
+                        {
+                          text: "Winners Quarter-Final",
+                          value: "Winners Quarter-Final",
+                        },
+                        {
+                          text: "Winners Semi-Final",
+                          value: "Winners Semi-Final",
+                        },
+                        { text: "Winners Final", value: "Winners Final" },
+                        { text: "Grand Final", value: "Grand Final" },
+                      ]}
+                      disabled={getValues("isNow")}
+                    />
+                    <SelectForm
+                      label="試合形式"
+                      name="matchType"
+                      options={[
+                        { text: "Best of 3", value: "Best of 3" },
+                        { text: "Best of 5", value: "Best of 5" },
+                      ]}
+                      disabled={getValues("isNow")}
+                    />
+                  </div>
+                  <CheckBoxForm
+                    label="すべて大文字にする"
+                    name="uppercase"
+                    id="next.uppercase"
+                    className="mt-[10px]"
+                    disabled={getValues("isNow")}
+                  />
+                </div>
               </div>
             </div>
           </div>
