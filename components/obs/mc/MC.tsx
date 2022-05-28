@@ -6,6 +6,7 @@ import {
   Setting,
 } from "../../../libs/const"
 import styles from "./MC.module.scss"
+import { Transition } from "../../parts/Transition"
 
 const mcLayoutArray = [
   styles.mc1_layout,
@@ -60,15 +61,19 @@ export const MC: FC<{ setting: Setting; mc: MCInfo }> = ({ setting, mc }) => {
         {filteredMCList.map((mc, idx) => {
           return (
             <>
-              <p className={mcStyleArray[idx]}>
-                <span className={styles.mc_team}>{mc.team}</span>
-                <span className={styles.mc_name}>{mc.playerName}</span>
-              </p>
-              <p className={idStyleArray[idx]}>
-                {mc.twitterID && !mc.twitterID.startsWith("@")
-                  ? `@${mc.twitterID}`
-                  : mc.twitterID}
-              </p>
+              <Transition keyName={`${mc.team}-${mc.playerName}-${idx}`}>
+                <p className={mcStyleArray[idx]}>
+                  <span className={styles.mc_team}>{mc.team}</span>
+                  <span className={styles.mc_name}>{mc.playerName}</span>
+                </p>
+              </Transition>
+              <Transition keyName={`${mc.twitterID}-${idx}`}>
+                <p className={idStyleArray[idx]}>
+                  {mc.twitterID && !mc.twitterID.startsWith("@")
+                    ? `@${mc.twitterID}`
+                    : mc.twitterID}
+                </p>
+              </Transition>
             </>
           )
         })}

@@ -199,7 +199,12 @@ export const Bracket: FC = () => {
   useAsync(async () => {
     console.log({ setting, loadBracket })
     if (!setting?.integrateStartGG.enabled || !loadBracket) return
-    if (loadBracket.lastRequestedAt < lastLoadedAt) return
+    if (loadBracket.lastRequestedAt <= lastLoadedAt) return
+
+    if (lastLoadedAt === 0) {
+      setLastLoadedAt(loadBracket.lastRequestedAt)
+      return
+    }
     const phaseGroupId = setting?.integrateStartGG.url.split("/").pop()
     if (!phaseGroupId) return
     const bracket = await loadTop8Bracket(phaseGroupId)
@@ -208,16 +213,16 @@ export const Bracket: FC = () => {
     setLastLoadedAt(new Date().valueOf())
   }, [loadBracket, lastLoadedAt, setting])
 
-  useInterval(
-    async () => {
-      const phaseGroupId = setting?.integrateStartGG.url.split("/").pop()
-      if (!phaseGroupId) return
-      const bracket = await loadTop8Bracket(phaseGroupId)
-      setBracket(bracket)
-      setLastLoadedAt(new Date().valueOf())
-    },
-    setting?.integrateStartGG.enabled && loadBracket?.autoUpdate ? 10000 : null
-  )
+  // useInterval(
+  //   async () => {
+  //     const phaseGroupId = setting?.integrateStartGG.url.split("/").pop()
+  //     if (!phaseGroupId) return
+  //     const bracket = await loadTop8Bracket(phaseGroupId)
+  //     setBracket(bracket)
+  //     setLastLoadedAt(new Date().valueOf())
+  //   },
+  //   setting?.integrateStartGG.enabled && loadBracket?.autoUpdate ? 10000 : null
+  // )
 
   return (
     <>

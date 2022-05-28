@@ -6,6 +6,7 @@ import {
   getNextFilename,
 } from "../../../libs/const"
 import styles from "./MatchIntervalInfo.module.scss"
+import { Transition } from "../../parts/Transition"
 
 export const MatchInterval: FC<{
   setting: Setting
@@ -40,28 +41,48 @@ export const MatchInterval: FC<{
         src={`/image/next/${getNextFilename(layout, color)}`}
         alt=""
       />
-      <p className={styles.nextnow}>
-        {matchIntervalInfo.isNow ? "NOW" : "NEXT"}
-      </p>
+      <Transition keyName={`${matchIntervalInfo.isNow}`}>
+        <p className={styles.nextnow}>
+          {matchIntervalInfo.isNow ? "NOW" : "NEXT"}
+        </p>
+      </Transition>
       <div
         className={styles.statusBox}
         style={{
           textTransform: matchIntervalInfo.uppercase ? "uppercase" : "none",
         }}
       >
-        <p className={styles.round}>{matchIntervalInfo.round}</p>
-        <p className={styles.bo}>{matchIntervalInfo.matchType}</p>
+        <Transition keyName={matchIntervalInfo.round}>
+          <p className={styles.round}>{matchIntervalInfo.round}</p>
+        </Transition>
+        <Transition keyName={matchIntervalInfo.matchType}>
+          <p className={styles.bo}>{matchIntervalInfo.matchType}</p>
+        </Transition>
       </div>
-      <p className={styles.playerLeft}>{matchIntervalInfo.p1.playerName}</p>
-      <p className={styles.scoreLeft}>{matchIntervalInfo.p1.score}</p>
-      <p className={styles.scoreRight}>{matchIntervalInfo.p2.score}</p>
-      <p className={styles.playerRight}>{matchIntervalInfo.p2.playerName}</p>
+      <Transition keyName={matchIntervalInfo.p1.playerName}>
+        <p className={styles.playerLeft}>{matchIntervalInfo.p1.playerName}</p>
+      </Transition>
+      <Transition
+        keyName={`${matchIntervalInfo.p1.playerName}-${matchIntervalInfo.p1.score}`}
+      >
+        <p className={styles.scoreLeft}>{matchIntervalInfo.p1.score}</p>
+      </Transition>
+      <Transition
+        keyName={`${matchIntervalInfo.p2.playerName}-${matchIntervalInfo.p2.score}`}
+      >
+        <p className={styles.scoreRight}>{matchIntervalInfo.p2.score}</p>
+      </Transition>
+      <Transition keyName={matchIntervalInfo.p2.playerName}>
+        <p className={styles.playerRight}>{matchIntervalInfo.p2.playerName}</p>
+      </Transition>
       <p className={styles.localsetting}>
         Local Time
         <br />
         JST
       </p>
-      <p className={styles.localtime}>{time}</p>
+      <Transition keyName={time}>
+        <p className={styles.localtime}>{time}</p>
+      </Transition>
     </div>
   )
 }
