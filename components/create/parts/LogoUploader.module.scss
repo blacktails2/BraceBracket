@@ -4,9 +4,10 @@
   .cross {
     height: 120px;
     width: 142px;
-    background: none;
+    background: var(--bb-white);
     border: 1px solid var(--light-primary);
     border-radius: 5px;
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 
     &::before {
       content: "";
@@ -17,6 +18,7 @@
       position: absolute;
       left: 50%;
       top: 40px;
+      transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
     &::after {
@@ -28,6 +30,20 @@
       position: absolute;
       left: 51px;
       top: 50%;
+      transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    &:hover {
+      border-color: var(--bb-beige);
+      box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
+
+      &::before {
+        background-color: var(--bb-beige);
+      }
+
+      &::after {
+        background-color: var(--bb-beige);
+      }
     }
 
     .label {
@@ -58,7 +74,13 @@
   background: var(--white);
   color: var(--black);
   border-radius: 5px;
-  padding: 3px;
+  padding: 3px 6px;
   font-size: 10px;
   border: 1px solid var(--primary);
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+  &:hover {
+    background-color: var(--bb-beige-light);
+    box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
+  }
 }
