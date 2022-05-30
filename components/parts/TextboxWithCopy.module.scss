@@ -4,6 +4,7 @@
 }
 
 .text {
+  font-family: "Mint Grotesk Regular", sans-serif;
   height: 30px;
   width: 100%;
   border: 1px solid var(--light-primary);
@@ -22,6 +23,7 @@
   width: 48px;
   left: -5px;
   font-size: 12px;
+  font-family: "Mint Grotesk Bold", TazuganeInfoStdN-Bold, sans-serif;
   border: none;
   border-radius: 5px;
   background-color: var(--bb-beige);
