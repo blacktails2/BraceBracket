@@ -6,4 +6,15 @@
   background-color: var(--primary);
   border-radius: 15px;
   border: none;
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+  &:hover {
+    background-color: var(--bb-beige-hover);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+  }
+
+  &:active {
+    background-color: var(--bb-beige-dark);
+    box-shadow: none;
+  }
 }

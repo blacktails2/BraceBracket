@@ -8,8 +8,15 @@
   position: relative;
   width: 20px;
   height: 20px;
-  border: 1px solid var(--light-primary);
+  border: 2px solid var(--bb-gray);
   border-radius: 5px;
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--bb-black);
+    box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
+  }
 }
 
 .input {
@@ -23,12 +30,12 @@
     &::after {
       content: "";
       position: absolute;
-      width: 5px;
-      height: 13px;
+      width: 8px;
+      height: 14px;
       border-right: 2px solid var(--bb-white);
       border-bottom: 2px solid var(--bb-white);
       top: 0;
-      left: 5px;
+      left: 4px;
       transform: rotate(45deg);
     }
   }

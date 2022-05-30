@@ -5,4 +5,15 @@
   background-color: var(--bb-black);
   border-radius: 5px;
   border: none;
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+  &:hover {
+    background-color: var(--bb-gray);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+  }
+
+  &:active {
+    background-color: var(--bb-black);
+    box-shadow: none;
+  }
 }
