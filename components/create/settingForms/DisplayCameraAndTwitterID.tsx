@@ -1,7 +1,7 @@
-import { FC } from "react"
-import styles from "./DisplayCameraAndTwitterID.module.scss"
-import { BigCheckBox } from "../parts/BigCheckBox"
 import Link from "next/link"
+import { FC } from "react"
+import { BigCheckBox } from "../parts/BigCheckBox"
+import styles from "./DisplayCameraAndTwitterID.module.scss"
 
 export const DisplayCameraAndTwitterID: FC = () => {
   const key = "scoreboard.cameraAndLogo.displayCameraAndTwitterID"

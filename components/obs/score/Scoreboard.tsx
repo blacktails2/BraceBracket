@@ -1,4 +1,5 @@
 import { FC, useState } from "react"
+import { useInterval } from "react-use"
 import {
   getCameraFilename,
   Score,
@@ -6,10 +7,8 @@ import {
   ScoreboardLayout,
   Setting,
 } from "../../../libs/const"
-import styles from "./Score.module.scss"
-import { CSSTransition, SwitchTransition } from "react-transition-group"
-import { useInterval } from "react-use"
 import { Transition } from "../../parts/Transition"
+import styles from "./Score.module.scss"
 
 const getLayoutClass = (layout: ScoreboardLayout) => {
   switch (layout) {

@@ -1,27 +1,22 @@
 import { FC, useEffect, useState } from "react"
-import { ControlPanel } from "../parts/ControlPanel"
-import { PrimaryButton } from "../../parts/PrimaryButton"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
-import { useScore } from "../../../hooks/useScore"
-import { Score } from "../../../libs/const"
-import { useRouter } from "next/router"
 import { useOrigin } from "../../../hooks/useOrigin"
-import { TextForm } from "../../parts/TextForm"
-import { NumberForm } from "../../parts/NumberForm"
+import { Score } from "../../../libs/const"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { NumberForm } from "../../parts/NumberForm"
+import { PrimaryButton } from "../../parts/PrimaryButton"
 import { SelectForm } from "../../parts/SelectForm"
-import { getStreamQueue, StreamQueue } from "../../../libs/getStreamQueue"
-import { useSetting } from "../../../hooks/useSetting"
-import styles from "./kesu.module.scss"
-import { Button } from "../../parts/Button"
-import { Attendee, getAttendee } from "../../../libs/getAttendee"
+import { TextForm } from "../../parts/TextForm"
+import { ControlPanel } from "../parts/ControlPanel"
 import { StreamQueueTable } from "../parts/StreamQueueTable"
+import styles from "./kesu.module.scss"
 
-export const ScoreAndCamera: FC = () => {
-  const router = useRouter()
-  const id = router.query.id as string
+export const ScoreAndCamera: FC<{
+  id?: string
+  score?: Score
+  setScore: (value: Score) => void
+}> = ({ id, score, setScore }) => {
   const origin = useOrigin()
-  const [score, setScore] = useScore(id)
   const [showTooltip, setShowTooltip] = useState(false)
   const scoreForm = useForm<Score>()
   const { handleSubmit, reset } = scoreForm

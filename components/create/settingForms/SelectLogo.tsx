@@ -1,7 +1,7 @@
 import { FC } from "react"
-import styles from "./SelectLogo.module.scss"
-import { LogoUploader } from "../parts/LogoUploader"
 import { useFieldArray, useFormContext } from "react-hook-form"
+import { LogoUploader } from "../parts/LogoUploader"
+import styles from "./SelectLogo.module.scss"
 
 export const SelectLogo: FC = () => {
   const { control, getValues } = useFormContext()

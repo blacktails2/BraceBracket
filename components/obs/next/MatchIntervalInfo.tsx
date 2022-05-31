@@ -5,8 +5,8 @@ import {
   MatchIntervalInfo,
   getNextFilename,
 } from "../../../libs/const"
-import styles from "./MatchIntervalInfo.module.scss"
 import { Transition } from "../../parts/Transition"
+import styles from "./MatchIntervalInfo.module.scss"
 
 export const MatchInterval: FC<{
   setting: Setting

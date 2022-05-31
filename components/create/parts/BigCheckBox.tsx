@@ -1,6 +1,6 @@
+import { FC } from "react"
 import { useFormContext } from "react-hook-form"
 import styles from "./BigCheckBox.module.scss"
-import { FC } from "react"
 
 export const BigCheckBox: FC<{
   name: string

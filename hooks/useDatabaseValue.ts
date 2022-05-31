@@ -22,7 +22,6 @@ export function genUseDatabaseValue<T>(
     useEffect(() => {
       if (!id) {
         _setValue(defaultValue)
-        setLoading(false)
         return
       }
       const valueRef = ref(db, getPath(id))
@@ -35,6 +34,7 @@ export function genUseDatabaseValue<T>(
       get(valueRef).then((snapshot) => {
         if (snapshot.exists()) return
         set(valueRef, defaultValue)
+        setLoading(false)
       })
       return () => {
         unsubscribe()

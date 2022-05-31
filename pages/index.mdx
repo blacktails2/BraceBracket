@@ -1,4 +1,5 @@
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
+import { useEffect } from "react"
 
 ## BraceBracket
 
@@ -17,8 +18,23 @@ BraceBracketは格闘ゲームにおけるスコアボードを動的に表示�
 - 各パネルで必要な操作を行ってください。
 
 
-export default ({children}) => <DefaultLayout>
-<div style={{margin: "20px 48px"}} className="markdown">
-    {children}
-</div>
-</DefaultLayout>
+
+
+
+export default ({children}) => {
+    useEffect(() => {
+        if (!window.FONTPLUS) return
+        if (
+            process.env.NODE_ENV === "production" ||
+            process.env.LOAD_FONT === "ON"
+        ) {
+            console.log("font loaded")
+            window.FONTPLUS?.reload()
+        }
+    }, [])
+    return <DefaultLayout>
+        <div style={{margin: "20px 48px"}} className="markdown">
+            {children}
+        </div>
+    </DefaultLayout>
+}
