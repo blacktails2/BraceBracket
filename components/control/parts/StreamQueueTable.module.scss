@@ -3,15 +3,25 @@
 
   th {
     text-align: left;
+    font-family: "Mint Grotesk Medium", TazuganeInfoStdN-Medium, sans-serif;
     border-bottom: 1px solid var(--bb-beige);
+    padding: 2px 25px;
   }
 
-  th,
+  tr {
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+    &:hover {
+      background-color: var(--bb-beige-light);
+      cursor: pointer;
+    }
+  }
+
   td {
-    padding: 5px 10px;
+    padding: 14px 25px;
   }
 
   td:nth-child(1) {
-    width: 20px;
+    padding: 12px 0 12px 10px;
   }
 }

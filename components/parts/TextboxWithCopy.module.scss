@@ -4,12 +4,17 @@
 }
 
 .text {
+  font-family: "Mint Grotesk Regular", sans-serif;
   height: 30px;
   width: 100%;
   border: 1px solid var(--light-primary);
   padding: 5px 10px;
   border-radius: 5px 0 0 5px;
   border-right: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .button {
@@ -18,13 +23,21 @@
   width: 48px;
   left: -5px;
   font-size: 12px;
+  font-family: "Mint Grotesk Bold", TazuganeInfoStdN-Bold, sans-serif;
   border: none;
   border-radius: 5px;
   background-color: var(--bb-beige);
   color: var(--bb-black);
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 
   &:hover {
     background-color: var(--bb-beige-hover);
+    box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
+  }
+
+  &:active {
+    background-color: var(--bb-beige-dark);
+    box-shadow: none;
   }
 }
 
@@ -34,21 +47,24 @@
   padding: 8px;
   left: -6px;
   top: -40px;
-  background-color: var(--bb-black);
-  font-size: 8px;
-  color: var(--bb-white);
+  background-color: var(--bb-white);
+  border: 1px solid var(--bb-beige);
+  font-size: 10px;
+  color: var(--primary);
   z-index: 1;
   border-radius: 5px;
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
 
-  &::before {
-    content: "";
-    position: absolute;
-    left: calc(50% - 6px);
-    top: 100%;
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid var(--bb-black);
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   left: calc(50% - 6px);
+  //   top: 100%;
+  //   width: 0;
+  //   height: 0;
+  //   border-left: 6px solid transparent;
+  //   border-right: 6px solid transparent;
+  //   border-top: 6px solid var(--bb-beige);
+  // }
 }
