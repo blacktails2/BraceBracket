@@ -1,10 +1,10 @@
+import Image from "next/image"
 import { FC } from "react"
-import styles from "./Layout.module.scss"
-import { DesignRadioButton } from "../parts/DesignRadioButton"
 import { Controller, useFormContext } from "react-hook-form"
 import { ScoreboardLayouts } from "../../../libs/const"
 import { capitalize } from "../../../libs/utils"
-import Image from "next/image"
+import { DesignRadioButton } from "../parts/DesignRadioButton"
+import styles from "./Layout.module.scss"
 
 export const Layout: FC = () => {
   const { control } = useFormContext()

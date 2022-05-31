@@ -1,7 +1,7 @@
 import { FC } from "react"
-import styles from "./IntegrateStartGG.module.scss"
-import { BigCheckBox } from "../parts/BigCheckBox"
 import { useFormContext } from "react-hook-form"
+import { BigCheckBox } from "../parts/BigCheckBox"
+import styles from "./IntegrateStartGG.module.scss"
 
 export const IntegrateStartGG: FC = () => {
   const { register } = useFormContext()

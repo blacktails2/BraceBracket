@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react"
-import styles from "./ControlPanel.module.scss"
 import { TextboxWithCopy } from "../../parts/TextboxWithCopy"
+import styles from "./ControlPanel.module.scss"
 
 export const ControlPanel: FC<{
   title: string

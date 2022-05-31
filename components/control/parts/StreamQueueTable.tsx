@@ -1,11 +1,11 @@
-import { Button } from "../../parts/Button"
-import { getStreamQueue, StreamQueue } from "../../../libs/getStreamQueue"
-import { Attendee, getAttendee } from "../../../libs/getAttendee"
-import styles from "./StreamQueueTable.module.scss"
-import { useSetting } from "../../../hooks/useSetting"
-import { FC, useState } from "react"
 import { useRouter } from "next/router"
+import { FC, useState } from "react"
+import { useSetting } from "../../../hooks/useSetting"
 import { PlayerScore } from "../../../libs/const"
+import { Attendee, getAttendee } from "../../../libs/getAttendee"
+import { getStreamQueue, StreamQueue } from "../../../libs/getStreamQueue"
+import { Button } from "../../parts/Button"
+import styles from "./StreamQueueTable.module.scss"
 
 export const StreamQueueTable: FC<{
   onChange: (queue: {

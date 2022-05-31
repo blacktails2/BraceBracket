@@ -1,8 +1,7 @@
 import { FC, useEffect, useState } from "react"
-import styles from "./BracketBox.module.scss"
 import { BracketScore } from "../../../libs/const"
 import { Transition } from "../../parts/Transition"
-import { CSSTransition } from "react-transition-group"
+import styles from "./BracketBox.module.scss"
 
 export const BracketBox: FC<{
   score: BracketScore

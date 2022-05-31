@@ -1,10 +1,10 @@
+import Image from "next/image"
 import { FC, useEffect } from "react"
-import { DesignRadioButton } from "../parts/DesignRadioButton"
 import { Controller, useFormContext } from "react-hook-form"
 import { ScoreboardColorsMap } from "../../../libs/const"
-import styles from "./Color.module.scss"
 import { capitalize } from "../../../libs/utils"
-import Image from "next/image"
+import { DesignRadioButton } from "../parts/DesignRadioButton"
+import styles from "./Color.module.scss"
 
 const color2Label = (color: string) => {
   return color.split("_").map(capitalize).join(" / ")
