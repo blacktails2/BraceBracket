@@ -131,7 +131,7 @@ export const Next: FC = () => {
                               <>
                                 <div
                                   className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] ${
-                                    round.startsWith(name)
+                                    round?.startsWith(name)
                                       ? "bg-black text-white"
                                       : "bg-white text-black"
                                   } ${isNow ? "" : "cursor-pointer"}`}
@@ -139,10 +139,10 @@ export const Next: FC = () => {
                                     if (isNow) {
                                       return
                                     }
-                                    let newRound = round
+                                    let newRound = round ?? ""
                                     let replaced = false
                                     for (const r of values) {
-                                      if (newRound.startsWith(r)) {
+                                      if (newRound?.startsWith(r)) {
                                         newRound = newRound.replace(r, name)
                                         replaced = true
                                         break
@@ -186,7 +186,7 @@ export const Next: FC = () => {
                               <>
                                 <div
                                   className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] ${
-                                    round.endsWith(name)
+                                    round?.endsWith(name)
                                       ? "bg-black text-white"
                                       : "bg-white text-black"
                                   } ${isNow ? "" : "cursor-pointer"}`}
@@ -194,7 +194,7 @@ export const Next: FC = () => {
                                     if (isNow) {
                                       return
                                     }
-                                    let newRound = round
+                                    let newRound = round ?? ""
                                     let replaced = false
                                     for (const r of values) {
                                       if (newRound.endsWith(r)) {
@@ -231,7 +231,7 @@ export const Next: FC = () => {
                               <>
                                 <div
                                   className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
-                                    matchType.endsWith(name)
+                                    matchType?.endsWith(name)
                                       ? "bg-black text-white"
                                       : "bg-white text-black"
                                   } ${isNow ? "" : "cursor-pointer"}`}
@@ -239,7 +239,7 @@ export const Next: FC = () => {
                                     if (isNow) {
                                       return
                                     }
-                                    let newMatchType = matchType
+                                    let newMatchType = matchType ?? ""
                                     let replaced = false
                                     for (const r of values) {
                                       if (newMatchType.endsWith(r)) {

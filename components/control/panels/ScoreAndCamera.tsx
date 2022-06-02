@@ -243,12 +243,12 @@ export const ScoreAndCamera: FC = () => {
                         <>
                           <div
                             className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
-                              round.startsWith(name)
+                              round?.startsWith(name)
                                 ? "bg-black text-white"
                                 : "bg-white text-black"
                             }`}
                             onClick={() => {
-                              let newRound = round
+                              let newRound = round ?? ""
                               let replaced = false
                               for (const r of values) {
                                 if (newRound.startsWith(r)) {
@@ -294,12 +294,12 @@ export const ScoreAndCamera: FC = () => {
                         <>
                           <div
                             className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
-                              round.endsWith(name)
+                              round?.endsWith(name)
                                 ? "bg-black text-white"
                                 : "bg-white text-black"
                             }`}
                             onClick={() => {
-                              let newRound = round
+                              let newRound = round ?? ""
                               let replaced = false
                               for (const r of values) {
                                 if (newRound.endsWith(r)) {
@@ -335,12 +335,12 @@ export const ScoreAndCamera: FC = () => {
                         <>
                           <div
                             className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
-                              matchType.endsWith(name)
+                              matchType?.endsWith(name)
                                 ? "bg-black text-white"
                                 : "bg-white text-black"
                             }`}
                             onClick={() => {
-                              let newMatchType = matchType
+                              let newMatchType = matchType ?? ""
                               let replaced = false
                               for (const r of values) {
                                 if (newMatchType.endsWith(r)) {
