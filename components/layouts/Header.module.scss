@@ -5,6 +5,10 @@
   z-index: 1000;
   background-color: #fff;
   height: 100px;
+
+  @media (max-width: 520px) {
+    height: 54px;
+  }
 }
 
 .navbar {
@@ -12,6 +16,11 @@
   justify-content: space-between;
   padding: 0 20px;
   height: 100px;
+
+  @media (max-width: 520px) {
+    height: 54px;
+    padding: 0 12px;
+  }
 }
 
 .navbarLeft {
@@ -19,9 +28,28 @@
   align-items: center;
 }
 
+.topLink {
+  width: 292px;
+  height: 30px;
+  background-image: url("/image/logotype.svg");
+
+  @media (max-width: 520px) {
+    width: 42px;
+    height: 20px;
+    background-image: url("/image/symbol_black.svg");
+    background-size: contain;
+  }
+}
+
 .navbarRight {
   display: flex;
   align-items: center;
+}
+
+.headerLinkContainer {
+  @media (max-width: 960px) {
+    display: none;
+  }
 }
 
 .headerLink {
@@ -48,5 +76,88 @@
   &:active {
     background-color: var(--bb-beige-dark);
     box-shadow: none;
+  }
+}
+
+.hamburgerMenu {
+  display: none;
+  width: 30px;
+  height: 30px;
+  padding-top: 12px;
+
+  .dummyButton {
+    display: none;
+  }
+
+  @media (max-width: 520px) {
+    display: block;
+    position: relative;
+
+    .menuButton {
+      width: 25px;
+      height: 25px;
+      display: block;
+    }
+
+    .menuButton span,
+    .menuButton span::before,
+    .menuButton span::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 25px;
+      border-radius: 3px;
+      background-color: var(--bb-black);
+      position: absolute;
+      transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .menuButton span::before {
+      bottom: 8px;
+    }
+
+    .menuButton span::after {
+      top: 8px;
+    }
+
+    .dummyButton:checked ~ .menuButton span {
+      background-color: rgb(0 0 0 / 0%);
+    }
+
+    .dummyButton:checked ~ .menuButton span::before {
+      bottom: 0;
+      transform: rotate(45deg);
+    }
+
+    .dummyButton:checked ~ .menuButton span::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+    .menuContent {
+      background-color: var(--bb-white);
+      width: 0;
+      transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+      position: absolute;
+      border-left: 1px solid var(--bb-black);
+      border-bottom: 1px solid var(--bb-black);
+
+      a {
+        display: none;
+        padding: 15px 0 15px 15px;
+        color: var(--black);
+        text-decoration: none;
+        font-size: 1.6rem;
+      }
+    }
+
+    .dummyButton:checked ~ .menuContent {
+      transform: translateX(calc(-80vw + 40px));
+      width: 80vw;
+
+      a {
+        display: block;
+      }
+    }
   }
 }

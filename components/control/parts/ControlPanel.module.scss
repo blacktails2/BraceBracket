@@ -8,19 +8,30 @@
   details summary::after {
     content: "";
     display: block;
-    width: 30px;
-    height: 30px;
     border-bottom: 2px solid var(--primary);
     border-right: 2px solid var(--primary);
     position: absolute;
+    width: 30px;
+    height: 30px;
     top: 40px;
     right: 55px;
     transform: rotate(45deg);
     transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+    @media (max-width: 520px) {
+      width: 20px;
+      height: 20px;
+      top: 0;
+      right: 20px;
+    }
   }
 
   details[open] summary::after {
     transform: translateY(15px) rotate(225deg);
+
+    @media (max-width: 520px) {
+      transform: translateY(10px) rotate(225deg);
+    }
   }
 
   details summary::before {
@@ -33,6 +44,13 @@
     right: 40px;
     border-radius: 5px;
     transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+    @media (max-width: 520px) {
+      width: 40px;
+      height: 40px;
+      top: -5px;
+      right: 10px;
+    }
   }
 
   summary {
@@ -51,9 +69,12 @@
     }
 
     .title {
-      font-size: 24px;
+      font-size: 2.4rem;
       margin-bottom: 20px;
-      font-family: "Mint Grotesk Bold", TazuganeInfoStdN-Heavy, sans-serif;
+
+      @media (max-width: 520px) {
+        font-size: 2.1rem;
+      }
     }
 
     .url {

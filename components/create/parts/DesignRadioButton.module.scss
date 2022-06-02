@@ -1,3 +1,9 @@
+.label {
+  width: calc(50% - 10px);
+  max-width: 306px;
+  min-width: 150px;
+}
+
 .container {
   padding: 15px;
   border: 1px solid var(--primary);
@@ -7,6 +13,10 @@
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
   box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
+
+  @media (max-width: 520px) {
+    padding: 10px;
+  }
 
   &:hover {
     background-color: var(--bb-beige-light);

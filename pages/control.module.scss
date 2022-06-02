@@ -2,9 +2,18 @@
   padding-left: 48px;
   padding-right: 48px;
 
+  @media (max-width: 520px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   h2 {
     margin-top: 50px;
     margin-bottom: 100px;
+
+    @media (max-width: 520px) {
+      margin-bottom: 30px;
+    }
   }
 
   .header {
@@ -17,6 +26,13 @@
         display: flex;
         justify-content: flex-end;
       }
+    }
+
+    @media (max-width: 520px) {
+      flex-flow: column;
+      justify-content: inherit;
+      align-items: inherit;
+      margin-bottom: 50px;
     }
   }
 }
