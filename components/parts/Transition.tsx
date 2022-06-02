@@ -1,5 +1,5 @@
-import { FC, ReactNode } from "react"
 import { SwitchTransition, CSSTransition } from "react-transition-group"
+import { FC, ReactNode } from "react"
 
 export const Transition: FC<{ children: ReactNode; keyName: string }> = ({
   children,

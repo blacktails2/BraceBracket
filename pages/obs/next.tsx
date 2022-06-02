@@ -1,10 +1,10 @@
 import { NextPage } from "next"
-import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
-import { MatchInterval } from "../../components/obs/next/MatchIntervalInfo"
-import { useMatchIntervalInfo } from "../../hooks/useMatchIntervalInfo"
-import { useScore } from "../../hooks/useScore"
 import { useSetting } from "../../hooks/useSetting"
+import { useMatchIntervalInfo } from "../../hooks/useMatchIntervalInfo"
+import { useRouter } from "next/router"
+import { MatchInterval } from "../../components/obs/next/MatchIntervalInfo"
+import { useScore } from "../../hooks/useScore"
+import { useEffect, useState } from "react"
 import { MatchIntervalInfo } from "../../libs/const"
 
 const Next: NextPage = () => {

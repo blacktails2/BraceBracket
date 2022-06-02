@@ -1,15 +1,15 @@
-import Image from "next/image"
-import { useRouter } from "next/router"
 import { FC, useMemo, useState } from "react"
+import styles from "./Preview.module.scss"
+import Image from "next/image"
+import { PrimaryButton } from "../../parts/PrimaryButton"
 import { useFormContext } from "react-hook-form"
+import { useRouter } from "next/router"
 import {
   getBracketFilename,
   getCameraFilename,
   getMCFilename,
   getNextFilename,
 } from "../../../libs/const"
-import { PrimaryButton } from "../../parts/PrimaryButton"
-import styles from "./Preview.module.scss"
 
 export const Preview: FC = () => {
   const router = useRouter()

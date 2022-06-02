@@ -1,15 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from "next/document"
-
-declare global {
-  interface Window {
-    FONTPLUS: {
-      reload: () => void
-      async: () => void
-      attachCompleteEvent: any
-      load: any
-    }
-  }
-}
+import Script from "next/script"
 
 class MyDocument extends Document {
   render() {
@@ -24,6 +14,10 @@ class MyDocument extends Document {
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+          />
+          <Script
+            src="https://webfont.fontplus.jp/accessor/script/fontplus.js?qdfWifIcjAc%3D&box=PeMTC~FUu4w%3D&chws=1&aa=1&ab=1"
+            strategy="beforeInteractive"
           />
         </Head>
         <body>

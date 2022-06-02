@@ -5,8 +5,8 @@ import {
   PlayerScore,
   Setting,
 } from "../../../libs/const"
-import { Transition } from "../../parts/Transition"
 import styles from "./MC.module.scss"
+import { Transition } from "../../parts/Transition"
 
 const mcLayoutArray = [
   styles.mc1_layout,

@@ -1,18 +1,18 @@
 import { FC, useEffect } from "react"
-import { FormProvider, useFieldArray, useForm } from "react-hook-form"
-import { useOrigin } from "../../../hooks/useOrigin"
-import { MC as FormType } from "../../../libs/const"
-import { PrimaryButton } from "../../parts/PrimaryButton"
-import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
+import { useOrigin } from "../../../hooks/useOrigin"
+import { useRouter } from "next/router"
+import { TextForm } from "../../parts/TextForm"
+import { FormProvider, useFieldArray, useForm } from "react-hook-form"
+import { PrimaryButton } from "../../parts/PrimaryButton"
+import { MC as FormType } from "../../../libs/const"
+import { useMC } from "../../../hooks/useMC"
 
-export const MC: FC<{
-  id?: string
-  mc?: FormType
-  setMC: (value: FormType) => void
-  loading: boolean
-}> = ({ id, mc, setMC, loading }) => {
+export const MC: FC = () => {
+  const router = useRouter()
+  const id = router.query.id as string
   const origin = useOrigin()
+  const [mc, setMC, loading] = useMC(id)
   const form = useForm<FormType>()
   const { fields } = useFieldArray({
     control: form.control,
