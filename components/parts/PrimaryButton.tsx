@@ -34,7 +34,10 @@ export const PrimaryButton: FC<{
         </button>
         <CSSTransition
           in={showTooltip}
-          timeout={500}
+          timeout={{
+            enter: 0,
+            exit: 500,
+          }}
           classNames={{
             enter: styles.tooltipEnter,
             exit: styles.tooltipExit,
