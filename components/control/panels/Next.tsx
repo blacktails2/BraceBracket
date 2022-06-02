@@ -1,30 +1,28 @@
 import { FC, useEffect } from "react"
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
-import { useOrigin } from "../../../hooks/useOrigin"
-import {
-  MatchIntervalInfo,
-  MatchIntervalInfo as FormType,
-} from "../../../libs/const"
-import { CheckBoxForm } from "../../parts/CheckBoxForm"
-import { PrimaryButton } from "../../parts/PrimaryButton"
-import { SelectForm } from "../../parts/SelectForm"
-import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
+import { useOrigin } from "../../../hooks/useOrigin"
+import { useRouter } from "next/router"
+import { PrimaryButton } from "../../parts/PrimaryButton"
+import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
+import { useMatchIntervalInfo } from "../../../hooks/useMatchIntervalInfo"
+import { MatchIntervalInfo as FormType } from "../../../libs/const"
+import { TextForm } from "../../parts/TextForm"
+import { SelectForm } from "../../parts/SelectForm"
+import { Button } from "../../parts/Button"
 import { StreamQueueTable } from "../parts/StreamQueueTable"
 
-export const Next: FC<{
-  id?: string
-  matchIntervalInfo?: MatchIntervalInfo
-  setMatchIntervalInfo: (value: MatchIntervalInfo) => void
-  loading: boolean
-}> = ({ id, matchIntervalInfo, setMatchIntervalInfo, loading }) => {
+export const Next: FC = () => {
+  const router = useRouter()
+  const id = router.query.id as string
   const origin = useOrigin()
+  const [matchIntervalInfo, setMatchIntervalInfo, loading] =
+    useMatchIntervalInfo(id)
   const form = useForm<FormType>()
   const { reset, handleSubmit, watch, getValues } = form
   const onSubmit: SubmitHandler<FormType> = (data) => {
     setMatchIntervalInfo(data)
   }
-
   useEffect(() => {
     if (loading || !matchIntervalInfo) return
 

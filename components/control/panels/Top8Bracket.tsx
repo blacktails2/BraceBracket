@@ -1,19 +1,18 @@
 import { FC, useEffect } from "react"
-import { FormProvider, useForm } from "react-hook-form"
-import { useOrigin } from "../../../hooks/useOrigin"
-import { LoadBracket } from "../../../libs/const"
-import { Button } from "../../parts/Button"
-import { CheckBoxForm } from "../../parts/CheckBoxForm"
-import { PrimaryButton } from "../../parts/PrimaryButton"
 import { ControlPanel } from "../parts/ControlPanel"
+import { useOrigin } from "../../../hooks/useOrigin"
+import { useRouter } from "next/router"
+import { PrimaryButton } from "../../parts/PrimaryButton"
+import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { FormProvider, useForm } from "react-hook-form"
+import { useLoadBracket } from "../../../hooks/useLoadBracket"
+import { Button } from "../../parts/Button"
 
-export const Top8Bracket: FC<{
-  id?: string
-  loadBracket?: LoadBracket
-  requestLoad: (autoUpdate: boolean) => void
-  loading: boolean
-}> = ({ id, loadBracket, requestLoad, loading }) => {
+export const Top8Bracket: FC = () => {
+  const router = useRouter()
+  const id = router.query.id as string
   const origin = useOrigin()
+  const [loadBracket, requestLoad, loading] = useLoadBracket(id)
   const bracketForm = useForm<{ autoUpdate: boolean }>()
   const { handleSubmit } = bracketForm
   const onSubmit = ({ autoUpdate }: { autoUpdate: boolean }) => {

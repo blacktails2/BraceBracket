@@ -1,11 +1,11 @@
-import { useRouter } from "next/router"
 import { FC, useState } from "react"
-import { useAsync } from "react-use"
+import { useAsync, useInterval } from "react-use"
+import { BracketScore } from "../../libs/const"
 import { BracketBox } from "../../components/obs/bracket/BracketBox"
 import { useLoadBracket } from "../../hooks/useLoadBracket"
-import { useSetting } from "../../hooks/useSetting"
-import { BracketScore } from "../../libs/const"
+import { useRouter } from "next/router"
 import { getNameAndTeamtag } from "../../libs/utils"
+import { useSetting } from "../../hooks/useSetting"
 
 const query = `
 query PhaseGroupSets($phaseGroupId: ID!) {

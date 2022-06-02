@@ -29,8 +29,6 @@
     "eslint": "8.16.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
     "firebase": "^9.8.1",
     "husky": ">=6",
     "imgur": "^2.2.0",

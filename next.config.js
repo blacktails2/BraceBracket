@@ -20,9 +20,6 @@ const nextConfig = withMDX(
     trailingSlash: true,
     i18n,
     pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-    env: {
-      LOAD_FONT: "OFF",
-    },
   })
 )
 

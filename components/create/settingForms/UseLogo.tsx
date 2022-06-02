@@ -1,6 +1,6 @@
 import { FC } from "react"
-import { BigCheckBox } from "../parts/BigCheckBox"
 import styles from "./UseLogo.module.scss"
+import { BigCheckBox } from "../parts/BigCheckBox"
 
 export const UseLogo: FC = () => {
   const key = "scoreboard.cameraAndLogo.useLogo"
