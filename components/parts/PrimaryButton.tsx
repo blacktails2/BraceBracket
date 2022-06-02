@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from "react"
 import styles from "./PrimaryButton.module.scss"
+import { CSSTransition } from "react-transition-group"
 
 export const PrimaryButton: FC<{
   children?: ReactNode
@@ -31,12 +32,19 @@ export const PrimaryButton: FC<{
         >
           {children}
         </button>
-        <div
-          className={styles.popup}
-          style={{ display: showTooltip ? "block" : "none" }}
+        <CSSTransition
+          in={showTooltip}
+          timeout={500}
+          classNames={{
+            enter: styles.tooltipEnter,
+            exit: styles.tooltipExit,
+          }}
+          unmountOnExit
         >
-          {tooltipText}
-        </div>
+          {() => {
+            return <div className={styles.tooltip}>{tooltipText}</div>
+          }}
+        </CSSTransition>
       </div>
     </div>
   )
