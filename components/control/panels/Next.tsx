@@ -128,36 +128,35 @@ export const Next: FC = () => {
                           ]
                           return values.map((name) => {
                             return (
-                              <>
-                                <div
-                                  className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] ${
-                                    round?.startsWith(name)
-                                      ? "bg-black text-white"
-                                      : "bg-white text-black"
-                                  } ${isNow ? "" : "cursor-pointer"}`}
-                                  onClick={() => {
-                                    if (isNow) {
-                                      return
+                              <div
+                                key={name}
+                                className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] ${
+                                  round?.startsWith(name)
+                                    ? "bg-black text-white"
+                                    : "bg-white text-black"
+                                } ${isNow ? "" : "cursor-pointer"}`}
+                                onClick={() => {
+                                  if (isNow) {
+                                    return
+                                  }
+                                  let newRound = round ?? ""
+                                  let replaced = false
+                                  for (const r of values) {
+                                    if (newRound?.startsWith(r)) {
+                                      newRound = newRound.replace(r, name)
+                                      replaced = true
+                                      break
                                     }
-                                    let newRound = round ?? ""
-                                    let replaced = false
-                                    for (const r of values) {
-                                      if (newRound?.startsWith(r)) {
-                                        newRound = newRound.replace(r, name)
-                                        replaced = true
-                                        break
-                                      }
-                                    }
-                                    if (!replaced) {
-                                      newRound = name + newRound
-                                    }
+                                  }
+                                  if (!replaced) {
+                                    newRound = name + newRound
+                                  }
 
-                                    form.setValue("round", newRound)
-                                  }}
-                                >
-                                  {name}
-                                </div>
-                              </>
+                                  form.setValue("round", newRound)
+                                }}
+                              >
+                                {name}
+                              </div>
                             )
                           })
                         })()}
@@ -183,36 +182,35 @@ export const Next: FC = () => {
                             const round = form.getValues("round")
                             const isNow = form.getValues("isNow")
                             return (
-                              <>
-                                <div
-                                  className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] ${
-                                    round?.endsWith(name)
-                                      ? "bg-black text-white"
-                                      : "bg-white text-black"
-                                  } ${isNow ? "" : "cursor-pointer"}`}
-                                  onClick={() => {
-                                    if (isNow) {
-                                      return
+                              <div
+                                key={name}
+                                className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] ${
+                                  round?.endsWith(name)
+                                    ? "bg-black text-white"
+                                    : "bg-white text-black"
+                                } ${isNow ? "" : "cursor-pointer"}`}
+                                onClick={() => {
+                                  if (isNow) {
+                                    return
+                                  }
+                                  let newRound = round ?? ""
+                                  let replaced = false
+                                  for (const r of values) {
+                                    if (newRound.endsWith(r)) {
+                                      newRound = newRound.replace(r, name)
+                                      replaced = true
+                                      break
                                     }
-                                    let newRound = round ?? ""
-                                    let replaced = false
-                                    for (const r of values) {
-                                      if (newRound.endsWith(r)) {
-                                        newRound = newRound.replace(r, name)
-                                        replaced = true
-                                        break
-                                      }
-                                    }
-                                    if (!replaced) {
-                                      newRound = newRound + name
-                                    }
+                                  }
+                                  if (!replaced) {
+                                    newRound = newRound + name
+                                  }
 
-                                    form.setValue("round", newRound)
-                                  }}
-                                >
-                                  {name.replace("Top", "")}
-                                </div>
-                              </>
+                                  form.setValue("round", newRound)
+                                }}
+                              >
+                                {name.replace("Top", "")}
+                              </div>
                             )
                           })
                         })()}
@@ -228,39 +226,38 @@ export const Next: FC = () => {
                           return values.map((name) => {
                             const matchType = form.getValues("matchType")
                             return (
-                              <>
-                                <div
-                                  className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
-                                    matchType?.endsWith(name)
-                                      ? "bg-black text-white"
-                                      : "bg-white text-black"
-                                  } ${isNow ? "" : "cursor-pointer"}`}
-                                  onClick={() => {
-                                    if (isNow) {
-                                      return
+                              <div
+                                key={name}
+                                className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
+                                  matchType?.endsWith(name)
+                                    ? "bg-black text-white"
+                                    : "bg-white text-black"
+                                } ${isNow ? "" : "cursor-pointer"}`}
+                                onClick={() => {
+                                  if (isNow) {
+                                    return
+                                  }
+                                  let newMatchType = matchType ?? ""
+                                  let replaced = false
+                                  for (const r of values) {
+                                    if (newMatchType.endsWith(r)) {
+                                      newMatchType = newMatchType.replace(
+                                        r,
+                                        name
+                                      )
+                                      replaced = true
+                                      break
                                     }
-                                    let newMatchType = matchType ?? ""
-                                    let replaced = false
-                                    for (const r of values) {
-                                      if (newMatchType.endsWith(r)) {
-                                        newMatchType = newMatchType.replace(
-                                          r,
-                                          name
-                                        )
-                                        replaced = true
-                                        break
-                                      }
-                                    }
-                                    if (!replaced) {
-                                      newMatchType = newMatchType + name
-                                    }
+                                  }
+                                  if (!replaced) {
+                                    newMatchType = newMatchType + name
+                                  }
 
-                                    form.setValue("matchType", newMatchType)
-                                  }}
-                                >
-                                  {name.replace("Top", "")}
-                                </div>
-                              </>
+                                  form.setValue("matchType", newMatchType)
+                                }}
+                              >
+                                {name.replace("Top", "")}
+                              </div>
                             )
                           })
                         })()}
