@@ -7,17 +7,37 @@ export const PrimaryButton: FC<{
   type?: "button" | "submit" | "reset"
   className?: string
   full?: boolean
-}> = ({ children, onClick, type, className, full }) => {
+  light?: boolean
+  tooltipText?: string
+  showTooltip?: boolean
+}> = ({
+  children,
+  onClick,
+  type,
+  className,
+  full,
+  light,
+  tooltipText,
+  showTooltip,
+}) => {
   return (
     <div className={className}>
-      <button
-        className={styles.button}
-        onClick={onClick}
-        type={type}
-        style={full ? { width: "100%" } : undefined}
-      >
-        {children}
-      </button>
+      <div className={styles.container}>
+        <button
+          className={`${styles.button} ${light ? styles.light : ""}`}
+          onClick={onClick}
+          type={type}
+          style={full ? { width: "100%" } : undefined}
+        >
+          {children}
+        </button>
+        <div
+          className={styles.popup}
+          style={{ display: showTooltip ? "block" : "none" }}
+        >
+          {tooltipText}
+        </div>
+      </div>
     </div>
   )
 }

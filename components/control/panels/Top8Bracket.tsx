@@ -35,9 +35,11 @@ export const Top8Bracket: FC = () => {
             name="autoUpdate"
             className="mt-[10px]"
           />
-          <PrimaryButton type="submit" className="mt-[30px] w-[194px]" full>
-            適用する
-          </PrimaryButton>
+          <div className="flex gap-[2rem]">
+            <PrimaryButton type="submit" className="mt-[30px] w-[194px]" full>
+              適用する
+            </PrimaryButton>
+          </div>
         </form>
       </FormProvider>
     </ControlPanel>

@@ -3,7 +3,7 @@ import { useFormContext } from "react-hook-form"
 import styles from "./TextForm.module.scss"
 
 export const TextForm: FC<{
-  label: string
+  label?: string
   name: string
   placeholder: string
   className?: string
@@ -13,9 +13,11 @@ export const TextForm: FC<{
   const { register } = useFormContext()
   return (
     <div className={className}>
-      <label className={styles.label} htmlFor={name}>
-        {label}
-      </label>
+      {label && (
+        <label className={styles.label} htmlFor={name}>
+          {label}
+        </label>
+      )}
       <input
         type="text"
         {...register(name)}
