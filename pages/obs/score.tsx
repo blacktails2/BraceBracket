@@ -1,8 +1,10 @@
-import type { NextPage } from "next"
+import { useRouter } from "next/router"
+
+import { Scoreboard } from "../../components/obs/score/Scoreboard"
 import { useScore } from "../../hooks/useScore"
 import { useSetting } from "../../hooks/useSetting"
-import { Scoreboard } from "../../components/obs/score/Scoreboard"
-import { useRouter } from "next/router"
+
+import type { NextPage } from "next"
 
 const Layout: NextPage = () => {
   const router = useRouter()

@@ -1,11 +1,12 @@
-import { ChangeEvent, FC } from "react"
-import styles from "./LogoUploader.module.scss"
 import ImgurClient from "imgur"
+import { ChangeEvent, FC } from "react"
 import {
   FieldValues,
   UseFieldArrayAppend,
   UseFieldArrayRemove,
 } from "react-hook-form"
+
+import styles from "./LogoUploader.module.scss"
 
 const client = new ImgurClient({ clientId: "1b1913bc016b518" })
 
@@ -20,7 +21,7 @@ export const LogoUploader: FC<{
     const file = (e?.currentTarget?.files ?? [])[0]
     if (!file) return
     const res = await client.upload({
-      image: file as any,
+      image: file as never,
       type: "stream",
     })
 

@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from "react"
+
 import styles from "./TextboxWithCopy.module.scss"
 
 export const TextboxWithCopy: FC<{ text: string; className?: string }> = ({

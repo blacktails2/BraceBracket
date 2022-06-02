@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from "react"
-import styles from "./PrimaryButton.module.scss"
 import { CSSTransition } from "react-transition-group"
+
+import styles from "./PrimaryButton.module.scss"
 
 export const PrimaryButton: FC<{
   children?: ReactNode

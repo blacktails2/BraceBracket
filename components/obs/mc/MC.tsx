@@ -1,12 +1,14 @@
 import { FC, useEffect, useState } from "react"
+
 import {
   getMCFilename,
   MC as MCInfo,
   PlayerScore,
   Setting,
 } from "../../../libs/const"
-import styles from "./MC.module.scss"
 import { Transition } from "../../parts/Transition"
+
+import styles from "./MC.module.scss"
 
 const mcLayoutArray = [
   styles.mc1_layout,

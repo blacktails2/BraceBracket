@@ -1,4 +1,5 @@
 import { FC } from "react"
+
 import styles from "./LogoUploader.module.scss"
 
 export const LogoUploader: FC = () => {

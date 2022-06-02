@@ -1,12 +1,13 @@
-import { FC, useEffect } from "react"
-import { ControlPanel } from "../parts/ControlPanel"
-import { useOrigin } from "../../../hooks/useOrigin"
 import { useRouter } from "next/router"
-import { PrimaryButton } from "../../parts/PrimaryButton"
-import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { FC, useEffect } from "react"
 import { FormProvider, useForm } from "react-hook-form"
+
 import { useLoadBracket } from "../../../hooks/useLoadBracket"
+import { useOrigin } from "../../../hooks/useOrigin"
 import { Button } from "../../parts/Button"
+import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { PrimaryButton } from "../../parts/PrimaryButton"
+import { ControlPanel } from "../parts/ControlPanel"
 
 export const Top8Bracket: FC = () => {
   const router = useRouter()

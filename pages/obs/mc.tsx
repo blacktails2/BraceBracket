@@ -1,8 +1,9 @@
 import { NextPage } from "next"
-import { useSetting } from "../../hooks/useSetting"
 import { useRouter } from "next/router"
-import { useMC } from "../../hooks/useMC"
+
 import { MC } from "../../components/obs/mc/MC"
+import { useMC } from "../../hooks/useMC"
+import { useSetting } from "../../hooks/useSetting"
 
 const Page: NextPage = () => {
   const router = useRouter()
