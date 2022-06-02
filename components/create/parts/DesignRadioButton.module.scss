@@ -1,6 +1,6 @@
 .label {
-  width: calc(50% - 10px);
-  max-width: 306px;
+  width: fit-content;
+  max-width: calc(50% - 10px);
   min-width: 150px;
 }
 
