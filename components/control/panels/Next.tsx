@@ -36,28 +36,32 @@ export const Next: FC = () => {
       <FormProvider {...form}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <hr />
-          <StreamQueueTable
-            onChange={(queue) => {
-              form.setValue("p1.playerName", queue.p1?.playerName ?? "")
-              form.setValue("p2.playerName", queue.p2?.playerName ?? "")
+          <div className="overflow-x-auto">
+            <StreamQueueTable
+              onChange={(queue) => {
+                form.setValue("p1.playerName", queue.p1?.playerName ?? "")
+                form.setValue("p2.playerName", queue.p2?.playerName ?? "")
 
-              form.setValue("round", queue.roundText)
-            }}
-          />
+                form.setValue("round", queue.roundText)
+              }}
+            />
+          </div>
           <CheckBoxForm
             label="現在の試合状況を表示する"
             name="isNow"
-            className="mt-[10px]"
+            className="mt-[1rem]"
           />
           <div
             style={{
               opacity: getValues("isNow") ? 0.3 : 1,
             }}
           >
-            <div className="flex gap-[30px]">
+            <div className="flex flex-wrap gap-[3rem]">
               <div>
-                <h4 className="mt-[20px] mb-[5px]">次の試合のプレイヤー名</h4>
-                <div className="flex flex-col gap-[10px]">
+                <h4 className="mt-[2rem] mb-[0.5rem]">
+                  次の試合のプレイヤー名
+                </h4>
+                <div className="flex flex-col gap-[1rem]">
                   <TextForm
                     label="P1"
                     name="p1.playerName"
@@ -75,9 +79,9 @@ export const Next: FC = () => {
                 </div>
               </div>
               <div>
-                <h4 className="mt-[20px] mb-[5px]">次の試合のステータス</h4>
+                <h4 className="mt-[2rem] mb-[0.5rem]">次の試合のステータス</h4>
                 <div>
-                  <div className="flex gap-[10px]">
+                  <div className="flex flex-wrap gap-[1rem]">
                     <SelectForm
                       label="ラウンド"
                       name="round"

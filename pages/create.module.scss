@@ -2,24 +2,45 @@
   display: grid;
   grid-template-columns: 1fr 400px;
 
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+  }
+
   hr {
     background-color: var(--gray);
     margin-top: 100px;
     margin-bottom: 100px;
+
+    @media (max-width: 520px) {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
   }
 }
 
 .settingFormContainer {
   padding: 50px 50px 44px;
 
+  @media (max-width: 520px) {
+    padding: 50px 20px;
+  }
+
   h2 {
     margin-top: 0;
     margin-bottom: 50px;
+
+    @media (max-width: 520px) {
+      margin-bottom: 30px;
+    }
   }
 
   h3 {
     margin-top: 0;
     margin-bottom: 20px;
+
+    @media (max-width: 520px) {
+      margin-bottom: 15px;
+    }
   }
 
   h4 {

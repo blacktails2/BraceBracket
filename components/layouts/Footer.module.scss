@@ -9,11 +9,25 @@
   background-color: var(--black);
   color: var(--white);
   box-sizing: border-box;
+
+  @media (max-width: 520px) {
+    padding: 30px 11px;
+    flex-flow: column;
+    height: 175px;
+    justify-content: inherit;
+    gap: 10px;
+  }
 }
 
 .footerLeft {
   display: flex;
   align-items: center;
+
+  @media (max-width: 520px) {
+    flex-flow: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }
 
 .footerRight {

@@ -14,7 +14,7 @@ export const ControlPanel: FC<{
           <div className={styles.title}>{title}</div>
           <div className={styles.url}>
             <h4>OBS配置用URL:</h4>
-            <TextboxWithCopy text={url} className="w-[398px]" />
+            <TextboxWithCopy text={url} className="max-w-[100%] w-[398px]" />
           </div>
         </summary>
         {children}

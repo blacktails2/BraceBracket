@@ -35,36 +35,36 @@ export const MC: FC = () => {
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <hr />
-          <div className="flex flex-wrap gap-[30px]">
+          <div className="flex flex-wrap gap-[3rem]">
             {fields.map((field, idx) => {
               return (
                 <div key={field.id}>
                   <h4>{idx + 1}人目のMC情報</h4>
-                  <div className="flex gap-[10px]">
+                  <div className="flex flex-wrap gap-[1rem]">
                     <TextForm
                       label="チーム名"
                       name={`mcList.${idx}.team`}
                       placeholder="Team"
-                      className="w-[80px]"
+                      className="w-[8rem]"
                     />
                     <TextForm
                       label="MC名"
                       name={`mcList.${idx}.playerName`}
                       placeholder="MCName"
-                      className="w-[150px]"
+                      className="w-[15rem]"
                     />
                     <TextForm
                       label="Twitter ID"
                       name={`mcList.${idx}.twitterID`}
                       placeholder="@user_name"
-                      className="w-[150px]"
+                      className="w-[15rem]"
                     />
                   </div>
                 </div>
               )
             })}
           </div>
-          <PrimaryButton type="submit" className="mt-[30px] w-[194px]" full>
+          <PrimaryButton type="submit" className="mt-[3rem] w-[19rem]" full>
             適用する
           </PrimaryButton>
         </form>

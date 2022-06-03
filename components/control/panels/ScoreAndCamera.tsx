@@ -56,26 +56,26 @@ export const ScoreAndCamera: FC = () => {
       <FormProvider {...scoreForm}>
         <form onSubmit={handleSubmit(onScoreSubmit)}>
           <div>
-            <div className="flex flex-wrap gap-[30px] mt-[20px]">
+            <div className="flex flex-wrap gap-[3rem] mt-[2rem]">
               <div>
                 <h4>1Pデータ</h4>
-                <div className="flex gap-[10px]">
+                <div className="flex flex-wrap gap-[1rem]">
                   <TextForm
-                    className="w-[100px]"
+                    className="w-[10rem]"
                     label="チーム名"
                     name="p1.team"
                     placeholder="Team"
                     autocomplete="team"
                   />
                   <TextForm
-                    className="w-[218px]"
+                    className="w-[21rem]"
                     label="プレイヤー名"
                     name="p1.playerName"
                     placeholder="Player"
                     autocomplete="playerName"
                   />
                   <NumberForm
-                    className="w-[60px]"
+                    className="w-[6rem]"
                     label={"スコア"}
                     name={"p1.score"}
                   />
@@ -83,40 +83,40 @@ export const ScoreAndCamera: FC = () => {
               </div>
               <div>
                 <h4>2Pデータ</h4>
-                <div className="flex gap-[10px]">
+                <div className="flex flex flex-wrap gap-[1rem]">
                   <TextForm
-                    className="w-[100px]"
+                    className="w-[10rem]"
                     label="チーム名"
                     name="p2.team"
                     placeholder="Team"
                     autocomplete="team"
                   />
                   <TextForm
-                    className="w-[218px]"
+                    className="w-[21rem]"
                     label="プレイヤー名"
                     name="p2.playerName"
                     placeholder="Player"
                     autocomplete="playerName"
                   />
                   <NumberForm
-                    className="w-[60px]"
+                    className="w-[6rem]"
                     label="スコア"
                     name="p2.score"
                   />
                 </div>
               </div>
             </div>
-            <div className="mt-[20px]">
-              <h4 className="mt-0 mb-[5px]">Twitter ID</h4>
-              <div className="flex flex-wrap gap-[10px]">
+            <div className="mt-[2rem]">
+              <h4 className="mt-0 mb-[0.5rem]">Twitter ID</h4>
+              <div className="flex flex-wrap gap-[1rem]">
                 <TextForm
-                  className="w-[194px]"
+                  className="w-[19rem]"
                   label="1P"
                   name="p1.twitterID"
                   placeholder="@user_name"
                 />
                 <TextForm
-                  className="w-[194px]"
+                  className="w-[19rem]"
                   label="2P"
                   name="p2.twitterID"
                   placeholder="@user_name"
@@ -126,8 +126,8 @@ export const ScoreAndCamera: FC = () => {
           </div>
           <hr />
           <div>
-            <h4 className="mt-0 mb-[5px]">ステータス</h4>
-            <div className="flex flex-wrap gap-[10px]">
+            <h4 className="mt-0 mb-[0.5rem]">ステータス</h4>
+            <div className="flex flex-wrap gap-[1rem]">
               <SelectForm
                 label="ラウンド"
                 name="round"
@@ -158,13 +158,13 @@ export const ScoreAndCamera: FC = () => {
               />
             </div>
             <CheckBoxForm
-              className="mt-[10px]"
+              className="mt-[1rem]"
               label="すべて大文字にする"
               name="uppercase"
             />
           </div>
           <div className="relative flex">
-            <PrimaryButton type="submit" className="w-[194px] mt-[30px]" full>
+            <PrimaryButton type="submit" className="w-[19rem] mt-[3rem]" full>
               適用する
             </PrimaryButton>
             <div

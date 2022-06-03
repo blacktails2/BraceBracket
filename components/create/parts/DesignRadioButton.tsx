@@ -14,7 +14,7 @@ export function DesignRadioButton<T extends string>({
   field: ControllerRenderProps<FieldValues, T>
 }) {
   return (
-    <label htmlFor={value}>
+    <label htmlFor={value} className={styles.label}>
       <input
         type="radio"
         {...field}
