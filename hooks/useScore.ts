@@ -4,7 +4,7 @@ import { serverTimestamp } from "firebase/database"
 
 const defaultValue: Score = {
   createdAt: serverTimestamp(),
-  matchType: "BO5",
+  matchType: "Best of 3",
   p1: {
     playerName: "P1 Name",
     score: 0,

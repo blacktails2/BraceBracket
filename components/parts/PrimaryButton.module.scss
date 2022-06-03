@@ -19,3 +19,43 @@
     box-shadow: none;
   }
 }
+
+.light {
+  background-color: var(--bb-white);
+  border: 1px solid var(--bb-beige);
+
+  &:hover {
+    background-color: var(--bb-beige-hover);
+  }
+
+  &:active {
+    background-color: var(--bb-beige-active);
+  }
+}
+
+.container {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  padding: 8px;
+  left: 50%;
+  top: -50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bb-white);
+  border: 1px solid var(--bb-beige);
+  font-size: 10px;
+  font-family: "Mint Grotesk Medium", TazuganeInfoStdN-Medium, sans-serif;
+  color: var(--bb-beige);
+  z-index: 1;
+  border-radius: 5px;
+  box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.tooltipEnter,
+.tooltipExit {
+  transform: translate(-50%, calc(-50% + 10px));
+  opacity: 0;
+}

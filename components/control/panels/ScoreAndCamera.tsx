@@ -10,12 +10,8 @@ import { TextForm } from "../../parts/TextForm"
 import { NumberForm } from "../../parts/NumberForm"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { SelectForm } from "../../parts/SelectForm"
-import { getStreamQueue, StreamQueue } from "../../../libs/getStreamQueue"
-import { useSetting } from "../../../hooks/useSetting"
-import styles from "./kesu.module.scss"
-import { Button } from "../../parts/Button"
-import { Attendee, getAttendee } from "../../../libs/getAttendee"
 import { StreamQueueTable } from "../parts/StreamQueueTable"
+import { SmallButton } from "../../parts/SmallButton"
 
 export const ScoreAndCamera: FC = () => {
   const router = useRouter()
@@ -35,6 +31,8 @@ export const ScoreAndCamera: FC = () => {
   useEffect(() => {
     reset(score)
   }, [reset, score])
+  scoreForm.watch("round")
+  scoreForm.watch("matchType")
   return (
     <ControlPanel title="スコア&カメラ" url={`${origin}/obs/score/?id=${id}`}>
       <hr />
@@ -61,48 +59,96 @@ export const ScoreAndCamera: FC = () => {
                 <h4>1Pデータ</h4>
                 <div className="flex flex-wrap gap-[1rem]">
                   <TextForm
-                    className="w-[10rem]"
+                    className="w-[8rem]"
                     label="チーム名"
                     name="p1.team"
                     placeholder="Team"
                     autocomplete="team"
                   />
                   <TextForm
-                    className="w-[21rem]"
+                    className="w-[18rem]"
                     label="プレイヤー名"
                     name="p1.playerName"
                     placeholder="Player"
                     autocomplete="playerName"
                   />
                   <NumberForm
-                    className="w-[6rem]"
+                    className="w-[5rem]"
                     label={"スコア"}
                     name={"p1.score"}
                   />
+                  <SmallButton
+                    className="mt-[18px]"
+                    type="button"
+                    onClick={() =>
+                      scoreForm.setValue(
+                        "p1.score",
+                        (scoreForm.getValues("p1.score") ?? 0) + 1
+                      )
+                    }
+                  >
+                    +1
+                  </SmallButton>
+                  <SmallButton
+                    className="mt-[18px]"
+                    type="button"
+                    onClick={() =>
+                      scoreForm.setValue(
+                        "p1.score",
+                        (scoreForm.getValues("p1.score") ?? 0) - 1
+                      )
+                    }
+                  >
+                    -1
+                  </SmallButton>
                 </div>
               </div>
               <div>
                 <h4>2Pデータ</h4>
                 <div className="flex flex flex-wrap gap-[1rem]">
                   <TextForm
-                    className="w-[10rem]"
+                    className="w-[8rem]"
                     label="チーム名"
                     name="p2.team"
                     placeholder="Team"
                     autocomplete="team"
                   />
                   <TextForm
-                    className="w-[21rem]"
+                    className="w-[18rem]"
                     label="プレイヤー名"
                     name="p2.playerName"
                     placeholder="Player"
                     autocomplete="playerName"
                   />
                   <NumberForm
-                    className="w-[6rem]"
+                    className="w-[5rem]"
                     label="スコア"
                     name="p2.score"
                   />
+                  <SmallButton
+                    type="button"
+                    className="mt-[18px]"
+                    onClick={() =>
+                      scoreForm.setValue(
+                        "p2.score",
+                        (scoreForm.getValues("p2.score") ?? 0) + 1
+                      )
+                    }
+                  >
+                    +1
+                  </SmallButton>
+                  <SmallButton
+                    type="button"
+                    className="mt-[18px]"
+                    onClick={() =>
+                      scoreForm.setValue(
+                        "p2.score",
+                        (scoreForm.getValues("p2.score") ?? 0) - 1
+                      )
+                    }
+                  >
+                    -1
+                  </SmallButton>
                 </div>
               </div>
             </div>
@@ -123,39 +169,199 @@ export const ScoreAndCamera: FC = () => {
                 />
               </div>
             </div>
+            <div className="mt-[2rem]">
+              <h4>データのリセット・入れ替え</h4>
+              <div className="flex flex-wrap gap-[1rem]">
+                <SmallButton
+                  type="button"
+                  onClick={() => {
+                    const [p1, p2] = scoreForm.getValues(["p1", "p2"])
+                    scoreForm.setValue("p1", p2)
+                    scoreForm.setValue("p2", p1)
+                  }}
+                >
+                  1Pと2Pを入れ替える
+                </SmallButton>
+                <SmallButton
+                  light
+                  type="button"
+                  onClick={() => {
+                    const [p1, p2] = scoreForm.getValues(["p1", "p2"])
+                    scoreForm.setValue("p1", {
+                      ...p1,
+                      score: 0,
+                    })
+                    scoreForm.setValue("p2", {
+                      ...p2,
+                      score: 0,
+                    })
+                  }}
+                >
+                  スコアをリセット
+                </SmallButton>
+                <SmallButton
+                  light
+                  type="button"
+                  onClick={() => {
+                    scoreForm.setValue("p1", {
+                      team: "",
+                      playerName: "",
+                      score: 0,
+                      twitterID: "",
+                    })
+                    scoreForm.setValue("p2", {
+                      team: "",
+                      playerName: "",
+                      score: 0,
+                      twitterID: "",
+                    })
+                  }}
+                >
+                  全てリセット
+                </SmallButton>
+              </div>
+            </div>
           </div>
           <hr />
           <div>
             <h4 className="mt-0 mb-[0.5rem]">ステータス</h4>
             <div className="flex flex-wrap gap-[1rem]">
-              <SelectForm
-                label="ラウンド"
-                name="round"
-                options={[
-                  { text: "Pools", value: "Pools" },
-                  {
-                    text: "Losers Quarters",
-                    value: "Losers Quarters",
-                  },
-                  { text: "Losers Semis", value: "Losers Semis" },
-                  { text: "Losers Final", value: "Losers Final" },
-                  {
-                    text: "Winners Quarters",
-                    value: "Winners Quarters",
-                  },
-                  { text: "Winners Semis", value: "Winners Semis" },
-                  { text: "Winners Final", value: "Winners Final" },
-                  { text: "Grand Final", value: "Grand Final" },
-                ]}
-              />
-              <SelectForm
-                label="試合形式"
-                name="matchType"
-                options={[
-                  { text: "Best of 3", value: "Best of 3" },
-                  { text: "Best of 5", value: "Best of 5" },
-                ]}
-              />
+              <div>
+                <label className="block">ラウンド</label>
+                <div className="flex flex-wrap gap-[0.4rem] w-fit">
+                  {(() => {
+                    const round = scoreForm.getValues("round")
+                    const values = [
+                      "Winners",
+                      "Losers",
+                      "Pools",
+                      "Grand",
+                      "Friendlies",
+                    ]
+                    return values.map((name) => {
+                      return (
+                        <div
+                          key={name}
+                          className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
+                            round?.startsWith(name)
+                              ? "bg-black text-white"
+                              : "bg-white text-black"
+                          }`}
+                          onClick={() => {
+                            let newRound = round ?? ""
+                            let replaced = false
+                            for (const r of values) {
+                              if (newRound.startsWith(r)) {
+                                newRound = newRound.replace(r, name)
+                                replaced = true
+                                break
+                              }
+                            }
+                            if (!replaced) {
+                              newRound = name + newRound
+                            }
+
+                            scoreForm.setValue("round", newRound)
+                          }}
+                        >
+                          {name}
+                        </div>
+                      )
+                    })
+                  })()}
+                </div>
+                <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] mb-[1rem] max-w-[300px]">
+                  {(() => {
+                    const values = [
+                      "Top256",
+                      "Top192",
+                      "Top128",
+                      "Top96",
+                      "Top64",
+                      "Top48",
+                      "Top32",
+                      "Top16",
+                      "Top12",
+                      "Top8",
+                      "Quarters",
+                      "Semis",
+                      "Final",
+                    ]
+                    return values.map((name) => {
+                      const round = scoreForm.getValues("round")
+                      return (
+                        <div
+                          key={name}
+                          className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
+                            round?.endsWith(name)
+                              ? "bg-black text-white"
+                              : "bg-white text-black"
+                          }`}
+                          onClick={() => {
+                            let newRound = round ?? ""
+                            let replaced = false
+                            for (const r of values) {
+                              if (newRound.endsWith(r)) {
+                                newRound = newRound.replace(r, name)
+                                replaced = true
+                                break
+                              }
+                            }
+                            if (!replaced) {
+                              newRound = newRound + name
+                            }
+
+                            scoreForm.setValue("round", newRound)
+                          }}
+                        >
+                          {name.replace("Top", "")}
+                        </div>
+                      )
+                    })
+                  })()}
+                </div>
+                <TextForm name="round" placeholder="Grand Final" />
+              </div>
+              <div>
+                <label className="block">試合形式</label>
+                <div className="flex flex-wrap gap-[0.4rem] mb-[1rem] max-w-[300px]">
+                  {(() => {
+                    const values = ["Best of 3", "Best of 5"]
+                    return values.map((name) => {
+                      const matchType = scoreForm.getValues("matchType")
+                      return (
+                        <div
+                          key={name}
+                          className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
+                            matchType?.endsWith(name)
+                              ? "bg-black text-white"
+                              : "bg-white text-black"
+                          }`}
+                          onClick={() => {
+                            let newMatchType = matchType ?? ""
+                            let replaced = false
+                            for (const r of values) {
+                              if (newMatchType.endsWith(r)) {
+                                newMatchType = newMatchType.replace(r, name)
+                                replaced = true
+                                break
+                              }
+                            }
+                            if (!replaced) {
+                              newMatchType = newMatchType + name
+                            }
+
+                            scoreForm.setValue("matchType", newMatchType)
+                          }}
+                        >
+                          {name.replace("Top", "")}
+                        </div>
+                      )
+                    })
+                  })()}
+                </div>
+                <TextForm name="matchType" placeholder="Best of 3" />
+              </div>
             </div>
             <CheckBoxForm
               className="mt-[1rem]"
@@ -163,16 +369,27 @@ export const ScoreAndCamera: FC = () => {
               name="uppercase"
             />
           </div>
-          <div className="relative flex">
-            <PrimaryButton type="submit" className="w-[19rem] mt-[3rem]" full>
+          <div className="relative flex gap-[2rem]">
+            <PrimaryButton
+              type="submit"
+              className="w-[19rem] mt-[3rem]"
+              full
+              tooltipText="適用されました"
+              showTooltip={showTooltip}
+            >
               適用する
             </PrimaryButton>
-            <div
-              className={styles.popup}
-              style={{ display: showTooltip ? "block" : "none" }}
+            <PrimaryButton
+              type="button"
+              className="w-[19rem] mt-[3rem]"
+              full
+              light
+              onClick={() => {
+                scoreForm.reset()
+              }}
             >
-              適用されました
-            </div>
+              変更をリセット
+            </PrimaryButton>
           </div>
         </form>
       </FormProvider>

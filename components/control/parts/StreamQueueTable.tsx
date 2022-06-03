@@ -21,6 +21,7 @@ export const StreamQueueTable: FC<{
   const [setting] = useSetting(id)
   const [streamQueue, setStreamQueue] = useState<StreamQueue>([])
   const [attendee, setAttendee] = useState<Attendee>([])
+  const [selected, setSelected] = useState<number>(-1)
   return (
     <>
       {setting?.integrateStartGG?.enabled && (
@@ -61,12 +62,23 @@ export const StreamQueueTable: FC<{
               </thead>
               <tbody>
                 {streamQueue.map((queue, index) => (
-                  <tr key={queue.id}>
+                  <tr
+                    key={queue.id}
+                    onClick={() => {
+                      setSelected(queue.id)
+                      onChange(queue)
+                    }}
+                  >
                     <td>
                       <input
                         type="radio"
                         name="stream"
-                        onChange={() => onChange(queue)}
+                        id={`${queue.id}`}
+                        checked={selected === queue.id}
+                        onChange={() => {
+                          setSelected(queue.id)
+                          onChange(queue)
+                        }}
                       />
                     </td>
                     <td>{queue.roundText}</td>

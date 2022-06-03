@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react"
+import { FC, useEffect, useState } from "react"
 import { ControlPanel } from "../parts/ControlPanel"
 import { useOrigin } from "../../../hooks/useOrigin"
 import { useRouter } from "next/router"
@@ -13,6 +13,7 @@ export const MC: FC = () => {
   const id = router.query.id as string
   const origin = useOrigin()
   const [mc, setMC, loading] = useMC(id)
+  const [showTooltip, setShowTooltip] = useState(false)
   const form = useForm<FormType>()
   const { fields } = useFieldArray({
     control: form.control,
@@ -21,6 +22,10 @@ export const MC: FC = () => {
 
   const onSubmit = (data: FormType) => {
     setMC(data)
+    setShowTooltip(true)
+    setTimeout(() => {
+      setShowTooltip(false)
+    }, 3000)
   }
 
   useEffect(() => {
@@ -64,9 +69,28 @@ export const MC: FC = () => {
               )
             })}
           </div>
-          <PrimaryButton type="submit" className="mt-[3rem] w-[19rem]" full>
-            適用する
-          </PrimaryButton>
+          <div className="flex gap-[2rem]">
+            <PrimaryButton
+              type="submit"
+              className="mt-[3rem] w-[19rem]"
+              full
+              tooltipText="適用されました"
+              showTooltip={showTooltip}
+            >
+              適用する
+            </PrimaryButton>
+            <PrimaryButton
+              type="button"
+              className="w-[19rem] mt-[3rem]"
+              full
+              light
+              onClick={() => {
+                form.reset()
+              }}
+            >
+              変更をリセット
+            </PrimaryButton>
+          </div>
         </form>
       </FormProvider>
     </ControlPanel>

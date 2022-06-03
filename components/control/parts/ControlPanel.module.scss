@@ -5,7 +5,7 @@
   transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
   box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
 
-  details summary::after {
+  summary::after {
     content: "";
     display: block;
     border-bottom: 2px solid var(--primary);
@@ -26,7 +26,7 @@
     }
   }
 
-  details[open] summary::after {
+  summary.open::after {
     transform: translateY(15px) rotate(225deg);
 
     @media (max-width: 520px) {
@@ -34,7 +34,7 @@
     }
   }
 
-  details summary::before {
+  summary::before {
     content: "";
     display: block;
     width: 60px;
@@ -90,4 +90,17 @@
     background-color: var(--bb-light);
     border: none;
   }
+}
+
+.content {
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  overflow-y: hidden;
+  max-height: 1000px;
+}
+
+.enter,
+.exit {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 }
