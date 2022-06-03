@@ -1,17 +1,17 @@
+import { useRouter } from "next/router"
 import { FC, useEffect, useState } from "react"
-import { ControlPanel } from "../parts/ControlPanel"
-import { PrimaryButton } from "../../parts/PrimaryButton"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
+
+import { useOrigin } from "../../../hooks/useOrigin"
 import { useScore } from "../../../hooks/useScore"
 import { Score } from "../../../libs/const"
-import { useRouter } from "next/router"
-import { useOrigin } from "../../../hooks/useOrigin"
-import { TextForm } from "../../parts/TextForm"
-import { NumberForm } from "../../parts/NumberForm"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
-import { SelectForm } from "../../parts/SelectForm"
-import { StreamQueueTable } from "../parts/StreamQueueTable"
+import { NumberForm } from "../../parts/NumberForm"
+import { PrimaryButton } from "../../parts/PrimaryButton"
 import { SmallButton } from "../../parts/SmallButton"
+import { TextForm } from "../../parts/TextForm"
+import { ControlPanel } from "../parts/ControlPanel"
+import { StreamQueueTable } from "../parts/StreamQueueTable"
 
 export const ScoreAndCamera: FC = () => {
   const router = useRouter()

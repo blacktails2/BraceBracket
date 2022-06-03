@@ -1,12 +1,14 @@
 import { FC, useEffect, useState } from "react"
 import { useInterval } from "react-use"
+
 import {
   Setting,
   MatchIntervalInfo,
   getNextFilename,
 } from "../../../libs/const"
-import styles from "./MatchIntervalInfo.module.scss"
 import { Transition } from "../../parts/Transition"
+
+import styles from "./MatchIntervalInfo.module.scss"
 
 export const MatchInterval: FC<{
   setting: Setting
@@ -16,8 +18,8 @@ export const MatchInterval: FC<{
   const [time, setTime] = useState("")
   useInterval(() => {
     const localTime = new Date()
-    let hour = localTime.getHours() // 時
-    let min = localTime.getMinutes() // 分
+    const hour = localTime.getHours() // 時
+    const min = localTime.getMinutes() // 分
     setTime((hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min)
   }, 1000)
   useEffect(() => {

@@ -1,12 +1,13 @@
-import { FC, useEffect, useState } from "react"
-import { ControlPanel } from "../parts/ControlPanel"
-import { useOrigin } from "../../../hooks/useOrigin"
 import { useRouter } from "next/router"
-import { TextForm } from "../../parts/TextForm"
+import { FC, useEffect, useState } from "react"
 import { FormProvider, useFieldArray, useForm } from "react-hook-form"
-import { PrimaryButton } from "../../parts/PrimaryButton"
-import { MC as FormType } from "../../../libs/const"
+
 import { useMC } from "../../../hooks/useMC"
+import { useOrigin } from "../../../hooks/useOrigin"
+import { MC as FormType } from "../../../libs/const"
+import { PrimaryButton } from "../../parts/PrimaryButton"
+import { TextForm } from "../../parts/TextForm"
+import { ControlPanel } from "../parts/ControlPanel"
 
 export const MC: FC = () => {
   const router = useRouter()

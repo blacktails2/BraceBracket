@@ -1,8 +1,8 @@
-import { FC } from "react"
-import styles from "./Header.module.scss"
 import Link from "next/link"
-import Image from "next/image"
 import { useRouter } from "next/router"
+import { FC } from "react"
+
+import styles from "./Header.module.scss"
 
 export const Header: FC = () => {
   const router = useRouter()

@@ -1,18 +1,15 @@
-import { FC, useEffect, useState } from "react"
-import { ControlPanel } from "../parts/ControlPanel"
-import { useOrigin } from "../../../hooks/useOrigin"
 import { useRouter } from "next/router"
-import { PrimaryButton } from "../../parts/PrimaryButton"
-import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { FC, useEffect, useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
+
 import { useMatchIntervalInfo } from "../../../hooks/useMatchIntervalInfo"
+import { useOrigin } from "../../../hooks/useOrigin"
 import { MatchIntervalInfo as FormType } from "../../../libs/const"
+import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { PrimaryButton } from "../../parts/PrimaryButton"
 import { TextForm } from "../../parts/TextForm"
-import { SelectForm } from "../../parts/SelectForm"
-import { Button } from "../../parts/Button"
+import { ControlPanel } from "../parts/ControlPanel"
 import { StreamQueueTable } from "../parts/StreamQueueTable"
-import { NumberForm } from "../../parts/NumberForm"
-import { SmallButton } from "../../parts/SmallButton"
 
 export const Next: FC = () => {
   const router = useRouter()
