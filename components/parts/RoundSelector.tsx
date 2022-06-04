@@ -18,17 +18,18 @@ export const RoundSelector: FC<{
   return (
     <div>
       <label className="block">ラウンド</label>
-      <div className="flex flex-wrap gap-[0.4rem] w-fit">
+      <TextForm name={name} placeholder={placeholder} disabled={disabled} />
+      <div className="flex flex-wrap mt-[1rem] gap-[0.4rem] w-fit">
         {(() => {
           const values = ["Winners", "Losers", "Pools", "Grand", "Friendlies"]
           return values.map((name) => {
             return (
               <div
                 key={name}
-                className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] ${
+                className={`border-solid border-[1px] border-[#c4c4c4] rounded-[5px] pr-[0.5rem] pl-[0.5rem] transition ease delay-50 hover:border-[#202025] hover:shadow-md ${
                   round?.startsWith(name)
-                    ? "bg-black text-white"
-                    : "bg-white text-black"
+                    ? "bg-[#202025] text-white border-[#202025]"
+                    : "bg-white text-[#202025]"
                 }  ${disabled ? "cursor-default" : "cursor-pointer"}`}
                 onClick={() => {
                   if (disabled) {
@@ -71,16 +72,17 @@ export const RoundSelector: FC<{
             "Top8",
             "Quarters",
             "Semis",
-            "Final",
+            "Finals",
+            "Finals Reset",
           ]
           return values.map((name) => {
             return (
               <div
                 key={name}
-                className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] ${
+                className={`border-solid border-[1px] border-[#c4c4c4] rounded-[5px] pr-[0.5rem] pl-[0.5rem] transition ease delay-50 hover:border-[#202025] hover:shadow-md ${
                   round?.endsWith(name)
-                    ? "bg-black text-white"
-                    : "bg-white text-black"
+                    ? "bg-[#202025] text-white border-[#202025]"
+                    : "bg-white text-[#202025]"
                 } ${disabled ? "cursor-default" : "cursor-pointer"}`}
                 onClick={() => {
                   if (disabled) {
@@ -108,7 +110,6 @@ export const RoundSelector: FC<{
           })
         })()}
       </div>
-      <TextForm name={name} placeholder={placeholder} disabled={disabled} />
     </div>
   )
 }
