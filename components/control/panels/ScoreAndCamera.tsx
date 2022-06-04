@@ -242,6 +242,17 @@ export const ScoreAndCamera: FC = () => {
                   scoreForm.setValue("matchType", matchType)
                 }
               />
+              {!setting?.scoreboard.cameraAndLogo.useLogo && (
+                <div>
+                  <label className="block">大会名</label>
+                  <textarea
+                    className={`border-[1px] border-[solid] border-[color:var(--light-primary)] rounded-[0.5rem] px-[1rem] py-[0.5rem] focus:outline-none focus:border-[color:var(--bb-beige)] resize-none`}
+                    cols={10}
+                    rows={3}
+                    {...scoreForm.register("tournamentName")}
+                  ></textarea>
+                </div>
+              )}
             </div>
             <CheckBoxForm
               className="mt-[1rem]"
