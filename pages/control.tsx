@@ -1,4 +1,6 @@
 import Head from "next/head"
+import Image from "next/image"
+import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 
@@ -38,7 +40,25 @@ const Control: NextPageWithLayout = () => {
             <div>
               <TextboxWithCopy text={`${origin}${router.asPath}`} />
             </div>
-            <div>歯車</div>
+            <Link
+              href={{
+                pathname: "/",
+                query: {
+                  id: id,
+                },
+              }}
+            >
+              <a>
+                <div>
+                  <Image
+                    src="/image/setting.svg"
+                    width={26}
+                    height={26}
+                    alt="設定"
+                  />
+                </div>
+              </a>
+            </Link>
           </div>
           <p>
             URLを共有することで複数人で編集することができます。URLの流失にはご注意ください。
