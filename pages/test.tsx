@@ -13,7 +13,7 @@ import type { NextPage } from "next"
 
 declare global {
   interface Window {
-    setJSX(value: string): void
+    set(jsx: string, style: string): void
   }
 }
 
@@ -62,15 +62,15 @@ const Layout: NextPage = () => {
 
   useEffect(() => {
     if (window) {
-      window.setJSX = (value: string) => {
-        console.log(value)
+      window.set = (jsx: string, style: string) => {
         setSetting({
           ...setting,
           scoreboard: {
             ...setting.scoreboard,
             design: {
               ...setting.scoreboard.design,
-              jsx: value,
+              jsx,
+              style,
             },
           },
         })

@@ -83,6 +83,7 @@ export type Setting = {
       layout: ScoreboardLayout
       color: ScoreboardColor
       useJSX: boolean
+      style: string
       jsx: string
     }
     cameraAndLogo: {

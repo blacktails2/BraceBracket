@@ -70,6 +70,17 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
 
   if (setting.scoreboard.design.useJSX) {
     console.log(setting.scoreboard.design.jsx)
+    let styleDom = document.querySelector("#jsxStyle")
+    if (!styleDom) {
+      styleDom = document.createElement("style")
+      styleDom.id = "jsxStyle"
+      document.head.appendChild(styleDom)
+    }
+
+    if (styleDom) {
+      styleDom.innerHTML = setting.scoreboard.design.style
+    }
+
     return (
       <JSXRenderer
         code={setting.scoreboard.design.jsx}

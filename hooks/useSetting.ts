@@ -12,6 +12,7 @@ export const defaultValue: Setting = {
       color: ScoreboardColorsMap["dual"][0],
       useJSX: false,
       jsx: "",
+      style: "",
     },
     cameraAndLogo: {
       displayCameraAndTwitterID: false,

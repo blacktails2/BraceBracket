@@ -10,7 +10,7 @@ import styles from "./UseJSX.module.scss"
 
 declare global {
   interface Window {
-    setJSX(value: string): void
+    set(jsx: string, style: string): void
   }
 }
 
@@ -34,6 +34,7 @@ export const UseJSX: FC = () => {
           </label>
         </div>
       </div>
+      <h5>JSX</h5>
       <CodeMirror
         className={styles.code}
         value={getValues("scoreboard.design.jsx")}
@@ -41,6 +42,16 @@ export const UseJSX: FC = () => {
         extensions={[javascript({ jsx: true })]}
         onChange={(code) => {
           setValue("scoreboard.design.jsx", code)
+        }}
+      />
+      <h5>Style</h5>
+      <CodeMirror
+        className={styles.code}
+        value={getValues("scoreboard.design.style")}
+        height="200px"
+        lang="css"
+        onChange={(code) => {
+          setValue("scoreboard.design.style", code)
         }}
       />
       <div className="flex mt-[1rem] gap-[1rem]">
@@ -55,7 +66,10 @@ export const UseJSX: FC = () => {
             setPopupWindow(w)
             if (w) {
               w.onload = () => {
-                w.setJSX(getValues("scoreboard.design.jsx"))
+                w.set(
+                  getValues("scoreboard.design.jsx"),
+                  getValues("scoreboard.design.style")
+                )
               }
             }
           }}
@@ -66,8 +80,11 @@ export const UseJSX: FC = () => {
         <SmallButton
           onClick={(e) => {
             e.preventDefault()
-            if (popupWindow && popupWindow.setJSX) {
-              popupWindow.setJSX(getValues("scoreboard.design.jsx"))
+            if (popupWindow && popupWindow.set) {
+              popupWindow.set(
+                getValues("scoreboard.design.jsx"),
+                getValues("scoreboard.design.style")
+              )
             }
           }}
           type="button"
