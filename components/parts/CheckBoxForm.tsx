@@ -22,7 +22,13 @@ export const CheckBoxForm: FC<{
             className={styles.input}
             disabled={disabled}
           />
-          <label htmlFor={id ?? name} className={styles.dummyLabel}></label>
+          <label
+            htmlFor={id ?? name}
+            className={styles.dummyLabel}
+            style={{
+              cursor: disabled ? "default" : "pointer",
+            }}
+          ></label>
         </div>
         <label htmlFor={id ?? name} className={styles.label}>
           {label}

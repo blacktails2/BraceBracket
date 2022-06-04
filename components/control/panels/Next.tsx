@@ -6,7 +6,9 @@ import { useMatchIntervalInfo } from "../../../hooks/useMatchIntervalInfo"
 import { useOrigin } from "../../../hooks/useOrigin"
 import { MatchIntervalInfo as FormType } from "../../../libs/const"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { MatchTypeSelector } from "../../parts/MatchTypeSelector"
 import { PrimaryButton } from "../../parts/PrimaryButton"
+import { RoundSelector } from "../../parts/RoundSelector"
 import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
 import { StreamQueueTable } from "../parts/StreamQueueTable"
@@ -110,157 +112,20 @@ export const Next: FC = () => {
                 <h4 className="mt-[2rem] mb-[0.5rem]">次の試合のステータス</h4>
                 <div>
                   <div className="flex flex-wrap gap-[1rem]">
-                    <div>
-                      <label className="block">ラウンド</label>
-                      <div className="flex flex-wrap gap-[0.4rem] w-fit">
-                        {(() => {
-                          const round = form.getValues("round")
-                          const isNow = form.getValues("isNow")
-                          const values = [
-                            "Winners",
-                            "Losers",
-                            "Pools",
-                            "Grand",
-                            "Friendlies",
-                          ]
-                          return values.map((name) => {
-                            return (
-                              <div
-                                key={name}
-                                className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] ${
-                                  round?.startsWith(name)
-                                    ? "bg-black text-white"
-                                    : "bg-white text-black"
-                                } ${isNow ? "" : "cursor-pointer"}`}
-                                onClick={() => {
-                                  if (isNow) {
-                                    return
-                                  }
-                                  let newRound = round ?? ""
-                                  let replaced = false
-                                  for (const r of values) {
-                                    if (newRound?.startsWith(r)) {
-                                      newRound = newRound.replace(r, name)
-                                      replaced = true
-                                      break
-                                    }
-                                  }
-                                  if (!replaced) {
-                                    newRound = name + newRound
-                                  }
-
-                                  form.setValue("round", newRound)
-                                }}
-                              >
-                                {name}
-                              </div>
-                            )
-                          })
-                        })()}
-                      </div>
-                      <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] mb-[1rem] max-w-[300px]">
-                        {(() => {
-                          const values = [
-                            "Top256",
-                            "Top192",
-                            "Top128",
-                            "Top96",
-                            "Top64",
-                            "Top48",
-                            "Top32",
-                            "Top16",
-                            "Top12",
-                            "Top8",
-                            "Quarters",
-                            "Semis",
-                            "Final",
-                          ]
-                          return values.map((name) => {
-                            const round = form.getValues("round")
-                            const isNow = form.getValues("isNow")
-                            return (
-                              <div
-                                key={name}
-                                className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] ${
-                                  round?.endsWith(name)
-                                    ? "bg-black text-white"
-                                    : "bg-white text-black"
-                                } ${isNow ? "" : "cursor-pointer"}`}
-                                onClick={() => {
-                                  if (isNow) {
-                                    return
-                                  }
-                                  let newRound = round ?? ""
-                                  let replaced = false
-                                  for (const r of values) {
-                                    if (newRound.endsWith(r)) {
-                                      newRound = newRound.replace(r, name)
-                                      replaced = true
-                                      break
-                                    }
-                                  }
-                                  if (!replaced) {
-                                    newRound = newRound + name
-                                  }
-
-                                  form.setValue("round", newRound)
-                                }}
-                              >
-                                {name.replace("Top", "")}
-                              </div>
-                            )
-                          })
-                        })()}
-                      </div>
-                      <TextForm name="round" placeholder="Grand Final" />
-                    </div>
-                    <div>
-                      <label className="block">試合形式</label>
-                      <div className="flex flex-wrap gap-[0.4rem] mb-[1rem] max-w-[300px]">
-                        {(() => {
-                          const values = ["Best of 3", "Best of 5"]
-                          const isNow = form.getValues("isNow")
-                          return values.map((name) => {
-                            const matchType = form.getValues("matchType")
-                            return (
-                              <div
-                                key={name}
-                                className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
-                                  matchType?.endsWith(name)
-                                    ? "bg-black text-white"
-                                    : "bg-white text-black"
-                                } ${isNow ? "" : "cursor-pointer"}`}
-                                onClick={() => {
-                                  if (isNow) {
-                                    return
-                                  }
-                                  let newMatchType = matchType ?? ""
-                                  let replaced = false
-                                  for (const r of values) {
-                                    if (newMatchType.endsWith(r)) {
-                                      newMatchType = newMatchType.replace(
-                                        r,
-                                        name
-                                      )
-                                      replaced = true
-                                      break
-                                    }
-                                  }
-                                  if (!replaced) {
-                                    newMatchType = newMatchType + name
-                                  }
-
-                                  form.setValue("matchType", newMatchType)
-                                }}
-                              >
-                                {name.replace("Top", "")}
-                              </div>
-                            )
-                          })
-                        })()}
-                      </div>
-                      <TextForm name="matchType" placeholder="Best of 3" />
-                    </div>
+                    <RoundSelector
+                      round={getValues("round")}
+                      setRound={(round) => {
+                        form.setValue("round", round)
+                      }}
+                      disabled={getValues("isNow")}
+                    />
+                    <MatchTypeSelector
+                      matchType={getValues("matchType")}
+                      setMatchType={(matchType) => {
+                        form.setValue("matchType", matchType)
+                      }}
+                      disabled={getValues("isNow")}
+                    />
                   </div>
                   <CheckBoxForm
                     label="すべて大文字にする"
