@@ -35,20 +35,11 @@ export const RoundSelector: FC<{
                   if (disabled) {
                     return
                   }
-                  let newRound = round ?? ""
-                  let replaced = false
-                  for (const r of values) {
-                    if (newRound.startsWith(r)) {
-                      newRound = newRound.replace(r, name)
-                      replaced = true
-                      break
-                    }
+                  if (round?.startsWith(name)) {
+                    setRound("")
+                  } else {
+                    setRound(name)
                   }
-                  if (!replaced) {
-                    newRound = `${name} ${newRound}`
-                  }
-
-                  setRound(newRound)
                 }}
               >
                 {name}
@@ -57,29 +48,48 @@ export const RoundSelector: FC<{
           })
         })()}
       </div>
-      <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] mb-[1rem] max-w-[300px]">
+      <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] mb-[1rem] max-w-[300px] h-[4rem]">
         {(() => {
-          const values = [
-            "Top256",
-            "Top192",
-            "Top128",
-            "Top96",
-            "Top64",
-            "Top48",
-            "Top32",
-            "Top16",
-            "Top12",
-            "Top8",
-            "Quarters",
-            "Semis",
-            "Finals",
-            "Finals Reset",
-          ]
-          return values.map((name) => {
+          const values: Record<string, string[]> = {
+            Winners: [
+              "Top256",
+              "Top192",
+              "Top128",
+              "Top96",
+              "Top64",
+              "Top48",
+              "Top32",
+              "Top16",
+              "Top12",
+              "Top8",
+              "Quarters",
+              "Semis",
+              "Finals",
+            ],
+            Losers: [
+              "Top256",
+              "Top192",
+              "Top128",
+              "Top96",
+              "Top64",
+              "Top48",
+              "Top32",
+              "Top16",
+              "Top12",
+              "Top8",
+              "Quarters",
+              "Semis",
+              "Finals",
+            ],
+            Pools: ["Finals"],
+            Grand: ["Finals", "Finals Reset"],
+          }
+          const first = round?.split(" ")[0]
+          return (values[first] ?? []).map((name) => {
             return (
               <div
                 key={name}
-                className={`border-solid border-[1px] border-[#c4c4c4] rounded-[5px] pr-[0.5rem] pl-[0.5rem] transition ease delay-50 hover:border-[#202025] hover:shadow-md ${
+                className={`border-solid border-[1px] border-[#c4c4c4] rounded-[5px] px-[0.5rem] h-fit transition ease delay-50 hover:border-[#202025] hover:shadow-md ${
                   round?.endsWith(name)
                     ? "bg-[#202025] text-white border-[#202025]"
                     : "bg-white text-[#202025]"
@@ -90,7 +100,7 @@ export const RoundSelector: FC<{
                   }
                   let newRound = round ?? ""
                   let replaced = false
-                  for (const r of values) {
+                  for (const r of values[first]) {
                     if (newRound.endsWith(r)) {
                       newRound = newRound.replace(r, name)
                       replaced = true
@@ -99,6 +109,10 @@ export const RoundSelector: FC<{
                   }
                   if (!replaced) {
                     newRound = `${newRound} ${name}`
+                  }
+
+                  if (round.endsWith(name)) {
+                    newRound = newRound.replace(` ${name}`, "")
                   }
 
                   setRound(newRound)

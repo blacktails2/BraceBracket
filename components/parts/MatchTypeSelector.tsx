@@ -35,20 +35,11 @@ export const MatchTypeSelector: FC<{
                   if (disabled) {
                     return
                   }
-                  let newMatchType = matchType ?? ""
-                  let replaced = false
-                  for (const r of values) {
-                    if (newMatchType.endsWith(r)) {
-                      newMatchType = newMatchType.replace(r, name)
-                      replaced = true
-                      break
-                    }
+                  if (matchType === name) {
+                    setMatchType("")
+                  } else {
+                    setMatchType(name)
                   }
-                  if (!replaced) {
-                    newMatchType = newMatchType + name
-                  }
-
-                  setMatchType(newMatchType)
                 }}
               >
                 {name.replace("Top", "")}
