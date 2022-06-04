@@ -4,6 +4,7 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 import { useOrigin } from "../../../hooks/useOrigin"
 import { useScore } from "../../../hooks/useScore"
+import { useSetting } from "../../../hooks/useSetting"
 import { Score } from "../../../libs/const"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { NumberForm } from "../../parts/NumberForm"
@@ -18,6 +19,7 @@ export const ScoreAndCamera: FC = () => {
   const id = router.query.id as string
   const origin = useOrigin()
   const [score, setScore] = useScore(id)
+  const [setting] = useSetting(id)
   const [showTooltip, setShowTooltip] = useState(false)
   const scoreForm = useForm<Score>()
   const { handleSubmit, reset } = scoreForm
@@ -152,23 +154,25 @@ export const ScoreAndCamera: FC = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-[2rem]">
-              <h4 className="mt-0 mb-[0.5rem]">Twitter ID</h4>
-              <div className="flex flex-wrap gap-[1rem]">
-                <TextForm
-                  className="w-[19rem]"
-                  label="1P"
-                  name="p1.twitterID"
-                  placeholder="@user_name"
-                />
-                <TextForm
-                  className="w-[19rem]"
-                  label="2P"
-                  name="p2.twitterID"
-                  placeholder="@user_name"
-                />
+            {setting?.scoreboard.cameraAndLogo.displayCameraAndTwitterID && (
+              <div className="mt-[2rem]">
+                <h4 className="mt-0 mb-[0.5rem]">Twitter ID</h4>
+                <div className="flex flex-wrap gap-[1rem]">
+                  <TextForm
+                    className="w-[19rem]"
+                    label="1P"
+                    name="p1.twitterID"
+                    placeholder="@user_name"
+                  />
+                  <TextForm
+                    className="w-[19rem]"
+                    label="2P"
+                    name="p2.twitterID"
+                    placeholder="@user_name"
+                  />
+                </div>
               </div>
-            </div>
+            )}
             <div className="mt-[2rem]">
               <h4>データのリセット・入れ替え</h4>
               <div className="flex flex-wrap gap-[1rem]">
