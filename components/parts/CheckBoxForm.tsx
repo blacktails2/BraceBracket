@@ -9,8 +9,12 @@ export const CheckBoxForm: FC<{
   id?: string
   className?: string
   disabled?: boolean
-}> = ({ label, name, className, id, disabled }) => {
-  const { register } = useFormContext()
+  cleanValue?: boolean
+}> = ({ label, name, className, id, disabled, cleanValue }) => {
+  const { register, watch, getValues } = useFormContext()
+  if (cleanValue !== undefined) {
+    watch(name)
+  }
   return (
     <div className={className}>
       <div className={styles.container}>
@@ -27,6 +31,10 @@ export const CheckBoxForm: FC<{
             className={styles.dummyLabel}
             style={{
               cursor: disabled ? "default" : "pointer",
+              boxShadow:
+                cleanValue !== undefined && cleanValue !== getValues(name)
+                  ? "0 0 0 3px var(--bb-dirty)"
+                  : "",
             }}
           ></label>
         </div>

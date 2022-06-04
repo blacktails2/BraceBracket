@@ -7,8 +7,13 @@ export const NumberForm: FC<{
   label?: string
   name: string
   className?: string
-}> = ({ label, name, className }) => {
-  const { register } = useFormContext()
+  cleanValue?: number
+}> = ({ label, name, className, cleanValue }) => {
+  const { register, getValues, watch } = useFormContext()
+  if (cleanValue !== undefined) {
+    watch(name)
+  }
+
   return (
     <div className={className}>
       {label && (
@@ -21,6 +26,11 @@ export const NumberForm: FC<{
         {...register(name)}
         className={styles.input}
         id={name}
+        style={
+          cleanValue !== undefined && getValues(name) !== cleanValue
+            ? { backgroundColor: "var(--bb-dirty)" }
+            : {}
+        }
       />
     </div>
   )

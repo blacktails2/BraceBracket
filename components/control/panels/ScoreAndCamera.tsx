@@ -68,6 +68,7 @@ export const ScoreAndCamera: FC = () => {
                     name="p1.team"
                     placeholder="Team"
                     autocomplete="team"
+                    cleanValue={score?.p1.team}
                   />
                   <TextForm
                     className="w-[18rem]"
@@ -75,6 +76,7 @@ export const ScoreAndCamera: FC = () => {
                     name="p1.playerName"
                     placeholder="Player"
                     autocomplete="playerName"
+                    cleanValue={score?.p1.playerName}
                   />
                   <div>
                     <label>スコア</label>
@@ -90,7 +92,11 @@ export const ScoreAndCamera: FC = () => {
                       >
                         -1
                       </SmallButton>
-                      <NumberForm className="w-[5rem]" name={"p1.score"} />
+                      <NumberForm
+                        className="w-[5rem]"
+                        name={"p1.score"}
+                        cleanValue={score?.p1.score}
+                      />
                       <SmallButton
                         type="button"
                         onClick={() =>
@@ -115,6 +121,7 @@ export const ScoreAndCamera: FC = () => {
                     name="p2.team"
                     placeholder="Team"
                     autocomplete="team"
+                    cleanValue={score?.p2.team}
                   />
                   <TextForm
                     className="w-[18rem]"
@@ -122,6 +129,7 @@ export const ScoreAndCamera: FC = () => {
                     name="p2.playerName"
                     placeholder="Player"
                     autocomplete="playerName"
+                    cleanValue={score?.p2.playerName}
                   />
                   <div>
                     <label>スコア</label>
@@ -137,7 +145,11 @@ export const ScoreAndCamera: FC = () => {
                       >
                         -1
                       </SmallButton>
-                      <NumberForm className="w-[5rem]" name={"p2.score"} />
+                      <NumberForm
+                        className="w-[5rem]"
+                        name={"p2.score"}
+                        cleanValue={score?.p2.score}
+                      />
                       <SmallButton
                         type="button"
                         onClick={() =>
@@ -163,12 +175,14 @@ export const ScoreAndCamera: FC = () => {
                     label="1P"
                     name="p1.twitterID"
                     placeholder="@user_name"
+                    cleanValue={score?.p1.twitterID}
                   />
                   <TextForm
                     className="w-[19rem]"
                     label="2P"
                     name="p2.twitterID"
                     placeholder="@user_name"
+                    cleanValue={score?.p2.twitterID}
                   />
                 </div>
               </div>
@@ -233,12 +247,14 @@ export const ScoreAndCamera: FC = () => {
               <RoundSelector
                 round={scoreForm.getValues("round")}
                 setRound={(round) => scoreForm.setValue("round", round)}
+                cleanValue={score?.round}
               />
               <MatchTypeSelector
                 matchType={scoreForm.getValues("matchType")}
                 setMatchType={(matchType) =>
                   scoreForm.setValue("matchType", matchType)
                 }
+                cleanValue={score?.matchType}
               />
               {!setting?.scoreboard.cameraAndLogo.useLogo && (
                 <div>
@@ -248,6 +264,12 @@ export const ScoreAndCamera: FC = () => {
                     cols={10}
                     rows={3}
                     {...scoreForm.register("tournamentName")}
+                    style={
+                      score?.tournamentName !==
+                      scoreForm.getValues("tournamentName")
+                        ? { backgroundColor: "var(--bb-dirty)" }
+                        : {}
+                    }
                   ></textarea>
                 </div>
               )}
@@ -256,6 +278,7 @@ export const ScoreAndCamera: FC = () => {
               className="mt-[1rem]"
               label="すべて大文字にする"
               name="uppercase"
+              cleanValue={score?.uppercase}
             />
           </div>
           <div className="relative flex gap-[2rem]">

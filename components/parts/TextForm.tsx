@@ -10,8 +10,20 @@ export const TextForm: FC<{
   className?: string
   autocomplete?: string
   disabled?: boolean
-}> = ({ label, name, placeholder, className, autocomplete, disabled }) => {
-  const { register } = useFormContext()
+  cleanValue?: string
+}> = ({
+  label,
+  name,
+  placeholder,
+  className,
+  autocomplete,
+  disabled,
+  cleanValue,
+}) => {
+  const { register, watch, getValues } = useFormContext()
+  if (cleanValue !== undefined) {
+    watch(name)
+  }
   return (
     <div className={className}>
       {label && (
@@ -28,6 +40,11 @@ export const TextForm: FC<{
         autoComplete={autocomplete ? "on" : "off"}
         list={autocomplete}
         disabled={disabled}
+        style={
+          cleanValue !== undefined && getValues(name) !== cleanValue
+            ? { backgroundColor: "var(--bb-dirty)" }
+            : {}
+        }
       />
     </div>
   )

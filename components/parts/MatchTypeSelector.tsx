@@ -8,17 +8,24 @@ export const MatchTypeSelector: FC<{
   matchType: string
   setMatchType: (matchType: string) => void
   disabled?: boolean
+  cleanValue?: string
 }> = ({
   name = "matchType",
   placeholder = "Best of 3",
   matchType,
   setMatchType,
   disabled = false,
+  cleanValue,
 }) => {
   return (
     <div>
       <label className="block">試合形式</label>
-      <TextForm name={name} placeholder={placeholder} disabled={disabled} />
+      <TextForm
+        name={name}
+        placeholder={placeholder}
+        disabled={disabled}
+        cleanValue={cleanValue}
+      />
       <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] max-w-[300px]">
         {(() => {
           const values = ["Best of 3", "Best of 5"]

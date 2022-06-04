@@ -58,6 +58,7 @@ export const Next: FC = () => {
             label="現在の試合状況を表示する"
             name="isNow"
             className="mt-[1rem]"
+            cleanValue={matchIntervalInfo?.isNow}
           />
           <div
             style={{
@@ -78,6 +79,7 @@ export const Next: FC = () => {
                         name="p1.team"
                         placeholder="Team"
                         autocomplete="team"
+                        cleanValue={matchIntervalInfo?.p1.team}
                       />
                       <TextForm
                         className="w-[18rem]"
@@ -85,6 +87,7 @@ export const Next: FC = () => {
                         name="p1.playerName"
                         placeholder="Player"
                         autocomplete="playerName"
+                        cleanValue={matchIntervalInfo?.p1.playerName}
                       />
                     </div>
                   </div>
@@ -96,6 +99,7 @@ export const Next: FC = () => {
                         name="p2.team"
                         placeholder="Team"
                         autocomplete="team"
+                        cleanValue={matchIntervalInfo?.p2.team}
                       />
                       <TextForm
                         className="w-[18rem]"
@@ -103,6 +107,7 @@ export const Next: FC = () => {
                         name="p2.playerName"
                         placeholder="Player"
                         autocomplete="playerName"
+                        cleanValue={matchIntervalInfo?.p2.playerName}
                       />
                     </div>
                   </div>
@@ -118,6 +123,7 @@ export const Next: FC = () => {
                         form.setValue("round", round)
                       }}
                       disabled={getValues("isNow")}
+                      cleanValue={matchIntervalInfo?.round}
                     />
                     <MatchTypeSelector
                       matchType={getValues("matchType")}
@@ -125,6 +131,7 @@ export const Next: FC = () => {
                         form.setValue("matchType", matchType)
                       }}
                       disabled={getValues("isNow")}
+                      cleanValue={matchIntervalInfo?.matchType}
                     />
                   </div>
                   <CheckBoxForm
@@ -133,6 +140,7 @@ export const Next: FC = () => {
                     id="next.uppercase"
                     className="mt-[10px]"
                     disabled={getValues("isNow")}
+                    cleanValue={matchIntervalInfo?.uppercase}
                   />
                 </div>
               </div>

@@ -8,17 +8,24 @@ export const RoundSelector: FC<{
   round: string
   setRound: (round: string) => void
   disabled?: boolean
+  cleanValue?: string
 }> = ({
   name = "round",
   placeholder = "Grand Final",
   round,
   setRound,
   disabled = false,
+  cleanValue,
 }) => {
   return (
     <div>
       <label className="block">ラウンド</label>
-      <TextForm name={name} placeholder={placeholder} disabled={disabled} />
+      <TextForm
+        name={name}
+        placeholder={placeholder}
+        disabled={disabled}
+        cleanValue={cleanValue}
+      />
       <div className="flex flex-wrap mt-[1rem] gap-[0.4rem] w-fit">
         {(() => {
           const values = ["Winners", "Losers", "Pools", "Grand", "Friendlies"]
