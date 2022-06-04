@@ -53,6 +53,7 @@ export const ScoreAndCamera: FC = () => {
           scoreForm.setValue("p2.twitterID", queue.p2?.twitterID ?? "")
           scoreForm.setValue("round", queue.roundText)
         }}
+        id="scoreAndCameraStreamQueueTable"
       />
 
       <FormProvider {...scoreForm}>

@@ -7,6 +7,7 @@ export type StreamQueue = {
   streamName: string
   p1?: PlayerScore
   p2?: PlayerScore
+  inProgress: boolean
 }[]
 
 const fullRoundText2Shorts: { [key: string]: string } = {
@@ -25,6 +26,28 @@ query StreamQueueOnTournament($tourneySlug: String!) {
   tournament(slug: $tourneySlug) {
     id
     startAt
+    events {
+      sets(filters: {state: 2}) {
+        nodes {
+          id
+          fullRoundText
+          stream {
+            streamName
+          }
+          slots {
+            id
+            entrant{
+              id
+              team {
+                name
+                id
+              }
+              name
+            }
+          }
+        }
+      }
+    }
     streamQueue {
       stream {
         streamSource
@@ -112,9 +135,43 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
         streamName: stream.stream.streamName,
         p1: players[0],
         p2: players[1],
+        inProgress: false,
       }
     })
   })
+
+  streamQueue.unshift(
+    ...res.data.tournament.events.flatMap((event: any) => {
+      return event.sets.nodes.map((set: any) => {
+        const players = set.slots.map((slot: any) => {
+          if (!slot.entrant) {
+            return {
+              team: "",
+              playerName: "",
+              twitterID: "",
+              score: 0,
+            }
+          }
+          const { team, name } = getNameAndTeamtag(slot.entrant.name)
+          return {
+            team,
+            playerName: name,
+            twitterID: "",
+            score: 0,
+          }
+        })
+        return {
+          id: set.id,
+          roundText:
+            fullRoundText2Shorts[set.fullRoundText] ?? set.fullRoundText,
+          streamName: set.stream.streamName,
+          p1: players[0],
+          p2: players[1],
+          inProgress: true,
+        }
+      })
+    })
+  )
   console.log(streamQueue)
   return streamQueue
 }

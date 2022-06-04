@@ -52,6 +52,8 @@ export const Next: FC = () => {
 
                 form.setValue("round", queue.roundText)
               }}
+              trackNext={true}
+              id="nextStreamQueueTable"
             />
           </div>
           <CheckBoxForm
