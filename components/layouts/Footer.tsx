@@ -17,9 +17,13 @@ export const Footer: FC = () => {
         </Link>
       </div>
       <div className={styles.footerRight}>
-        <Link href="/developer-contact" passHref>
-          <a className={styles.footerText}>Developer Contact</a>
-        </Link>
+        <a
+          href="https://discord.gg/TgMFQEqxY9"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Developer Contact
+        </a>
       </div>
     </footer>
   )
