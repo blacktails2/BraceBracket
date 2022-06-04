@@ -4,7 +4,7 @@ import { Score } from "../libs/const"
 
 import { genUseDatabaseValue } from "./useDatabaseValue"
 
-const defaultValue: Score = {
+export const defaultValue: Score = {
   createdAt: serverTimestamp(),
   matchType: "Best of 3",
   p1: {

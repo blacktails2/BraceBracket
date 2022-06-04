@@ -1,4 +1,5 @@
 import { FC, useState } from "react"
+import { JSXRenderer } from "react-jsx-renderer"
 import { useInterval } from "react-use"
 
 import {
@@ -66,6 +67,19 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
       )
     }
   }, 5000)
+
+  if (setting.scoreboard.design.useJSX) {
+    console.log(setting.scoreboard.design.jsx)
+    return (
+      <JSXRenderer
+        code={setting.scoreboard.design.jsx}
+        binding={{
+          score,
+          setting,
+        }}
+      />
+    )
+  }
 
   return (
     <div
