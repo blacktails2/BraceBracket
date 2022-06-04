@@ -8,6 +8,7 @@ import { Top8Bracket } from "../components/control/panels/Top8Bracket"
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import { TextboxWithCopy } from "../components/parts/TextboxWithCopy"
 import { useOrigin } from "../hooks/useOrigin"
+import { useSetting } from "../hooks/useSetting"
 import { NextPageWithLayout } from "../libs/const"
 
 import styles from "./control.module.scss"
@@ -15,6 +16,8 @@ import styles from "./control.module.scss"
 const Control: NextPageWithLayout = () => {
   const router = useRouter()
   const origin = useOrigin()
+  const id = router.query.id as string
+  const [setting] = useSetting(id)
   useEffect(() => {
     const params = new URLSearchParams(location.search)
     if (!params.get("id")) {
@@ -45,7 +48,7 @@ const Control: NextPageWithLayout = () => {
         <ScoreAndCamera />
         <Next />
         <MC />
-        <Top8Bracket />
+        {setting?.integrateStartGG.enabled && <Top8Bracket />}
       </div>
     </div>
   )
