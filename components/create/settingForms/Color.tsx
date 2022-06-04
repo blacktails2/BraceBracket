@@ -55,6 +55,15 @@ export const Color: FC<{ selectedLayout: string }> = ({ selectedLayout }) => {
               </>
             )
           }}
+          rules={{
+            required: true,
+            validate: (value) => {
+              if (!ScoreboardColorsMap[selectedLayout]?.includes(value)) {
+                return "正しいカラーを選択してください"
+              }
+              return true
+            },
+          }}
         />
       </div>
     </div>
