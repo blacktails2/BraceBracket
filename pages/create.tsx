@@ -1,6 +1,7 @@
 import { set } from "@firebase/database"
 import cryptoRandomString from "crypto-random-string"
 import { child, get, ref, serverTimestamp, update } from "firebase/database"
+import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useMemo } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
@@ -93,7 +94,14 @@ const Create: NextPageWithLayout = () => {
 }
 
 Create.getLayout = (page) => {
-  return <DefaultLayout>{page}</DefaultLayout>
+  return (
+    <>
+      <Head>
+        <title>BraceBracket | Setting</title>
+      </Head>
+      <DefaultLayout>{page}</DefaultLayout>
+    </>
+  )
 }
 
 export default Create

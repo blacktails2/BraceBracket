@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 
@@ -54,7 +55,14 @@ const Control: NextPageWithLayout = () => {
   )
 }
 Control.getLayout = (page) => {
-  return <DefaultLayout>{page}</DefaultLayout>
+  return (
+    <>
+      <Head>
+        <title>BraceBracket | Control</title>
+      </Head>
+      <DefaultLayout>{page}</DefaultLayout>
+    </>
+  )
 }
 
 export default Control
