@@ -65,7 +65,6 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
         (logoIdx + 1) % setting.scoreboard.cameraAndLogo.logoURLs.length
       )
     }
-    setLogoIdx((logoIdx + 1) % setting.scoreboard.cameraAndLogo.logoURLs.length)
   }, 5000)
 
   return (

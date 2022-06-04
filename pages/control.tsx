@@ -42,21 +42,20 @@ const Control: NextPageWithLayout = () => {
             </div>
             <Link
               href={{
-                pathname: "/",
+                pathname: "/create",
                 query: {
                   id: id,
                 },
               }}
+              passHref
             >
               <a>
-                <div>
-                  <Image
-                    src="/image/setting.svg"
-                    width={26}
-                    height={26}
-                    alt="設定"
-                  />
-                </div>
+                <Image
+                  src="/image/setting.svg"
+                  width={26}
+                  height={26}
+                  alt="設定"
+                />
               </a>
             </Link>
           </div>
