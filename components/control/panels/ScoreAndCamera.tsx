@@ -76,35 +76,34 @@ export const ScoreAndCamera: FC = () => {
                     placeholder="Player"
                     autocomplete="playerName"
                   />
-                  <NumberForm
-                    className="w-[5rem]"
-                    label={"スコア"}
-                    name={"p1.score"}
-                  />
-                  <SmallButton
-                    className="mt-[18px]"
-                    type="button"
-                    onClick={() =>
-                      scoreForm.setValue(
-                        "p1.score",
-                        (scoreForm.getValues("p1.score") ?? 0) + 1
-                      )
-                    }
-                  >
-                    +1
-                  </SmallButton>
-                  <SmallButton
-                    className="mt-[18px]"
-                    type="button"
-                    onClick={() =>
-                      scoreForm.setValue(
-                        "p1.score",
-                        (scoreForm.getValues("p1.score") ?? 0) - 1
-                      )
-                    }
-                  >
-                    -1
-                  </SmallButton>
+                  <div>
+                    <label>スコア</label>
+                    <div className="flex gap-[0.5rem]">
+                      <SmallButton
+                        type="button"
+                        onClick={() =>
+                          scoreForm.setValue(
+                            "p1.score",
+                            (scoreForm.getValues("p1.score") ?? 0) - 1
+                          )
+                        }
+                      >
+                        -1
+                      </SmallButton>
+                      <NumberForm className="w-[5rem]" name={"p1.score"} />
+                      <SmallButton
+                        type="button"
+                        onClick={() =>
+                          scoreForm.setValue(
+                            "p1.score",
+                            (scoreForm.getValues("p1.score") ?? 0) + 1
+                          )
+                        }
+                      >
+                        +1
+                      </SmallButton>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div>
@@ -124,35 +123,34 @@ export const ScoreAndCamera: FC = () => {
                     placeholder="Player"
                     autocomplete="playerName"
                   />
-                  <NumberForm
-                    className="w-[5rem]"
-                    label="スコア"
-                    name="p2.score"
-                  />
-                  <SmallButton
-                    type="button"
-                    className="mt-[18px]"
-                    onClick={() =>
-                      scoreForm.setValue(
-                        "p2.score",
-                        (scoreForm.getValues("p2.score") ?? 0) + 1
-                      )
-                    }
-                  >
-                    +1
-                  </SmallButton>
-                  <SmallButton
-                    type="button"
-                    className="mt-[18px]"
-                    onClick={() =>
-                      scoreForm.setValue(
-                        "p2.score",
-                        (scoreForm.getValues("p2.score") ?? 0) - 1
-                      )
-                    }
-                  >
-                    -1
-                  </SmallButton>
+                  <div>
+                    <label>スコア</label>
+                    <div className="flex gap-[0.5rem]">
+                      <SmallButton
+                        type="button"
+                        onClick={() =>
+                          scoreForm.setValue(
+                            "p2.score",
+                            (scoreForm.getValues("p2.score") ?? 0) - 1
+                          )
+                        }
+                      >
+                        -1
+                      </SmallButton>
+                      <NumberForm className="w-[5rem]" name={"p2.score"} />
+                      <SmallButton
+                        type="button"
+                        onClick={() =>
+                          scoreForm.setValue(
+                            "p2.score",
+                            (scoreForm.getValues("p2.score") ?? 0) + 1
+                          )
+                        }
+                      >
+                        +1
+                      </SmallButton>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
