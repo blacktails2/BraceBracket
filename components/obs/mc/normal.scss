@@ -43,16 +43,17 @@ $white: #fff;
   .mc4 {
     color: var(--main-color);
     text-align: center;
-    font-size: 32px;
-    line-height: 32px;
+    font-size: 30px;
+    line-height: 30px;
     letter-spacing: 2px;
     width: 400px;
     height: 60px;
     position: fixed;
-    top: 730px;
+    top: 734px;
 
     span {
       margin-left: 10px;
+      font-size: inherit;
 
       &:first-child {
         margin-left: 0;

@@ -56,10 +56,11 @@ $white: #fff;
     width: 400px;
     height: 50px;
     position: fixed;
-    top: 730px;
+    top: 727px;
 
     span {
       margin-left: 10px;
+      font-size: inherit;
 
       &:first-child {
         margin-left: 0;
@@ -82,7 +83,7 @@ $white: #fff;
     @include nextmcidText;
 
     position: fixed;
-    top: 698px;
+    top: 695px;
   }
 
   .mc1_layout {
