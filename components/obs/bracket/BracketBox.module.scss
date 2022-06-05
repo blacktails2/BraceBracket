@@ -68,7 +68,7 @@ $subcolor: $white;
 
 @mixin teamText {
   color: $maincolor;
-  font-size: 21px;
+  font-size: 22px;
   letter-spacing: 1px;
   line-height: 42px;
   @include regularWeight;
@@ -76,7 +76,7 @@ $subcolor: $white;
 
 @mixin nameText {
   color: $maincolor;
-  font-size: 21px;
+  font-size: 22px;
   line-height: 42px;
   letter-spacing: 1px;
   @include blackWeight;

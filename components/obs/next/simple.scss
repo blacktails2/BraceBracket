@@ -41,7 +41,7 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
     color: var(--sub-color);
     position: fixed;
     left: 40px;
-    top: 875px;
+    top: 877px;
     letter-spacing: 0.05em;
   }
 
@@ -124,7 +124,7 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
     font-size: 30px;
     line-height: 30px;
     letter-spacing: 1px;
-    @include nextsp_boldWeight;
+    @include nextsp_regularWeight;
   }
 
   // チーム名及びプレイヤー名の設定
