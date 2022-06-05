@@ -9,7 +9,15 @@ export const BracketBox: FC<{
   score: BracketScore
   pos: { top: string; left: string }
   delay?: number
-}> = ({ score: { player1: _player1, player2: _player2 }, pos, delay }) => {
+  round: string
+  layout: string
+}> = ({
+  score: { player1: _player1, player2: _player2 },
+  pos,
+  delay,
+  layout,
+  round,
+}) => {
   const [player1, setPlayer1] = useState<{
     team: string
     name: string
@@ -27,10 +35,19 @@ export const BracketBox: FC<{
     setPlayer2(_player2)
   }, [_player2])
   return (
-    <div className={styles.bracketBox} style={pos}>
+    <div
+      className={`${styles.bracketBox} ${
+        round.startsWith("losers")
+          ? styles.losers
+          : round.startsWith("winners")
+          ? styles.winners
+          : styles.grand
+      } ${layout === "simple" ? styles.simple : styles.other}`}
+      style={pos}
+    >
       <div className={styles.name}>
         <Transition keyName={`${player1.team}-${player1.name}`}>
-          <p>
+          <p className={styles.player1}>
             {player1.team && (
               <span className={styles.playerTeam}>{player1.team}</span>
             )}
@@ -38,7 +55,7 @@ export const BracketBox: FC<{
           </p>
         </Transition>
         <Transition keyName={`${player2.team}-${player2.name}`}>
-          <p>
+          <p className={styles.player2}>
             {player2.team && (
               <span className={styles.playerTeam}>{player2.team}</span>
             )}
@@ -46,15 +63,15 @@ export const BracketBox: FC<{
           </p>
         </Transition>
       </div>
-      <div className={styles.score}>
+      <div>
         <Transition keyName={`${player1.team}-${player1.score}`}>
-          <p>
-            <span>{player1.score}</span>
+          <p className={styles.player1}>
+            <span className={styles.score}>{player1.score}</span>
           </p>
         </Transition>
         <Transition keyName={`${player1.team}-${player1.score}`}>
-          <p>
-            <span>{player2.score}</span>
+          <p className={styles.player2}>
+            <span className={styles.score}>{player2.score}</span>
           </p>
         </Transition>
       </div>

@@ -1,7 +1,7 @@
-import { NextPage } from "next"
-import { ReactElement, ReactNode } from "react"
-import { AppProps } from "next/app"
 import { serverTimestamp } from "firebase/database"
+import { NextPage } from "next"
+import { AppProps } from "next/app"
+import { ReactElement, ReactNode } from "react"
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -67,9 +67,9 @@ export const getNextFilename: (
 }
 
 export const getBracketFilename: (
-  layout: ScoreboardLayout,
-  color: ScoreboardColor
-) => string = (layout, color, count = 2) => {
+  layout?: ScoreboardLayout,
+  color?: ScoreboardColor
+) => string = (layout, color) => {
   if (layout === "simple") {
     return `brackets_simple.png`
   }

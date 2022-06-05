@@ -46,7 +46,7 @@ $subcolor: $white;
 }
 
 .bracketBox {
-  width: 305px;
+  width: 295px;
   height: 85px;
   position: fixed;
   display: flex;
@@ -105,4 +105,29 @@ $subcolor: $white;
 
 .score {
   @include scoreText;
+}
+
+// 色設定
+.other.losers {
+  .player1 span,
+  .player2 span {
+    color: var(--bb-white);
+  }
+}
+
+.other.winners {
+  .player1 span,
+  .player2 span {
+    color: var(--bb-black);
+  }
+}
+
+.other.grand {
+  .player1 span {
+    color: var(--bb-black);
+  }
+
+  .player2 span {
+    color: var(--bb-white);
+  }
 }
