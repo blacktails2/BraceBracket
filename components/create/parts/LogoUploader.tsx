@@ -15,7 +15,8 @@ export const LogoUploader: FC<{
   append: UseFieldArrayAppend<FieldValues, "scoreboard.cameraAndLogo.logoURLs">
   remove: UseFieldArrayRemove
   imageURL?: string
-}> = ({ idx, append, remove, imageURL }) => {
+  disabled?: boolean
+}> = ({ idx, append, remove, imageURL, disabled }) => {
   const key = "scoreboard.cameraAndLogo.logoURLs"
   const onFileSelected = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = (e?.currentTarget?.files ?? [])[0]

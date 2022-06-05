@@ -6,11 +6,12 @@ import { LogoUploader } from "../parts/LogoUploader"
 import styles from "./SelectLogo.module.scss"
 
 export const SelectLogo: FC = () => {
-  const { control, getValues } = useFormContext()
+  const { control, getValues, watch } = useFormContext()
   const { fields, append, remove } = useFieldArray({
     control,
     name: "scoreboard.cameraAndLogo.logoURLs",
   })
+  watch("scoreboard.cameraAndLogo.useLogo")
   return (
     <div className={styles.container}>
       {fields.map((field, index) => (
@@ -20,6 +21,7 @@ export const SelectLogo: FC = () => {
           append={append}
           remove={remove}
           imageURL={getValues(`scoreboard.cameraAndLogo.logoURLs.${index}`)}
+          disabled={!getValues("scoreboard.cameraAndLogo.useLogo")}
         />
       ))}
       <div>
@@ -28,6 +30,7 @@ export const SelectLogo: FC = () => {
           idx={fields.length}
           append={append}
           remove={remove}
+          disabled={!getValues("scoreboard.cameraAndLogo.useLogo")}
         />
       </div>
     </div>

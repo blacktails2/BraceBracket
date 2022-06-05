@@ -51,6 +51,7 @@ const Create: NextPageWithLayout = () => {
     defaultValues: setting,
   })
   createForm.watch("scoreboard.design.layout")
+  createForm.watch("scoreboard.cameraAndLogo.useLogo")
   const {
     formState: { errors },
   } = createForm
@@ -104,8 +105,12 @@ const Create: NextPageWithLayout = () => {
             <h3>カメラ・ロゴ設定</h3>
             <DisplayCameraAndTwitterID />
             <UseLogo />
-            <SelectLogo />
-            <DropShadow />
+            {createForm.getValues("scoreboard.cameraAndLogo.useLogo") && (
+              <>
+                <SelectLogo />
+                <DropShadow />
+              </>
+            )}
             <hr />
             <h3>トーナメント管理ツール連携</h3>
             <IntegrateStartGG />

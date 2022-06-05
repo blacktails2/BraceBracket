@@ -16,9 +16,10 @@ export const UseLogo: FC = () => {
         options={{
           validate: (value) => {
             if (!value) return true
-            const logoUrls = getValues("scoreboard.cameraAndLogo.logoUrls")
-            if (!logoUrls || logoUrls.length < 1)
-              return "ロゴが選択されていません。"
+            if (getValues("scoreboard.cameraAndLogo.logoURLs").length === 0) {
+              return "ロゴが登録されていません。"
+            }
+            return true
           },
         }}
       />
@@ -27,6 +28,16 @@ export const UseLogo: FC = () => {
         <p>
           複数個登録した場合、5秒ごとに移り変わります。ロゴはJPG, PNG, GIF,
           SVG形式に対応しています（背景が透明なPNG形式を推奨しています）。
+          <br />
+          ロゴの画像は
+          <a
+            href="https://imgur.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Imgur
+          </a>
+          にアップロードされます。
         </p>
       </label>
     </div>
