@@ -1,8 +1,10 @@
-import { ScoreboardColorsMap, Setting } from "../libs/const"
-import { genUseDatabaseValue } from "./useDatabaseValue"
 import { serverTimestamp } from "firebase/database"
 
-const defaultValue: Setting = {
+import { ScoreboardColorsMap, Setting } from "../libs/const"
+
+import { genUseDatabaseValue } from "./useDatabaseValue"
+
+export const defaultValue: Setting = {
   createdAt: serverTimestamp(),
   scoreboard: {
     design: {
