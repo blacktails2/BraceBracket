@@ -1,12 +1,13 @@
 import { FC } from "react"
-import { useFormContext } from "react-hook-form"
+import { RegisterOptions, useFormContext } from "react-hook-form"
 
 import styles from "./BigCheckBox.module.scss"
 
 export const BigCheckBox: FC<{
   name: string
   className?: string
-}> = ({ name, className }) => {
+  options?: RegisterOptions
+}> = ({ name, className, options }) => {
   const { register } = useFormContext()
   return (
     <div className={className}>
@@ -14,7 +15,7 @@ export const BigCheckBox: FC<{
         <div className={styles.checkbox}>
           <input
             type="checkbox"
-            {...register(name)}
+            {...register(name, options)}
             id={name}
             className={styles.input}
           />

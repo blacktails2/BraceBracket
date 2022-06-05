@@ -4,7 +4,12 @@ import { child, get, ref, serverTimestamp, update } from "firebase/database"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useMemo } from "react"
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
+import {
+  FieldErrors,
+  FormProvider,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form"
 
 import { Preview } from "../components/create/parts/Preview"
 import { Color } from "../components/create/settingForms/Color"
@@ -21,6 +26,22 @@ import { NextPageWithLayout, Setting } from "../libs/const"
 import { db } from "../libs/firebase"
 
 import styles from "./create.module.scss"
+
+const getErrorMessages = (errors: FieldErrors): string[] => {
+  return Object.values(errors)
+    .flatMap((error): string | string[] => {
+      if (error.message && typeof error.message === "string") {
+        return error.message
+      }
+
+      if (typeof error === "object") {
+        return getErrorMessages(error)
+      }
+
+      return ""
+    })
+    .filter((message) => message !== "")
+}
 
 const Create: NextPageWithLayout = () => {
   const router = useRouter()
@@ -89,13 +110,18 @@ const Create: NextPageWithLayout = () => {
             <h3>トーナメント管理ツール連携</h3>
             <IntegrateStartGG />
             <PrimaryButton type="submit">{submitText}</PrimaryButton>
-            {!createForm.formState.isValid && (
-              <div className={styles.error}>
-                <p>
-                  <strong>エラーが発生しました</strong>
-                </p>
-              </div>
-            )}
+            <div className="absolute">
+              {getErrorMessages(errors).map((message) => {
+                return (
+                  <div
+                    key={message}
+                    className="text-[color:var(--bb-attention)]"
+                  >
+                    <p>{message}</p>
+                  </div>
+                )
+              })}
+            </div>
           </div>
           <Preview />
         </FormProvider>
