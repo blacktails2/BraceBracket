@@ -81,7 +81,7 @@ Control.getLayout = (page) => {
       <Head>
         <title>BraceBracket | Control</title>
       </Head>
-      <DefaultLayout> {page} </DefaultLayout>
+      <DefaultLayout>{page}</DefaultLayout>
     </>
   )
 }
