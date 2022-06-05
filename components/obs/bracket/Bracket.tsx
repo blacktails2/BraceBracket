@@ -23,8 +23,8 @@ const keys2Pos: { [key: string]: { top: string; left: string }[] } = {
     { top: "678px", left: "462px" },
   ],
   losersRound: [
-    { top: "524px", left: "117px" },
-    { top: "678px", left: "117px" },
+    { top: "524px", left: "127px" },
+    { top: "678px", left: "127px" },
   ],
 }
 

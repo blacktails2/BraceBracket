@@ -140,7 +140,7 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
       <div className={styles.player1Name}>
         <Transition keyName={`${score.p1.team}-${score.p1.playerName}`}>
           <div>
-            <span className={styles.p1Team}>{score.p1.team}</span>
+            <span className={styles.p1Team}>1{score.p1.team}</span>
             <span className={styles.p1PlayerName}>{score.p1.playerName}</span>
           </div>
         </Transition>
