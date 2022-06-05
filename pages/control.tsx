@@ -60,7 +60,7 @@ const Control: NextPageWithLayout = () => {
             </Link>
           </div>
           <p>
-            URLを共有することで複数人で編集することができます。URLの流失にはご注意ください。
+            URLを共有することで複数人で編集することができます。URLの流出にはご注意ください。
           </p>
         </div>
       </div>
