@@ -26,6 +26,7 @@ export default {
   },
   chromatic: {
     delay: 1000,
+    viewports: [1920, 1080],
   },
 } as ComponentMeta<typeof MatchInterval>
 
