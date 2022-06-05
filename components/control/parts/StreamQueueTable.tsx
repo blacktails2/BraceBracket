@@ -68,7 +68,7 @@ export const StreamQueueTable: FC<{
               id={inputID}
               onChange={() => setIsTrack(!isTrack)}
               checked={isTrack}
-              className="pt-[1.5rem]"
+              className="pt-[0.75rem]"
             />
           </div>
           <datalist id="playerName">

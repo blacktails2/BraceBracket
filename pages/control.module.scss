@@ -11,7 +11,7 @@
     margin-top: 50px;
     margin-bottom: 100px;
 
-    @media (max-width: 520px) {
+    @media (max-width: 960px) {
       margin-bottom: 30px;
     }
   }
@@ -19,16 +19,25 @@
   .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 
     .left {
+      margin-top: 65px;
+
+      @media (max-width: 960px) {
+        margin-top: 0;
+      }
+
       div {
         display: flex;
         justify-content: flex-end;
+
+        @media (max-width: 960px) {
+          justify-content: start;
+        }
       }
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 960px) {
       flex-flow: column;
       justify-content: inherit;
       align-items: inherit;
