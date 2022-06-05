@@ -69,6 +69,14 @@
   .player1Name,
   .player2Name {
     @include player;
+
+    span {
+      margin-left: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
   }
 
   .player1Name {
@@ -84,8 +92,6 @@
   .p1PlayerName,
   .p2PlayerName {
     @include name;
-
-    margin-left: 10px;
   }
 
   .p1Team,
