@@ -3,10 +3,10 @@ import { useRouter } from "next/router"
 import { FC, useState } from "react"
 import { useAsync, useInterval } from "react-use"
 
-import { BracketBox } from "../../components/obs/bracket/BracketBox"
+import { Bracket as Body } from "../../components/obs/bracket/Bracket"
 import { useLoadBracket } from "../../hooks/useLoadBracket"
 import { useSetting } from "../../hooks/useSetting"
-import { BracketScore, getBracketFilename } from "../../libs/const"
+import { BracketScore, Bracket as BracketType } from "../../libs/const"
 import { getNameAndTeamtag } from "../../libs/utils"
 
 const query = `
@@ -74,18 +74,7 @@ const getMaxLosersRound = (res: Data) => {
     .sort()
     .reverse()[0]
 }
-
-type Bracket = {
-  grandFinalReset: BracketScore[]
-  grandFinal: BracketScore[]
-  winnersFinal: BracketScore[]
-  winnersSemiFinal: BracketScore[]
-  losersFinal: BracketScore[]
-  losersSemiFinal: BracketScore[]
-  losersQuarterFinal: BracketScore[]
-  losersRound: BracketScore[]
-}
-const fullRoundText2Keys: { [key: string]: keyof Bracket } = {
+const fullRoundText2Keys: { [key: string]: keyof BracketType } = {
   "Grand Final Reset": "grandFinalReset",
   "Grand Final": "grandFinal",
   "Winners Final": "winnersFinal",
@@ -93,26 +82,6 @@ const fullRoundText2Keys: { [key: string]: keyof Bracket } = {
   "Losers Final": "losersFinal",
   "Losers Semi-Final": "losersSemiFinal",
   "Losers Quarter-Final": "losersQuarterFinal",
-}
-
-const keys2Pos: { [key: string]: { top: string; left: string }[] } = {
-  grandFinalReset: [{ top: "400px", left: "1498px" }],
-  grandFinal: [{ top: "400px", left: "1498px" }],
-  winnersFinal: [{ top: "199px", left: "807px" }],
-  winnersSemiFinal: [
-    { top: "122px", left: "117px" },
-    { top: "276px", left: "117px" },
-  ],
-  losersFinal: [{ top: "601px", left: "1152px" }],
-  losersSemiFinal: [{ top: "601px", left: "807px" }],
-  losersQuarterFinal: [
-    { top: "524px", left: "462px" },
-    { top: "678px", left: "462px" },
-  ],
-  losersRound: [
-    { top: "524px", left: "117px" },
-    { top: "678px", left: "117px" },
-  ],
 }
 
 const loadTop8Bracket = async (phaseGroupId: string) => {
@@ -143,7 +112,7 @@ const loadTop8Bracket = async (phaseGroupId: string) => {
   const tmp: { [key: string]: string } = {}
   tmp[maxLosersRound] = "losersRound"
   const rounds2Key = Object.assign(tmp, fullRoundText2Keys)
-  const bracket: Bracket = {
+  const bracket: BracketType = {
     grandFinal: [],
     grandFinalReset: [],
     losersFinal: [],
@@ -187,7 +156,7 @@ export const Bracket: FC = () => {
   const [loadBracket] = useLoadBracket(id)
   const [setting] = useSetting(id)
   const [lastLoadedAt, setLastLoadedAt] = useState(0)
-  const [bracket, setBracket] = useState<Bracket>({
+  const [bracket, setBracket] = useState<BracketType>({
     grandFinalReset: [],
     grandFinal: [],
     winnersFinal: [],
@@ -230,27 +199,7 @@ export const Bracket: FC = () => {
       <Head>
         <title>BraceBracket | Bracket Layout</title>
       </Head>
-      <img
-        className="board"
-        src={`/image/bracket/${getBracketFilename(
-          setting?.scoreboard.design.layout,
-          setting?.scoreboard.design.color
-        )}`}
-        alt=""
-      />
-      {Object.entries(bracket).map(([round, scores]) => {
-        return scores.map((score, idx) => {
-          return (
-            <BracketBox
-              key={`${round}-${idx}`}
-              score={score}
-              pos={keys2Pos[round][idx]}
-              layout={setting?.scoreboard.design.layout ?? ""}
-              round={round}
-            />
-          )
-        })
-      })}
+      <Body setting={setting} bracket={bracket} />
     </>
   )
 }

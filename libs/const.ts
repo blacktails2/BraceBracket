@@ -159,3 +159,14 @@ export type Tournament = {
   loadBracket: LoadBracket
   matchIntervalInfo: MatchIntervalInfo
 }
+
+export type Bracket = {
+  grandFinalReset: BracketScore[]
+  grandFinal: BracketScore[]
+  winnersFinal: BracketScore[]
+  winnersSemiFinal: BracketScore[]
+  losersFinal: BracketScore[]
+  losersSemiFinal: BracketScore[]
+  losersQuarterFinal: BracketScore[]
+  losersRound: BracketScore[]
+}

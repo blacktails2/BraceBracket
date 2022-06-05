@@ -1,5 +1,4 @@
-import { FC, useEffect, useState } from "react"
-import { useInterval } from "react-use"
+import { FC, useEffect } from "react"
 
 import {
   Setting,
@@ -13,15 +12,9 @@ import styles from "./MatchIntervalInfo.module.scss"
 export const MatchInterval: FC<{
   setting: Setting
   matchIntervalInfo: MatchIntervalInfo
-}> = ({ setting, matchIntervalInfo }) => {
+  time: string
+}> = ({ setting, matchIntervalInfo, time }) => {
   const { layout, color } = setting.scoreboard.design
-  const [time, setTime] = useState("")
-  useInterval(() => {
-    const localTime = new Date()
-    const hour = localTime.getHours() // 時
-    const min = localTime.getMinutes() // 分
-    setTime((hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min)
-  }, 1000)
   useEffect(() => {
     console.log({ matchIntervalInfo })
   }, [matchIntervalInfo])

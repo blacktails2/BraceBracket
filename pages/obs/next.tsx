@@ -2,6 +2,7 @@ import { NextPage } from "next"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import { useInterval } from "react-use"
 
 import { MatchInterval } from "../../components/obs/next/MatchIntervalInfo"
 import { useMatchIntervalInfo } from "../../hooks/useMatchIntervalInfo"
@@ -18,6 +19,14 @@ const Next: NextPage = () => {
   const [info, setInfo] = useState<MatchIntervalInfo | undefined>(
     matchIntervalInfo
   )
+
+  const [time, setTime] = useState("")
+  useInterval(() => {
+    const localTime = new Date()
+    const hour = localTime.getHours() // 時
+    const min = localTime.getMinutes() // 分
+    setTime((hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min)
+  }, 1000)
 
   useEffect(() => {
     if (!matchIntervalInfo) return
@@ -45,7 +54,7 @@ const Next: NextPage = () => {
       <Head>
         <title>BraceBracket | Next Layout</title>
       </Head>
-      <MatchInterval setting={setting} matchIntervalInfo={info} />
+      <MatchInterval setting={setting} matchIntervalInfo={info} time={time} />
     </>
   )
 }
