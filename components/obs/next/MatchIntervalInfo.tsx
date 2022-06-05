@@ -61,8 +61,15 @@ export const MatchInterval: FC<{
           <p className={styles.bo}>{matchIntervalInfo.matchType}</p>
         </Transition>
       </div>
-      <Transition keyName={matchIntervalInfo.p1.playerName}>
-        <p className={styles.playerLeft}>{matchIntervalInfo.p1.playerName}</p>
+      <Transition
+        keyName={`${matchIntervalInfo.p1.team}-${matchIntervalInfo.p1.playerName}`}
+      >
+        <div className={styles.playerLeft}>
+          <span className={styles.playerTeam}>{matchIntervalInfo.p1.team}</span>
+          <span className={styles.playerName}>
+            {matchIntervalInfo.p1.playerName}
+          </span>
+        </div>
       </Transition>
       <Transition
         keyName={`${matchIntervalInfo.p1.playerName}-${matchIntervalInfo.p1.score}`}
@@ -74,8 +81,15 @@ export const MatchInterval: FC<{
       >
         <p className={styles.scoreRight}>{matchIntervalInfo.p2.score}</p>
       </Transition>
-      <Transition keyName={matchIntervalInfo.p2.playerName}>
-        <p className={styles.playerRight}>{matchIntervalInfo.p2.playerName}</p>
+      <Transition
+        keyName={`${matchIntervalInfo.p2.team}-${matchIntervalInfo.p2.playerName}`}
+      >
+        <div className={styles.playerRight}>
+          <span className={styles.playerTeam}>{matchIntervalInfo.p2.team}</span>
+          <span className={styles.playerName}>
+            {matchIntervalInfo.p2.playerName}
+          </span>
+        </div>
       </Transition>
       <p className={styles.localsetting}>
         Local Time

@@ -1,12 +1,9 @@
 import Link from "next/link"
-import { useRouter } from "next/router"
 import { FC } from "react"
 
 import styles from "./Header.module.scss"
 
 export const Header: FC = () => {
-  const router = useRouter()
-  const id = router.query.id as string
   return (
     <header className={styles.header}>
       <div>
@@ -41,10 +38,8 @@ export const Header: FC = () => {
                 Community
               </a>
             </div>
-            <Link href={`/create${id ? `?id=${id}` : ""}`}>
-              <a className={styles.createLink}>
-                {id ? "スコアボードを修正" : "スコアボードを作成"}
-              </a>
+            <Link href={`/create`}>
+              <a className={styles.createLink}>スコアボードを作成</a>
             </Link>
             <div className={styles.hamburgerMenu}>
               <input

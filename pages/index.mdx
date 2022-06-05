@@ -1,4 +1,5 @@
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
+import Head from "next/head"
 
 ## BraceBracket
 
@@ -17,8 +18,13 @@ BraceBracketは格闘ゲームにおけるスコアボードを動的に表示�
 - 各パネルで必要な操作を行ってください。
 
 
-export default ({children}) => <DefaultLayout>
-<div className="markdown">
-    {children}
-</div>
-</DefaultLayout>
+export default ({children}) => <>
+  <Head>
+    <title>BraceBracket | Top</title>
+  </Head>
+  <DefaultLayout>
+    <div className="markdown">
+      {children}
+    </div>
+  </DefaultLayout>
+</>

@@ -4,10 +4,13 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 import { useOrigin } from "../../../hooks/useOrigin"
 import { useScore } from "../../../hooks/useScore"
+import { useSetting } from "../../../hooks/useSetting"
 import { Score } from "../../../libs/const"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { MatchTypeSelector } from "../../parts/MatchTypeSelector"
 import { NumberForm } from "../../parts/NumberForm"
 import { PrimaryButton } from "../../parts/PrimaryButton"
+import { RoundSelector } from "../../parts/RoundSelector"
 import { SmallButton } from "../../parts/SmallButton"
 import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
@@ -18,6 +21,7 @@ export const ScoreAndCamera: FC = () => {
   const id = router.query.id as string
   const origin = useOrigin()
   const [score, setScore] = useScore(id)
+  const [setting] = useSetting(id)
   const [showTooltip, setShowTooltip] = useState(false)
   const scoreForm = useForm<Score>()
   const { handleSubmit, reset } = scoreForm
@@ -49,6 +53,7 @@ export const ScoreAndCamera: FC = () => {
           scoreForm.setValue("p2.twitterID", queue.p2?.twitterID ?? "")
           scoreForm.setValue("round", queue.roundText)
         }}
+        id="scoreAndCameraStreamQueueTable"
       />
 
       <FormProvider {...scoreForm}>
@@ -64,6 +69,7 @@ export const ScoreAndCamera: FC = () => {
                     name="p1.team"
                     placeholder="Team"
                     autocomplete="team"
+                    cleanValue={score?.p1.team}
                   />
                   <TextForm
                     className="w-[18rem]"
@@ -71,36 +77,40 @@ export const ScoreAndCamera: FC = () => {
                     name="p1.playerName"
                     placeholder="Player"
                     autocomplete="playerName"
+                    cleanValue={score?.p1.playerName}
                   />
-                  <NumberForm
-                    className="w-[5rem]"
-                    label={"スコア"}
-                    name={"p1.score"}
-                  />
-                  <SmallButton
-                    className="mt-[18px]"
-                    type="button"
-                    onClick={() =>
-                      scoreForm.setValue(
-                        "p1.score",
-                        (scoreForm.getValues("p1.score") ?? 0) + 1
-                      )
-                    }
-                  >
-                    +1
-                  </SmallButton>
-                  <SmallButton
-                    className="mt-[18px]"
-                    type="button"
-                    onClick={() =>
-                      scoreForm.setValue(
-                        "p1.score",
-                        (scoreForm.getValues("p1.score") ?? 0) - 1
-                      )
-                    }
-                  >
-                    -1
-                  </SmallButton>
+                  <div>
+                    <label>スコア</label>
+                    <div className="flex gap-[0.5rem]">
+                      <SmallButton
+                        type="button"
+                        onClick={() =>
+                          scoreForm.setValue(
+                            "p1.score",
+                            (scoreForm.getValues("p1.score") ?? 0) - 1
+                          )
+                        }
+                      >
+                        -1
+                      </SmallButton>
+                      <NumberForm
+                        className="w-[5rem]"
+                        name={"p1.score"}
+                        cleanValue={score?.p1.score}
+                      />
+                      <SmallButton
+                        type="button"
+                        onClick={() =>
+                          scoreForm.setValue(
+                            "p1.score",
+                            (scoreForm.getValues("p1.score") ?? 0) + 1
+                          )
+                        }
+                      >
+                        +1
+                      </SmallButton>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div>
@@ -112,6 +122,7 @@ export const ScoreAndCamera: FC = () => {
                     name="p2.team"
                     placeholder="Team"
                     autocomplete="team"
+                    cleanValue={score?.p2.team}
                   />
                   <TextForm
                     className="w-[18rem]"
@@ -119,56 +130,64 @@ export const ScoreAndCamera: FC = () => {
                     name="p2.playerName"
                     placeholder="Player"
                     autocomplete="playerName"
+                    cleanValue={score?.p2.playerName}
                   />
-                  <NumberForm
-                    className="w-[5rem]"
-                    label="スコア"
-                    name="p2.score"
-                  />
-                  <SmallButton
-                    type="button"
-                    className="mt-[18px]"
-                    onClick={() =>
-                      scoreForm.setValue(
-                        "p2.score",
-                        (scoreForm.getValues("p2.score") ?? 0) + 1
-                      )
-                    }
-                  >
-                    +1
-                  </SmallButton>
-                  <SmallButton
-                    type="button"
-                    className="mt-[18px]"
-                    onClick={() =>
-                      scoreForm.setValue(
-                        "p2.score",
-                        (scoreForm.getValues("p2.score") ?? 0) - 1
-                      )
-                    }
-                  >
-                    -1
-                  </SmallButton>
+                  <div>
+                    <label>スコア</label>
+                    <div className="flex gap-[0.5rem]">
+                      <SmallButton
+                        type="button"
+                        onClick={() =>
+                          scoreForm.setValue(
+                            "p2.score",
+                            (scoreForm.getValues("p2.score") ?? 0) - 1
+                          )
+                        }
+                      >
+                        -1
+                      </SmallButton>
+                      <NumberForm
+                        className="w-[5rem]"
+                        name={"p2.score"}
+                        cleanValue={score?.p2.score}
+                      />
+                      <SmallButton
+                        type="button"
+                        onClick={() =>
+                          scoreForm.setValue(
+                            "p2.score",
+                            (scoreForm.getValues("p2.score") ?? 0) + 1
+                          )
+                        }
+                      >
+                        +1
+                      </SmallButton>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="mt-[2rem]">
-              <h4 className="mt-0 mb-[0.5rem]">Twitter ID</h4>
-              <div className="flex flex-wrap gap-[1rem]">
-                <TextForm
-                  className="w-[19rem]"
-                  label="1P"
-                  name="p1.twitterID"
-                  placeholder="@user_name"
-                />
-                <TextForm
-                  className="w-[19rem]"
-                  label="2P"
-                  name="p2.twitterID"
-                  placeholder="@user_name"
-                />
+            {setting?.scoreboard.cameraAndLogo.displayCameraAndTwitterID && (
+              <div className="mt-[2rem]">
+                <h4 className="mt-0 mb-[0.5rem]">Twitter ID</h4>
+                <div className="flex flex-wrap gap-[1rem]">
+                  <TextForm
+                    className="w-[19rem]"
+                    label="1P"
+                    name="p1.twitterID"
+                    placeholder="@user_name"
+                    cleanValue={score?.p1.twitterID}
+                  />
+                  <TextForm
+                    className="w-[19rem]"
+                    label="2P"
+                    name="p2.twitterID"
+                    placeholder="@user_name"
+                    cleanValue={score?.p2.twitterID}
+                  />
+                </div>
               </div>
-            </div>
+            )}
             <div className="mt-[2rem]">
               <h4>データのリセット・入れ替え</h4>
               <div className="flex flex-wrap gap-[1rem]">
@@ -226,147 +245,41 @@ export const ScoreAndCamera: FC = () => {
           <div>
             <h4 className="mt-0 mb-[0.5rem]">ステータス</h4>
             <div className="flex flex-wrap gap-[1rem]">
-              <div>
-                <label className="block">ラウンド</label>
-                <div className="flex flex-wrap gap-[0.4rem] w-fit">
-                  {(() => {
-                    const round = scoreForm.getValues("round")
-                    const values = [
-                      "Winners",
-                      "Losers",
-                      "Pools",
-                      "Grand",
-                      "Friendlies",
-                    ]
-                    return values.map((name) => {
-                      return (
-                        <div
-                          key={name}
-                          className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
-                            round?.startsWith(name)
-                              ? "bg-black text-white"
-                              : "bg-white text-black"
-                          }`}
-                          onClick={() => {
-                            let newRound = round ?? ""
-                            let replaced = false
-                            for (const r of values) {
-                              if (newRound.startsWith(r)) {
-                                newRound = newRound.replace(r, name)
-                                replaced = true
-                                break
-                              }
-                            }
-                            if (!replaced) {
-                              newRound = name + newRound
-                            }
-
-                            scoreForm.setValue("round", newRound)
-                          }}
-                        >
-                          {name}
-                        </div>
-                      )
-                    })
-                  })()}
+              <RoundSelector
+                round={scoreForm.getValues("round")}
+                setRound={(round) => scoreForm.setValue("round", round)}
+                cleanValue={score?.round}
+              />
+              <MatchTypeSelector
+                matchType={scoreForm.getValues("matchType")}
+                setMatchType={(matchType) =>
+                  scoreForm.setValue("matchType", matchType)
+                }
+                cleanValue={score?.matchType}
+              />
+              {!setting?.scoreboard.cameraAndLogo.useLogo && (
+                <div>
+                  <label className="block">大会名</label>
+                  <textarea
+                    className={`border-[1px] border-[solid] border-[color:var(--light-primary)] rounded-[0.5rem] px-[1rem] py-[0.5rem] focus:outline-none focus:border-[color:var(--bb-beige)] resize-none`}
+                    cols={10}
+                    rows={3}
+                    {...scoreForm.register("tournamentName")}
+                    style={
+                      score?.tournamentName !==
+                      scoreForm.getValues("tournamentName")
+                        ? { backgroundColor: "var(--bb-dirty)" }
+                        : {}
+                    }
+                  ></textarea>
                 </div>
-                <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] mb-[1rem] max-w-[300px]">
-                  {(() => {
-                    const values = [
-                      "Top256",
-                      "Top192",
-                      "Top128",
-                      "Top96",
-                      "Top64",
-                      "Top48",
-                      "Top32",
-                      "Top16",
-                      "Top12",
-                      "Top8",
-                      "Quarters",
-                      "Semis",
-                      "Final",
-                    ]
-                    return values.map((name) => {
-                      const round = scoreForm.getValues("round")
-                      return (
-                        <div
-                          key={name}
-                          className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
-                            round?.endsWith(name)
-                              ? "bg-black text-white"
-                              : "bg-white text-black"
-                          }`}
-                          onClick={() => {
-                            let newRound = round ?? ""
-                            let replaced = false
-                            for (const r of values) {
-                              if (newRound.endsWith(r)) {
-                                newRound = newRound.replace(r, name)
-                                replaced = true
-                                break
-                              }
-                            }
-                            if (!replaced) {
-                              newRound = newRound + name
-                            }
-
-                            scoreForm.setValue("round", newRound)
-                          }}
-                        >
-                          {name.replace("Top", "")}
-                        </div>
-                      )
-                    })
-                  })()}
-                </div>
-                <TextForm name="round" placeholder="Grand Final" />
-              </div>
-              <div>
-                <label className="block">試合形式</label>
-                <div className="flex flex-wrap gap-[0.4rem] mb-[1rem] max-w-[300px]">
-                  {(() => {
-                    const values = ["Best of 3", "Best of 5"]
-                    return values.map((name) => {
-                      const matchType = scoreForm.getValues("matchType")
-                      return (
-                        <div
-                          key={name}
-                          className={`border-solid border-[1px] border-black rounded-[5px] pr-[0.5rem] pl-[0.5rem] cursor-pointer ${
-                            matchType?.endsWith(name)
-                              ? "bg-black text-white"
-                              : "bg-white text-black"
-                          }`}
-                          onClick={() => {
-                            let newMatchType = matchType ?? ""
-                            let replaced = false
-                            for (const r of values) {
-                              if (newMatchType.endsWith(r)) {
-                                newMatchType = newMatchType.replace(r, name)
-                                replaced = true
-                                break
-                              }
-                            }
-                            if (!replaced) {
-                              newMatchType = newMatchType + name
-                            }
-
-                            scoreForm.setValue("matchType", newMatchType)
-                          }}
-                        >
-                          {name.replace("Top", "")}
-                        </div>
-                      )
-                    })
-                  })()}
-                </div>
-                <TextForm name="matchType" placeholder="Best of 3" />
-              </div>
+              )}
             </div>
             <CheckBoxForm
               className="mt-[1rem]"
               label="すべて大文字にする"
               name="uppercase"
+              cleanValue={score?.uppercase}
             />
           </div>
           <div className="relative flex gap-[2rem]">

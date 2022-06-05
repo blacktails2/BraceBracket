@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useRouter } from "next/router"
 
 import { Scoreboard } from "../../components/obs/score/Scoreboard"
@@ -15,7 +16,14 @@ const Layout: NextPage = () => {
   // const [currentScene, _, sceneList] = useSceneChanger(id, obs === "on")
 
   if (!setting || !score) return null
-  return <Scoreboard setting={setting} score={score} />
+  return (
+    <>
+      <Head>
+        <title>BraceBracket | Score Layout</title>
+      </Head>
+      <Scoreboard setting={setting} score={score} />
+    </>
+  )
 }
 
 export default Layout

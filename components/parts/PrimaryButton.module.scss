@@ -1,7 +1,8 @@
 .button {
   height: 40px;
   font-size: 14px;
-  font-family: "Mint Grotesk Bold", TazuganeInfoStdN-Bold, sans-serif;
+  font-family: "Mint Grotesk Medium", "Zen Kaku Gothic Antique", sans-serif;
+  font-weight: 700;
   padding: 6px 15px;
   color: var(--black);
   background-color: var(--primary);
@@ -46,7 +47,8 @@
   background-color: var(--bb-white);
   border: 1px solid var(--bb-beige);
   font-size: 10px;
-  font-family: "Mint Grotesk Medium", TazuganeInfoStdN-Medium, sans-serif;
+  font-family: "Mint Grotesk Medium", "Zen Kaku Gothic Antique", sans-serif;
+  font-weight: 700;
   color: var(--bb-beige);
   z-index: 1;
   border-radius: 5px;

@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useRouter } from "next/router"
 import { FC, useState } from "react"
 import { useAsync } from "react-use"
@@ -226,6 +227,9 @@ export const Bracket: FC = () => {
 
   return (
     <>
+      <Head>
+        <title>BraceBracket | Bracket Layout</title>
+      </Head>
       <img className="board" src="/image/brackets_simple.png" alt="" />
       {Object.entries(bracket).map(([round, scores]) => {
         return scores.map((score, idx) => {

@@ -1,4 +1,5 @@
 import { NextPage } from "next"
+import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
@@ -39,7 +40,14 @@ const Next: NextPage = () => {
   if (!setting || !matchIntervalInfo || !info) {
     return null
   }
-  return <MatchInterval setting={setting} matchIntervalInfo={info} />
+  return (
+    <>
+      <Head>
+        <title>BraceBracket | Next Layout</title>
+      </Head>
+      <MatchInterval setting={setting} matchIntervalInfo={info} />
+    </>
+  )
 }
 
 export default Next

@@ -17,6 +17,8 @@
     right: 0;
     width: 400px;
     max-width: 50vw;
+    border-radius: 0 0 0 15px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
 
     .previewImageContainer {
       &:nth-of-type(1) {

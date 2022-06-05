@@ -11,7 +11,6 @@ export const Transition: FC<{ children: ReactNode; keyName: string }> = ({
         <CSSTransition
           key={keyName}
           addEndListener={(node: HTMLElement, done: () => void) => {
-            console.log(node)
             node.addEventListener("transitionend", done, false)
           }}
           classNames="fade"

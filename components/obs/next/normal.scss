@@ -26,6 +26,16 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
   }
 
   // チーム名及びプレイヤー名の設定
+  @mixin next_teamText {
+    color: var(--sub-color);
+    text-align: center;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    @include next_mediumWeight;
+  }
+
+  // チーム名及びプレイヤー名の設定
   @mixin next_nameText {
     color: var(--sub-color);
     text-align: center;
@@ -37,10 +47,8 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
 
   // プレイヤー名の位置指定
   @mixin player {
-    @include next_nameText;
-
     margin: 0;
-    width: 320px;
+    width: 420px;
     height: 60px;
     position: fixed;
     text-align: center;
@@ -107,13 +115,13 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
   .scoreLeft {
     @include score;
 
-    left: 380px;
+    left: 480px;
   }
 
   .scoreRight {
     @include score;
 
-    left: 460px;
+    left: 560px;
   }
 
   .playerLeft {
@@ -125,7 +133,17 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
   .playerRight {
     @include player;
 
-    left: 540px;
+    left: 640px;
+  }
+
+  .playerTeam {
+    @include next_teamText;
+  }
+
+  .playerName {
+    @include next_nameText;
+
+    margin-left: 1rem;
   }
 
   .localsetting {

@@ -22,7 +22,8 @@ export const TextboxWithCopy: FC<{ text: string; className?: string }> = ({
         <div className="relative flex">
           <button
             className={styles.button}
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation()
               window.navigator.clipboard.writeText(text)
               setShowTooltip(true)
             }}
