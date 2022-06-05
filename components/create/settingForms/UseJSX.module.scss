@@ -1,0 +1,22 @@
+.code {
+  * {
+    font-family: "Noto Sans Mono CJK JP", /* Noto */ "Source Han Code JP",
+      /* 源ノ角 */ "Ricty Diminished", /* Inconsolata, Circle M+ 1m */ Ricty,
+      /* Inconsolata, Migu 1M */ "Myrica M",
+      /* Inconsolata, 源真ゴシック or Mgen+ */ "MyricaM M",
+      /* Inconsolata, Mgen+ */ "Rounded M+ 1m regular",
+      /* M+ OUTLINE FONTS, 源ノ角ゴシック */ "Rounded M+ 2m regular",
+      /* M+ OUTLINE FONTS, 源ノ角ゴシック */ "Rounded Mgen+ 1m regular",
+      /* M+ OUTLINE FONTS, 源ノ角ゴシック */ "Rounded Mgen+ 2m regular",
+      /* M+ OUTLINE FONTS, 源ノ角ゴシック */ "Migu 1M",
+      /* M+, IPAゴシック */ "Migu 2M", /* M+, IPAゴシック */ "M+ 1m",
+      /* M+ */ "M+ 2m", /* M+ */ SFMono-Regular,
+      /* SF Mono, Migu 1M (macOS10.12+) */ Consolas,
+      /* 英字 (WindowsVista+) */ "Roboto Mono",
+      /* 英字 (Android4+) */ "Courier New",
+      /* Courier (macOS10.3+?, iOS4+?, WindowsXP+?) */ Meiryo,
+      /*'メイリオ',               /* 日本語 (WindowsVista+) */
+        /*  'MS Gothic', 'ＭＳ ゴシック'        /* 日本語 (Windows3.1+) [win:monospace] */
+        monospace;
+  }
+}

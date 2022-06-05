@@ -13,6 +13,7 @@ import { DropShadow } from "../components/create/settingForms/DropShadow"
 import { IntegrateStartGG } from "../components/create/settingForms/IntegrateStartGG"
 import { Layout } from "../components/create/settingForms/Layout"
 import { SelectLogo } from "../components/create/settingForms/SelectLogo"
+import { UseJSX } from "../components/create/settingForms/UseJSX"
 import { UseLogo } from "../components/create/settingForms/UseLogo"
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import { PrimaryButton } from "../components/parts/PrimaryButton"
@@ -25,7 +26,7 @@ import styles from "./create.module.scss"
 const Create: NextPageWithLayout = () => {
   const router = useRouter()
   const id = router.query.id as string
-  const [setting] = useSetting(id)
+  const [setting, setSetting] = useSetting(id)
   const createForm = useForm<Setting>({
     defaultValues: setting,
   })
@@ -75,6 +76,7 @@ const Create: NextPageWithLayout = () => {
             <Color
               selectedLayout={createForm.getValues("scoreboard.design.layout")}
             />
+            <UseJSX />
             <hr />
             <h3>カメラ・ロゴ設定</h3>
             <DisplayCameraAndTwitterID />
