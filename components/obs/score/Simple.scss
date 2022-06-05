@@ -9,7 +9,7 @@
   color: var(--score-color);
   text-align: center;
   font-size: 42px;
-  position: fixed;
+  position: absolute;
   font-variant-numeric: tabular-nums;
 }
 
@@ -17,7 +17,7 @@
   margin: 0;
   width: 500px;
   height: 50px;
-  position: fixed;
+  position: absolute;
   top: 59px;
 }
 
@@ -112,7 +112,7 @@
   .box {
     width: 600px;
     height: 25px;
-    position: fixed;
+    position: absolute;
     text-align: center;
     color: var(--status-color);
     top: 19px;
@@ -147,7 +147,7 @@
     font-size: 18px;
     line-height: 18px;
     letter-spacing: 1px;
-    position: fixed;
+    position: absolute;
   }
 
   .cameraLeft {
@@ -169,7 +169,7 @@
   .logobox {
     height: 160px;
     width: 280px;
-    position: fixed;
+    position: absolute;
     left: 820px;
     top: 900px;
     display: flex;

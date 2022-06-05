@@ -21,7 +21,9 @@ const Page: NextPage = () => {
       <Head>
         <title>BraceBracket | Title Layout</title>
       </Head>
-      <MC setting={setting} mc={mc} />
+      <div className="relative">
+        <MC setting={setting} mc={mc} />
+      </div>
     </>
   )
 }

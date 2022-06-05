@@ -54,7 +54,9 @@ const Next: NextPage = () => {
       <Head>
         <title>BraceBracket | Next Layout</title>
       </Head>
-      <MatchInterval setting={setting} matchIntervalInfo={info} time={time} />
+      <div className="relative">
+        <MatchInterval setting={setting} matchIntervalInfo={info} time={time} />
+      </div>
     </>
   )
 }

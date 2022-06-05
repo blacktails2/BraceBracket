@@ -97,7 +97,7 @@
   .box {
     width: 240px;
     height: 60px;
-    position: fixed;
+    position: absolute;
     top: 44px;
     left: 840px;
     display: flex;
@@ -117,7 +117,7 @@
   .logobox {
     height: 160px;
     width: 280px;
-    position: fixed;
+    position: absolute;
     left: 820px;
     top: 900px;
     display: flex;

@@ -25,7 +25,7 @@ $bold: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .board {
-  position: fixed;
+  position: absolute;
   width: 100%;
   top: 0;
   left: 0;
@@ -53,7 +53,7 @@ $bold: "Satoshi", "Noto Sans JP", sans-serif;
   font-size: 18px;
   line-height: 18px;
   letter-spacing: 1px;
-  position: fixed;
+  position: absolute;
   top: 845px;
 }
 

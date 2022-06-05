@@ -75,7 +75,7 @@ $white: #fff;
   .id4 {
     @include next_mcidText;
 
-    position: fixed;
+    position: absolute;
     top: 795px;
     left: 300px;
   }

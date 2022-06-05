@@ -9,14 +9,14 @@
   color: var(--score-color);
   text-align: center;
   font-size: 40px;
-  position: fixed;
+  position: absolute;
   top: 44px;
 }
 
 @mixin player {
   width: 460px;
   height: 60px;
-  position: fixed;
+  position: absolute;
   text-align: center;
   top: 61px;
 }
@@ -96,7 +96,7 @@
   .tournamentNameBox {
     width: 215px;
     height: 60px;
-    position: fixed;
+    position: absolute;
     top: 44px;
     left: 65px;
     display: flex;
@@ -124,7 +124,7 @@
   .logobox {
     height: 100px;
     width: 200px;
-    position: fixed;
+    position: absolute;
     left: 860px;
     top: 24px;
     display: flex;

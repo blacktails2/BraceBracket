@@ -39,7 +39,7 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
     font-size: 72px;
     text-align: center;
     color: var(--sub-color);
-    position: fixed;
+    position: absolute;
     left: 40px;
     top: 877px;
     letter-spacing: 0.05em;
@@ -48,7 +48,7 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
   .statusBox {
     width: 320px;
     height: 65px;
-    position: fixed;
+    position: absolute;
     left: 315px;
     top: 884px;
     display: flex;
@@ -99,7 +99,7 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
     color: var(--sub-color);
     text-align: center;
     font-size: 60px;
-    position: fixed;
+    position: absolute;
     font-variant-numeric: tabular-nums;
   }
 
@@ -143,7 +143,7 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
     margin: 0;
     width: 400px;
     height: 50px;
-    position: fixed;
+    position: absolute;
     top: 996px;
   }
 
@@ -177,7 +177,7 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
     text-align: right;
     font-size: 24px;
     line-height: 24px;
-    position: fixed;
+    position: absolute;
     color: var(--sub-color);
     left: 1570px;
     top: 975px;
@@ -190,7 +190,7 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
     font-size: 52px;
     text-align: right;
     color: var(--sub-color);
-    position: fixed;
+    position: absolute;
     right: 57px;
     top: 960px;
     font-variant-numeric: tabular-nums;
