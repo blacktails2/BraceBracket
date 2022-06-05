@@ -6,6 +6,10 @@
   background-color: #fff;
   height: 100px;
 
+  @media (max-width: 960px) {
+    height: 70px;
+  }
+
   @media (max-width: 520px) {
     height: 54px;
   }
@@ -16,6 +20,10 @@
   justify-content: space-between;
   padding: 0 20px;
   height: 100px;
+
+  @media (max-width: 960px) {
+    height: 70px;
+  }
 
   @media (max-width: 520px) {
     height: 54px;
@@ -32,6 +40,14 @@
   width: 292px;
   height: 30px;
   background-image: url("/image/logotype.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (max-width: 960px) {
+    width: 225px;
+    height: 23px;
+  }
 
   @media (max-width: 520px) {
     width: 42px;
@@ -56,6 +72,12 @@
   font-size: 18px;
   margin: 30px 15px;
   color: var(--black);
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  border-bottom: 2px solid rgb(20 20 25 / 0%);
+
+  &:hover {
+    border-bottom: 2px solid rgb(20 20 25 / 100%);
+  }
 }
 
 .createLink {
@@ -81,6 +103,7 @@
 }
 
 .hamburgerMenu {
+  margin-left: 5px;
   display: none;
   width: 30px;
   height: 30px;
@@ -90,7 +113,7 @@
     display: none;
   }
 
-  @media (max-width: 520px) {
+  @media (max-width: 960px) {
     display: block;
     position: relative;
 
@@ -107,7 +130,6 @@
       display: block;
       height: 3px;
       width: 25px;
-      border-radius: 3px;
       background-color: var(--bb-black);
       position: absolute;
       transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
@@ -137,11 +159,14 @@
 
     .menuContent {
       background-color: var(--bb-white);
-      width: 0;
       transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
       position: absolute;
-      border-left: 1px solid var(--bb-black);
-      border-bottom: 1px solid var(--bb-black);
+      border-radius: 15px;
+      opacity: 0;
+      right: 0;
+      top: 60px;
+      width: 35vw;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
 
       a {
         display: none;
@@ -149,16 +174,35 @@
         color: var(--black);
         text-decoration: none;
         font-size: 1.6rem;
+        background-color: rgb(250 246 240 / 0%);
+        border-radius: 15px;
+        transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
       }
     }
 
     .dummyButton:checked ~ .menuContent {
-      transform: translateX(calc(-80vw + 40px));
-      width: 80vw;
+      top: 70px;
+      opacity: 1;
 
       a {
         display: block;
+
+        &:hover {
+          background-color: rgb(250 246 240 / 100%);
+        }
       }
+    }
+  }
+
+  @media (max-width: 520px) {
+    .menuContent {
+      right: 7px;
+      top: 50px;
+      width: 80vw;
+    }
+
+    .dummyButton:checked ~ .menuContent {
+      top: 60px;
     }
   }
 }

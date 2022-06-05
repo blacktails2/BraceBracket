@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Zen+Kaku+Gothic+Antique:wght@400;500;700;900&display=swap");
+
 /* stylelint-enable */
 @font-face {
   font-family: "Mint Grotesk Regular";
@@ -36,7 +38,7 @@
   --bb-white: #fff;
   --bb-attention: #f06;
   --bb-success: #04c488;
-  --bb-dirty: rgb(170 250 170);
+  --bb-dirty: rgb(204 178 128 / 30%);
 }
 
 html,
@@ -48,6 +50,7 @@ body {
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   color: var(--black);
   font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {

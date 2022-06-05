@@ -19,24 +19,24 @@
   text-align: center;
   width: 410px;
   height: 50px;
-  top: 62px;
+  top: 59px;
 }
 
 // チーム名及びプレイヤー名の設定
 @mixin team {
   color: var(--player-color);
   text-align: center;
-  font-size: 23px;
+  font-size: 25px;
   letter-spacing: 1px;
-  line-height: 23px;
+  line-height: 25px;
   @include regularWeight;
 }
 
 @mixin name {
   color: var(--player-color);
   text-align: center;
-  font-size: 23px;
-  line-height: 23px;
+  font-size: 25px;
+  line-height: 25px;
   letter-spacing: 1px;
   @include boldWeight;
 }
@@ -49,11 +49,11 @@
   margin: 0;
   color: var(--status-color);
   text-align: center;
-  font-size: 17px;
-  position: absolute;
+  font-size: 19px;
+  position: fixed;
   font-style: italic;
-  letter-spacing: 2px;
-  top: 99px;
+  letter-spacing: 1px;
+  top: 96px;
 }
 
 .dual {

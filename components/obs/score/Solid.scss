@@ -8,17 +8,17 @@
   width: 60px;
   color: var(--score-color);
   text-align: center;
-  font-size: 50px;
-  position: absolute;
-  top: 36px;
+  font-size: 40px;
+  position: fixed;
+  top: 45px;
 }
 
 @mixin player {
   margin: 0;
   width: 430px;
   height: 60px;
-  top: 62px;
-  position: absolute;
+  top: 60px;
+  position: fixed;
   text-align: center;
 }
 
@@ -26,17 +26,17 @@
 @mixin team {
   color: var(--player-color);
   text-align: center;
-  font-size: 27px;
+  font-size: 29px;
   letter-spacing: 1px;
-  line-height: 24px;
+  line-height: 29px;
   @include regularWeight;
 }
 
 @mixin name {
   color: var(--player-color);
   text-align: center;
-  font-size: 27px;
-  line-height: 24px;
+  font-size: 29px;
+  line-height: 29px;
   letter-spacing: 1px;
   @include boldWeight;
 }
@@ -45,12 +45,12 @@
 @mixin status {
   @include boldWeight;
 
-  width: 220px;
+  width: 240px;
   margin: 0;
   color: var(--status-color);
   text-align: center;
-  font-size: 17px;
-  line-height: 20px;
+  font-size: 19px;
+  line-height: 21px;
   font-style: italic;
   letter-spacing: 1px;
 }
@@ -95,11 +95,11 @@
   }
 
   .box {
-    width: 220px;
+    width: 240px;
     height: 60px;
     position: absolute;
     top: 44px;
-    left: 850px;
+    left: 840px;
     display: flex;
     flex-direction: column;
     justify-content: center;

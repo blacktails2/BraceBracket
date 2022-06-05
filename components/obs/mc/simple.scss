@@ -55,11 +55,12 @@ $white: #fff;
     letter-spacing: 2px;
     width: 400px;
     height: 50px;
-    position: absolute;
-    top: 730px;
+    position: fixed;
+    top: 727px;
 
     span {
       margin-left: 10px;
+      font-size: inherit;
 
       &:first-child {
         margin-left: 0;
@@ -81,8 +82,8 @@ $white: #fff;
   .id4 {
     @include nextmcidText;
 
-    position: absolute;
-    top: 698px;
+    position: fixed;
+    top: 696px;
   }
 
   .mc1_layout {

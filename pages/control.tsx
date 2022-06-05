@@ -36,7 +36,7 @@ const Control: NextPageWithLayout = () => {
         </div>
         <div className={styles.left}>
           <div>
-            <div>共有URL:</div>
+            <h4 className={"mt-[3px] mr-[5px]"}>共有URL:</h4>
             <div>
               <TextboxWithCopy text={`${origin}${router.asPath}`} />
             </div>
@@ -49,11 +49,13 @@ const Control: NextPageWithLayout = () => {
               }}
               passHref
             >
-              <a>
+              <a
+                className={"ml-[5px] transition ease delay-50 hover:opacity-70"}
+              >
                 <Image
                   src="/image/setting.svg"
                   width={26}
-                  height={26}
+                  height={30}
                   alt="設定"
                 />
               </a>
