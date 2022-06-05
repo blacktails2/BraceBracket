@@ -1,0 +1,35 @@
+@import "normal";
+@import "simple";
+
+.board {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 1;
+}
+
+.normal {
+  &.light {
+    --main-color: #111;
+    --sub-color: #fff;
+  }
+
+  &.dark {
+    --main-color: #fff;
+    --sub-color: #111;
+  }
+}
+
+.simple {
+  &.black {
+    --main-color: #111;
+    --sub-color: #fff;
+  }
+
+  &.white {
+    --main-color: #fff;
+    --sub-color: #111;
+  }
+}

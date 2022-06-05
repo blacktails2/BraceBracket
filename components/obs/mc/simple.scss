@@ -1,0 +1,203 @@
+// フォントの設定
+$regular: "Satoshi", "Noto Sans JP", sans-serif;
+$bold: "Satoshi", "Noto Sans JP", sans-serif;
+$black: "Satoshi", "Noto Sans JP", sans-serif;
+$darkgray: #111;
+$white: #fff;
+
+// フォントの太さの設定（ライトウェイト）
+@mixin nextsp_regularWeight {
+  font-family: $regular;
+  font-variation-settings: "wght" 400;
+  font-weight: 400;
+}
+
+// フォントの太さの設定（ミディアムウェイト）
+@mixin nextsp_mediumWeight {
+  font-family: $regular;
+  font-variation-settings: "wght" 500;
+  font-weight: 500;
+}
+
+@mixin nextsp_boldWeight {
+  font-family: $bold;
+  font-variation-settings: "wght" 700;
+  font-weight: 700;
+}
+
+// フォントの太さの設定（ブラックウェイト）
+@mixin nextsp_blackWeight {
+  font-family: $black;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+}
+
+// MC情報の設定
+@mixin nextmcidText {
+  color: var(--main-color);
+  font-size: 21px;
+  line-height: 21px;
+  letter-spacing: 1px;
+  width: 220px;
+  height: 25px;
+  @include nextsp_boldWeight;
+}
+
+.simple {
+  .mc1,
+  .mc2,
+  .mc3,
+  .mc4 {
+    color: var(--sub-color);
+    text-align: center;
+    font-size: 34px;
+    line-height: 34px;
+    letter-spacing: 2px;
+    width: 400px;
+    height: 50px;
+    position: fixed;
+    top: 727px;
+
+    span {
+      margin-left: 10px;
+      font-size: inherit;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .mc_team {
+    @include nextsp_regularWeight;
+  }
+
+  .mc_name {
+    @include nextsp_blackWeight;
+  }
+
+  .id1,
+  .id2,
+  .id3,
+  .id4 {
+    @include nextmcidText;
+
+    position: fixed;
+    top: 696px;
+  }
+
+  .mc1_layout {
+    .mc1 {
+      left: 760px;
+    }
+
+    .id1 {
+      text-align: left;
+      left: 765px;
+    }
+
+    .mc2,
+    .id2,
+    .mc3,
+    .id3,
+    .mc4,
+    .id4 {
+      display: none;
+    }
+  }
+
+  .mc2_layout {
+    .mc1 {
+      left: 380px;
+    }
+
+    .id1 {
+      left: 385px;
+      text-align: left;
+    }
+
+    .mc2 {
+      left: 1140px;
+    }
+
+    .id2 {
+      text-align: right;
+      left: 1315px;
+    }
+
+    .mc4,
+    .id4,
+    .mc3,
+    .id3 {
+      display: none;
+    }
+  }
+
+  .mc3_layout {
+    .mc1 {
+      left: 240px;
+    }
+
+    .id1 {
+      left: 245px;
+    }
+
+    .mc2 {
+      left: 760px;
+    }
+
+    .id2 {
+      left: 765px;
+    }
+
+    .mc3 {
+      left: 1280px;
+    }
+
+    .id3 {
+      text-align: right;
+      left: 1455px;
+    }
+
+    .mc4,
+    .id4 {
+      display: none;
+    }
+  }
+
+  .mc4_layout {
+    .mc1 {
+      left: 130px;
+    }
+
+    .id1 {
+      left: 165px;
+    }
+
+    .mc2 {
+      left: 550px;
+    }
+
+    .id2 {
+      left: 585px;
+    }
+
+    .mc3 {
+      left: 970px;
+    }
+
+    .id3 {
+      text-align: right;
+      left: 1115px;
+    }
+
+    .mc4 {
+      left: 1390px;
+    }
+
+    .id4 {
+      text-align: right;
+      left: 1535px;
+    }
+  }
+}

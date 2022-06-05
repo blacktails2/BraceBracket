@@ -1,0 +1,126 @@
+import Image from "next/image"
+import { useRouter } from "next/router"
+import { FC, useMemo, useState } from "react"
+import { useFormContext } from "react-hook-form"
+
+import {
+  getBracketFilename,
+  getCameraFilename,
+  getMCFilename,
+  getNextFilename,
+} from "../../../libs/const"
+import { PrimaryButton } from "../../parts/PrimaryButton"
+
+import styles from "./Preview.module.scss"
+
+export const Preview: FC = () => {
+  const router = useRouter()
+  const id = router.query.id as string
+  const { watch, getValues } = useFormContext()
+  const [layout, setLayout] = useState("")
+  const [color, setColor] = useState("")
+  const [displayCameraAndTwitterID, setDisplayCameraAndTwitterID] =
+    useState(false)
+  watch(() => {
+    setLayout(getValues("scoreboard.design.layout"))
+    setColor(getValues("scoreboard.design.color"))
+    setDisplayCameraAndTwitterID(
+      getValues("scoreboard.cameraAndLogo.displayCameraAndTwitterID")
+    )
+  })
+  const submitText = useMemo(() => {
+    if (id) {
+      return "スコアボードを更新"
+    }
+    return "スコアボードを作成"
+  }, [id])
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.previewContainer}>
+        <div>
+          <div className={styles.previewImageContainer}>
+            <div className={styles.outer}>
+              <div className="absolute">
+                <Image
+                  src="/image/create/samples/sample_image1.jpg"
+                  width={340}
+                  height={190}
+                  alt="カメラ"
+                />
+              </div>
+              {displayCameraAndTwitterID && (
+                <div className="absolute z-10">
+                  <Image
+                    src={`/image/create/samples/camera/${getCameraFilename(
+                      layout,
+                      color
+                    )}`}
+                    width={340}
+                    height={190}
+                    alt="カメラ"
+                  />
+                </div>
+              )}
+              <Image
+                src={`/image/create/samples/layout/${layout}/${layout}_${color}.png`}
+                width={340}
+                height={190}
+                alt="スコアボードプレビュー"
+              />
+            </div>
+          </div>
+          <div className={styles.previewImageContainer}>
+            <div className="absolute">
+              <Image
+                src="/image/create/samples/sample_image2.jpg"
+                width={340}
+                height={190}
+                alt="カメラ"
+              />
+            </div>
+            <div className="absolute z-10">
+              <Image
+                src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
+                width={340}
+                height={190}
+                alt="MCプレビュー"
+              />
+            </div>
+            <div className={styles.outer}>
+              <Image
+                src={`/image/create/samples/next/${getNextFilename(
+                  layout,
+                  color
+                )}`}
+                width={340}
+                height={190}
+                alt="Nextプレビュー"
+              />
+            </div>
+          </div>
+          <div className={styles.previewImageContainer}>
+            <div className="absolute">
+              <Image
+                src="/image/create/samples/sample_image2.jpg"
+                width={340}
+                height={190}
+                alt="カメラ"
+              />
+            </div>
+            <Image
+              src={`/image/create/samples/top8/${getBracketFilename(
+                layout,
+                color
+              )}`}
+              width={340}
+              height={190}
+              alt="Top8プレビュー"
+            />
+          </div>
+          <PrimaryButton type="submit">{submitText}</PrimaryButton>
+        </div>
+      </div>
+    </div>
+  )
+}

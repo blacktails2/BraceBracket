@@ -1,0 +1,42 @@
+name: 'Lint'
+
+on:
+  pull_request:
+  push:
+    branches:
+      - develop # change this if your default branch is named differently
+      - main # change this if your default branch is named differently
+  workflow_dispatch:
+
+defaults:
+  run:
+    # change this if your nextjs app does not live at the root of the repo
+    working-directory: ./
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: cache node_modules
+        id: node_modules_cache_id
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-node-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+
+      - name: install
+        run: yarn --check-files --frozen-lockfile --non-interactive
+
+      - name: lint ts
+        run: yarn lint:next --max-warnings 0
+
+      - name: lint scss
+        run: yarn lint:scss --max-warnings 0

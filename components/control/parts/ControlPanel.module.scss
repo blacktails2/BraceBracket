@@ -1,0 +1,108 @@
+.container {
+  padding: 15px;
+  border: 1px solid var(--bb-beige);
+  border-radius: 15px;
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
+
+  summary::after {
+    content: "";
+    display: block;
+    border-bottom: 2px solid var(--primary);
+    border-right: 2px solid var(--primary);
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 40px;
+    right: 55px;
+    transform: rotate(45deg);
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+    @media (max-width: 520px) {
+      width: 20px;
+      height: 20px;
+      top: 0;
+      right: 20px;
+    }
+  }
+
+  summary.open::after {
+    transform: translateY(15px) rotate(225deg);
+
+    @media (max-width: 520px) {
+      transform: translateY(10px) rotate(225deg);
+    }
+  }
+
+  summary::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    border-radius: 5px;
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+    @media (max-width: 520px) {
+      width: 40px;
+      height: 40px;
+      top: -5px;
+      right: 10px;
+    }
+  }
+
+  summary {
+    list-style: none;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      &::before {
+        background-color: var(--bb-beige-light);
+      }
+    }
+
+    &::marker {
+      display: none;
+    }
+
+    .title {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      font-family: "Mint Grotesk Bold", "Zen Kaku Gothic Antique", sans-serif;
+      font-weight: 900;
+
+      @media (max-width: 520px) {
+        font-size: 2.1rem;
+      }
+    }
+
+    .url {
+      h4 {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  hr {
+    margin: 30px 0;
+    height: 1px;
+    background-color: var(--bb-light);
+    border: none;
+  }
+}
+
+.content {
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  overflow-y: hidden;
+  max-height: 1000px;
+}
+
+.enter,
+.exit {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}

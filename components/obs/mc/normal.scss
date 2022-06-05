@@ -1,0 +1,170 @@
+// フォントの設定
+$regular: "Satoshi", "Noto Sans JP", sans-serif;
+$bold: "Satoshi", "Noto Sans JP", sans-serif;
+$darkgray: #111;
+$white: #fff;
+
+// フォントの太さの設定（ライトウェイト）
+@mixin next_regularWeight {
+  font-family: $regular;
+  font-variation-settings: "wght" 400;
+  font-weight: 400;
+}
+
+// フォントの太さの設定（ミディアムウェイト）
+@mixin next_mediumWeight {
+  font-family: $regular;
+  font-variation-settings: "wght" 500;
+  font-weight: 500;
+}
+
+// フォントの太さの設定（ボールドウェイト）
+@mixin next_boldWeight {
+  font-family: $bold;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+}
+
+@mixin next_mcidText {
+  color: var(--sub-color);
+  text-align: center;
+  font-size: 19px;
+  line-height: 19px;
+  letter-spacing: 1px;
+  width: 220px;
+  height: 30px;
+  @include next_mediumWeight;
+}
+
+.normal {
+  .mc1,
+  .mc2,
+  .mc3,
+  .mc4 {
+    color: var(--main-color);
+    text-align: center;
+    font-size: 30px;
+    line-height: 30px;
+    letter-spacing: 2px;
+    width: 400px;
+    height: 60px;
+    position: fixed;
+    top: 734px;
+
+    span {
+      margin-left: 10px;
+      font-size: inherit;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .mc_team {
+    @include next_regularWeight;
+  }
+
+  .mc_name {
+    @include next_boldWeight;
+  }
+
+  .id1,
+  .id2,
+  .id3,
+  .id4 {
+    @include next_mcidText;
+
+    position: absolute;
+    top: 795px;
+    left: 300px;
+  }
+
+  .mc1_layout {
+    .mc1 {
+      left: 760px;
+    }
+
+    .id1 {
+      left: 850px;
+    }
+  }
+
+  .mc2_layout {
+    .mc1 {
+      left: 380px;
+    }
+
+    .id1 {
+      left: 350px;
+    }
+
+    .mc2 {
+      left: 1140px;
+    }
+
+    .id2 {
+      left: 1350px;
+    }
+  }
+
+  .mc3_layout {
+    .mc1 {
+      left: 240px;
+    }
+
+    .id1 {
+      left: 210px;
+    }
+
+    .mc2 {
+      left: 760px;
+    }
+
+    .id2 {
+      left: 850px;
+    }
+
+    .mc3 {
+      left: 1280px;
+    }
+
+    .id3 {
+      left: 1490px;
+    }
+  }
+
+  .mc4_layout {
+    .mc1 {
+      left: 130px;
+    }
+
+    .id1 {
+      left: 115px;
+    }
+
+    .mc2 {
+      left: 550px;
+    }
+
+    .id2 {
+      left: 535px;
+    }
+
+    .mc3 {
+      left: 970px;
+    }
+
+    .id3 {
+      left: 1165px;
+    }
+
+    .mc4 {
+      left: 1390px;
+    }
+
+    .id4 {
+      left: 1585px;
+    }
+  }
+}

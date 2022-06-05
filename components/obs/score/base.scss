@@ -1,0 +1,70 @@
+// フォントの設定
+$regular: "Satoshi", "Noto Sans JP", sans-serif;
+$mid: "Satoshi", "Noto Sans JP", sans-serif;
+$bold: "Satoshi", "Noto Sans JP", sans-serif;
+
+// フォントの太さの設定（ライトウェイト）
+@mixin regularWeight {
+  font-family: $regular;
+  font-variation-settings: "wght" 400;
+  font-weight: 400;
+}
+
+// フォントの太さの設定（ミッドウェイト）
+@mixin midWeight {
+  font-family: $mid;
+  font-variation-settings: "wght" 700;
+  font-weight: 700;
+}
+
+// フォントの太さの設定（ボールドウェイト）
+@mixin boldWeight {
+  font-family: $bold;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+}
+
+.board {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 1;
+}
+
+.disable {
+  display: none;
+}
+
+#__bs_notify__ {
+  display: none !important;
+}
+
+// 選手IDの位置設定
+@mixin idText {
+  @include boldWeight;
+
+  width: 220px;
+  height: 30px;
+  margin: 0;
+  color: var(--player-color);
+  text-align: center;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 845px;
+}
+
+.cameraLeft {
+  @include idText;
+
+  left: 20px;
+}
+
+.cameraRight {
+  @include idText;
+
+  right: 20px;
+}

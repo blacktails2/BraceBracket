@@ -1,0 +1,47 @@
+@import "./Dual";
+@import "./Single";
+@import "./Solid";
+@import "./Simple";
+
+.darkColor,
+.darkMono {
+  --score-color: var(--white);
+  --player-color: var(--white);
+  --status-color: var(--dark-gray);
+}
+
+.lightColor {
+  --score-color: var(--white);
+  --player-color: var(--dark-gray);
+  --status-color: var(--white);
+}
+
+.lightMono {
+  --score-color: var(--dark-gray);
+  --player-color: var(--dark-gray);
+  --status-color: var(--white);
+}
+
+.beige {
+  --score-color: var(--white);
+  --player-color: var(--darkgray);
+  --status-color: var(--white);
+}
+
+.gradient {
+  --score-color: var(--white);
+  --player-color: var(--white);
+  --status-color: var(--white);
+}
+
+.black {
+  --score-color: var(--dark-gray);
+  --player-color: var(--white);
+  --status-color: var(--white);
+}
+
+.white {
+  --score-color: var(--white);
+  --player-color: var(--dark-gray);
+  --status-color: var(--dark-gray);
+}

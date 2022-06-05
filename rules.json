@@ -1,0 +1,57 @@
+{
+  "rules": {
+    "tournaments": {
+      "$id": {
+        ".validate": "newData.hasChildren(['createdAt'])",
+        "setting": {
+          ".validate": "(newData.hasChildren() && newData.hasChildren(['createdAt']))",
+          "createdAt": {
+            ".validate": "(newData.isNumber() && newData.val() == (data.val() == null ? now : data.val()))"
+          },
+          ".write": "(data.val() == null || (data.val() != null && newData.val() != null))",
+          ".read": "true"
+        },
+        "score": {
+          ".validate": "(newData.hasChildren() && newData.hasChildren(['createdAt']))",
+          "createdAt": {
+            ".validate": "(newData.isNumber() && newData.val() == (data.val() == null ? now : data.val()))"
+          },
+          ".write": "(data.val() == null || (data.val() != null && newData.val() != null))",
+          ".read": "true"
+        },
+        "loadBracket": {
+          ".validate": "(newData.hasChildren() && newData.hasChildren(['createdAt']))",
+          "createdAt": {
+            ".validate": "(newData.isNumber() && newData.val() == (data.val() == null ? now : data.val()))"
+          },
+          ".write": "(data.val() == null || (data.val() != null && newData.val() != null))",
+          ".read": "true"
+        },
+        "matchIntervalInfo": {
+          ".validate": "(newData.hasChildren() && newData.hasChildren(['createdAt']))",
+          "createdAt": {
+            ".validate": "(newData.isNumber() && newData.val() == (data.val() == null ? now : data.val()))"
+          },
+          ".write": "(data.val() == null || (data.val() != null && newData.val() != null))",
+          ".read": "true"
+        },
+        "mc": {
+          ".validate": "(newData.hasChildren() && newData.hasChildren(['createdAt']))",
+          "createdAt": {
+            ".validate": "(newData.isNumber() && newData.val() == (data.val() == null ? now : data.val()))"
+          },
+          ".write": "(data.val() == null || (data.val() != null && newData.val() != null))",
+          ".read": "true"
+        },
+        "$other": {
+          ".validate": "false"
+        },
+        "createdAt": {
+          ".validate": "(newData.isNumber() && newData.val() == (data.val() == null ? now : data.val()))"
+        },
+        ".write": "((data.val() == null || (data.val() != null && newData.val() != null)) && ((data.val() == null && $id.length == 32) || (data.val() != null && newData.val() != null)))",
+        ".read": "true"
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.button {
+  font-size: 12px;
+  font-family: "Mint Grotesk Medium", "Zen Kaku Gothic Antique", sans-serif;
+  font-weight: 700;
+  padding: 5px 10px;
+  color: var(--bb-black);
+  background-color: var(--bb-beige);
+  border-radius: 5px;
+  border: none;
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+  &:hover {
+    background-color: var(--bb-beige-hover);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+  }
+
+  &:active {
+    background-color: var(--bb-beige-active);
+    box-shadow: none;
+  }
+}
+
+.light {
+  background-color: var(--bb-white);
+  border: 1px solid var(--bb-beige);
+
+  &:hover {
+    background-color: var(--bb-beige-hover);
+  }
+
+  &:active {
+    background-color: var(--bb-beige-active);
+  }
+}

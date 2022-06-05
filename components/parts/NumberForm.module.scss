@@ -1,0 +1,12 @@
+.label {
+  line-height: 1.5;
+  display: block;
+}
+
+.input {
+  height: 30px;
+  width: 100%;
+  padding: 5px 10px;
+  border: 1px solid var(--light-primary);
+  border-radius: 5px;
+}

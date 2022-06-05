@@ -1,0 +1,35 @@
+@import "normal";
+@import "simple";
+
+.board {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 1;
+}
+
+.other {
+  &.dark {
+    --main-color: var(--dark-gray);
+    --sub-color: var(--white);
+  }
+
+  &.light {
+    --main-color: var(--white);
+    --sub-color: var(--dark-gray);
+  }
+}
+
+.simple {
+  &.black {
+    --main-color: var(--dark-gray);
+    --sub-color: var(--white);
+  }
+
+  &.white {
+    --main-color: var(--white);
+    --sub-color: var(--dark-gray);
+  }
+}

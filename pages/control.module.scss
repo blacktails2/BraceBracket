@@ -1,0 +1,53 @@
+.container {
+  padding-left: 48px;
+  padding-right: 48px;
+
+  @media (max-width: 520px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  h2 {
+    margin-top: 50px;
+    margin-bottom: 100px;
+
+    @media (max-width: 960px) {
+      margin-bottom: 30px;
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      margin-top: 65px;
+
+      @media (max-width: 960px) {
+        margin-top: 0;
+      }
+
+      div {
+        display: flex;
+        justify-content: flex-end;
+
+        @media (max-width: 960px) {
+          justify-content: start;
+        }
+      }
+    }
+
+    @media (max-width: 960px) {
+      flex-flow: column;
+      justify-content: inherit;
+      align-items: inherit;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+.controlsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

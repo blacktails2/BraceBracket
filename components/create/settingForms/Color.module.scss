@@ -1,0 +1,15 @@
+.form {
+  width: 100%;
+  margin-bottom: 50px;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .colorList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}

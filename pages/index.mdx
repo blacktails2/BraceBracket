@@ -1,0 +1,30 @@
+import { DefaultLayout } from "../components/layouts/DefaultLayout"
+import Head from "next/head"
+
+## BraceBracket
+
+<img src="https://wolphtype.com/img/materials/example.png" style={{width:"600px"}} alt="sample"/>
+
+BraceBracketは格闘ゲームにおけるスコアボードを動的に表示するツールです。OBSなどのWebページを表示する配信ソフトで使うことができ、jsonおよびGoogleスプレッドシートを使ってデータを編集するためリモートでの編集が可能です。
+中–大規模の大会よりも、小規模な大会や対戦会、窓対抗戦やサーバー内大会などをターゲットに制作しています。
+
+### 使い方
+（製作中）
+- 右上のスコアボードを作成ボタンを押します。
+- スコアボードの設定を変更します。
+- スコアボードを作成ボタンを押して作成します。
+- コントロール画面に表示されているURLをOBSのブラウザソースに指定します。
+  - 幅x高さは1920px x 1080pxに指定してください。
+- 各パネルで必要な操作を行ってください。
+
+
+export default ({children}) => <>
+  <Head>
+    <title>BraceBracket | Top</title>
+  </Head>
+  <DefaultLayout>
+    <div className="markdown">
+      {children}
+    </div>
+  </DefaultLayout>
+</>

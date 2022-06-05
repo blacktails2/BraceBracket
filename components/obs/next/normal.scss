@@ -1,0 +1,172 @@
+// フォントの設定
+$next_regular: "Satoshi", "Noto Sans JP", sans-serif;
+$next_bold: "Satoshi", "Noto Sans JP", sans-serif;
+$next_black: "Satoshi", "Noto Sans JP", sans-serif;
+
+.other {
+  // フォントの太さの設定（ライトウェイト）
+  @mixin next_regularWeight {
+    font-family: $next_regular;
+    font-variation-settings: "wght" 400;
+    font-weight: 400;
+  }
+
+  // フォントの太さの設定（ミディアムウェイト）
+  @mixin next_mediumWeight {
+    font-family: $next_regular;
+    font-variation-settings: "wght" 500;
+    font-weight: 500;
+  }
+
+  // フォントの太さの設定（ボールドウェイト）
+  @mixin next_boldWeight {
+    font-family: $next_bold;
+    font-variation-settings: "wght" 900;
+    font-weight: 900;
+  }
+
+  // チーム名及びプレイヤー名の設定
+  @mixin next_teamText {
+    color: var(--sub-color);
+    text-align: center;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    @include next_mediumWeight;
+  }
+
+  // チーム名及びプレイヤー名の設定
+  @mixin next_nameText {
+    color: var(--sub-color);
+    text-align: center;
+    font-size: 27px;
+    line-height: 27px;
+    letter-spacing: 1px;
+    @include next_boldWeight;
+  }
+
+  // プレイヤー名の位置指定
+  @mixin player {
+    margin: 0;
+    width: 420px;
+    height: 60px;
+    position: absolute;
+    text-align: center;
+    top: 995px;
+  }
+
+  .nextnow {
+    @include next_mediumWeight;
+
+    width: 220px;
+    height: 80px;
+    font-size: 52px;
+    text-align: center;
+    color: var(--main-color);
+    position: absolute;
+    left: 40px;
+    top: 880px;
+    letter-spacing: 0.05em;
+  }
+
+  .statusBox {
+    width: 320px;
+    height: 80px;
+    position: absolute;
+    left: 300px;
+    top: 880px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @mixin next_statusText {
+    @include next_boldWeight;
+
+    width: 320px;
+    margin: 0;
+    color: var(--sub-color);
+    text-align: left;
+    font-size: 24px;
+    line-height: 24px;
+    font-style: italic;
+    letter-spacing: 2px;
+  }
+
+  .round,
+  .bo {
+    @include next_statusText;
+  }
+
+  // スコアの設定
+  @mixin score {
+    @include next_boldWeight;
+
+    margin: 0;
+    width: 60px;
+    color: var(--main-color);
+    text-align: center;
+    font-size: 40px;
+    position: absolute;
+    top: 980px;
+  }
+
+  // スコアの位置指定
+  .scoreLeft {
+    @include score;
+
+    left: 480px;
+  }
+
+  .scoreRight {
+    @include score;
+
+    left: 560px;
+  }
+
+  .playerLeft {
+    @include player;
+
+    left: 40px;
+  }
+
+  .playerRight {
+    @include player;
+
+    left: 640px;
+  }
+
+  .playerTeam {
+    @include next_teamText;
+  }
+
+  .playerName {
+    @include next_nameText;
+
+    margin-left: 1rem;
+  }
+
+  .localsetting {
+    @include next_mediumWeight;
+
+    font-size: 24px;
+    line-height: 26px;
+    position: absolute;
+    color: var(--sub-color);
+    left: 1570px;
+    top: 975px;
+    letter-spacing: 1px;
+  }
+
+  .localtime {
+    @include next_boldWeight;
+
+    font-size: 52px;
+    text-align: right;
+    color: var(--sub-color);
+    position: absolute;
+    right: 57px;
+    top: 960px;
+    font-variant-numeric: tabular-nums;
+  }
+}
