@@ -1,3 +1,6 @@
+import Head from "next/head"
+import Image from "next/image"
+import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 
@@ -8,6 +11,7 @@ import { Top8Bracket } from "../components/control/panels/Top8Bracket"
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import { TextboxWithCopy } from "../components/parts/TextboxWithCopy"
 import { useOrigin } from "../hooks/useOrigin"
+import { useSetting } from "../hooks/useSetting"
 import { NextPageWithLayout } from "../libs/const"
 
 import styles from "./control.module.scss"
@@ -15,6 +19,8 @@ import styles from "./control.module.scss"
 const Control: NextPageWithLayout = () => {
   const router = useRouter()
   const origin = useOrigin()
+  const id = router.query.id as string
+  const [setting] = useSetting(id)
   useEffect(() => {
     const params = new URLSearchParams(location.search)
     if (!params.get("id")) {
@@ -34,7 +40,24 @@ const Control: NextPageWithLayout = () => {
             <div>
               <TextboxWithCopy text={`${origin}${router.asPath}`} />
             </div>
-            <div>歯車</div>
+            <Link
+              href={{
+                pathname: "/create",
+                query: {
+                  id: id,
+                },
+              }}
+              passHref
+            >
+              <a>
+                <Image
+                  src="/image/setting.svg"
+                  width={26}
+                  height={26}
+                  alt="設定"
+                />
+              </a>
+            </Link>
           </div>
           <p>
             URLを共有することで複数人で編集することができます。URLの流失にはご注意ください。
@@ -45,13 +68,20 @@ const Control: NextPageWithLayout = () => {
         <ScoreAndCamera />
         <Next />
         <MC />
-        <Top8Bracket />
+        {setting?.integrateStartGG.enabled && <Top8Bracket />}
       </div>
     </div>
   )
 }
 Control.getLayout = (page) => {
-  return <DefaultLayout>{page}</DefaultLayout>
+  return (
+    <>
+      <Head>
+        <title>BraceBracket | Control</title>
+      </Head>
+      <DefaultLayout>{page}</DefaultLayout>
+    </>
+  )
 }
 
 export default Control

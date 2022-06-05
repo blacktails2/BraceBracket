@@ -52,18 +52,21 @@ export const MC: FC = () => {
                       name={`mcList.${idx}.team`}
                       placeholder="Team"
                       className="w-[8rem]"
+                      cleanValue={mc?.mcList[idx].team}
                     />
                     <TextForm
                       label="MC名"
                       name={`mcList.${idx}.playerName`}
                       placeholder="MCName"
                       className="w-[15rem]"
+                      cleanValue={mc?.mcList[idx].playerName}
                     />
                     <TextForm
                       label="Twitter ID"
                       name={`mcList.${idx}.twitterID`}
                       placeholder="@user_name"
                       className="w-[15rem]"
+                      cleanValue={mc?.mcList[idx].twitterID}
                     />
                   </div>
                 </div>

@@ -1,6 +1,8 @@
-import { Score } from "../libs/const"
-import { genUseDatabaseValue } from "./useDatabaseValue"
 import { serverTimestamp } from "firebase/database"
+
+import { Score } from "../libs/const"
+
+import { genUseDatabaseValue } from "./useDatabaseValue"
 
 const defaultValue: Score = {
   createdAt: serverTimestamp(),
@@ -17,7 +19,7 @@ const defaultValue: Score = {
     team: "P2 Team",
     twitterID: "",
   },
-  round: "WINNERS FINAL",
+  round: "Pools",
   tournamentName: "大会名\n#25",
   uppercase: false,
 }

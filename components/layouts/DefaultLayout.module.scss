@@ -10,4 +10,8 @@
       padding-top: 100px;
     }
   }
+
+  @media (max-width: 520px) {
+    padding-bottom: 250px;
+  }
 }

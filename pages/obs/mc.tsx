@@ -1,4 +1,5 @@
 import { NextPage } from "next"
+import Head from "next/head"
 import { useRouter } from "next/router"
 
 import { MC } from "../../components/obs/mc/MC"
@@ -15,7 +16,14 @@ const Page: NextPage = () => {
     return null
   }
 
-  return <MC setting={setting} mc={mc} />
+  return (
+    <>
+      <Head>
+        <title>BraceBracket | Title Layout</title>
+      </Head>
+      <MC setting={setting} mc={mc} />
+    </>
+  )
 }
 
 export default Page

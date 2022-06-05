@@ -119,6 +119,15 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
   }
 
   // チーム名及びプレイヤー名の設定
+  @mixin nextsp_teamText {
+    color: var(--sub-color);
+    font-size: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    @include nextsp_boldWeight;
+  }
+
+  // チーム名及びプレイヤー名の設定
   @mixin nextsp_nameText {
     color: var(--sub-color);
     font-size: 34px;
@@ -150,6 +159,16 @@ $next_black: "Satoshi", "Noto Sans JP", sans-serif;
 
     left: 645px;
     text-align: left;
+  }
+
+  .playerTeam {
+    @include nextsp_teamText;
+  }
+
+  .playerName {
+    @include nextsp_nameText;
+
+    margin-left: 1rem;
   }
 
   .localsetting {
