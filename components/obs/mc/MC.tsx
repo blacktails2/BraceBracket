@@ -66,7 +66,9 @@ export const MC: FC<{ setting: Setting; mc: MCInfo }> = ({ setting, mc }) => {
               <>
                 <Transition keyName={`${mc.team}-${mc.playerName}-${idx}`}>
                   <p className={mcStyleArray[idx]}>
-                    <span className={styles.mc_team}>{mc.team}</span>
+                    {mc.team && (
+                      <span className={styles.mc_team}>{mc.team}</span>
+                    )}
                     <span className={styles.mc_name}>{mc.playerName}</span>
                   </p>
                 </Transition>
