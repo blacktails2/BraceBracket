@@ -21,7 +21,9 @@ const Layout: NextPage = () => {
       <Head>
         <title>BraceBracket | Score Layout</title>
       </Head>
-      <Scoreboard setting={setting} score={score} />
+      <div className="relative">
+        <Scoreboard setting={setting} score={score} />
+      </div>
     </>
   )
 }

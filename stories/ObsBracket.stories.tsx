@@ -25,8 +25,14 @@ export default {
   },
   chromatic: {
     delay: 1000,
-    viewports: [1920, 1080],
   },
+  decorators: [
+    (Story) => (
+      <div style={{ width: "1920px", height: "1080px", position: "relative" }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof Bracket>
 
 const bracketDefault: BracketType = {
