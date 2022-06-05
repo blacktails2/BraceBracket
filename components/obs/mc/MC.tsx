@@ -50,36 +50,38 @@ export const MC: FC<{ setting: Setting; mc: MCInfo }> = ({ setting, mc }) => {
         }
       })()}`}
     >
-      <div className={mcLayoutArray[filteredMCList.length - 1]}>
-        <img
-          src={`/image/mc/${getMCFilename(
-            setting.scoreboard.design.layout,
-            setting.scoreboard.design.color,
-            filteredMCList.length
-          )}`}
-          className={styles.board}
-          alt="背景画像"
-        />
-        {filteredMCList.map((mc, idx) => {
-          return (
-            <>
-              <Transition keyName={`${mc.team}-${mc.playerName}-${idx}`}>
-                <p className={mcStyleArray[idx]}>
-                  <span className={styles.mc_team}>{mc.team}</span>
-                  <span className={styles.mc_name}>{mc.playerName}</span>
-                </p>
-              </Transition>
-              <Transition keyName={`${mc.twitterID}-${idx}`}>
-                <p className={idStyleArray[idx]}>
-                  {mc.twitterID && !mc.twitterID.startsWith("@")
-                    ? `@${mc.twitterID}`
-                    : mc.twitterID}
-                </p>
-              </Transition>
-            </>
-          )
-        })}
-      </div>
+      {filteredMCList.length > 0 && (
+        <div className={mcLayoutArray[filteredMCList.length - 1]}>
+          <img
+            src={`/image/mc/${getMCFilename(
+              setting.scoreboard.design.layout,
+              setting.scoreboard.design.color,
+              filteredMCList.length
+            )}`}
+            className={styles.board}
+            alt="背景画像"
+          />
+          {filteredMCList.map((mc, idx) => {
+            return (
+              <>
+                <Transition keyName={`${mc.team}-${mc.playerName}-${idx}`}>
+                  <p className={mcStyleArray[idx]}>
+                    <span className={styles.mc_team}>{mc.team}</span>
+                    <span className={styles.mc_name}>{mc.playerName}</span>
+                  </p>
+                </Transition>
+                <Transition keyName={`${mc.twitterID}-${idx}`}>
+                  <p className={idStyleArray[idx]}>
+                    {mc.twitterID && !mc.twitterID.startsWith("@")
+                      ? `@${mc.twitterID}`
+                      : mc.twitterID}
+                  </p>
+                </Transition>
+              </>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }
