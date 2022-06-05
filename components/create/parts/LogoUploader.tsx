@@ -15,17 +15,46 @@ export const LogoUploader: FC<{
   append: UseFieldArrayAppend<FieldValues, "scoreboard.cameraAndLogo.logoURLs">
   remove: UseFieldArrayRemove
   imageURL?: string
-}> = ({ idx, append, remove, imageURL }) => {
+  disabled?: boolean
+}> = ({ idx, append, remove, imageURL, disabled }) => {
   const key = "scoreboard.cameraAndLogo.logoURLs"
   const onFileSelected = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = (e?.currentTarget?.files ?? [])[0]
     if (!file) return
-    const res = await client.upload({
-      image: file as never,
-      type: "stream",
-    })
+    try {
+      const res = await client.upload({
+        image: file as never,
+        type: "stream",
+      })
 
-    append(res.data.link)
+      if (res.success) {
+        append(res.data.link)
+      } else {
+        switch (res.status) {
+          case 429:
+            alert("API利用上限に達しています。開発者にお問い合わせください。")
+            return
+
+          case 400:
+            if (
+              (res.data as unknown as string) === "File is over the size limit"
+            ) {
+              alert(
+                "ファイルサイズが大きすぎます。20MB以下のファイルをアップロードしてください。"
+              )
+              return
+            }
+            alert(res.data)
+            return
+
+          default:
+            alert(res.data)
+            return
+        }
+      }
+    } catch (e) {
+      alert(e)
+    }
   }
 
   return (

@@ -1,12 +1,12 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { FC, useState } from "react"
-import { useAsync } from "react-use"
+import { useAsync, useInterval } from "react-use"
 
 import { BracketBox } from "../../components/obs/bracket/BracketBox"
 import { useLoadBracket } from "../../hooks/useLoadBracket"
 import { useSetting } from "../../hooks/useSetting"
-import { BracketScore } from "../../libs/const"
+import { BracketScore, getBracketFilename } from "../../libs/const"
 import { getNameAndTeamtag } from "../../libs/utils"
 
 const query = `
@@ -214,23 +214,30 @@ export const Bracket: FC = () => {
     setLastLoadedAt(new Date().valueOf())
   }, [loadBracket, lastLoadedAt, setting])
 
-  // useInterval(
-  //   async () => {
-  //     const phaseGroupId = setting?.integrateStartGG.url.split("/").pop()
-  //     if (!phaseGroupId) return
-  //     const bracket = await loadTop8Bracket(phaseGroupId)
-  //     setBracket(bracket)
-  //     setLastLoadedAt(new Date().valueOf())
-  //   },
-  //   setting?.integrateStartGG.enabled && loadBracket?.autoUpdate ? 10000 : null
-  // )
+  useInterval(
+    async () => {
+      const phaseGroupId = setting?.integrateStartGG.url.split("/").pop()
+      if (!phaseGroupId) return
+      const bracket = await loadTop8Bracket(phaseGroupId)
+      setBracket(bracket)
+      setLastLoadedAt(new Date().valueOf())
+    },
+    setting?.integrateStartGG.enabled && loadBracket?.autoUpdate ? 10000 : null
+  )
 
   return (
     <>
       <Head>
         <title>BraceBracket | Bracket Layout</title>
       </Head>
-      <img className="board" src="/image/brackets_simple.png" alt="" />
+      <img
+        className="board"
+        src={`/image/bracket/${getBracketFilename(
+          setting?.scoreboard.design.layout,
+          setting?.scoreboard.design.color
+        )}`}
+        alt=""
+      />
       {Object.entries(bracket).map(([round, scores]) => {
         return scores.map((score, idx) => {
           return (
@@ -238,6 +245,8 @@ export const Bracket: FC = () => {
               key={`${round}-${idx}`}
               score={score}
               pos={keys2Pos[round][idx]}
+              layout={setting?.scoreboard.design.layout ?? ""}
+              round={round}
             />
           )
         })

@@ -7,13 +7,14 @@ import { BigCheckBox } from "../parts/BigCheckBox"
 import styles from "./IntegrateStartGG.module.scss"
 
 export const IntegrateStartGG: FC = () => {
-  const { register, getValues } = useFormContext()
+  const { register, getValues, watch } = useFormContext()
   const [info, setInfo] = useState<{ type: string; message: string }>({
     type: "",
     message: "",
   })
   const key = "integrateStartGG.enabled"
   const textKey = "integrateStartGG.url"
+  watch(key)
   return (
     <div className={styles.container}>
       <BigCheckBox name={key} className="mr-[15px]" />
@@ -61,6 +62,14 @@ export const IntegrateStartGG: FC = () => {
             })
           }}
           placeholder="https://www.start.gg/tournament/competition/event/singles/brackets/000000/000000"
+          disabled={!getValues(key)}
+          style={
+            !getValues(key)
+              ? {
+                  opacity: 0.5,
+                }
+              : {}
+          }
         />
         <p
           className={`absolute ${

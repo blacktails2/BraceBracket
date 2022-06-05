@@ -10,7 +10,7 @@ export const DropShadow = () => {
   return (
     <div className={styles.container}>
       <h4>ロゴにドロップシャドウを追加する</h4>
-      <p>ドロップ車道をつけてロゴの視認性を向上できます。</p>
+      <p>ドロップシャドウをつけてロゴの視認性を向上できます。</p>
       <div className={styles.options}>
         <Controller
           name="scoreboard.cameraAndLogo.dropShadow"

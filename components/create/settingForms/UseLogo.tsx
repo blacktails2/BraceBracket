@@ -16,17 +16,30 @@ export const UseLogo: FC = () => {
         options={{
           validate: (value) => {
             if (!value) return true
-            const logoUrls = getValues("scoreboard.cameraAndLogo.logoUrls")
-            if (!logoUrls || logoUrls.length < 1)
-              return "ロゴが選択されていません。"
+            if (getValues("scoreboard.cameraAndLogo.logoURLs").length === 0) {
+              return "ロゴが登録されていません。"
+            }
+            return true
           },
         }}
       />
       <label htmlFor={key}>
         <h4>大会及びスポンサーのロゴを設定する</h4>
         <p>
-          複数個登録した場合、5秒ごとに移り変わります。ロゴはJPG, PNG, GIF,
-          SVG形式に対応しています（背景が透明なPNG形式を推奨しています）。
+          複数個登録した場合、5秒ごとに移り変わります。ロゴはJPG, PNG,
+          GIF形式に対応しています（背景が透明なPNG形式を推奨しています）。
+          <br />
+          ロゴの画像は
+          <a
+            href="https://imgur.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Imgur
+          </a>
+          にアップロードされます。
+          <br />
+          画像サイズは20MB以下に制限されており、1MB以上のファイルは圧縮されます。
         </p>
       </label>
     </div>
