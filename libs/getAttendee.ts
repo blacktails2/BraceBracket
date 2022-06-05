@@ -1,4 +1,4 @@
-import { getNameAndTeamtag } from "./utils"
+import {getNameAndTeamtag, getTournarySlug} from "./utils"
 
 export type Attendee = {
   team: string
@@ -28,14 +28,6 @@ query AttendeeCount($tourneySlug: String!) {
     }
   }
 }`
-
-const getTournarySlug = (url: string): string => {
-  if (!url.startsWith("https://www.start.gg/tournament/")) {
-    return ""
-  }
-  const urlParts = url.split("/")
-  return `${urlParts[3]}/${urlParts[4]}`
-}
 
 export const getAttendee = async (url?: string): Promise<Attendee> => {
   console.log(url)

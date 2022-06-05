@@ -19,3 +19,25 @@ export const getNameAndTeamtag = (str?: string | null) => {
 export const capitalize = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
+
+export const getTournarySlug = (url: string): string => {
+  if (!url.startsWith("https://www.start.gg/tournament/")) {
+    return ""
+  }
+  const urlParts = url.split("/")
+  if (urlParts.length < 5) {
+    return ""
+  }
+  return `${urlParts[3]}/${urlParts[4]}`
+}
+
+export const getEventSlug = (url: string): string => {
+  if (!url.startsWith("https://www.start.gg/tournament/")) {
+    return ""
+  }
+  const urlParts = url.split("/")
+  if (urlParts.length < 7) {
+    return ""
+  }
+  return `${urlParts[3]}/${urlParts[4]}/${urlParts[5]}/${urlParts[6]}`
+}

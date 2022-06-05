@@ -30,6 +30,9 @@ const Create: NextPageWithLayout = () => {
     defaultValues: setting,
   })
   createForm.watch("scoreboard.design.layout")
+  const {
+    formState: { errors },
+  } = createForm
   const submitText = useMemo(() => {
     if (id) {
       return "スコアボードを更新"
@@ -37,6 +40,7 @@ const Create: NextPageWithLayout = () => {
     return "スコアボードを作成"
   }, [id])
   const onCreateSubmit: SubmitHandler<Setting> = async (data) => {
+    console.log(createForm.formState.errors)
     let _id
     if (!id) {
       _id = cryptoRandomString({ length: 32, type: "alphanumeric" })
@@ -85,6 +89,13 @@ const Create: NextPageWithLayout = () => {
             <h3>トーナメント管理ツール連携</h3>
             <IntegrateStartGG />
             <PrimaryButton type="submit">{submitText}</PrimaryButton>
+            {!createForm.formState.isValid && (
+              <div className={styles.error}>
+                <p>
+                  <strong>エラーが発生しました</strong>
+                </p>
+              </div>
+            )}
           </div>
           <Preview />
         </FormProvider>

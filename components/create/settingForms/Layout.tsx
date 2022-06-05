@@ -41,6 +41,15 @@ export const Layout: FC = () => {
               </>
             )
           }}
+          rules={{
+            required: true,
+            validate: (value) => {
+              if (!ScoreboardLayouts.includes(value)) {
+                return "正しいレイアウトを選択してください"
+              }
+              return true
+            },
+          }}
         />
       </div>
     </div>
