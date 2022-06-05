@@ -10,7 +10,7 @@ $maincolor: $darkgray;
 $subcolor: $white;
 
 .board {
-  position: fixed;
+  position: absolute;
   width: 100%;
   top: 0;
   left: 0;
@@ -48,7 +48,7 @@ $subcolor: $white;
 .bracketBox {
   width: 295px;
   height: 85px;
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: space-between;
   padding-left: 11px;

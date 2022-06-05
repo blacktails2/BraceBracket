@@ -199,7 +199,9 @@ export const Bracket: FC = () => {
       <Head>
         <title>BraceBracket | Bracket Layout</title>
       </Head>
-      <Body setting={setting} bracket={bracket} />
+      <div className="relative">
+        <Body setting={setting} bracket={bracket} />
+      </div>
     </>
   )
 }
