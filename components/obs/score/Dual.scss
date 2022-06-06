@@ -87,6 +87,19 @@
     right: 460px;
   }
 
+  .player1Name,
+  .player2Name {
+    @include player;
+
+    span {
+      margin-left: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
   .p1PlayerName,
   .p2PlayerName {
     @include name;
