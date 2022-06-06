@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from "react"
-import { db } from "../libs/firebase"
 import { get, onValue, ref, set } from "firebase/database"
+import { useCallback, useEffect, useState } from "react"
+
+import { db } from "../libs/firebase"
 
 export function genUseDatabaseValue<T>(
   getPath: (id: string | undefined | null) => string,
@@ -29,6 +30,7 @@ export function genUseDatabaseValue<T>(
       const unsubscribe = onValue(valueRef, (snapshot) => {
         const value = snapshot.val()
         if (!value) return
+        console.log(`Update`, value)
         _setValue(value)
         setLoading(false)
       })

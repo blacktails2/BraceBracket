@@ -1,10 +1,13 @@
 import { useRouter } from "next/router"
-import { FC, useEffect, useState } from "react"
+import { FC, memo, useEffect, useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
-import { useMatchIntervalInfo } from "../../../hooks/useMatchIntervalInfo"
 import { useOrigin } from "../../../hooks/useOrigin"
-import { MatchIntervalInfo as FormType } from "../../../libs/const"
+import {
+  MatchIntervalInfo,
+  MatchIntervalInfo as FormType,
+  Setting,
+} from "../../../libs/const"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { MatchTypeSelector } from "../../parts/MatchTypeSelector"
 import { PrimaryButton } from "../../parts/PrimaryButton"
@@ -13,15 +16,21 @@ import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
 import { StreamQueueTable } from "../parts/StreamQueueTable"
 
-export const Next: FC = () => {
+const Next: FC<{
+  setting: Setting
+  matchIntervalInfo: MatchIntervalInfo
+  setMatchIntervalInfo: (matchIntervalInfo: MatchIntervalInfo) => void
+}> = ({ setting, matchIntervalInfo, setMatchIntervalInfo }) => {
   const router = useRouter()
   const id = router.query.id as string
   const origin = useOrigin()
-  const [matchIntervalInfo, setMatchIntervalInfo, loading] =
-    useMatchIntervalInfo(id)
   const [showTooltip, setShowTooltip] = useState(false)
   const form = useForm<FormType>()
   const { reset, handleSubmit, watch, getValues } = form
+  useEffect(() => {
+    reset(matchIntervalInfo)
+  }, [reset, matchIntervalInfo])
+
   const onSubmit: SubmitHandler<FormType> = (data) => {
     setMatchIntervalInfo(data)
     setShowTooltip(true)
@@ -29,11 +38,6 @@ export const Next: FC = () => {
       setShowTooltip(false)
     }, 3000)
   }
-  useEffect(() => {
-    if (loading || !matchIntervalInfo) return
-
-    reset(matchIntervalInfo)
-  }, [loading, matchIntervalInfo, reset])
 
   watch("isNow")
   watch("round")
@@ -46,6 +50,7 @@ export const Next: FC = () => {
           <hr />
           <div className="overflow-x-auto">
             <StreamQueueTable
+              setting={setting}
               onChange={(queue) => {
                 form.setValue("p1.playerName", queue.p1?.playerName ?? "")
                 form.setValue("p2.playerName", queue.p2?.playerName ?? "")
@@ -175,3 +180,5 @@ export const Next: FC = () => {
     </ControlPanel>
   )
 }
+
+export default memo(Next)

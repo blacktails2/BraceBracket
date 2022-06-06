@@ -1,25 +1,30 @@
 import { useRouter } from "next/router"
-import { FC, useEffect, useState } from "react"
+import { FC, memo, useEffect, useState } from "react"
 import { FormProvider, useFieldArray, useForm } from "react-hook-form"
 
-import { useMC } from "../../../hooks/useMC"
 import { useOrigin } from "../../../hooks/useOrigin"
-import { MC as FormType } from "../../../libs/const"
+import { MC, MC as FormType } from "../../../libs/const"
 import { PrimaryButton } from "../../parts/PrimaryButton"
 import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
 
-export const MC: FC = () => {
+const MC: FC<{
+  mc: MC
+  setMC: (mc: MC) => void
+}> = ({ mc, setMC }) => {
   const router = useRouter()
   const id = router.query.id as string
   const origin = useOrigin()
-  const [mc, setMC, loading] = useMC(id)
   const [showTooltip, setShowTooltip] = useState(false)
   const form = useForm<FormType>()
   const { fields } = useFieldArray({
     control: form.control,
     name: "mcList",
   })
+
+  useEffect(() => {
+    form.reset(mc)
+  }, [form, mc])
 
   const onSubmit = (data: FormType) => {
     setMC(data)
@@ -28,13 +33,6 @@ export const MC: FC = () => {
       setShowTooltip(false)
     }, 3000)
   }
-
-  useEffect(() => {
-    if (!loading && mc) {
-      console.log(mc)
-      form.reset(mc)
-    }
-  }, [mc, loading, form])
 
   return (
     <ControlPanel title="MC" url={`${origin}/obs/mc/?id=${id}`}>
@@ -100,3 +98,5 @@ export const MC: FC = () => {
     </ControlPanel>
   )
 }
+
+export default memo(MC)

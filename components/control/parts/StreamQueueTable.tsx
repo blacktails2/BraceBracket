@@ -1,9 +1,7 @@
-import { useRouter } from "next/router"
 import { FC, useState } from "react"
 import { useInterval } from "react-use"
 
-import { useSetting } from "../../../hooks/useSetting"
-import { PlayerScore } from "../../../libs/const"
+import { PlayerScore, Setting } from "../../../libs/const"
 import { getStreamQueue, StreamQueue } from "../../../libs/getStreamQueue"
 import { Button } from "../../parts/Button"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
@@ -11,6 +9,7 @@ import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import styles from "./StreamQueueTable.module.scss"
 
 export const StreamQueueTable: FC<{
+  setting: Setting
   onChange: (queue: {
     id: number
     roundText: string
@@ -20,10 +19,7 @@ export const StreamQueueTable: FC<{
   }) => void
   trackNext?: boolean
   id: string
-}> = ({ onChange, trackNext, id: inputID }) => {
-  const router = useRouter()
-  const id = router.query.id as string
-  const [setting] = useSetting(id)
+}> = ({ setting, onChange, trackNext, id: inputID }) => {
   const [streamQueue, setStreamQueue] = useState<StreamQueue>([])
   const [selected, setSelected] = useState<number>(-1)
   const [isTrack, setIsTrack] = useState(false)
@@ -31,7 +27,7 @@ export const StreamQueueTable: FC<{
 
   useInterval(async () => {
     if (isTrack) {
-      const streamQueue = await getStreamQueue(setting?.integrateStartGG?.url)
+      const streamQueue = await getStreamQueue(setting.integrateStartGG?.url)
       setStreamQueue(streamQueue)
       if (!trackNext && streamQueue.length > 0) {
         onChange(streamQueue[0])

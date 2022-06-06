@@ -1,11 +1,9 @@
 import { useRouter } from "next/router"
-import { FC, useEffect, useState } from "react"
+import { FC, memo, useEffect, useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 import { useOrigin } from "../../../hooks/useOrigin"
-import { useScore } from "../../../hooks/useScore"
-import { useSetting } from "../../../hooks/useSetting"
-import { Score } from "../../../libs/const"
+import { Score, Setting } from "../../../libs/const"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { MatchTypeSelector } from "../../parts/MatchTypeSelector"
 import { NumberForm } from "../../parts/NumberForm"
@@ -16,15 +14,21 @@ import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
 import { StreamQueueTable } from "../parts/StreamQueueTable"
 
-export const ScoreAndCamera: FC = () => {
+const ScoreAndCamera: FC<{
+  setting: Setting
+  score: Score
+  setScore: (score: Score) => void
+}> = ({ setting, score, setScore }) => {
   const router = useRouter()
   const id = router.query.id as string
   const origin = useOrigin()
-  const [score, setScore] = useScore(id)
-  const [setting] = useSetting(id)
   const [showTooltip, setShowTooltip] = useState(false)
   const scoreForm = useForm<Score>()
   const { handleSubmit, reset } = scoreForm
+  useEffect(() => {
+    reset(score)
+  }, [reset, score])
+
   const onScoreSubmit: SubmitHandler<Score> = (data) => {
     setScore(data)
     setShowTooltip(true)
@@ -32,15 +36,12 @@ export const ScoreAndCamera: FC = () => {
       setShowTooltip(false)
     }, 3000)
   }
-  useEffect(() => {
-    reset(score)
-  }, [reset, score])
-  scoreForm.watch("round")
-  scoreForm.watch("matchType")
+  scoreForm.watch()
   return (
     <ControlPanel title="スコア&カメラ" url={`${origin}/obs/score/?id=${id}`}>
       <hr />
       <StreamQueueTable
+        setting={setting}
         onChange={(queue) => {
           scoreForm.setValue("p1.team", queue.p1?.team ?? "")
           scoreForm.setValue("p1.playerName", queue.p1?.playerName ?? "")
@@ -309,3 +310,5 @@ export const ScoreAndCamera: FC = () => {
     </ControlPanel>
   )
 }
+
+export default memo(ScoreAndCamera)
