@@ -13,9 +13,10 @@ import { MatchIntervalInfo } from "../../libs/const"
 const Next: NextPage = () => {
   const router = useRouter()
   const id = router.query.id as string
-  const [setting] = useSetting(id)
-  const [matchIntervalInfo] = useMatchIntervalInfo(id)
-  const [score] = useScore(id)
+  const [setting, , loadingSetting] = useSetting(id)
+  const [matchIntervalInfo, , loadingMachIntervalInfo] =
+    useMatchIntervalInfo(id)
+  const [score, , loadingScore] = useScore(id)
   const [info, setInfo] = useState<MatchIntervalInfo | undefined>(
     matchIntervalInfo
   )
@@ -46,7 +47,13 @@ const Next: NextPage = () => {
     })
   }, [matchIntervalInfo, score])
 
-  if (!setting || !matchIntervalInfo || !info) {
+  if (
+    !setting ||
+    loadingSetting ||
+    !matchIntervalInfo ||
+    loadingMachIntervalInfo ||
+    !info
+  ) {
     return null
   }
   return (

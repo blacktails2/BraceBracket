@@ -153,8 +153,8 @@ const loadTop8Bracket = async (phaseGroupId: string) => {
 export const Bracket: FC = () => {
   const router = useRouter()
   const id = router.query.id as string
-  const [loadBracket] = useLoadBracket(id)
-  const [setting] = useSetting(id)
+  const [loadBracket, , loadingLoadBracket] = useLoadBracket(id)
+  const [setting, , loadingSetting] = useSetting(id)
   const [lastLoadedAt, setLastLoadedAt] = useState(0)
   const [bracket, setBracket] = useState<BracketType>({
     grandFinalReset: [],
@@ -193,6 +193,9 @@ export const Bracket: FC = () => {
     },
     setting?.integrateStartGG.enabled && loadBracket?.autoUpdate ? 10000 : null
   )
+
+  if (!setting || loadingSetting || !loadBracket || loadingLoadBracket)
+    return null
 
   return (
     <>
