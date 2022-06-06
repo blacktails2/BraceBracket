@@ -4,26 +4,26 @@
   .nextnow {
     @include mediumWeight;
 
+    position: absolute;
+    top: 880px;
+    left: 40px;
     width: 220px;
     height: 80px;
     font-size: 52px;
-    text-align: center;
     color: var(--main-color);
-    position: absolute;
-    left: 40px;
-    top: 880px;
+    text-align: center;
     letter-spacing: 0.05em;
   }
 
   .statusBox {
-    width: 320px;
-    height: 80px;
     position: absolute;
-    left: 300px;
     top: 880px;
+    left: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 320px;
+    height: 80px;
   }
 
   .round,
@@ -32,24 +32,24 @@
 
     width: 320px;
     margin: 0;
+    font-size: 24px;
+    font-style: italic;
+    line-height: 24px;
     color: var(--sub-color);
     text-align: left;
-    font-size: 24px;
-    line-height: 24px;
-    font-style: italic;
     letter-spacing: 2px;
   }
 
   .score {
     @include blackWeight;
 
-    margin: 0;
-    width: 60px;
-    color: var(--main-color);
-    text-align: center;
-    font-size: 40px;
     position: absolute;
     top: 980px;
+    width: 60px;
+    margin: 0;
+    font-size: 40px;
+    color: var(--main-color);
+    text-align: center;
 
     &.p1 {
       left: 480px;
@@ -61,12 +61,12 @@
   }
 
   .player {
-    margin: 0;
+    position: absolute;
+    top: 995px;
     width: 420px;
     height: 60px;
-    position: absolute;
+    margin: 0;
     text-align: center;
-    top: 995px;
 
     &.p1 {
       left: 40px;
@@ -79,46 +79,46 @@
     .team {
       @include mediumWeight;
 
-      color: var(--sub-color);
-      text-align: center;
       font-size: 24px;
       line-height: 24px;
+      color: var(--sub-color);
+      text-align: center;
       letter-spacing: 1px;
     }
 
     .name {
       @include blackWeight;
 
-      color: var(--sub-color);
-      text-align: center;
+      margin-left: 1rem;
       font-size: 27px;
       line-height: 27px;
+      color: var(--sub-color);
+      text-align: center;
       letter-spacing: 1px;
-      margin-left: 1rem;
     }
   }
 
   .localsetting {
     @include mediumWeight;
 
+    position: absolute;
+    top: 975px;
+    left: 1570px;
     font-size: 24px;
     line-height: 26px;
-    position: absolute;
     color: var(--sub-color);
-    left: 1570px;
-    top: 975px;
     letter-spacing: 1px;
   }
 
   .localtime {
     @include blackWeight;
 
-    font-size: 52px;
-    text-align: right;
-    color: var(--sub-color);
     position: absolute;
-    right: 57px;
     top: 960px;
+    right: 57px;
+    font-size: 52px;
     font-variant-numeric: tabular-nums;
+    color: var(--sub-color);
+    text-align: right;
   }
 }

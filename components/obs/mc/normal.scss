@@ -5,15 +5,15 @@
   .mc2,
   .mc3,
   .mc4 {
-    color: var(--main-color);
-    text-align: center;
-    font-size: 30px;
-    line-height: 30px;
-    letter-spacing: 2px;
-    width: 400px;
-    height: 60px;
     position: absolute;
     top: 734px;
+    width: 400px;
+    height: 60px;
+    font-size: 30px;
+    line-height: 30px;
+    color: var(--main-color);
+    text-align: center;
+    letter-spacing: 2px;
 
     span {
       margin-left: 10px;
@@ -39,16 +39,16 @@
   .id4 {
     @include mediumWeight;
 
-    color: var(--sub-color);
-    text-align: center;
-    font-size: 19px;
-    line-height: 19px;
-    letter-spacing: 1px;
-    width: 220px;
-    height: 30px;
     position: absolute;
     top: 795px;
     left: 300px;
+    width: 220px;
+    height: 30px;
+    font-size: 19px;
+    line-height: 19px;
+    color: var(--sub-color);
+    text-align: center;
+    letter-spacing: 1px;
   }
 
   .mc1_layout {

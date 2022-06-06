@@ -5,15 +5,15 @@
 }
 
 .dummyLabel {
-  display: block;
   position: relative;
+  display: block;
   width: 30px;
   height: 30px;
+  margin-top: 4px;
+  cursor: pointer;
   border: 2px solid var(--bb-gray);
   border-radius: 5px;
   transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
-  cursor: pointer;
-  margin-top: 4px;
 
   &:hover {
     border-color: var(--bb-black);
@@ -25,19 +25,19 @@
   display: none;
 
   &:checked + .dummyLabel {
+    position: relative;
     background-color: var(--bb-black);
     border-color: var(--bb-black);
-    position: relative;
 
     &::after {
-      content: "";
       position: absolute;
-      width: 12px;
-      height: 20px;
-      border-right: 2px solid var(--bb-white);
-      border-bottom: 2px solid var(--bb-white);
       top: 0;
       left: 7px;
+      width: 12px;
+      height: 20px;
+      content: "";
+      border-right: 2px solid var(--bb-white);
+      border-bottom: 2px solid var(--bb-white);
       transform: rotate(45deg);
     }
   }

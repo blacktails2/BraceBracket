@@ -6,11 +6,11 @@
 
   width: 240px;
   margin: 0;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 21px;
   color: var(--status-color);
   text-align: center;
-  font-size: 19px;
-  line-height: 21px;
-  font-style: italic;
   letter-spacing: 1px;
 }
 
@@ -20,9 +20,9 @@
     @include score;
     @include boldWeight;
 
+    top: 45px;
     width: 60px;
     font-size: 40px;
-    top: 45px;
 
     &.p1 {
       left: 770px;
@@ -34,11 +34,11 @@
   }
 
   .player {
-    margin: 0;
+    position: absolute;
+    top: 60px;
     width: 430px;
     height: 60px;
-    top: 60px;
-    position: absolute;
+    margin: 0;
     text-align: center;
 
     span {
@@ -60,33 +60,33 @@
     .team {
       @include regularWeight;
 
+      font-size: 29px;
+      line-height: 29px;
       color: var(--player-color);
       text-align: center;
-      font-size: 29px;
       letter-spacing: 1px;
-      line-height: 29px;
     }
 
     .name {
       @include boldWeight;
 
-      color: var(--player-color);
-      text-align: center;
       font-size: 29px;
       line-height: 29px;
+      color: var(--player-color);
+      text-align: center;
       letter-spacing: 1px;
     }
   }
 
   .box {
-    width: 240px;
-    height: 60px;
     position: absolute;
     top: 44px;
     left: 840px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 240px;
+    height: 60px;
   }
 
   // 試合ステータスの位置設定
@@ -104,13 +104,13 @@
   }
 
   .logobox {
-    height: 160px;
-    width: 280px;
     position: absolute;
-    left: 820px;
     top: 900px;
+    left: 820px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 160px;
   }
 }

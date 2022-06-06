@@ -5,11 +5,11 @@
   transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 
   &.normal {
-    font-size: 12px;
     padding: 8px 12px;
-    border-radius: 5px;
+    font-size: 12px;
     color: var(--bb-white);
     background-color: var(--bb-black);
+    border-radius: 5px;
 
     &:hover {
       background-color: var(--bb-gray);
@@ -23,11 +23,11 @@
   }
 
   &.small {
-    font-size: 12px;
     padding: 5px 10px;
-    border-radius: 5px;
+    font-size: 12px;
     color: var(--black);
     background-color: var(--primary);
+    border-radius: 5px;
 
     &:hover {
       background-color: var(--bb-beige-hover);
@@ -42,11 +42,11 @@
 
   &.primary {
     height: 40px;
-    font-size: 14px;
     padding: 6px 15px;
-    border-radius: 15px;
+    font-size: 14px;
     color: var(--black);
     background-color: var(--primary);
+    border-radius: 15px;
 
     &:hover {
       background-color: var(--bb-beige-hover);
@@ -79,24 +79,24 @@
 
 .tooltip {
   position: absolute;
-  padding: 8px;
-  left: 50%;
   top: -50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--bb-white);
-  border: 1px solid var(--bb-beige);
-  font-size: 10px;
+  left: 50%;
+  z-index: 1;
+  padding: 8px;
   font-family: "Mint Grotesk Medium", "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 10px;
   font-weight: 700;
   color: var(--bb-beige);
-  z-index: 1;
+  background-color: var(--bb-white);
+  border: 1px solid var(--bb-beige);
   border-radius: 5px;
   box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
   transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  transform: translate(-50%, -50%);
 }
 
 .tooltipEnter,
 .tooltipExit {
-  transform: translate(-50%, calc(-50% + 10px));
   opacity: 0;
+  transform: translate(-50%, calc(-50% + 10px));
 }

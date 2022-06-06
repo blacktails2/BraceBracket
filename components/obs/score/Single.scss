@@ -6,11 +6,11 @@
 
   width: 215px;
   margin: 0 0 0 5px;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 21px;
   color: var(--status-color);
   text-align: left;
-  font-size: 19px;
-  line-height: 21px;
-  font-style: italic;
   letter-spacing: 1px;
 }
 
@@ -20,9 +20,9 @@
     @include score;
     @include boldWeight;
 
+    top: 44px;
     width: 60px;
     font-size: 40px;
-    top: 44px;
 
     &.p1 {
       left: 800px;
@@ -35,11 +35,11 @@
 
   // プレイヤー名の位置指定
   .player {
+    position: absolute;
+    top: 61px;
     width: 460px;
     height: 60px;
-    position: absolute;
     text-align: center;
-    top: 61px;
 
     span {
       margin-left: 10px;
@@ -60,44 +60,44 @@
     .team {
       @include regularWeight;
 
+      font-size: 29px;
+      line-height: 29px;
       color: var(--player-color);
       text-align: center;
-      font-size: 29px;
       letter-spacing: 1px;
-      line-height: 29px;
     }
 
     .name {
       @include boldWeight;
 
-      color: var(--player-color);
-      text-align: center;
       font-size: 29px;
       line-height: 29px;
+      color: var(--player-color);
+      text-align: center;
       letter-spacing: 1px;
     }
   }
 
   .tournamentNameBox {
-    width: 215px;
-    height: 60px;
     position: absolute;
     top: 44px;
     left: 65px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 215px;
+    height: 60px;
   }
 
   .box {
-    width: 215px;
-    height: 60px;
     position: absolute;
     top: 45px;
     left: 65px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 215px;
+    height: 60px;
   }
 
   // 試合ステータスの位置設定
@@ -112,13 +112,13 @@
   }
 
   .logobox {
-    height: 100px;
-    width: 200px;
     position: absolute;
-    left: 860px;
     top: 24px;
+    left: 860px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
   }
 }

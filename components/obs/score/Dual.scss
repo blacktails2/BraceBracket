@@ -4,15 +4,15 @@
 @mixin status {
   @include boldWeight;
 
+  position: absolute;
+  top: 96px;
   width: 410px;
   margin: 0;
+  font-size: 19px;
+  font-style: italic;
   color: var(--status-color);
   text-align: center;
-  font-size: 19px;
-  position: absolute;
-  font-style: italic;
   letter-spacing: 1px;
-  top: 96px;
 }
 
 .dual {
@@ -21,9 +21,9 @@
     @include score;
     @include boldWeight;
 
+    top: 44px;
     width: 75px;
     font-size: 54px;
-    top: 44px;
 
     &.p1 {
       left: 365px;
@@ -35,12 +35,12 @@
   }
 
   .player {
-    margin: 0 0 0 10px;
     position: absolute;
-    text-align: center;
+    top: 59px;
     width: 410px;
     height: 50px;
-    top: 59px;
+    margin: 0 0 0 10px;
+    text-align: center;
 
     span {
       margin-left: 10px;
@@ -61,20 +61,20 @@
     .team {
       @include regularWeight;
 
+      font-size: 25px;
+      line-height: 25px;
       color: var(--player-color);
       text-align: center;
-      font-size: 25px;
       letter-spacing: 1px;
-      line-height: 25px;
     }
 
     .name {
       @include boldWeight;
 
-      color: var(--player-color);
-      text-align: center;
       font-size: 25px;
       line-height: 25px;
+      color: var(--player-color);
+      text-align: center;
       letter-spacing: 1px;
     }
   }
@@ -98,36 +98,36 @@
   }
 
   .tournamentNameBox {
-    width: 180px;
-    height: 50px;
     position: absolute;
-    left: 870px;
     top: 48px;
+    left: 870px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 180px;
+    height: 50px;
   }
 
   .tournamentName {
     @include regularWeight;
 
-    color: var(--player-color);
-    text-align: center;
     font-size: 17px;
     line-height: 19px;
+    color: var(--player-color);
+    text-align: center;
     letter-spacing: 2px;
     white-space: pre;
   }
 
   // 大会ロゴの設定
   .logobox {
-    height: 120px;
-    width: 220px;
     position: absolute;
-    left: 850px;
     top: 25px;
+    left: 850px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 120px;
   }
 }

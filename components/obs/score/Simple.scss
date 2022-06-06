@@ -4,10 +4,10 @@
 @mixin status {
   @include midWeight;
 
-  color: var(--status-color);
   font-size: 21px;
-  line-height: 21px;
   font-style: italic;
+  line-height: 21px;
+  color: var(--status-color);
   letter-spacing: 1px;
 }
 
@@ -17,11 +17,11 @@
     @include score;
     @include midWeight;
 
+    top: 44px;
     width: 50px;
-    text-align: center;
     font-size: 42px;
     font-variant-numeric: tabular-nums;
-    top: 44px;
+    text-align: center;
 
     &.p1 {
       left: 905px;
@@ -33,11 +33,11 @@
   }
 
   .player {
-    margin: 0;
-    width: 500px;
-    height: 50px;
     position: absolute;
     top: 59px;
+    width: 500px;
+    height: 50px;
+    margin: 0;
 
     span {
       margin-left: 10px;
@@ -60,32 +60,32 @@
     .team {
       @include regularWeight;
 
-      color: var(--player-color);
       font-size: 35px;
-      letter-spacing: 1px;
       line-height: 35px;
+      color: var(--player-color);
+      letter-spacing: 1px;
     }
 
     .name {
       @include boldWeight;
 
-      color: var(--player-color);
       font-size: 35px;
       line-height: 35px;
+      color: var(--player-color);
       letter-spacing: 1px;
     }
   }
 
   .box {
-    width: 600px;
-    height: 25px;
     position: absolute;
-    text-align: center;
-    color: var(--status-color);
     top: 19px;
     left: 660px;
     display: flex;
     justify-content: center;
+    width: 600px;
+    height: 25px;
+    color: var(--status-color);
+    text-align: center;
   }
 
   // 試合ステータスの位置設定
@@ -102,10 +102,10 @@
   .matchType {
     @include regularWeight;
 
-    color: var(--status-color);
     font-size: 21px;
-    line-height: 21px;
     font-style: italic;
+    line-height: 21px;
+    color: var(--status-color);
     letter-spacing: 1px;
   }
 
@@ -113,40 +113,40 @@
   @mixin idText {
     @include boldWeight;
 
+    position: absolute;
     width: 320px;
     height: 22px;
     margin: 0;
-    color: var(--player-color);
     font-size: 18px;
     line-height: 18px;
+    color: var(--player-color);
     letter-spacing: 1px;
-    position: absolute;
   }
 
   .cameraLeft {
     @include idText;
 
-    text-align: left;
-    left: 26px;
     top: 859px;
+    left: 26px;
+    text-align: left;
   }
 
   .cameraRight {
     @include idText;
 
-    text-align: right;
-    right: 26px;
     top: 859px;
+    right: 26px;
+    text-align: right;
   }
 
   .logobox {
-    height: 160px;
-    width: 280px;
     position: absolute;
-    left: 820px;
     top: 900px;
+    left: 820px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 160px;
   }
 }

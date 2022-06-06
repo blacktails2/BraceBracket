@@ -4,26 +4,26 @@
   .nextnow {
     @include blackWeight;
 
+    position: absolute;
+    top: 877px;
+    left: 40px;
     width: 260px;
     height: 95px;
     font-size: 72px;
-    text-align: center;
     color: var(--sub-color);
-    position: absolute;
-    left: 40px;
-    top: 877px;
+    text-align: center;
     letter-spacing: 0.05em;
   }
 
   .statusBox {
-    width: 320px;
-    height: 65px;
     position: absolute;
-    left: 315px;
     top: 884px;
+    left: 315px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 320px;
+    height: 65px;
   }
 
   .round {
@@ -31,11 +31,11 @@
 
     width: 320px;
     margin: 0;
+    font-size: 26px;
+    font-style: italic;
+    line-height: 26px;
     color: var(--sub-color);
     text-align: left;
-    font-size: 26px;
-    line-height: 26px;
-    font-style: italic;
     letter-spacing: 2px;
   }
 
@@ -44,11 +44,11 @@
 
     width: 320px;
     margin: 0;
+    font-size: 26px;
+    font-style: italic;
+    line-height: 26px;
     color: var(--sub-color);
     text-align: left;
-    font-size: 26px;
-    line-height: 26px;
-    font-style: italic;
     letter-spacing: 2px;
   }
 
@@ -56,14 +56,14 @@
   .score {
     @include boldWeight;
 
-    margin: 0;
+    position: absolute;
+    top: 956px;
     width: 85px;
+    margin: 0;
+    font-size: 60px;
+    font-variant-numeric: tabular-nums;
     color: var(--sub-color);
     text-align: center;
-    font-size: 60px;
-    position: absolute;
-    font-variant-numeric: tabular-nums;
-    top: 956px;
 
     &.p1 {
       left: 450px;
@@ -75,11 +75,11 @@
   }
 
   .player {
-    margin: 0;
-    width: 400px;
-    height: 50px;
     position: absolute;
     top: 996px;
+    width: 400px;
+    height: 50px;
+    margin: 0;
 
     &.p1 {
       left: 25px;
@@ -94,45 +94,45 @@
     .team {
       @include regularWeight;
 
-      color: var(--sub-color);
       font-size: 30px;
       line-height: 30px;
+      color: var(--sub-color);
       letter-spacing: 1px;
     }
 
     .name {
       @include blackWeight;
 
-      color: var(--sub-color);
+      margin-left: 1rem;
       font-size: 34px;
       line-height: 34px;
+      color: var(--sub-color);
       letter-spacing: 1px;
-      margin-left: 1rem;
     }
   }
 
   .localsetting {
     @include mediumWeight;
 
-    text-align: right;
+    position: absolute;
+    top: 975px;
+    left: 1570px;
     font-size: 24px;
     line-height: 24px;
-    position: absolute;
     color: var(--sub-color);
-    left: 1570px;
-    top: 975px;
+    text-align: right;
     letter-spacing: 1px;
   }
 
   .localtime {
     @include boldWeight;
 
-    font-size: 52px;
-    text-align: right;
-    color: var(--sub-color);
     position: absolute;
-    right: 57px;
     top: 960px;
+    right: 57px;
+    font-size: 52px;
     font-variant-numeric: tabular-nums;
+    color: var(--sub-color);
+    text-align: right;
   }
 }
