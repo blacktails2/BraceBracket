@@ -39,41 +39,26 @@ export default {
 const Template: ComponentStory<typeof MatchInterval> = (args) => (
   <MatchInterval {...args} />
 )
-
-export const SimpleWhiteNext = Template.bind({})
-SimpleWhiteNext.args = {
-  matchIntervalInfo: (() => {
-    const mii = deepCopy(matchIntervalInfoDefault)
-    return mii
-  })(),
-  setting: (() => {
-    const setting = deepCopy(defaultSetting)
-    setting.scoreboard.design.layout = "simple"
-    setting.scoreboard.design.color = "white"
-    return setting
-  })(),
-  time: "24:34",
-}
-
-export const SimpleBlackNext = Template.bind({})
-SimpleBlackNext.args = {
-  matchIntervalInfo: (() => {
-    const mii = deepCopy(matchIntervalInfoDefault)
-    return mii
-  })(),
-  setting: (() => {
-    const setting = deepCopy(defaultSetting)
-    setting.scoreboard.design.layout = "simple"
-    setting.scoreboard.design.color = "black"
-    return setting
-  })(),
-  time: "24:34",
-}
-
 export const OtherDarkNext = Template.bind({})
 OtherDarkNext.args = {
   matchIntervalInfo: (() => {
     const mii = deepCopy(matchIntervalInfoDefault)
+    return mii
+  })(),
+  setting: (() => {
+    const setting = deepCopy(defaultSetting)
+    setting.scoreboard.design.layout = "dual"
+    setting.scoreboard.design.color = "dark"
+    return setting
+  })(),
+  time: "24:34",
+}
+
+export const OtherDarkNow = Template.bind({})
+OtherDarkNow.args = {
+  matchIntervalInfo: (() => {
+    const mii = deepCopy(matchIntervalInfoDefault)
+    mii.isNow = true
     return mii
   })(),
   setting: (() => {
@@ -100,6 +85,37 @@ OtherLightNext.args = {
   time: "24:34",
 }
 
+export const OtherLightNow = Template.bind({})
+OtherLightNow.args = {
+  matchIntervalInfo: (() => {
+    const mii = deepCopy(matchIntervalInfoDefault)
+    mii.isNow = true
+    return mii
+  })(),
+  setting: (() => {
+    const setting = deepCopy(defaultSetting)
+    setting.scoreboard.design.layout = "dual"
+    setting.scoreboard.design.color = "light"
+    return setting
+  })(),
+  time: "24:34",
+}
+
+export const SimpleWhiteNext = Template.bind({})
+SimpleWhiteNext.args = {
+  matchIntervalInfo: (() => {
+    const mii = deepCopy(matchIntervalInfoDefault)
+    return mii
+  })(),
+  setting: (() => {
+    const setting = deepCopy(defaultSetting)
+    setting.scoreboard.design.layout = "simple"
+    setting.scoreboard.design.color = "white"
+    return setting
+  })(),
+  time: "24:34",
+}
+
 export const SimpleWhiteNow = Template.bind({})
 SimpleWhiteNow.args = {
   matchIntervalInfo: (() => {
@@ -116,11 +132,10 @@ SimpleWhiteNow.args = {
   time: "24:34",
 }
 
-export const SimpleBlackNow = Template.bind({})
-SimpleBlackNow.args = {
+export const SimpleBlackNext = Template.bind({})
+SimpleBlackNext.args = {
   matchIntervalInfo: (() => {
     const mii = deepCopy(matchIntervalInfoDefault)
-    mii.isNow = true
     return mii
   })(),
   setting: (() => {
@@ -132,8 +147,8 @@ SimpleBlackNow.args = {
   time: "24:34",
 }
 
-export const OtherDarkNow = Template.bind({})
-OtherDarkNow.args = {
+export const SimpleBlackNow = Template.bind({})
+SimpleBlackNow.args = {
   matchIntervalInfo: (() => {
     const mii = deepCopy(matchIntervalInfoDefault)
     mii.isNow = true
@@ -141,24 +156,8 @@ OtherDarkNow.args = {
   })(),
   setting: (() => {
     const setting = deepCopy(defaultSetting)
-    setting.scoreboard.design.layout = "dual"
-    setting.scoreboard.design.color = "dark"
-    return setting
-  })(),
-  time: "24:34",
-}
-
-export const OtherLightNow = Template.bind({})
-OtherLightNow.args = {
-  matchIntervalInfo: (() => {
-    const mii = deepCopy(matchIntervalInfoDefault)
-    mii.isNow = true
-    return mii
-  })(),
-  setting: (() => {
-    const setting = deepCopy(defaultSetting)
-    setting.scoreboard.design.layout = "dual"
-    setting.scoreboard.design.color = "light"
+    setting.scoreboard.design.layout = "simple"
+    setting.scoreboard.design.color = "black"
     return setting
   })(),
   time: "24:34",
