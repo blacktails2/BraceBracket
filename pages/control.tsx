@@ -2,7 +2,7 @@ import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 import { MC } from "../components/control/panels/MC"
 import { Next } from "../components/control/panels/Next"
@@ -13,6 +13,7 @@ import { TextboxWithCopy } from "../components/parts/TextboxWithCopy"
 import { useOrigin } from "../hooks/useOrigin"
 import { useSetting } from "../hooks/useSetting"
 import { NextPageWithLayout } from "../libs/const"
+import { Attendee, getAttendee } from "../libs/getAttendee"
 
 import styles from "./control.module.scss"
 
@@ -21,12 +22,19 @@ const Control: NextPageWithLayout = () => {
   const origin = useOrigin()
   const id = router.query.id as string
   const [setting] = useSetting(id)
+  const [attendee, setAttendee] = useState<Attendee>([])
   useEffect(() => {
     const params = new URLSearchParams(location.search)
     if (!params.get("id")) {
       router.replace("/create")
     }
   }, [router])
+
+  useEffect(() => {
+    if (setting?.integrateStartGG?.enabled) {
+      getAttendee(setting?.integrateStartGG?.url).then(setAttendee)
+    }
+  }, [setting])
 
   return (
     <div className={styles.container}>
@@ -72,6 +80,18 @@ const Control: NextPageWithLayout = () => {
         <MC />
         {setting?.integrateStartGG.enabled && <Top8Bracket />}
       </div>
+      <datalist id="playerName">
+        {Array.from(new Set(attendee.map((a) => a.playerName))).map(
+          (playerName) => (
+            <option key={playerName} value={playerName} />
+          )
+        )}
+      </datalist>
+      <datalist id="team">
+        {Array.from(new Set(attendee.map((a) => a.team))).map((team) => (
+          <option key={team} value={team} />
+        ))}
+      </datalist>
     </div>
   )
 }

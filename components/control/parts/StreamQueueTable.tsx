@@ -4,7 +4,6 @@ import { useInterval } from "react-use"
 
 import { useSetting } from "../../../hooks/useSetting"
 import { PlayerScore } from "../../../libs/const"
-import { Attendee, getAttendee } from "../../../libs/getAttendee"
 import { getStreamQueue, StreamQueue } from "../../../libs/getStreamQueue"
 import { Button } from "../../parts/Button"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
@@ -26,7 +25,6 @@ export const StreamQueueTable: FC<{
   const id = router.query.id as string
   const [setting] = useSetting(id)
   const [streamQueue, setStreamQueue] = useState<StreamQueue>([])
-  const [attendee, setAttendee] = useState<Attendee>([])
   const [selected, setSelected] = useState<number>(-1)
   const [isTrack, setIsTrack] = useState(false)
 
@@ -57,7 +55,6 @@ export const StreamQueueTable: FC<{
                 getStreamQueue(setting?.integrateStartGG?.url).then(
                   setStreamQueue
                 )
-                getAttendee(setting?.integrateStartGG?.url).then(setAttendee)
               }}
               className="mb-[20px]"
             >
@@ -71,18 +68,6 @@ export const StreamQueueTable: FC<{
               className="pt-[0.75rem]"
             />
           </div>
-          <datalist id="playerName">
-            {Array.from(new Set(attendee.map((a) => a.playerName))).map(
-              (playerName) => (
-                <option key={playerName} value={playerName} />
-              )
-            )}
-          </datalist>
-          <datalist id="team">
-            {Array.from(new Set(attendee.map((a) => a.team))).map((team) => (
-              <option key={team} value={team} />
-            ))}
-          </datalist>
           {streamQueue.length > 0 && (
             <table className={styles.table}>
               <thead>
