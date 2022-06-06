@@ -14,6 +14,7 @@ export default {
   component: Component,
   chromatic: {
     delay: 1000,
+    viewports: [1200, 480],
   },
 } as ComponentMeta<typeof Component>
 
