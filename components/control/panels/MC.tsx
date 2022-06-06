@@ -3,14 +3,14 @@ import { FC, memo, useEffect, useState } from "react"
 import { FormProvider, useFieldArray, useForm } from "react-hook-form"
 
 import { useOrigin } from "../../../hooks/useOrigin"
-import { MC, MC as FormType } from "../../../libs/const"
+import { MC as FormType } from "../../../libs/const"
 import { PrimaryButton } from "../../parts/PrimaryButton"
 import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
 
 const MC: FC<{
-  mc: MC
-  setMC: (mc: MC) => void
+  mc: FormType
+  setMC: (mc: FormType) => void
 }> = ({ mc, setMC }) => {
   const router = useRouter()
   const id = router.query.id as string

@@ -1,178 +1,54 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import { Bracket } from "../components/obs/bracket/Bracket"
-import { defaultValue as defaultSetting } from "../hooks/useSetting"
-import { Bracket as BracketType } from "../libs/const"
-import Control from "../pages/control"
+import { Control as Component } from "../components/control/Control"
+import { MatchIntervalInfo, MC, Score, Setting } from "../libs/const"
 
 import deepCopy from "./helper/deepCopy"
+import { matchIntervalInfoDefault } from "./helper/MatchIntervalInfoDefault"
+import { mcDefault } from "./helper/MCDefault"
+import { scoreDefault } from "./helper/ScoreDefault"
+import { settingDefault } from "./helper/SettingDefault"
 
 export default {
   title: "Control",
-  component: Control,
+  component: Component,
   chromatic: {
     delay: 1000,
   },
-} as ComponentMeta<typeof Control>
+} as ComponentMeta<typeof Component>
 
-const bracketDefault: BracketType = {
-  grandFinal: [
-    {
-      player1: {
-        team: "",
-        name: "あcola",
-        score: 3,
-      },
-      player2: {
-        team: "SPG",
-        name: "あしも",
-        score: 0,
-      },
-    },
-  ],
-  grandFinalReset: [],
-  losersFinal: [
-    {
-      player1: {
-        team: "SPG",
-        name: "あしも",
-        score: 3,
-      },
-      player2: {
-        team: "",
-        name: "Gackt",
-        score: 2,
-      },
-    },
-  ],
-  losersQuarterFinal: [
-    {
-      player1: {
-        team: "",
-        name: "Huto",
-        score: 0,
-      },
-      player2: {
-        team: "",
-        name: "DIO",
-        score: 3,
-      },
-    },
-    {
-      player1: {
-        team: "",
-        name: "Gackt",
-        score: 3,
-      },
-      player2: {
-        team: "SST",
-        name: "Shuton",
-        score: 0,
-      },
-    },
-  ],
-  losersRound: [
-    {
-      player1: {
-        team: "TV",
-        name: "Lea",
-        score: 1,
-      },
-      player2: {
-        team: "",
-        name: "DIO",
-        score: 3,
-      },
-    },
-    {
-      player1: {
-        team: "SST",
-        name: "Shuton",
-        score: 3,
-      },
-      player2: {
-        team: "Revo",
-        name: "Kome",
-        score: 1,
-      },
-    },
-  ],
-  losersSemiFinal: [
-    {
-      player1: {
-        team: "",
-        name: "DIO",
-        score: 1,
-      },
-      player2: {
-        team: "",
-        name: "Gackt",
-        score: 3,
-      },
-    },
-  ],
-  winnersFinal: [
-    {
-      player1: {
-        team: "",
-        name: "あcola",
-        score: 3,
-      },
-      player2: {
-        team: "SPG",
-        name: "あしも",
-        score: 0,
-      },
-    },
-  ],
-  winnersSemiFinal: [
-    {
-      player1: {
-        team: "",
-        name: "あcola",
-        score: 3,
-      },
-      player2: {
-        team: "",
-        name: "Gackt",
-        score: 2,
-      },
-    },
-    {
-      player1: {
-        team: "SPG",
-        name: "あしも",
-        score: 3,
-      },
-      player2: {
-        team: "",
-        name: "Huto",
-        score: 1,
-      },
-    },
-  ],
-}
+const Template: ComponentStory<typeof Component> = (args) => (
+  <Component {...args} />
+)
 
-const Template: ComponentStory<typeof Bracket> = (args) => <Bracket {...args} />
-
-export const Simple = Template.bind({})
-Simple.args = {
+export const Control = Template.bind({})
+Control.args = {
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
-    setting.scoreboard.design.layout = "simple"
-    setting.scoreboard.design.color = "white"
+    const setting = deepCopy(settingDefault)
+    setting.integrateStartGG.enabled = true
     return setting
   })(),
-  bracket: deepCopy(bracketDefault),
-}
-
-export const Other = Template.bind({})
-Other.args = {
-  setting: (() => {
-    const setting = deepCopy(defaultSetting)
-    setting.scoreboard.design.layout = "dual"
-    setting.scoreboard.design.color = "dark_color"
-    return setting
-  })(),
-  bracket: deepCopy(bracketDefault),
+  setSetting: (v: Setting) => {
+    return
+  },
+  score: deepCopy(scoreDefault),
+  setScore: (v: Score) => {
+    return
+  },
+  matchIntervalInfo: deepCopy(matchIntervalInfoDefault),
+  setMatchIntervalInfo: (v: MatchIntervalInfo) => {
+    return
+  },
+  mc: deepCopy(mcDefault),
+  setMC: (v: MC) => {
+    return
+  },
+  loadBracket: deepCopy({
+    createdAt: 0,
+    lastRequestedAt: 0,
+    autoUpdate: false,
+  }),
+  requestLoad: (v: boolean) => {
+    return
+  },
 }

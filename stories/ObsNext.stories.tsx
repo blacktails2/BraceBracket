@@ -3,9 +3,9 @@ import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { MC } from "../components/obs/mc/MC"
 import { MatchInterval } from "../components/obs/next/MatchIntervalInfo"
 import { defaultValue as defaultSetting } from "../hooks/useSetting"
-import { MatchIntervalInfo } from "../libs/const"
 
 import deepCopy from "./helper/deepCopy"
+import { matchIntervalInfoDefault } from "./helper/MatchIntervalInfoDefault"
 
 export default {
   title: "OBS/Next",
@@ -35,26 +35,6 @@ export default {
     ),
   ],
 } as ComponentMeta<typeof MatchInterval>
-
-const matchIntervalInfoDefault: MatchIntervalInfo = {
-  createdAt: 0,
-  isNow: false,
-  matchType: "Besf of 5",
-  p1: {
-    team: "Team2",
-    playerName: "Player2",
-    score: 1,
-    twitterID: "twitter_id2",
-  },
-  p2: {
-    team: "Team2",
-    playerName: "Player2",
-    score: 2,
-    twitterID: "twitter_id2",
-  },
-  round: "Grand Final",
-  uppercase: false,
-}
 
 const Template: ComponentStory<typeof MatchInterval> = (args) => (
   <MatchInterval {...args} />
