@@ -1,4 +1,4 @@
-import {getNameAndTeamtag, getTournarySlug} from "./utils"
+import { getNameAndTeamtag, getTournarySlug } from "./utils"
 
 export type Attendee = {
   team: string
@@ -61,15 +61,22 @@ export const getAttendee = async (url?: string): Promise<Attendee> => {
     return []
   }
   console.log(res)
-  const attendee = res.data.tournament.participants.nodes.map(
+  const attendee = res?.data?.tournament?.participants?.nodes?.map(
     (participant: any) => {
-      const { team, name } = getNameAndTeamtag(participant.entrants[0]?.name)
+      const { team, name } = getNameAndTeamtag(
+        participant.entrants && participant.entrants[0]
+          ? participant.entrants[0]?.name ?? participant.gamerTag
+          : participant.gamerTag ?? ""
+      )
       return {
         team,
         playerName: name,
       }
     }
   )
+  if (!attendee) {
+    return []
+  }
   console.log(attendee)
   return attendee
 }
