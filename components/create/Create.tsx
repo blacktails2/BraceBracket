@@ -13,7 +13,7 @@ import {
 import { Setting } from "../../libs/const"
 import { db } from "../../libs/firebase"
 import styles from "../../pages/create.module.scss"
-import { PrimaryButton } from "../parts/PrimaryButton"
+import { Button } from "../parts/Button"
 
 import { Preview } from "./parts/Preview"
 import { Color } from "./settingForms/Color"
@@ -109,7 +109,9 @@ export const Create: FC<{ setting: Setting }> = ({ setting }) => {
             <hr />
             <h3>トーナメント管理ツール連携</h3>
             <IntegrateStartGG />
-            <PrimaryButton type="submit">{submitText}</PrimaryButton>
+            <Button type="submit" mode="primary">
+              {submitText}
+            </Button>
             <div className="absolute">
               {getErrorMessages(errors).map((message) => {
                 return (

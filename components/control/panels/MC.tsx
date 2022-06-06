@@ -4,7 +4,7 @@ import { FormProvider, useFieldArray, useForm } from "react-hook-form"
 
 import { useOrigin } from "../../../hooks/useOrigin"
 import { MC as FormType } from "../../../libs/const"
-import { PrimaryButton } from "../../parts/PrimaryButton"
+import { Button } from "../../parts/Button"
 import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
 
@@ -72,17 +72,19 @@ const MC: FC<{
             })}
           </div>
           <div className="flex gap-[2rem]">
-            <PrimaryButton
+            <Button
               type="submit"
+              mode="primary"
               className="mt-[3rem] w-[19rem]"
               full
               tooltipText="適用されました"
               showTooltip={showTooltip}
             >
               適用する
-            </PrimaryButton>
-            <PrimaryButton
+            </Button>
+            <Button
               type="button"
+              mode="primary"
               className="w-[19rem] mt-[3rem]"
               full
               light
@@ -91,7 +93,7 @@ const MC: FC<{
               }}
             >
               変更をリセット
-            </PrimaryButton>
+            </Button>
           </div>
         </form>
       </FormProvider>

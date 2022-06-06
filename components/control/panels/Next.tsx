@@ -8,9 +8,9 @@ import {
   MatchIntervalInfo as FormType,
   Setting,
 } from "../../../libs/const"
+import { Button } from "../../parts/Button"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { MatchTypeSelector } from "../../parts/MatchTypeSelector"
-import { PrimaryButton } from "../../parts/PrimaryButton"
 import { RoundSelector } from "../../parts/RoundSelector"
 import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
@@ -154,17 +154,19 @@ const Next: FC<{
             </div>
           </div>
           <div className="flex gap-[2rem]">
-            <PrimaryButton
+            <Button
               type="submit"
+              mode="primary"
               className="w-[194px] mt-[30px]"
               full
               tooltipText="適用されました"
               showTooltip={showTooltip}
             >
               適用する
-            </PrimaryButton>
-            <PrimaryButton
+            </Button>
+            <Button
               type="button"
+              mode="primary"
               className="w-[19rem] mt-[3rem]"
               full
               light
@@ -173,7 +175,7 @@ const Next: FC<{
               }}
             >
               変更をリセット
-            </PrimaryButton>
+            </Button>
           </div>
         </form>
       </FormProvider>

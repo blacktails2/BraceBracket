@@ -6,7 +6,6 @@ import { useOrigin } from "../../../hooks/useOrigin"
 import { LoadBracket } from "../../../libs/const"
 import { Button } from "../../parts/Button"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
-import { PrimaryButton } from "../../parts/PrimaryButton"
 import { ControlPanel } from "../parts/ControlPanel"
 
 const Top8Bracket: FC<{
@@ -39,9 +38,14 @@ const Top8Bracket: FC<{
             className="mt-[10px]"
           />
           <div className="flex gap-[2rem]">
-            <PrimaryButton type="submit" className="mt-[30px] w-[194px]" full>
+            <Button
+              type="submit"
+              mode="primary"
+              className="mt-[30px] w-[194px]"
+              full
+            >
               適用する
-            </PrimaryButton>
+            </Button>
           </div>
         </form>
       </FormProvider>

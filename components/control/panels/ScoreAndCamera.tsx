@@ -4,12 +4,11 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 import { useOrigin } from "../../../hooks/useOrigin"
 import { Score, Setting } from "../../../libs/const"
+import { Button } from "../../parts/Button"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { MatchTypeSelector } from "../../parts/MatchTypeSelector"
 import { NumberForm } from "../../parts/NumberForm"
-import { PrimaryButton } from "../../parts/PrimaryButton"
 import { RoundSelector } from "../../parts/RoundSelector"
-import { SmallButton } from "../../parts/SmallButton"
 import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
 import { StreamQueueTable } from "../parts/StreamQueueTable"
@@ -83,8 +82,9 @@ const ScoreAndCamera: FC<{
                   <div>
                     <label>スコア</label>
                     <div className="flex gap-[0.5rem]">
-                      <SmallButton
+                      <Button
                         type="button"
+                        mode="small"
                         onClick={() =>
                           scoreForm.setValue(
                             "p1.score",
@@ -93,14 +93,15 @@ const ScoreAndCamera: FC<{
                         }
                       >
                         -1
-                      </SmallButton>
+                      </Button>
                       <NumberForm
                         className="w-[5rem]"
                         name={"p1.score"}
                         cleanValue={score?.p1.score}
                       />
-                      <SmallButton
+                      <Button
                         type="button"
+                        mode="small"
                         onClick={() =>
                           scoreForm.setValue(
                             "p1.score",
@@ -109,7 +110,7 @@ const ScoreAndCamera: FC<{
                         }
                       >
                         +1
-                      </SmallButton>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -136,8 +137,9 @@ const ScoreAndCamera: FC<{
                   <div>
                     <label>スコア</label>
                     <div className="flex gap-[0.5rem]">
-                      <SmallButton
+                      <Button
                         type="button"
+                        mode="small"
                         onClick={() =>
                           scoreForm.setValue(
                             "p2.score",
@@ -146,14 +148,15 @@ const ScoreAndCamera: FC<{
                         }
                       >
                         -1
-                      </SmallButton>
+                      </Button>
                       <NumberForm
                         className="w-[5rem]"
                         name={"p2.score"}
                         cleanValue={score?.p2.score}
                       />
-                      <SmallButton
+                      <Button
                         type="button"
+                        mode="small"
                         onClick={() =>
                           scoreForm.setValue(
                             "p2.score",
@@ -162,7 +165,7 @@ const ScoreAndCamera: FC<{
                         }
                       >
                         +1
-                      </SmallButton>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -192,8 +195,9 @@ const ScoreAndCamera: FC<{
             <div className="mt-[2rem]">
               <h4>データのリセット・入れ替え</h4>
               <div className="flex flex-wrap gap-[1rem]">
-                <SmallButton
+                <Button
                   type="button"
+                  mode="small"
                   onClick={() => {
                     const [p1, p2] = scoreForm.getValues(["p1", "p2"])
                     scoreForm.setValue("p1", p2)
@@ -201,10 +205,11 @@ const ScoreAndCamera: FC<{
                   }}
                 >
                   1Pと2Pを入れ替える
-                </SmallButton>
-                <SmallButton
+                </Button>
+                <Button
                   light
                   type="button"
+                  mode="small"
                   onClick={() => {
                     const [p1, p2] = scoreForm.getValues(["p1", "p2"])
                     scoreForm.setValue("p1", {
@@ -218,10 +223,11 @@ const ScoreAndCamera: FC<{
                   }}
                 >
                   スコアをリセット
-                </SmallButton>
-                <SmallButton
+                </Button>
+                <Button
                   light
                   type="button"
+                  mode="small"
                   onClick={() => {
                     scoreForm.setValue("p1", {
                       team: "",
@@ -238,7 +244,7 @@ const ScoreAndCamera: FC<{
                   }}
                 >
                   全てリセット
-                </SmallButton>
+                </Button>
               </div>
             </div>
           </div>
@@ -284,17 +290,19 @@ const ScoreAndCamera: FC<{
             />
           </div>
           <div className="relative flex gap-[2rem]">
-            <PrimaryButton
+            <Button
               type="submit"
+              mode="primary"
               className="w-[19rem] mt-[3rem]"
               full
               tooltipText="適用されました"
               showTooltip={showTooltip}
             >
               適用する
-            </PrimaryButton>
-            <PrimaryButton
+            </Button>
+            <Button
               type="button"
+              mode="primary"
               className="w-[19rem] mt-[3rem]"
               full
               light
@@ -303,7 +311,7 @@ const ScoreAndCamera: FC<{
               }}
             >
               変更をリセット
-            </PrimaryButton>
+            </Button>
           </div>
         </form>
       </FormProvider>

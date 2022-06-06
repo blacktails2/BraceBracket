@@ -7,14 +7,39 @@ export const Button: FC<{
   children?: ReactNode
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   type?: "button" | "submit" | "reset"
+  mode?: "normal" | "small" | "primary"
   className?: string
+  light?: boolean
   tooltipText?: string
   showTooltip?: boolean
-}> = ({ children, onClick, type, className, tooltipText, showTooltip }) => {
+  full?: boolean
+}> = ({
+  children,
+  onClick,
+  type,
+  mode = "normal",
+  className,
+  light,
+  tooltipText,
+  showTooltip,
+  full,
+}) => {
+  const modes = {
+    normal: styles.normal,
+    small: styles.small,
+    primary: styles.primary,
+  }
   return (
     <div className={className}>
       <div className={styles.container}>
-        <button className={styles.button} onClick={onClick} type={type}>
+        <button
+          className={`${styles.button} ${light ? styles.light : ""} ${
+            modes[mode]
+          }`}
+          onClick={onClick}
+          type={type}
+          style={full ? { width: "100%" } : {}}
+        >
           {children}
         </button>
         <CSSTransition
