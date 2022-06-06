@@ -2,12 +2,6 @@
 $regular: "Satoshi", "Noto Sans JP", sans-serif;
 $bold: "Satoshi", "Noto Sans JP", sans-serif;
 $black: "Satoshi", "Noto Sans JP", sans-serif;
-$darkgray: #111;
-$white: #fff;
-
-// スコアボードの色を変更したい場合、下記を変更してください
-$maincolor: $darkgray;
-$subcolor: $white;
 
 .board {
   position: absolute;
@@ -66,45 +60,34 @@ $subcolor: $white;
   }
 }
 
-@mixin teamText {
-  color: $maincolor;
-  font-size: 22px;
-  letter-spacing: 1px;
-  line-height: 42px;
-  @include regularWeight;
-}
-
-@mixin nameText {
-  color: $maincolor;
-  font-size: 22px;
-  line-height: 42px;
-  letter-spacing: 1px;
-  @include blackWeight;
-}
-
 .playerTeam {
-  @include teamText;
+  @include regularWeight;
+
+  color: var(--bb-black);
+  font-size: 22px;
+  letter-spacing: 1px;
+  line-height: 42px;
 }
 
 .playerName {
-  @include nameText;
+  @include blackWeight;
+
+  color: var(--bb-black);
+  font-size: 22px;
+  line-height: 42px;
+  letter-spacing: 1px;
 }
 
-// スコアの設定
-@mixin scoreText {
+.score {
   @include boldWeight;
 
   margin: 0;
   width: 40px;
   line-height: 42px;
-  color: $maincolor;
+  color: var(--bb-black);
   text-align: center;
   font-size: 30px;
   font-variant-numeric: tabular-nums;
-}
-
-.score {
-  @include scoreText;
 }
 
 // 色設定
