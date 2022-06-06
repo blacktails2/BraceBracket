@@ -3,7 +3,7 @@ import { FC, memo, useEffect, useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 import { useOrigin } from "../../../hooks/useOrigin"
-import { Score, Setting } from "../../../libs/const"
+import { MatchIntervalInfo, Score, Setting } from "../../../libs/const"
 import { Button } from "../../parts/Button"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { MatchTypeSelector } from "../../parts/MatchTypeSelector"
@@ -17,7 +17,8 @@ const ScoreAndCamera: FC<{
   setting: Setting
   score: Score
   setScore: (score: Score) => void
-}> = ({ setting, score, setScore }) => {
+  matchIntervalInfo: MatchIntervalInfo
+}> = ({ setting, score, setScore, matchIntervalInfo }) => {
   const router = useRouter()
   const id = router.query.id as string
   const origin = useOrigin()
@@ -244,6 +245,20 @@ const ScoreAndCamera: FC<{
                   }}
                 >
                   全てリセット
+                </Button>
+                <Button
+                  light
+                  type="button"
+                  mode="small"
+                  onClick={() => {
+                    scoreForm.setValue("p1", matchIntervalInfo.p1)
+                    scoreForm.setValue("p2", matchIntervalInfo.p2)
+                    scoreForm.setValue("round", matchIntervalInfo.round)
+                    scoreForm.setValue("matchType", matchIntervalInfo.matchType)
+                    scoreForm.setValue("uppercase", matchIntervalInfo.uppercase)
+                  }}
+                >
+                  試合間情報を取得する
                 </Button>
               </div>
             </div>

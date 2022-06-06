@@ -97,6 +97,7 @@ export const Control: FC<{
             setting,
             score,
             setScore,
+            matchIntervalInfo,
           }}
         />
         <Next
