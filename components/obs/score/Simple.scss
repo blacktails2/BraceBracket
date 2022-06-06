@@ -1,43 +1,5 @@
 @import "./base";
 
-// スコアの設定
-@mixin score {
-  @include midWeight;
-
-  margin: 0;
-  width: 50px;
-  color: var(--score-color);
-  text-align: center;
-  font-size: 42px;
-  position: absolute;
-  font-variant-numeric: tabular-nums;
-}
-
-@mixin player {
-  margin: 0;
-  width: 500px;
-  height: 50px;
-  position: absolute;
-  top: 59px;
-}
-
-// チーム名及びプレイヤー名の設定
-@mixin team {
-  color: var(--player-color);
-  font-size: 35px;
-  letter-spacing: 1px;
-  line-height: 35px;
-  @include regularWeight;
-}
-
-@mixin name {
-  color: var(--player-color);
-  font-size: 35px;
-  line-height: 35px;
-  letter-spacing: 1px;
-  @include boldWeight;
-}
-
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
   @include midWeight;
@@ -51,24 +13,31 @@
 
 .simple {
   // スコアの位置指定
-  .p1Score,
-  .p2Score {
+  .score {
     @include score;
+    @include midWeight;
 
+    width: 50px;
+    text-align: center;
+    font-size: 42px;
+    font-variant-numeric: tabular-nums;
     top: 44px;
+
+    &.p1 {
+      left: 905px;
+    }
+
+    &.p2 {
+      right: 905px;
+    }
   }
 
-  .p1Score {
-    left: 905px;
-  }
-
-  .p2Score {
-    right: 905px;
-  }
-
-  .player1Name,
-  .player2Name {
-    @include player;
+  .player {
+    margin: 0;
+    width: 500px;
+    height: 50px;
+    position: absolute;
+    top: 59px;
 
     span {
       margin-left: 10px;
@@ -77,36 +46,34 @@
         margin-left: 0;
       }
     }
-  }
 
-  .player1Name {
-    left: 395px;
-    text-align: right;
-  }
+    &.p1 {
+      left: 395px;
+      text-align: right;
+    }
 
-  .player2Name {
-    right: 395px;
-    text-align-last: left;
-  }
+    &.p2 {
+      right: 395px;
+      text-align-last: left;
+    }
 
-  .p1PlayerName,
-  .p2PlayerName {
-    @include name;
-  }
+    .team {
+      @include regularWeight;
 
-  .p1Team,
-  .p2Team {
-    @include team;
-  }
+      color: var(--player-color);
+      font-size: 35px;
+      letter-spacing: 1px;
+      line-height: 35px;
+    }
 
-  @mixin boText {
-    @include regularWeight;
+    .name {
+      @include boldWeight;
 
-    color: var(--status-color);
-    font-size: 21px;
-    line-height: 21px;
-    font-style: italic;
-    letter-spacing: 1px;
+      color: var(--player-color);
+      font-size: 35px;
+      line-height: 35px;
+      letter-spacing: 1px;
+    }
   }
 
   .box {
@@ -133,7 +100,13 @@
   }
 
   .matchType {
-    @include boText;
+    @include regularWeight;
+
+    color: var(--status-color);
+    font-size: 21px;
+    line-height: 21px;
+    font-style: italic;
+    letter-spacing: 1px;
   }
 
   // 選手IDの位置設定
@@ -175,10 +148,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .logo {
-    max-height: 100%;
-    max-width: 100%;
   }
 }

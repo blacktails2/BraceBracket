@@ -1,46 +1,5 @@
 @import "./base";
 
-// スコアの設定
-@mixin score {
-  @include boldWeight;
-
-  margin: 0;
-  width: 60px;
-  color: var(--score-color);
-  text-align: center;
-  font-size: 40px;
-  position: absolute;
-  top: 45px;
-}
-
-@mixin player {
-  margin: 0;
-  width: 430px;
-  height: 60px;
-  top: 60px;
-  position: absolute;
-  text-align: center;
-}
-
-// チーム名及びプレイヤー名の設定
-@mixin team {
-  color: var(--player-color);
-  text-align: center;
-  font-size: 29px;
-  letter-spacing: 1px;
-  line-height: 29px;
-  @include regularWeight;
-}
-
-@mixin name {
-  color: var(--player-color);
-  text-align: center;
-  font-size: 29px;
-  line-height: 29px;
-  letter-spacing: 1px;
-  @include boldWeight;
-}
-
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
   @include boldWeight;
@@ -57,44 +16,30 @@
 
 .solid {
   // スコアの位置指定
-  .p1Score {
+  .score {
     @include score;
+    @include boldWeight;
 
-    left: 770px;
+    width: 60px;
+    font-size: 40px;
+    top: 45px;
+
+    &.p1 {
+      left: 770px;
+    }
+
+    &.p2 {
+      right: 770px;
+    }
   }
 
-  .p2Score {
-    @include score;
-
-    right: 770px;
-  }
-
-  .p1Team,
-  .p2Team {
-    @include team;
-  }
-
-  // プレイヤー名の位置指定
-  .player1Name {
-    @include player;
-
-    left: 320px;
-  }
-
-  .player2Name {
-    @include player;
-
-    right: 320px;
-  }
-
-  .p1PlayerName,
-  .p2PlayerName {
-    @include name;
-  }
-
-  .player1Name,
-  .player2Name {
-    @include player;
+  .player {
+    margin: 0;
+    width: 430px;
+    height: 60px;
+    top: 60px;
+    position: absolute;
+    text-align: center;
 
     span {
       margin-left: 10px;
@@ -102,6 +47,34 @@
       &:first-child {
         margin-left: 0;
       }
+    }
+
+    &.p1 {
+      left: 320px;
+    }
+
+    &.p2 {
+      right: 320px;
+    }
+
+    .team {
+      @include regularWeight;
+
+      color: var(--player-color);
+      text-align: center;
+      font-size: 29px;
+      letter-spacing: 1px;
+      line-height: 29px;
+    }
+
+    .name {
+      @include boldWeight;
+
+      color: var(--player-color);
+      text-align: center;
+      font-size: 29px;
+      line-height: 29px;
+      letter-spacing: 1px;
     }
   }
 
@@ -139,10 +112,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .logo {
-    max-height: 100%;
-    max-width: 100%;
   }
 }
