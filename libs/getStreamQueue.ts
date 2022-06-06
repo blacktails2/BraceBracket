@@ -110,35 +110,42 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
     return []
   }
   console.log(res)
-  const streamQueue = res.data.tournament.streamQueue.flatMap((stream: any) => {
-    return stream.sets.map((set: any) => {
-      const players = set.slots.map((slot: any) => {
-        if (!slot.entrant) {
+  const streamQueue = res?.data?.tournament?.streamQueue?.flatMap(
+    (stream: any) => {
+      return stream.sets.map((set: any) => {
+        const players = set.slots.map((slot: any) => {
+          if (!slot.entrant) {
+            return {
+              team: "",
+              playerName: "",
+              twitterID: "",
+              score: 0,
+            }
+          }
+          const { team, name } = getNameAndTeamtag(slot.entrant.name)
           return {
-            team: "",
-            playerName: "",
+            team,
+            playerName: name,
             twitterID: "",
             score: 0,
           }
-        }
-        const { team, name } = getNameAndTeamtag(slot.entrant.name)
+        })
         return {
-          team,
-          playerName: name,
-          twitterID: "",
-          score: 0,
+          id: set.id,
+          roundText:
+            fullRoundText2Shorts[set.fullRoundText] ?? set.fullRoundText,
+          streamName: stream.stream.streamName,
+          p1: players[0],
+          p2: players[1],
+          inProgress: false,
         }
       })
-      return {
-        id: set.id,
-        roundText: fullRoundText2Shorts[set.fullRoundText] ?? set.fullRoundText,
-        streamName: stream.stream.streamName,
-        p1: players[0],
-        p2: players[1],
-        inProgress: false,
-      }
-    })
-  })
+    }
+  )
+
+  if (!streamQueue) {
+    return []
+  }
 
   streamQueue.unshift(
     ...res.data.tournament.events.flatMap((event: any) => {
