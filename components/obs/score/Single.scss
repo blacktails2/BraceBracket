@@ -118,7 +118,7 @@
   .box {
     width: 215px;
     height: 60px;
-    position: fixed;
+    position: absolute;
     top: 45px;
     left: 65px;
     display: flex;
@@ -130,6 +130,11 @@
   .round,
   .matchType {
     @include status;
+  }
+
+  .cameraRight,
+  .cameraLeft {
+    color: var(--bb-white);
   }
 
   .logobox {

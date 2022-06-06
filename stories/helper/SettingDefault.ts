@@ -10,7 +10,7 @@ export const settingDefault: Setting = {
       color: ScoreboardColorsMap["dual"][0],
     },
     cameraAndLogo: {
-      displayCameraAndTwitterID: false,
+      displayCameraAndTwitterID: true,
       useLogo: false,
       dropShadow: "none",
       logoURLs: [],

@@ -9,7 +9,7 @@
   color: var(--score-color);
   text-align: center;
   font-size: 40px;
-  position: fixed;
+  position: absolute;
   top: 45px;
 }
 
@@ -18,7 +18,7 @@
   width: 430px;
   height: 60px;
   top: 60px;
-  position: fixed;
+  position: absolute;
   text-align: center;
 }
 
@@ -123,6 +123,11 @@
 
   .matchType {
     @include status;
+  }
+
+  .cameraRight,
+  .cameraLeft {
+    color: var(--bb-white);
   }
 
   .logobox {

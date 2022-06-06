@@ -55,7 +55,7 @@ $white: #fff;
     letter-spacing: 2px;
     width: 400px;
     height: 50px;
-    position: fixed;
+    position: absolute;
     top: 727px;
 
     span {
@@ -82,7 +82,7 @@ $white: #fff;
   .id4 {
     @include nextmcidText;
 
-    position: fixed;
+    position: absolute;
     top: 696px;
   }
 

@@ -50,7 +50,7 @@
   color: var(--status-color);
   text-align: center;
   font-size: 19px;
-  position: fixed;
+  position: absolute;
   font-style: italic;
   letter-spacing: 1px;
   top: 96px;
@@ -118,6 +118,11 @@
     @include status;
 
     right: 465px;
+  }
+
+  .cameraRight,
+  .cameraLeft {
+    color: var(--bb-white);
   }
 
   .tournamentNameBox {
