@@ -27,6 +27,7 @@ export const StreamQueueTable: FC<{
   const [streamQueue, setStreamQueue] = useState<StreamQueue>([])
   const [selected, setSelected] = useState<number>(-1)
   const [isTrack, setIsTrack] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false)
 
   useInterval(async () => {
     if (isTrack) {
@@ -51,12 +52,22 @@ export const StreamQueueTable: FC<{
         <>
           <div className="flex flex-wrap gap-[1rem]">
             <Button
-              onClick={() => {
-                getStreamQueue(setting?.integrateStartGG?.url).then(
-                  setStreamQueue
-                )
+              onClick={(e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                getStreamQueue(setting?.integrateStartGG?.url)
+                  .then(setStreamQueue)
+                  .then(() => {
+                    setShowTooltip(true)
+                    setTimeout(() => {
+                      setShowTooltip(false)
+                    }, 3000)
+                  })
               }}
+              type="button"
               className="mb-[20px]"
+              tooltipText="取得しました"
+              showTooltip={showTooltip}
             >
               start.ggから配信台の情報を取得
             </Button>
