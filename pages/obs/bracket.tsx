@@ -15,7 +15,7 @@ query PhaseGroupSets($phaseGroupId: ID!) {
     id
     displayIdentifier
     sets(
-      sortType: ROUND
+      sortType: MAGIC
     ){
       pageInfo{
         total
