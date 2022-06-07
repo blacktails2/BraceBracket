@@ -1,31 +1,32 @@
 // フォントの設定
-$next_regular: "Satoshi", "Noto Sans JP", sans-serif;
-$next_bold: "Satoshi", "Noto Sans JP", sans-serif;
-$next_black: "Satoshi", "Noto Sans JP", sans-serif;
+$regular: "Satoshi", "Noto Sans JP", sans-serif;
+$medium: "Satoshi", "Noto Sans JP", sans-serif;
+$bold: "Satoshi", "Noto Sans JP", sans-serif;
+$black: "Satoshi", "Noto Sans JP", sans-serif;
 
 // フォントの太さの設定（ライトウェイト）
 @mixin regularWeight {
-  font-family: $next_regular;
+  font-family: $regular;
   font-variation-settings: "wght" 400;
   font-weight: 400;
 }
 
 // フォントの太さの設定（ミディアムウェイト）
 @mixin mediumWeight {
-  font-family: $next_regular;
+  font-family: $medium;
   font-variation-settings: "wght" 500;
   font-weight: 500;
 }
 
 @mixin boldWeight {
-  font-family: $next_black;
+  font-family: $black;
   font-variation-settings: "wght" 700;
   font-weight: 700;
 }
 
 // フォントの太さの設定（ブラックウェイト）
 @mixin blackWeight {
-  font-family: $next_black;
+  font-family: $black;
   font-variation-settings: "wght" 900;
   font-weight: 900;
 }

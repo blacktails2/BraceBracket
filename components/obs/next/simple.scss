@@ -40,7 +40,7 @@
   }
 
   .bo {
-    @include regularWeight;
+    @include mediumWeight;
 
     width: 320px;
     margin: 0;
@@ -57,7 +57,7 @@
     @include boldWeight;
 
     position: absolute;
-    top: 956px;
+    top: 952px;
     width: 85px;
     margin: 0;
     font-size: 60px;
@@ -76,7 +76,7 @@
 
   .player {
     position: absolute;
-    top: 996px;
+    top: 1000px;
     width: 400px;
     height: 50px;
     margin: 0;
@@ -92,7 +92,7 @@
     }
 
     .team {
-      @include regularWeight;
+      @include mediumWeight;
 
       font-size: 30px;
       line-height: 30px;
@@ -104,8 +104,8 @@
       @include blackWeight;
 
       margin-left: 1rem;
-      font-size: 34px;
-      line-height: 34px;
+      font-size: 30px;
+      line-height: 30px;
       color: var(--sub-color);
       letter-spacing: 1px;
     }
