@@ -1,14 +1,15 @@
 import { PlayerScore } from "./const"
 import { getNameAndTeamtag } from "./utils"
 
-export type StreamQueue = {
+export type Match = {
   id: number
   roundText: string
   streamName: string
   p1?: PlayerScore
   p2?: PlayerScore
   inProgress: boolean
-}[]
+}
+export type StreamQueue = Match[]
 
 const fullRoundText2Shorts: { [key: string]: string } = {
   "Grand Final Reset": "Grand Final",
@@ -114,7 +115,7 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
     (stream: any) => {
       return stream.sets.map((set: any) => {
         const players = set.slots.map((slot: any) => {
-          if (!slot.entrant) {
+          if (!slot?.entrant) {
             return {
               team: "",
               playerName: "",
@@ -122,7 +123,7 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
               score: 0,
             }
           }
-          const { team, name } = getNameAndTeamtag(slot.entrant.name)
+          const { team, name } = getNameAndTeamtag(slot?.entrant?.name)
           return {
             team,
             playerName: name,
@@ -133,8 +134,8 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
         return {
           id: set.id,
           roundText:
-            fullRoundText2Shorts[set.fullRoundText] ?? set.fullRoundText,
-          streamName: stream.stream.streamName,
+            fullRoundText2Shorts[set?.fullRoundText] ?? set?.fullRoundText,
+          streamName: stream?.stream?.streamName,
           p1: players[0],
           p2: players[1],
           inProgress: false,
@@ -149,34 +150,36 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
 
   streamQueue.unshift(
     ...res.data.tournament.events.flatMap((event: any) => {
-      return event.sets.nodes.map((set: any) => {
-        const players = set.slots.map((slot: any) => {
-          if (!slot.entrant) {
+      return event.sets.nodes
+        .map((set: any) => {
+          const players = set.slots.map((slot: any) => {
+            if (!slot.entrant) {
+              return {
+                team: "",
+                playerName: "",
+                twitterID: "",
+                score: 0,
+              }
+            }
+            const { team, name } = getNameAndTeamtag(slot?.entrant?.name)
             return {
-              team: "",
-              playerName: "",
+              team,
+              playerName: name,
               twitterID: "",
               score: 0,
             }
-          }
-          const { team, name } = getNameAndTeamtag(slot.entrant.name)
+          })
           return {
-            team,
-            playerName: name,
-            twitterID: "",
-            score: 0,
+            id: set?.id,
+            roundText:
+              fullRoundText2Shorts[set?.fullRoundText] ?? set?.fullRoundText,
+            streamName: set?.stream?.streamName,
+            p1: players[0],
+            p2: players[1],
+            inProgress: true,
           }
         })
-        return {
-          id: set.id,
-          roundText:
-            fullRoundText2Shorts[set.fullRoundText] ?? set.fullRoundText,
-          streamName: set.stream.streamName,
-          p1: players[0],
-          p2: players[1],
-          inProgress: true,
-        }
-      })
+        .filter((que: Match) => que.streamName)
     })
   )
   console.log(streamQueue)
