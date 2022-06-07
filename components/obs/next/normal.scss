@@ -62,7 +62,7 @@
 
   .player {
     position: absolute;
-    top: 995px;
+    top: 996px;
     width: 420px;
     height: 60px;
     margin: 0;
@@ -79,8 +79,8 @@
     .team {
       @include mediumWeight;
 
-      font-size: 24px;
-      line-height: 24px;
+      font-size: 28px;
+      line-height: 28px;
       color: var(--sub-color);
       text-align: center;
       letter-spacing: 1px;
@@ -90,8 +90,8 @@
       @include blackWeight;
 
       margin-left: 1rem;
-      font-size: 27px;
-      line-height: 27px;
+      font-size: 28px;
+      line-height: 28px;
       color: var(--sub-color);
       text-align: center;
       letter-spacing: 1px;

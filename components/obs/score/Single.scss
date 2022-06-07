@@ -2,7 +2,7 @@
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
-  @include boldWeight;
+  @include blackWeight;
 
   width: 215px;
   margin: 0 0 0 5px;
@@ -18,7 +18,7 @@
   // スコアの位置指定
   .score {
     @include score;
-    @include boldWeight;
+    @include blackWeight;
 
     top: 44px;
     width: 60px;
@@ -58,7 +58,7 @@
     }
 
     .team {
-      @include regularWeight;
+      @include mediumWeight;
 
       font-size: 29px;
       line-height: 29px;
@@ -68,7 +68,7 @@
     }
 
     .name {
-      @include boldWeight;
+      @include blackWeight;
 
       font-size: 29px;
       line-height: 29px;
