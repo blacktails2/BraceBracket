@@ -3,9 +3,9 @@
   justify-content: space-between;
 
   hr {
-    background-color: var(--gray);
     margin-top: 100px;
     margin-bottom: 100px;
+    background-color: var(--gray);
 
     @media (max-width: 520px) {
       margin-top: 50px;

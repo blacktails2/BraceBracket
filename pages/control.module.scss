@@ -1,10 +1,10 @@
 .container {
-  padding-left: 48px;
   padding-right: 48px;
+  padding-left: 48px;
 
   @media (max-width: 520px) {
-    padding-left: 20px;
     padding-right: 20px;
+    padding-left: 20px;
   }
 
   h2 {
@@ -39,8 +39,8 @@
 
     @media (max-width: 960px) {
       flex-flow: column;
-      justify-content: inherit;
       align-items: inherit;
+      justify-content: inherit;
       margin-bottom: 50px;
     }
   }

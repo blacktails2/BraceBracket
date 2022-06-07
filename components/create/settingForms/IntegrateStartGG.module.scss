@@ -1,7 +1,7 @@
 .container {
-  margin-bottom: 50px;
   display: flex;
   justify-content: flex-start;
+  margin-bottom: 50px;
 
   .text {
     width: 100%;
@@ -25,8 +25,8 @@
       transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 
       &:focus {
-        outline: none;
         border-color: var(--bb-beige);
+        outline: none;
       }
     }
   }

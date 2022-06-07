@@ -76,47 +76,49 @@ export const StreamQueueTable: FC<{
             />
           </div>
           {streamQueue.length > 0 && (
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Round</th>
-                  <th>1P Player</th>
-                  <th>2P Player</th>
-                  <th>Stream Name</th>
-                  <th>State</th>
-                </tr>
-              </thead>
-              <tbody>
-                {streamQueue.map((queue, index) => (
-                  <tr
-                    key={queue.id}
-                    onClick={() => {
-                      setSelected(queue.id)
-                      onChange(queue)
-                    }}
-                  >
-                    <td>
-                      <input
-                        type="radio"
-                        name="stream"
-                        id={`${queue.id}`}
-                        checked={selected === queue.id}
-                        onChange={() => {
-                          setSelected(queue.id)
-                          onChange(queue)
-                        }}
-                      />
-                    </td>
-                    <td>{queue.roundText}</td>
-                    <td>{queue.p1?.playerName}</td>
-                    <td>{queue.p2?.playerName}</td>
-                    <td>{queue.streamName}</td>
-                    <td>{queue.inProgress ? "In Progress" : "In Queue"}</td>
+            <div className="overflow-x-auto">
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Round</th>
+                    <th>1P Player</th>
+                    <th>2P Player</th>
+                    <th>Stream Name</th>
+                    <th>State</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {streamQueue.map((queue, index) => (
+                    <tr
+                      key={queue.id}
+                      onClick={() => {
+                        setSelected(queue.id)
+                        onChange(queue)
+                      }}
+                    >
+                      <td>
+                        <input
+                          type="radio"
+                          name="stream"
+                          id={`${queue.id}`}
+                          checked={selected === queue.id}
+                          onChange={() => {
+                            setSelected(queue.id)
+                            onChange(queue)
+                          }}
+                        />
+                      </td>
+                      <td>{queue.roundText}</td>
+                      <td>{queue.p1?.playerName}</td>
+                      <td>{queue.p2?.playerName}</td>
+                      <td>{queue.streamName}</td>
+                      <td>{queue.inProgress ? "In Progress" : "In Queue"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </>
       )}

@@ -1,55 +1,19 @@
-// フォントの設定
-$regular: "Satoshi", "Noto Sans JP", sans-serif;
-$bold: "Satoshi", "Noto Sans JP", sans-serif;
-$darkgray: #111;
-$white: #fff;
-
-// フォントの太さの設定（ライトウェイト）
-@mixin next_regularWeight {
-  font-family: $regular;
-  font-variation-settings: "wght" 400;
-  font-weight: 400;
-}
-
-// フォントの太さの設定（ミディアムウェイト）
-@mixin next_mediumWeight {
-  font-family: $regular;
-  font-variation-settings: "wght" 500;
-  font-weight: 500;
-}
-
-// フォントの太さの設定（ボールドウェイト）
-@mixin next_boldWeight {
-  font-family: $bold;
-  font-variation-settings: "wght" 900;
-  font-weight: 900;
-}
-
-@mixin next_mcidText {
-  color: var(--sub-color);
-  text-align: center;
-  font-size: 19px;
-  line-height: 19px;
-  letter-spacing: 1px;
-  width: 220px;
-  height: 30px;
-  @include next_mediumWeight;
-}
+@import "base";
 
 .normal {
   .mc1,
   .mc2,
   .mc3,
   .mc4 {
-    color: var(--main-color);
-    text-align: center;
-    font-size: 30px;
-    line-height: 30px;
-    letter-spacing: 2px;
+    position: absolute;
+    top: 734px;
     width: 400px;
     height: 60px;
-    position: fixed;
-    top: 734px;
+    font-size: 30px;
+    line-height: 30px;
+    color: var(--main-color);
+    text-align: center;
+    letter-spacing: 2px;
 
     span {
       margin-left: 10px;
@@ -62,22 +26,29 @@ $white: #fff;
   }
 
   .mc_team {
-    @include next_regularWeight;
+    @include regularWeight;
   }
 
   .mc_name {
-    @include next_boldWeight;
+    @include blackWeight;
   }
 
   .id1,
   .id2,
   .id3,
   .id4 {
-    @include next_mcidText;
+    @include mediumWeight;
 
     position: absolute;
     top: 795px;
     left: 300px;
+    width: 220px;
+    height: 30px;
+    font-size: 19px;
+    line-height: 19px;
+    color: var(--sub-color);
+    text-align: center;
+    letter-spacing: 1px;
   }
 
   .mc1_layout {

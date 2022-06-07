@@ -1,45 +1,4 @@
-@import "./base";
-
-// スコアの設定
-@mixin score {
-  @include boldWeight;
-
-  margin: 0;
-  width: 60px;
-  color: var(--score-color);
-  text-align: center;
-  font-size: 40px;
-  position: fixed;
-  top: 45px;
-}
-
-@mixin player {
-  margin: 0;
-  width: 430px;
-  height: 60px;
-  top: 60px;
-  position: fixed;
-  text-align: center;
-}
-
-// チーム名及びプレイヤー名の設定
-@mixin team {
-  color: var(--player-color);
-  text-align: center;
-  font-size: 29px;
-  letter-spacing: 1px;
-  line-height: 29px;
-  @include regularWeight;
-}
-
-@mixin name {
-  color: var(--player-color);
-  text-align: center;
-  font-size: 29px;
-  line-height: 29px;
-  letter-spacing: 1px;
-  @include boldWeight;
-}
+@import "components/obs/score/base";
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
@@ -47,54 +6,40 @@
 
   width: 240px;
   margin: 0;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 21px;
   color: var(--status-color);
   text-align: center;
-  font-size: 19px;
-  line-height: 21px;
-  font-style: italic;
   letter-spacing: 1px;
 }
 
 .solid {
   // スコアの位置指定
-  .p1Score {
+  .score {
     @include score;
+    @include boldWeight;
 
-    left: 770px;
+    top: 45px;
+    width: 60px;
+    font-size: 40px;
+
+    &.p1 {
+      left: 770px;
+    }
+
+    &.p2 {
+      right: 770px;
+    }
   }
 
-  .p2Score {
-    @include score;
-
-    right: 770px;
-  }
-
-  .p1Team,
-  .p2Team {
-    @include team;
-  }
-
-  // プレイヤー名の位置指定
-  .player1Name {
-    @include player;
-
-    left: 320px;
-  }
-
-  .player2Name {
-    @include player;
-
-    right: 320px;
-  }
-
-  .p1PlayerName,
-  .p2PlayerName {
-    @include name;
-  }
-
-  .player1Name,
-  .player2Name {
-    @include player;
+  .player {
+    position: absolute;
+    top: 60px;
+    width: 430px;
+    height: 60px;
+    margin: 0;
+    text-align: center;
 
     span {
       margin-left: 10px;
@@ -103,17 +48,45 @@
         margin-left: 0;
       }
     }
+
+    &.p1 {
+      left: 320px;
+    }
+
+    &.p2 {
+      right: 320px;
+    }
+
+    .team {
+      @include regularWeight;
+
+      font-size: 29px;
+      line-height: 29px;
+      color: var(--player-color);
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .name {
+      @include boldWeight;
+
+      font-size: 29px;
+      line-height: 29px;
+      color: var(--player-color);
+      text-align: center;
+      letter-spacing: 1px;
+    }
   }
 
   .box {
-    width: 240px;
-    height: 60px;
     position: absolute;
     top: 44px;
     left: 840px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 240px;
+    height: 60px;
   }
 
   // 試合ステータスの位置設定
@@ -125,19 +98,19 @@
     @include status;
   }
 
-  .logobox {
-    height: 160px;
-    width: 280px;
-    position: absolute;
-    left: 820px;
-    top: 900px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .cameraRight,
+  .cameraLeft {
+    color: var(--bb-white);
   }
 
-  .logo {
-    max-height: 100%;
-    max-width: 100%;
+  .logobox {
+    position: absolute;
+    top: 900px;
+    left: 820px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 160px;
   }
 }

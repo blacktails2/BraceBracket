@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 
 import { Scoreboard } from "../components/obs/score/Scoreboard"
-import { defaultValue as defaultScore } from "../hooks/useScore"
-import { defaultValue as defaultSetting } from "../hooks/useSetting"
 
 import deepCopy from "./helper/deepCopy"
+import { scoreDefault } from "./helper/ScoreDefault"
+import { settingDefault } from "./helper/SettingDefault"
 
 export default {
   title: "OBS/Score",
@@ -41,15 +41,15 @@ const Template: ComponentStory<typeof Scoreboard> = (args) => (
 
 export const DualDarkColor = Template.bind({})
 DualDarkColor.args = {
-  score: deepCopy(defaultScore),
-  setting: deepCopy(defaultSetting),
+  score: deepCopy(scoreDefault),
+  setting: deepCopy(settingDefault),
 }
 
 export const DualDarkMono = Template.bind({})
 DualDarkMono.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.color = "dark_mono"
     return setting
   })(),
@@ -57,9 +57,9 @@ DualDarkMono.args = {
 
 export const DualLightColor = Template.bind({})
 DualLightColor.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.color = "light_color"
     return setting
   })(),
@@ -67,9 +67,9 @@ DualLightColor.args = {
 
 export const DualLightMono = Template.bind({})
 DualLightMono.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.color = "light_mono"
     return setting
   })(),
@@ -77,9 +77,9 @@ DualLightMono.args = {
 
 export const DualGradient = Template.bind({})
 DualGradient.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.color = "gradient"
     return setting
   })(),
@@ -87,9 +87,9 @@ DualGradient.args = {
 
 export const SingleDarkColor = Template.bind({})
 SingleDarkColor.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "single"
     setting.scoreboard.design.color = "dark_color"
     return setting
@@ -98,9 +98,9 @@ SingleDarkColor.args = {
 
 export const SingleDarkMono = Template.bind({})
 SingleDarkMono.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "single"
     setting.scoreboard.design.color = "dark_mono"
     return setting
@@ -109,9 +109,9 @@ SingleDarkMono.args = {
 
 export const SingleLightColor = Template.bind({})
 SingleLightColor.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "single"
     setting.scoreboard.design.color = "light_color"
     return setting
@@ -120,9 +120,9 @@ SingleLightColor.args = {
 
 export const SingleLightMono = Template.bind({})
 SingleLightMono.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "single"
     setting.scoreboard.design.color = "light_mono"
     return setting
@@ -131,9 +131,9 @@ SingleLightMono.args = {
 
 export const SingleBeige = Template.bind({})
 SingleBeige.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "single"
     setting.scoreboard.design.color = "beige"
     return setting
@@ -142,9 +142,9 @@ SingleBeige.args = {
 
 export const SolidDarkColor = Template.bind({})
 SolidDarkColor.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "solid"
     setting.scoreboard.design.color = "dark_color"
     return setting
@@ -153,9 +153,9 @@ SolidDarkColor.args = {
 
 export const SolidDarkMono = Template.bind({})
 SolidDarkMono.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "solid"
     setting.scoreboard.design.color = "dark_mono"
     return setting
@@ -164,9 +164,9 @@ SolidDarkMono.args = {
 
 export const SolidLightColor = Template.bind({})
 SolidLightColor.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "solid"
     setting.scoreboard.design.color = "light_color"
     return setting
@@ -175,9 +175,9 @@ SolidLightColor.args = {
 
 export const SolidLightMono = Template.bind({})
 SolidLightMono.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "solid"
     setting.scoreboard.design.color = "light_mono"
     return setting
@@ -186,9 +186,9 @@ SolidLightMono.args = {
 
 export const SolidBeige = Template.bind({})
 SolidBeige.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "solid"
     setting.scoreboard.design.color = "beige"
     return setting
@@ -197,9 +197,9 @@ SolidBeige.args = {
 
 export const SimpleWhite = Template.bind({})
 SimpleWhite.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "simple"
     setting.scoreboard.design.color = "white"
     return setting
@@ -208,9 +208,9 @@ SimpleWhite.args = {
 
 export const SimpleBlack = Template.bind({})
 SimpleBlack.args = {
-  score: deepCopy(defaultScore),
+  score: deepCopy(scoreDefault),
   setting: (() => {
-    const setting = deepCopy(defaultSetting)
+    const setting = deepCopy(settingDefault)
     setting.scoreboard.design.layout = "simple"
     setting.scoreboard.design.color = "black"
     return setting
