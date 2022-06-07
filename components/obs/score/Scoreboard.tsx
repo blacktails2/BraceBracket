@@ -131,29 +131,29 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
       </div>
       {/*1Pスコア*/}
       <Transition keyName={`${score.p1.playerName}-${score.p1.score}`}>
-        <div className={styles.p1Score}>{score.p1.score}</div>
+        <div className={`${styles.score} ${styles.p1}`}>{score.p1.score}</div>
       </Transition>
       {/*2Pスコア*/}
       <Transition keyName={`${score.p2.playerName}-${score.p2.score}`}>
-        <div className={styles.p2Score}>{score.p2.score}</div>
+        <div className={`${styles.score} ${styles.p2}`}>{score.p2.score}</div>
       </Transition>
-      <div className={styles.player1Name}>
+      <div className={`${styles.player} ${styles.p1}`}>
         <Transition keyName={`${score.p1.team}-${score.p1.playerName}`}>
           <div>
             {score.p1.team && (
-              <span className={styles.p1Team}>{score.p1.team}</span>
+              <span className={styles.team}>{score.p1.team}</span>
             )}
-            <span className={styles.p1PlayerName}>{score.p1.playerName}</span>
+            <span className={styles.name}>{score.p1.playerName}</span>
           </div>
         </Transition>
       </div>
-      <div className={styles.player2Name}>
+      <div className={`${styles.player} ${styles.p2}`}>
         <Transition keyName={`${score.p2.team}-${score.p2.playerName}`}>
           <div>
             {score.p2.team && (
-              <span className={styles.p2Team}>{score.p2.team}</span>
+              <span className={styles.team}>{score.p2.team}</span>
             )}
-            <span className={styles.p2PlayerName}>{score.p2.playerName}</span>
+            <span className={styles.name}>{score.p2.playerName}</span>
           </div>
         </Transition>
       </div>

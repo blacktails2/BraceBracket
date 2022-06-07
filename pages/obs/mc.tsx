@@ -9,10 +9,10 @@ import { useSetting } from "../../hooks/useSetting"
 const Page: NextPage = () => {
   const router = useRouter()
   const id = router.query.id as string
-  const [setting] = useSetting(id)
-  const [mc] = useMC(id)
+  const [setting, , loadingSetting] = useSetting(id)
+  const [mc, , loadingMC] = useMC(id)
 
-  if (!setting || !mc) {
+  if (!setting || loadingSetting || !mc || loadingMC) {
     return null
   }
 

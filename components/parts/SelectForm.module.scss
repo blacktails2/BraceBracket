@@ -2,45 +2,45 @@
   position: relative;
 
   &::before {
-    content: "";
-    width: 30px;
-    height: 30px;
-    background-color: var(--bb-beige);
     position: absolute;
     top: 0;
     right: 0;
-    border-radius: 5px;
+    width: 30px;
+    height: 30px;
     pointer-events: none;
+    content: "";
+    background-color: var(--bb-beige);
+    border-radius: 5px;
   }
 
   &::after {
-    content: "";
-    width: 8px;
-    height: 8px;
     position: absolute;
     top: 8px;
     right: 10px;
+    width: 8px;
+    height: 8px;
+    pointer-events: none;
+    content: "";
     border-right: 1px solid var(--bb-black);
     border-bottom: 1px solid var(--bb-black);
     transform: rotate(45deg);
-    pointer-events: none;
   }
 
   select {
+    position: relative;
     width: 194px;
     height: 30px;
     padding: 5px 10px;
-    border: 1px solid var(--light-primary);
     background-color: rgb(255 255 255 / 0%);
+    border: 1px solid var(--light-primary);
     border-radius: 5px;
     appearance: none;
-    position: relative;
   }
 
   .input {
-    font-family: "Mint Grotesk Regular", sans-serif;
     height: 30px;
     padding: 5px 10px;
+    font-family: "Mint Grotesk Regular", sans-serif;
     border: 1px solid var(--light-primary);
     border-radius: 5px;
   }

@@ -1,10 +1,7 @@
-import { useRouter } from "next/router"
 import { FC, useState } from "react"
 import { useInterval } from "react-use"
 
-import { useSetting } from "../../../hooks/useSetting"
-import { PlayerScore } from "../../../libs/const"
-import { Attendee, getAttendee } from "../../../libs/getAttendee"
+import { PlayerScore, Setting } from "../../../libs/const"
 import { getStreamQueue, StreamQueue } from "../../../libs/getStreamQueue"
 import { Button } from "../../parts/Button"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
@@ -12,6 +9,7 @@ import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import styles from "./StreamQueueTable.module.scss"
 
 export const StreamQueueTable: FC<{
+  setting: Setting
   onChange: (queue: {
     id: number
     roundText: string
@@ -21,18 +19,15 @@ export const StreamQueueTable: FC<{
   }) => void
   trackNext?: boolean
   id: string
-}> = ({ onChange, trackNext, id: inputID }) => {
-  const router = useRouter()
-  const id = router.query.id as string
-  const [setting] = useSetting(id)
+}> = ({ setting, onChange, trackNext, id: inputID }) => {
   const [streamQueue, setStreamQueue] = useState<StreamQueue>([])
-  const [attendee, setAttendee] = useState<Attendee>([])
   const [selected, setSelected] = useState<number>(-1)
   const [isTrack, setIsTrack] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false)
 
   useInterval(async () => {
     if (isTrack) {
-      const streamQueue = await getStreamQueue(setting?.integrateStartGG?.url)
+      const streamQueue = await getStreamQueue(setting.integrateStartGG?.url)
       setStreamQueue(streamQueue)
       if (!trackNext && streamQueue.length > 0) {
         onChange(streamQueue[0])
@@ -53,13 +48,22 @@ export const StreamQueueTable: FC<{
         <>
           <div className="flex flex-wrap gap-[1rem]">
             <Button
-              onClick={() => {
-                getStreamQueue(setting?.integrateStartGG?.url).then(
-                  setStreamQueue
-                )
-                getAttendee(setting?.integrateStartGG?.url).then(setAttendee)
+              onClick={(e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                getStreamQueue(setting?.integrateStartGG?.url)
+                  .then(setStreamQueue)
+                  .then(() => {
+                    setShowTooltip(true)
+                    setTimeout(() => {
+                      setShowTooltip(false)
+                    }, 3000)
+                  })
               }}
+              type="button"
               className="mb-[20px]"
+              tooltipText="取得しました"
+              showTooltip={showTooltip}
             >
               start.ggから配信台の情報を取得
             </Button>
@@ -71,60 +75,50 @@ export const StreamQueueTable: FC<{
               className="pt-[0.75rem]"
             />
           </div>
-          <datalist id="playerName">
-            {Array.from(new Set(attendee.map((a) => a.playerName))).map(
-              (playerName) => (
-                <option key={playerName} value={playerName} />
-              )
-            )}
-          </datalist>
-          <datalist id="team">
-            {Array.from(new Set(attendee.map((a) => a.team))).map((team) => (
-              <option key={team} value={team} />
-            ))}
-          </datalist>
           {streamQueue.length > 0 && (
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Round</th>
-                  <th>1P Player</th>
-                  <th>2P Player</th>
-                  <th>Stream Name</th>
-                  <th>State</th>
-                </tr>
-              </thead>
-              <tbody>
-                {streamQueue.map((queue, index) => (
-                  <tr
-                    key={queue.id}
-                    onClick={() => {
-                      setSelected(queue.id)
-                      onChange(queue)
-                    }}
-                  >
-                    <td>
-                      <input
-                        type="radio"
-                        name="stream"
-                        id={`${queue.id}`}
-                        checked={selected === queue.id}
-                        onChange={() => {
-                          setSelected(queue.id)
-                          onChange(queue)
-                        }}
-                      />
-                    </td>
-                    <td>{queue.roundText}</td>
-                    <td>{queue.p1?.playerName}</td>
-                    <td>{queue.p2?.playerName}</td>
-                    <td>{queue.streamName}</td>
-                    <td>{queue.inProgress ? "In Progress" : "In Queue"}</td>
+            <div className="overflow-x-auto">
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Round</th>
+                    <th>1P Player</th>
+                    <th>2P Player</th>
+                    <th>Stream Name</th>
+                    <th>State</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {streamQueue.map((queue, index) => (
+                    <tr
+                      key={queue.id}
+                      onClick={() => {
+                        setSelected(queue.id)
+                        onChange(queue)
+                      }}
+                    >
+                      <td>
+                        <input
+                          type="radio"
+                          name="stream"
+                          id={`${queue.id}`}
+                          checked={selected === queue.id}
+                          onChange={() => {
+                            setSelected(queue.id)
+                            onChange(queue)
+                          }}
+                        />
+                      </td>
+                      <td>{queue.roundText}</td>
+                      <td>{queue.p1?.playerName}</td>
+                      <td>{queue.p2?.playerName}</td>
+                      <td>{queue.streamName}</td>
+                      <td>{queue.inProgress ? "In Progress" : "In Queue"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </>
       )}

@@ -1,10 +1,10 @@
 .header {
   position: sticky;
   top: 0;
-  border-bottom: 1px solid #eee;
   z-index: 1000;
-  background-color: #fff;
   height: 100px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
 
   @media (max-width: 960px) {
     height: 70px;
@@ -18,8 +18,8 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
   height: 100px;
+  padding: 0 20px;
 
   @media (max-width: 960px) {
     height: 70px;
@@ -40,9 +40,9 @@
   width: 292px;
   height: 30px;
   background-image: url("/image/logotype.svg");
-  background-size: contain;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 
   @media (max-width: 960px) {
     width: 225px;
@@ -69,11 +69,11 @@
 }
 
 .headerLink {
-  font-size: 18px;
   margin: 30px 15px;
+  font-size: 18px;
   color: var(--black);
-  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
   border-bottom: 2px solid rgb(20 20 25 / 0%);
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 
   &:hover {
     border-bottom: 2px solid rgb(20 20 25 / 100%);
@@ -81,11 +81,11 @@
 }
 
 .createLink {
-  font-size: 14px;
-  font-family: "Mint Grotesk Medium", "Zen Kaku Gothic Antique", sans-serif;
-  font-weight: 700;
-  margin: 30px 15px;
   padding: 8px 15px;
+  margin: 30px 15px;
+  font-family: "Mint Grotesk Medium", "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
   color: var(--black);
   background-color: var(--primary);
   border-radius: 15px;
@@ -103,35 +103,35 @@
 }
 
 .hamburgerMenu {
-  margin-left: 5px;
   display: none;
   width: 30px;
   height: 30px;
   padding-top: 12px;
+  margin-left: 5px;
 
   .dummyButton {
     display: none;
   }
 
   @media (max-width: 960px) {
-    display: block;
     position: relative;
+    display: block;
 
     .menuButton {
+      display: block;
       width: 25px;
       height: 25px;
-      display: block;
     }
 
     .menuButton span,
     .menuButton span::before,
     .menuButton span::after {
-      content: "";
-      display: block;
-      height: 3px;
-      width: 25px;
-      background-color: var(--bb-black);
       position: absolute;
+      display: block;
+      width: 25px;
+      height: 3px;
+      content: "";
+      background-color: var(--bb-black);
       transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
@@ -158,22 +158,22 @@
     }
 
     .menuContent {
-      background-color: var(--bb-white);
-      transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
       position: absolute;
-      border-radius: 15px;
-      opacity: 0;
-      right: 0;
       top: 60px;
+      right: 0;
       width: 35vw;
+      background-color: var(--bb-white);
+      border-radius: 15px;
       box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 
       a {
         display: none;
         padding: 15px 0 15px 15px;
+        font-size: 1.6rem;
         color: var(--black);
         text-decoration: none;
-        font-size: 1.6rem;
         background-color: rgb(250 246 240 / 0%);
         border-radius: 15px;
         transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
@@ -196,8 +196,8 @@
 
   @media (max-width: 520px) {
     .menuContent {
-      right: 7px;
       top: 50px;
+      right: 7px;
       width: 80vw;
     }
 

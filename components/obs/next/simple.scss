@@ -1,198 +1,138 @@
-// フォントの設定
-$next_regular: "Satoshi", "Noto Sans JP", sans-serif;
-$next_bold: "Satoshi", "Noto Sans JP", sans-serif;
-$next_black: "Satoshi", "Noto Sans JP", sans-serif;
+@import "base";
 
 .simple {
-  // フォントの太さの設定（ライトウェイト）
-  @mixin nextsp_regularWeight {
-    font-family: $next_regular;
-    font-variation-settings: "wght" 400;
-    font-weight: 400;
-  }
-
-  // フォントの太さの設定（ミディアムウェイト）
-  @mixin nextsp_mediumWeight {
-    font-family: $next_regular;
-    font-variation-settings: "wght" 500;
-    font-weight: 500;
-  }
-
-  @mixin nextsp_boldWeight {
-    font-family: $next_black;
-    font-variation-settings: "wght" 700;
-    font-weight: 700;
-  }
-
-  // フォントの太さの設定（ブラックウェイト）
-  @mixin nextsp_blackWeight {
-    font-family: $next_black;
-    font-variation-settings: "wght" 900;
-    font-weight: 900;
-  }
-
   .nextnow {
-    @include nextsp_blackWeight;
+    @include blackWeight;
 
+    position: absolute;
+    top: 877px;
+    left: 40px;
     width: 260px;
     height: 95px;
     font-size: 72px;
-    text-align: center;
     color: var(--sub-color);
-    position: absolute;
-    left: 40px;
-    top: 877px;
+    text-align: center;
     letter-spacing: 0.05em;
   }
 
   .statusBox {
-    width: 320px;
-    height: 65px;
     position: absolute;
-    left: 315px;
     top: 884px;
+    left: 315px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  @mixin nextsp_statusText {
-    @include nextsp_boldWeight;
-
     width: 320px;
-    margin: 0;
-    color: var(--sub-color);
-    text-align: left;
-    font-size: 26px;
-    line-height: 26px;
-    font-style: italic;
-    letter-spacing: 2px;
-  }
-
-  @mixin nextsp_boText {
-    @include nextsp_regularWeight;
-
-    width: 320px;
-    margin: 0;
-    color: var(--sub-color);
-    text-align: left;
-    font-size: 26px;
-    line-height: 26px;
-    font-style: italic;
-    letter-spacing: 2px;
+    height: 65px;
   }
 
   .round {
-    @include nextsp_statusText;
+    @include boldWeight;
+
+    width: 320px;
+    margin: 0;
+    font-size: 26px;
+    font-style: italic;
+    line-height: 26px;
+    color: var(--sub-color);
+    text-align: left;
+    letter-spacing: 2px;
   }
 
   .bo {
-    @include nextsp_boText;
-  }
+    @include regularWeight;
 
-  // スコアの設定
-  @mixin nextsp_scoreText {
-    @include nextsp_boldWeight;
-
+    width: 320px;
     margin: 0;
-    width: 85px;
+    font-size: 26px;
+    font-style: italic;
+    line-height: 26px;
     color: var(--sub-color);
-    text-align: center;
-    font-size: 60px;
-    position: absolute;
-    font-variant-numeric: tabular-nums;
+    text-align: left;
+    letter-spacing: 2px;
   }
 
   // スコアの位置指定
-  .scoreLeft {
-    @include nextsp_scoreText;
+  .score {
+    @include boldWeight;
 
-    left: 450px;
+    position: absolute;
     top: 956px;
-  }
-
-  .scoreRight {
-    @include nextsp_scoreText;
-
-    left: 535px;
-    top: 956px;
-  }
-
-  // チーム名及びプレイヤー名の設定
-  @mixin nextsp_teamText {
-    color: var(--sub-color);
-    font-size: 30px;
-    line-height: 30px;
-    letter-spacing: 1px;
-    @include nextsp_regularWeight;
-  }
-
-  // チーム名及びプレイヤー名の設定
-  @mixin nextsp_nameText {
-    color: var(--sub-color);
-    font-size: 34px;
-    line-height: 34px;
-    letter-spacing: 1px;
-    @include nextsp_blackWeight;
-  }
-
-  // プレイヤー名の位置指定
-  @mixin player {
-    @include nextsp_nameText;
-
+    width: 85px;
     margin: 0;
-    width: 400px;
-    height: 50px;
+    font-size: 60px;
+    font-variant-numeric: tabular-nums;
+    color: var(--sub-color);
+    text-align: center;
+
+    &.p1 {
+      left: 450px;
+    }
+
+    &.p2 {
+      left: 535px;
+    }
+  }
+
+  .player {
     position: absolute;
     top: 996px;
-  }
+    width: 400px;
+    height: 50px;
+    margin: 0;
 
-  .playerLeft {
-    @include player;
+    &.p1 {
+      left: 25px;
+      text-align: right;
+    }
 
-    left: 25px;
-    text-align: right;
-  }
+    &.p2 {
+      left: 645px;
+      text-align: left;
+    }
 
-  .playerRight {
-    @include player;
+    .team {
+      @include regularWeight;
 
-    left: 645px;
-    text-align: left;
-  }
+      font-size: 30px;
+      line-height: 30px;
+      color: var(--sub-color);
+      letter-spacing: 1px;
+    }
 
-  .playerTeam {
-    @include nextsp_teamText;
-  }
+    .name {
+      @include blackWeight;
 
-  .playerName {
-    @include nextsp_nameText;
-
-    margin-left: 1rem;
+      margin-left: 1rem;
+      font-size: 34px;
+      line-height: 34px;
+      color: var(--sub-color);
+      letter-spacing: 1px;
+    }
   }
 
   .localsetting {
-    @include nextsp_mediumWeight;
+    @include mediumWeight;
 
-    text-align: right;
+    position: absolute;
+    top: 975px;
+    left: 1570px;
     font-size: 24px;
     line-height: 24px;
-    position: absolute;
     color: var(--sub-color);
-    left: 1570px;
-    top: 975px;
+    text-align: right;
     letter-spacing: 1px;
   }
 
   .localtime {
-    @include nextsp_boldWeight;
+    @include boldWeight;
 
-    font-size: 52px;
-    text-align: right;
-    color: var(--sub-color);
     position: absolute;
-    right: 57px;
     top: 960px;
+    right: 57px;
+    font-size: 52px;
     font-variant-numeric: tabular-nums;
+    color: var(--sub-color);
+    text-align: right;
   }
 }

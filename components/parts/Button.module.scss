@@ -1,21 +1,102 @@
 .button {
-  font-size: 12px;
   font-family: "Mint Grotesk Bold", "Zen Kaku Gothic Antique", sans-serif;
   font-weight: 700;
-  padding: 8px 12px;
-  color: var(--bb-white);
-  background-color: var(--bb-black);
-  border-radius: 5px;
   border: none;
   transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 
+  &.normal {
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--bb-white);
+    background-color: var(--bb-black);
+    border-radius: 5px;
+
+    &:hover {
+      background-color: var(--bb-gray);
+      box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+    }
+
+    &:active {
+      background-color: var(--bb-black);
+      box-shadow: none;
+    }
+  }
+
+  &.small {
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--black);
+    background-color: var(--primary);
+    border-radius: 5px;
+
+    &:hover {
+      background-color: var(--bb-beige-hover);
+      box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+    }
+
+    &:active {
+      background-color: var(--bb-beige-dark);
+      box-shadow: none;
+    }
+  }
+
+  &.primary {
+    height: 40px;
+    padding: 6px 15px;
+    font-size: 14px;
+    color: var(--black);
+    background-color: var(--primary);
+    border-radius: 15px;
+
+    &:hover {
+      background-color: var(--bb-beige-hover);
+      box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+    }
+
+    &:active {
+      background-color: var(--bb-beige-dark);
+      box-shadow: none;
+    }
+  }
+}
+
+.light {
+  background-color: var(--bb-white) !important;
+  border: 1px solid var(--bb-beige) !important;
+
   &:hover {
-    background-color: var(--bb-gray);
-    box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+    background-color: var(--bb-beige-hover) !important;
   }
 
   &:active {
-    background-color: var(--bb-black);
-    box-shadow: none;
+    background-color: var(--bb-beige-active) !important;
   }
+}
+
+.container {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  z-index: 1;
+  padding: 8px;
+  font-family: "Mint Grotesk Medium", "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--bb-beige);
+  background-color: var(--bb-white);
+  border: 1px solid var(--bb-beige);
+  border-radius: 5px;
+  box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  transform: translate(-50%, -50%);
+}
+
+.tooltipEnter,
+.tooltipExit {
+  opacity: 0;
+  transform: translate(-50%, calc(-50% + 10px));
 }

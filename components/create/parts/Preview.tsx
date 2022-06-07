@@ -9,7 +9,7 @@ import {
   getMCFilename,
   getNextFilename,
 } from "../../../libs/const"
-import { PrimaryButton } from "../../parts/PrimaryButton"
+import { Button } from "../../parts/Button"
 
 import styles from "./Preview.module.scss"
 
@@ -118,7 +118,9 @@ export const Preview: FC = () => {
               alt="Top8プレビュー"
             />
           </div>
-          <PrimaryButton type="submit">{submitText}</PrimaryButton>
+          <Button mode="primary" type="submit">
+            {submitText}
+          </Button>
         </div>
       </div>
     </div>

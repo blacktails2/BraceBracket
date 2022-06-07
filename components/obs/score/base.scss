@@ -24,12 +24,19 @@ $bold: "Satoshi", "Noto Sans JP", sans-serif;
   font-weight: 900;
 }
 
+@mixin score {
+  position: absolute;
+  margin: 0;
+  color: var(--score-color);
+  text-align: center;
+}
+
 .board {
   position: absolute;
-  width: 100%;
   top: 0;
   left: 0;
   z-index: -1;
+  width: 100%;
   opacity: 1;
 }
 
@@ -45,16 +52,16 @@ $bold: "Satoshi", "Noto Sans JP", sans-serif;
 @mixin idText {
   @include boldWeight;
 
+  position: absolute;
+  top: 845px;
   width: 220px;
   height: 30px;
   margin: 0;
-  color: var(--player-color);
-  text-align: center;
   font-size: 18px;
   line-height: 18px;
+  color: var(--player-color);
+  text-align: center;
   letter-spacing: 1px;
-  position: absolute;
-  top: 845px;
 }
 
 .cameraLeft {
@@ -67,4 +74,9 @@ $bold: "Satoshi", "Noto Sans JP", sans-serif;
   @include idText;
 
   right: 20px;
+}
+
+.logo {
+  max-width: 100%;
+  max-height: 100%;
 }

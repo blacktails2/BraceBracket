@@ -1,30 +1,34 @@
 import { useRouter } from "next/router"
-import { FC, useEffect, useState } from "react"
+import { FC, memo, useEffect, useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 import { useOrigin } from "../../../hooks/useOrigin"
-import { useScore } from "../../../hooks/useScore"
-import { useSetting } from "../../../hooks/useSetting"
-import { Score } from "../../../libs/const"
+import { MatchIntervalInfo, Score, Setting } from "../../../libs/const"
+import { Button } from "../../parts/Button"
 import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { MatchTypeSelector } from "../../parts/MatchTypeSelector"
 import { NumberForm } from "../../parts/NumberForm"
-import { PrimaryButton } from "../../parts/PrimaryButton"
 import { RoundSelector } from "../../parts/RoundSelector"
-import { SmallButton } from "../../parts/SmallButton"
 import { TextForm } from "../../parts/TextForm"
 import { ControlPanel } from "../parts/ControlPanel"
 import { StreamQueueTable } from "../parts/StreamQueueTable"
 
-export const ScoreAndCamera: FC = () => {
+const ScoreAndCamera: FC<{
+  setting: Setting
+  score: Score
+  setScore: (score: Score) => void
+  matchIntervalInfo: MatchIntervalInfo
+}> = ({ setting, score, setScore, matchIntervalInfo }) => {
   const router = useRouter()
   const id = router.query.id as string
   const origin = useOrigin()
-  const [score, setScore] = useScore(id)
-  const [setting] = useSetting(id)
   const [showTooltip, setShowTooltip] = useState(false)
   const scoreForm = useForm<Score>()
   const { handleSubmit, reset } = scoreForm
+  useEffect(() => {
+    reset(score)
+  }, [reset, score])
+
   const onScoreSubmit: SubmitHandler<Score> = (data) => {
     setScore(data)
     setShowTooltip(true)
@@ -32,15 +36,12 @@ export const ScoreAndCamera: FC = () => {
       setShowTooltip(false)
     }, 3000)
   }
-  useEffect(() => {
-    reset(score)
-  }, [reset, score])
-  scoreForm.watch("round")
-  scoreForm.watch("matchType")
+  scoreForm.watch()
   return (
     <ControlPanel title="スコア&カメラ" url={`${origin}/obs/score/?id=${id}`}>
       <hr />
       <StreamQueueTable
+        setting={setting}
         onChange={(queue) => {
           scoreForm.setValue("p1.team", queue.p1?.team ?? "")
           scoreForm.setValue("p1.playerName", queue.p1?.playerName ?? "")
@@ -82,8 +83,9 @@ export const ScoreAndCamera: FC = () => {
                   <div>
                     <label>スコア</label>
                     <div className="flex gap-[0.5rem]">
-                      <SmallButton
+                      <Button
                         type="button"
+                        mode="small"
                         onClick={() =>
                           scoreForm.setValue(
                             "p1.score",
@@ -92,14 +94,15 @@ export const ScoreAndCamera: FC = () => {
                         }
                       >
                         -1
-                      </SmallButton>
+                      </Button>
                       <NumberForm
                         className="w-[5rem]"
                         name={"p1.score"}
                         cleanValue={score?.p1.score}
                       />
-                      <SmallButton
+                      <Button
                         type="button"
+                        mode="small"
                         onClick={() =>
                           scoreForm.setValue(
                             "p1.score",
@@ -108,7 +111,7 @@ export const ScoreAndCamera: FC = () => {
                         }
                       >
                         +1
-                      </SmallButton>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -135,8 +138,9 @@ export const ScoreAndCamera: FC = () => {
                   <div>
                     <label>スコア</label>
                     <div className="flex gap-[0.5rem]">
-                      <SmallButton
+                      <Button
                         type="button"
+                        mode="small"
                         onClick={() =>
                           scoreForm.setValue(
                             "p2.score",
@@ -145,14 +149,15 @@ export const ScoreAndCamera: FC = () => {
                         }
                       >
                         -1
-                      </SmallButton>
+                      </Button>
                       <NumberForm
                         className="w-[5rem]"
                         name={"p2.score"}
                         cleanValue={score?.p2.score}
                       />
-                      <SmallButton
+                      <Button
                         type="button"
+                        mode="small"
                         onClick={() =>
                           scoreForm.setValue(
                             "p2.score",
@@ -161,7 +166,7 @@ export const ScoreAndCamera: FC = () => {
                         }
                       >
                         +1
-                      </SmallButton>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -191,8 +196,9 @@ export const ScoreAndCamera: FC = () => {
             <div className="mt-[2rem]">
               <h4>データのリセット・入れ替え</h4>
               <div className="flex flex-wrap gap-[1rem]">
-                <SmallButton
+                <Button
                   type="button"
+                  mode="small"
                   onClick={() => {
                     const [p1, p2] = scoreForm.getValues(["p1", "p2"])
                     scoreForm.setValue("p1", p2)
@@ -200,10 +206,11 @@ export const ScoreAndCamera: FC = () => {
                   }}
                 >
                   1Pと2Pを入れ替える
-                </SmallButton>
-                <SmallButton
+                </Button>
+                <Button
                   light
                   type="button"
+                  mode="small"
                   onClick={() => {
                     const [p1, p2] = scoreForm.getValues(["p1", "p2"])
                     scoreForm.setValue("p1", {
@@ -217,10 +224,11 @@ export const ScoreAndCamera: FC = () => {
                   }}
                 >
                   スコアをリセット
-                </SmallButton>
-                <SmallButton
+                </Button>
+                <Button
                   light
                   type="button"
+                  mode="small"
                   onClick={() => {
                     scoreForm.setValue("p1", {
                       team: "",
@@ -237,7 +245,21 @@ export const ScoreAndCamera: FC = () => {
                   }}
                 >
                   全てリセット
-                </SmallButton>
+                </Button>
+                <Button
+                  light
+                  type="button"
+                  mode="small"
+                  onClick={() => {
+                    scoreForm.setValue("p1", matchIntervalInfo.p1)
+                    scoreForm.setValue("p2", matchIntervalInfo.p2)
+                    scoreForm.setValue("round", matchIntervalInfo.round)
+                    scoreForm.setValue("matchType", matchIntervalInfo.matchType)
+                    scoreForm.setValue("uppercase", matchIntervalInfo.uppercase)
+                  }}
+                >
+                  試合間情報を取得する
+                </Button>
               </div>
             </div>
           </div>
@@ -283,17 +305,19 @@ export const ScoreAndCamera: FC = () => {
             />
           </div>
           <div className="relative flex gap-[2rem]">
-            <PrimaryButton
+            <Button
               type="submit"
+              mode="primary"
               className="w-[19rem] mt-[3rem]"
               full
               tooltipText="適用されました"
               showTooltip={showTooltip}
             >
               適用する
-            </PrimaryButton>
-            <PrimaryButton
+            </Button>
+            <Button
               type="button"
+              mode="primary"
               className="w-[19rem] mt-[3rem]"
               full
               light
@@ -302,10 +326,12 @@ export const ScoreAndCamera: FC = () => {
               }}
             >
               変更をリセット
-            </PrimaryButton>
+            </Button>
           </div>
         </form>
       </FormProvider>
     </ControlPanel>
   )
 }
+
+export default memo(ScoreAndCamera)

@@ -1,62 +1,19 @@
-// フォントの設定
-$regular: "Satoshi", "Noto Sans JP", sans-serif;
-$bold: "Satoshi", "Noto Sans JP", sans-serif;
-$black: "Satoshi", "Noto Sans JP", sans-serif;
-$darkgray: #111;
-$white: #fff;
-
-// フォントの太さの設定（ライトウェイト）
-@mixin nextsp_regularWeight {
-  font-family: $regular;
-  font-variation-settings: "wght" 400;
-  font-weight: 400;
-}
-
-// フォントの太さの設定（ミディアムウェイト）
-@mixin nextsp_mediumWeight {
-  font-family: $regular;
-  font-variation-settings: "wght" 500;
-  font-weight: 500;
-}
-
-@mixin nextsp_boldWeight {
-  font-family: $bold;
-  font-variation-settings: "wght" 700;
-  font-weight: 700;
-}
-
-// フォントの太さの設定（ブラックウェイト）
-@mixin nextsp_blackWeight {
-  font-family: $black;
-  font-variation-settings: "wght" 900;
-  font-weight: 900;
-}
-
-// MC情報の設定
-@mixin nextmcidText {
-  color: var(--main-color);
-  font-size: 21px;
-  line-height: 21px;
-  letter-spacing: 1px;
-  width: 220px;
-  height: 25px;
-  @include nextsp_boldWeight;
-}
+@import "base";
 
 .simple {
   .mc1,
   .mc2,
   .mc3,
   .mc4 {
-    color: var(--sub-color);
-    text-align: center;
-    font-size: 34px;
-    line-height: 34px;
-    letter-spacing: 2px;
+    position: absolute;
+    top: 727px;
     width: 400px;
     height: 50px;
-    position: fixed;
-    top: 727px;
+    font-size: 34px;
+    line-height: 34px;
+    color: var(--sub-color);
+    text-align: center;
+    letter-spacing: 2px;
 
     span {
       margin-left: 10px;
@@ -69,21 +26,27 @@ $white: #fff;
   }
 
   .mc_team {
-    @include nextsp_regularWeight;
+    @include regularWeight;
   }
 
   .mc_name {
-    @include nextsp_blackWeight;
+    @include blackWeight;
   }
 
   .id1,
   .id2,
   .id3,
   .id4 {
-    @include nextmcidText;
+    @include boldWeight;
 
-    position: fixed;
+    position: absolute;
     top: 696px;
+    width: 220px;
+    height: 25px;
+    font-size: 21px;
+    line-height: 21px;
+    color: var(--main-color);
+    letter-spacing: 1px;
   }
 
   .mc1_layout {
@@ -92,8 +55,8 @@ $white: #fff;
     }
 
     .id1 {
-      text-align: left;
       left: 765px;
+      text-align: left;
     }
 
     .mc2,
@@ -121,8 +84,8 @@ $white: #fff;
     }
 
     .id2 {
-      text-align: right;
       left: 1315px;
+      text-align: right;
     }
 
     .mc4,
@@ -155,8 +118,8 @@ $white: #fff;
     }
 
     .id3 {
-      text-align: right;
       left: 1455px;
+      text-align: right;
     }
 
     .mc4,
@@ -187,8 +150,8 @@ $white: #fff;
     }
 
     .id3 {
-      text-align: right;
       left: 1115px;
+      text-align: right;
     }
 
     .mc4 {
@@ -196,8 +159,8 @@ $white: #fff;
     }
 
     .id4 {
-      text-align: right;
       left: 1535px;
+      text-align: right;
     }
   }
 }
