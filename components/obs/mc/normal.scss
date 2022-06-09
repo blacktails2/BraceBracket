@@ -6,7 +6,7 @@
   .mc3,
   .mc4 {
     position: absolute;
-    top: 734px;
+    top: 774px;
     width: 400px;
     height: 60px;
     font-size: 30px;
@@ -26,7 +26,7 @@
   }
 
   .mc_team {
-    @include regularWeight;
+    @include mediumWeight;
   }
 
   .mc_name {
@@ -37,12 +37,12 @@
   .id2,
   .id3,
   .id4 {
-    @include mediumWeight;
+    @include boldWeight;
 
     position: absolute;
-    top: 795px;
+    top: 835px;
     left: 300px;
-    width: 220px;
+    width: 270px;
     height: 30px;
     font-size: 19px;
     line-height: 19px;
@@ -57,7 +57,7 @@
     }
 
     .id1 {
-      left: 850px;
+      left: 825px;
     }
   }
 
@@ -67,7 +67,7 @@
     }
 
     .id1 {
-      left: 350px;
+      left: 325px;
     }
 
     .mc2 {
@@ -75,7 +75,7 @@
     }
 
     .id2 {
-      left: 1350px;
+      left: 1325px;
     }
   }
 
@@ -85,7 +85,7 @@
     }
 
     .id1 {
-      left: 210px;
+      left: 185px;
     }
 
     .mc2 {
@@ -93,7 +93,7 @@
     }
 
     .id2 {
-      left: 850px;
+      left: 825px;
     }
 
     .mc3 {
@@ -101,7 +101,7 @@
     }
 
     .id3 {
-      left: 1490px;
+      left: 1465px;
     }
   }
 
@@ -111,7 +111,7 @@
     }
 
     .id1 {
-      left: 115px;
+      left: 90px;
     }
 
     .mc2 {
@@ -119,7 +119,7 @@
     }
 
     .id2 {
-      left: 535px;
+      left: 510px;
     }
 
     .mc3 {
@@ -127,7 +127,7 @@
     }
 
     .id3 {
-      left: 1165px;
+      left: 1140px;
     }
 
     .mc4 {
@@ -135,7 +135,7 @@
     }
 
     .id4 {
-      left: 1585px;
+      left: 1560px;
     }
   }
 }

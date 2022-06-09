@@ -44,7 +44,7 @@ const Next: FC<{
   watch("matchType")
 
   return (
-    <ControlPanel title="試合間情報" url={`${origin}/obs/next/?id=${id}`}>
+    <ControlPanel title="インターバル" url={`${origin}/obs/next/?id=${id}`}>
       <FormProvider {...form}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <hr />
