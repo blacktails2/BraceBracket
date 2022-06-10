@@ -6,7 +6,7 @@
   .mc3,
   .mc4 {
     position: absolute;
-    top: 727px;
+    top: 797px;
     width: 400px;
     height: 50px;
     font-size: 34px;
@@ -26,7 +26,7 @@
   }
 
   .mc_team {
-    @include regularWeight;
+    @include mediumWeight;
   }
 
   .mc_name {
@@ -40,8 +40,8 @@
     @include boldWeight;
 
     position: absolute;
-    top: 696px;
-    width: 220px;
+    top: 766px;
+    width: 270px;
     height: 25px;
     font-size: 21px;
     line-height: 21px;
@@ -84,7 +84,7 @@
     }
 
     .id2 {
-      left: 1315px;
+      left: 1265px;
       text-align: right;
     }
 
@@ -118,7 +118,7 @@
     }
 
     .id3 {
-      left: 1455px;
+      left: 1405px;
       text-align: right;
     }
 
@@ -150,7 +150,7 @@
     }
 
     .id3 {
-      left: 1115px;
+      left: 1065px;
       text-align: right;
     }
 
@@ -159,7 +159,7 @@
     }
 
     .id4 {
-      left: 1535px;
+      left: 1485px;
       text-align: right;
     }
   }

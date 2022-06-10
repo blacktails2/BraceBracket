@@ -61,7 +61,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .playerTeam {
-  @include regularWeight;
+  @include mediumWeight;
 
   font-size: 22px;
   line-height: 42px;
