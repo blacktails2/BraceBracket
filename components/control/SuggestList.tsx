@@ -14,16 +14,18 @@ const SuggestList: FC<{ setting: Setting }> = ({ setting }) => {
   return (
     <>
       <datalist id="playerName">
-        {Array.from(new Set(attendee.map((a) => a.playerName))).map(
-          (playerName) => (
+        {Array.from(new Set(attendee.map((a) => a.playerName)))
+          .sort()
+          .map((playerName) => (
             <option key={playerName} value={playerName} />
-          )
-        )}
+          ))}
       </datalist>
       <datalist id="team">
-        {Array.from(new Set(attendee.map((a) => a.team))).map((team) => (
-          <option key={team} value={team} />
-        ))}
+        {Array.from(new Set(attendee.map((a) => a.team)))
+          .sort()
+          .map((team) => (
+            <option key={team} value={team} />
+          ))}
       </datalist>
     </>
   )
