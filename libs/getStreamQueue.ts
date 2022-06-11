@@ -7,7 +7,7 @@ export type Match = {
   streamName: string
   p1?: PlayerScore
   p2?: PlayerScore
-  inProgress: boolean
+  state: string
 }
 export type StreamQueue = Match[]
 
@@ -49,6 +49,60 @@ query StreamQueueOnTournament($tourneySlug: String!) {
         }
       }
     }
+    events {
+      sets(perPage: 100, filters: {state: [1, 2], hideEmpty: true}) {
+        pageInfo {
+          totalPages
+          total
+        }
+        nodes {
+          id
+          fullRoundText
+          lPlacement
+          state
+          slots {
+            id
+            entrant {
+              id
+              team {
+                id
+              }
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}`
+
+const nextQuery = `
+query StreamQueueOnTournament($tourneySlug: String!, $page: Int!) {
+  tournament(slug: $tourneySlug) {
+    events {
+      sets(perPage: 100, page: $page, filters: {state: [1, 2], hideEmpty: true}) {
+        pageInfo {
+          totalPages
+          total
+        }
+        nodes {
+          id
+          fullRoundText
+          lPlacement
+          state
+          slots {
+            id
+            entrant {
+              id
+              team {
+                id
+              }
+              name
+            }
+          }
+        }
+      }
+    }
   }
 }`
 
@@ -64,25 +118,26 @@ const getRoundText = (set: any): string => {
   if (fullRoundText2Shorts[set?.fullRoundText]) {
     return fullRoundText2Shorts[set?.fullRoundText]
   }
-  const fullRoundText = set?.fullRoundText
-  console.log({ set, fullRoundText })
-  if (
-    !fullRoundText &&
-    !fullRoundText.startsWith("Winners") &&
-    !fullRoundText.startsWith("Losers")
-  ) {
-    return fullRoundText
-  }
-  const rounds = [
-    8, 12, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536, 2048,
-    3072, 4096,
-  ]
-  const round = rounds.find((r) => set?.lPlacement <= r)
-  if (fullRoundText.startsWith("Winners")) {
-    return `Winners Top${round}`
-  }
-
-  return `Losers Top${round}`
+  return set?.fullRoundText
+  // const fullRoundText = set?.fullRoundText
+  // console.log({ set, fullRoundText })
+  // if (
+  //   !fullRoundText &&
+  //   !fullRoundText.startsWith("Winners") &&
+  //   !fullRoundText.startsWith("Losers")
+  // ) {
+  //   return fullRoundText
+  // }
+  // const rounds = [
+  //   8, 12, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536, 2048,
+  //   3072, 4096,
+  // ]
+  // const round = rounds.find((r) => set?.lPlacement <= r)
+  // if (fullRoundText.startsWith("Winners")) {
+  //   return `Winners Top${round}`
+  // }
+  //
+  // return `Losers Top${round}`
 }
 
 export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
@@ -116,8 +171,8 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
     return []
   }
   console.log(res)
-  const streamQueue = res?.data?.tournament?.streamQueue?.flatMap(
-    (stream: any) => {
+  const streamQueue =
+    res?.data?.tournament?.streamQueue?.flatMap((stream: any) => {
       return stream.sets.map((set: any) => {
         const players = set.slots.map((slot: any) => {
           if (!slot?.entrant) {
@@ -142,14 +197,101 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
           streamName: stream?.stream?.streamName,
           p1: players[0],
           p2: players[1],
-          inProgress: set?.state === 2,
+          state: set?.state === 2 ? "In Progress" : "In Queue",
         }
       })
-    }
+    }) || []
+
+  streamQueue.push(
+    ...(res?.data?.tournament?.events?.flatMap((event: any) => {
+      return event?.sets?.nodes?.map((set: any) => {
+        const players = set.slots.map((slot: any) => {
+          if (!slot?.entrant) {
+            return {
+              team: "",
+              playerName: "",
+              twitterID: "",
+              score: 0,
+            }
+          }
+          const { team, name } = getNameAndTeamtag(slot?.entrant?.name)
+          return {
+            team,
+            playerName: name,
+            twitterID: "",
+            score: 0,
+          }
+        })
+        return {
+          id: set.id,
+          roundText: getRoundText(set),
+          streamName: "",
+          p1: players[0],
+          p2: players[1],
+          state: "Waiting",
+        }
+      })
+    }) || [])
   )
 
-  if (!streamQueue) {
-    return []
+  const totalPages = (res?.data?.tournament?.events || [])[0]?.sets?.pageInfo
+    ?.totalPages
+  if (totalPages && totalPages > 1) {
+    for (let i = 2; i <= totalPages; i++) {
+      const variables = {
+        tourneySlug: slug,
+        page: i,
+      }
+      const res = await fetch(`https://api.smash.gg/gql/alpha`, {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer 4c55422a25fb010184f6eb3612292f01",
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          encoding: "utf-8",
+        },
+        body: JSON.stringify({
+          query: nextQuery,
+          variables,
+        }),
+      }).then((res) => res.json())
+
+      if (res.errors) {
+        continue
+      }
+
+      streamQueue.push(
+        ...(res?.data?.tournament?.events?.flatMap((event: any) => {
+          return event?.sets?.nodes?.map((set: any) => {
+            const players = set.slots.map((slot: any) => {
+              if (!slot?.entrant) {
+                return {
+                  team: "",
+                  playerName: "",
+                  twitterID: "",
+                  score: 0,
+                }
+              }
+              const { team, name } = getNameAndTeamtag(slot?.entrant?.name)
+              return {
+                team,
+                playerName: name,
+                twitterID: "",
+                score: 0,
+              }
+            })
+            return {
+              id: set.id,
+              roundText: getRoundText(set),
+              streamName: "",
+              p1: players[0],
+              p2: players[1],
+              state: "Waiting",
+            }
+          })
+        }) || [])
+      )
+    }
   }
   console.log(streamQueue)
   return streamQueue
