@@ -12,9 +12,9 @@ import {
 
 import { Setting } from "../../libs/const"
 import { db } from "../../libs/firebase"
-import styles from "../../pages/create.module.scss"
 import { Button } from "../parts/Button"
 
+import styles from "./create.module.scss"
 import { Preview } from "./parts/Preview"
 import { Color } from "./settingForms/Color"
 import { DisplayCameraAndTwitterID } from "./settingForms/DisplayCameraAndTwitterID"
@@ -75,7 +75,7 @@ export const Create: FC<{ setting: Setting }> = ({ setting }) => {
     }
 
     await router.push({
-      pathname: `/control`,
+      pathname: `/links`,
       query: { id: _id },
     })
   }

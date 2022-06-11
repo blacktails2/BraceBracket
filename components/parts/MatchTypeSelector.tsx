@@ -20,13 +20,7 @@ export const MatchTypeSelector: FC<{
   return (
     <div>
       <label className="block">試合形式</label>
-      <TextForm
-        name={name}
-        placeholder={placeholder}
-        disabled={disabled}
-        cleanValue={cleanValue}
-      />
-      <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] max-w-[300px]">
+      <div className="flex flex-wrap gap-[0.4rem] max-w-[300px]">
         {(() => {
           const values = ["Best of 3", "Best of 5"]
           return values.map((name) => {
@@ -55,6 +49,13 @@ export const MatchTypeSelector: FC<{
           })
         })()}
       </div>
+      <TextForm
+        name={name}
+        placeholder={placeholder}
+        disabled={disabled}
+        cleanValue={cleanValue}
+        className="mt-[0.5rem]"
+      />
     </div>
   )
 }

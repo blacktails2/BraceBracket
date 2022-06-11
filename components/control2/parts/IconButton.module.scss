@@ -1,11 +1,11 @@
 .button {
+  padding: 4px;
   font-family: "Mint Grotesk Bold", "Zen Kaku Gothic Antique", sans-serif;
   font-weight: 700;
   border: none;
   transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 
   &.normal {
-    padding: 8px 12px;
     font-size: 12px;
     color: var(--bb-white);
     background-color: var(--bb-black);
@@ -23,7 +23,6 @@
   }
 
   &.small {
-    padding: 5px 10px;
     font-size: 12px;
     color: var(--black);
     background-color: var(--primary);
@@ -42,7 +41,6 @@
 
   &.primary {
     height: 40px;
-    padding: 6px 15px;
     font-size: 14px;
     color: var(--black);
     background-color: var(--primary);
@@ -62,7 +60,6 @@
 
 .light {
   background-color: var(--bb-white) !important;
-  border: 1px solid var(--bb-beige) !important;
 
   &.normal {
     color: var(--black);
@@ -104,4 +101,18 @@
 .tooltipExit {
   opacity: 0;
   transform: translate(-50%, calc(-50% + 10px));
+}
+
+.rotation {
+  animation: 2s linear infinite rotation;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

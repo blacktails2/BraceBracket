@@ -7,13 +7,13 @@ import { useOrigin } from "../../hooks/useOrigin"
 import {
   LoadBracket,
   MatchIntervalInfo,
+  MC as MCType,
   Score,
   Setting,
-  MC as MCType,
 } from "../../libs/const"
-import styles from "../../pages/control.module.scss"
 import { TextboxWithCopy } from "../parts/TextboxWithCopy"
 
+import styles from "./control.module.scss"
 import MC from "./panels/MC"
 import Next from "./panels/Next"
 import ScoreAndCamera from "./panels/ScoreAndCamera"
