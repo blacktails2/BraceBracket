@@ -36,6 +36,7 @@ query StreamQueueOnTournament($tourneySlug: String!) {
         id
         fullRoundText
         state
+        lPlacement
         slots {
           id
           entrant {
@@ -57,6 +58,31 @@ const getTournarySlug = (url: string): string => {
   }
   const urlParts = url.split("/")
   return `${urlParts[3]}/${urlParts[4]}`
+}
+
+const getRoundText = (set: any): string => {
+  if (fullRoundText2Shorts[set?.fullRoundText]) {
+    return fullRoundText2Shorts[set?.fullRoundText]
+  }
+  const fullRoundText = set?.fullRoundText
+  console.log({ set, fullRoundText })
+  if (
+    !fullRoundText &&
+    !fullRoundText.startsWith("Winners") &&
+    !fullRoundText.startsWith("Losers")
+  ) {
+    return fullRoundText
+  }
+  const rounds = [
+    8, 12, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536, 2048,
+    3072, 4096,
+  ]
+  const round = rounds.find((r) => set?.lPlacement <= r)
+  if (fullRoundText.startsWith("Winners")) {
+    return `Winners Top${round}`
+  }
+
+  return `Losers Top${round}`
 }
 
 export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
@@ -112,8 +138,7 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
         })
         return {
           id: set.id,
-          roundText:
-            fullRoundText2Shorts[set?.fullRoundText] ?? set?.fullRoundText,
+          roundText: getRoundText(set),
           streamName: stream?.stream?.streamName,
           p1: players[0],
           p2: players[1],

@@ -102,7 +102,7 @@ const ScoreAndCamera: FC<{
                         mode="primary"
                       />
                       <NumberForm
-                        className="w-[3rem]"
+                        className="w-[2.8rem]"
                         name={"p1.score"}
                         cleanValue={score?.p1.score}
                       />
@@ -115,7 +115,6 @@ const ScoreAndCamera: FC<{
                         }
                         icon="/icons/exposure_neg_1.svg"
                         style={{
-                          backgroundColor: "var(--primary)",
                           backgroundSize: "1.6rem",
                         }}
                         mode="primary"
@@ -181,7 +180,7 @@ const ScoreAndCamera: FC<{
                         mode="primary"
                       />
                       <NumberForm
-                        className="w-[3rem]"
+                        className="w-[2.8rem]"
                         name={"p2.score"}
                         cleanValue={score?.p2.score}
                       />
@@ -194,7 +193,6 @@ const ScoreAndCamera: FC<{
                         }
                         icon="/icons/exposure_neg_1.svg"
                         style={{
-                          backgroundColor: "var(--primary)",
                           backgroundSize: "1.6rem",
                         }}
                         mode="primary"
