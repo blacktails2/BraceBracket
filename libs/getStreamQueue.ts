@@ -228,7 +228,7 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
           streamName: "",
           p1: players[0],
           p2: players[1],
-          state: "Waiting",
+          state: set?.state === 2 ? "In Progress" : "Waiting",
         }
       })
     }) || [])
@@ -286,7 +286,7 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
               streamName: "",
               p1: players[0],
               p2: players[1],
-              state: "Waiting",
+              state: set?.state === 2 ? "In Progress" : "Waiting",
             }
           })
         }) || [])

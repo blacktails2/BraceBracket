@@ -33,7 +33,7 @@ export const StreamQueueTable: FC<{
         onChange(streamQueue[0])
         setSelected(streamQueue[0].id)
       } else if (trackNext) {
-        const queueIdx = streamQueue.findIndex((q) => !q.inProgress)
+        const queueIdx = streamQueue.findIndex((q) => q.state !== "In Progress")
         if (queueIdx >= 0) {
           onChange(streamQueue[queueIdx])
           setSelected(streamQueue[queueIdx].id)
@@ -113,7 +113,7 @@ export const StreamQueueTable: FC<{
                       <td>{queue.p1?.playerName}</td>
                       <td>{queue.p2?.playerName}</td>
                       <td>{queue.streamName}</td>
-                      <td>{queue.inProgress ? "In Progress" : "In Queue"}</td>
+                      <td>{queue.state}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useMemo, useState } from "react"
 import { useInterval } from "react-use"
 
 import { PlayerScore, Setting } from "../../../libs/const"
@@ -69,6 +69,11 @@ export const StreamQueueTable: FC<{
       })
     )
   }, [streamQueue, filter])
+  const usedStream = useMemo(() => {
+    return streamQueue.reduce((acc, queue) => {
+      return acc || queue.streamName !== ""
+    }, false)
+  }, [streamQueue])
 
   return (
     <>
@@ -94,9 +99,9 @@ export const StreamQueueTable: FC<{
           <div className="overflow-x-auto">
             <table className={styles.table}>
               <thead>
-                <tr>
-                  <th>
-                    <div className="w-full h-full overflow-hidden">
+                <tr className="w-full">
+                  <th className="w-[4%] w-min-[22px] !p-0">
+                    <div className="flex justify-center w-full h-full overflow-hidden">
                       <IconButton
                         onClick={(e) => {
                           e.stopPropagation()
@@ -123,11 +128,11 @@ export const StreamQueueTable: FC<{
                       />
                     </div>
                   </th>
-                  <th className="w-[25%]">Round</th>
-                  <th className="w-[24%]">1P Player</th>
-                  <th className="w-[24%]">2P Player</th>
-                  <th className="w-[13%]">Stream Name</th>
-                  <th className="w-[14%]">State</th>
+                  <th className="w-[21%]">Round</th>
+                  <th className="w-[25%]">1P Player</th>
+                  <th className="w-[25%]">2P Player</th>
+                  {usedStream && <th className="w-[12%]">Stream Name</th>}
+                  <th className="w-[13%]">State</th>
                 </tr>
               </thead>
               <tbody>
@@ -139,27 +144,31 @@ export const StreamQueueTable: FC<{
                       onChange(queue)
                     }}
                   >
-                    <td>
-                      <input
-                        type="radio"
-                        name="stream"
-                        id={`${queue.id}`}
-                        checked={selected === queue.id}
-                        onChange={() => {
-                          setSelected(queue.id)
-                          onChange(queue)
-                        }}
-                      />
+                    <td className="w-[5%]">
+                      <div className="flex justify-center w-full h-[4rem] overflow-hidden items-center">
+                        <input
+                          type="radio"
+                          name="stream"
+                          id={`${queue.id}`}
+                          checked={selected === queue.id}
+                          onChange={() => {
+                            setSelected(queue.id)
+                            onChange(queue)
+                          }}
+                        />
+                      </div>
                     </td>
-                    <td>{queue.roundText}</td>
-                    <td>{`${queue.p1?.team ? `${queue.p1?.team} | ` : ""}${
-                      queue.p1?.playerName
-                    }`}</td>
-                    <td>{`${queue.p2?.team ? `${queue.p2?.team} | ` : ""}${
-                      queue.p2?.playerName
-                    }`}</td>
-                    <td>{queue.streamName}</td>
-                    <td>{queue.state}</td>
+                    <td className="w-[24%]">{queue.roundText}</td>
+                    <td className="w-[23%]">{`${
+                      queue.p1?.team ? `${queue.p1?.team} | ` : ""
+                    }${queue.p1?.playerName}`}</td>
+                    <td className="w-[23%]">{`${
+                      queue.p2?.team ? `${queue.p2?.team} | ` : ""
+                    }${queue.p2?.playerName}`}</td>
+                    {usedStream && (
+                      <td className="w-[12%]">{queue.streamName}</td>
+                    )}
+                    <td className="w-[13%]">{queue.state}</td>
                   </tr>
                 ))}
               </tbody>

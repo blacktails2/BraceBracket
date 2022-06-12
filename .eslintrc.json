@@ -6,7 +6,10 @@
     "plugin:import/typescript",
     "prettier"
   ],
-  "plugins": ["@typescript-eslint", "unused-imports"],
+  "plugins": [
+    "@typescript-eslint",
+    "unused-imports"
+  ],
   "rules": {
     "@next/next/no-img-element": "off",
     "@typescript-eslint/no-unused-vars": "off",
@@ -16,12 +19,32 @@
     "import/order": [
       "warn",
       {
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
-        "newlines-between": "always",  // import groups の間 1行あける
-        "pathGroupsExcludedImportTypes": ["builtin"],
-        "alphabetize": { "order": "asc", "caseInsensitive": true }, // 大文字小文字関係なくアルファベット順にしたい
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always",
+        // import groups の間 1行あける
+        "pathGroupsExcludedImportTypes": [
+          "builtin"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        // 大文字小文字関係なくアルファベット順にしたい
         "pathGroups": [
-          { "pattern": "**/*.scss", "group": "type", "position": "before" }
+          {
+            "pattern": "**/*.scss",
+            "group": "type",
+            "position": "before"
+          }
         ]
       }
     ]
