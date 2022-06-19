@@ -4,6 +4,7 @@ import { ScoreboardColorsMap, Setting } from "../../libs/const"
 
 export const settingDefault: Setting = {
   createdAt: serverTimestamp(),
+  name: "Tournament Name",
   scoreboard: {
     design: {
       layout: "dual",

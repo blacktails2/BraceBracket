@@ -32,13 +32,11 @@ const MC: FC<{
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex w-full justify-center">
-          <div className="flex gap-[2rem] flex-col w-full max-w-[60rem] justify-center">
-            <div className="relative flex gap-[1rem]">
+          <div className="flex w-full max-w-[55rem] flex-col justify-center gap-[1rem]">
+            <div className="relative mb-[1rem] flex gap-[1rem]">
               <Button
                 type="submit"
-                mode="normal"
-                full
-                className="w-[12rem]"
+                mode="small"
                 tooltipText="適用されました"
                 showTooltip={showTooltip}
               >
@@ -46,9 +44,7 @@ const MC: FC<{
               </Button>
               <Button
                 type="button"
-                mode="normal"
-                className="w-[12rem]"
-                full
+                mode="small"
                 light
                 onClick={() => {
                   form.reset()
@@ -57,28 +53,28 @@ const MC: FC<{
                 変更をリセット
               </Button>
             </div>
-            <div className="flex flex-wrap w-full gap-[1rem]">
+            <div className="flex w-full flex-wrap gap-[1rem]">
               {fields.map((field, idx) => {
                 return (
                   <div key={field.id}>
-                    <h4>{idx + 1}人目のMC情報</h4>
-                    <div className="flex flex-wrap gap-[1rem]">
+                    <div className="text-[1rem] font-bold">MC NO.{idx + 1}</div>
+                    <div className="flex flex-wrap gap-[0.5rem]">
                       <TextForm
                         name={`mcList.${idx}.team`}
                         placeholder="Team"
-                        className="w-[8rem]"
+                        className="basis-[20%]"
                         cleanValue={mc?.mcList[idx].team}
                       />
                       <TextForm
                         name={`mcList.${idx}.playerName`}
-                        placeholder="MCName"
-                        className="w-[15rem]"
+                        placeholder="MC Name"
+                        className="basis-[38%]"
                         cleanValue={mc?.mcList[idx].playerName}
                       />
                       <TextForm
                         name={`mcList.${idx}.twitterID`}
-                        placeholder="@user_name"
-                        className="w-[15rem]"
+                        placeholder="@TwitterID"
+                        className="basis-[38%]"
                         cleanValue={mc?.mcList[idx].twitterID}
                       />
                     </div>

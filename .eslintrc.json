@@ -4,6 +4,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
+    "plugin:tailwindcss/recommended",
     "prettier"
   ],
   "plugins": [
@@ -45,6 +46,14 @@
             "group": "type",
             "position": "before"
           }
+        ]
+      }
+    ],
+    "tailwindcss/no-custom-classname": [
+      1,
+      {
+        "whitelist": [
+          "board"
         ]
       }
     ]

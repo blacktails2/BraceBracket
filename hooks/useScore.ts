@@ -20,7 +20,6 @@ export const defaultValue: Score = {
     twitterID: "",
   },
   round: "Pools",
-  tournamentName: "大会名\n#25",
   uppercase: false,
 }
 

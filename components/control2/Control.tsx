@@ -12,7 +12,6 @@ import {
 
 import MC from "./tabs/MC"
 import Next from "./tabs/Next"
-import Other from "./tabs/Other"
 import ScoreAndCamera from "./tabs/ScoreAndCamera"
 import Top8Bracket from "./tabs/Top8Bracket"
 
@@ -52,17 +51,17 @@ export const Control: FC<{
   }, [router])
 
   return (
-    <div className="flex flex-col p-[0.4rem] pt-[0.8rem] h-[100vh] overflow-y-hidden">
-      <div className="flex w-full max-w-[100rem] h-fit">
-        {["Score", "Interval", "MC", "Bracket", "Other"].map((name) => {
+    <div className="flex h-[100vh] flex-col overflow-y-hidden py-[1.5rem] px-[2rem]">
+      <div className="mb-[2rem] flex h-fit gap-[2rem]">
+        {["Score", "Interval", "MC", "Bracket"].map((name) => {
           return (
             <div
               key={name}
-              className="text-[1.4rem] text-black w-full px-[1rem] py-[0.5rem] border-[color:var(--primary)] border-[1px] border-b-[0px] cursor-pointer first:rounded-tl-[5px] last:rounded-tr-[5px]"
+              className="my-[0.5rem] cursor-pointer border-[color:var(--primary)] text-[1.4rem] text-black"
               style={
                 name === selectedTab
                   ? {
-                      backgroundColor: "var(--primary)",
+                      borderBottom: "2px solid var(--primary)",
                     }
                   : {}
               }
@@ -75,7 +74,8 @@ export const Control: FC<{
           )
         })}
       </div>
-      <div className="p-[1rem] border-[color:var(--primary)] border-[1px] rounded-b-[5px] h-full overflow-y-scroll scrollbar-hidden">
+      {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+      <div className="scrollbar-hidden h-full overflow-y-scroll">
         <div
           style={{
             display: selectedTab === "Score" ? "block" : "none",
@@ -117,21 +117,6 @@ export const Control: FC<{
           }}
         >
           <Top8Bracket {...{ loadBracket, requestLoad }} />
-        </div>
-
-        <div
-          style={{
-            display: selectedTab === "Other" ? "block" : "none",
-          }}
-        >
-          <Other
-            {...{
-              score,
-              setScore,
-              matchIntervalInfo,
-              setMatchIntervalInfo,
-            }}
-          />
         </div>
       </div>
     </div>

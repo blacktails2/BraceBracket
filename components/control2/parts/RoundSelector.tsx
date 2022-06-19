@@ -19,16 +19,24 @@ export const RoundSelector: FC<{
 }) => {
   return (
     <div className="flex flex-col">
-      <div className="flex flex-wrap gap-[0.4rem] w-fit">
+      <div className="text-[1rem] font-bold">ROUND</div>
+      <TextForm
+        name={name}
+        placeholder={placeholder}
+        disabled={disabled}
+        cleanValue={cleanValue}
+        className="mt-[0.5rem]"
+      />
+      <div className="mt-[1rem] flex w-fit flex-wrap gap-[0.4rem]">
         {(() => {
           const values = ["Winners", "Losers", "Pools", "Grand", "Friendlies"]
           return values.map((name) => {
             return (
               <div
                 key={name}
-                className={`border-solid border-[1px] border-[#c4c4c4] rounded-[5px] pr-[0.5rem] pl-[0.5rem] transition ease delay-50 hover:border-[#202025] hover:shadow-md ${
+                className={`ease delay-50 rounded-[5px] border-[1px] border-solid border-[#c4c4c4] pr-[0.5rem] pl-[0.5rem] transition hover:border-[#202025] hover:shadow-md ${
                   round?.startsWith(name)
-                    ? "bg-[#202025] text-white border-[#202025]"
+                    ? "border-[#202025] bg-[#202025] text-white"
                     : "bg-white text-[#202025]"
                 }  ${disabled ? "cursor-default" : "cursor-pointer"}`}
                 onClick={() => {
@@ -48,7 +56,7 @@ export const RoundSelector: FC<{
           })
         })()}
       </div>
-      <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] mb-[1rem] min-h-[2rem]">
+      <div className="mt-[1rem] flex flex-wrap gap-[0.4rem]">
         {(() => {
           const values: Record<string, string[]> = {
             Winners: [
@@ -91,9 +99,9 @@ export const RoundSelector: FC<{
             return (
               <div
                 key={name}
-                className={`border-solid border-[1px] border-[#c4c4c4] rounded-[5px] px-[0.5rem] h-fit transition ease delay-50 hover:border-[#202025] hover:shadow-md ${
+                className={`ease delay-50 h-fit rounded-[5px] border-[1px] border-solid border-[#c4c4c4] px-[0.5rem] transition hover:border-[#202025] hover:shadow-md ${
                   round?.endsWith(name)
-                    ? "bg-[#202025] text-white border-[#202025]"
+                    ? "border-[#202025] bg-[#202025] text-white"
                     : "bg-white text-[#202025]"
                 } ${disabled ? "cursor-default" : "cursor-pointer"}`}
                 onClick={() => {
@@ -126,12 +134,6 @@ export const RoundSelector: FC<{
           })
         })()}
       </div>
-      <TextForm
-        name={name}
-        placeholder={placeholder}
-        disabled={disabled}
-        cleanValue={cleanValue}
-      />
     </div>
   )
 }

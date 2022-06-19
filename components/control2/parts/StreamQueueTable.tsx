@@ -24,6 +24,7 @@ export const StreamQueueTable: FC<{
   const [streamQueue, setStreamQueue] = useState<StreamQueue>([])
   const [selected, setSelected] = useState<number>(-1)
   const [isTrack, setIsTrack] = useState(false)
+  const [isAutoUpdate, setIsAutoUpdate] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
   const [loading, setLoading] = useState(false)
   const [filter, setFilter] = useState("")
@@ -80,28 +81,39 @@ export const StreamQueueTable: FC<{
       {setting?.integrateStartGG?.enabled && (
         <div>
           <div className="flex flex-wrap gap-[1rem]">
-            <CheckBoxForm
-              label={!trackNext ? "最新に追従" : "次の試合に追従"}
-              id={inputID}
-              onChange={() => setIsTrack(!isTrack)}
-              checked={isTrack}
-              className="pl-[1rem] pb-[0.75rem]"
-            />
             <TextBox
               name="matchFilter"
-              placeholder="filter"
+              placeholder="検索"
               value={filter}
               onChange={(e) => {
                 setFilter(e.target.value)
               }}
             />
+            <div className="mb-[0.4rem] pt-[0.4rem]">
+              <CheckBoxForm
+                label="自動で更新"
+                id={inputID}
+                onChange={() => setIsAutoUpdate(!isAutoUpdate)}
+                checked={isAutoUpdate}
+              />
+            </div>
+            <div className="mb-[0.4rem] pt-[0.4rem]">
+              <CheckBoxForm
+                label={
+                  !trackNext ? "先頭データを常に反映" : "次の試合を常に反映"
+                }
+                id={inputID}
+                onChange={() => setIsTrack(!isTrack)}
+                checked={isTrack}
+              />
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className={styles.table}>
               <thead>
                 <tr className="w-full">
-                  <th className="w-[4%] w-min-[22px] !p-0">
-                    <div className="flex justify-center w-full h-full overflow-hidden">
+                  <th className="w-[4%] min-w-[22px] !p-0">
+                    <div className="flex h-full w-full justify-center overflow-hidden">
                       <IconButton
                         onClick={(e) => {
                           e.stopPropagation()
@@ -128,11 +140,13 @@ export const StreamQueueTable: FC<{
                       />
                     </div>
                   </th>
-                  <th className="w-[21%]">Round</th>
-                  <th className="w-[25%]">1P Player</th>
-                  <th className="w-[25%]">2P Player</th>
-                  {usedStream && <th className="w-[12%]">Stream Name</th>}
-                  <th className="w-[13%]">State</th>
+                  <th className="w-[21%] font-bold">Round</th>
+                  <th className="w-[25%] font-bold">1P Player</th>
+                  <th className="w-[25%] font-bold">2P Player</th>
+                  {usedStream && (
+                    <th className="w-[12%] font-bold">Stream Name</th>
+                  )}
+                  <th className="w-[13%] font-bold">State</th>
                 </tr>
               </thead>
               <tbody>
@@ -145,7 +159,7 @@ export const StreamQueueTable: FC<{
                     }}
                   >
                     <td className="w-[5%]">
-                      <div className="flex justify-center w-full h-[4rem] overflow-hidden items-center">
+                      <div className="flex h-[4rem] w-full items-center justify-center overflow-hidden">
                         <input
                           type="radio"
                           name="stream"

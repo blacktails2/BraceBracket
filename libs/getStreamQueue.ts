@@ -294,5 +294,14 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
     }
   }
   console.log(streamQueue)
-  return streamQueue
+  const idMap = new Map()
+
+  return streamQueue.filter((queue: any) => {
+    const id = queue.id
+    if (idMap.has(id)) {
+      return false
+    }
+    idMap.set(id, true)
+    return true
+  })
 }

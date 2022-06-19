@@ -3,7 +3,9 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 import { MatchIntervalInfo, Score, Setting } from "../../../libs/const"
 import { Button } from "../../parts/Button"
+import { CheckBoxForm } from "../../parts/CheckBoxForm"
 import { IconButton } from "../parts/IconButton"
+import { MatchTypeSelector } from "../parts/MatchTypeSelector"
 import { NumberForm } from "../parts/NumberForm"
 import { RoundSelector } from "../parts/RoundSelector"
 import { StreamQueueTable } from "../parts/StreamQueueTable"
@@ -35,13 +37,11 @@ const ScoreAndCamera: FC<{
       <FormProvider {...form}>
         <form onSubmit={handleSubmit(onScoreSubmit)}>
           <div className="flex w-full justify-center">
-            <div className="flex gap-[2rem] flex-col w-full max-w-[60rem] justify-center">
-              <div className="relative flex gap-[1rem]">
+            <div className="flex w-full max-w-[55rem] flex-col justify-center gap-[1rem]">
+              <div className="relative mb-[1rem] flex gap-[1rem]">
                 <Button
                   type="submit"
-                  mode="normal"
-                  full
-                  className="w-[12rem]"
+                  mode="small"
                   tooltipText="適用されました"
                   showTooltip={showTooltip}
                 >
@@ -49,9 +49,7 @@ const ScoreAndCamera: FC<{
                 </Button>
                 <Button
                   type="button"
-                  mode="normal"
-                  className="w-[12rem]"
-                  full
+                  mode="small"
                   light
                   onClick={() => {
                     form.reset()
@@ -60,163 +58,207 @@ const ScoreAndCamera: FC<{
                   変更をリセット
                 </Button>
               </div>
-              <RoundSelector
-                round={form.getValues("round")}
-                setRound={(round) => form.setValue("round", round)}
-                cleanValue={score?.round}
-              />
-              <div className="flex gap-[0.5rem] w-full justify-center">
-                <div className="flex gap-[1rem] w-full">
-                  <div className="flex flex-col gap-[0.5rem] w-full">
+              <div className="flex gap-[1rem]">
+                <div className="basis-2/3">
+                  <RoundSelector
+                    round={form.getValues("round")}
+                    setRound={(round) => form.setValue("round", round)}
+                    cleanValue={score?.round}
+                  />
+                </div>
+                <div className="basis-1/3">
+                  <MatchTypeSelector
+                    matchType={form.getValues("matchType")}
+                    setMatchType={(matchType) =>
+                      form.setValue("matchType", matchType)
+                    }
+                    cleanValue={score?.matchType}
+                  />
+                </div>
+              </div>
+              <div>
+                <CheckBoxForm
+                  className="flex flex-col justify-end"
+                  label="全て大文字にする"
+                  name="uppercase"
+                  cleanValue={score?.uppercase}
+                />
+              </div>
+              <hr className="my-[1rem] h-[1px] bg-[#c4c4c4]" />
+              <div className="flex w-full justify-center gap-[0.5rem]">
+                <div className="flex w-full gap-[1rem]">
+                  <div className="flex w-full flex-col gap-[0.5rem]">
+                    <div className="text-[1rem] font-bold">1P</div>
                     <TextForm
                       name="p1.team"
-                      placeholder="Team"
+                      placeholder="1P Team"
                       autocomplete="team"
                       cleanValue={score?.p1.team}
                     />
                     <TextForm
                       name="p1.playerName"
-                      placeholder="Player"
+                      placeholder="1P Player"
                       autocomplete="playerName"
                       cleanValue={score?.p1.playerName}
                     />
-                    <TextForm
-                      name="p1.twitterID"
-                      placeholder="@user_name"
-                      cleanValue={score?.p1.twitterID}
-                    />
-                  </div>
-                  <div>
-                    <div className="flex flex-col gap-[0.5rem]">
-                      <IconButton
-                        onClick={() =>
-                          form.setValue(
-                            "p1.score",
-                            (form.getValues("p1.score") || 0) + 1
-                          )
-                        }
-                        icon="/icons/exposure_plus_1.svg"
-                        style={{
-                          backgroundSize: "1.6rem",
-                        }}
-                        mode="primary"
+                    {setting.scoreboard.cameraAndLogo
+                      .displayCameraAndTwitterID && (
+                      <TextForm
+                        name="p1.twitterID"
+                        placeholder="@1PTwitterID"
+                        cleanValue={score?.p1.twitterID}
                       />
-                      <NumberForm
-                        className="w-[2.8rem]"
-                        name={"p1.score"}
-                        cleanValue={score?.p1.score}
-                      />
-                      <IconButton
-                        onClick={() =>
-                          form.setValue(
-                            "p1.score",
-                            (form.getValues("p1.score") || 0) - 1
-                          )
-                        }
-                        icon="/icons/exposure_neg_1.svg"
-                        style={{
-                          backgroundSize: "1.6rem",
-                        }}
-                        mode="primary"
-                      />
-                    </div>
+                    )}
                   </div>
                 </div>
-                <div className="flex flex-col gap-[0.5rem] justify-center">
-                  <IconButton
-                    onClick={() => {
-                      form.setValue("p1", {
-                        team: "",
-                        playerName: "",
-                        score: 0,
-                        twitterID: "",
-                      })
-                      form.setValue("p2", {
-                        team: "",
-                        playerName: "",
-                        score: 0,
-                        twitterID: "",
-                      })
-                    }}
-                    icon="/icons/backspace.svg"
-                  />
-                  <IconButton
-                    onClick={() => {
-                      const [p1, p2] = form.getValues(["p1", "p2"])
-                      form.setValue("p1", p2)
-                      form.setValue("p2", p1)
-                    }}
-                    icon="/icons/swap_horiz.svg"
-                  />
-                  <IconButton
-                    onClick={() => {
-                      const [p1, p2] = form.getValues(["p1", "p2"])
-                      form.setValue("p1", {
-                        ...p1,
-                        score: 0,
-                      })
-                      form.setValue("p2", {
-                        ...p2,
-                        score: 0,
-                      })
-                    }}
-                    icon="/icons/exposure.svg"
-                  />
-                </div>
-                <div className="flex gap-[1rem] w-full">
-                  <div>
-                    <div className="flex flex-col gap-[0.5rem]">
-                      <IconButton
-                        onClick={() =>
-                          form.setValue(
-                            "p2.score",
-                            (form.getValues("p2.score") || 0) + 1
-                          )
-                        }
-                        icon="/icons/exposure_plus_1.svg"
-                        style={{
-                          backgroundSize: "1.6rem",
-                        }}
-                        mode="primary"
-                      />
-                      <NumberForm
-                        className="w-[2.8rem]"
-                        name={"p2.score"}
-                        cleanValue={score?.p2.score}
-                      />
-                      <IconButton
-                        onClick={() =>
-                          form.setValue(
-                            "p2.score",
-                            (form.getValues("p2.score") || 0) - 1
-                          )
-                        }
-                        icon="/icons/exposure_neg_1.svg"
-                        style={{
-                          backgroundSize: "1.6rem",
-                        }}
-                        mode="primary"
-                      />
+                <div className="flex flex-col justify-center gap-[0.5rem]">
+                  <div className="text-center text-[1rem] font-bold">
+                    ALL RESET
+                  </div>
+                  <div className="flex">
+                    <div>
+                      <div className="flex flex-col gap-[0.5rem]">
+                        <IconButton
+                          onClick={() =>
+                            form.setValue(
+                              "p1.score",
+                              (form.getValues("p1.score") || 0) + 1
+                            )
+                          }
+                          icon="/icons/exposure_plus_1.svg"
+                          style={{
+                            backgroundSize: "1.6rem",
+                          }}
+                          mode="primary"
+                        />
+                        <NumberForm
+                          className="w-[2.8rem]"
+                          name={"p1.score"}
+                          cleanValue={score?.p1.score}
+                        />
+                        <IconButton
+                          onClick={() =>
+                            form.setValue(
+                              "p1.score",
+                              (form.getValues("p1.score") || 0) - 1
+                            )
+                          }
+                          icon="/icons/exposure_neg_1.svg"
+                          style={{
+                            backgroundSize: "1.6rem",
+                          }}
+                          mode="primary"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex flex-col gap-[0.5rem]">
+                        <IconButton
+                          onClick={() => {
+                            form.setValue("p1", {
+                              team: "",
+                              playerName: "",
+                              score: 0,
+                              twitterID: "",
+                            })
+                            form.setValue("p2", {
+                              team: "",
+                              playerName: "",
+                              score: 0,
+                              twitterID: "",
+                            })
+                          }}
+                          icon="/icons/backspace.svg"
+                        />
+                        <IconButton
+                          onClick={() => {
+                            const [p1, p2] = form.getValues(["p1", "p2"])
+                            form.setValue("p1", p2)
+                            form.setValue("p2", p1)
+                          }}
+                          icon="/icons/swap_horiz.svg"
+                        />
+                        <IconButton
+                          onClick={() => {
+                            const [p1, p2] = form.getValues(["p1", "p2"])
+                            form.setValue("p1", {
+                              ...p1,
+                              score: 0,
+                            })
+                            form.setValue("p2", {
+                              ...p2,
+                              score: 0,
+                            })
+                          }}
+                          icon="/icons/exposure.svg"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex flex-col gap-[0.5rem]">
+                        <IconButton
+                          onClick={() =>
+                            form.setValue(
+                              "p2.score",
+                              (form.getValues("p2.score") || 0) + 1
+                            )
+                          }
+                          icon="/icons/exposure_plus_1.svg"
+                          style={{
+                            backgroundSize: "1.6rem",
+                          }}
+                          mode="primary"
+                        />
+                        <NumberForm
+                          className="w-[2.8rem]"
+                          name={"p2.score"}
+                          cleanValue={score?.p2.score}
+                        />
+                        <IconButton
+                          onClick={() =>
+                            form.setValue(
+                              "p2.score",
+                              (form.getValues("p2.score") || 0) - 1
+                            )
+                          }
+                          icon="/icons/exposure_neg_1.svg"
+                          style={{
+                            backgroundSize: "1.6rem",
+                          }}
+                          mode="primary"
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-[0.5rem] w-full">
+                  <div className="text-center text-[1rem] font-bold">
+                    SCORE RESET
+                  </div>
+                </div>
+                <div className="flex w-full gap-[1rem]">
+                  <div className="flex w-full flex-col gap-[0.5rem]">
+                    <div className="w-full text-right text-[1rem] font-bold">
+                      2P
+                    </div>
                     <TextForm
                       name="p2.team"
-                      placeholder="Team"
+                      placeholder="2P Team"
                       autocomplete="team"
                       cleanValue={score?.p2.team}
                     />
                     <TextForm
                       name="p2.playerName"
-                      placeholder="Player"
+                      placeholder="2P Player"
                       autocomplete="playerName"
                       cleanValue={score?.p2.playerName}
                     />
-                    <TextForm
-                      name="p2.twitterID"
-                      placeholder="@user_name"
-                      cleanValue={score?.p2.twitterID}
-                    />
+                    {setting.scoreboard.cameraAndLogo
+                      .displayCameraAndTwitterID && (
+                      <TextForm
+                        name="p2.twitterID"
+                        placeholder="@2PTwitterID"
+                        cleanValue={score?.p2.twitterID}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
