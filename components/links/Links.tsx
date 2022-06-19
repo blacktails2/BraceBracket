@@ -25,7 +25,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
         <h2>ダッシュボード</h2>
       </div>
       <div className="flex flex-col gap-[3rem] sm:flex-row">
-        <div className="w-full rounded-[15px] border-[1px] border-[color:var(--bb-beige)] p-[2rem]">
+        <div className="p-[2rem] w-full rounded-[15px] border-[1px] border-[color:var(--bb-beige)]">
           <div className="mb-[1.8rem] text-[2.4rem]">
             {setting?.name}を編集する
           </div>
@@ -55,7 +55,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
             編集画面を開く
           </Button>
         </div>
-        <div className="flex w-full min-w-[200px] flex-col justify-between rounded-[15px] border-[0px] bg-[color:var(--bb-beige-light)] p-[2rem] sm:w-[400px]">
+        <div className="flex flex-col justify-between p-[2rem] w-full min-w-[200px] bg-[color:var(--bb-beige-light)] rounded-[15px] border-[0px] sm:w-[400px]">
           <div>
             <div className="mb-[1.8rem] text-[2.4rem]">設定を変更</div>
             <div>
@@ -151,7 +151,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
                 e.stopPropagation()
                 router.push(`/create/?id=${id}`)
               }}
-              className="mb-[0.5rem] ml-[1rem] flex flex-col justify-end"
+              className="flex flex-col justify-end mb-[0.5rem] ml-[1rem]"
             >
               開く
             </Button>
@@ -179,7 +179,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
                   "resizable=1,scrollbars=1,width=600,height=450"
                 )
               }}
-              className="mb-[0.5rem] ml-[1rem] flex flex-col justify-end"
+              className="flex flex-col justify-end mb-[0.5rem] ml-[1rem]"
             >
               開く
             </Button>
@@ -193,7 +193,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
           </div>
         </div>
       </div>
-      <div className="mt-[2rem] flex flex-wrap gap-[2rem]">
+      <div className="flex flex-wrap gap-[2rem] mt-[2rem]">
         <div>
           <h3>Score</h3>
           <div className={styles.url}>

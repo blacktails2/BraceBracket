@@ -31,9 +31,9 @@ const MC: FC<{
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex w-full justify-center">
-          <div className="flex w-full max-w-[55rem] flex-col justify-center gap-[1rem]">
-            <div className="relative mb-[1rem] flex gap-[1rem]">
+        <div className="flex justify-center w-full">
+          <div className="flex flex-col gap-[1rem] justify-center w-full max-w-[55rem]">
+            <div className="flex relative gap-[1rem] mb-[1rem]">
               <Button
                 type="submit"
                 mode="small"
@@ -53,7 +53,7 @@ const MC: FC<{
                 変更をリセット
               </Button>
             </div>
-            <div className="flex w-full flex-wrap gap-[1rem]">
+            <div className="flex flex-wrap gap-[1rem] w-full">
               {fields.map((field, idx) => {
                 return (
                   <div key={field.id}>

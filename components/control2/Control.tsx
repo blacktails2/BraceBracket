@@ -51,13 +51,13 @@ export const Control: FC<{
   }, [router])
 
   return (
-    <div className="flex h-[100vh] flex-col overflow-y-hidden py-[1.5rem] px-[2rem]">
-      <div className="mb-[2rem] flex h-fit gap-[2rem]">
+    <div className="flex overflow-y-hidden flex-col py-[1.5rem] px-[2rem] h-[100vh]">
+      <div className="flex gap-[2rem] mb-[2rem] h-fit">
         {["Score", "Interval", "MC", "Bracket"].map((name) => {
           return (
             <div
               key={name}
-              className="my-[0.5rem] cursor-pointer border-[color:var(--primary)] text-[1.4rem] text-black"
+              className="my-[0.5rem] text-[1.4rem] text-black border-[color:var(--primary)] cursor-pointer"
               style={
                 name === selectedTab
                   ? {
@@ -75,7 +75,7 @@ export const Control: FC<{
         })}
       </div>
       {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-      <div className="scrollbar-hidden h-full overflow-y-scroll">
+      <div className="overflow-y-scroll h-full scrollbar-hidden">
         <div
           style={{
             display: selectedTab === "Score" ? "block" : "none",

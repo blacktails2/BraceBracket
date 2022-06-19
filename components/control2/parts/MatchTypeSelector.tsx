@@ -27,7 +27,7 @@ export const MatchTypeSelector: FC<{
         cleanValue={cleanValue}
         className="mt-[0.5rem]"
       />
-      <div className="mt-[1rem] flex max-w-[300px] flex-wrap gap-[0.4rem]">
+      <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] max-w-[300px]">
         {(() => {
           const values = ["Best of 3", "Best of 5"]
           return values.map((name) => {

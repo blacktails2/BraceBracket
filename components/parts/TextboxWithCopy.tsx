@@ -19,7 +19,7 @@ export const TextboxWithCopy: FC<{ text: string; className?: string }> = ({
     <div className={className}>
       <div className={styles.container}>
         <input type="text" value={text} readOnly className={styles.text} />
-        <div className="relative flex">
+        <div className="flex relative">
           <button
             className={styles.button}
             onClick={(e) => {

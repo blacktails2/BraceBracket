@@ -89,7 +89,7 @@ export const StreamQueueTable: FC<{
                 setFilter(e.target.value)
               }}
             />
-            <div className="mb-[0.4rem] pt-[0.4rem]">
+            <div className="pt-[0.4rem] mb-[0.4rem]">
               <CheckBoxForm
                 label="自動で更新"
                 id={inputID}
@@ -97,7 +97,7 @@ export const StreamQueueTable: FC<{
                 checked={isAutoUpdate}
               />
             </div>
-            <div className="mb-[0.4rem] pt-[0.4rem]">
+            <div className="pt-[0.4rem] mb-[0.4rem]">
               <CheckBoxForm
                 label={
                   !trackNext ? "先頭データを常に反映" : "次の試合を常に反映"
@@ -112,8 +112,8 @@ export const StreamQueueTable: FC<{
             <table className={styles.table}>
               <thead>
                 <tr className="w-full">
-                  <th className="w-[4%] min-w-[22px] !p-0">
-                    <div className="flex h-full w-full justify-center overflow-hidden">
+                  <th className="!p-0 w-[4%] min-w-[22px]">
+                    <div className="flex overflow-hidden justify-center w-full h-full">
                       <IconButton
                         onClick={(e) => {
                           e.stopPropagation()
@@ -159,7 +159,7 @@ export const StreamQueueTable: FC<{
                     }}
                   >
                     <td className="w-[5%]">
-                      <div className="flex h-[4rem] w-full items-center justify-center overflow-hidden">
+                      <div className="flex overflow-hidden justify-center items-center w-full h-[4rem]">
                         <input
                           type="radio"
                           name="stream"
