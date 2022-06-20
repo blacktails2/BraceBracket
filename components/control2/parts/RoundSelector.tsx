@@ -18,7 +18,15 @@ export const RoundSelector: FC<{
   cleanValue,
 }) => {
   return (
-    <div>
+    <div className="flex flex-col">
+      <div className="text-[1rem] font-bold">ROUND</div>
+      <TextForm
+        name={name}
+        placeholder={placeholder}
+        disabled={disabled}
+        cleanValue={cleanValue}
+        className="mt-[0.5rem]"
+      />
       <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] w-fit">
         {(() => {
           const values = ["Winners", "Losers", "Pools", "Grand", "Friendlies"]
@@ -48,7 +56,7 @@ export const RoundSelector: FC<{
           })
         })()}
       </div>
-      <div className="flex flex-wrap gap-[0.4rem] my-[1rem] max-w-[300px] h-[4rem]">
+      <div className="flex flex-wrap gap-[0.4rem] mt-[1rem]">
         {(() => {
           const values: Record<string, string[]> = {
             Winners: [
@@ -126,12 +134,6 @@ export const RoundSelector: FC<{
           })
         })()}
       </div>
-      <TextForm
-        name={name}
-        placeholder={placeholder}
-        disabled={disabled}
-        cleanValue={cleanValue}
-      />
     </div>
   )
 }

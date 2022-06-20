@@ -1,0 +1,14 @@
+.previewContainer {
+  position: sticky;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  max-width: 50vw;
+  padding: 130px 30px 30px;
+  background-color: #202025;
+  border-radius: 0 0 0 15px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+}

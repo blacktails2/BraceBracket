@@ -18,6 +18,5 @@ export const scoreDefault: Score = {
     twitterID: "twitter_id2",
   },
   round: "Pools",
-  tournamentName: "大会名\n#25",
   uppercase: false,
 }

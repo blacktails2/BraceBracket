@@ -1,9 +1,7 @@
-import Head from "next/head"
 import { useRouter } from "next/router"
 
-import { Control } from "../components/control/Control"
-import SuggestList from "../components/control/SuggestList"
-import { DefaultLayout } from "../components/layouts/DefaultLayout"
+import { Control } from "../components/control2/Control"
+import SuggestList from "../components/control2/SuggestList"
 import { useLoadBracket } from "../hooks/useLoadBracket"
 import { useMatchIntervalInfo } from "../hooks/useMatchIntervalInfo"
 import { useMC } from "../hooks/useMC"
@@ -50,17 +48,6 @@ const ControlPage: NextPageWithLayout = () => {
         }}
       />
       <SuggestList setting={setting} />
-    </>
-  )
-}
-
-ControlPage.getLayout = (page) => {
-  return (
-    <>
-      <Head>
-        <title>BraceBracket | Control</title>
-      </Head>
-      <DefaultLayout>{page}</DefaultLayout>
     </>
   )
 }

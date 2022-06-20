@@ -186,10 +186,10 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
                   setting.scoreboard.cameraAndLogo.useLogo &&
                   setting.scoreboard.cameraAndLogo.logoURLs.length > 0
                 ) && (
-                  <Transition keyName={score.tournamentName}>
+                  <Transition keyName={setting.name}>
                     <div className={styles.tournamentNameBox}>
                       <div className={styles.tournamentName}>
-                        {score.tournamentName}
+                        {setting.name}
                       </div>
                     </div>
                   </Transition>

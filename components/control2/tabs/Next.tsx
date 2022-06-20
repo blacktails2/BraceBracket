@@ -1,0 +1,210 @@
+import { useRouter } from "next/router"
+import { FC, memo, useEffect, useState } from "react"
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
+
+import { useOrigin } from "../../../hooks/useOrigin"
+import {
+  MatchIntervalInfo,
+  MatchIntervalInfo as FormType,
+  Setting,
+} from "../../../libs/const"
+import { Button } from "../../parts/Button"
+import { CheckBoxForm } from "../../parts/CheckBoxForm"
+import { IconButton } from "../parts/IconButton"
+import { MatchTypeSelector } from "../parts/MatchTypeSelector"
+import { RoundSelector } from "../parts/RoundSelector"
+import { StreamQueueTable } from "../parts/StreamQueueTable"
+import { TextForm } from "../parts/TextForm"
+
+const Next: FC<{
+  setting: Setting
+  matchIntervalInfo: MatchIntervalInfo
+  setMatchIntervalInfo: (matchIntervalInfo: MatchIntervalInfo) => void
+}> = ({ setting, matchIntervalInfo, setMatchIntervalInfo }) => {
+  const router = useRouter()
+  const id = router.query.id as string
+  const origin = useOrigin()
+  const [showTooltip, setShowTooltip] = useState(false)
+  const form = useForm<FormType>()
+  const { reset, handleSubmit, watch, getValues } = form
+  useEffect(() => {
+    reset(matchIntervalInfo)
+  }, [reset, matchIntervalInfo])
+
+  const onSubmit: SubmitHandler<FormType> = (data) => {
+    setMatchIntervalInfo(data)
+    setShowTooltip(true)
+    setTimeout(() => {
+      setShowTooltip(false)
+    }, 3000)
+  }
+
+  watch("isNow")
+  watch("round")
+  watch("matchType")
+
+  return (
+    <FormProvider {...form}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex justify-center w-full">
+          <div className="flex flex-col gap-[1rem] justify-center w-full max-w-[55rem]">
+            <div className="flex relative gap-[1rem] mb-[1rem]">
+              <Button
+                type="submit"
+                mode="small"
+                tooltipText="適用されました"
+                showTooltip={showTooltip}
+              >
+                適用する
+              </Button>
+              <Button
+                type="button"
+                mode="small"
+                light
+                onClick={() => {
+                  form.reset()
+                }}
+              >
+                変更をリセット
+              </Button>
+            </div>
+            <div className="w-full">
+              <CheckBoxForm
+                label="現在の試合状況を表示する"
+                name="isNow"
+                cleanValue={matchIntervalInfo?.isNow}
+              />
+            </div>
+            <hr className="my-[1rem] h-[1px] bg-[#c4c4c4]" />
+            <div
+              style={{
+                opacity: getValues("isNow") ? 0.3 : 1,
+              }}
+              className="flex flex-col gap-[1rem]"
+            >
+              <div className="flex gap-[1rem]">
+                <div className="basis-2/3">
+                  <RoundSelector
+                    round={form.getValues("round")}
+                    setRound={(round) => form.setValue("round", round)}
+                    cleanValue={matchIntervalInfo?.round}
+                  />
+                </div>
+                <div className="basis-1/3">
+                  <MatchTypeSelector
+                    matchType={form.getValues("matchType")}
+                    setMatchType={(matchType) =>
+                      form.setValue("matchType", matchType)
+                    }
+                    cleanValue={matchIntervalInfo?.matchType}
+                  />
+                </div>
+              </div>
+              <div>
+                <CheckBoxForm
+                  className="flex flex-col justify-end"
+                  label="全て大文字にする"
+                  name="uppercase"
+                  cleanValue={matchIntervalInfo?.uppercase}
+                />
+              </div>
+              <hr className="my-[1rem] h-[1px] bg-[#c4c4c4]" />
+              <div className="flex gap-[0.5rem] justify-center w-full">
+                <div className="flex gap-[1rem] w-full">
+                  <div className="flex flex-col gap-[0.5rem] w-full">
+                    <div className="text-[1rem] font-bold">1P</div>
+                    <TextForm
+                      name="p1.team"
+                      placeholder="1P Team"
+                      autocomplete="team"
+                      cleanValue={matchIntervalInfo?.p1.team}
+                    />
+                    <TextForm
+                      name="p1.playerName"
+                      placeholder="1P Player"
+                      autocomplete="playerName"
+                      cleanValue={matchIntervalInfo?.p1.playerName}
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-[0.5rem] justify-center">
+                  <div className="relative text-[1rem] text-center">
+                    &nbsp;
+                    <div className="absolute top-[0px] left-[50%] w-fit text-[1rem] font-bold text-center whitespace-nowrap translate-x-[-50%]">
+                      ALL RESET
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div>
+                      <div className="flex flex-col gap-[0.5rem]">
+                        <IconButton
+                          onClick={() => {
+                            form.setValue("p1", {
+                              team: "",
+                              playerName: "",
+                              score: 0,
+                              twitterID: "",
+                            })
+                            form.setValue("p2", {
+                              team: "",
+                              playerName: "",
+                              score: 0,
+                              twitterID: "",
+                            })
+                          }}
+                          icon="/icons/backspace.svg"
+                        />
+                        <IconButton
+                          onClick={() => {
+                            const [p1, p2] = form.getValues(["p1", "p2"])
+                            form.setValue("p1", p2)
+                            form.setValue("p2", p1)
+                          }}
+                          icon="/icons/swap_horiz.svg"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-[1rem] w-full">
+                  <div className="flex flex-col gap-[0.5rem] w-full">
+                    <div className="w-full text-[1rem] font-bold text-right">
+                      2P
+                    </div>
+                    <TextForm
+                      name="p2.team"
+                      placeholder="2P Team"
+                      autocomplete="team"
+                      cleanValue={matchIntervalInfo?.p2.team}
+                    />
+                    <TextForm
+                      name="p2.playerName"
+                      placeholder="2P Player"
+                      autocomplete="playerName"
+                      cleanValue={matchIntervalInfo?.p2.playerName}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center w-full">
+                <StreamQueueTable
+                  setting={setting}
+                  onChange={(queue) => {
+                    form.setValue("p1.playerName", queue.p1?.playerName ?? "")
+                    form.setValue("p2.playerName", queue.p2?.playerName ?? "")
+
+                    form.setValue("round", queue.roundText)
+                  }}
+                  trackNext={true}
+                  id="nextStreamQueueTable"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </FormProvider>
+  )
+}
+
+export default memo(Next)

@@ -1,6 +1,8 @@
-import { MatchIntervalInfo } from "../libs/const"
-import { genUseDatabaseValue } from "./useDatabaseValue"
 import { serverTimestamp } from "firebase/database"
+
+import { MatchIntervalInfo } from "../libs/const"
+
+import { genUseDatabaseValue } from "./useDatabaseValue"
 
 const defaultValue: MatchIntervalInfo = {
   createdAt: serverTimestamp(),
@@ -12,7 +14,7 @@ const defaultValue: MatchIntervalInfo = {
   },
   p2: {
     team: "Team",
-    playerName: "Player1",
+    playerName: "Player2",
     score: 0,
     twitterID: "",
   },
