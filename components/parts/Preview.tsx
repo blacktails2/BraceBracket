@@ -21,7 +21,7 @@ export const PreviewScore: FC<{
           src="/image/create/samples/sample_image1.jpg"
           width={340}
           height={190}
-          className="w-full"
+          className="w-full rounded-lg"
           alt="カメラ"
         />
       </div>
@@ -34,7 +34,7 @@ export const PreviewScore: FC<{
             )}`}
             width={340}
             height={190}
-            className="w-full"
+            className="w-full rounded-lg"
             alt="カメラ"
           />
         </div>
@@ -61,7 +61,7 @@ export const PreviewInterval: FC<{
           src="/image/create/samples/sample_image2.jpg"
           width={340}
           height={190}
-          className="w-full"
+          className="w-full rounded-lg"
           alt="カメラ"
         />
       </div>
@@ -71,7 +71,7 @@ export const PreviewInterval: FC<{
             src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
             width={340}
             height={190}
-            className="w-full"
+            className="w-full rounded-lg"
             alt="MCプレビュー"
           />
         </div>
@@ -99,7 +99,7 @@ export const PreviewMC: FC<{
           src="/image/create/samples/sample_image2.jpg"
           width={340}
           height={190}
-          className="w-full"
+          className="w-full rounded-lg"
           alt="カメラ"
         />
       </div>
@@ -126,7 +126,7 @@ export const PreviewBracket: FC<{ layout?: string; color?: string }> = ({
           src="/image/create/samples/sample_image2.jpg"
           width={340}
           height={190}
-          className="w-full"
+          className="w-full rounded-lg"
           alt="カメラ"
         />
       </div>

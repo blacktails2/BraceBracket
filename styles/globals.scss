@@ -8,17 +8,17 @@
 /* stylelint-enable */
 @font-face {
   font-family: "Mint Grotesk Regular";
-  src: url("/fonts/MintGroteskV12-Regular.woff2");
+  src: url("/fonts/Mint-Grotesk-Regular-V13.woff2");
 }
 
 @font-face {
   font-family: "Mint Grotesk Medium";
-  src: url("/fonts/MintGroteskV12-Medium.woff2");
+  src: url("/fonts/Mint-Grotesk-Medium-V13.woff2");
 }
 
 @font-face {
   font-family: "Mint Grotesk Bold";
-  src: url("/fonts/MintGroteskV12-Bold.woff2");
+  src: url("/fonts/Mint-Grotesk-Bold-V13.woff2");
 }
 
 :root {
@@ -93,6 +93,16 @@ h4 {
 
   @media (max-width: 520px) {
     font-size: 1.4rem;
+  }
+}
+
+h5 {
+  font-family: "Mint Grotesk Bold", "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+
+  @media (max-width: 520px) {
+    font-size: 2.1rem;
   }
 }
 
