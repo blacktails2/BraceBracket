@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { FC, memo, useEffect, useState } from "react"
+import { FC, memo, useEffect, useRef, useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 import { useOrigin } from "../../../hooks/useOrigin"
@@ -25,6 +25,10 @@ const Next: FC<{
   const id = router.query.id as string
   const origin = useOrigin()
   const [showTooltip, setShowTooltip] = useState(false)
+  const streamQueueTableRef = useRef<{ disableTrack: () => void }>({
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    disableTrack: () => {},
+  })
   const form = useForm<FormType>()
   const { reset, handleSubmit, watch, getValues } = form
   useEffect(() => {
@@ -86,6 +90,9 @@ const Next: FC<{
                     round={form.getValues("round")}
                     setRound={(round) => form.setValue("round", round)}
                     cleanValue={matchIntervalInfo?.round}
+                    onChange={() => {
+                      streamQueueTableRef.current.disableTrack()
+                    }}
                   />
                 </div>
                 <div className="basis-1/3">
@@ -95,6 +102,9 @@ const Next: FC<{
                       form.setValue("matchType", matchType)
                     }
                     cleanValue={matchIntervalInfo?.matchType}
+                    onChange={() => {
+                      streamQueueTableRef.current.disableTrack()
+                    }}
                   />
                 </div>
               </div>
@@ -117,12 +127,18 @@ const Next: FC<{
                       placeholder="1P Team"
                       autocomplete="team"
                       cleanValue={matchIntervalInfo?.p1.team}
+                      onChange={() => {
+                        streamQueueTableRef.current.disableTrack()
+                      }}
                     />
                     <TextForm
                       name="p1.playerName"
                       placeholder="1P Player"
                       autocomplete="playerName"
                       cleanValue={matchIntervalInfo?.p1.playerName}
+                      onChange={() => {
+                        streamQueueTableRef.current.disableTrack()
+                      }}
                     />
                   </div>
                 </div>
@@ -138,6 +154,7 @@ const Next: FC<{
                       <div className="flex flex-col gap-[0.5rem]">
                         <IconButton
                           onClick={() => {
+                            streamQueueTableRef.current.disableTrack()
                             form.setValue("p1", {
                               team: "",
                               playerName: "",
@@ -155,6 +172,7 @@ const Next: FC<{
                         />
                         <IconButton
                           onClick={() => {
+                            streamQueueTableRef.current.disableTrack()
                             const [p1, p2] = form.getValues(["p1", "p2"])
                             form.setValue("p1", p2)
                             form.setValue("p2", p1)
@@ -173,12 +191,18 @@ const Next: FC<{
                       placeholder="2P Team"
                       autocomplete="team"
                       cleanValue={matchIntervalInfo?.p2.team}
+                      onChange={() => {
+                        streamQueueTableRef.current.disableTrack()
+                      }}
                     />
                     <TextForm
                       name="p2.playerName"
                       placeholder="2P Player"
                       autocomplete="playerName"
                       cleanValue={matchIntervalInfo?.p2.playerName}
+                      onChange={() => {
+                        streamQueueTableRef.current.disableTrack()
+                      }}
                     />
                   </div>
                 </div>
@@ -187,9 +211,6 @@ const Next: FC<{
                 <StreamQueueTable
                   setting={setting}
                   onChange={(queue) => {
-                    if (form.formState.isDirty) {
-                      return
-                    }
                     const p1 = queue.p1 ?? {
                       team: "",
                       playerName: "",
@@ -209,16 +230,17 @@ const Next: FC<{
                       form.getValues("p2.team") !== p2.team ||
                       form.getValues("p2.playerName") !== p2.playerName
                     ) {
-                      form.setValue("p1.team", queue.p1?.team ?? "")
-                      form.setValue("p1.playerName", queue.p1?.playerName ?? "")
+                      form.setValue("p1.team", p1.team)
+                      form.setValue("p1.playerName", p1.playerName)
 
-                      form.setValue("p2.team", queue.p2?.team ?? "")
-                      form.setValue("p2.playerName", queue.p2?.playerName ?? "")
+                      form.setValue("p2.team", p2.team)
+                      form.setValue("p2.playerName", p2.playerName)
                       form.setValue("round", queue.roundText)
                     }
                   }}
                   trackNext={true}
                   id="nextStreamQueueTable"
+                  ref={streamQueueTableRef}
                 />
               </div>
             </div>

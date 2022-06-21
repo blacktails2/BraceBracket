@@ -9,7 +9,8 @@
   ],
   "plugins": [
     "@typescript-eslint",
-    "unused-imports"
+    "unused-imports",
+    "tailwindcss"
   ],
   "rules": {
     "@next/next/no-img-element": "off",

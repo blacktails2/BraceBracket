@@ -1,4 +1,11 @@
-import { FC, useEffect, useMemo, useState } from "react"
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useState,
+} from "react"
 import { useInterval } from "react-use"
 
 import { PlayerScore, Setting } from "../../../libs/const"
@@ -9,18 +16,23 @@ import { IconButton } from "./IconButton"
 import styles from "./StreamQueueTable.module.scss"
 import { TextBox } from "./TextForm"
 
-export const StreamQueueTable: FC<{
-  setting: Setting
-  onChange: (queue: {
-    id: number
-    roundText: string
-    streamName: string
-    p1?: PlayerScore
-    p2?: PlayerScore
-  }) => void
-  trackNext?: boolean
-  id: string
-}> = ({ setting, onChange, trackNext, id: inputID }) => {
+const StreamQueueTableBase: ForwardRefRenderFunction<
+  {
+    disableTrack: () => void
+  },
+  {
+    setting: Setting
+    onChange: (queue: {
+      id: number
+      roundText: string
+      streamName: string
+      p1?: PlayerScore
+      p2?: PlayerScore
+    }) => void
+    trackNext?: boolean
+    id: string
+  }
+> = ({ setting, onChange, trackNext, id: inputID }, ref) => {
   const [streamQueue, setStreamQueue] = useState<StreamQueue>([])
   const [selected, setSelected] = useState<number>(-1)
   const [isTrack, setIsTrack] = useState(false)
@@ -75,11 +87,20 @@ export const StreamQueueTable: FC<{
       })
     )
   }, [streamQueue, filter])
+
   const usedStream = useMemo(() => {
     return streamQueue.reduce((acc, queue) => {
       return acc || queue.streamName !== ""
     }, false)
   }, [streamQueue])
+
+  useImperativeHandle(ref, () => {
+    return {
+      disableTrack: () => {
+        setIsTrack(false)
+      },
+    }
+  })
 
   return (
     <>
@@ -204,3 +225,4 @@ export const StreamQueueTable: FC<{
     </>
   )
 }
+export const StreamQueueTable = forwardRef(StreamQueueTableBase)

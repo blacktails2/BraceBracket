@@ -9,6 +9,7 @@ export const RoundSelector: FC<{
   setRound: (round: string) => void
   disabled?: boolean
   cleanValue?: string
+  onChange?: () => void
 }> = ({
   name = "round",
   placeholder = "Grand Final",
@@ -16,6 +17,7 @@ export const RoundSelector: FC<{
   setRound,
   disabled = false,
   cleanValue,
+  onChange,
 }) => {
   return (
     <div className="flex flex-col">
@@ -26,6 +28,7 @@ export const RoundSelector: FC<{
         disabled={disabled}
         cleanValue={cleanValue}
         className="mt-[0.2rem]"
+        onChange={onChange}
       />
       <div className="mt-[1rem] flex w-fit flex-wrap gap-[0.4rem]">
         {(() => {
