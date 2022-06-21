@@ -45,6 +45,13 @@ query StreamQueueOnTournament($tourneySlug: String!) {
               id
             }
             name
+            participants {
+              user {
+                authorizations (types: [TWITTER]) {
+                  externalUsername
+                }
+              }
+            }
           }
         }
       }
@@ -68,6 +75,13 @@ query StreamQueueOnTournament($tourneySlug: String!) {
                 id
               }
               name
+              participants {
+                user {
+                  authorizations (types: [TWITTER]) {
+                    externalUsername
+                  }
+                }
+              }
             }
           }
         }
@@ -98,6 +112,13 @@ query StreamQueueOnTournament($tourneySlug: String!, $page: Int!) {
                 id
               }
               name
+              participants {
+                user {
+                  authorizations (types: [TWITTER]) {
+                    externalUsername
+                  }
+                }
+              }
             }
           }
         }
@@ -187,7 +208,9 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
           return {
             team,
             playerName: name,
-            twitterID: "",
+            twitterID:
+              slot?.entrant?.participants?.at(0)?.user?.authorizations?.at(0)
+                ?.externalUsername ?? "",
             score: 0,
           }
         })
@@ -218,7 +241,9 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
           return {
             team,
             playerName: name,
-            twitterID: "",
+            twitterID:
+              slot?.entrant?.participants?.at(0)?.user?.authorizations?.at(0)
+                ?.externalUsername ?? "",
             score: 0,
           }
         })
@@ -276,7 +301,10 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
               return {
                 team,
                 playerName: name,
-                twitterID: "",
+                twitterID:
+                  slot?.entrant?.participants
+                    ?.at(0)
+                    ?.user?.authorizations?.at(0)?.externalUsername ?? "",
                 score: 0,
               }
             })
