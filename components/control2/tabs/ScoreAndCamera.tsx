@@ -80,6 +80,7 @@ const ScoreAndCamera: FC<{
                 <CheckBoxForm
                   className="flex flex-col justify-end"
                   label="全て大文字にする"
+                  id="score-uppercase"
                   name="uppercase"
                   cleanValue={score?.uppercase}
                 />

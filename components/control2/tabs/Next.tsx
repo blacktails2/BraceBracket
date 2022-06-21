@@ -39,9 +39,7 @@ const Next: FC<{
     }, 3000)
   }
 
-  watch("isNow")
-  watch("round")
-  watch("matchType")
+  watch()
 
   return (
     <FormProvider {...form}>
@@ -105,6 +103,7 @@ const Next: FC<{
                   className="flex flex-col justify-end"
                   label="全て大文字にする"
                   name="uppercase"
+                  id="next-uppercase"
                   cleanValue={matchIntervalInfo?.uppercase}
                 />
               </div>
