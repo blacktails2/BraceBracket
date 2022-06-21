@@ -9,6 +9,7 @@ export const MatchTypeSelector: FC<{
   setMatchType: (matchType: string) => void
   disabled?: boolean
   cleanValue?: string
+  onChange?: () => void
 }> = ({
   name = "matchType",
   placeholder = "Best of 3",
@@ -16,6 +17,7 @@ export const MatchTypeSelector: FC<{
   setMatchType,
   disabled = false,
   cleanValue,
+  onChange,
 }) => {
   return (
     <div>
@@ -26,6 +28,7 @@ export const MatchTypeSelector: FC<{
         disabled={disabled}
         cleanValue={cleanValue}
         className="mt-[0.2rem]"
+        onChange={onChange}
       />
       <div className="mt-[1rem] flex max-w-[300px] flex-wrap gap-[0.4rem]">
         {(() => {

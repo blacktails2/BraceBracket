@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useState } from "react"
+import { FC, memo, useEffect, useRef, useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
 import { MatchIntervalInfo, Score, Setting } from "../../../libs/const"
@@ -18,6 +18,10 @@ const ScoreAndCamera: FC<{
   matchIntervalInfo: MatchIntervalInfo
 }> = ({ setting, score, setScore, matchIntervalInfo }) => {
   const [showTooltip, setShowTooltip] = useState(false)
+  const streamQueueTableRef = useRef<{ disableTrack: () => void }>({
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    disableTrack: () => {},
+  })
   const form = useForm<Score>()
   const { handleSubmit, reset } = form
   useEffect(() => {
@@ -52,6 +56,7 @@ const ScoreAndCamera: FC<{
                   mode="small"
                   light
                   onClick={() => {
+                    streamQueueTableRef.current.disableTrack()
                     form.reset()
                   }}
                 >
@@ -64,6 +69,9 @@ const ScoreAndCamera: FC<{
                     round={form.getValues("round")}
                     setRound={(round) => form.setValue("round", round)}
                     cleanValue={score?.round}
+                    onChange={() => {
+                      streamQueueTableRef.current.disableTrack()
+                    }}
                   />
                 </div>
                 <div className="basis-1/3">
@@ -73,6 +81,9 @@ const ScoreAndCamera: FC<{
                       form.setValue("matchType", matchType)
                     }
                     cleanValue={score?.matchType}
+                    onChange={() => {
+                      streamQueueTableRef.current.disableTrack()
+                    }}
                   />
                 </div>
               </div>
@@ -95,12 +106,18 @@ const ScoreAndCamera: FC<{
                       placeholder="1P Team"
                       autocomplete="team"
                       cleanValue={score?.p1.team}
+                      onChange={() => {
+                        streamQueueTableRef.current.disableTrack()
+                      }}
                     />
                     <TextForm
                       name="p1.playerName"
                       placeholder="1P Player"
                       autocomplete="playerName"
                       cleanValue={score?.p1.playerName}
+                      onChange={() => {
+                        streamQueueTableRef.current.disableTrack()
+                      }}
                     />
                     {setting.scoreboard.cameraAndLogo
                       .displayCameraAndTwitterID && (
@@ -108,6 +125,9 @@ const ScoreAndCamera: FC<{
                         name="p1.twitterID"
                         placeholder="@1PTwitterID"
                         cleanValue={score?.p1.twitterID}
+                        onChange={() => {
+                          streamQueueTableRef.current.disableTrack()
+                        }}
                       />
                     )}
                   </div>
@@ -154,6 +174,7 @@ const ScoreAndCamera: FC<{
                       <div className="flex flex-col gap-[0.5rem]">
                         <IconButton
                           onClick={() => {
+                            streamQueueTableRef.current.disableTrack()
                             form.setValue("p1", {
                               team: "",
                               playerName: "",
@@ -171,6 +192,7 @@ const ScoreAndCamera: FC<{
                         />
                         <IconButton
                           onClick={() => {
+                            streamQueueTableRef.current.disableTrack()
                             const [p1, p2] = form.getValues(["p1", "p2"])
                             form.setValue("p1", p2)
                             form.setValue("p2", p1)
@@ -239,12 +261,18 @@ const ScoreAndCamera: FC<{
                       placeholder="2P Team"
                       autocomplete="team"
                       cleanValue={score?.p2.team}
+                      onChange={() => {
+                        streamQueueTableRef.current.disableTrack()
+                      }}
                     />
                     <TextForm
                       name="p2.playerName"
                       placeholder="2P Player"
                       autocomplete="playerName"
                       cleanValue={score?.p2.playerName}
+                      onChange={() => {
+                        streamQueueTableRef.current.disableTrack()
+                      }}
                     />
                     {setting.scoreboard.cameraAndLogo
                       .displayCameraAndTwitterID && (
@@ -252,6 +280,9 @@ const ScoreAndCamera: FC<{
                         name="p2.twitterID"
                         placeholder="@2PTwitterID"
                         cleanValue={score?.p2.twitterID}
+                        onChange={() => {
+                          streamQueueTableRef.current.disableTrack()
+                        }}
                       />
                     )}
                   </div>
@@ -261,9 +292,6 @@ const ScoreAndCamera: FC<{
                 <StreamQueueTable
                   setting={setting}
                   onChange={(queue) => {
-                    if (form.formState.isDirty) {
-                      return
-                    }
                     const p1 = queue.p1 ?? {
                       team: "",
                       playerName: "",
@@ -296,6 +324,7 @@ const ScoreAndCamera: FC<{
                     }
                   }}
                   id="scoreAndCameraStreamQueueTable"
+                  ref={streamQueueTableRef}
                 />
               </div>
             </div>

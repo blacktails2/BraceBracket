@@ -11,6 +11,7 @@ export const TextForm: FC<{
   autocomplete?: string
   disabled?: boolean
   cleanValue?: string
+  onChange?: () => void
 }> = ({
   label,
   name,
@@ -19,6 +20,7 @@ export const TextForm: FC<{
   autocomplete,
   disabled,
   cleanValue,
+  onChange,
 }) => {
   const { register, watch, getValues } = useFormContext()
   if (cleanValue !== undefined) {
@@ -33,7 +35,7 @@ export const TextForm: FC<{
       )}
       <input
         type="text"
-        {...register(name)}
+        {...register(name, { onChange: onChange })}
         placeholder={placeholder}
         className={styles.input}
         id={name}
