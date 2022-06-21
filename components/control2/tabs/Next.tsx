@@ -187,6 +187,9 @@ const Next: FC<{
                 <StreamQueueTable
                   setting={setting}
                   onChange={(queue) => {
+                    if (form.formState.isDirty) {
+                      return
+                    }
                     const p1 = queue.p1 ?? {
                       team: "",
                       playerName: "",
