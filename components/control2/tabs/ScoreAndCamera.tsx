@@ -261,16 +261,39 @@ const ScoreAndCamera: FC<{
                 <StreamQueueTable
                   setting={setting}
                   onChange={(queue) => {
-                    form.setValue("p1.team", queue.p1?.team ?? "")
-                    form.setValue("p1.playerName", queue.p1?.playerName ?? "")
-                    form.setValue("p1.score", queue.p1?.score ?? 0)
-                    form.setValue("p1.twitterID", queue.p1?.twitterID ?? "")
+                    if (form.formState.isDirty) {
+                      return
+                    }
+                    const p1 = queue.p1 ?? {
+                      team: "",
+                      playerName: "",
+                      score: 0,
+                      twitterID: "",
+                    }
+                    const p2 = queue.p2 ?? {
+                      team: "",
+                      playerName: "",
+                      score: 0,
+                      twitterID: "",
+                    }
 
-                    form.setValue("p2.team", queue.p2?.team ?? "")
-                    form.setValue("p2.playerName", queue.p2?.playerName ?? "")
-                    form.setValue("p2.score", queue.p2?.score ?? 0)
-                    form.setValue("p2.twitterID", queue.p2?.twitterID ?? "")
-                    form.setValue("round", queue.roundText)
+                    if (
+                      form.getValues("p1.team") !== p1.team ||
+                      form.getValues("p1.playerName") !== p1.playerName ||
+                      form.getValues("p2.team") !== p2.team ||
+                      form.getValues("p2.playerName") !== p2.playerName
+                    ) {
+                      form.setValue("p1.team", p1.team)
+                      form.setValue("p1.playerName", p1.playerName)
+                      form.setValue("p1.score", p1.score)
+                      form.setValue("p1.twitterID", p1.twitterID)
+
+                      form.setValue("p2.team", p2.team)
+                      form.setValue("p2.playerName", p2.playerName)
+                      form.setValue("p2.score", p2.score)
+                      form.setValue("p2.twitterID", p2.twitterID)
+                      form.setValue("round", queue.roundText)
+                    }
                   }}
                   id="scoreAndCameraStreamQueueTable"
                 />
