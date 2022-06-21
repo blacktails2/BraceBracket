@@ -111,7 +111,7 @@ const Next: FC<{
               <div className="flex w-full justify-center gap-[0.5rem]">
                 <div className="flex w-full gap-[1rem]">
                   <div className="flex w-full flex-col gap-[0.5rem]">
-                    <div className="text-[1rem] font-bold">1P</div>
+                    <h6 className="mb-[-0.3rem]">1P</h6>
                     <TextForm
                       name="p1.team"
                       placeholder="1P Team"
@@ -126,12 +126,12 @@ const Next: FC<{
                     />
                   </div>
                 </div>
-                <div className="flex flex-col justify-center gap-[0.5rem]">
+                <div className="flex flex-col justify-center gap-[0.2rem]">
                   <div className="relative text-center text-[1rem]">
                     &nbsp;
-                    <div className="absolute top-[0px] left-[50%] w-fit translate-x-[-50%] whitespace-nowrap text-center text-[1rem] font-bold">
+                    <h6 className="absolute top-[0px] left-[50%] w-fit translate-x-[-50%] whitespace-nowrap text-center">
                       ALL RESET
-                    </div>
+                    </h6>
                   </div>
                   <div className="flex">
                     <div>
@@ -167,9 +167,7 @@ const Next: FC<{
                 </div>
                 <div className="flex w-full gap-[1rem]">
                   <div className="flex w-full flex-col gap-[0.5rem]">
-                    <div className="w-full text-right text-[1rem] font-bold">
-                      2P
-                    </div>
+                    <h6 className="mb-[-0.3rem] w-full text-right">2P</h6>
                     <TextForm
                       name="p2.team"
                       placeholder="2P Team"

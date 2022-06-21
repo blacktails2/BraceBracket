@@ -26,14 +26,12 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
       </div>
       <div className="flex flex-col gap-[3rem] sm:flex-row">
         <div className="w-full rounded-[15px] border-[1px] border-[color:var(--bb-beige)] p-[2rem]">
-          <div className="mb-[1.8rem] text-[2.4rem]">
-            {setting?.name}を編集する
-          </div>
+          <h5 className="mb-[1.8rem]">{setting?.name}を編集する</h5>
           <div className={styles.url}>
             <h4>編集画面共有URL:</h4>
             <TextboxWithCopy
               text={`${origin}/create/?id=${id}`}
-              className="min-w-[50px] max-w-[400px]"
+              className="mb-[10px] min-w-[50px] max-w-[400px]"
             />
           </div>
           <div className="mb-[3rem]">
@@ -57,7 +55,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
         </div>
         <div className="flex w-full min-w-[200px] flex-col justify-between rounded-[15px] border-[0px] bg-[color:var(--bb-beige-light)] p-[2rem] sm:w-[400px]">
           <div>
-            <div className="mb-[1.8rem] text-[2.4rem]">設定を変更</div>
+            <h5 className="mb-[1.8rem]">設定を変更</h5>
             <div>
               レイアウトのデザイン、カラー、大会ロゴ、start.gg連携などの設定を変更できます。
             </div>
@@ -65,6 +63,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
           <Button
             type="button"
             mode="primary"
+            light
             onClick={(e) => {
               e.preventDefault()
               e.stopPropagation()
@@ -81,7 +80,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
         <div className="flex flex-wrap gap-[1rem] md:flex-nowrap md:gap-[3rem]">
           <div className="flex gap-[1rem] md:flex-nowrap md:gap-[3rem]">
             <div className="w-full max-w-[345px]">
-              <h4 className="mb-[1rem]">Score Layout</h4>
+              <h4 className="mb-[0.8rem]">Score Layout</h4>
               <PreviewScore
                 displayCameraAndTwitterID={
                   setting?.scoreboard.cameraAndLogo.displayCameraAndTwitterID
@@ -91,42 +90,42 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
               />
               <TextboxWithCopy
                 text={`${origin}/obs/score/?id=${id}`}
-                className="w-full min-w-[50px] max-w-[100%]"
+                className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
               />
             </div>
             <div className="w-full max-w-[345px]">
-              <h4 className="mb-[1rem]">Interval Layout</h4>
+              <h4 className="mb-[0.8rem]">Interval Layout</h4>
               <PreviewInterval
                 layout={setting?.scoreboard.design.layout}
                 color={setting?.scoreboard.design.color}
               />
               <TextboxWithCopy
                 text={`${origin}/obs/next/?id=${id}`}
-                className="w-full min-w-[50px] max-w-[100%]"
+                className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
               />
             </div>
           </div>
           <div className="flex gap-[1rem] md:flex-nowrap md:gap-[3rem]">
             <div className="w-full max-w-[345px]">
-              <h4 className="mb-[1rem]">MC Layout</h4>
+              <h4 className="mb-[0.8rem]">MC Layout</h4>
               <PreviewMC
                 layout={setting?.scoreboard.design.layout}
                 color={setting?.scoreboard.design.color}
               />
               <TextboxWithCopy
                 text={`${origin}/obs/mc/?id=${id}`}
-                className="w-full min-w-[50px] max-w-[100%]"
+                className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
               />
             </div>
             <div className="w-full max-w-[345px]">
-              <h4 className="mb-[1rem]">Top8 Layout</h4>
+              <h4 className="mb-[0.8rem]">Top8 Layout</h4>
               <PreviewBracket
                 layout={setting?.scoreboard.design.layout}
                 color={setting?.scoreboard.design.color}
               />
               <TextboxWithCopy
                 text={`${origin}/obs/bracket/?id=${id}`}
-                className="w-full min-w-[50px] max-w-[100%]"
+                className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
               />
             </div>
           </div>

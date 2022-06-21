@@ -104,7 +104,11 @@ export const Create: FC<{ setting: Setting }> = ({ setting }) => {
               <p className="mb-[1rem]">
                 Dualレイアウトでロゴ画像を設定していない場合、大会名がスコアボード中央に表示されます。
               </p>
-              <TextForm name="name" placeholder="CompetitionName" />
+              <TextForm
+                className="max-w-xl"
+                name="name"
+                placeholder="CompetitionName"
+              />
             </div>
             <DisplayCameraAndTwitterID />
             <UseLogo />

@@ -89,15 +89,15 @@ export const StreamQueueTable: FC<{
                 setFilter(e.target.value)
               }}
             />
-            <div className="pt-[0.4rem] mb-[0.4rem]">
+            <div className="mb-[0.4rem] pt-[0.4rem]">
               <CheckBoxForm
-                label="自動で更新"
+                label="リストを自動で更新"
                 id={inputID}
                 onChange={() => setIsAutoUpdate(!isAutoUpdate)}
                 checked={isAutoUpdate}
               />
             </div>
-            <div className="pt-[0.4rem] mb-[0.4rem]">
+            <div className="mb-[0.4rem] pt-[0.4rem]">
               <CheckBoxForm
                 label={
                   !trackNext ? "先頭データを常に反映" : "次の試合を常に反映"
@@ -108,12 +108,12 @@ export const StreamQueueTable: FC<{
               />
             </div>
           </div>
-          <div className="overflow-x-auto">
+          <div className="mt-[5px] overflow-x-auto">
             <table className={styles.table}>
               <thead>
                 <tr className="w-full">
-                  <th className="!p-0 w-[4%] min-w-[22px]">
-                    <div className="flex overflow-hidden justify-center w-full h-full">
+                  <th className="w-[5%] min-w-[22px] !p-0">
+                    <div className="flex h-full w-full justify-center overflow-hidden">
                       <IconButton
                         onClick={(e) => {
                           e.stopPropagation()
@@ -140,13 +140,17 @@ export const StreamQueueTable: FC<{
                       />
                     </div>
                   </th>
-                  <th className="w-[21%] font-bold">Round</th>
-                  <th className="w-[25%] font-bold">1P Player</th>
-                  <th className="w-[25%] font-bold">2P Player</th>
+                  <th className="w-[22%] font-bold tracking-wider">ROUND</th>
+                  <th className="w-[22%] font-bold tracking-wider">
+                    1P PLAYER
+                  </th>
+                  <th className="w-[22%] font-bold tracking-wider">
+                    2P PLAYER
+                  </th>
                   {usedStream && (
-                    <th className="w-[12%] font-bold">Stream Name</th>
+                    <th className="w-[17%] font-bold tracking-wider">STREAM</th>
                   )}
-                  <th className="w-[13%] font-bold">State</th>
+                  <th className="w-[12%] font-bold tracking-wider">STATE</th>
                 </tr>
               </thead>
               <tbody>
@@ -159,7 +163,7 @@ export const StreamQueueTable: FC<{
                     }}
                   >
                     <td className="w-[5%]">
-                      <div className="flex overflow-hidden justify-center items-center w-full h-[4rem]">
+                      <div className="flex h-[4rem] w-full items-center justify-center overflow-hidden">
                         <input
                           type="radio"
                           name="stream"
@@ -172,17 +176,17 @@ export const StreamQueueTable: FC<{
                         />
                       </div>
                     </td>
-                    <td className="w-[24%]">{queue.roundText}</td>
-                    <td className="w-[23%]">{`${
+                    <td className="w-[22%]">{queue.roundText}</td>
+                    <td className="w-[22%]">{`${
                       queue.p1?.team ? `${queue.p1?.team} | ` : ""
                     }${queue.p1?.playerName}`}</td>
-                    <td className="w-[23%]">{`${
+                    <td className="w-[22%]">{`${
                       queue.p2?.team ? `${queue.p2?.team} | ` : ""
                     }${queue.p2?.playerName}`}</td>
                     {usedStream && (
-                      <td className="w-[12%]">{queue.streamName}</td>
+                      <td className="w-[17%]">{queue.streamName}</td>
                     )}
-                    <td className="w-[13%]">{queue.state}</td>
+                    <td className="w-[12%]">{queue.state}</td>
                   </tr>
                 ))}
               </tbody>
