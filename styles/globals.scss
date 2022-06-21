@@ -21,6 +21,11 @@
   src: url("/fonts/Mint-Grotesk-Bold-V13.woff2");
 }
 
+@font-face {
+  font-family: "Mint Grotesk ExtraBold";
+  src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
+}
+
 :root {
   --dark-gray: #111;
   --black: #202025;
@@ -103,6 +108,17 @@ h5 {
 
   @media (max-width: 520px) {
     font-size: 2.1rem;
+  }
+}
+
+h6 {
+  font-family: "Mint Grotesk ExtraBold", "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.05rem;
+
+  @media (max-width: 520px) {
+    font-size: 1rem;
   }
 }
 

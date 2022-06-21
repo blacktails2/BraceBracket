@@ -22,10 +22,10 @@ const Top8Bracket: FC<{
   return (
     <FormProvider {...form}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex justify-center w-full">
-          <div className="flex flex-col gap-[0.5rem] justify-center w-full max-w-[60rem]">
+        <div className="flex w-full justify-center">
+          <div className="flex w-full max-w-[60rem] flex-col justify-center gap-[0.5rem]">
             <Button type="submit" mode="small">
-              start.ggから情報を取得
+              start.ggから情報を取得し更新
             </Button>
             <CheckBoxForm label="自動で更新する" name="autoUpdate" />
           </div>

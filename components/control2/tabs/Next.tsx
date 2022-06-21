@@ -46,9 +46,9 @@ const Next: FC<{
   return (
     <FormProvider {...form}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex justify-center w-full">
-          <div className="flex flex-col gap-[1rem] justify-center w-full max-w-[55rem]">
-            <div className="flex relative gap-[1rem] mb-[1rem]">
+        <div className="flex w-full justify-center">
+          <div className="flex w-full max-w-[55rem] flex-col justify-center gap-[1rem]">
+            <div className="relative mb-[1rem] flex gap-[1rem]">
               <Button
                 type="submit"
                 mode="small"
@@ -109,10 +109,10 @@ const Next: FC<{
                 />
               </div>
               <hr className="my-[1rem] h-[1px] bg-[#c4c4c4]" />
-              <div className="flex gap-[0.5rem] justify-center w-full">
-                <div className="flex gap-[1rem] w-full">
-                  <div className="flex flex-col gap-[0.5rem] w-full">
-                    <div className="text-[1rem] font-bold">1P</div>
+              <div className="flex w-full justify-center gap-[0.5rem]">
+                <div className="flex w-full gap-[1rem]">
+                  <div className="flex w-full flex-col gap-[0.5rem]">
+                    <h6 className="mb-[-0.3rem]">1P</h6>
                     <TextForm
                       name="p1.team"
                       placeholder="1P Team"
@@ -127,12 +127,12 @@ const Next: FC<{
                     />
                   </div>
                 </div>
-                <div className="flex flex-col gap-[0.5rem] justify-center">
-                  <div className="relative text-[1rem] text-center">
+                <div className="flex flex-col justify-center gap-[0.2rem]">
+                  <div className="relative text-center text-[1rem]">
                     &nbsp;
-                    <div className="absolute top-[0px] left-[50%] w-fit text-[1rem] font-bold text-center whitespace-nowrap translate-x-[-50%]">
+                    <h6 className="absolute top-[0px] left-[50%] w-fit translate-x-[-50%] whitespace-nowrap text-center">
                       ALL RESET
-                    </div>
+                    </h6>
                   </div>
                   <div className="flex">
                     <div>
@@ -166,11 +166,9 @@ const Next: FC<{
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-[1rem] w-full">
-                  <div className="flex flex-col gap-[0.5rem] w-full">
-                    <div className="w-full text-[1rem] font-bold text-right">
-                      2P
-                    </div>
+                <div className="flex w-full gap-[1rem]">
+                  <div className="flex w-full flex-col gap-[0.5rem]">
+                    <h6 className="mb-[-0.3rem] w-full text-right">2P</h6>
                     <TextForm
                       name="p2.team"
                       placeholder="2P Team"
@@ -186,7 +184,7 @@ const Next: FC<{
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center w-full">
+              <div className="flex w-full justify-center">
                 <StreamQueueTable
                   setting={setting}
                   onChange={(queue) => {

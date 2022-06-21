@@ -19,15 +19,15 @@ export const MatchTypeSelector: FC<{
 }) => {
   return (
     <div>
-      <div className="text-[1rem] font-bold">SET INFO</div>
+      <h6>SET INFO</h6>
       <TextForm
         name={name}
         placeholder={placeholder}
         disabled={disabled}
         cleanValue={cleanValue}
-        className="mt-[0.5rem]"
+        className="mt-[0.2rem]"
       />
-      <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] max-w-[300px]">
+      <div className="mt-[1rem] flex max-w-[300px] flex-wrap gap-[0.4rem]">
         {(() => {
           const values = ["Best of 3", "Best of 5"]
           return values.map((name) => {
