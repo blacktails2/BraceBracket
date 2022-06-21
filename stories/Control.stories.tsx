@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import { Control as Component } from "../components/control/Control"
+import { Control as Component } from "../components/control2/Control"
 import { MatchIntervalInfo, MC, Score, Setting } from "../libs/const"
 
 import deepCopy from "./helper/deepCopy"

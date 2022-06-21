@@ -27,8 +27,8 @@ export type ScoreboardColor =
   typeof ScoreboardColorsMap[ScoreboardLayout][number]
 
 export const getCameraFilename: (
-  layout: ScoreboardLayout,
-  color: ScoreboardColor
+  layout?: ScoreboardLayout,
+  color?: ScoreboardColor
 ) => string = (layout, color) => {
   if (!layout || !color) {
     return "camera_black.png"
@@ -78,6 +78,7 @@ export const getBracketFilename: (
 
 export type Setting = {
   createdAt: number | ReturnType<typeof serverTimestamp>
+  name: string
   scoreboard: {
     design: {
       layout: ScoreboardLayout
@@ -109,7 +110,6 @@ export type Score = {
   p2: PlayerScore
   round: string
   matchType: string
-  tournamentName: string
   uppercase: boolean
 }
 

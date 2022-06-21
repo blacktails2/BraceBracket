@@ -24,7 +24,7 @@ export const DropShadow = () => {
                   value="none"
                   imageSrc={
                     <div
-                      className="pt-[25px] pb-[25px] pl-[42px] pr-[42px] rounded-[5px]"
+                      className="py-[25px] px-[42px] rounded-[5px]"
                       style={{
                         backgroundColor: "rgb(0 0 0 / 10%)",
                       }}
@@ -44,7 +44,7 @@ export const DropShadow = () => {
                   value="light"
                   imageSrc={
                     <div
-                      className="pt-[25px] pb-[25px] pl-[42px] pr-[42px] rounded-[5px]"
+                      className="py-[25px] px-[42px] rounded-[5px]"
                       style={{
                         backgroundColor: "rgb(0 0 0 / 40%)",
                         filter: "drop-shadow(0 0 6px rgb(255 255 255 / 70%))",
@@ -66,7 +66,7 @@ export const DropShadow = () => {
                   value="dark"
                   imageSrc={
                     <div
-                      className="pt-[25px] pb-[25px] pl-[42px] pr-[42px] rounded-[5px]"
+                      className="py-[25px] px-[42px] rounded-[5px]"
                       style={{
                         backgroundColor: "rgb(0 0 0 / 10%)",
                         filter: "drop-shadow(0 0 4px rgb(0 0 0 / 30%))",

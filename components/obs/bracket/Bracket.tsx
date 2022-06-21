@@ -1,9 +1,9 @@
 import { FC } from "react"
 
 import {
+  Bracket as BracketType,
   getBracketFilename,
   Setting,
-  Bracket as BracketType,
 } from "../../../libs/const"
 
 import { BracketBox } from "./BracketBox"

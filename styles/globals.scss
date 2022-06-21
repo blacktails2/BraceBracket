@@ -8,17 +8,22 @@
 /* stylelint-enable */
 @font-face {
   font-family: "Mint Grotesk Regular";
-  src: url("/fonts/MintGroteskV12-Regular.woff2");
+  src: url("/fonts/Mint-Grotesk-Regular-V13.woff2");
 }
 
 @font-face {
   font-family: "Mint Grotesk Medium";
-  src: url("/fonts/MintGroteskV12-Medium.woff2");
+  src: url("/fonts/Mint-Grotesk-Medium-V13.woff2");
 }
 
 @font-face {
   font-family: "Mint Grotesk Bold";
-  src: url("/fonts/MintGroteskV12-Bold.woff2");
+  src: url("/fonts/Mint-Grotesk-Bold-V13.woff2");
+}
+
+@font-face {
+  font-family: "Mint Grotesk ExtraBold";
+  src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
 
 :root {
@@ -96,6 +101,27 @@ h4 {
   }
 }
 
+h5 {
+  font-family: "Mint Grotesk Bold", "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+
+  @media (max-width: 520px) {
+    font-size: 2.1rem;
+  }
+}
+
+h6 {
+  font-family: "Mint Grotesk ExtraBold", "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.025rem;
+
+  @media (max-width: 520px) {
+    font-size: 1rem;
+  }
+}
+
 p,
 div,
 span {
@@ -163,4 +189,14 @@ span {
 .markdown li > ul,
 .markdown li > ol {
   @apply mb-0;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* IE, Edge 対応 */
+  scrollbar-width: none; /* Firefox 対応 */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  /* Chrome, Safari 対応 */
+  display: none;
 }

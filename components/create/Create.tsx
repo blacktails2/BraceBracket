@@ -12,9 +12,10 @@ import {
 
 import { Setting } from "../../libs/const"
 import { db } from "../../libs/firebase"
-import styles from "../../pages/create.module.scss"
+import { TextForm } from "../control2/parts/TextForm"
 import { Button } from "../parts/Button"
 
+import styles from "./create.module.scss"
 import { Preview } from "./parts/Preview"
 import { Color } from "./settingForms/Color"
 import { DisplayCameraAndTwitterID } from "./settingForms/DisplayCameraAndTwitterID"
@@ -75,7 +76,7 @@ export const Create: FC<{ setting: Setting }> = ({ setting }) => {
     }
 
     await router.push({
-      pathname: `/control`,
+      pathname: `/links`,
       query: { id: _id },
     })
   }
@@ -97,7 +98,18 @@ export const Create: FC<{ setting: Setting }> = ({ setting }) => {
               selectedLayout={createForm.getValues("scoreboard.design.layout")}
             />
             <hr />
-            <h3>カメラ・ロゴ設定</h3>
+            <h3>カメラ・大会設定</h3>
+            <div className="mb-[5rem]">
+              <h4 className="mb-[0.5rem]">大会名</h4>
+              <p className="mb-[1rem]">
+                Dualレイアウトでロゴ画像を設定していない場合、大会名がスコアボード中央に表示されます。
+              </p>
+              <TextForm
+                className="max-w-xl"
+                name="name"
+                placeholder="CompetitionName"
+              />
+            </div>
             <DisplayCameraAndTwitterID />
             <UseLogo />
             {createForm.getValues("scoreboard.cameraAndLogo.useLogo") && (

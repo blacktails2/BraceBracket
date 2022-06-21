@@ -1,12 +1,17 @@
 .table {
+  width: 100%;
   overflow: scroll;
+  table-layout: fixed;
   border-bottom: 1px solid var(--bb-beige);
 
   th {
-    padding: 2px 25px;
+    padding: 2px 5px;
+    overflow: hidden;
     font-family: "Mint Grotesk Medium", "Zen Kaku Gothic Antique", sans-serif;
     font-weight: 700;
     text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     border-bottom: 1px solid var(--bb-beige);
   }
 
@@ -20,10 +25,9 @@
   }
 
   td {
-    padding: 14px 25px;
-  }
-
-  td:nth-child(1) {
-    padding: 12px 0 12px 10px;
+    padding: 2px 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

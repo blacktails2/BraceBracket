@@ -1,6 +1,6 @@
 import { FC } from "react"
 
-import { TextForm } from "./TextForm"
+import { TextForm } from "../../parts/TextForm"
 
 export const MatchTypeSelector: FC<{
   name?: string
@@ -19,23 +19,24 @@ export const MatchTypeSelector: FC<{
 }) => {
   return (
     <div>
-      <label className="block">試合形式</label>
+      <h6>SET INFO</h6>
       <TextForm
         name={name}
         placeholder={placeholder}
         disabled={disabled}
         cleanValue={cleanValue}
+        className="mt-[0.2rem]"
       />
-      <div className="flex flex-wrap gap-[0.4rem] mt-[1rem] max-w-[300px]">
+      <div className="mt-[1rem] flex max-w-[300px] flex-wrap gap-[0.4rem]">
         {(() => {
           const values = ["Best of 3", "Best of 5"]
           return values.map((name) => {
             return (
               <div
                 key={name}
-                className={`border-solid border-[1px] border-[#c4c4c4] rounded-[5px] pr-[0.5rem] pl-[0.5rem] transition ease delay-50 hover:border-[#202025] hover:shadow-md ${
+                className={`ease delay-50 rounded-[5px] border-[1px] border-solid border-[#c4c4c4] pr-[0.5rem] pl-[0.5rem] transition hover:border-[#202025] hover:shadow-md ${
                   matchType?.endsWith(name)
-                    ? "bg-[#202025] text-white border-[#202025]"
+                    ? "border-[#202025] bg-[#202025] text-white"
                     : "bg-white text-[#202025]"
                 } ${disabled ? "cursor-default" : "cursor-pointer"}`}
                 onClick={() => {

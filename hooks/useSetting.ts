@@ -6,6 +6,7 @@ import { genUseDatabaseValue } from "./useDatabaseValue"
 
 export const defaultValue: Setting = {
   createdAt: serverTimestamp(),
+  name: "",
   scoreboard: {
     design: {
       layout: "dual",
