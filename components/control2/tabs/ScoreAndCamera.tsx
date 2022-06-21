@@ -36,9 +36,9 @@ const ScoreAndCamera: FC<{
     <>
       <FormProvider {...form}>
         <form onSubmit={handleSubmit(onScoreSubmit)}>
-          <div className="flex justify-center w-full">
-            <div className="flex flex-col gap-[1rem] justify-center w-full max-w-[55rem]">
-              <div className="flex relative gap-[1rem] mb-[1rem]">
+          <div className="flex w-full justify-center">
+            <div className="flex w-full max-w-[55rem] flex-col justify-center gap-[1rem]">
+              <div className="relative mb-[1rem] flex gap-[1rem]">
                 <Button
                   type="submit"
                   mode="small"
@@ -80,14 +80,15 @@ const ScoreAndCamera: FC<{
                 <CheckBoxForm
                   className="flex flex-col justify-end"
                   label="全て大文字にする"
+                  id="score-uppercase"
                   name="uppercase"
                   cleanValue={score?.uppercase}
                 />
               </div>
               <hr className="my-[1rem] h-[1px] bg-[#c4c4c4]" />
-              <div className="flex gap-[0.5rem] justify-center w-full">
-                <div className="flex gap-[1rem] w-full">
-                  <div className="flex flex-col gap-[0.5rem] w-full">
+              <div className="flex w-full justify-center gap-[0.5rem]">
+                <div className="flex w-full gap-[1rem]">
+                  <div className="flex w-full flex-col gap-[0.5rem]">
                     <div className="text-[1rem] font-bold">1P</div>
                     <TextForm
                       name="p1.team"
@@ -111,8 +112,8 @@ const ScoreAndCamera: FC<{
                     )}
                   </div>
                 </div>
-                <div className="flex flex-col gap-[0.5rem] justify-center">
-                  <div className="text-[1rem] font-bold text-center">
+                <div className="flex flex-col justify-center gap-[0.5rem]">
+                  <div className="text-center text-[1rem] font-bold">
                     ALL RESET
                   </div>
                   <div className="flex">
@@ -230,13 +231,13 @@ const ScoreAndCamera: FC<{
                       </div>
                     </div>
                   </div>
-                  <div className="text-[1rem] font-bold text-center">
+                  <div className="text-center text-[1rem] font-bold">
                     SCORE RESET
                   </div>
                 </div>
-                <div className="flex gap-[1rem] w-full">
-                  <div className="flex flex-col gap-[0.5rem] w-full">
-                    <div className="w-full text-[1rem] font-bold text-right">
+                <div className="flex w-full gap-[1rem]">
+                  <div className="flex w-full flex-col gap-[0.5rem]">
+                    <div className="w-full text-right text-[1rem] font-bold">
                       2P
                     </div>
                     <TextForm
@@ -262,7 +263,7 @@ const ScoreAndCamera: FC<{
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center w-full">
+              <div className="flex w-full justify-center">
                 <StreamQueueTable
                   setting={setting}
                   onChange={(queue) => {
