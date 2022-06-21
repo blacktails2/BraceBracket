@@ -63,6 +63,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
           <Button
             type="button"
             mode="primary"
+            light
             onClick={(e) => {
               e.preventDefault()
               e.stopPropagation()

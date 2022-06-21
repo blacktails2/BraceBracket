@@ -23,7 +23,7 @@ const Top8Bracket: FC<{
     <FormProvider {...form}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex w-full justify-center">
-          <div className="flex w-full max-w-[60rem] flex-col justify-center gap-[0.5rem]">
+          <div className="flex w-full max-w-[55rem] flex-col justify-center gap-[0.5rem]">
             <Button type="submit" mode="small">
               start.ggから情報を取得し更新
             </Button>
