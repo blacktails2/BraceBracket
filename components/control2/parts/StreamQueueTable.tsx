@@ -33,11 +33,16 @@ export const StreamQueueTable: FC<{
   )
 
   useInterval(async () => {
-    if (isTrack) {
+    if (isAutoUpdate) {
       setLoading(true)
       const streamQueue = await getStreamQueue(setting.integrateStartGG?.url)
       setLoading(false)
       setStreamQueue(streamQueue)
+    }
+  }, 10000)
+
+  useEffect(() => {
+    if (isTrack) {
       if (!trackNext && streamQueue.length > 0) {
         onChange(streamQueue[0])
         setSelected(streamQueue[0].id)
@@ -51,7 +56,7 @@ export const StreamQueueTable: FC<{
         }
       }
     }
-  }, 30000)
+  }, [isTrack, trackNext, streamQueue, onChange])
 
   useEffect(() => {
     setFilteredStreamQueue(
@@ -92,7 +97,7 @@ export const StreamQueueTable: FC<{
             <div className="mb-[0.4rem] pt-[0.4rem]">
               <CheckBoxForm
                 label="リストを自動で更新"
-                id={inputID}
+                id={`${inputID}-isAutoUpdate`}
                 onChange={() => setIsAutoUpdate(!isAutoUpdate)}
                 checked={isAutoUpdate}
               />
@@ -102,7 +107,7 @@ export const StreamQueueTable: FC<{
                 label={
                   !trackNext ? "先頭データを常に反映" : "次の試合を常に反映"
                 }
-                id={inputID}
+                id={`${inputID}-isTrack`}
                 onChange={() => setIsTrack(!isTrack)}
                 checked={isTrack}
               />
@@ -159,6 +164,7 @@ export const StreamQueueTable: FC<{
                     key={queue.id}
                     onClick={() => {
                       setSelected(queue.id)
+                      setIsTrack(false)
                       onChange(queue)
                     }}
                   >
@@ -171,6 +177,7 @@ export const StreamQueueTable: FC<{
                           checked={selected === queue.id}
                           onChange={() => {
                             setSelected(queue.id)
+                            setIsTrack(false)
                             onChange(queue)
                           }}
                         />
