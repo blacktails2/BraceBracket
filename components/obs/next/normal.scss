@@ -108,6 +108,14 @@
       text-align: left;
     }
 
+    span {
+      margin-left: 1rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
     .team {
       @include mediumWeight;
 
@@ -121,7 +129,6 @@
     .name {
       @include blackWeight;
 
-      margin-left: 1rem;
       font-family: "Gambetta Bold", "Noto Serif JP", serif;
       font-size: 30px;
       line-height: 30px;
