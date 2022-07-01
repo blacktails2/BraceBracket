@@ -1,17 +1,42 @@
 @import "components/obs/score/base";
-
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;900&display=swap");
+@font-face {
+  font-family: "Nikolai Bold";
+  src: url("/fonts/Nikolai-Bold.woff2");
+}
+@font-face {
+  font-family: "Nikolai Bold Italic";
+  src: url("/fonts/Nikolai-BoldItalic.woff2");
+}
+@font-face {
+  font-family: "Nikolai Narrow Bold";
+  src: url("/fonts/Nikolai-NarrowBold.woff2");
+}
+@font-face {
+  font-family: "Nikolai Semi Bold";
+  src: url("/fonts/Nikolai-Semibold.woff2");
+}
+@font-face {
+  font-family: "Gambetta Bold";
+  src: url("/fonts/Gambetta-Bold.woff2");
+}
+@font-face {
+  font-family: "Gambetta Semi Bold";
+  src: url("/fonts/Gambetta-Semibold.woff2");
+}
+@font-face {
+  font-family: "Gambetta Regular";
+  src: url("/fonts/Gambetta-Regular.woff2");
+}
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
   @include blackWeight;
 
-  width: 215px;
-  margin: 0 0 0 5px;
-  font-size: 19px;
-  font-style: italic;
-  line-height: 21px;
-  color: var(--status-color);
+  width: 285px;
+  font-size: 30px;
+  line-height: 30px;
+  color: var(--black);
   text-align: left;
-  letter-spacing: 1px;
 }
 
 .single {
@@ -20,9 +45,11 @@
     @include score;
     @include blackWeight;
 
-    top: 44px;
-    width: 60px;
-    font-size: 40px;
+    top: 38px;
+    width: 70px;
+    font-family: "Nikolai Bold", serif;
+    font-size: 65px;
+    color: var(--black);
 
     &.p1 {
       left: 800px;
@@ -36,8 +63,8 @@
   // プレイヤー名の位置指定
   .player {
     position: absolute;
-    top: 61px;
-    width: 460px;
+    top: 62px;
+    width: 430px;
     height: 60px;
     text-align: center;
 
@@ -50,19 +77,21 @@
     }
 
     &.p1 {
-      left: 320px;
+      left: 350px;
     }
 
     &.p2 {
-      right: 320px;
+      right: 350px;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
+      font-family: "Gambetta Regular", "Noto Serif JP", serif;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 28px;
+      color: var(--black);
       text-align: center;
       letter-spacing: 1px;
     }
@@ -70,9 +99,11 @@
     .name {
       @include blackWeight;
 
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
+      font-family: "Gambetta Bold", "Noto Serif JP", serif;
+      font-size: 27px;
+      font-weight: 900;
+      line-height: 27px;
+      color: var(--black);
       text-align: center;
       letter-spacing: 1px;
     }
@@ -91,8 +122,8 @@
 
   .box {
     position: absolute;
-    top: 45px;
-    left: 65px;
+    top: 46px;
+    left: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -101,14 +132,26 @@
   }
 
   // 試合ステータスの位置設定
-  .round,
-  .matchType {
+  .round {
     @include status;
+
+    font-family: "Gambetta Semi Bold", serif;
+  }
+
+  .matchType {
+    position: absolute;
+    top: 5px;
+    left: 875px;
+    width: 140px;
+    font-family: "Gambetta Bold", serif;
+    font-size: 24px;
+    color: white;
+    text-align: center;
   }
 
   .cameraRight,
   .cameraLeft {
-    color: var(--bb-white);
+    color: var(--black);
   }
 
   .logobox {

@@ -38,7 +38,7 @@ export const MatchInterval: FC<{
       />
       <Transition keyName={`${matchIntervalInfo.isNow}`}>
         <p className={styles.nextnow}>
-          {matchIntervalInfo.isNow ? "NOW" : "NEXT"}
+          {matchIntervalInfo.isNow ? "Now" : "Next"}
         </p>
       </Transition>
       <div
