@@ -37,13 +37,9 @@ query StreamQueueOnTournament($tourneySlug: String!) {
         fullRoundText
         state
         lPlacement
+        wPlacement
         slots {
-          id
           entrant {
-            id
-            team {
-              id
-            }
             name
             participants {
               user {
@@ -57,7 +53,7 @@ query StreamQueueOnTournament($tourneySlug: String!) {
       }
     }
     events {
-      sets(perPage: 100, filters: {state: [1, 2], hideEmpty: true}) {
+      sets(perPage: 50, filters: {state: [1, 2], hideEmpty: true}) {
         pageInfo {
           totalPages
           total
@@ -68,12 +64,7 @@ query StreamQueueOnTournament($tourneySlug: String!) {
           lPlacement
           state
           slots {
-            id
             entrant {
-              id
-              team {
-                id
-              }
               name
               participants {
                 user {
@@ -94,7 +85,7 @@ const nextQuery = `
 query StreamQueueOnTournament($tourneySlug: String!, $page: Int!) {
   tournament(slug: $tourneySlug) {
     events {
-      sets(perPage: 100, page: $page, filters: {state: [1, 2], hideEmpty: true}) {
+      sets(perPage: 50, page: $page, filters: {state: [1, 2], hideEmpty: true}) {
         pageInfo {
           totalPages
           total
@@ -105,12 +96,7 @@ query StreamQueueOnTournament($tourneySlug: String!, $page: Int!) {
           lPlacement
           state
           slots {
-            id
             entrant {
-              id
-              team {
-                id
-              }
               name
               participants {
                 user {
@@ -139,26 +125,20 @@ const getRoundText = (set: any): string => {
   if (fullRoundText2Shorts[set?.fullRoundText]) {
     return fullRoundText2Shorts[set?.fullRoundText]
   }
-  return set?.fullRoundText
-  // const fullRoundText = set?.fullRoundText
-  // console.log({ set, fullRoundText })
-  // if (
-  //   !fullRoundText &&
-  //   !fullRoundText.startsWith("Winners") &&
-  //   !fullRoundText.startsWith("Losers")
-  // ) {
-  //   return fullRoundText
-  // }
-  // const rounds = [
-  //   8, 12, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536, 2048,
-  //   3072, 4096,
-  // ]
-  // const round = rounds.find((r) => set?.lPlacement <= r)
-  // if (fullRoundText.startsWith("Winners")) {
-  //   return `Winners Top${round}`
-  // }
-  //
-  // return `Losers Top${round}`
+  const fullRoundText = set?.fullRoundText
+  if (!fullRoundText) {
+    return ""
+  }
+
+  if (set?.lPlacement) {
+    if (fullRoundText.startsWith("Winners")) {
+      return `Winners Top${(set.lPlacement - 1) * 2}`
+    } else if (fullRoundText.startsWith("Losers")) {
+      return `Losers Top${set.lPlacement - 1}`
+    }
+  }
+
+  return fullRoundText
 }
 
 export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
@@ -191,7 +171,6 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
     console.error(res.errors)
     return []
   }
-  console.log(res)
   const streamQueue =
     res?.data?.tournament?.streamQueue?.flatMap((stream: any) => {
       return stream.sets.map((set: any) => {
