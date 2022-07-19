@@ -18,7 +18,7 @@ export const Header: FC = () => {
               <Link href="/" passHref>
                 <a className={styles.headerLink}>Top</a>
               </Link>
-              <Link href="/" passHref>
+              <Link href="/usage" passHref>
                 <a className={styles.headerLink}>How to Use</a>
               </Link>
               <a
@@ -58,7 +58,7 @@ export const Header: FC = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/" passHref>
+                    <Link href="/usage" passHref>
                       <a>How to Use</a>
                     </Link>
                   </li>

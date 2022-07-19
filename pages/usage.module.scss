@@ -1,0 +1,34 @@
+.index {
+  position: fixed;
+  padding: 3rem;
+  background-color: var(--bb-beige-light);
+  border-radius: 15px;
+
+  &__head {
+    padding-bottom: 0.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--bb-beige);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__sub {
+    margin-top: 0.5rem;
+    line-height: 1.3;
+  }
+
+  li {
+    list-style: none;
+    opacity: 0.7;
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
