@@ -10,4 +10,15 @@
   p {
     margin: 0;
   }
+
+  a {
+    color: var(--bb-black);
+    text-decoration: underline;
+    text-underline-offset: 0.1em;
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+    &:hover {
+      color: var(--bb-beige);
+    }
+  }
 }
