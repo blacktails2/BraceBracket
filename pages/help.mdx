@@ -1,0 +1,80 @@
+import { DefaultLayout } from "../components/layouts/DefaultLayout"
+import Head from "next/head"
+import styles from "./help.module.scss"
+
+## Help
+
+<div className='columns is-variable is-6 is-multiline'>
+  <div className='column is-8-widescreen is-8-desktop is-12-tablet'>
+
+    <ul className={styles.helpbox}>
+      <li>
+        #### BraceBracketを使用するにあたり、使用許可や支払いなどは必要ですか？
+        BraceBracketはオープンソースで公開されているため、無料でご自由にご利用いただけます。BraceBracketは今後も開発を続けていく予定ですので、よろしければYoutubeの概要欄や配信内での紹介、[Discord](https://discord.gg/TgMFQEqxY9)やGoogle Formでのフィードバックをいただけたら幸いです。
+      </li>
+      <li>
+        #### デザインのカスタマイズはできますか？
+        できません。意図しない色やフォントの変更により文字の視認性や可読性が低下することを避けるため、現在は指定されたデザインのみを選択できる形式にて提供しています。ただし、ソースコードは[Github](https://github.com/blacktails2/BraceBracket)にて公開しておりますので、cloneして各自の環境で改変し使用していただくことが可能です。また、[Discord](https://discord.gg/TgMFQEqxY9)にて開発者までお問い合わせいただければ、大会に合わせたスコアボードのデザインから実装までを担当いたします。
+      </li>
+      <li>
+        #### BraceBracketの開発に参加したいのですが…
+        [Discordコミュニティ](https://discord.gg/TgMFQEqxY9)にてWolphtypeまでご連絡ください。BraceBracketをより使いやすく、便利なツールにするためのアイデアをお待ちしております。
+      </li>
+      <li>
+        #### バグ及び不具合を見つけました。
+        Google Form, [Discord](https://discord.gg/TgMFQEqxY9)もしくはTwitter [@wolphtype](https://twitter.com/wolphtype)までご連絡ください。できる限り早く対応いたします。
+      </li>
+      <li>
+        #### 配信ソフト用ブラウザソースURLを配信ソフトに配置しましたが、表示されません。
+
+        以下をお試しください。
+
+        * 配信ソフトでのソース再読み込み
+        * ブラウザでそのURLを開き、表示されているか確認
+        * スコアボードの作成し直し
+        * MCレイアウトの場合、MCを入力しているかどうか（何も入力していない場合、MCレイアウトは表示されません）
+        
+        これらをお試しいただいても改善されない場合、[Discord](https://discord.gg/TgMFQEqxY9)までご連絡ください。
+      </li>
+      <li>
+        #### 離れた場所でのスコアの更新は可能ですか？
+        BraceBracketはサーバーを介してスコアを表示するため、インターネットに接続されていればどこからでもスコアを編集可能です。
+      </li>
+      <li>
+        #### start.ggとうまく連携できません。
+        トーナメントのTop8などのカードが表示されているブラケットの画面のURLをコピーペーストしてください。正しく入力されていれば、参照されるトーナメント名のメッセージが表示されます。URLは `https://www.start.gg/tournament/トーナメント名/event/イベント名/brackets/0000000/0000000` のような形式になります。また、編集画面にて表が出てこない場合は、読み込みボタンをクリックするか、対戦カードをStream Queueに入れるなどをお試しください。
+      </li>
+      <li>
+        #### TonamelやChallongeといったツールとも連携できますか？
+        現在開発を検討中です。このツールと連携してほしいなどのご意見があればお寄せください（ツールによっては対応が難しい場合もございます）。
+      </li>
+      <li>
+        #### Google Spreadsheetで編集するバージョンは利用できますか？
+        [GithubのReleases](https://github.com/blacktails2/BraceBracket/releases)よりご利用いただけますが、今後のバージョンアップなどは予定しておりませんのでご了承ください。
+      </li>
+    </ul>
+
+  </div>
+  <div className="column is-12-mobile is-8-tablet is-4-desktop">
+    <div className={styles.formbox}>
+      #### Google Formにフィードバックや不具合を報告する
+
+      匿名でご意見や不具合の報告、質問やご要望がありましたらこちらのフォームをご活用ください。（返信にお時間がかかる場合がございます。）
+      
+      <a href="https://forms.gle/jkJKeiQdDQvwuC6A7" title="BraceBracekt Google Form"><button>Google Form</button></a>
+    </div>
+  </div>
+</div>
+
+
+
+export default ({children}) => <>
+  <Head>
+    <title>BraceBracket | Help</title>
+  </Head>
+  <DefaultLayout>
+    <div className="markdown">
+      {children}
+    </div>
+  </DefaultLayout>
+</>

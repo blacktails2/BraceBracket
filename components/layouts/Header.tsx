@@ -15,11 +15,11 @@ export const Header: FC = () => {
           </div>
           <div className={styles.navbarRight}>
             <div className={styles.headerLinkContainer}>
-              <Link href="/" passHref>
-                <a className={styles.headerLink}>Top</a>
-              </Link>
               <Link href="/usage" passHref>
                 <a className={styles.headerLink}>How to Use</a>
+              </Link>
+              <Link href="/help" passHref>
+                <a className={styles.headerLink}>Help</a>
               </Link>
               <a
                 href="https://github.com/blacktails2/BraceBracket"
@@ -35,7 +35,7 @@ export const Header: FC = () => {
                 rel="noreferrer"
                 className={styles.headerLink}
               >
-                Community
+                Discord
               </a>
             </div>
             <Link href={`/create`}>
@@ -53,13 +53,13 @@ export const Header: FC = () => {
               <div className={styles.menuContent}>
                 <ul>
                   <li>
-                    <Link href="/" passHref>
-                      <a>Top</a>
+                    <Link href="/usage" passHref>
+                      <a>How to Use</a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/usage" passHref>
-                      <a>How to Use</a>
+                    <Link href="/help" passHref>
+                      <a>Help</a>
                     </Link>
                   </li>
                   <li>
@@ -77,7 +77,7 @@ export const Header: FC = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Community
+                      Discord
                     </a>
                   </li>
                 </ul>
