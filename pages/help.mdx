@@ -10,7 +10,12 @@ import styles from "./help.module.scss"
     <ul className={styles.helpbox}>
       <li>
         #### BraceBracketを使用するにあたり、使用許可や支払いなどは必要ですか？
-        BraceBracketはオープンソースで公開されているため、無料でご自由にご利用いただけます。BraceBracketは今後も開発を続けていく予定ですので、よろしければYoutubeの概要欄や配信内での紹介、[Discord](https://discord.gg/TgMFQEqxY9)や[Google Form](https://forms.gle/jkJKeiQdDQvwuC6A7)でのフィードバックをいただけたら幸いです。
+        BraceBracketは無料でご自由にご利用いただけます。ソースコードはApache2.0で公開しておりますので、ライセンスを守ってご利用ください。BraceBracketは今後も開発を続けていく予定ですので、よろしければYoutubeの概要欄や配信内での紹介、[Discord](https://discord.gg/TgMFQEqxY9)や[Google Form](https://forms.gle/jkJKeiQdDQvwuC6A7)でのフィードバックをいただけたら幸いです。また、BraceBracketは有志により無償で開発しておりますので、Buy me a coffeeで投げ銭などをいただけると励みになります。
+
+        <a href="https://www.buymeacoffee.com/wolphtype" target="_blank">
+        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" className={styles.buyme}></img>
+        </a>
+
       </li>
       <li>
         #### デザインのカスタマイズはできますか？
@@ -65,8 +70,6 @@ import styles from "./help.module.scss"
     </div>
   </div>
 </div>
-
-
 
 export default ({children}) => <>
   <Head>

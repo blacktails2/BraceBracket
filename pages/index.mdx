@@ -1,26 +1,128 @@
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import Head from "next/head"
+import Image from 'next/image'
+import Link from 'next/link'
+import styles from "./index.module.scss"
 
-## BraceBracket
+<div className={styles.top}>
+  <h1>ブラウザで完結する<br />対戦ゲーム用スコアボード</h1>
 
-<img src="https://wolphtype.com/img/materials/example.png" style={{width:"600px"}} alt="sample"/>
+  オンラインでデザインを選択、ロゴを配置、start.ggとの連携まで。  
+  BraceBracketではURLを発行し、配信ソフトに配置すればリモートでもスコアの編集ができます。
 
-BraceBracketは格闘ゲームにおけるスコアボードを動的に表示するツールです。OBSなどのWebページを表示する配信ソフトで使うことができ、jsonおよびGoogleスプレッドシートを使ってデータを編集するためリモートでの編集が可能です。
-中–大規模の大会よりも、小規模な大会や対戦会、窓対抗戦やサーバー内大会などをターゲットに制作しています。
+  <Link href={`/create`}>
+      <a className={styles.createLink}>スコアボードを作成</a>
+  </Link>
+</div>
 
-### 使い方
-（製作中）
-- 右上のスコアボードを作成ボタンを押します。
-- スコアボードの設定を変更します。
-- スコアボードを作成ボタンを押して作成します。
-- コントロール画面に表示されているURLをOBSのブラウザソースに指定します。
-  - 幅x高さは1920px x 1080pxに指定してください。
-- 各パネルで必要な操作を行ってください。
+<div className={styles.layouts}>
+  ## 4つの画面を編集・表示
+  <div className="columns is-centered">
+    <div className="column is-10-desktop is-12-tablet is-8-fullhd">
+      <div className="columns is-variable is-6">
+        <div className="column">
+          <Image
+          src="/image/top/sample_score.jpg"
+          alt="プレイヤーとスコア、カメラを表示するScoreレイアウト"
+          width="1920"
+          height="1080"
+          />
+          ### Score Layout
 
+          4種類のデザインと17のバリエーションで試合中のスコアとプレイヤー情報、IDを表示。IDとカメラガイド、ロゴの表示・非表示を切り替えられます。
+
+
+        </div>
+        <div className="column">
+          <Image
+          src="/image/top/sample_interval.jpg"
+          alt="試合間に試合の状況や次の試合の情報を表すIntervalレイアウト"
+          width="1920"
+          height="1080"
+          />
+          ### Interval Layout
+
+          セット間や試合間に現在の試合状況や次の配信台の情報をコンパクトに表示できます。MC, Top8 Layoutと組み合わせて表示することも可能です。
+        </div>
+      </div>
+      <div className="columns is-variable is-6">
+        <div className="column">
+          <Image
+          src="/image/top/sample_mc.jpg"
+          alt="実況と解説の情報を表すMCレイアウト"
+          width="1920"
+          height="1080"
+          />
+          ### MC Layout
+
+          MCのチーム・名前・IDを最大4人まで、人数に応じてデザインを自動で切り替えて表示できます。
+        </div>
+        <div className="column">
+          <Image
+          src="/image/top/sample_top8.jpg"
+          alt="startggと連携してtop8の情報を表すTop8レイアウト"
+          width="1920"
+          height="1080"
+          />
+          ### Top8 Layout
+
+          start.ggと連携し、Top8の状況を表示できます。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className={styles.advantage}>
+  <div className="columns is-variable is-6">
+    <div className="column">
+      ### デザインから編集まで<br/>Webで完結
+    </div>
+    <div className="column">
+      ### URLを共有し、<br/>どこでも編集可能
+    </div>
+    <div className="column">
+      ### start.ggと連携<br/>簡単・正確に情報を表示
+    </div>
+  </div>
+</div>
+
+<div className={styles.review}>
+  <div className="columns is-centered">
+    <div className="column is-12-tablet is-10-desktop is-8-widescreen">
+      ### 「良い」
+      EGS
+    </div>
+  </div>
+  <div className="columns is-variable is-6">
+    <div class="column">
+      #### NUMASUMA
+      「yoki」
+    </div>
+    <div class="column">
+      #### 西武撃
+      「yoki」
+    </div>
+    <div class="column">
+      #### スマパ！
+      「yoki」
+    </div>
+    
+  </div>
+  <div className={styles.discord}>
+    ## Join our Community
+    質問、フィードバック、カスタマイズのご相談はこちらから
+
+    
+    <a href="https://discord.gg/TgMFQEqxY9" className={styles.whiteLink}>Join Discord</a>
+  </div>
+  <a href="https://www.buymeacoffee.com/wolphtype" target="_blank">
+        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" className={styles.buyme}></img>
+        </a>
+</div>
 
 export default ({children}) => <>
   <Head>
-    <title>BraceBracket | Top</title>
+    <title>BraceBracket – Webベースの対戦ゲーム用スコアボードツール</title>
   </Head>
   <DefaultLayout>
     <div className="markdown">

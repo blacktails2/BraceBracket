@@ -21,6 +21,7 @@ export const Footer: FC = () => {
           href="https://discord.gg/TgMFQEqxY9"
           target="_blank"
           rel="noreferrer"
+          className={styles.footerText}
         >
           Developer Contact
         </a>
