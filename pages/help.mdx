@@ -19,7 +19,7 @@ import styles from "./help.module.scss"
       </li>
       <li>
         #### デザインのカスタマイズはできますか？
-        できません。意図しない色やフォントの変更により文字の視認性や可読性が低下することを避けるため、現在は指定されたデザインのみを選択できる形式にて提供しています。ただし、ソースコードは[Github](https://github.com/blacktails2/BraceBracket)にて公開しておりますので、cloneして各自の環境で改変し使用していただくことが可能です。また、[Discord](https://discord.gg/TgMFQEqxY9)にて開発者までお問い合わせいただければ、大会に合わせたスコアボードのデザインから実装までを担当いたします。
+        できません。意図しない色やフォントの変更により文字の視認性や可読性が低下することを避けるため、現在は指定されたデザインのみを選択できる形式にて提供しています。ただし、ソースコードは[Github](https://github.com/blacktails2/BraceBracket)にて公開しておりますので、cloneして各自の環境で改変し使用していただくことが可能です。また、[Discord](https://discord.gg/TgMFQEqxY9)にて開発者までお問い合わせいただければ、大会に合わせたスコアボードのデザインから実装、配信スタッフの皆様への説明までを担当いたします。
       </li>
       <li>
         #### BraceBracketの開発に参加したいのですが…
@@ -74,6 +74,13 @@ import styles from "./help.module.scss"
 export default ({children}) => <>
   <Head>
     <title>BraceBracket | Help</title>
+    <meta property="og:url" content="https://bracebracket.app/help/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="BraceBracketは、Webベースの対戦ゲーム用スコアボードツールです。OSを問わず、ブラウザ上でスコアボードを作成・編集できます。" />
+    <meta property="og:site_name" content="BraceBracket" />
+    <meta property="og:image" content="https://bracebracket.app/image/ogp.jpg" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@wolphtype" />
   </Head>
   <DefaultLayout>
     <div className="markdown">

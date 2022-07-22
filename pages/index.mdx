@@ -184,7 +184,7 @@ import styles from "./index.module.scss"
     <div className="column">
       <div className={styles.reflex}>
         <Image
-          src="/image/top/icon_numasuma.jpg"
+          src="/image/top/icon_smapa.jpg"
           alt="スマパ！"
           width="60"
           height="60"
@@ -217,6 +217,13 @@ import styles from "./index.module.scss"
 export default ({children}) => <>
   <Head>
     <title>BraceBracket – Webベースの対戦ゲーム用スコアボードツール</title>
+    <meta property="og:url" content="https://bracebracket.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="BraceBracketは、Webベースの対戦ゲーム用スコアボードツールです。OSを問わず、ブラウザ上でスコアボードを作成・編集できます。" />
+    <meta property="og:site_name" content="BraceBracket" />
+    <meta property="og:image" content="https://bracebracket.app/image/ogp.jpg" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@wolphtype" />
   </Head>
   <DefaultLayout>
     <div className="markdown">
