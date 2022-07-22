@@ -1,7 +1,12 @@
 .top {
   text-align: center;
 
+  @media (max-width: 520px) {
+    margin-top: 70px;
+  }
+
   p {
+    z-index: auto;
     margin-bottom: 20px;
     text-align: center;
 
@@ -10,6 +15,11 @@
         display: none;
       }
     }
+  }
+
+  video {
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .createLink {
@@ -36,7 +46,7 @@
 }
 
 .layouts {
-  margin-top: 10rem;
+  margin-top: 50px;
 
   img {
     margin-top: 0;
@@ -88,10 +98,13 @@
   }
 
   p {
+    margin-bottom: 3rem;
     font-size: 14px;
   }
 
   @media (max-width: 520px) {
+    padding: 50px 20px;
+    margin-top: 4rem;
     margin-right: -20px;
     margin-left: -20px;
   }
@@ -211,9 +224,17 @@
   }
 
   @media (max-width: 520px) {
-    padding: 100px 20px 180px;
+    padding: 80px 20px 180px;
     margin-right: -20px;
     margin-left: -20px;
+
+    blockquote {
+      margin-bottom: 2rem;
+    }
+
+    .mainreview {
+      margin-bottom: 50px;
+    }
 
     .buyme {
       margin-top: 50px;
@@ -249,6 +270,10 @@
         color: var(--bb-black);
         background-color: var(--bb-white);
       }
+    }
+
+    @media (max-width: 520px) {
+      margin-top: 50px;
     }
   }
 }
