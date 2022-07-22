@@ -7,8 +7,8 @@ import styles from "./index.module.scss"
 <div className={styles.top}>
   <h1>ブラウザで完結する<br />対戦ゲーム用スコアボード</h1>
 
-  オンラインでデザインを選択、ロゴを配置、start.ggとの連携まで。  
-  BraceBracketではURLを発行し、配信ソフトに配置すればリモートでもスコアの編集ができます。
+  ブラウザ上でデザインを選択、ロゴを配置、start.ggとの連携まで。  
+  場所を問わずスコアの編集ができるスコアボード、BraceBracket（ブレースブラケット）
 
   <Link href={`/create`}>
       <a className={styles.createLink}>スコアボードを作成</a>
@@ -60,51 +60,138 @@ import styles from "./index.module.scss"
         <div className="column">
           <Image
           src="/image/top/sample_top8.jpg"
-          alt="startggと連携してtop8の情報を表すTop8レイアウト"
+          alt="start.ggと連携してtop8の情報を表すTop8レイアウト"
           width="1920"
           height="1080"
           />
           ### Top8 Layout
 
-          start.ggと連携し、Top8の状況を表示できます。
+          start.ggと連携し、Top8の状況を表示できます。start.ggから正確な情報を取得するため、手動で入力する必要はありません。
         </div>
       </div>
     </div>
   </div>
 </div>
 <div className={styles.advantage}>
+  ## Why BraceBracket?
   <div className="columns is-variable is-6">
     <div className="column">
+      <Image
+          src="/image/top/ads_web.jpg"
+          alt="デザインの選択から編集までをブラウザで"
+          width="1280"
+          height="800"
+          />
+
       ### デザインから編集まで<br/>Webで完結
+      スコアボードを表示するためにアプリケーションをインストールする必要はありません。ブラウザとインターネット接続さえあれば、スコアボードのデザイン選択からURLの発行、スコアの編集までを全てWeb上で行えます。どのOSでもお使いいただけます。
     </div>
     <div className="column">
+    <Image
+          src="/image/top/ads_remote.jpg"
+          alt="デザインの選択から編集までをブラウザで"
+          width="1280"
+          height="800"
+          />
       ### URLを共有し、<br/>どこでも編集可能
+      編集画面のURLを共有することで、配信用のPCとは別の端末でのスコアの編集や、配信を見ているモデレーターなどに編集を委託することが可能です。リモート編集機能によって、スコアミスの素早い修正やオンライン上でのスコアボード実装がより手軽になります。
+
     </div>
     <div className="column">
+      <Image
+          src="/image/top/ads_startgg.jpg"
+          alt="デザインの選択から編集までをブラウザで"
+          width="1280"
+          height="800"
+          />
       ### start.ggと連携<br/>簡単・正確に情報を表示
+      start.ggのAPIを利用して、Stream Queueの試合や進行中の試合の情報を手軽に適用することができます。チームや選手名のスペルミスから解放され、より配信オペレーションに集中することが可能です。
     </div>
   </div>
 </div>
 
 <div className={styles.review}>
   <div className="columns is-centered">
-    <div className="column is-12-tablet is-10-desktop is-8-widescreen">
-      ### 「良い」
-      EGS
+    <div className="column is-12-tablet is-10-desktop">
+      <div className={styles.mainreview}>
+         ### 「ブラウザで準備と管理ができるため、とても軽快なツールです。」
+
+          ブラウザで準備と管理ができるため、とても軽快なツールです。  
+          スタッフ各々の端末からフォローができることがとても魅力的で助かっています。
+
+          <div className={styles.reflexcenter}>
+        <Image
+          src="/image/top/icon_numasuma.jpg"
+          alt="EGS"
+          width="60"
+          height="60"
+          className={styles.reflex__icon}
+          />
+        <div className={styles.reflex__name}>
+
+          #### East Geek Smash
+
+        </div>
+      </div>
+      </div>
     </div>
   </div>
   <div className="columns is-variable is-6">
-    <div class="column">
-      #### NUMASUMA
-      「yoki」
+    <div className="column">
+      <div className={styles.reflex}>
+        <Image
+          src="/image/top/icon_numasuma.jpg"
+          alt="沼スマ"
+          width="60"
+          height="60"
+          className={styles.reflex__icon}
+          />
+        <div className={styles.reflex__name}>
+          #### NUMASUMA
+          [Archive](https://youtu.be/uAZSiBCBg3o)
+        </div>
+      </div>
+      <blockquote>
+        ブラウザで準備と管理ができるため、とても軽快なツールです。  
+        スタッフ各々の端末からフォローができることがとても魅力的で助かっています。
+      </blockquote>
     </div>
-    <div class="column">
-      #### 西武撃
-      「yoki」
+    <div className="column">
+      <div className={styles.reflex}>
+        <Image
+          src="/image/top/icon_seibugeki.jpg"
+          alt="西武撃"
+          width="60"
+          height="60"
+          className={styles.reflex__icon}
+          />
+        <div className={styles.reflex__name}>
+          #### 西武撃
+          [Archive](https://youtu.be/2hxxKTsU7K4)
+        </div>
+      </div>
+      <blockquote>
+        ああああああああああああああああああああああああああああああ
+      </blockquote>
     </div>
-    <div class="column">
-      #### スマパ！
-      「yoki」
+    <div className="column">
+      <div className={styles.reflex}>
+        <Image
+          src="/image/top/icon_numasuma.jpg"
+          alt="スマパ！"
+          width="60"
+          height="60"
+          className={styles.reflex__icon}
+          />
+        <div className={styles.reflex__name}>
+          #### スマパ！
+          [Archive](https://youtu.be/pLw9-T56qHA)
+        </div>
+      </div>
+      <blockquote>
+        ブラウザで準備と管理ができるため、とても軽快なツールです。  
+        スタッフ各々の端末からフォローができることがとても魅力的で助かっています。
+      </blockquote>
     </div>
     
   </div>
