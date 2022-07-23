@@ -1,5 +1,4 @@
 import Image from "next/image"
-import Link from "next/link"
 import { FC } from "react"
 
 import styles from "./Footer.module.scss"
@@ -12,9 +11,6 @@ export const Footer: FC = () => {
           <Image src="/image/symbol.svg" width={63} height={30} alt="ロゴ" />
         </div>
         <div className={styles.footerText}>Copyright 2022 BraceBracket</div>
-        <Link href="/term-of-use" passHref>
-          <a className={styles.footerText}>Term of Use</a>
-        </Link>
       </div>
       <div className={styles.footerRight}>
         <a
