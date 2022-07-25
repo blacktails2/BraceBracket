@@ -46,7 +46,7 @@ const ScoreAndCamera: FC<{
                 <Button
                   type="submit"
                   mode="small"
-                  tooltipText="適用されました"
+                  tooltipText="Changed!"
                   showTooltip={showTooltip}
                 >
                   適用する

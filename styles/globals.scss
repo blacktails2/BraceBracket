@@ -2,6 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "/node_modules/bulma/sass/grid/columns.sass";
+@import "/node_modules/bulma/sass/helpers/visibility.sass";
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Zen+Kaku+Gothic+Antique:wght@400;500;700;900&display=swap");
 
@@ -50,12 +52,13 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Mint Grotesk Regular", "Zen Kaku Gothic Antique", -apple-system,
+  font-family: "Mint Grotesk Regular", "Noto Sans JP", -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 62.5%;
   color: var(--black);
   -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
 }
 
 a {
@@ -71,10 +74,36 @@ html {
   background-color: rgb(0 0 0 / 0%);
 }
 
+h1 {
+  margin-top: 10rem;
+  font-family: "Mint Grotesk ExtraBold", "Noto Sans JP", sans-serif;
+  font-size: 5.4rem;
+  font-weight: 900;
+  line-height: 1.2;
+
+  @media (max-width: 960px) {
+    margin-top: 8rem;
+    font-size: 4.8rem;
+  }
+
+  @media (max-width: 670px) {
+    font-size: 3.5rem;
+  }
+
+  @media (max-width: 520px) {
+    margin-top: 5rem;
+    font-size: 2.7rem;
+  }
+}
+
 h2 {
-  font-family: "Mint Grotesk Bold", "Zen Kaku Gothic Antique", sans-serif;
+  font-family: "Mint Grotesk ExtraBold", "Noto Sans JP", sans-serif;
   font-size: 4.8rem;
   font-weight: 900;
+
+  @media (max-width: 960px) {
+    font-size: 4.2rem;
+  }
 
   @media (max-width: 520px) {
     font-size: 2.7rem;
@@ -82,9 +111,13 @@ h2 {
 }
 
 h3 {
-  font-family: "Mint Grotesk Bold", "Zen Kaku Gothic Antique", sans-serif;
+  font-family: "Mint Grotesk ExtraBold", "Noto Sans JP", sans-serif;
   font-size: 3.2rem;
   font-weight: 900;
+
+  @media (max-width: 960px) {
+    font-size: 2.7rem;
+  }
 
   @media (max-width: 520px) {
     font-size: 1.8rem;
@@ -92,7 +125,7 @@ h3 {
 }
 
 h4 {
-  font-family: "Mint Grotesk Medium", "Zen Kaku Gothic Antique", sans-serif;
+  font-family: "Mint Grotesk Bold", "Noto Sans JP", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
 
@@ -102,7 +135,7 @@ h4 {
 }
 
 h5 {
-  font-family: "Mint Grotesk Bold", "Zen Kaku Gothic Antique", sans-serif;
+  font-family: "Mint Grotesk ExtraBold", "Noto Sans JP", sans-serif;
   font-size: 2.4rem;
   font-weight: 900;
 
@@ -112,7 +145,7 @@ h5 {
 }
 
 h6 {
-  font-family: "Mint Grotesk ExtraBold", "Zen Kaku Gothic Antique", sans-serif;
+  font-family: "Mint Grotesk ExtraBold", "Noto Sans JP", sans-serif;
   font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.025rem;
@@ -125,7 +158,7 @@ h6 {
 p,
 div,
 span {
-  font-family: "Mint Grotesk Medium", "Zen Kaku Gothic Antique", sans-serif;
+  font-family: "Mint Grotesk Medium", "Noto Sans JP", sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -165,15 +198,77 @@ span {
 }
 
 .markdown {
-  margin: 20px 48px;
+  margin: 50px 48px;
 
   @media (max-width: 520px) {
     margin: 20px;
   }
+
+  p {
+    margin-top: 1rem;
+    font-family: "Mint Grotesk Regular", "Noto Sans JP", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.7;
+    text-align: justify;
+    letter-spacing: 0.02em;
+
+    code {
+      padding: 0.25rem 0.5rem;
+      font-size: 1.3rem;
+      word-break: break-all;
+      background-color: var(--bb-light);
+      border-radius: 5px;
+    }
+
+    strong {
+      font-family: "Mint Grotesk Bold", "Noto Sans JP", sans-serif;
+      font-weight: 700;
+    }
+  }
+
+  ol {
+    @apply list-decimal;
+
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    line-height: 1.7;
+  }
+
+  p,
+  ol {
+    a {
+      color: var(--bb-black);
+      text-decoration: underline;
+      text-underline-offset: 0.1em;
+      transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+      &:hover {
+        color: var(--bb-beige);
+      }
+    }
+  }
 }
 
-.markdown ol {
-  @apply list-decimal;
+.markdown h2 {
+  margin-bottom: 4rem;
+  @media (max-width: 520px) {
+    margin-bottom: 2rem;
+  }
+}
+
+.markdown h3 {
+  padding-top: 3rem;
+  margin-top: 8rem;
+  margin-bottom: 2.5rem;
+  border-top: 1px solid var(--bb-light);
+}
+
+.markdown h4 {
+  padding-top: 15rem;
+  margin-top: -12rem;
+  margin-bottom: -0.5rem;
 }
 
 .markdown ul {
@@ -182,7 +277,14 @@ span {
 
 .markdown ul,
 .markdown ol {
-  @apply mb-4 ml-8;
+  @apply ml-8;
+}
+
+.markdown img {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border: 1px solid var(--light-primary);
+  border-radius: 15px;
 }
 
 .markdown li > p,

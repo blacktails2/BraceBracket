@@ -1,26 +1,246 @@
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import Head from "next/head"
+import Image from 'next/image'
+import Link from 'next/link'
+import styles from "./index.module.scss"
 
-## BraceBracket
+<div className={styles.top}>
+  <h1>ブラウザで完結する<br />対戦ゲーム用スコアボード</h1>
 
-<img src="https://wolphtype.com/img/materials/example.png" style={{width:"600px"}} alt="sample"/>
+  ブラウザ上でデザインを選択、ロゴを配置、start.ggとの連携まで。  
+  場所を問わずスコアの編集ができるスコアボード、BraceBracket（ブレースブラケット）
 
-BraceBracketは格闘ゲームにおけるスコアボードを動的に表示するツールです。OBSなどのWebページを表示する配信ソフトで使うことができ、jsonおよびGoogleスプレッドシートを使ってデータを編集するためリモートでの編集が可能です。
-中–大規模の大会よりも、小規模な大会や対戦会、窓対抗戦やサーバー内大会などをターゲットに制作しています。
+  <Link href={`/create`}>
+      <a className={styles.createLink}>スコアボードを作成</a>
+  </Link>
+  <div className="columns is-centered">
+    <div className="column is-12-desktop is-10-widescreen is-9-fullhd">
+      <video autoPlay loop muted playsInline className="is-hidden-touch">
+        <source src="/image/top/bracedemo0.webm" />
+      </video>
+      <div className="is-hidden-desktop is-hidden-mobile">
+        <Image
+          src="/image/top/bracedemo_tablet.jpg"
+          alt="ブラウザでスコアを編集できるツール"
+          width="1920"
+          height="986"
+          />
+      </div>
+      <div className="is-hidden-tablet">
+        <Image
+          src="/image/top/bracedemo_mobile.png"
+          alt="ブラウザでスコアを編集できるツール"
+          width="680"
+          height="730"
+          />
+      </div>
+      
+    </div>
+  </div>
+  
+  
+</div>
 
-### 使い方
-（製作中）
-- 右上のスコアボードを作成ボタンを押します。
-- スコアボードの設定を変更します。
-- スコアボードを作成ボタンを押して作成します。
-- コントロール画面に表示されているURLをOBSのブラウザソースに指定します。
-  - 幅x高さは1920px x 1080pxに指定してください。
-- 各パネルで必要な操作を行ってください。
+<div className={styles.layouts}>
+  ## 4つの画面を編集・表示
+  <div className="columns is-centered">
+    <div className="column is-10-desktop is-12-tablet is-8-fullhd">
+      <div className="columns is-variable is-6">
+        <div className="column">
+          <Image
+          src="/image/top/sample_score.jpg"
+          alt="プレイヤーとスコア、カメラを表示するScoreレイアウト"
+          width="1920"
+          height="1080"
+          />
+          ### Score Layout
 
+          4種類のデザインと17のバリエーションで試合中のスコアとプレイヤー情報、IDを表示。IDとカメラガイド、ロゴの表示・非表示を切り替えられます。
+
+
+        </div>
+        <div className="column">
+          <Image
+          src="/image/top/sample_interval.jpg"
+          alt="試合間に試合の状況や次の試合の情報を表すIntervalレイアウト"
+          width="1920"
+          height="1080"
+          />
+          ### Interval Layout
+
+          セット間や試合間に現在の試合状況や次の配信台の情報をコンパクトに表示できます。MC, Top8 Layoutと組み合わせて表示することも可能です。
+        </div>
+      </div>
+      <div className="columns is-variable is-6">
+        <div className="column">
+          <Image
+          src="/image/top/sample_mc.jpg"
+          alt="実況と解説の情報を表すMCレイアウト"
+          width="1920"
+          height="1080"
+          />
+          ### MC Layout
+
+          MCのチーム・名前・IDを最大4人まで、人数に応じてデザインを自動で切り替えて表示できます。
+        </div>
+        <div className="column">
+          <Image
+          src="/image/top/sample_top8.jpg"
+          alt="start.ggと連携してtop8の情報を表すTop8レイアウト"
+          width="1920"
+          height="1080"
+          />
+          ### Top8 Layout
+
+          start.ggと連携し、Top8の状況を表示できます。start.ggから正確な情報を取得するため、手動で入力する必要はありません。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className={styles.advantage}>
+  ## Why BraceBracket?
+  <div className="columns is-variable is-6">
+    <div className="column">
+      <Image
+          src="/image/top/ads_web.jpg"
+          alt="デザインの選択から編集までをブラウザで"
+          width="1280"
+          height="800"
+          />
+
+      ### デザインから編集まで<br/>Webで完結
+      スコアボードを表示するためにアプリケーションをインストールする必要はありません。ブラウザとインターネット接続さえあれば、スコアボードのデザイン選択からURLの発行、スコアの編集までを全てWeb上で行えます。どのOSでもお使いいただけます。
+    </div>
+    <div className="column">
+    <Image
+          src="/image/top/ads_remote.jpg"
+          alt="デザインの選択から編集までをブラウザで"
+          width="1280"
+          height="800"
+          />
+      ### URLを共有し、<br/>どこでも編集可能
+      編集画面のURLを共有することで、配信用のPCとは別の端末でのスコアの編集や、配信を見ているモデレーターなどに編集を委託することが可能です。リモート編集機能によって、スコアミスの素早い修正やオンライン上でのスコアボード実装がより手軽になります。
+
+    </div>
+    <div className="column">
+      <Image
+          src="/image/top/ads_startgg.jpg"
+          alt="デザインの選択から編集までをブラウザで"
+          width="1280"
+          height="800"
+          />
+      ### start.ggと連携<br/>簡単・正確に情報を表示
+      start.ggのAPIを利用して、Stream Queueの試合や進行中の試合の情報を手軽に適用することができます。チームや選手名のスペルミスから解放され、より配信オペレーションに集中することが可能です。
+    </div>
+  </div>
+</div>
+
+<div className={styles.review}>
+  <div className="columns is-centered">
+    <div className="column is-12-tablet is-10-desktop">
+      <div className={styles.mainreview}>
+         ### 「あああ」
+
+          あああああ
+
+          <div className={styles.reflexcenter}>
+        <Image
+          src="/image/top/icon_egs.png"
+          alt="EGS"
+          width="60"
+          height="60"
+          className={styles.reflex__icon}
+          />
+        <div className={styles.reflex__name}>
+
+          #### East Geek Smash
+
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div className="columns is-variable is-6">
+    <div className="column">
+      <div className={styles.reflex}>
+        <Image
+          src="/image/top/icon_numasuma.jpg"
+          alt="沼スマ"
+          width="60"
+          height="60"
+          className={styles.reflex__icon}
+          />
+        <div className={styles.reflex__name}>
+          #### NUMASUMA
+          [Archive](https://youtu.be/uAZSiBCBg3o)
+        </div>
+      </div>
+      <blockquote>
+        ブラウザで準備と管理ができるため、とても軽快なツールです。  
+        スタッフ各々の端末からフォローができることがとても魅力的で助かっています。
+      </blockquote>
+    </div>
+    <div className="column">
+      <div className={styles.reflex}>
+        <Image
+          src="/image/top/icon_seibugeki.jpg"
+          alt="西武撃"
+          width="60"
+          height="60"
+          className={styles.reflex__icon}
+          />
+        <div className={styles.reflex__name}>
+          #### 西武撃
+          [Archive](https://youtu.be/2hxxKTsU7K4)
+        </div>
+      </div>
+      <blockquote>
+        BraceBracketの魅力はタスクをより簡単にしつつ、思い描いた構成を作ることができる、ということです。細かく用意されているシーンは、今まで以上に質の高い配信に拘りたくなります。
+      </blockquote>
+    </div>
+    <div className="column">
+      <div className={styles.reflex}>
+        <Image
+          src="/image/top/icon_smapa.jpg"
+          alt="スマパ！"
+          width="60"
+          height="60"
+          className={styles.reflex__icon}
+          />
+        <div className={styles.reflex__name}>
+          #### スマパ！
+          [Archive](https://youtu.be/pLw9-T56qHA)
+        </div>
+      </div>
+      <blockquote>
+        あああああああ
+      </blockquote>
+    </div>
+    
+  </div>
+  <div className={styles.discord}>
+    ## Join our Community
+    質問、フィードバック、カスタマイズのご相談はこちらから
+
+    
+    <a href="https://discord.gg/TgMFQEqxY9" className={styles.whiteLink}>Join Discord</a>
+  </div>
+  <a href="https://www.buymeacoffee.com/wolphtype" target="_blank">
+        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" className={styles.buyme}></img>
+        </a>
+</div>
 
 export default ({children}) => <>
   <Head>
-    <title>BraceBracket | Top</title>
+    <title>BraceBracket – Webベースの対戦ゲーム用スコアボードツール</title>
+    <meta property="og:url" content="https://bracebracket.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="BraceBracketは、Webベースの対戦ゲーム用スコアボードツールです。OSを問わず、ブラウザ上でスコアボードを作成・編集できます。" />
+    <meta property="og:site_name" content="BraceBracket" />
+    <meta property="og:image" content="https://bracebracket.app/image/ogp.jpg" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@wolphtype" />
   </Head>
   <DefaultLayout>
     <div className="markdown">
