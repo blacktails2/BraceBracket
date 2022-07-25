@@ -1,0 +1,281 @@
+.top {
+  text-align: center;
+
+  @media (max-width: 520px) {
+    margin-top: 70px;
+  }
+
+  p {
+    z-index: auto;
+    margin-bottom: 20px;
+    text-align: center;
+
+    @media (max-width: 520px) {
+      br {
+        display: none;
+      }
+    }
+  }
+
+  video {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .createLink {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    font-family: "Mint Grotesk Bold", "Noto Sans JP", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    background-color: var(--primary);
+    border-radius: 15px;
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+    &:hover {
+      background-color: var(--bb-beige-hover);
+      box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+    }
+
+    &:active {
+      background-color: var(--bb-beige-dark);
+      box-shadow: none;
+    }
+  }
+}
+
+.layouts {
+  margin-top: 30px;
+
+  img {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 5px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+}
+
+.advantage {
+  padding: 100px 48px;
+  margin-top: 8rem;
+  margin-right: -48px;
+  margin-left: -48px;
+  background-color: var(--bb-beige);
+
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-family: "Mint Grotesk Bold", "Noto Sans JP", sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    border: 0;
+
+    @media (max-width: 960px) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    margin-bottom: 3rem;
+    font-size: 14px;
+  }
+
+  @media (max-width: 520px) {
+    padding: 50px 20px;
+    margin-top: 4rem;
+    margin-right: -20px;
+    margin-left: -20px;
+  }
+}
+
+.review {
+  padding: 100px 48px 0;
+  margin-right: -48px;
+  margin-bottom: -250px;
+  margin-left: -48px;
+  color: white;
+  background-color: var(--bb-black);
+
+  h2 {
+    padding: 0;
+    margin-top: 50px;
+    margin-bottom: 0;
+    text-align: center;
+    border: 0;
+  }
+
+  blockquote {
+    position: relative;
+    padding: 1.5rem 2rem;
+    margin-top: 3rem;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      content: "";
+      border-top: 1px solid var(--bb-gray);
+      border-left: 1px solid var(--bb-gray);
+    }
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 30px;
+      height: 30px;
+      content: "";
+      border-right: 1px solid var(--bb-gray);
+      border-bottom: 1px solid var(--bb-gray);
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    @media (max-width: 960px) {
+      p {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .mainreview {
+    margin-bottom: 100px;
+
+    h3 {
+      padding: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: center;
+      border: 0;
+    }
+
+    p {
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+
+  .reflex {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+
+    &center {
+      @extend .reflex;
+
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    &__icon {
+      border: 1px solid var(--gray) !important;
+      border-radius: 100%;
+    }
+
+    &__name {
+      h4 {
+        padding: 0;
+        margin: 0;
+      }
+
+      p {
+        margin-top: 0;
+      }
+
+      a {
+        margin-top: 0;
+        color: var(--bb-white);
+      }
+    }
+  }
+
+  .buyme {
+    height: 3rem;
+    margin-top: 100px;
+    margin-bottom: 0;
+    margin-left: -20px;
+    border: none;
+    border-radius: 0;
+  }
+
+  @media (max-width: 520px) {
+    padding: 80px 20px 180px;
+    margin-right: -20px;
+    margin-left: -20px;
+
+    blockquote {
+      margin-bottom: 2rem;
+    }
+
+    .mainreview {
+      margin-bottom: 50px;
+    }
+
+    .buyme {
+      margin-top: 50px;
+      margin-left: 0;
+    }
+  }
+
+  .discord {
+    margin-top: 100px;
+    text-align: center;
+
+    p {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .whiteLink {
+      display: inline-block;
+      padding: 8px 15px;
+      margin-top: 30px;
+      font-family: "Mint Grotesk Bold", "Noto Sans JP", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--bb-white);
+      text-align: center;
+      text-decoration: none;
+      background-color: var(--bb-black);
+      border: 1px solid var(--bb-white);
+      border-radius: 15px;
+      transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+      &:hover {
+        color: var(--bb-black);
+        background-color: var(--bb-white);
+      }
+    }
+
+    @media (max-width: 520px) {
+      margin-top: 50px;
+    }
+  }
+}
