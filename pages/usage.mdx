@@ -1,5 +1,7 @@
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import Head from "next/head"
+import Link from "next/link"
+import Image from "next/image"
 import { Link as Scroll } from 'react-scroll';
 import styles from "./usage.module.scss"
 
@@ -10,67 +12,9 @@ import styles from "./usage.module.scss"
 
     BraceBracket（ブレースブラケット）は、アプリケーションをインストールすることなくブラウザ上でスコアボードを作成・URLを発行し、スコアを編集できます。さらに、編集画面を共有し、YoutubeやTwitchのライブ配信におけるモデレーターといった外部スタッフなどリモート編集を委託することなども可能です。
 
-    わからないことなどがあれば、[Help](../help "ヘルプ")を参照するか私たちの[Discordコミュニティ](https://discord.gg/TgMFQEqxY9 "BraceBracket Discord")までお気軽にお問い合わせください。
+    #### スコア編集の例
 
-    <span id='create'></span>
-
-    ### スコアボードを作成する
-
-    早速、ページ右上の[スコアボードを作成する](../create "スコアボードを作成")からスコアボードを作成していきましょう。スコアボードを作成するCreate画面ではスコアボードの色やstart.ggとの連携などを設定する必要がありますが、これらの設定は後でも変更できます。
-
-    <span id='create__layout'></span>
-
-    #### レイアウトとカラーを選択する
-
-    BraceBracketではスコアボードのレイアウトが4つ用意されており、Dual Layout, Single Layout, Solid Layoutでは5種類、Simple Layoutでは2種類のカラーバリエーションがあり、計17種類のレイアウトを使用することができます。使用したいレイアウトとカラーを選択してください。
-
-    ![4種類のレイアウトとそれぞれのカラーバリエーションを選択する](/image/usage/design_colors.png)
-
-    <span id='create__camera'></span>
-
-    #### 大会名とカメラ、ロゴ画像を設定する
-
-    大会名を入力するとダッシュボードで確認しやすくなる他、Dual Layoutで大会名が中央に表示されるようになります（大会ロゴを設定している場合は表示されず、また他のレイアウトでも表示されません）。
-
-    **「カメラ及び選手のTwitter IDを表示する」** にチェックを入れると、スコアボードのレイアウトにプレイヤーカメラ配置用のガイドとTwitter IDの表示ボックスが追加され、スコアボードの編集画面にTwitter IDの編集欄が追加されます。プレイヤーカメラをガイドに対して正確に配置したい時は、OBSで以下のように設定してください。
-
-    ![OBSの編集、変換でカメラの位置を設定する](/image/usage/set_camera.png)
-
-    1. OBSで編集→変換→変換の編集
-    2. 左のカメラは**位置20, 880 / 大きさ320, 180**、右のカメラは**位置1580, 880 / 大きさ320, 180**に設定する
-    3. Dual Layout, Single Layout, Solid Layoutを使っている場合は<a href="/image/bb_mask.png" download>こちら</a>からマスク画像をダウンロードし、フィルタ→イメージマスクでダウンロードした画像を適用する
-
-    **「大会及びスポンサーのロゴを設定する」** にチェックを入れると、大会のロゴやスポンサーのロゴをスコアボードの中央に表示することができます（表示位置はレイアウトごとに固定です）。ロゴはJPG, PNG, GIF, SVG形式でアップロードできますが、背景が透明なPNGもしくはSVG形式でアップロードすることをお勧めします。また、ロゴは複数個登録することができ、その場合は5秒ごとに表示が切り替わります（大会のロゴとスポンサーのロゴを順繰りに表示したいときなどに便利です）。また、ロゴを設定した際には視認性を向上するためドロップシャドウをつけることができます。
-
-    <span id='create__connect'></span>
-
-    #### トーナメント管理ツールと連携する
-
-    スコアボードをトーナメント管理ツール（現在はstart.ggのみ対応）と連携することで、スコアを編集する際にプレイヤー名やラウンドなどをstart.ggから取得することができます。下の画像のような、情報を拾いたいトーナメントのページURLを入力してください。URLは `https://www.start.gg/tournament/トーナメント名/event/イベント名/brackets/0000000/0000000` のようになります。
-
-    ![start.ggと連携する際は、ブラケットが出ている画面のURLを入力する](/image/usage/tourney_example.png)
-
-    すべての項目を設定した後、 **「スコアボードを作成」** ボタンを押すとトーナメントのダッシュボードに移行します。
-
-    <span id='dashboard'></span>
-
-    ### ダッシュボード
-
-    スコアボードを作成するとダッシュボードに移ります。ダッシュボードでは、スコアの編集画面へ移動、前項で行ったスコアボードの設定の編集、OBSなどの配信ソフトに配置するURLの取得ができます。
-
-    ![ダッシュボード上部では、スコアの編集画面への移動、編集画面の共有、設定の変更ができる](/image/usage/dashboard.png)
-
-    <span id='dashboard__edit'></span>
-
-    #### スコアの編集と共有
-
-    **「編集画面を開く」** ボタンを選択すると別ウインドウが開き、スコアボードの内容を編集できます。（詳細は<Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="edit">こちら</Scroll>） **編集画面共有URL** を共有することで、リモートや会場内の他のデバイスからスコアボードを編集することがきます（編集画面は内容を適用するごとに同期されます）。ただし、編集画面にパスワードをかけることなどはできず、URLを知っている人は誰でもスコアを編集できるようになってしまうため、流出にはご注意ください。また、ダッシュボードもURLを共有することで他のデバイスで開くことが可能です。
-
-    <span id='dashboard__remote'></span>
-
-    #### リモート編集の使用例
-
-    編集画面共有URLを共有することで、以下のようなさまざまな形態でスコアの更新が可能になります。
+    BraceBracketの編集画面の共有によって、以下のようなさまざまな形態でスコアの更新が可能になります。
 
     <div className='columns is-variable is-6'>
       <div className='column'>
@@ -96,6 +40,70 @@ import styles from "./usage.module.scss"
         編集内容は常に同期されるので、配信担当者がスコアを編集しつつ、間違いや遅れがあればモデレーターがスコアを修正する、といった使い方もできます。
       </div>
     </div>
+
+    #### お問い合わせ
+
+    分からないことがあれば、[Help](../help "ヘルプ")を参照するか私たちの[Discordコミュニティ](https://discord.gg/TgMFQEqxY9 "BraceBracket Discord")までお気軽にお問い合わせください。
+
+    <span id='create'></span>
+
+    ### スコアボードを作成する
+
+    まずはページ右上の[スコアボードを作成する](../create "スコアボードを作成")を押してみましょう。すると設定画面が開きます。設定画面で行う設定は後でも変更できます。
+
+    <span id='create__layout'></span>
+
+    #### レイアウトとカラーを選択する
+
+    使用したいレイアウトとカラーを選択してください。現状は4種類のレイアウトがあり、それぞれいくつかのカラーバリエーションがあります。
+
+    ![4種類のレイアウトとそれぞれのカラーバリエーションを選択する](/image/usage/design_colors.png)
+
+    <span id='create__tourney'></span>
+
+    #### 大会名を設定する
+
+    大会名を入力してください。Dual Layoutで大会名が中央に表示されるようになります（大会ロゴを設定している場合は表示されず、また他のレイアウトでも表示されません）。
+
+    <span id='create__camera'></span>
+
+    #### カメラとTwitterIDの表示設定
+
+    **「カメラ及び選手のTwitter IDを表示する」** にチェックを入れると、スコアボードのレイアウトにプレイヤーカメラ配置用のガイドとTwitter IDの表示ボックスが追加され、スコアボードの編集画面にTwitter IDの編集欄が追加されます。プレイヤーカメラをガイドに対して正確に配置したい時は、<Link href='help#help-camera'><a>こちら</a></Link>を参照してください。
+
+    <span id='create__logo'></span>
+
+    #### 大会及びスポンサーのロゴを表示する
+    **「大会及びスポンサーのロゴを設定する」** にチェックを入れると、ロゴ画像をスコアボードの中央に表示することができます（表示位置はレイアウトごとに固定です）。ロゴはJPG, PNG, GIF, SVG形式でアップロードできます。（背景が透明なPNGもしくはSVG形式でアップロードすることをお勧めします。）また、ロゴは複数個登録することができます。その場合は5秒ごとに表示が切り替わります。さらに、視認性を向上するためドロップシャドウをつけることが可能です。
+
+    <span id='create__connect'></span>
+
+    #### トーナメント管理ツールと連携する
+
+    スコアボードをトーナメント管理ツール（現在はstart.ggのみ対応）と連携することで、スコアを編集する際にプレイヤー名やラウンドなどをstart.ggから取得することができます。下の画像のような、情報を拾いたいトーナメントのページURLを入力してください。URLは `https://www.start.gg/tournament/トーナメント名/event/イベント名/brackets/0000000/0000000` のようになります。
+
+    ![start.ggと連携する際は、ブラケットが出ている画面のURLを入力する](/image/usage/tourney_example.png)
+
+    以上の設定項目を設定した後、 **「スコアボードを作成」** ボタンを押すてください。トーナメントのダッシュボードに移行します。
+
+    <span id='dashboard'></span>
+
+    ### ダッシュボード
+
+    スコアボードを作成するとダッシュボードに移ります。ダッシュボードでは、
+    1. スコアの編集画面を開く
+    2. スコアボードの設定の編集
+    3. OBSなどの配信ソフトに配置するURLの取得
+
+    ができます。
+
+    ![ダッシュボード上部では、スコアの編集画面への移動、編集画面の共有、設定の変更ができる](/image/usage/dashboard.png)
+
+    <span id='dashboard__edit'></span>
+
+    #### スコアの編集と共有
+
+    **「編集画面を開く」** ボタンを選択すると別ウインドウが開き、スコアボードの内容を編集できます。（詳細は<Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="edit">こちら</Scroll>） **編集画面共有URL** を共有することで、別のデバイスからスコアボードを編集することができます。ただし、パスワードをかけることなどはできません。そのため、URLを知っている人は誰でもスコアを編集できるので流出にはご注意ください。また、ダッシュボードもURLを共有することで他のデバイスで開くことが可能です。
 
     <span id='dashboard__setting'></span>
 
@@ -251,11 +259,12 @@ import styles from "./usage.module.scss"
     <ul className={styles.index}>
       <li className={styles.index__head}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create">スコアボードを作成する</Scroll></li>
       <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create__layout">レイアウトとカラーを選択する</Scroll></li>
-      <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create__camera">大会名とカメラ、ロゴ画像を設定する</Scroll></li>
+      <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create__tourney">大会名を設定する</Scroll></li>
+      <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create__camera">カメラとTwitterIDの表示設定</Scroll></li>
+      <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create__logo">大会及びスポンサーのロゴを表示する</Scroll></li>
       <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create__connect">トーナメント管理ツールと連携する</Scroll></li>
       <li className={styles.index__head}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="dashboard">ダッシュボード</Scroll></li>
       <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="dashboard__edit">スコアの編集と共有</Scroll></li>
-      <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="dashboard__remote">リモート編集の使用例</Scroll></li>
       <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="dashboard__setting">設定を変更</Scroll></li>
       <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="dashboard__copy">配信ソフトに配置するURLをコピーする</Scroll></li>
       <li className={styles.index__head}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="stream">配信ソフトにスコアボードを配置する</Scroll></li>

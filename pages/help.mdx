@@ -1,6 +1,7 @@
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import Head from "next/head"
 import styles from "./help.module.scss"
+import Image from 'next/image'
 
 ## Help
 
@@ -40,6 +41,22 @@ import styles from "./help.module.scss"
         * MCレイアウトの場合、MCを入力しているかどうか（何も入力していない場合、MCレイアウトは表示されません）
         
         これらをお試しいただいても改善されない場合、[Discord](https://discord.gg/TgMFQEqxY9)までご連絡ください。
+      </li>
+      <li>
+        <h4 id='help-camera'>OBSでプレイヤーカメラをガイドに合わせて配置する方法を教えてください。</h4>
+
+        <Image
+          src="/image/usage/set_camera.png"
+          alt="OBSの編集、変換でカメラの位置を設定する"
+          width="564"
+          height="406"
+          className={styles.helpimage}
+          />
+
+        一般的な16:9の比のカメラの場合、配置した後以下の操作を行ってください。
+        1. OBSで編集→変換→変換の編集
+        2. 左のカメラは**位置20, 880 / 大きさ320, 180**、右のカメラは**位置1580, 880 / 大きさ320, 180**に設定する
+        3. Dual Layout, Single Layout, Solid Layoutを使っている場合は<a href="/image/bb_mask.png" download>こちら</a>からマスク画像をダウンロードし、フィルタ→イメージマスクでダウンロードした画像を適用する
       </li>
       <li>
         #### 離れた場所でのスコアの更新は可能ですか？

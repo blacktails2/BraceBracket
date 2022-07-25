@@ -15,10 +15,26 @@ import styles from "./index.module.scss"
   </Link>
   <div className="columns is-centered">
     <div className="column is-12-desktop is-10-widescreen is-9-fullhd">
-      <video autoPlay loop muted playsInline>
+      <video autoPlay loop muted playsInline className="is-hidden-touch">
         <source src="/image/top/bracedemo0.webm" />
-        <source src="/image/top/bracedemo0.mp4" />
       </video>
+      <div className="is-hidden-desktop is-hidden-mobile">
+        <Image
+          src="/image/top/bracedemo_tablet.jpg"
+          alt="ブラウザでスコアを編集できるツール"
+          width="1920"
+          height="986"
+          />
+      </div>
+      <div className="is-hidden-tablet">
+        <Image
+          src="/image/top/bracedemo_mobile.png"
+          alt="ブラウザでスコアを編集できるツール"
+          width="680"
+          height="730"
+          />
+      </div>
+      
     </div>
   </div>
   
@@ -124,10 +140,9 @@ import styles from "./index.module.scss"
   <div className="columns is-centered">
     <div className="column is-12-tablet is-10-desktop">
       <div className={styles.mainreview}>
-         ### 「ブラウザで準備と管理ができるため、とても軽快なツールです。」
+         ### 「あああ」
 
-          ブラウザで準備と管理ができるため、とても軽快なツールです。  
-          スタッフ各々の端末からフォローができることがとても魅力的で助かっています。
+          あああああ
 
           <div className={styles.reflexcenter}>
         <Image
@@ -199,8 +214,7 @@ import styles from "./index.module.scss"
         </div>
       </div>
       <blockquote>
-        ブラウザで準備と管理ができるため、とても軽快なツールです。  
-        スタッフ各々の端末からフォローができることがとても魅力的で助かっています。
+        あああああああ
       </blockquote>
     </div>
     
