@@ -54,7 +54,8 @@
       1,
       {
         "whitelist": [
-          "board"
+          "board",
+          "delay-50"
         ]
       }
     ]

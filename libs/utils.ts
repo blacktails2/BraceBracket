@@ -41,3 +41,25 @@ export const getEventSlug = (url: string): string => {
   }
   return `${urlParts[3]}/${urlParts[4]}/${urlParts[5]}/${urlParts[6]}`
 }
+
+export const getPhaseId = (url: string): string => {
+  if (!url.startsWith("https://www.start.gg/tournament/")) {
+    return ""
+  }
+  const urlParts = url.split("/")
+  if (urlParts.length < 9) {
+    return ""
+  }
+  return urlParts[8]
+}
+
+export const getPhaseGroupId = (url: string): string => {
+  if (!url.startsWith("https://www.start.gg/tournament/")) {
+    return ""
+  }
+  const urlParts = url.split("/")
+  if (urlParts.length < 10) {
+    return ""
+  }
+  return urlParts[9]
+}
