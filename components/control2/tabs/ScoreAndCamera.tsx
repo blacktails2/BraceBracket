@@ -25,6 +25,7 @@ const ScoreAndCamera: FC<{
   const form = useForm<Score>()
   const { handleSubmit, reset } = form
   useEffect(() => {
+    console.log({ score })
     reset(score)
   }, [reset, score])
 
