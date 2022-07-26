@@ -37,7 +37,7 @@ export const MatchTypeSelector: FC<{
             return (
               <div
                 key={name}
-                className={`ease delay-50 rounded-[5px] border-[1px] border-solid border-[#c4c4c4] pr-[0.5rem] pl-[0.5rem] transition hover:border-[#202025] hover:shadow-md ${
+                className={`ease delay-50 rounded-[5px] border-[1px] border-solid border-[#c4c4c4] px-[0.5rem] transition hover:border-[#202025] hover:shadow-md${
                   matchType?.endsWith(name)
                     ? "border-[#202025] bg-[#202025] text-white"
                     : "bg-white text-[#202025]"
