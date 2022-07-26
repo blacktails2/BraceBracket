@@ -1335,6 +1335,14 @@
     selenium-webdriver "4.1.2"
     tslib "^2.1.0"
 
+"@firebase/component@0.5.14":
+  version "0.5.14"
+  resolved "https://registry.yarnpkg.com/@firebase/component/-/component-0.5.14.tgz#23d2cc9f4aff5a516c91553a433326d366166bc3"
+  integrity sha512-ct2p1MTMV5P/nGIlkC3XjAVwHwjsIZaeo8JVyDAkJCNTROu5mYX3FBK16hjIUIIVJDpgnnzFh9nP74gciL4WrA==
+  dependencies:
+    "@firebase/util" "1.6.0"
+    tslib "^2.1.0"
+
 "@firebase/component@0.5.17":
   version "0.5.17"
   resolved "https://registry.yarnpkg.com/@firebase/component/-/component-0.5.17.tgz#89291f378714df05d44430c524708669380d8ea6"
@@ -1362,6 +1370,18 @@
   dependencies:
     "@firebase/app-types" "0.7.0"
     "@firebase/util" "1.6.3"
+
+"@firebase/database@0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@firebase/database/-/database-0.13.0.tgz#48018ab8f5a3ad12ec7c245d83b8b5749eb37189"
+  integrity sha512-lskyf5+FDnytrPJt3MLjkTDxYxutKtaYL7j/Z/De2DSVZJSR+weE/D/r47iK/+tyzMaew2v3joSgZOHvVlWshw==
+  dependencies:
+    "@firebase/auth-interop-types" "0.1.6"
+    "@firebase/component" "0.5.14"
+    "@firebase/logger" "0.3.2"
+    "@firebase/util" "1.6.0"
+    faye-websocket "0.11.4"
+    tslib "^2.1.0"
 
 "@firebase/database@0.13.3":
   version "0.13.3"
@@ -1458,6 +1478,13 @@
     "@firebase/component" "0.5.17"
     "@firebase/util" "1.6.3"
     idb "7.0.1"
+    tslib "^2.1.0"
+
+"@firebase/logger@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@firebase/logger/-/logger-0.3.2.tgz#5046ffa8295c577846d54b6ca95645a03809800e"
+  integrity sha512-lzLrcJp9QBWpo40OcOM9B8QEtBw2Fk1zOZQdvv+rWS6gKmhQBCEMc4SMABQfWdjsylBcDfniD1Q+fUX1dcBTXA==
+  dependencies:
     tslib "^2.1.0"
 
 "@firebase/logger@0.3.3":
@@ -1583,6 +1610,13 @@
     "@firebase/component" "0.5.17"
     "@firebase/util" "1.6.3"
     node-fetch "2.6.7"
+    tslib "^2.1.0"
+
+"@firebase/util@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@firebase/util/-/util-1.6.0.tgz#31aea6bba3ee98fc83a60eb189cb187243f4ef4b"
+  integrity sha512-6+hhqb4Zzjoo12xofTDHPkgW3FnN4ydBsjd5X2KuQI268DR3W3Ld64W/gkKPZrKRgUxeNeb+pykfP3qRe7q+vA==
+  dependencies:
     tslib "^2.1.0"
 
 "@firebase/util@1.6.3":
