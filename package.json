@@ -61,7 +61,7 @@
     "postcss-scss": "^4.0.4",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.11",
-    "react-hook-form": "^7.31.2",
+    "react-hook-form": "7.31.3",
     "react-scroll": "^1.8.7",
     "react-transition-group": "^4.4.2",
     "react-use": "^17.4.0",
