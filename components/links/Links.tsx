@@ -30,7 +30,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
           <div className={styles.url}>
             <h4>編集画面共有URL:</h4>
             <TextboxWithCopy
-              text={`${origin}/create/?id=${id}`}
+              text={`${origin}/control/?id=${id}`}
               className="mb-[10px] min-w-[50px] max-w-[400px]"
             />
           </div>
