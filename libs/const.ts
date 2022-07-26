@@ -95,6 +95,10 @@ export type Setting = {
     enabled: boolean
     url: string
   }
+  tweetMatch: {
+    enabled: boolean
+    template: string
+  }
 }
 
 export type PlayerScore = {

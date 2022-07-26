@@ -23,6 +23,10 @@ export const defaultValue: Setting = {
     enabled: false,
     url: "",
   },
+  tweetMatch: {
+    enabled: false,
+    template: "",
+  },
 }
 
 export const useSetting = genUseDatabaseValue<Setting>(
