@@ -19,6 +19,7 @@ CreatePage.getLayout = (page) => {
     <>
       <Head>
         <title>BraceBracket | Setting</title>
+        <meta property="og:title" content="BraceBracket | Setting" />
         <meta property="og:url" content="https://bracebracket.app/create/" />
         <meta property="og:type" content="article" />
         <meta

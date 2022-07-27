@@ -15,26 +15,16 @@ import styles from "./index.module.scss"
   </Link>
   <div className="columns is-centered">
     <div className="column is-12-desktop is-10-widescreen is-9-fullhd">
-      <video autoPlay loop muted playsInline className="is-hidden-touch">
+      <video autoPlay loop muted playsInline className="is-hidden-mobile">
         <source src="/image/top/bracedemo0.webm" />
+        <source src="/image/top/bracedemo0.mp4" />
       </video>
-      <div className="is-hidden-desktop is-hidden-mobile">
-        <Image
-          src="/image/top/bracedemo_tablet.jpg"
-          alt="ブラウザでスコアを編集できるツール"
-          width="1920"
-          height="986"
-          />
+      <div className={styles.mobilevideo}>
+        <video autoPlay loop muted playsInline className="is-hidden-tablet">
+          <source src="/image/top/bracemobile.webm" />
+          <source src="/image/top/bracemobile.mp4" />
+        </video>
       </div>
-      <div className="is-hidden-tablet">
-        <Image
-          src="/image/top/bracedemo_mobile.png"
-          alt="ブラウザでスコアを編集できるツール"
-          width="680"
-          height="730"
-          />
-      </div>
-      
     </div>
   </div>
   
@@ -235,6 +225,7 @@ import styles from "./index.module.scss"
 export default ({children}) => <>
   <Head>
     <title>BraceBracket – Webベースの対戦ゲーム用スコアボードツール</title>
+    <meta property="og:title" content="BraceBracket – Webベースの対戦ゲーム用スコアボードツール" />
     <meta property="og:url" content="https://bracebracket.app" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="BraceBracketは、Webベースの対戦ゲーム用スコアボードツールです。OSを問わず、ブラウザ上でスコアボードを作成・編集できます。" />
