@@ -23,6 +23,7 @@ import { DropShadow } from "./settingForms/DropShadow"
 import { IntegrateStartGG } from "./settingForms/IntegrateStartGG"
 import { Layout } from "./settingForms/Layout"
 import { SelectLogo } from "./settingForms/SelectLogo"
+import { TweetMatch } from "./settingForms/TweetMatch"
 import { UseLogo } from "./settingForms/UseLogo"
 
 const getErrorMessages = (errors: FieldErrors): string[] => {
@@ -119,8 +120,9 @@ export const Create: FC<{ setting: Setting }> = ({ setting }) => {
               </>
             )}
             <hr />
-            <h3>トーナメント管理ツール連携</h3>
+            <h3>外部ツール連携</h3>
             <IntegrateStartGG />
+            <TweetMatch />
             <Button type="submit" mode="primary">
               {submitText}
             </Button>
