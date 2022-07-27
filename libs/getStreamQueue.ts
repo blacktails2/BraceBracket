@@ -1,5 +1,5 @@
 import { PlayerScore } from "./const"
-import { getNameAndTeamtag } from "./utils"
+import { getEventSlug, getNameAndTeamtag } from "./utils"
 
 export type Match = {
   id: number
@@ -23,7 +23,7 @@ const fullRoundText2Shorts: { [key: string]: string } = {
 }
 
 const streamQueueQuery = `
-query StreamQueueOnTournament($tourneySlug: String!) {
+query StreamQueueOnTournament($tourneySlug: String!, $eventSlug: String!) {
   tournament(slug: $tourneySlug) {
     id
     startAt
@@ -52,25 +52,25 @@ query StreamQueueOnTournament($tourneySlug: String!) {
         }
       }
     }
-    events {
-      sets(perPage: 50, filters: {state: [1, 2], hideEmpty: true}) {
-        pageInfo {
-          totalPages
-          total
-        }
-        nodes {
-          id
-          fullRoundText
-          lPlacement
-          state
-          slots {
-            entrant {
-              name
-              participants {
-                user {
-                  authorizations (types: [TWITTER]) {
-                    externalUsername
-                  }
+  }
+  event(slug: $eventSlug) {
+    sets(perPage: 50, filters: {state: [1, 2], hideEmpty: true}) {
+      pageInfo {
+        totalPages
+        total
+      }
+      nodes {
+        id
+        fullRoundText
+        lPlacement
+        state
+        slots {
+          entrant {
+            name
+            participants {
+              user {
+                authorizations (types: [TWITTER]) {
+                  externalUsername
                 }
               }
             }
@@ -82,27 +82,25 @@ query StreamQueueOnTournament($tourneySlug: String!) {
 }`
 
 const nextQuery = `
-query StreamQueueOnTournament($tourneySlug: String!, $page: Int!) {
-  tournament(slug: $tourneySlug) {
-    events {
-      sets(perPage: 50, page: $page, filters: {state: [1, 2], hideEmpty: true}) {
-        pageInfo {
-          totalPages
-          total
-        }
-        nodes {
-          id
-          fullRoundText
-          lPlacement
-          state
-          slots {
-            entrant {
-              name
-              participants {
-                user {
-                  authorizations (types: [TWITTER]) {
-                    externalUsername
-                  }
+query StreamQueueOnTournament($eventSlug: String!, $page: Int!) {
+  event(slug: $eventSlug) {
+    sets(perPage: 50, page: $page, filters: {state: [1, 2], hideEmpty: true}) {
+      pageInfo {
+        totalPages
+        total
+      }
+      nodes {
+        id
+        fullRoundText
+        lPlacement
+        state
+        slots {
+          entrant {
+            name
+            participants {
+              user {
+                authorizations (types: [TWITTER]) {
+                  externalUsername
                 }
               }
             }
@@ -146,12 +144,14 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
   if (!url) {
     return []
   }
-  const slug = getTournarySlug(url)
-  if (slug === "") {
+  const tournarySlug = getTournarySlug(url)
+  const eventSlug = getEventSlug(url)
+  if (tournarySlug === "" || eventSlug === "") {
     return []
   }
   const variables = {
-    tourneySlug: slug,
+    tourneySlug: tournarySlug,
+    eventSlug: eventSlug,
   }
   const res = await fetch(`https://api.smash.gg/gql/alpha`, {
     method: "POST",
@@ -205,45 +205,42 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
     }) || []
 
   streamQueue.push(
-    ...(res?.data?.tournament?.events?.flatMap((event: any) => {
-      return event?.sets?.nodes?.map((set: any) => {
-        const players = set.slots.map((slot: any) => {
-          if (!slot?.entrant) {
-            return {
-              team: "",
-              playerName: "",
-              twitterID: "",
-              score: 0,
-            }
-          }
-          const { team, name } = getNameAndTeamtag(slot?.entrant?.name)
+    ...(res?.data?.event?.sets?.nodes?.map((set: any) => {
+      const players = set.slots.map((slot: any) => {
+        if (!slot?.entrant) {
           return {
-            team,
-            playerName: name,
-            twitterID:
-              slot?.entrant?.participants?.at(0)?.user?.authorizations?.at(0)
-                ?.externalUsername ?? "",
+            team: "",
+            playerName: "",
+            twitterID: "",
             score: 0,
           }
-        })
+        }
+        const { team, name } = getNameAndTeamtag(slot?.entrant?.name)
         return {
-          id: set.id,
-          roundText: getRoundText(set),
-          streamName: "",
-          p1: players[0],
-          p2: players[1],
-          state: set?.state === 2 ? "In Progress" : "Waiting",
+          team,
+          playerName: name,
+          twitterID:
+            slot?.entrant?.participants?.at(0)?.user?.authorizations?.at(0)
+              ?.externalUsername ?? "",
+          score: 0,
         }
       })
+      return {
+        id: set.id,
+        roundText: getRoundText(set),
+        streamName: "",
+        p1: players[0],
+        p2: players[1],
+        state: set?.state === 2 ? "In Progress" : "Waiting",
+      }
     }) || [])
   )
 
-  const totalPages = (res?.data?.tournament?.events || [])[0]?.sets?.pageInfo
-    ?.totalPages
+  const totalPages = res?.data?.event?.sets?.pageInfo?.totalPages
   if (totalPages && totalPages > 1) {
     for (let i = 2; i <= totalPages; i++) {
       const variables = {
-        tourneySlug: slug,
+        eventSlug: eventSlug,
         page: i,
       }
       const res = await fetch(`https://api.smash.gg/gql/alpha`, {
@@ -265,37 +262,34 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
       }
 
       streamQueue.push(
-        ...(res?.data?.tournament?.events?.flatMap((event: any) => {
-          return event?.sets?.nodes?.map((set: any) => {
-            const players = set.slots.map((slot: any) => {
-              if (!slot?.entrant) {
-                return {
-                  team: "",
-                  playerName: "",
-                  twitterID: "",
-                  score: 0,
-                }
-              }
-              const { team, name } = getNameAndTeamtag(slot?.entrant?.name)
+        ...(res?.data?.event?.sets?.nodes?.map((set: any) => {
+          const players = set.slots.map((slot: any) => {
+            if (!slot?.entrant) {
               return {
-                team,
-                playerName: name,
-                twitterID:
-                  slot?.entrant?.participants
-                    ?.at(0)
-                    ?.user?.authorizations?.at(0)?.externalUsername ?? "",
+                team: "",
+                playerName: "",
+                twitterID: "",
                 score: 0,
               }
-            })
+            }
+            const { team, name } = getNameAndTeamtag(slot?.entrant?.name)
             return {
-              id: set.id,
-              roundText: getRoundText(set),
-              streamName: "",
-              p1: players[0],
-              p2: players[1],
-              state: set?.state === 2 ? "In Progress" : "Waiting",
+              team,
+              playerName: name,
+              twitterID:
+                slot?.entrant?.participants?.at(0)?.user?.authorizations?.at(0)
+                  ?.externalUsername ?? "",
+              score: 0,
             }
           })
+          return {
+            id: set.id,
+            roundText: getRoundText(set),
+            streamName: "",
+            p1: players[0],
+            p2: players[1],
+            state: set?.state === 2 ? "In Progress" : "Waiting",
+          }
         }) || [])
       )
     }
