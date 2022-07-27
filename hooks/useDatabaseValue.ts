@@ -28,10 +28,8 @@ export function genUseDatabaseValue<T>(
       }
       const valueRef = ref(db, getPath(id))
       const unsubscribe = onValue(valueRef, (snapshot) => {
-        console.log("snapshot", snapshot)
         const value = snapshot.val()
         if (!value) return
-        console.log(`Update`, value)
         _setValue(value)
         setLoading(false)
       })

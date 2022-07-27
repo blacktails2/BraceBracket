@@ -25,7 +25,9 @@ export const defaultValue: Setting = {
   },
   tweetMatch: {
     enabled: false,
-    template: "",
+    template: `{{round}}
+{{p1.team}} {{p1.playerName}} {{p1.twitterID}} vs {{p2.team}} {{p2.playerName}} {{p2.twitterID}}
+（配信プラットフォームのURLなど）`,
   },
 }
 
