@@ -84,7 +84,15 @@ import styles from "./usage.module.scss"
 
     ![start.ggと連携する際は、ブラケットが出ている画面のURLを入力する](/image/usage/tourney_example.png)
 
-    以上の設定項目を設定した後、 **「スコアボードを作成」** ボタンを押すてください。トーナメントのダッシュボードに移行します。
+    <span id='create__tweet'></span>
+
+    #### 対戦カードツイート機能のテンプレートを作成する
+
+    **「対戦カードをツイートする」** にチェックを入れると、スコアに入力している試合情報を簡単にツイートすることができます。例えば下図左のようにテンプレートを作成すると、下図右のようにツイートできます。
+
+    ![テンプレートを作ることで試合中の情報を手軽にツイートできる](/image/usage/tweet_template.jpg)
+
+    以上の設定項目を設定した後、 **「スコアボードを作成」** ボタンを押してください。トーナメントのダッシュボードに移行します。
 
     <span id='dashboard'></span>
 
@@ -269,6 +277,7 @@ import styles from "./usage.module.scss"
       <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create__camera">カメラとTwitterIDの表示設定</Scroll></li>
       <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create__logo">大会及びスポンサーのロゴを表示する</Scroll></li>
       <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create__connect">トーナメント管理ツールと連携する</Scroll></li>
+      <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="create__tweet">ツイート機能のテンプレートを作成する</Scroll></li>
       <li className={styles.index__head}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="dashboard">ダッシュボード</Scroll></li>
       <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="dashboard__edit">スコアの編集と共有</Scroll></li>
       <li className={styles.index__sub}><Scroll smooth={true} duration={500} offset={-100} className="cursor-pointer" to="dashboard__setting">設定を変更</Scroll></li>
@@ -293,6 +302,7 @@ import styles from "./usage.module.scss"
 export default ({children}) => <>
   <Head>
     <title>BraceBracket | How to Use</title>
+    <meta property="og:title" content="BraceBracket | How to Use" />
     <meta property="og:url" content="https://bracebracket.app/usage/" />
     <meta property="og:type" content="article" />
     <meta property="og:description" content="BraceBracketは、Webベースの対戦ゲーム用スコアボードツールです。OSを問わず、ブラウザ上でスコアボードを作成・編集できます。" />
