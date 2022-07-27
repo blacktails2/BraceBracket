@@ -1,3 +1,4 @@
+import Mustache from "mustache"
 import { FC, memo, useEffect, useRef, useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
@@ -25,6 +26,7 @@ const ScoreAndCamera: FC<{
   const form = useForm<Score>()
   const { handleSubmit, reset } = form
   useEffect(() => {
+    console.log({ score })
     reset(score)
   }, [reset, score])
 
@@ -62,6 +64,26 @@ const ScoreAndCamera: FC<{
                 >
                   変更をリセット
                 </Button>
+                {setting.tweetMatch?.enabled && (
+                  <Button
+                    type="button"
+                    mode="small"
+                    light
+                    onClick={() => {
+                      window.open(
+                        "https://twitter.com/intent/tweet?text=" +
+                          encodeURIComponent(
+                            Mustache.render(setting.tweetMatch?.template, {
+                              ...score,
+                            })
+                          ),
+                        "_blank"
+                      )
+                    }}
+                  >
+                    対戦カードをツイート
+                  </Button>
+                )}
               </div>
               <div className="flex gap-[1rem]">
                 <div className="basis-2/3">

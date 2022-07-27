@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react"
+import React, { FC, ReactNode, useRef } from "react"
 import { CSSTransition } from "react-transition-group"
 
 import styles from "./Button.module.scss"
@@ -24,6 +24,7 @@ export const Button: FC<{
   showTooltip,
   full,
 }) => {
+  const tooltipNodeRef = useRef(null)
   const modes = {
     normal: styles.normal,
     small: styles.small,
@@ -43,6 +44,7 @@ export const Button: FC<{
           {children}
         </button>
         <CSSTransition
+          nodeRef={tooltipNodeRef}
           in={showTooltip}
           timeout={{
             enter: 0,
@@ -55,7 +57,11 @@ export const Button: FC<{
           unmountOnExit
         >
           {() => {
-            return <div className={styles.tooltip}>{tooltipText}</div>
+            return (
+              <div className={styles.tooltip} ref={tooltipNodeRef}>
+                {tooltipText}
+              </div>
+            )
           }}
         </CSSTransition>
       </div>

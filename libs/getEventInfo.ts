@@ -1,4 +1,9 @@
-import { getEventSlug, getTournarySlug } from "./utils"
+import {
+  getEventSlug,
+  getPhaseGroupId,
+  getPhaseId,
+  getTournarySlug,
+} from "./utils"
 
 export type EventInfo = {
   tournamentName: string
@@ -6,7 +11,7 @@ export type EventInfo = {
 }
 
 const query = `
-query Events($tourneySlug: String!) {
+query Events($tourneySlug: String!, $phaseId: ID!, $phaseGroupId: ID!) {
   tournament(slug: $tourneySlug) {
     id
     name
@@ -14,25 +19,48 @@ query Events($tourneySlug: String!) {
       id
       name
       slug
+      phases (phaseId: $phaseId) {
+        id
+        phaseGroups (query: {filter: {id: [$phaseGroupId]}}){
+          nodes {
+            id
+            sets {
+              nodes {
+                wPlacement
+                lPlacement
+              }
+            }
+          }
+        }
+      }
     }
   }
 }`
 
 export const getEventInfo = async (
   url?: string
-): Promise<EventInfo | undefined> => {
+): Promise<EventInfo | string> => {
   if (!url) {
-    return
+    return "トーナメントのURLを入力してください。"
   }
   const tournarySlug = getTournarySlug(url)
   const eventSlug = getEventSlug(url)
-  if (tournarySlug === "" || eventSlug === "") {
-    return
+  const phaseId = getPhaseId(url)
+  const phaseGroupId = getPhaseGroupId(url)
+  if (
+    tournarySlug === "" ||
+    eventSlug === "" ||
+    phaseId === "" ||
+    phaseGroupId === ""
+  ) {
+    return "URLの形式が正しくありません。"
   }
   const variables = {
     tourneySlug: tournarySlug,
+    phaseId: phaseId,
+    phaseGroupId: phaseGroupId,
   }
-  // TODO: 500人以上参加のときはページングする
+
   const res = await fetch(`https://api.smash.gg/gql/alpha`, {
     method: "POST",
     headers: {
@@ -49,7 +77,7 @@ export const getEventInfo = async (
 
   if (res.errors) {
     console.error(res.errors)
-    return
+    return "大会情報の取得中にエラーが発生しました。"
   }
   console.log(res)
   try {
@@ -57,14 +85,37 @@ export const getEventInfo = async (
     const eventName = res?.data?.tournament?.events?.find(
       (e: { name: string; slug: string }) => e.slug === eventSlug
     )?.name
+    const isTop8Bracket = res?.data?.tournament?.events
+      ?.find((e: { name: string; slug: string }) => e.slug === eventSlug)
+      ?.phases?.find(
+        (p: {
+          id: string
+          phaseGroups?: {
+            nodes?: [
+              { id: string; sets?: { nodes?: [{ wPlacement: number }] } }
+            ]
+          }
+        }) => p.id.toString() === phaseId
+      )
+      ?.phaseGroups?.nodes?.find(
+        (p: { id: string; sets?: { nodes?: [{ wPlacement: number }] } }) =>
+          p.id.toString() === phaseGroupId
+      )
+      ?.sets?.nodes?.find((s: { wPlacement: number }) => s.wPlacement === 1)
+
     if (!tournamentName || !eventName) {
-      return
+      return "大会名・イベント名の取得に失敗しました。"
+    }
+
+    console.log(isTop8Bracket)
+    if (!isTop8Bracket) {
+      return "Grand Finalが含まれたBracketのURLを入力してください。"
     }
     return {
       tournamentName,
       eventName,
     }
   } catch {
-    return
+    return "大会情報の取得中にエラーが発生しました。"
   }
 }
