@@ -22,7 +22,6 @@ query getAttendee($eventSlug: String!, $page: Int) {
 }`
 
 export const getAttendee = async (url?: string): Promise<Attendee> => {
-  console.log(url)
   if (!url) {
     return []
   }
@@ -56,7 +55,7 @@ export const getAttendee = async (url?: string): Promise<Attendee> => {
       console.error(res.errors)
       return []
     }
-    console.log(res)
+
     totalPages = res?.data?.event?.entrants?.pageInfo?.totalPages
     const attendee = res?.data?.event?.entrants?.nodes?.map((entrant: any) => {
       const { team, name } = getNameAndTeamtag(entrant?.name ?? "")
@@ -70,6 +69,5 @@ export const getAttendee = async (url?: string): Promise<Attendee> => {
   if (!totalAttendee) {
     return []
   }
-  console.log(totalAttendee)
   return totalAttendee
 }

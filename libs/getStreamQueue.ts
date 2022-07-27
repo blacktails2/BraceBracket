@@ -140,7 +140,6 @@ const getRoundText = (set: any): string => {
 }
 
 export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
-  console.log(url)
   if (!url) {
     return []
   }
@@ -294,7 +293,6 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
       )
     }
   }
-  console.log(streamQueue)
   const idMap = new Map()
 
   return streamQueue.filter((queue: any) => {

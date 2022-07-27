@@ -1,3 +1,4 @@
+import { deepCopy } from "@firebase/util"
 import Mustache from "mustache"
 import { FC, memo, useEffect, useRef, useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
@@ -26,7 +27,6 @@ const ScoreAndCamera: FC<{
   const form = useForm<Score>()
   const { handleSubmit, reset } = form
   useEffect(() => {
-    console.log({ score })
     reset(score)
   }, [reset, score])
 
@@ -70,14 +70,26 @@ const ScoreAndCamera: FC<{
                     mode="small"
                     light
                     onClick={() => {
+                      const ctx = deepCopy(score)
+                      if (
+                        ctx.p1.twitterID !== "" &&
+                        !ctx.p1.twitterID.startsWith("@")
+                      ) {
+                        ctx.p1.twitterID = `@${ctx.p1.twitterID}`
+                      }
+                      if (
+                        ctx.p2.twitterID !== "" &&
+                        !ctx.p2.twitterID.startsWith("@")
+                      ) {
+                        ctx.p2.twitterID = `@${ctx.p2.twitterID}`
+                      }
                       window.open(
                         "https://twitter.com/intent/tweet?text=" +
                           encodeURIComponent(
-                            Mustache.render(setting.tweetMatch?.template, {
-                              ...score,
-                            })
+                            Mustache.render(setting.tweetMatch?.template, ctx)
                           ),
-                        "_blank"
+                        "tweetwindow",
+                        "resizable=0,scrollbars=0,width=600,height=400"
                       )
                     }}
                   >
