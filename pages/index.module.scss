@@ -22,6 +22,17 @@
     margin-left: auto;
   }
 
+  .mobilevideo {
+    margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw);
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
   .createLink {
     display: inline-block;
     padding: 8px 15px;
@@ -47,7 +58,7 @@
 }
 
 .layouts {
-  margin-top: 30px;
+  margin-top: 40px;
 
   img {
     margin-top: 0;
