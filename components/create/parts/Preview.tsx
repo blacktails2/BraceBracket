@@ -42,7 +42,12 @@ export const Preview: FC = () => {
             layout={layout}
             color={color}
           />
-          <PreviewInterval layout={layout} color={color} onMC={true} />
+          <PreviewInterval
+            layout={layout}
+            color={color}
+            onMC={true}
+            onTelop={true}
+          />
           <PreviewBracket layout={layout} color={color} />
           <Button mode="primary" type="submit">
             {submitText}

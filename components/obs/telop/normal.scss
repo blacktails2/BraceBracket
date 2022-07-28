@@ -1,0 +1,24 @@
+@import "base";
+
+.normal {
+  .text {
+    @include blackWeight;
+
+    position: absolute;
+    color: var(--main-color);
+
+    &.twoLine {
+      // 2行のときのスタイル
+    }
+
+    &.top {
+      top: 40px;
+      left: 50%;
+    }
+
+    &.bottom {
+      bottom: 100px;
+      left: 50%;
+    }
+  }
+}
