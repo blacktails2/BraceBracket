@@ -23,7 +23,7 @@ export const NumberForm: FC<{
       )}
       <input
         type="number"
-        {...register(name)}
+        {...register(name, { valueAsNumber: true })}
         className={styles.input}
         id={name}
         style={
