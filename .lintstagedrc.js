@@ -1,5 +1,5 @@
 module.exports = {
-  "**/*.{git ts,tsx}": [
+  "**/*.{ts,tsx}": [
     (filenames) =>
       `next lint --fix --no-cache --max-warnings 0 --file ${filenames
         .map((file) => file.split(process.cwd())[1])

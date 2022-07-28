@@ -58,6 +58,7 @@
           "delay-50"
         ]
       }
-    ]
+    ],
+    "tailwindcss/classnames-order": 0
   }
 }
