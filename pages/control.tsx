@@ -2,6 +2,7 @@ import { useRouter } from "next/router"
 
 import { Control } from "../components/control2/Control"
 import SuggestList from "../components/control2/SuggestList"
+import { useIntegrateOBS } from "../hooks/useIntegrateOBS"
 import { useLoadBracket } from "../hooks/useLoadBracket"
 import { useMatchIntervalInfo } from "../hooks/useMatchIntervalInfo"
 import { useMC } from "../hooks/useMC"
@@ -18,8 +19,17 @@ const ControlPage: NextPageWithLayout = () => {
     useMatchIntervalInfo(id)
   const [mc, setMC, loadingMC] = useMC(id)
   const [loadBracket, requestLoad, loadingLoadBracket] = useLoadBracket(id)
+  const [integrateOBS, setIntegrateOBS, loadingIntegrateOBS] =
+    useIntegrateOBS(id)
 
-  if (!setting || !score || !matchIntervalInfo || !mc || !loadBracket)
+  if (
+    !setting ||
+    !score ||
+    !matchIntervalInfo ||
+    !mc ||
+    !loadBracket ||
+    !integrateOBS
+  )
     return null
 
   if (
@@ -27,7 +37,8 @@ const ControlPage: NextPageWithLayout = () => {
     loadingScore ||
     loadingMachIntervalInfo ||
     loadingMC ||
-    loadingLoadBracket
+    loadingLoadBracket ||
+    loadingIntegrateOBS
   )
     return null
 
@@ -45,6 +56,8 @@ const ControlPage: NextPageWithLayout = () => {
           setMC,
           loadBracket,
           requestLoad,
+          integrateOBS,
+          setIntegrateOBS,
         }}
       />
       <SuggestList setting={setting} />

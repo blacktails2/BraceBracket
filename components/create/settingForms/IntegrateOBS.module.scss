@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 50px;
+
+  .text {
+    width: 100%;
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+
+    p {
+      margin: 0 0 10px;
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 700px;
+      height: 120px;
+      padding: 5px 10px;
+      border: 1px solid var(--light-primary);
+      border-radius: 5px;
+      transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+      &:focus {
+        border-color: var(--bb-beige);
+        outline: none;
+      }
+    }
+  }
+}
