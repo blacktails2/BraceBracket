@@ -51,6 +51,14 @@
           ".write": "(data.val() == null || (data.val() != null && newData.val() != null))",
           ".read": "true"
         },
+        "banPick": {
+          ".validate": "(newData.hasChildren() && newData.hasChildren(['createdAt']))",
+          "createdAt": {
+            ".validate": "(newData.isNumber() && newData.val() == (data.val() == null ? now : data.val()))"
+          },
+          ".write": "(data.val() == null || (data.val() != null && newData.val() != null))",
+          ".read": "true"
+        },
         "$other": {
           ".validate": "false"
         },

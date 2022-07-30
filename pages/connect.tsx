@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { useAsync, useUnmount } from "react-use"
 
 import { Connect } from "../components/connect/Connect"
+import { useBanPick } from "../hooks/useBanPick"
 import { useIntegrateOBS } from "../hooks/useIntegrateOBS"
 import { NextPageWithLayout } from "../libs/const"
 
@@ -19,6 +20,7 @@ const ConnectPage: NextPageWithLayout = () => {
     id,
     true
   )
+  const [banpick, setBanPick, loadingBanpick] = useBanPick(id, true)
   const [loadedIntegrateOBS, setLoadedIntegrateOBS] = useState(false)
 
   useEffect(() => {
@@ -94,7 +96,6 @@ const ConnectPage: NextPageWithLayout = () => {
         )
 
         obs.current.on("CurrentProgramSceneChanged", (data) => {
-          console.log(data)
           setIntegrateOBS((integrateOBS) => {
             if (!integrateOBS) return integrateOBS
             return {
@@ -147,13 +148,35 @@ const ConnectPage: NextPageWithLayout = () => {
     }
   }, [integrateOBS, setIntegrateOBS])
 
-  if (!integrateOBS || loadingIntegrateOBS) return null
+  useAsync(async () => {
+    if (
+      integrateOBS?.state?.connected &&
+      integrateOBS?.link2BanPick?.enabled &&
+      banpick &&
+      integrateOBS?.link2BanPick?.state2SceneName[banpick.state] &&
+      integrateOBS?.link2BanPick?.state2SceneName[banpick.state] !==
+        integrateOBS?.state?.currentScene
+    ) {
+      try {
+        await obs.current.call("SetCurrentProgramScene", {
+          sceneName: integrateOBS?.link2BanPick?.state2SceneName[banpick.state],
+        })
+      } catch (e) {
+        console.error(e)
+      }
+    }
+  }, [integrateOBS, banpick])
+
+  if (!integrateOBS || loadingIntegrateOBS || !banpick || loadingBanpick)
+    return null
 
   return (
     <Connect
       connect={connectFunc}
       integrateOBS={integrateOBS}
       setIntegrateOBS={setIntegrateOBS}
+      banpick={banpick}
+      setBanPick={setBanPick}
     />
   )
 }

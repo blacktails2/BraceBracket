@@ -169,6 +169,28 @@ export type IntegrateOBS = {
   operation: {
     queue: OBSOperation[]
   }
+  link2BanPick: {
+    enabled: boolean
+    state2SceneName: Record<typeof BanPickState[number], string>
+  }
+}
+
+export type Selection = {
+  type: "BAN" | "PICK"
+  stage: string
+}
+
+export const BanPickState = [
+  "SELECT_MATCH",
+  "SELECT_STARTER",
+  "WAITING_RESULT",
+  "SELECT_COUNTER",
+]
+
+export type BanPick = {
+  createdAt: number | ReturnType<typeof serverTimestamp>
+  state: typeof BanPickState[number]
+  selections: Selection[]
 }
 
 export type Tournament = {
@@ -178,6 +200,7 @@ export type Tournament = {
   loadBracket: LoadBracket
   matchIntervalInfo: MatchIntervalInfo
   integrateOBS: IntegrateOBS
+  banPick: BanPick
 }
 
 export type Bracket = {

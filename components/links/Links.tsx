@@ -1,5 +1,7 @@
 import { useRouter } from "next/router"
-import { FC } from "react"
+import QRCode from "qrcode"
+import { FC, useState } from "react"
+import { useAsync } from "react-use"
 
 import { Setting } from "../../libs/const"
 import { Button } from "../parts/Button"
@@ -19,6 +21,13 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
   setting,
 }) => {
   const router = useRouter()
+  const [banPickQRCodeDataURL, setBanPickQRCodeDataURL] = useState<
+    string | undefined
+  >()
+  useAsync(async () => {
+    const url = await QRCode.toDataURL(`${origin}/banpick/?id=${id}`)
+    setBanPickQRCodeDataURL(url)
+  }, [id, origin])
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -51,6 +60,30 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
             }}
           >
             編集画面を開く
+          </Button>
+        </div>
+        <div className="flex w-full min-w-[200px] flex-col justify-between rounded-[15px] border-[0px] bg-[color:var(--bb-beige-light)] p-[2rem] sm:w-[400px]">
+          <div>
+            <h5 className="mb-[1.8rem]">BanPick</h5>
+          </div>
+          <div>
+            <img
+              src={banPickQRCodeDataURL}
+              alt="QRCode"
+              className="mb-[1rem] h-[100px] w-[100px]"
+            />
+          </div>
+          <Button
+            type="button"
+            mode="primary"
+            light
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              router.push(`/banpick/?id=${id}`)
+            }}
+          >
+            BanPick画面を開く
           </Button>
         </div>
         {setting?.integrateOBS && (
@@ -149,6 +182,19 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
               />
               <TextboxWithCopy
                 text={`${origin}/obs/bracket/?id=${id}`}
+                className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
+              />
+            </div>
+          </div>
+          <div className="flex gap-[1rem] md:flex-nowrap md:gap-[3rem]">
+            <div className="w-full max-w-[345px]">
+              <h4 className="mb-[0.8rem]">BanPick Layout</h4>
+              <PreviewMC
+                layout={setting?.scoreboard.design.layout}
+                color={setting?.scoreboard.design.color}
+              />
+              <TextboxWithCopy
+                text={`${origin}/obs/banpick/?id=${id}`}
                 className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
               />
             </div>

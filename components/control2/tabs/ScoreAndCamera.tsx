@@ -17,7 +17,7 @@ const ScoreAndCamera: FC<{
   setting: Setting
   score: Score
   setScore: (score: Score) => void
-  matchIntervalInfo: MatchIntervalInfo
+  matchIntervalInfo?: MatchIntervalInfo
 }> = ({ setting, score, setScore, matchIntervalInfo }) => {
   const [showTooltip, setShowTooltip] = useState(false)
   const streamQueueTableRef = useRef<{ disableTrack: () => void }>({

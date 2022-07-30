@@ -1,15 +1,19 @@
-import { FC, useCallback, useEffect } from "react"
+import { Dispatch, FC, SetStateAction, useCallback, useEffect } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 
-import { IntegrateOBS } from "../../libs/const"
+import { BanPick, BanPickState, IntegrateOBS } from "../../libs/const"
 import { TextForm } from "../control2/parts/TextForm"
 import { Button } from "../parts/Button"
+import { CheckBoxForm } from "../parts/CheckBoxForm"
+import { SelectForm } from "../parts/SelectForm"
 
 export const Connect: FC<{
   connect: (url: string, password: string) => void
   integrateOBS: IntegrateOBS
-  setIntegrateOBS: (integrateOBS: IntegrateOBS) => void
-}> = ({ connect, integrateOBS, setIntegrateOBS }) => {
+  setIntegrateOBS: Dispatch<SetStateAction<IntegrateOBS | undefined>>
+  banpick: BanPick
+  setBanPick: Dispatch<SetStateAction<BanPick | undefined>>
+}> = ({ connect, integrateOBS, setIntegrateOBS, banpick, setBanPick }) => {
   const form = useForm<{ url: string; password: string }>({
     defaultValues: {
       url: "ws://localhost:4444",
@@ -25,6 +29,20 @@ export const Connect: FC<{
   useEffect(() => {
     console.log({ integrateOBS })
   }, [integrateOBS])
+
+  useEffect(() => {
+    console.log({ banpick })
+  }, [banpick])
+
+  const banpickForm = useForm<{
+    enabled: boolean
+    state2SceneName: Record<typeof BanPickState[number], string>
+  }>({
+    defaultValues: integrateOBS.link2BanPick,
+  })
+  useEffect(() => {
+    banpickForm.reset(integrateOBS.link2BanPick)
+  }, [banpickForm, integrateOBS])
 
   return (
     <div className="flex h-[100vh] flex-col overflow-y-hidden py-[1.5rem] px-[2rem]">
@@ -85,6 +103,40 @@ export const Connect: FC<{
           )
         })}
       </div>
+      <hr className="my-[1rem] h-[1px] bg-[#c4c4c4]" />
+      <FormProvider {...banpickForm}>
+        <form
+          onSubmit={banpickForm.handleSubmit((data) => {
+            setIntegrateOBS((integrateOBS) => {
+              if (!integrateOBS) return integrateOBS
+              return {
+                ...integrateOBS,
+                link2BanPick: data,
+              }
+            })
+          })}
+        >
+          <CheckBoxForm label="BanPick画面と連動する" name="enabled" />
+          {BanPickState.map((state) => {
+            return (
+              <div key={state} className="flex">
+                <SelectForm
+                  label={state}
+                  name={`state2SceneName.${state}`}
+                  options={(integrateOBS.state.sceneList ?? []).map(
+                    (sceneName) => ({ text: sceneName, value: sceneName })
+                  )}
+                />
+              </div>
+            )
+          })}
+          <div>
+            <Button mode="small" type="submit">
+              設定
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
     </div>
   )
 }

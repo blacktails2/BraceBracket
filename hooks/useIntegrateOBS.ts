@@ -14,6 +14,10 @@ const defaultValue: IntegrateOBS = {
   operation: {
     queue: [],
   },
+  link2BanPick: {
+    enabled: false,
+    state2SceneName: {},
+  },
 }
 
 export const useIntegrateOBS = genUseDatabaseValue<IntegrateOBS>(
