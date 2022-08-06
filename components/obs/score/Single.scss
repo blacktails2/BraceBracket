@@ -20,26 +20,28 @@
     @include score;
     @include blackWeight;
 
-    top: 44px;
-    width: 60px;
-    font-size: 40px;
+    top: 38px;
+    width: 120px;
+    font-family: Oswald, serif;
+    font-size: 60px;
 
     &.p1 {
-      left: 800px;
+      left: 782px;
+      color: #e60f00;
     }
 
     &.p2 {
-      right: 800px;
+      right: 782px;
+      color: #8400e6;
     }
   }
 
   // プレイヤー名の位置指定
   .player {
     position: absolute;
-    top: 61px;
+    top: 77px;
     width: 460px;
     height: 60px;
-    text-align: center;
 
     span {
       margin-left: 10px;
@@ -50,18 +52,20 @@
     }
 
     &.p1 {
-      left: 320px;
+      left: 447px;
+      text-align-last: left;
     }
 
     &.p2 {
-      right: 320px;
+      right: 447px;
+      text-align: right;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 29px;
-      line-height: 29px;
+      font-size: 34px;
+      line-height: 34px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -70,8 +74,8 @@
     .name {
       @include blackWeight;
 
-      font-size: 29px;
-      line-height: 29px;
+      font-size: 34px;
+      line-height: 34px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -104,6 +108,8 @@
   .round,
   .matchType {
     @include status;
+
+    display: none;
   }
 
   .cameraRight,

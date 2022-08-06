@@ -16,6 +16,10 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
           />
+          <link
+            href="https://api.fontshare.com/v2/css?f[]=oswald@700&display=swap"
+            rel="stylesheet"
+          />
           <Script
             src="https://webfont.fontplus.jp/accessor/script/fontplus.js?qdfWifIcjAc%3D&box=PeMTC~FUu4w%3D&chws=1&aa=1&ab=1"
             strategy="beforeInteractive"
