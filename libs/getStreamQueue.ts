@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PlayerScore } from "./const"
 import { getEventSlug, getNameAndTeamtag } from "./utils"
 
@@ -63,6 +64,7 @@ query StreamQueueOnTournament($tourneySlug: String!, $eventSlug: String!) {
         id
         fullRoundText
         lPlacement
+        wPlacement
         state
         slots {
           entrant {
@@ -93,6 +95,7 @@ query StreamQueueOnTournament($eventSlug: String!, $page: Int!) {
         id
         fullRoundText
         lPlacement
+        wPlacement
         state
         slots {
           entrant {
@@ -132,7 +135,7 @@ const getRoundText = (set: any): string => {
     if (fullRoundText.startsWith("Winners")) {
       return `Winners Top${(set.lPlacement - 1) * 2}`
     } else if (fullRoundText.startsWith("Losers")) {
-      return `Losers Top${set.lPlacement - 1}`
+      return `Losers Top${(set.wPlacement - 1) * 2}`
     }
   }
 
