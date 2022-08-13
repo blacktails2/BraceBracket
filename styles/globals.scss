@@ -4,7 +4,7 @@
 @tailwind utilities;
 @import "/node_modules/bulma/sass/grid/columns.sass";
 @import "/node_modules/bulma/sass/helpers/visibility.sass";
-
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Zen+Kaku+Gothic+Antique:wght@500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Zen+Kaku+Gothic+Antique:wght@400;500;700;900&display=swap");
 
 /* stylelint-enable */
@@ -26,6 +26,14 @@
 @font-face {
   font-family: "Mint Grotesk ExtraBold";
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
+}
+
+@font-face {
+  font-family: "Poppins Variable";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("/fonts/Poppins Variable.woff2") format("woff2");
+  font-display: swap;
 }
 
 :root {
