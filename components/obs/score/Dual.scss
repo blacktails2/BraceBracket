@@ -2,80 +2,79 @@
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
-  @include blackWeight;
-
   position: absolute;
-  top: 96px;
-  width: 410px;
+  top: 19px;
+  width: 400px;
   margin: 0;
-  font-size: 19px;
-  font-style: italic;
-  color: var(--status-color);
+  font-family: "Mario Maker", sans-serif;
+  font-size: 40px;
+  color: #ffcd00;
   text-align: center;
-  letter-spacing: 1px;
 }
 
 .dual {
   // スコアの位置指定
   .score {
-    @include score;
-    @include blackWeight;
-
-    top: 44px;
-    width: 75px;
-    font-size: 54px;
+    position: absolute;
+    top: 22px;
+    width: 115px;
+    font-family: "Mario Maker", sans-serif;
+    font-size: 72px;
+    color: #64272e;
+    text-align: center;
 
     &.p1 {
-      left: 365px;
+      left: 847px;
     }
 
     &.p2 {
-      right: 365px;
+      right: 836px;
+    }
+  }
+
+  .solidteam {
+    position: absolute;
+    top: 93px;
+    width: 50px;
+    color: white;
+    text-align: center;
+
+    &.p1 {
+      left: 438px;
+    }
+
+    &.p2 {
+      right: 433px;
+    }
+
+    .team {
+      font-family: "Mario Maker", sans-serif;
+      font-size: 32px;
+      line-height: 32px;
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
-    width: 410px;
+    top: 95px;
+    width: 350px;
     height: 50px;
-    margin: 0 0 0 10px;
+    color: #64272e;
     text-align: center;
 
-    span {
-      margin-left: 10px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
     &.p1 {
-      left: 460px;
+      left: 484px;
     }
 
     &.p2 {
-      right: 460px;
-    }
-
-    .team {
-      @include mediumWeight;
-
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
-      text-align: center;
-      letter-spacing: 1px;
+      right: 484px;
     }
 
     .name {
-      @include blackWeight;
-
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
+      font-family: "Nitalago Ruika5", sans-serif;
+      font-size: 28px;
+      line-height: 28px;
       text-align: center;
-      letter-spacing: 1px;
     }
   }
 
@@ -83,13 +82,13 @@
   .round {
     @include status;
 
-    left: 465px;
+    left: 438px;
   }
 
   .matchType {
     @include status;
 
-    right: 465px;
+    right: 432px;
   }
 
   .cameraRight,
