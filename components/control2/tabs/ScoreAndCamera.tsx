@@ -86,7 +86,14 @@ const ScoreAndCamera: FC<{
                       window.open(
                         "https://twitter.com/intent/tweet?text=" +
                           encodeURIComponent(
-                            Mustache.render(setting.tweetMatch?.template, ctx)
+                            Mustache.render(
+                              setting.tweetMatch?.template,
+                              ctx,
+                              undefined,
+                              {
+                                escape: (v) => v,
+                              }
+                            )
                           ),
                         "tweetwindow",
                         "resizable=0,scrollbars=0,width=600,height=400"
