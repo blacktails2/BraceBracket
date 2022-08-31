@@ -1,7 +1,8 @@
 // フォントの設定
-$regular: "Satoshi", "Noto Sans JP", sans-serif;
-$bold: "Satoshi", "Noto Sans JP", sans-serif;
-$black: "Satoshi", "Noto Sans JP", sans-serif;
+$regular: "FOT-ロダンNTLG Pro UB", "Satoshi", "Noto Sans JP", sans-serif;
+$medium: "FOT-ロダンNTLG Pro UB", "Satoshi", "Noto Sans JP", sans-serif;
+$bold: "FOT-ロダンNTLG Pro UB", "Satoshi", "Noto Sans JP", sans-serif;
+$black: "FOT-ロダンNTLG Pro UB", "Satoshi", "Noto Sans JP", sans-serif;
 
 .board {
   position: absolute;
@@ -106,11 +107,8 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .other.grand {
-  .player1 span {
-    color: var(--bb-black);
-  }
-
+  .player1 span,
   .player2 span {
-    color: var(--bb-white);
+    color: var(--bb-black);
   }
 }

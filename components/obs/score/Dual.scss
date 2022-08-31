@@ -21,25 +21,38 @@
     @include score;
     @include blackWeight;
 
-    top: 44px;
-    width: 75px;
-    font-size: 54px;
+    top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 113px;
+    height: 50px;
+    color: black;
+    text-align: center;
 
     &.p1 {
-      left: 365px;
+      left: 660px;
     }
 
     &.p2 {
-      right: 365px;
+      right: 663px;
+    }
+
+    div {
+      font-size: 28px;
+      line-height: 28px;
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
-    width: 410px;
+    top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 403px;
     height: 50px;
-    margin: 0 0 0 10px;
+    font-style: oblique;
     text-align: center;
 
     span {
@@ -51,18 +64,18 @@
     }
 
     &.p1 {
-      left: 460px;
+      left: 284px;
     }
 
     &.p2 {
-      right: 460px;
+      right: 287px;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 25px;
-      line-height: 25px;
+      font-size: 28px;
+      line-height: 28px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -71,8 +84,8 @@
     .name {
       @include blackWeight;
 
-      font-size: 25px;
-      line-height: 25px;
+      font-size: 28px;
+      line-height: 28px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -81,15 +94,25 @@
 
   // 試合ステータスの位置設定
   .round {
+    @include blackWeight;
     @include status;
 
-    left: 465px;
+    top: 20px;
+    left: 773px;
+    width: 371px;
+    font-size: 24px;
+    color: white;
   }
 
   .matchType {
+    @include blackWeight;
     @include status;
 
-    right: 465px;
+    top: 50px;
+    left: 773px;
+    width: 371px;
+    font-size: 24px;
+    color: white;
   }
 
   .cameraRight,
@@ -99,20 +122,21 @@
 
   .tournamentNameBox {
     position: absolute;
-    top: 48px;
+    top: 8px;
     left: 870px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 180px;
-    height: 50px;
+    height: 10px;
   }
 
   .tournamentName {
-    @include mediumWeight;
+    @include blackWeight;
 
-    font-size: 17px;
-    line-height: 19px;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 20px;
     color: var(--player-color);
     text-align: center;
     letter-spacing: 2px;

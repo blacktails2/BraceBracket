@@ -2,7 +2,6 @@ import { FC, useState } from "react"
 import { useInterval } from "react-use"
 
 import {
-  getCameraFilename,
   Score,
   ScoreboardColor,
   ScoreboardLayout,
@@ -79,31 +78,7 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
         src={`/image/scoreboards/${layout}/${layout}_${color}.png`}
         alt=""
       />
-      {setting.scoreboard.cameraAndLogo.displayCameraAndTwitterID && (
-        <div>
-          <img
-            className={styles.board}
-            src={`/image/camera/${getCameraFilename(layout, color)}`}
-            alt=""
-          />
-          {score.p1.twitterID && (
-            <Transition keyName={score.p1.twitterID}>
-              <p className={styles.cameraLeft}>
-                {score.p1.twitterID.startsWith("@") ? "" : "@"}
-                {score.p1.twitterID}
-              </p>
-            </Transition>
-          )}
-          {score.p2.twitterID && (
-            <Transition keyName={score.p2.twitterID}>
-              <p className={styles.cameraRight}>
-                {score.p2.twitterID.startsWith("@") ? "" : "@"}
-                {score.p2.twitterID}
-              </p>
-            </Transition>
-          )}
-        </div>
-      )}
+      <img className={styles.board} src={`/image/wave_logo.png`} alt="" />
       <div className={styles.logobox}>
         {/* 大会ロゴ なしの場合はクラスにdisableを追加*/}
         {setting.scoreboard.cameraAndLogo.useLogo &&
@@ -131,32 +106,36 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
       </div>
       {/*1Pスコア*/}
       <Transition keyName={`${score.p1.playerName}-${score.p1.score}`}>
-        <div className={`${styles.score} ${styles.p1}`}>{score.p1.score}</div>
+        <div className={`${styles.score} ${styles.p1}`}>
+          <div>{score.p1.score}</div>
+        </div>
       </Transition>
       {/*2Pスコア*/}
       <Transition keyName={`${score.p2.playerName}-${score.p2.score}`}>
-        <div className={`${styles.score} ${styles.p2}`}>{score.p2.score}</div>
+        <div className={`${styles.score} ${styles.p2}`}>
+          <div>{score.p2.score}</div>
+        </div>
       </Transition>
-      <div className={`${styles.player} ${styles.p1}`}>
-        <Transition keyName={`${score.p1.team}-${score.p1.playerName}`}>
+      <Transition keyName={`${score.p1.team}-${score.p1.playerName}`}>
+        <div className={`${styles.player} ${styles.p1}`}>
           <div>
             {score.p1.team && (
               <span className={styles.team}>{score.p1.team}</span>
             )}
             <span className={styles.name}>{score.p1.playerName}</span>
           </div>
-        </Transition>
-      </div>
-      <div className={`${styles.player} ${styles.p2}`}>
-        <Transition keyName={`${score.p2.team}-${score.p2.playerName}`}>
+        </div>
+      </Transition>
+      <Transition keyName={`${score.p2.team}-${score.p2.playerName}`}>
+        <div className={`${styles.player} ${styles.p2}`}>
           <div>
             {score.p2.team && (
               <span className={styles.team}>{score.p2.team}</span>
             )}
             <span className={styles.name}>{score.p2.playerName}</span>
           </div>
-        </Transition>
-      </div>
+        </div>
+      </Transition>
       {((layout: string) => {
         switch (layout) {
           case "dual":

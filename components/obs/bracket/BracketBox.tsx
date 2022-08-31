@@ -34,6 +34,14 @@ export const BracketBox: FC<{
   useEffect(() => {
     setPlayer2(_player2)
   }, [_player2])
+
+  const [newPos, setNewPos] = useState({ left: "0px", top: "0px" })
+  useEffect(() => {
+    const top = parseInt(pos.top.replace("px", "")) + 135
+    const left = parseInt(pos.left.replace("px", ""))
+    setNewPos({ left: left + "px", top: top + "px" })
+  }, [pos])
+
   return (
     <div
       className={`${styles.bracketBox} ${
@@ -43,7 +51,7 @@ export const BracketBox: FC<{
           ? styles.winners
           : styles.grand
       } ${layout === "simple" ? styles.simple : styles.other}`}
-      style={pos}
+      style={newPos}
     >
       <div className={styles.name}>
         <Transition keyName={`${player1.team}-${player1.name}`}>
