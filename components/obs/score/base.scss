@@ -58,7 +58,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 // 選手IDの位置設定
 @mixin idText {
   position: absolute;
-  top: 1040px;
+  top: 760px;
   width: 220px;
   height: 30px;
   margin: 0;
@@ -66,21 +66,21 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   font-size: 21px;
   font-weight: 700;
   line-height: 21px;
-  color: var(--player-color);
+  color: black;
   letter-spacing: 1px;
 }
 
 .cameraLeft {
   @include idText;
 
-  left: 25px;
+  left: 18px;
   text-align: left;
 }
 
 .cameraRight {
   @include idText;
 
-  right: 25px;
+  right: 18px;
   text-align: right;
 }
 
