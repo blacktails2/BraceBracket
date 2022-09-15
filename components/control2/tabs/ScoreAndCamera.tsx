@@ -361,7 +361,10 @@ const ScoreAndCamera: FC<{
                       form.setValue("p2.playerName", p2.playerName)
                       form.setValue("p2.score", p2.score)
                       form.setValue("p2.twitterID", p2.twitterID)
-                      form.setValue("round", queue.roundText)
+
+                      if (!queue.isLockRound) {
+                        form.setValue("round", queue.roundText)
+                      }
                     }
                   }}
                   id="scoreAndCameraStreamQueueTable"
