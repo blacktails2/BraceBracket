@@ -95,7 +95,10 @@
     margin-right: 3px;
 
     &::after {
-      content: "—";
+      margin-left: 5px;
+      font-variation-settings: "wght" 500;
+      font-weight: 500;
+      content: "/";
     }
   }
 

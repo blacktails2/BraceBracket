@@ -54,9 +54,11 @@
       1,
       {
         "whitelist": [
-          "board"
+          "board",
+          "delay-50"
         ]
       }
-    ]
+    ],
+    "tailwindcss/classnames-order": 0
   }
 }

@@ -54,7 +54,7 @@ const Next: FC<{
               <Button
                 type="submit"
                 mode="small"
-                tooltipText="適用されました"
+                tooltipText="Changed!"
                 showTooltip={showTooltip}
               >
                 適用する
@@ -235,7 +235,9 @@ const Next: FC<{
 
                       form.setValue("p2.team", p2.team)
                       form.setValue("p2.playerName", p2.playerName)
-                      form.setValue("round", queue.roundText)
+                      if (!queue.isLockRound) {
+                        form.setValue("round", queue.roundText)
+                      }
                     }
                   }}
                   trackNext={true}

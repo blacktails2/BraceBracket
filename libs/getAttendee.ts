@@ -1,4 +1,4 @@
-import { getNameAndTeamtag, getTournarySlug } from "./utils"
+import { getEventSlug, getNameAndTeamtag } from "./utils"
 
 export type Attendee = {
   team: string
@@ -6,35 +6,26 @@ export type Attendee = {
 }[]
 
 const query = `
-query AttendeeCount($tourneySlug: String!, $page: Int) {
-  tournament(slug: $tourneySlug) {
-    id
-    name
-    participants(query: {page: $page, perPage: 500}) {
+query getAttendee($eventSlug: String!, $page: Int) {
+  event(slug: $eventSlug) {
+  	id
+    entrants (query: {page: $page, perPage: 400}) {
       pageInfo {
         totalPages
         total
       }
       nodes {
-        id
-        gamerTag
-        entrants {
-          team {
-            id
-          }
-          name
-        }
+        name
       }
     }
   }
 }`
 
 export const getAttendee = async (url?: string): Promise<Attendee> => {
-  console.log(url)
   if (!url) {
     return []
   }
-  const slug = getTournarySlug(url)
+  const slug = getEventSlug(url)
   if (slug === "") {
     return []
   }
@@ -42,7 +33,7 @@ export const getAttendee = async (url?: string): Promise<Attendee> => {
   let totalAttendee: Attendee = []
   for (let i = 1; i <= totalPages; i++) {
     const variables = {
-      tourneySlug: slug,
+      eventSlug: slug,
       page: i,
     }
 
@@ -64,26 +55,19 @@ export const getAttendee = async (url?: string): Promise<Attendee> => {
       console.error(res.errors)
       return []
     }
-    console.log(res)
-    totalPages = res?.data?.tournament?.participants?.pageInfo?.totalPages
-    const attendee = res?.data?.tournament?.participants?.nodes?.map(
-      (participant: any) => {
-        const {team, name} = getNameAndTeamtag(
-          participant.entrants && participant.entrants[0]
-            ? participant.entrants[0]?.name ?? participant.gamerTag
-            : participant.gamerTag ?? ""
-        )
-        return {
-          team,
-          playerName: name,
-        }
+
+    totalPages = res?.data?.event?.entrants?.pageInfo?.totalPages
+    const attendee = res?.data?.event?.entrants?.nodes?.map((entrant: any) => {
+      const { team, name } = getNameAndTeamtag(entrant?.name ?? "")
+      return {
+        team,
+        playerName: name,
       }
-    )
+    })
     totalAttendee = [...totalAttendee, ...attendee]
   }
   if (!totalAttendee) {
     return []
   }
-  console.log(totalAttendee)
   return totalAttendee
 }

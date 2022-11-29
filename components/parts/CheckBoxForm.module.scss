@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   display: flex;
   gap: 5px;
 }
@@ -43,4 +44,30 @@
 
 .label {
   margin-top: 1px;
+}
+
+.tooltip {
+  position: absolute;
+  left: 50%;
+  z-index: 1000;
+  width: fit-content;
+  padding: 4px;
+  font-family: "Mint Grotesk Bold", "Noto Sans JP", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--bb-black);
+  text-align: center;
+  white-space: nowrap;
+  background-color: var(--bb-white);
+  border: 1px solid var(--bb-beige);
+  border-radius: 5px;
+  box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  transform: translate(-50%, -110%);
+}
+
+.tooltipEnter,
+.tooltipExit {
+  opacity: 0;
+  transform: translate(-50%, calc(-80%));
 }

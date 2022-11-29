@@ -1,3 +1,5 @@
+import { deepCopy } from "@firebase/util"
+import Mustache from "mustache"
 import { FC, memo, useEffect, useRef, useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 
@@ -46,7 +48,7 @@ const ScoreAndCamera: FC<{
                 <Button
                   type="submit"
                   mode="small"
-                  tooltipText="適用されました"
+                  tooltipText="Changed!"
                   showTooltip={showTooltip}
                 >
                   適用する
@@ -62,6 +64,45 @@ const ScoreAndCamera: FC<{
                 >
                   変更をリセット
                 </Button>
+                {setting.tweetMatch?.enabled && (
+                  <Button
+                    type="button"
+                    mode="small"
+                    light
+                    onClick={() => {
+                      const ctx = deepCopy(score)
+                      if (
+                        ctx.p1.twitterID !== "" &&
+                        !ctx.p1.twitterID.startsWith("@")
+                      ) {
+                        ctx.p1.twitterID = `@${ctx.p1.twitterID}`
+                      }
+                      if (
+                        ctx.p2.twitterID !== "" &&
+                        !ctx.p2.twitterID.startsWith("@")
+                      ) {
+                        ctx.p2.twitterID = `@${ctx.p2.twitterID}`
+                      }
+                      window.open(
+                        "https://twitter.com/intent/tweet?text=" +
+                          encodeURIComponent(
+                            Mustache.render(
+                              setting.tweetMatch?.template,
+                              ctx,
+                              undefined,
+                              {
+                                escape: (v) => v,
+                              }
+                            )
+                          ),
+                        "tweetwindow",
+                        "resizable=0,scrollbars=0,width=600,height=400"
+                      )
+                    }}
+                  >
+                    対戦カードをツイート
+                  </Button>
+                )}
               </div>
               <div className="flex gap-[1rem]">
                 <div className="basis-2/3">
@@ -320,7 +361,10 @@ const ScoreAndCamera: FC<{
                       form.setValue("p2.playerName", p2.playerName)
                       form.setValue("p2.score", p2.score)
                       form.setValue("p2.twitterID", p2.twitterID)
-                      form.setValue("round", queue.roundText)
+
+                      if (!queue.isLockRound) {
+                        form.setValue("round", queue.roundText)
+                      }
                     }
                   }}
                   id="scoreAndCameraStreamQueueTable"

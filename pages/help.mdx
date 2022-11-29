@@ -1,0 +1,108 @@
+import { DefaultLayout } from "../components/layouts/DefaultLayout"
+import Head from "next/head"
+import styles from "./help.module.scss"
+import Image from 'next/image'
+
+## Help
+
+<div className='columns is-variable is-6 is-multiline'>
+  <div className='column is-8-widescreen is-8-desktop is-12-tablet'>
+
+    <ul className={styles.helpbox}>
+      <li>
+        #### BraceBracketを使用するにあたり、使用許可や支払いなどは必要ですか？
+        BraceBracketは無料でご自由にご利用いただけます。ソースコードはApache2.0で公開しておりますので、ライセンスを守ってご利用ください。BraceBracketは今後も開発を続けていく予定ですので、よろしければYoutubeの概要欄や配信内での紹介、[Discord](https://discord.gg/TgMFQEqxY9)や[Google Form](https://forms.gle/jkJKeiQdDQvwuC6A7)でのフィードバックをいただけたら幸いです。また、BraceBracketは有志により無償で開発しておりますので、Buy me a coffeeで投げ銭などをいただけると励みになります。
+
+        <a href="https://www.buymeacoffee.com/wolphtype" target="_blank">
+        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" className={styles.buyme}></img>
+        </a>
+
+      </li>
+      <li>
+        #### デザインのカスタマイズはできますか？
+        できません。意図しない色やフォントの変更により文字の視認性や可読性が低下することを避けるため、現在は指定されたデザインのみを選択できる形式にて提供しています。ただし、ソースコードは[Github](https://github.com/blacktails2/BraceBracket)にて公開しておりますので、cloneして各自の環境で改変し使用していただくことが可能です。また、[Discord](https://discord.gg/TgMFQEqxY9)にて開発者までお問い合わせいただければ、大会に合わせたスコアボードのデザインから実装、配信スタッフの皆様への説明までを担当いたします。
+      </li>
+      <li>
+        #### BraceBracketの開発に参加したいのですが…
+        [Discordコミュニティ](https://discord.gg/TgMFQEqxY9)にてWolphtypeまでご連絡ください。BraceBracketをより使いやすく、便利なツールにするためのアイデアをお待ちしております。
+      </li>
+      <li>
+        #### バグ及び不具合を見つけました。
+        [Google Form](https://forms.gle/jkJKeiQdDQvwuC6A7), [Discord](https://discord.gg/TgMFQEqxY9)もしくはTwitter [@wolphtype](https://twitter.com/wolphtype)までご連絡ください。できる限り早く対応いたします。
+      </li>
+      <li>
+        #### 配信ソフト用ブラウザソースURLを配信ソフトに配置しましたが、表示されません。
+
+        以下をお試しください。
+
+        * 配信ソフトでのソース再読み込み
+        * ブラウザでコピーしたURLを開き、表示されているか確認
+        * スコアボードの作成し直し
+        * MCレイアウトの場合、MCを入力しているかどうか確認（何も入力していない場合、MCレイアウトは表示されません）
+        
+        これらをお試しいただいても改善されない場合、[Discord](https://discord.gg/TgMFQEqxY9)までご連絡ください。
+      </li>
+      <li>
+        <h4 id='help-camera'>OBSでプレイヤーカメラをガイドに合わせて配置する方法を教えてください。</h4>
+
+        <Image
+          src="/image/usage/set_camera.png"
+          alt="OBSの編集、変換でカメラの位置を設定する"
+          width="564"
+          height="406"
+          className={styles.helpimage}
+          />
+
+        一般的な16:9の比のカメラの場合、配置した後以下の操作を行ってください。
+        1. OBSで編集→変換→変換の編集
+        2. 左のカメラは**位置20, 880 / 大きさ320, 180**、右のカメラは**位置1580, 880 / 大きさ320, 180**に設定する
+        3. Dual Layout, Single Layout, Solid Layoutを使っている場合は<a href="/image/bb_mask.png" download>こちら</a>からマスク画像をダウンロードし、フィルタ→イメージマスクでダウンロードした画像を適用する
+      </li>
+      <li>
+        #### 離れた場所でのスコアの更新は可能ですか？
+        BraceBracketはサーバーを介してスコアを表示するため、インターネットに接続されていればどこからでもスコアを編集可能です。
+      </li>
+      <li>
+        #### start.ggとうまく連携できません。
+        トーナメントのTop8などのカードが表示されているブラケットの画面のURLをコピーペーストしてください。正しく入力されていれば、参照されるトーナメント名のメッセージが表示されます。URLは `https://www.start.gg/tournament/トーナメント名/event/イベント名/brackets/0000000/0000000` のような形式になります。また、編集画面にて表が出てこない場合は、読み込みボタンをクリックするか、対戦カードをStream Queueに入れるなどをお試しください。
+      </li>
+      <li>
+        #### TonamelやChallongeといったツールとも連携できますか？
+        現在開発を検討中です。このツールと連携してほしいなどのご意見があればお寄せください（ツールによっては対応が難しい場合もございます）。
+      </li>
+      <li>
+        #### Google Spreadsheetで編集するバージョンは利用できますか？
+        [GithubのReleases](https://github.com/blacktails2/BraceBracket/releases)よりご利用いただけますが、今後のバージョンアップなどは予定しておりませんのでご了承ください。
+      </li>
+    </ul>
+
+  </div>
+  <div className="column is-12-mobile is-8-tablet is-4-desktop">
+    <div className={styles.formbox}>
+      #### Google Formにフィードバックや不具合を報告する
+
+      匿名でご意見や不具合の報告、質問やご要望がありましたらこちらのフォームをご活用ください。（返信にお時間がかかる場合がございます。）
+      
+      <a href="https://forms.gle/jkJKeiQdDQvwuC6A7" title="BraceBracekt Google Form"><button>Google Form</button></a>
+    </div>
+  </div>
+</div>
+
+export default ({children}) => <>
+  <Head>
+    <title>BraceBracket | Help</title>
+    <meta property="og:title" content="BraceBracket | Help" />
+    <meta property="og:url" content="https://bracebracket.app/help/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="BraceBracketは、Webベースの対戦ゲーム用スコアボードツールです。OSを問わず、ブラウザ上でスコアボードを作成・編集できます。" />
+    <meta property="og:site_name" content="BraceBracket" />
+    <meta property="og:image" content="https://bracebracket.app/image/ogp.jpg" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@wolphtype" />
+  </Head>
+  <DefaultLayout>
+    <div className="markdown">
+      {children}
+    </div>
+  </DefaultLayout>
+</>

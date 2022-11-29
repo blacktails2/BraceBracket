@@ -21,4 +21,8 @@ export const settingDefault: Setting = {
     enabled: false,
     url: "",
   },
+  tweetMatch: {
+    enabled: false,
+    template: "",
+  },
 }

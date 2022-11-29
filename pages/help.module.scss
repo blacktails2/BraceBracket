@@ -1,0 +1,126 @@
+.formbox {
+  padding: 3rem 3.5rem;
+  background-color: var(--bb-beige-light);
+  border-radius: 15px;
+
+  h4 {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  p {
+    font-size: 1.4rem;
+  }
+
+  button {
+    height: 40px;
+    padding: 5px 15px;
+    margin-top: 2rem;
+    font-family: "Mint Grotesk Bold", "Noto Sans JP", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    background-color: var(--bb-white);
+    border: 1px solid var(--bb-beige);
+    border-radius: 15px;
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+    &:hover {
+      background-color: var(--bb-beige-hover);
+      box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+    }
+  }
+
+  @media (max-width: 520px) {
+    padding: 1.5rem 2rem;
+  }
+}
+
+.helpbox {
+  padding: 3rem 3.5rem;
+  margin-left: 0 !important;
+  border: 1px solid var(--bb-beige);
+  border-radius: 15px;
+
+  li {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    list-style: none;
+    border-bottom: 1px solid var(--bb-light);
+
+    ul {
+      padding-top: 2rem;
+
+      li {
+        padding: 0;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 1.7;
+        list-style: square;
+        border: none;
+      }
+    }
+
+    ol {
+      padding-top: 2rem;
+      margin-top: 0;
+
+      li {
+        padding: 0;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 1.7;
+        list-style-type: decimal;
+        border: none;
+      }
+    }
+
+    h4 {
+      padding-top: 0;
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      border: none;
+    }
+  }
+
+  p {
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 520px) {
+    padding: 1.5rem 2rem;
+
+    li {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+
+      ul {
+        padding-top: 1.5rem;
+      }
+    }
+
+    p {
+      margin-top: 1.5rem;
+    }
+  }
+
+  .buyme {
+    height: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+  }
+
+  .helpimage {
+    margin-top: 2rem;
+  }
+}
