@@ -7,6 +7,7 @@
     position: absolute;
     top: 880px;
     left: 40px;
+    display: none;
     width: 220px;
     height: 80px;
     font-size: 52px;
@@ -15,110 +16,121 @@
     letter-spacing: 0.05em;
   }
 
-  .statusBox {
+  .round {
     position: absolute;
-    top: 880px;
-    left: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 340px;
-    height: 80px;
+    top: 14px;
+    left: 885px;
+    width: 150px;
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 0.04em;
   }
 
-  .round,
   .bo {
-    @include blackWeight;
-
-    width: 320px;
-    margin: 0;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 24px;
-    color: var(--sub-color);
-    text-align: left;
-    letter-spacing: 2px;
+    position: absolute;
+    top: 975px;
+    right: 40px;
+    font-family: Montserrat, sans-serif;
+    font-size: 70px;
+    font-weight: 900;
+    line-height: 70px;
+    color: #fff;
+    text-align: right;
+    letter-spacing: 0.08em;
   }
 
   .score {
-    @include blackWeight;
-
     position: absolute;
-    top: 980px;
-    width: 60px;
+    top: 7px;
+    width: 80px;
     margin: 0;
-    font-size: 40px;
-    color: var(--main-color);
+    font-family: Montserrat, sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: #3e362d;
     text-align: center;
+    letter-spacing: -0.02em;
 
     &.p1 {
-      left: 500px;
+      left: 332px;
     }
 
     &.p2 {
-      left: 580px;
+      right: 332px;
     }
   }
 
   .player {
     position: absolute;
-    top: 996px;
-    width: 440px;
+    top: 20px;
+    width: 455px;
     height: 60px;
     margin: 0;
     text-align: center;
 
+    span {
+      margin-left: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
     &.p1 {
-      left: 40px;
+      left: 410px;
     }
 
     &.p2 {
-      left: 660px;
+      right: 410px;
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 26px;
+      color: #3e362d;
       text-align: center;
-      letter-spacing: 1px;
+      letter-spacing: 0.04em;
     }
 
     .name {
-      @include blackWeight;
-
-      margin-left: 1rem;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 26px;
+      color: #3e362d;
       text-align: center;
-      letter-spacing: 1px;
+      letter-spacing: 0.04em;
     }
   }
 
   .localsetting {
-    @include mediumWeight;
-
     position: absolute;
     top: 975px;
     left: 1570px;
+    display: none;
     font-size: 24px;
     line-height: 26px;
     color: var(--sub-color);
     letter-spacing: 1px;
+    @include mediumWeight;
   }
 
   .localtime {
-    @include blackWeight;
-
     position: absolute;
     top: 960px;
     right: 57px;
+    display: none;
     font-size: 52px;
     font-variant-numeric: tabular-nums;
     color: var(--sub-color);
     text-align: right;
+    @include blackWeight;
   }
 }
