@@ -20,6 +20,7 @@ import { Preview } from "./parts/Preview"
 import { Color } from "./settingForms/Color"
 import { DisplayCameraAndTwitterID } from "./settingForms/DisplayCameraAndTwitterID"
 import { DropShadow } from "./settingForms/DropShadow"
+import { IntegrateOBS } from "./settingForms/IntegrateOBS"
 import { IntegrateStartGG } from "./settingForms/IntegrateStartGG"
 import { Layout } from "./settingForms/Layout"
 import { SelectLogo } from "./settingForms/SelectLogo"
@@ -123,6 +124,7 @@ export const Create: FC<{ setting: Setting }> = ({ setting }) => {
             <h3>外部ツール連携</h3>
             <IntegrateStartGG />
             <TweetMatch />
+            <IntegrateOBS />
             <Button type="submit" mode="primary">
               {submitText}
             </Button>

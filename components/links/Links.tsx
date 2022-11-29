@@ -53,6 +53,30 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
             編集画面を開く
           </Button>
         </div>
+        {setting?.integrateOBS && (
+          <div className="flex w-full min-w-[200px] flex-col justify-between rounded-[15px] border-[0px] bg-[color:var(--bb-beige-light)] p-[2rem] sm:w-[400px]">
+            <div>
+              <h5 className="mb-[1.8rem]">OBSと接続</h5>
+              <div>OBS と接続するウィンドウを起動します。</div>
+            </div>
+            <Button
+              type="button"
+              mode="primary"
+              light
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                window.open(
+                  `${origin}/connect/?id=${id}`,
+                  "BraceBracket OBS Connector",
+                  "resizable=1,scrollbars=1,width=300,height=300"
+                )
+              }}
+            >
+              OBS 接続ウィンドウを開く
+            </Button>
+          </div>
+        )}
         <div className="flex w-full min-w-[200px] flex-col justify-between rounded-[15px] border-[0px] bg-[color:var(--bb-beige-light)] p-[2rem] sm:w-[400px]">
           <div>
             <h5 className="mb-[1.8rem]">設定を変更</h5>

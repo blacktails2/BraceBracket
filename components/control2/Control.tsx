@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from "react"
 
 import { useOrigin } from "../../hooks/useOrigin"
 import {
+  IntegrateOBS,
   LoadBracket,
   MatchIntervalInfo,
   MC as MCType,
@@ -26,6 +27,8 @@ export const Control: FC<{
   setMC: (mc: MCType) => void
   loadBracket: LoadBracket
   requestLoad: (autoUpdate: boolean) => void
+  integrateOBS: IntegrateOBS
+  setIntegrateOBS: (integrateOBS: IntegrateOBS) => void
 }> = ({
   setting,
   setSetting,
@@ -37,8 +40,9 @@ export const Control: FC<{
   setMC,
   loadBracket,
   requestLoad,
+  integrateOBS,
+  setIntegrateOBS,
 }) => {
-  console.log("Control")
   const router = useRouter()
   const origin = useOrigin()
   const id = router.query.id as string
@@ -52,6 +56,50 @@ export const Control: FC<{
 
   return (
     <div className="flex h-[100vh] flex-col overflow-y-hidden py-[1.5rem] px-[2rem]">
+      {setting.integrateOBS && (
+        <div>
+          <div>
+            OBS接続状況：{integrateOBS.state.connected ? "接続中" : "未接続"}
+          </div>
+          <div className="flex gap-[0.5rem]">
+            {(integrateOBS.state.sceneList || []).map((scene) => {
+              return (
+                <div
+                  key={scene}
+                  className={`ease delay-50 rounded-[5px] border-[1px] border-solid border-[#c4c4c4] px-[0.5rem] transition hover:border-[#202025] hover:shadow-md${
+                    integrateOBS.state.currentScene === scene
+                      ? "border-[#202025] bg-[#202025] text-white"
+                      : "bg-white text-[#202025]"
+                  }`}
+                  onClick={() => {
+                    if (integrateOBS.state.currentScene !== scene) {
+                      try {
+                        setIntegrateOBS({
+                          ...integrateOBS,
+                          operation: {
+                            queue: (integrateOBS.operation?.queue ?? []).concat(
+                              [
+                                {
+                                  type: "changeScene",
+                                  scene: scene,
+                                },
+                              ]
+                            ),
+                          },
+                        })
+                      } catch (e) {
+                        console.error(e)
+                      }
+                    }
+                  }}
+                >
+                  {scene}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
       <div className="mb-[2rem] flex h-fit gap-[1rem]">
         {["Score", "Interval", "MC", "Bracket"].map((name) => {
           return (
