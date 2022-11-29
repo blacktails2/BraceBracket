@@ -19,14 +19,17 @@
 @font-face {
   font-family: "Gambetta Bold";
   src: url("/fonts/Gambetta-Bold.woff2");
+  size-adjust: 112%;
 }
 @font-face {
   font-family: "Gambetta Semi Bold";
   src: url("/fonts/Gambetta-Semibold.woff2");
+  size-adjust: 112%;
 }
 @font-face {
   font-family: "Gambetta Regular";
   src: url("/fonts/Gambetta-Regular.woff2");
+  size-adjust: 112%;
 }
 
 .board {
@@ -43,9 +46,9 @@
     width: 400px;
     height: 60px;
     font-family: "Gambetta Bold", "Noto Serif JP", serif;
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 900;
-    line-height: 32px;
+    line-height: 30px;
     color: var(--black);
     text-align: left;
     letter-spacing: 1px;
@@ -70,9 +73,9 @@
     @include blackWeight;
 
     font-family: "Gambetta Bold", "Noto Serif JP", serif;
-    font-style: 32px;
+    font-style: 30px;
     font-weight: 900;
-    line-height: 32px;
+    line-height: 30px;
     text-align: left;
   }
 

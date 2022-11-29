@@ -19,14 +19,17 @@
 @font-face {
   font-family: "Gambetta Bold";
   src: url("/fonts/Gambetta-Bold.woff2");
+  size-adjust: 112%;
 }
 @font-face {
   font-family: "Gambetta Semi Bold";
   src: url("/fonts/Gambetta-Semibold.woff2");
+  size-adjust: 112%;
 }
 @font-face {
   font-family: "Gambetta Regular";
   src: url("/fonts/Gambetta-Regular.woff2");
+  size-adjust: 112%;
 }
 
 .other {
@@ -47,7 +50,7 @@
 
   .statusBox {
     position: absolute;
-    top: 860px;
+    top: 858px;
     left: 330px;
     display: flex;
     flex-direction: column;
@@ -63,7 +66,7 @@
     width: 320px;
     margin: 0;
     font-family: "Gambetta Semi Bold", serif;
-    font-size: 26px;
+    font-size: 25px;
     line-height: 26px;
     color: var(--black);
     text-align: left;
@@ -74,10 +77,10 @@
     @include blackWeight;
 
     position: absolute;
-    top: 943px;
+    top: 941px;
     width: 95px;
     margin: 0;
-    font-family: "Nikolai Semi Bold", serif;
+    font-family: "Nikolai Bold", serif;
     font-size: 80px;
     color: var(--black);
     text-align: center;
@@ -120,8 +123,8 @@
       @include mediumWeight;
 
       font-family: "Gambetta Regular", "Noto Serif JP", serif;
-      font-size: 30px;
-      line-height: 30px;
+      font-size: 28px;
+      line-height: 28px;
       color: var(--black);
       letter-spacing: 1px;
     }
@@ -130,8 +133,8 @@
       @include blackWeight;
 
       font-family: "Gambetta Bold", "Noto Serif JP", serif;
-      font-size: 30px;
-      line-height: 30px;
+      font-size: 28px;
+      line-height: 28px;
       color: var(--black);
       letter-spacing: 1px;
     }
