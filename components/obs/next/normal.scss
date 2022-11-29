@@ -1,28 +1,58 @@
 @import "base";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;900&display=swap");
+@font-face {
+  font-family: "Nikolai Bold";
+  src: url("/fonts/Nikolai-Bold.woff2");
+}
+@font-face {
+  font-family: "Nikolai Bold Italic";
+  src: url("/fonts/Nikolai-BoldItalic.woff2");
+}
+@font-face {
+  font-family: "Nikolai Narrow Bold";
+  src: url("/fonts/Nikolai-NarrowBold.woff2");
+}
+@font-face {
+  font-family: "Nikolai Semi Bold";
+  src: url("/fonts/Nikolai-Semibold.woff2");
+}
+@font-face {
+  font-family: "Gambetta Bold";
+  src: url("/fonts/Gambetta-Bold.woff2");
+}
+@font-face {
+  font-family: "Gambetta Semi Bold";
+  src: url("/fonts/Gambetta-Semibold.woff2");
+}
+@font-face {
+  font-family: "Gambetta Regular";
+  src: url("/fonts/Gambetta-Regular.woff2");
+}
 
 .other {
   .nextnow {
     @include mediumWeight;
 
     position: absolute;
-    top: 880px;
-    left: 40px;
+    top: 842px;
+    left: 55px;
     width: 220px;
-    height: 80px;
-    font-size: 52px;
-    color: var(--main-color);
-    text-align: center;
+    height: 115px;
+    font-family: "Nikolai Bold Italic", serif;
+    font-size: 110px;
+    color: var(--black);
+    text-align: left;
     letter-spacing: 0.05em;
   }
 
   .statusBox {
     position: absolute;
-    top: 880px;
-    left: 300px;
+    top: 860px;
+    left: 330px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 340px;
+    width: 350px;
     height: 80px;
   }
 
@@ -32,68 +62,77 @@
 
     width: 320px;
     margin: 0;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 24px;
-    color: var(--sub-color);
+    font-family: "Gambetta Semi Bold", serif;
+    font-size: 26px;
+    line-height: 26px;
+    color: var(--black);
     text-align: left;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
 
   .score {
     @include blackWeight;
 
     position: absolute;
-    top: 980px;
-    width: 60px;
+    top: 943px;
+    width: 95px;
     margin: 0;
-    font-size: 40px;
-    color: var(--main-color);
+    font-family: "Nikolai Semi Bold", serif;
+    font-size: 80px;
+    color: var(--black);
     text-align: center;
 
     &.p1 {
-      left: 500px;
+      left: 455px;
     }
 
     &.p2 {
-      left: 580px;
+      left: 570px;
     }
   }
 
   .player {
     position: absolute;
-    top: 996px;
-    width: 440px;
+    top: 1008px;
+    width: 405px;
     height: 60px;
     margin: 0;
-    text-align: center;
 
     &.p1 {
-      left: 40px;
+      left: 20px;
+      text-align: right;
     }
 
     &.p2 {
-      left: 660px;
+      left: 700px;
+      text-align: left;
+    }
+
+    span {
+      margin-left: 1rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
+      font-family: "Gambetta Regular", "Noto Serif JP", serif;
+      font-size: 30px;
+      line-height: 30px;
+      color: var(--black);
       letter-spacing: 1px;
     }
 
     .name {
       @include blackWeight;
 
-      margin-left: 1rem;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
+      font-family: "Gambetta Bold", "Noto Serif JP", serif;
+      font-size: 30px;
+      line-height: 30px;
+      color: var(--black);
       letter-spacing: 1px;
     }
   }
@@ -104,6 +143,7 @@
     position: absolute;
     top: 975px;
     left: 1570px;
+    display: none;
     font-size: 24px;
     line-height: 26px;
     color: var(--sub-color);
@@ -114,11 +154,12 @@
     @include blackWeight;
 
     position: absolute;
-    top: 960px;
-    right: 57px;
-    font-size: 52px;
-    font-variant-numeric: tabular-nums;
-    color: var(--sub-color);
+    top: 936px;
+    right: 53px;
+    font-family: "Nikolai Narrow Bold", serif;
+    font-size: 85px;
+    // font-variant-numeric: tabular-nums;
+    color: var(--black);
     text-align: right;
   }
 }
