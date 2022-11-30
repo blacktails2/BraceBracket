@@ -6,6 +6,7 @@ import {
   getCameraFilename,
   getMCFilename,
   getNextFilename,
+  getTelopFilename,
 } from "../../libs/const"
 import styles from "../create/parts/Preview.module.scss"
 
@@ -53,7 +54,8 @@ export const PreviewInterval: FC<{
   layout?: string
   color?: string
   onMC?: boolean
-}> = ({ layout, color, onMC }) => {
+  onTelop?: boolean
+}> = ({ layout, color, onMC, onTelop }) => {
   return (
     <div className="relative w-full">
       <div className="absolute">
@@ -73,6 +75,21 @@ export const PreviewInterval: FC<{
             height={190}
             className="w-full rounded-lg"
             alt="MCプレビュー"
+          />
+        </div>
+      )}
+      {onTelop && (
+        <div className="absolute z-10">
+          <Image
+            src={`/image/create/samples/telop/${getTelopFilename(
+              layout,
+              color,
+              false
+            )}`}
+            width={340}
+            height={190}
+            className="w-full rounded-lg"
+            alt="テロッププレビュー"
           />
         </div>
       )}
@@ -136,6 +153,37 @@ export const PreviewBracket: FC<{ layout?: string; color?: string }> = ({
         height={190}
         alt="Top8プレビュー"
       />
+    </div>
+  )
+}
+
+export const PreviewTelop: FC<{
+  layout?: string
+  color?: string
+}> = ({ layout, color }) => {
+  return (
+    <div className="relative w-full">
+      <div className="absolute">
+        <Image
+          src="/image/create/samples/sample_image2.jpg"
+          width={340}
+          height={190}
+          className="w-full rounded-lg"
+          alt="カメラ"
+        />
+      </div>
+      <div className={styles.outer}>
+        <Image
+          src={`/image/create/samples/telop/${getTelopFilename(
+            layout,
+            color,
+            false
+          )}`}
+          width={340}
+          height={190}
+          alt="テロッププレビュー"
+        />
+      </div>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import {
   PreviewInterval,
   PreviewMC,
   PreviewScore,
+  PreviewTelop,
 } from "../parts/Preview"
 import { TextboxWithCopy } from "../parts/TextboxWithCopy"
 
@@ -77,7 +78,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
       <hr className="my-[5rem] h-[1px] bg-[#c4c4c4]" />
       <div>
         <h3 className="mb-[2rem]">配信用ブラウザソースURL</h3>
-        <div className="flex flex-wrap gap-[1rem] md:flex-nowrap md:gap-[3rem]">
+        <div className="flex flex-wrap gap-[1rem] lg:flex-nowrap lg:gap-[3rem]">
           <div className="flex gap-[1rem] md:flex-nowrap md:gap-[3rem]">
             <div className="w-full max-w-[345px]">
               <h4 className="mb-[0.8rem]">Score Layout</h4>
@@ -125,6 +126,19 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
               />
               <TextboxWithCopy
                 text={`${origin}/obs/bracket/?id=${id}`}
+                className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
+              />
+            </div>
+          </div>
+          <div className="flex gap-[1rem] md:flex-nowrap md:gap-[3rem]">
+            <div className="w-full max-w-[345px]">
+              <h4 className="mb-[0.8rem]">Telop Layout</h4>
+              <PreviewTelop
+                layout={setting?.scoreboard.design.layout}
+                color={setting?.scoreboard.design.color}
+              />
+              <TextboxWithCopy
+                text={`${origin}/obs/telop/?id=${id}`}
                 className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
               />
             </div>
