@@ -5,6 +5,8 @@
     @include blackWeight;
 
     position: absolute;
+    width: 1840px;
+    font-size: 54px;
     color: var(--main-color);
 
     &.twoLine {
