@@ -20,29 +20,29 @@
   .score {
     @include score;
 
-    top: 38px;
+    top: 36px;
     width: 42px;
     font-family: "Futura PT Heavy", Satoshi, "Noto Sans JP", sans-serif;
-    font-size: 34px;
+    font-size: 50px;
     font-variation-settings: "wght" 700;
     font-weight: 700;
-    color: #7255e7;
+    color: #a893ff;
+    text-align: center;
 
     &.p1 {
-      left: 914px;
+      left: 906px;
     }
 
     &.p2 {
-      right: 914px;
+      right: 906px;
     }
   }
 
   .player {
     position: absolute;
-    top: 31px;
+    top: 44px;
     width: 520px;
     height: 70px;
-    margin: 0 0 0 10px;
     text-align: center;
 
     span {
@@ -54,21 +54,19 @@
     }
 
     &.p1 {
-      left: 314px;
+      left: 344px;
     }
 
     &.p2 {
-      right: 324px;
+      right: 344px;
     }
 
     .team {
       font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP",
         sans-serif;
-      font-size: 24px;
-      font-variation-settings: "wght" 500;
-      font-weight: 500;
-      line-height: 25px;
-      color: #7255e7;
+      font-size: 32px;
+      line-height: 32px;
+      color: #a893ff;
       text-align: center;
     }
 
@@ -76,8 +74,6 @@
       font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP",
         sans-serif;
       font-size: 32px;
-      font-variation-settings: "wght" 900;
-      font-weight: 900;
       line-height: 32px;
       color: #fff;
       text-align: center;
@@ -87,21 +83,21 @@
   // 試合ステータスの位置設定
   .round {
     position: absolute;
-    top: 56px;
-    left: 24px;
+    top: 58px;
+    left: 28px;
     width: 264px;
     font-family: "Bebas Kai", Satoshi, "Noto Sans JP", sans-serif;
-    font-size: 36px;
+    font-size: 30px;
     font-variation-settings: "wght" 900;
     font-weight: 900;
     line-height: 36px;
     color: #fff;
-    text-align: center;
+    text-align: left;
   }
 
   .matchType {
     position: absolute;
-    top: 8px;
+    top: 25px;
     left: 876px;
     width: 170px;
     font-family: "Bebas Kai", Satoshi, "Noto Sans JP", sans-serif;

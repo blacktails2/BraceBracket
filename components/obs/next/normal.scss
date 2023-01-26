@@ -3,14 +3,12 @@
 .other {
   .nextnow {
     position: absolute;
-    top: 402px;
-    left: 346px;
+    top: 812px;
+    left: 97px;
     width: 128px;
     height: 60px;
     font-family: "Bebas Kai", Satoshi, "Noto Sans JP", sans-serif;
-    font-size: 60px;
-    font-variation-settings: "wght" 500;
-    font-weight: 500;
+    font-size: 80px;
     line-height: 60px;
     color: #fff;
     text-align: center;
@@ -18,8 +16,8 @@
 
   .statusBox {
     position: absolute;
-    top: 472px;
-    right: 1426px;
+    top: 803px;
+    left: 270px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,73 +31,71 @@
     width: 320px;
     margin: 0;
     font-family: "Bebas Kai", Satoshi, "Noto Sans JP", sans-serif;
-    font-size: 36px;
-    font-variation-settings: "wght" 900;
-    font-weight: 900;
-    line-height: 36px;
+    font-size: 45px;
+    line-height: 41px;
     color: #fff;
-    text-align: right;
+    text-align: left;
   }
 
   .score {
     position: absolute;
-    left: 420px;
+    left: 69px;
     width: 60px;
     margin: 0;
     font-family: "Futura PT Heavy", Satoshi, "Noto Sans JP", sans-serif;
-    font-size: 36px;
-    font-variation-settings: "wght" 900;
-    font-weight: 900;
+    font-size: 45px;
     color: #fff;
     text-align: center;
 
     &.p1 {
-      top: 571px;
+      top: 902px;
     }
 
     &.p2 {
-      top: 629px;
+      top: 980px;
     }
   }
 
   .player {
     position: absolute;
-    top: 996px;
-    right: 1517px;
+    left: 145px;
     width: 440px;
     height: 40px;
     margin: 0;
-    text-align: right;
+    text-align: left;
 
     &.p1 {
-      top: 586px;
+      top: 918px;
     }
 
     &.p2 {
-      top: 642px;
+      top: 996px;
+    }
+
+    span {
+      margin-left: 14px;
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
 
     .team {
       font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP",
         sans-serif;
-      font-size: 24px;
-      font-variation-settings: "wght" 500;
-      font-weight: 500;
-      line-height: 24px;
-      color: #7255e7;
-      text-align: right;
+      font-size: 32px;
+      line-height: 32px;
+      color: #a893ff;
+      text-align: left;
     }
 
     .name {
-      margin-left: 12px;
       font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP",
         sans-serif;
-      font-size: 24px;
-      font-variation-settings: "wght" 900;
-      font-weight: 900;
-      line-height: 24px;
+      font-size: 32px;
+      line-height: 32px;
       color: #fff;
-      text-align: right;
+      text-align: left;
     }
   }
 

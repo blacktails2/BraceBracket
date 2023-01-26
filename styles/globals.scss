@@ -28,6 +28,19 @@
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
 
+@font-face {
+  font-family: "Bebas Kai";
+  src: url("/fonts/Bebas-Kai.ttf");
+}
+@font-face {
+  font-family: "Futura PT Heavy";
+  src: url("/fonts/Futura-PT-Heavy.ttf");
+}
+@font-face {
+  font-family: "C4 ゴシック・ドゥ RE 04";
+  src: url("/fonts/C4_GothicDeux_RE.ttf");
+}
+
 :root {
   --dark-gray: #111;
   --black: #202025;
