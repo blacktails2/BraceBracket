@@ -3,7 +3,7 @@
 .other {
   .nextnow {
     position: absolute;
-    top: 812px;
+    top: 814px;
     left: 97px;
     width: 128px;
     height: 60px;
@@ -48,11 +48,11 @@
     text-align: center;
 
     &.p1 {
-      top: 902px;
+      top: 904px;
     }
 
     &.p2 {
-      top: 980px;
+      top: 982px;
     }
   }
 
@@ -115,12 +115,12 @@
 
   .localtime {
     position: absolute;
-    top: 34px;
-    left: 347px;
+    top: 814px;
+    left: 1680px;
     width: 126px;
-    height: 60px;
+    height: 80px;
     font-family: "Bebas Kai", Satoshi, "Noto Sans JP", sans-serif;
-    font-size: 60px;
+    font-size: 80px;
     font-variation-settings: "wght" 900;
     font-weight: 900;
     font-variant-numeric: tabular-nums;
