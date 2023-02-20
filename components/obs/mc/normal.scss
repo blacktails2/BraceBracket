@@ -26,29 +26,42 @@
   }
 
   .mc_team {
-    @include mediumWeight;
+    position: fixed;
+    top: 37px;
+    width: 40px;
+    font-family: "Mario Maker", sans-serif;
+    font-size: 27px;
+    line-height: 27px;
+    color: white;
+    text-align: center;
   }
 
   .mc_name {
-    @include blackWeight;
+    position: fixed;
+    top: 37px;
+    width: 250px;
+    margin: 0;
+    font-family: "Nitalago Ruika5", sans-serif;
+    font-size: 27px !important;
+    line-height: 27px;
+    color: #1d4063;
+    text-align: center;
+    letter-spacing: normal;
   }
 
   .id1,
   .id2,
   .id3,
   .id4 {
-    @include boldWeight;
-
     position: absolute;
-    top: 835px;
-    left: 300px;
-    width: 270px;
-    height: 30px;
-    font-size: 19px;
-    line-height: 19px;
-    color: var(--sub-color);
+    top: 88px;
+    width: 140px;
+    height: 80px;
+    font-family: "Mario Maker", sans-serif;
+    font-size: 72px;
+    line-height: 72px;
+    color: white;
     text-align: center;
-    letter-spacing: 1px;
   }
 
   .mc1_layout {
@@ -108,30 +121,65 @@
   .mc4_layout {
     .mc1 {
       left: 130px;
+
+      .mc_name {
+        left: 505px;
+      }
+
+      .mc_team {
+        left: 769px;
+      }
     }
 
     .id1 {
-      left: 90px;
+      left: 745px;
     }
 
     .mc2 {
       left: 550px;
+
+      .mc_name {
+        left: 805px;
+      }
+
+      .mc_team {
+        left: 1069px;
+      }
     }
 
     .id2 {
-      left: 510px;
+      left: 895px;
     }
 
     .mc3 {
       left: 970px;
+
+      .mc_name {
+        left: 1105px;
+      }
+
+      .mc_team {
+        left: 1369px;
+      }
     }
 
     .id3 {
-      left: 1140px;
+      left: 1045px;
     }
 
     .mc4 {
-      left: 1390px;
+      top: 130px;
+      left: 760px;
+
+      .mc_name,
+      .mc_team {
+        position: relative;
+        width: 400px;
+        font-family: "Euclid Flex Bold", sans-serif;
+        color: white;
+        text-align: center;
+        letter-spacing: 0.1em;
+      }
     }
 
     .id4 {
