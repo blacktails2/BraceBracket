@@ -27,24 +27,24 @@
 
   .mc_team {
     position: fixed;
-    top: 37px;
-    width: 40px;
-    font-family: "Mario Maker", sans-serif;
-    font-size: 27px;
-    line-height: 27px;
+    top: 18px;
+    width: 100px;
+    font-family: "Clash Display Bold", sans-serif;
+    font-size: 72px !important;
+    line-height: 72px;
     color: white;
     text-align: center;
   }
 
   .mc_name {
     position: fixed;
-    top: 37px;
+    top: 42px;
     width: 250px;
     margin: 0;
     font-family: "Nitalago Ruika5", sans-serif;
     font-size: 27px !important;
     line-height: 27px;
-    color: #1d4063;
+    color: white;
     text-align: center;
     letter-spacing: normal;
   }
@@ -54,13 +54,14 @@
   .id3,
   .id4 {
     position: absolute;
-    top: 88px;
-    width: 140px;
+    top: 70px;
+    width: 200px;
     height: 80px;
-    font-family: "Mario Maker", sans-serif;
-    font-size: 72px;
-    line-height: 72px;
-    color: white;
+    font-family: "Clash Display Medium", sans-serif;
+    font-size: 100px;
+    line-height: 100px;
+    -webkit-text-stroke: 2px #fff;
+    color: rgb(0 0 0 / 0%);
     text-align: center;
   }
 
@@ -123,62 +124,73 @@
       left: 130px;
 
       .mc_name {
-        left: 505px;
+        left: 556px;
       }
 
       .mc_team {
-        left: 769px;
+        left: 640px;
+        z-index: -1;
+        color: #c80c39;
+        opacity: 0.9;
       }
     }
 
     .id1 {
-      left: 745px;
+      left: 590px;
     }
 
     .mc2 {
       left: 550px;
 
       .mc_name {
-        left: 805px;
+        left: 825px;
       }
 
       .mc_team {
-        left: 1069px;
+        left: 911px;
+        z-index: -1;
+        color: #18aaaf;
+        opacity: 0.9;
       }
     }
 
     .id2 {
-      left: 895px;
+      left: 860px;
     }
 
     .mc3 {
       left: 970px;
 
       .mc_name {
-        left: 1105px;
+        left: 1095px;
       }
 
       .mc_team {
-        left: 1369px;
+        right: 640px;
+        z-index: -1;
+        color: #c4cb02;
+        opacity: 0.9;
       }
     }
 
     .id3 {
-      left: 1045px;
+      right: 590px;
     }
 
     .mc4 {
-      top: 130px;
-      left: 760px;
+      top: 127px;
+      left: 565px;
+      width: 800px;
 
       .mc_name,
       .mc_team {
         position: relative;
-        width: 400px;
-        font-family: "Euclid Flex Bold", sans-serif;
+        width: 800px;
+        font-family: "Clash Display Medium", sans-serif;
+        font-size: 36px !important;
         color: white;
         text-align: center;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.3em;
       }
     }
 
