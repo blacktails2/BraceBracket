@@ -1,8 +1,8 @@
 // フォントの設定
-$regular: "Satoshi", "Noto Sans JP", sans-serif;
-$medium: "Satoshi", "Noto Sans JP", sans-serif;
-$bold: "Satoshi", "Noto Sans JP", sans-serif;
-$black: "Satoshi", "Noto Sans JP", sans-serif;
+$regular: "Cabinet Grotesk", "Noto Sans JP", sans-serif;
+$medium: "Cabinet Grotesk", "Noto Sans JP", sans-serif;
+$bold: "Cabinet Grotesk", "Noto Sans JP", sans-serif;
+$black: "Cabinet Grotesk", "Noto Sans JP", sans-serif;
 
 // フォントの太さの設定（ライトウェイト）
 @mixin regularWeight {
@@ -20,8 +20,8 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 
 @mixin boldWeight {
   font-family: $bold;
-  font-variation-settings: "wght" 700;
-  font-weight: 700;
+  font-variation-settings: "wght" 800;
+  font-weight: 800;
 }
 
 // フォントの太さの設定（ブラックウェイト）
@@ -34,8 +34,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 @mixin score {
   position: absolute;
   margin: 0;
-  color: var(--score-color);
-  text-align: center;
+  color: #ff008e;
 }
 
 .board {

@@ -4,9 +4,8 @@
 @mixin status {
   @include blackWeight;
 
-  font-size: 21px;
-  font-style: italic;
-  line-height: 21px;
+  font-size: 20px;
+  line-height: 20px;
   color: var(--status-color);
   letter-spacing: 1px;
 }
@@ -17,25 +16,29 @@
     @include score;
     @include boldWeight;
 
-    top: 44px;
-    width: 50px;
-    font-size: 42px;
+    top: -10px;
+    width: 100px;
+    font-family: Oswald, serif;
+    font-size: 105px;
+    font-weight: 400;
     font-variant-numeric: tabular-nums;
     text-align: center;
 
     &.p1 {
-      left: 905px;
+      left: 440px;
+      text-align: left;
     }
 
     &.p2 {
-      right: 905px;
+      right: 440px;
+      text-align: right;
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
-    width: 500px;
+    top: 55px;
+    width: 600px;
     height: 50px;
     margin: 0;
 
@@ -48,29 +51,29 @@
     }
 
     &.p1 {
-      left: 395px;
+      left: 280px;
       text-align: right;
     }
 
     &.p2 {
-      right: 395px;
+      right: 280px;
       text-align-last: left;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 35px;
-      line-height: 35px;
+      font-size: 32px;
+      line-height: 32px;
       color: var(--player-color);
       letter-spacing: 1px;
     }
 
     .name {
-      @include blackWeight;
+      @include boldWeight;
 
-      font-size: 35px;
-      line-height: 35px;
+      font-size: 32px;
+      line-height: 32px;
       color: var(--player-color);
       letter-spacing: 1px;
     }
@@ -78,7 +81,7 @@
 
   .box {
     position: absolute;
-    top: 19px;
+    top: 120px;
     left: 660px;
     display: flex;
     justify-content: center;
@@ -96,17 +99,17 @@
 
     &::after {
       margin-left: 5px;
-      font-variation-settings: "wght" 500;
-      font-weight: 500;
+      font-variation-settings: "wght" 700;
+      font-weight: 700;
       content: "/";
     }
   }
 
   .matchType {
-    @include mediumWeight;
-
+    font-family: $bold;
     font-size: 21px;
-    font-style: italic;
+    font-variation-settings: "wght" 700;
+    font-weight: 700;
     line-height: 21px;
     color: var(--status-color);
     letter-spacing: 1px;
@@ -114,13 +117,14 @@
 
   // 選手IDの位置設定
   @mixin idText {
-    @include boldWeight;
-
     position: absolute;
     width: 320px;
     height: 22px;
     margin: 0;
+    font-family: $bold;
     font-size: 18px;
+    font-variation-settings: "wght" 700;
+    font-weight: 700;
     line-height: 18px;
     color: var(--player-color);
     letter-spacing: 1px;
@@ -130,7 +134,7 @@
     @include idText;
 
     top: 859px;
-    left: 26px;
+    left: 20px;
     text-align: left;
   }
 
@@ -138,7 +142,7 @@
     @include idText;
 
     top: 859px;
-    right: 26px;
+    right: 20px;
     text-align: right;
   }
 

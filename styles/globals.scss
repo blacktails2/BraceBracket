@@ -28,6 +28,12 @@
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
 
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/CabinetGrotesk-Variable.woff2");
+  size-adjust: 115%;
+}
+
 :root {
   --dark-gray: #111;
   --black: #202025;
