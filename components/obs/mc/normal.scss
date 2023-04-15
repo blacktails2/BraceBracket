@@ -7,13 +7,13 @@
   .mc4 {
     position: absolute;
     top: 774px;
-    width: 400px;
+    width: 340px;
     height: 60px;
     font-size: 30px;
     line-height: 30px;
     color: var(--main-color);
     text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 
     span {
       margin-left: 10px;
@@ -27,10 +27,14 @@
 
   .mc_team {
     @include mediumWeight;
+
+    font-family: "RodinNTLG DB", sans-serif;
   }
 
   .mc_name {
     @include blackWeight;
+
+    font-family: "RodinNTLG UB", sans-serif;
   }
 
   .id1,
@@ -42,6 +46,7 @@
     position: absolute;
     top: 835px;
     left: 300px;
+    display: none;
     width: 270px;
     height: 30px;
     font-size: 19px;
@@ -53,7 +58,8 @@
 
   .mc1_layout {
     .mc1 {
-      left: 760px;
+      top: 903px;
+      right: 49px;
     }
 
     .id1 {
@@ -63,7 +69,8 @@
 
   .mc2_layout {
     .mc1 {
-      left: 380px;
+      top: 903px;
+      right: 49px;
     }
 
     .id1 {
@@ -71,7 +78,8 @@
     }
 
     .mc2 {
-      left: 1140px;
+      top: 988px;
+      right: 49px;
     }
 
     .id2 {

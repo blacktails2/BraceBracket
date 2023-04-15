@@ -63,7 +63,8 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .playerTeam {
   @include mediumWeight;
 
-  font-size: 22px;
+  font-family: "RodinNTLG DB", sans-serif;
+  font-size: 21px;
   line-height: 42px;
   color: var(--bb-black);
   letter-spacing: 1px;
@@ -72,7 +73,8 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .playerName {
   @include blackWeight;
 
-  font-size: 22px;
+  font-family: "RodinNTLG UB", sans-serif;
+  font-size: 21px;
   line-height: 42px;
   color: var(--bb-black);
   letter-spacing: 1px;
@@ -83,6 +85,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 
   width: 40px;
   margin: 0;
+  font-family: "RodinNTLG DB", sans-serif;
   font-size: 30px;
   font-variant-numeric: tabular-nums;
   line-height: 42px;
@@ -101,16 +104,16 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .other.winners {
   .player1 span,
   .player2 span {
-    color: var(--bb-black);
+    color: #0245a0;
   }
 }
 
 .other.grand {
   .player1 span {
-    color: var(--bb-black);
+    color: #0245a0;
   }
 
   .player2 span {
-    color: var(--bb-white);
+    color: #0245a0;
   }
 }

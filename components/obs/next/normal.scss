@@ -9,8 +9,9 @@
     left: 40px;
     width: 220px;
     height: 80px;
+    font-family: "RodinNTLG DB", sans-serif;
     font-size: 52px;
-    color: var(--main-color);
+    color: white;
     text-align: center;
     letter-spacing: 0.05em;
   }
@@ -32,12 +33,12 @@
 
     width: 320px;
     margin: 0;
+    font-family: "RodinNTLG UB", sans-serif;
     font-size: 24px;
-    font-style: italic;
     line-height: 24px;
     color: var(--sub-color);
     text-align: left;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
 
   .score {
@@ -45,6 +46,7 @@
 
     position: absolute;
     top: 980px;
+    display: none;
     width: 60px;
     margin: 0;
     font-size: 40px;
@@ -73,12 +75,13 @@
     }
 
     &.p2 {
-      left: 660px;
+      left: 512px;
     }
 
     .team {
       @include mediumWeight;
 
+      font-family: "RodinNTLG DB", sans-serif;
       font-size: 28px;
       line-height: 28px;
       color: var(--sub-color);
@@ -90,6 +93,7 @@
       @include blackWeight;
 
       margin-left: 1rem;
+      font-family: "RodinNTLG UB", sans-serif;
       font-size: 28px;
       line-height: 28px;
       color: var(--sub-color);
@@ -104,6 +108,7 @@
     position: absolute;
     top: 975px;
     left: 1570px;
+    display: none;
     font-size: 24px;
     line-height: 26px;
     color: var(--sub-color);
@@ -116,6 +121,7 @@
     position: absolute;
     top: 960px;
     right: 57px;
+    display: none;
     font-size: 52px;
     font-variant-numeric: tabular-nums;
     color: var(--sub-color);

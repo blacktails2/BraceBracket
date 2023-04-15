@@ -6,12 +6,11 @@
 
   width: 215px;
   margin: 0 0 0 5px;
-  font-size: 19px;
-  font-style: italic;
+  font-family: "RodinNTLG UB", sans-serif;
+  font-size: 17px;
   line-height: 21px;
-  color: var(--status-color);
+  color: white;
   text-align: left;
-  letter-spacing: 1px;
 }
 
 .single {
@@ -22,6 +21,7 @@
 
     top: 44px;
     width: 60px;
+    font-family: "RodinNTLG DB", sans-serif;
     font-size: 40px;
 
     &.p1 {
@@ -60,8 +60,9 @@
     .team {
       @include mediumWeight;
 
-      font-size: 29px;
-      line-height: 29px;
+      font-family: "RodinNTLG DB", sans-serif;
+      font-size: 27px;
+      line-height: 27px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -70,8 +71,9 @@
     .name {
       @include blackWeight;
 
-      font-size: 29px;
-      line-height: 29px;
+      font-family: "RodinNTLG UB", sans-serif;
+      font-size: 27px;
+      line-height: 27px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -92,7 +94,7 @@
   .box {
     position: absolute;
     top: 45px;
-    left: 65px;
+    left: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;

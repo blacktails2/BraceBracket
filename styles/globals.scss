@@ -28,6 +28,15 @@
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
 
+@font-face {
+  font-family: "RodinNTLG DB";
+  src: url("/fonts/FOT-RodinNTLGPro-DB.otf");
+}
+@font-face {
+  font-family: "RodinNTLG UB";
+  src: url("/fonts/FOT-RodinNTLGPro-UB.otf");
+}
+
 :root {
   --dark-gray: #111;
   --black: #202025;
