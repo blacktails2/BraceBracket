@@ -65,6 +65,10 @@
   --bb-dirty: rgb(204 178 128 / 30%);
 }
 
+.minimal-toolbar_container {
+  display: none !important;
+}
+
 html,
 body {
   padding: 0;
