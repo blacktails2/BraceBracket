@@ -21,25 +21,27 @@
     @include score;
     @include blackWeight;
 
-    top: 44px;
-    width: 75px;
-    font-size: 54px;
+    top: 52px;
+    width: 60px;
+    font-family: "Azeret Mono Semibold", sans-serif;
+    font-size: 35px;
+    color: #0f181e;
 
     &.p1 {
-      left: 365px;
+      left: 895px;
     }
 
     &.p2 {
-      right: 365px;
+      right: 891px;
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
-    width: 410px;
+    top: 56px;
+    width: 390px;
     height: 50px;
-    margin: 0 0 0 10px;
+    margin: 0;
     text-align: center;
 
     span {
@@ -51,31 +53,31 @@
     }
 
     &.p1 {
-      left: 460px;
+      left: 500px;
     }
 
     &.p2 {
-      right: 460px;
+      right: 496px;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
+      font-family: "Source Han Serif SemiBold", sans-serif;
+      font-size: 27px;
+      line-height: 27px;
+      color: #bfb4ba;
       text-align: center;
-      letter-spacing: 1px;
     }
 
     .name {
       @include blackWeight;
 
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
+      font-family: "Source Han Serif Heavy", serif;
+      font-size: 27px;
+      line-height: 27px;
+      color: #bfb4ba;
       text-align: center;
-      letter-spacing: 1px;
     }
   }
 
@@ -83,13 +85,27 @@
   .round {
     @include status;
 
-    left: 465px;
+    top: 57px;
+    left: 52px;
+    width: 250px;
+    font-family: "Source Han Serif Heavy", serif;
+    font-size: 18px;
+    color: #0f181e;
+    text-align: center;
+    letter-spacing: 0;
   }
 
   .matchType {
     @include status;
 
-    right: 465px;
+    top: 42px;
+    left: 900px;
+    width: 130px;
+    font-family: "Azeret Mono Semibold", sans-serif;
+    font-size: 17px;
+    color: #0f181e;
+    text-align: center;
+    letter-spacing: 0.4em;
   }
 
   .cameraRight,
@@ -109,6 +125,7 @@
   }
 
   .tournamentName {
+    display: none;
     @include mediumWeight;
 
     font-size: 17px;

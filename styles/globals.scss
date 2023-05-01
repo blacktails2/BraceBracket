@@ -27,6 +27,18 @@
   font-family: "Mint Grotesk ExtraBold";
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
+@font-face {
+  font-family: "Azeret Mono Semibold";
+  src: url("/fonts/AzeretMono-SemiBold.ttf");
+}
+@font-face {
+  font-family: "Source Han Serif Heavy";
+  src: url("/fonts/SourceHanSerif-Heavy.otf");
+}
+@font-face {
+  font-family: "Source Han Serif SemiBold";
+  src: url("/fonts/SourceHanSerif-SemiBold.otf");
+}
 
 :root {
   --dark-gray: #111;
