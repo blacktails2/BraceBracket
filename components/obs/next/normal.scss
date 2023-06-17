@@ -2,23 +2,23 @@
 
 .other {
   .nextnow {
-    @include mediumWeight;
+    @include blackWeight;
 
     position: absolute;
-    top: 880px;
+    top: 868px;
     left: 40px;
     width: 220px;
     height: 80px;
-    font-size: 52px;
-    color: var(--main-color);
+    font-size: 55px;
+    color: white;
     text-align: center;
     letter-spacing: 0.05em;
   }
 
   .statusBox {
     position: absolute;
-    top: 880px;
-    left: 300px;
+    top: 871px;
+    left: 240px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,12 +32,12 @@
 
     width: 320px;
     margin: 0;
-    font-size: 24px;
+    font-size: 21px;
     font-style: italic;
-    line-height: 24px;
-    color: var(--sub-color);
+    line-height: 21px;
+    color: white;
     text-align: left;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
 
   .score {
@@ -48,15 +48,15 @@
     width: 60px;
     margin: 0;
     font-size: 40px;
-    color: var(--main-color);
+    color: white;
     text-align: center;
 
     &.p1 {
-      left: 500px;
+      left: 507px;
     }
 
     &.p2 {
-      left: 580px;
+      left: 600px;
     }
   }
 
@@ -69,11 +69,11 @@
     text-align: center;
 
     &.p1 {
-      left: 40px;
+      left: 49px;
     }
 
     &.p2 {
-      left: 660px;
+      left: 677px;
     }
 
     .team {
@@ -104,6 +104,7 @@
     position: absolute;
     top: 975px;
     left: 1570px;
+    display: none;
     font-size: 24px;
     line-height: 26px;
     color: var(--sub-color);
@@ -111,12 +112,12 @@
   }
 
   .localtime {
-    @include blackWeight;
+    @include boldWeight;
 
     position: absolute;
-    top: 960px;
-    right: 57px;
-    font-size: 52px;
+    top: 977px;
+    right: 73px;
+    font-size: 45px;
     font-variant-numeric: tabular-nums;
     color: var(--sub-color);
     text-align: right;
