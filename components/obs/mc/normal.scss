@@ -27,21 +27,21 @@
 
   .mc_team {
     position: fixed;
-    top: 18px;
+    top: 37px;
     width: 100px;
-    font-family: "Clash Display Bold", sans-serif;
-    font-size: 72px !important;
-    line-height: 72px;
+    font-family: "Maru Mono Bold", sans-serif;
+    font-size: 34px !important;
+    line-height: 34px;
     color: white;
     text-align: center;
   }
 
   .mc_name {
     position: fixed;
-    top: 42px;
+    top: 40px;
     width: 250px;
     margin: 0;
-    font-family: "Nitalago Ruika5", sans-serif;
+    font-family: "Nitalago Ruika6", sans-serif;
     font-size: 27px !important;
     line-height: 27px;
     color: white;
@@ -54,14 +54,13 @@
   .id3,
   .id4 {
     position: absolute;
-    top: 70px;
+    top: 104px;
     width: 200px;
     height: 80px;
-    font-family: "Clash Display Medium", sans-serif;
-    font-size: 100px;
-    line-height: 100px;
-    -webkit-text-stroke: 2px #fff;
-    color: rgb(0 0 0 / 0%);
+    font-family: "Maru Mega Mini", sans-serif;
+    font-size: 80px;
+    line-height: 80px;
+    color: white;
     text-align: center;
   }
 
@@ -124,33 +123,33 @@
       left: 130px;
 
       .mc_name {
-        left: 556px;
+        left: 486px;
       }
 
       .mc_team {
-        left: 640px;
+        left: 719px;
         z-index: -1;
-        color: #c80c39;
-        opacity: 0.9;
+        color: #ff0060;
+        opacity: 1;
       }
     }
 
     .id1 {
-      left: 590px;
+      left: 689px;
     }
 
     .mc2 {
       left: 550px;
 
       .mc_name {
-        left: 825px;
+        left: 803px;
       }
 
       .mc_team {
-        left: 911px;
+        left: 1036px;
         z-index: -1;
-        color: #18aaaf;
-        opacity: 0.9;
+        color: #0079ff;
+        opacity: 1;
       }
     }
 
@@ -162,23 +161,22 @@
       left: 970px;
 
       .mc_name {
-        left: 1095px;
+        left: 1120px;
       }
 
       .mc_team {
-        right: 640px;
+        right: 467px;
         z-index: -1;
-        color: #c4cb02;
-        opacity: 0.9;
+        color: #00d7a0;
       }
     }
 
     .id3 {
-      right: 590px;
+      right: 691px;
     }
 
     .mc4 {
-      top: 127px;
+      top: 162px;
       left: 565px;
       width: 800px;
 
@@ -186,11 +184,12 @@
       .mc_team {
         position: relative;
         width: 800px;
-        font-family: "Clash Display Medium", sans-serif;
-        font-size: 36px !important;
-        color: white;
+        font-family: "Maru Black", sans-serif;
+        font-size: 27px !important;
+        color: #f6fa70;
         text-align: center;
-        letter-spacing: 0.3em;
+        text-shadow: 0 4px 0 black;
+        letter-spacing: 0.05em;
       }
     }
 
