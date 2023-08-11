@@ -2,7 +2,6 @@ import { FC, useState } from "react"
 import { useInterval } from "react-use"
 
 import {
-  getCameraFilename,
   Score,
   ScoreboardColor,
   ScoreboardLayout,
@@ -78,14 +77,16 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
         className={styles.board}
         src={`/image/scoreboards/${layout}/${layout}_${color}.png`}
         alt=""
+        style={
+          !setting.scoreboard.cameraAndLogo.displayCameraAndTwitterID
+            ? {
+                clipPath: "polygon(0 0, 100% 0, 100% 50%, 0 50%)",
+              }
+            : {}
+        }
       />
       {setting.scoreboard.cameraAndLogo.displayCameraAndTwitterID && (
         <div>
-          <img
-            className={styles.board}
-            src={`/image/camera/${getCameraFilename(layout, color)}`}
-            alt=""
-          />
           {score.p1.twitterID && (
             <Transition keyName={score.p1.twitterID}>
               <p className={styles.cameraLeft}>

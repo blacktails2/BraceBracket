@@ -8,72 +8,82 @@
   top: 96px;
   width: 410px;
   margin: 0;
-  font-size: 19px;
-  font-style: italic;
-  color: var(--status-color);
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 15px;
+  color: #d92241;
   text-align: center;
-  letter-spacing: 1px;
 }
 
 .dual {
   // スコアの位置指定
   .score {
     @include score;
-    @include blackWeight;
+    @include boldWeight;
+    //background-color: rgba(0, 0, 255, 0.5);
 
-    top: 44px;
-    width: 75px;
-    font-size: 54px;
+    top: 49px;
+    width: 54px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 30px;
 
     &.p1 {
-      left: 365px;
+      left: 823px;
     }
 
     &.p2 {
-      right: 365px;
+      right: 823px;
     }
   }
 
   .player {
+    //background-color: rgba(0, 0, 255, 0.5);
     position: absolute;
-    top: 59px;
-    width: 410px;
-    height: 50px;
-    margin: 0 0 0 10px;
+    top: 46px;
+    width: 310px;
+    height: 54px;
+    margin: 0;
     text-align: center;
 
-    span {
-      margin-left: 10px;
-
-      &:first-child {
-        margin-left: 0;
-      }
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 51px;
+      line-height: 52px;
+      text-align: center;
     }
 
     &.p1 {
-      left: 460px;
+      left: 485px;
     }
 
     &.p2 {
-      right: 460px;
+      right: 485px;
     }
 
     .team {
-      @include mediumWeight;
+      @include blackWeight;
 
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
+      font-family: "Noto Serif JP", sans-serif;
+      font-size: 27px;
+      line-height: 27px;
+      color: #d92241;
       text-align: center;
       letter-spacing: 1px;
+
+      &::after {
+        margin: 0 0.6rem;
+        content: "|";
+      }
     }
 
     .name {
       @include blackWeight;
 
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
+      font-family: "Noto Serif JP", sans-serif;
+      font-size: 27px;
+      line-height: 27px;
+      color: #d92241;
       text-align: center;
       letter-spacing: 1px;
     }
@@ -81,20 +91,41 @@
 
   // 試合ステータスの位置設定
   .round {
+    //background-color: rgba(0, 255, 255, 0.5);
     @include status;
 
-    left: 465px;
+    top: 55px;
+    left: 63px;
+    text-align: left;
   }
 
   .matchType {
+    //background-color: rgba(255, 0, 255, 0.5);
     @include status;
 
-    right: 465px;
+    top: 72px;
+    left: 63px;
+    text-align: left;
   }
 
   .cameraRight,
   .cameraLeft {
-    color: var(--bb-white);
+    @include blackWeight;
+
+    top: 837px;
+    width: 361px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 16px;
+    //background-color: rgba(255, 0, 255, 0.5);
+    color: #d92241;
+  }
+
+  .cameraRight {
+    right: 14px;
+  }
+
+  .cameraLeft {
+    left: 15px;
   }
 
   .tournamentNameBox {
