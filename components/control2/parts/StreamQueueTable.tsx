@@ -28,6 +28,7 @@ const StreamQueueTableBase: ForwardRefRenderFunction<
       streamName: string
       p1?: PlayerScore
       p2?: PlayerScore
+      isLockRound: boolean
     }) => void
     trackNext?: boolean
     id: string
@@ -37,6 +38,7 @@ const StreamQueueTableBase: ForwardRefRenderFunction<
   const [selected, setSelected] = useState<number>(-1)
   const [isTrack, setIsTrack] = useState(false)
   const [isAutoUpdate, setIsAutoUpdate] = useState(false)
+  const [isLockRound, setIsLockRound] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
   const [loading, setLoading] = useState(false)
   const [filter, setFilter] = useState("")
@@ -56,19 +58,19 @@ const StreamQueueTableBase: ForwardRefRenderFunction<
   useEffect(() => {
     if (isTrack) {
       if (!trackNext && streamQueue.length > 0) {
-        onChange(streamQueue[0])
+        onChange({ isLockRound, ...streamQueue[0] })
         setSelected(streamQueue[0].id)
       } else if (trackNext) {
         const queueIdx = streamQueue.findIndex(
           (q) => !(q.state === "In Progress")
         )
         if (queueIdx >= 0) {
-          onChange(streamQueue[queueIdx])
+          onChange({ isLockRound, ...streamQueue[queueIdx] })
           setSelected(streamQueue[queueIdx].id)
         }
       }
     }
-  }, [isTrack, trackNext, streamQueue, onChange])
+  }, [isTrack, trackNext, streamQueue, onChange, isLockRound])
 
   useEffect(() => {
     setFilteredStreamQueue(
@@ -117,20 +119,29 @@ const StreamQueueTableBase: ForwardRefRenderFunction<
             />
             <div className="mb-[0.4rem] pt-[0.4rem]">
               <CheckBoxForm
-                label="リストを自動で更新"
+                label="自動更新"
                 id={`${inputID}-isAutoUpdate`}
                 onChange={() => setIsAutoUpdate(!isAutoUpdate)}
                 checked={isAutoUpdate}
+                tooltipText="リストを10秒ごとに更新します。"
               />
             </div>
             <div className="mb-[0.4rem] pt-[0.4rem]">
               <CheckBoxForm
-                label={
-                  !trackNext ? "先頭データを常に反映" : "次の試合を常に反映"
-                }
+                label={"自動反映"}
                 id={`${inputID}-isTrack`}
                 onChange={() => setIsTrack(!isTrack)}
                 checked={isTrack}
+                tooltipText="リストの最初の試合を自動的に反映します。"
+              />
+            </div>
+            <div className="mb-[0.4rem] pt-[0.4rem]">
+              <CheckBoxForm
+                label="ラウンド名固定"
+                id={`${inputID}-isLockRound`}
+                onChange={() => setIsLockRound(!isLockRound)}
+                checked={isLockRound}
+                tooltipText="反映時にラウンド名を変更しません。<br/>正しくラウンド名を取得できない場合に有効にしてください。"
               />
             </div>
           </div>
@@ -186,7 +197,7 @@ const StreamQueueTableBase: ForwardRefRenderFunction<
                     onClick={() => {
                       setSelected(queue.id)
                       setIsTrack(false)
-                      onChange(queue)
+                      onChange({ isLockRound, ...queue })
                     }}
                   >
                     <td className="w-[5%]">
@@ -199,7 +210,7 @@ const StreamQueueTableBase: ForwardRefRenderFunction<
                           onChange={() => {
                             setSelected(queue.id)
                             setIsTrack(false)
-                            onChange(queue)
+                            onChange({ isLockRound, ...queue })
                           }}
                         />
                       </div>

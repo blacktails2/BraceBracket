@@ -1,5 +1,6 @@
-import { ChangeEvent, FC } from "react"
+import { ChangeEvent, FC, useCallback, useRef, useState } from "react"
 import { useFormContext } from "react-hook-form"
+import { CSSTransition } from "react-transition-group"
 
 import styles from "./CheckBoxForm.module.scss"
 
@@ -12,6 +13,7 @@ export const CheckBoxForm: FC<{
   cleanValue?: boolean
   checked?: boolean
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  tooltipText?: string
 }> = ({
   label,
   name,
@@ -21,14 +23,35 @@ export const CheckBoxForm: FC<{
   cleanValue,
   checked,
   onChange,
+  tooltipText,
 }) => {
   const { register, watch, getValues } = useFormContext() ?? {}
+  const tooltipNodeRef = useRef(null)
+  const [showTooltip, setShowTooltip] = useState(false)
+
   if (cleanValue !== undefined && name) {
     watch(name)
   }
+
+  const handleMouseEnter = useCallback(() => {
+    if (tooltipText) {
+      setShowTooltip(true)
+    }
+  }, [tooltipText])
+
+  const handleMouseLeave = useCallback(() => {
+    if (tooltipText) {
+      setShowTooltip(false)
+    }
+  }, [tooltipText])
+
   return (
     <div className={className}>
-      <div className={styles.container}>
+      <div
+        className={styles.container}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className={styles.checkbox}>
           {name ? (
             <input
@@ -65,6 +88,31 @@ export const CheckBoxForm: FC<{
         <label htmlFor={id ?? name} className={styles.label}>
           {label}
         </label>
+        {tooltipText && (
+          <CSSTransition
+            nodeRef={tooltipNodeRef}
+            in={showTooltip}
+            timeout={{
+              enter: 0,
+              exit: 200,
+            }}
+            classNames={{
+              enter: styles.tooltipEnter,
+              exit: styles.tooltipExit,
+            }}
+            unmountOnExit
+          >
+            {() => {
+              return (
+                <div
+                  className={styles.tooltip}
+                  ref={tooltipNodeRef}
+                  dangerouslySetInnerHTML={{ __html: tooltipText }}
+                ></div>
+              )
+            }}
+          </CSSTransition>
+        )}
       </div>
     </div>
   )

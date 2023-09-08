@@ -16,79 +16,78 @@
   // スコアの位置指定
   .score {
     position: absolute;
-    top: 22px;
-    width: 115px;
-    font-family: "Mario Maker", sans-serif;
-    font-size: 72px;
-    color: #64272e;
-    text-align: center;
-
-    &.p1 {
-      left: 847px;
-    }
-
-    &.p2 {
-      right: 836px;
-    }
-  }
-
-  .solidteam {
-    position: absolute;
-    top: 93px;
-    width: 50px;
+    top: 7px;
+    width: 100px;
+    font-family: "Diatype Black", sans-serif;
+    font-size: 80px;
     color: white;
     text-align: center;
 
     &.p1 {
-      left: 438px;
+      left: 850px;
     }
 
     &.p2 {
-      right: 433px;
+      right: 850px;
+    }
+  }
+  .player {
+    position: absolute;
+    top: 74px;
+    width: 330px;
+    height: 50px;
+    margin: 0 0 0 10px;
+    text-align: center;
+
+    span {
+      margin-left: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    &.p1 {
+      left: 495px;
+    }
+
+    &.p2 {
+      right: 505px;
     }
 
     .team {
-      font-family: "Mario Maker", sans-serif;
-      font-size: 32px;
-      line-height: 32px;
-    }
-  }
-
-  .player {
-    position: absolute;
-    top: 95px;
-    width: 350px;
-    height: 50px;
-    color: #64272e;
-    text-align: center;
-
-    &.p1 {
-      left: 484px;
-    }
-
-    &.p2 {
-      right: 484px;
+      font-family: "TPSkyModernStdN-Blk", sans-serif;
+      font-size: 28px;
+      line-height: 28px;
+      color: #E4005A;
+      text-align: center;
+      letter-spacing: 1px;
     }
 
     .name {
-      font-family: "Nitalago Ruika5", sans-serif;
+      font-family: "TPSkyModernStdN-Blk", sans-serif;
       font-size: 28px;
       line-height: 28px;
+      color: black;
       text-align: center;
+      letter-spacing: 1px;
     }
   }
+  
 
   // 試合ステータスの位置設定
   .round {
     @include status;
 
     left: 438px;
+    display: none;
   }
 
   .matchType {
     @include status;
 
     right: 432px;
+    display: none;
   }
 
   .cameraRight,

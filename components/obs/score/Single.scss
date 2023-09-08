@@ -17,27 +17,28 @@
 .single {
   // スコアの位置指定
   .score {
-    @include score;
-    @include blackWeight;
-
-    top: 44px;
-    width: 60px;
-    font-size: 40px;
+    position: absolute;
+    font-family: 'Diatype Black', sans-serif;
+    color: white;
+    font-size: 72px;
+    top: 13px;
+    width: 100px;
+    text-align: center;
 
     &.p1 {
-      left: 800px;
+      left: 460px;
     }
 
     &.p2 {
-      right: 800px;
+      right: 460px;
     }
   }
 
   // プレイヤー名の位置指定
   .player {
     position: absolute;
-    top: 61px;
-    width: 460px;
+    top: 38px;
+    width: 330px;
     height: 60px;
     text-align: center;
 
@@ -50,29 +51,27 @@
     }
 
     &.p1 {
-      left: 320px;
+      left: 570px;
     }
 
     &.p2 {
-      right: 320px;
+      right: 570px;
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 29px;
-      line-height: 29px;
+      font-family: "TPSkyModernStdN-Blk", sans-serif;
+      font-size: 28px;
+      line-height: 28px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
     }
 
     .name {
-      @include blackWeight;
-
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
+      font-family: "TPSkyModernStdN-Blk", sans-serif;
+      font-size: 28px;
+      line-height: 28px;
+      color: black;
       text-align: center;
       letter-spacing: 1px;
     }
@@ -90,6 +89,7 @@
   }
 
   .box {
+    display: none;
     position: absolute;
     top: 45px;
     left: 65px;
@@ -103,6 +103,7 @@
   // 試合ステータスの位置設定
   .round,
   .matchType {
+    display: none;
     @include status;
   }
 
