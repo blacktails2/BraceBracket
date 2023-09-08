@@ -86,7 +86,14 @@ const ScoreAndCamera: FC<{
                       window.open(
                         "https://twitter.com/intent/tweet?text=" +
                           encodeURIComponent(
-                            Mustache.render(setting.tweetMatch?.template, ctx)
+                            Mustache.render(
+                              setting.tweetMatch?.template,
+                              ctx,
+                              undefined,
+                              {
+                                escape: (v) => v,
+                              }
+                            )
                           ),
                         "tweetwindow",
                         "resizable=0,scrollbars=0,width=600,height=400"
@@ -354,7 +361,10 @@ const ScoreAndCamera: FC<{
                       form.setValue("p2.playerName", p2.playerName)
                       form.setValue("p2.score", p2.score)
                       form.setValue("p2.twitterID", p2.twitterID)
-                      form.setValue("round", queue.roundText)
+
+                      if (!queue.isLockRound) {
+                        form.setValue("round", queue.roundText)
+                      }
                     }
                   }}
                   id="scoreAndCameraStreamQueueTable"
