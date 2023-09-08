@@ -2,45 +2,55 @@
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
-  @include blackWeight;
-
   position: absolute;
-  top: 96px;
+  top: 33px;
   width: 410px;
   margin: 0;
+  font-family: Cinzel, serif;
   font-size: 19px;
-  font-style: italic;
-  color: var(--status-color);
-  text-align: center;
-  letter-spacing: 1px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase !important;
+  letter-spacing: 0.2em;
 }
 
 .dual {
   // スコアの位置指定
   .score {
     @include score;
-    @include blackWeight;
 
-    top: 44px;
-    width: 75px;
-    font-size: 54px;
+    top: 60px;
+    display: inline-block;
+    width: auto;
+    font-family: Cinzel, serif;
+    font-size: 44px;
+    font-variation-settings: "wght" 600;
+    font-weight: 600;
 
     &.p1 {
-      left: 365px;
+      left: 840px;
+      color: transparent;
+      text-align: right;
+      background: linear-gradient(to bottom left, #f9eb21, #c7a200);
+      background-clip: text;
+      background-clip: text;
     }
 
     &.p2 {
-      right: 365px;
+      right: 840px;
+      color: transparent;
+      text-align: left;
+      background: linear-gradient(to bottom right, #f9eb21, #c7a200);
+      background-clip: text;
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
-    width: 410px;
+    top: 79px;
+    width: 420px;
     height: 50px;
     margin: 0 0 0 10px;
-    text-align: center;
 
     span {
       margin-left: 10px;
@@ -51,31 +61,37 @@
     }
 
     &.p1 {
-      left: 460px;
+      left: 390px;
+      text-align: left;
     }
 
     &.p2 {
-      right: 460px;
+      right: 390px;
+      text-align: right;
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 25px;
-      line-height: 25px;
+      font-family: "Poppins Variable", "Zen Kaku Gothic Antique", sans-serif;
+      font-size: 26px;
+      font-variation-settings: "wght" 700;
+      font-weight: 900;
+      line-height: 26px;
       color: var(--player-color);
-      text-align: center;
-      letter-spacing: 1px;
+      color: transparent;
+      letter-spacing: 2px;
+      background: linear-gradient(to bottom, #f9eb21, #c7a200);
+      background-clip: text;
+      background-clip: text;
     }
 
     .name {
-      @include blackWeight;
-
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
-      text-align: center;
-      letter-spacing: 1px;
+      font-family: "Poppins Variable", "Zen Kaku Gothic Antique", sans-serif;
+      font-size: 26px;
+      font-variation-settings: "wght" 700;
+      font-weight: 900;
+      line-height: 26px;
+      color: white;
+      letter-spacing: 2px;
     }
   }
 
@@ -83,13 +99,15 @@
   .round {
     @include status;
 
-    left: 465px;
+    left: 458px;
+    text-align: right;
   }
 
   .matchType {
     @include status;
 
-    right: 465px;
+    right: 458px;
+    text-align: left;
   }
 
   .cameraRight,
