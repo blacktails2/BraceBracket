@@ -28,6 +28,23 @@
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
 
+@font-face {
+  font-family: "Bebas Kai";
+  src: url("/fonts/Bebas-Kai.ttf");
+}
+@font-face {
+  font-family: "Futura PT Heavy";
+  src: url("/fonts/Futura-PT-Heavy.ttf");
+}
+@font-face {
+  font-family: "C4 ゴシック・ドゥ RE 04";
+  src: url("/fonts/C4_GothicDeux_RE.ttf");
+}
+@font-face {
+  font-family: "FOT-UD角ゴC80 Pro";
+  src: url("/fonts/FOT-UDkakugo80Pro.ttf");
+}
+
 :root {
   --dark-gray: #111;
   --black: #202025;
@@ -46,6 +63,10 @@
   --bb-attention: #f06;
   --bb-success: #04c488;
   --bb-dirty: rgb(204 178 128 / 30%);
+}
+
+.minimal-toolbar_container {
+  display: none !important;
 }
 
 html,

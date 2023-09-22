@@ -6,17 +6,16 @@
   .mc3,
   .mc4 {
     position: absolute;
-    top: 774px;
+    left: 1045px;
     width: 400px;
-    height: 60px;
+    height: 30px;
     font-size: 30px;
     line-height: 30px;
-    color: var(--main-color);
-    text-align: center;
-    letter-spacing: 2px;
+    color: #fff;
+    text-align: left;
 
     span {
-      margin-left: 10px;
+      margin-left: 12px;
       font-size: inherit;
 
       &:first-child {
@@ -26,116 +25,120 @@
   }
 
   .mc_team {
-    @include mediumWeight;
+    font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP", sans-serif;
+    font-variation-settings: "wght" 700;
+    font-weight: 700;
+    color: #a893ff;
   }
 
   .mc_name {
-    @include blackWeight;
+    font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP", sans-serif;
+    font-variation-settings: "wght" 700;
+    font-weight: 700;
   }
 
   .id1,
   .id2,
   .id3,
   .id4 {
-    @include boldWeight;
-
     position: absolute;
-    top: 835px;
-    left: 300px;
+    left: 1045px;
     width: 270px;
-    height: 30px;
-    font-size: 19px;
-    line-height: 19px;
-    color: var(--sub-color);
-    text-align: center;
-    letter-spacing: 1px;
+    height: 18px;
+    font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP", sans-serif;
+    font-size: 18px;
+    font-variation-settings: "wght" 500;
+    font-weight: 500;
+    line-height: 18px;
+    color: #fff;
+    text-align: left;
   }
 
   .mc1_layout {
     .mc1 {
-      left: 760px;
+      top: 798px;
     }
 
     .id1 {
-      left: 825px;
+      top: 828px;
     }
   }
 
   .mc2_layout {
     .mc1 {
-      left: 380px;
+      top: 798px;
     }
 
     .id1 {
-      left: 325px;
+      top: 828px;
     }
 
     .mc2 {
-      left: 1140px;
+      top: 865px;
     }
 
     .id2 {
-      left: 1325px;
+      top: 897px;
     }
   }
 
   .mc3_layout {
     .mc1 {
-      left: 240px;
+      top: 798px;
     }
 
     .id1 {
-      left: 185px;
+      top: 828px;
     }
 
     .mc2 {
-      left: 760px;
+      top: 865px;
     }
 
     .id2 {
-      left: 825px;
+      top: 897px;
     }
 
     .mc3 {
-      left: 1280px;
+      top: 932px;
     }
 
     .id3 {
-      left: 1465px;
+      top: 962px;
     }
   }
 
   .mc4_layout {
     .mc1 {
-      left: 130px;
+      top: 798px;
     }
 
     .id1 {
-      left: 90px;
+      top: 828px;
     }
 
     .mc2 {
-      left: 550px;
+      top: 865px;
     }
 
     .id2 {
-      left: 510px;
+      top: 897px;
     }
 
     .mc3 {
-      left: 970px;
+      top: 932px;
     }
 
     .id3 {
-      left: 1140px;
+      top: 962px;
     }
 
     .mc4 {
-      left: 1390px;
+      top: 999px;
     }
 
     .id4 {
-      left: 1560px;
+      top: 1029px;
     }
   }
 }
