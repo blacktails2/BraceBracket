@@ -73,6 +73,18 @@
   font-family: "Maru Mono Bold";
   src: url("/fonts/GT-Maru-Mono-Bold.otf");
 }
+@font-face {
+  font-family: "Haitham Display Thin";
+  src: url("/fonts/Haitham-DisplayThin.otf");
+}
+@font-face {
+  font-family: "Haitham Display Bold";
+  src: url("/fonts/Haitham-DisplayBold.otf");
+}
+@font-face {
+  font-family: "Haitham Display SemiBold Italic";
+  src: url("/fonts/Haitham-DisplaySemiBoldItalic.otf");
+}
 
 :root {
   --dark-gray: #111;

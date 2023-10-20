@@ -27,23 +27,24 @@
 
   .mc_team {
     position: fixed;
-    top: 37px;
+    top: -1px;
     width: 100px;
-    font-family: "Maru Mono Bold", sans-serif;
-    font-size: 34px !important;
-    line-height: 34px;
+    font-family: "Haitham Display Bold", serif;
+    font-size: 35px !important;
+    font-variant-numeric: oldstyle-nums;
+    line-height: 35px;
     color: white;
     text-align: center;
   }
 
   .mc_name {
     position: fixed;
-    top: 40px;
-    width: 250px;
+    top: 41px;
+    width: 200px;
     margin: 0;
-    font-family: "Nitalago Ruika6", sans-serif;
-    font-size: 27px !important;
-    line-height: 27px;
+    font-family: "Nitalago Ruika6", serif;
+    font-size: 24px !important;
+    line-height: 24px;
     color: white;
     text-align: center;
     letter-spacing: normal;
@@ -54,10 +55,10 @@
   .id3,
   .id4 {
     position: absolute;
-    top: 104px;
+    top: 76px;
     width: 200px;
     height: 80px;
-    font-family: "Maru Mega Mini", sans-serif;
+    font-family: "Haitham Display Thin", serif;
     font-size: 80px;
     line-height: 80px;
     color: white;
@@ -123,32 +124,30 @@
       left: 130px;
 
       .mc_name {
-        left: 486px;
+        left: 635px;
       }
 
       .mc_team {
-        left: 719px;
+        left: 695px;
         z-index: -1;
-        color: #ff0060;
         opacity: 1;
       }
     }
 
     .id1 {
-      left: 689px;
+      left: 645px;
     }
 
     .mc2 {
       left: 550px;
 
       .mc_name {
-        left: 803px;
+        left: 850px;
       }
 
       .mc_team {
-        left: 1036px;
+        left: 910px;
         z-index: -1;
-        color: #0079ff;
         opacity: 1;
       }
     }
@@ -161,35 +160,32 @@
       left: 970px;
 
       .mc_name {
-        left: 1120px;
+        left: 1065px;
       }
 
       .mc_team {
-        right: 467px;
+        right: 695px;
         z-index: -1;
-        color: #00d7a0;
       }
     }
 
     .id3 {
-      right: 691px;
+      right: 645px;
     }
 
     .mc4 {
-      top: 162px;
-      left: 565px;
+      top: 112px;
+      left: 560px;
       width: 800px;
 
       .mc_name,
       .mc_team {
         position: relative;
         width: 800px;
-        font-family: "Maru Black", sans-serif;
-        font-size: 27px !important;
-        color: #f6fa70;
+        font-family: "Haitham Display SemiBold Italic", serif;
+        font-size: 32px !important;
+        color: #e25e3e;
         text-align: center;
-        text-shadow: 0 4px 0 black;
-        letter-spacing: 0.05em;
       }
     }
 
