@@ -2,40 +2,37 @@
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
-  @include blackWeight;
-
-  font-size: 21px;
-  font-style: italic;
-  line-height: 21px;
+  font-family: "IBM Plex Sans Condensed Bold", "IBM Plex Sans JP Bold",
+    sans-serif;
+  font-size: 18px;
+  line-height: 18px;
   color: var(--status-color);
-  letter-spacing: 1px;
 }
 
 .simple {
   // スコアの位置指定
   .score {
     @include score;
-    @include boldWeight;
 
-    top: 44px;
+    top: 4px;
     width: 50px;
-    font-size: 42px;
-    font-variant-numeric: tabular-nums;
+    font-family: "IBM Plex Sans Condensed Bold", sans-serif;
+    font-size: 36px;
     text-align: center;
 
     &.p1 {
-      left: 905px;
+      left: 671px;
     }
 
     &.p2 {
-      right: 905px;
+      right: 671px;
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
-    width: 500px;
+    top: 18px;
+    width: 375px;
     height: 50px;
     margin: 0;
 
@@ -48,41 +45,39 @@
     }
 
     &.p1 {
-      left: 395px;
+      left: 260px;
       text-align: right;
     }
 
     &.p2 {
-      right: 395px;
+      right: 260px;
       text-align-last: left;
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 35px;
-      line-height: 35px;
+      font-family: "IBM Plex Sans Condensed Regular", "IBM Plex Sans JP Regular",
+        sans-serif;
+      font-size: 27px;
+      line-height: 27px;
       color: var(--player-color);
-      letter-spacing: 1px;
     }
 
     .name {
-      @include blackWeight;
-
-      font-size: 35px;
-      line-height: 35px;
+      font-family: "IBM Plex Sans Condensed Bold", "IBM Plex Sans JP Bold",
+        sans-serif;
+      font-size: 27px;
+      line-height: 27px;
       color: var(--player-color);
-      letter-spacing: 1px;
     }
   }
 
   .box {
     position: absolute;
-    top: 19px;
-    left: 660px;
+    top: 11px;
+    left: 834px;
     display: flex;
     justify-content: center;
-    width: 600px;
+    width: 251px;
     height: 25px;
     color: var(--status-color);
     text-align: center;
@@ -103,13 +98,11 @@
   }
 
   .matchType {
-    @include mediumWeight;
-
-    font-size: 21px;
-    font-style: italic;
-    line-height: 21px;
+    font-family: "IBM Plex Sans Condensed Regular", "IBM Plex Sans JP Regular",
+      sans-serif;
+    font-size: 18px;
+    line-height: 18px;
     color: var(--status-color);
-    letter-spacing: 1px;
   }
 
   // 選手IDの位置設定
