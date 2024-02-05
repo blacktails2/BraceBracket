@@ -6,9 +6,8 @@
 
   width: 240px;
   margin: 0;
-  font-size: 19px;
-  font-style: italic;
-  line-height: 21px;
+  font-size: 21px;
+  line-height: 26px;
   color: var(--status-color);
   text-align: center;
   letter-spacing: 1px;
@@ -20,22 +19,22 @@
     @include score;
     @include blackWeight;
 
-    top: 45px;
+    top: 40px;
     width: 60px;
-    font-size: 40px;
+    font-size: 46px;
 
     &.p1 {
-      left: 770px;
+      left: 774px;
     }
 
     &.p2 {
-      right: 770px;
+      right: 774px;
     }
   }
 
   .player {
     position: absolute;
-    top: 60px;
+    top: 58px;
     width: 430px;
     height: 60px;
     margin: 0;
@@ -50,11 +49,11 @@
     }
 
     &.p1 {
-      left: 320px;
+      left: 325px;
     }
 
     &.p2 {
-      right: 320px;
+      right: 325px;
     }
 
     .team {
@@ -80,7 +79,7 @@
 
   .box {
     position: absolute;
-    top: 44px;
+    top: 42px;
     left: 840px;
     display: flex;
     flex-direction: column;
@@ -92,6 +91,8 @@
   // 試合ステータスの位置設定
   .round {
     @include status;
+
+    color: white;
   }
 
   .matchType {
