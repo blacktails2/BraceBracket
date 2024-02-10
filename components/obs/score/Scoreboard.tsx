@@ -143,6 +143,7 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
             {score.p1.team && (
               <span className={styles.team}>{score.p1.team}</span>
             )}
+            <br />
             <span className={styles.name}>{score.p1.playerName}</span>
           </div>
         </Transition>
@@ -153,6 +154,7 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
             {score.p2.team && (
               <span className={styles.team}>{score.p2.team}</span>
             )}
+            <br />
             <span className={styles.name}>{score.p2.playerName}</span>
           </div>
         </Transition>

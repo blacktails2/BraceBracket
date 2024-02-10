@@ -61,31 +61,33 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .playerTeam {
-  @include mediumWeight;
-
-  font-size: 22px;
-  line-height: 42px;
+  font-family: "Work Sans", "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 23px;
+  font-variation-settings: "wght" 500;
+  font-weight: 700;
+  line-height: 52px;
   color: var(--bb-black);
   letter-spacing: 1px;
 }
 
 .playerName {
-  @include blackWeight;
-
-  font-size: 22px;
-  line-height: 42px;
+  font-family: "Work Sans", "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 23px;
+  font-variation-settings: "wght" 700;
+  font-weight: 900;
+  line-height: 52px;
   color: var(--bb-black);
   letter-spacing: 1px;
 }
 
 .score {
-  @include boldWeight;
-
   width: 40px;
   margin: 0;
-  font-size: 30px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 36px;
+  font-variation-settings: "wght" 800;
   font-variant-numeric: tabular-nums;
-  line-height: 42px;
+  line-height: 52px;
   color: var(--bb-black);
   text-align: center;
 }

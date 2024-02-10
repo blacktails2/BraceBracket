@@ -2,23 +2,24 @@
 
 .simple {
   .nextnow {
-    @include blackWeight;
-
     position: absolute;
-    top: 877px;
-    left: 40px;
+    top: 852px;
+    left: 38px;
     width: 260px;
     height: 95px;
-    font-size: 72px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 90px;
+    font-variation-settings: "wght" 400;
+    font-style: italic;
     color: var(--sub-color);
     text-align: center;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.025em;
   }
 
   .statusBox {
     position: absolute;
-    top: 884px;
-    left: 315px;
+    top: 865px;
+    left: 333px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,87 +28,89 @@
   }
 
   .round {
-    @include boldWeight;
-
     width: 320px;
     margin: 0;
+    font-family: "Work Sans", sans-serif;
     font-size: 26px;
+    font-variation-settings: "wght" 600;
     font-style: italic;
-    line-height: 26px;
-    color: var(--sub-color);
+    line-height: 25px;
+    color: white;
     text-align: left;
-    letter-spacing: 2px;
+    letter-spacing: 0.01em;
   }
 
   .bo {
-    @include mediumWeight;
-
     width: 320px;
     margin: 0;
+    font-family: "Work Sans", sans-serif;
     font-size: 26px;
+    font-variation-settings: "wght" 600;
     font-style: italic;
-    line-height: 26px;
-    color: var(--sub-color);
+    line-height: 25px;
+    color: white;
     text-align: left;
-    letter-spacing: 2px;
+    letter-spacing: 0.01em;
   }
 
   // スコアの位置指定
   .score {
-    @include boldWeight;
-
     position: absolute;
-    top: 952px;
-    width: 85px;
+    top: 935px;
+    width: 100px;
     margin: 0;
-    font-size: 60px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 80px;
+    font-variation-settings: "wght" 800;
     font-variant-numeric: tabular-nums;
     color: var(--sub-color);
     text-align: center;
 
     &.p1 {
-      left: 470px;
+      left: 453px;
     }
 
     &.p2 {
-      left: 555px;
+      left: 568px;
     }
   }
 
   .player {
     position: absolute;
-    top: 1000px;
+    top: 1005px;
     width: 420px;
     height: 50px;
     margin: 0;
 
     &.p1 {
-      left: 25px;
+      left: 0;
       text-align: right;
     }
 
     &.p2 {
-      left: 665px;
+      left: 698px;
       text-align: left;
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 30px;
-      line-height: 30px;
-      color: var(--sub-color);
-      letter-spacing: 1px;
+      font-family: "Work Sans", "Zen Kaku Gothic Antique", sans-serif;
+      font-size: 29px;
+      font-variation-settings: "wght" 500;
+      font-weight: 700;
+      line-height: 29px;
+      color: white;
+      letter-spacing: 0.025em;
     }
 
     .name {
-      @include blackWeight;
-
       margin-left: 1rem;
-      font-size: 30px;
-      line-height: 30px;
-      color: var(--sub-color);
-      letter-spacing: 1px;
+      font-family: "Work Sans", "Zen Kaku Gothic Antique", sans-serif;
+      font-size: 29px;
+      font-variation-settings: "wght" 700;
+      font-weight: 900;
+      line-height: 29px;
+      color: white;
+      letter-spacing: 0.025em;
     }
   }
 
@@ -117,6 +120,7 @@
     position: absolute;
     top: 975px;
     left: 1570px;
+    display: none;
     font-size: 24px;
     line-height: 24px;
     color: var(--sub-color);
@@ -125,12 +129,12 @@
   }
 
   .localtime {
-    @include boldWeight;
-
     position: absolute;
-    top: 960px;
-    right: 57px;
-    font-size: 52px;
+    top: 935px;
+    right: 52px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 80px;
+    font-variation-settings: "wght" 700;
     font-variant-numeric: tabular-nums;
     color: var(--sub-color);
     text-align: right;

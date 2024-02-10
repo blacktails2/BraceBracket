@@ -1,22 +1,29 @@
 @import "base";
 
+.board {
+  display: none;
+}
+
 .simple {
   .mc1,
   .mc2,
   .mc3,
   .mc4 {
     position: absolute;
-    top: 797px;
+    top: 874px;
     width: 400px;
-    height: 50px;
-    font-size: 34px;
-    line-height: 34px;
-    color: var(--sub-color);
-    text-align: center;
-    letter-spacing: 2px;
+    height: 60px;
+    font-family: "Work Sans", "Zen Kaku Gothic Antique", sans-serif;
+    font-size: 30px;
+    font-variation-settings: "wght" 700;
+    font-weight: 900;
+    line-height: 32px;
+    color: var(--black);
+    text-align: left;
+    letter-spacing: 0.025em;
 
     span {
-      margin-left: 10px;
+      margin-left: 0;
       font-size: inherit;
 
       &:first-child {
@@ -27,10 +34,19 @@
 
   .mc_team {
     @include mediumWeight;
+
+    display: none;
   }
 
   .mc_name {
     @include blackWeight;
+
+    font-family: "Work Sans", "Zen Kaku Gothic Antique", sans-serif;
+    font-variation-settings: "wght" 700;
+    font-style: 32px;
+    font-weight: 900;
+    line-height: 32px;
+    text-align: left;
   }
 
   .id1,
@@ -40,127 +56,113 @@
     @include boldWeight;
 
     position: absolute;
-    top: 766px;
+    top: 835px;
+    left: 300px;
+    display: none;
     width: 270px;
-    height: 25px;
-    font-size: 21px;
-    line-height: 21px;
-    color: var(--main-color);
+    height: 30px;
+    font-size: 19px;
+    line-height: 19px;
+    color: var(--sub-color);
+    text-align: center;
     letter-spacing: 1px;
   }
 
   .mc1_layout {
     .mc1 {
-      left: 760px;
+      top: 961px;
+      left: 1402px;
     }
 
     .id1 {
-      left: 765px;
-      text-align: left;
-    }
-
-    .mc2,
-    .id2,
-    .mc3,
-    .id3,
-    .mc4,
-    .id4 {
-      display: none;
+      left: 825px;
     }
   }
 
   .mc2_layout {
     .mc1 {
-      left: 380px;
+      top: 961px;
+      left: 1405px;
     }
 
     .id1 {
-      left: 385px;
-      text-align: left;
+      left: 325px;
     }
 
     .mc2 {
-      left: 1140px;
+      top: 1004px;
+      left: 1405px;
     }
 
     .id2 {
-      left: 1265px;
-      text-align: right;
-    }
-
-    .mc4,
-    .id4,
-    .mc3,
-    .id3 {
-      display: none;
+      left: 1325px;
     }
   }
 
   .mc3_layout {
     .mc1 {
-      left: 240px;
+      top: 961px;
+      left: 1405px;
     }
 
     .id1 {
-      left: 245px;
+      left: 185px;
     }
 
     .mc2 {
-      left: 760px;
+      top: 1004px;
+      left: 1405px;
     }
 
     .id2 {
-      left: 765px;
+      left: 825px;
     }
 
     .mc3 {
       left: 1280px;
+      display: none;
     }
 
     .id3 {
-      left: 1405px;
-      text-align: right;
-    }
-
-    .mc4,
-    .id4 {
-      display: none;
+      left: 1465px;
     }
   }
 
   .mc4_layout {
     .mc1 {
-      left: 130px;
+      top: 961px;
+      left: 1405px;
     }
 
     .id1 {
-      left: 165px;
+      left: 90px;
     }
 
     .mc2 {
-      left: 550px;
+      top: 1004px;
+      left: 1405px;
     }
 
     .id2 {
-      left: 585px;
+      left: 510px;
     }
 
     .mc3 {
       left: 970px;
+      display: none;
     }
 
     .id3 {
-      left: 1065px;
-      text-align: right;
+      left: 1140px;
     }
 
     .mc4 {
       left: 1390px;
+      display: none;
     }
 
     .id4 {
-      left: 1485px;
-      text-align: right;
+      left: 1560px;
     }
   }
 }
