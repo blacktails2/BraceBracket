@@ -18,11 +18,11 @@
   // スコアの位置指定
   .score {
     position: absolute;
-    font-family: 'Diatype Black', sans-serif;
-    color: white;
-    font-size: 72px;
-    top: 13px;
+    top: 7px;
     width: 100px;
+    font-family: GTFlexa-Bold, sans-serif;
+    font-size: 80px;
+    color: white;
     text-align: center;
 
     &.p1 {
@@ -42,14 +42,6 @@
     height: 60px;
     text-align: center;
 
-    span {
-      margin-left: 10px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
     &.p1 {
       left: 570px;
     }
@@ -59,16 +51,20 @@
     }
 
     .team {
-      font-family: "TPSkyModernStdN-Blk", sans-serif;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--player-color);
+      position: absolute;
+      top: -16px;
+      left: 0;
+      z-index: -1;
+      width: 330px;
+      font-family: GTFlexa-XCompressed-Bold, sans-serif;
+      font-size: 56px;
+      line-height: 56px;
+      color: #00ffc8;
       text-align: center;
-      letter-spacing: 1px;
     }
 
     .name {
-      font-family: "TPSkyModernStdN-Blk", sans-serif;
+      font-family: TPSkyModernStdN-Blk, sans-serif;
       font-size: 28px;
       line-height: 28px;
       color: black;
@@ -89,22 +85,31 @@
   }
 
   .box {
-    display: none;
     position: absolute;
-    top: 45px;
-    left: 65px;
+    top: 72px;
+    left: 460px;
+    display: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 215px;
+    width: 1000px;
     height: 60px;
+    letter-spacing: 0.025em;
   }
 
   // 試合ステータスの位置設定
-  .round,
+  .round {
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    font-family: GTFlexa-Extended-Light, sans-serif;
+    font-size: 54px;
+    color: #00ffc8;
+    text-align: center;
+  }
+
   .matchType {
     display: none;
-    @include status;
   }
 
   .cameraRight,

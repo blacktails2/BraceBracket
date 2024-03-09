@@ -16,9 +16,9 @@
   // スコアの位置指定
   .score {
     position: absolute;
-    top: 7px;
+    top: 8px;
     width: 100px;
-    font-family: "Diatype Black", sans-serif;
+    font-family: GTFlexa-Bold, sans-serif;
     font-size: 80px;
     color: white;
     text-align: center;
@@ -31,6 +31,7 @@
       right: 850px;
     }
   }
+
   .player {
     position: absolute;
     top: 74px;
@@ -56,16 +57,16 @@
     }
 
     .team {
-      font-family: "TPSkyModernStdN-Blk", sans-serif;
+      font-family: TPSkyModernStdN-Blk, sans-serif;
       font-size: 28px;
       line-height: 28px;
-      color: #E4005A;
+      color: #8c14ff;
       text-align: center;
       letter-spacing: 1px;
     }
 
     .name {
-      font-family: "TPSkyModernStdN-Blk", sans-serif;
+      font-family: TPSkyModernStdN-Blk, sans-serif;
       font-size: 28px;
       line-height: 28px;
       color: black;
@@ -73,7 +74,6 @@
       letter-spacing: 1px;
     }
   }
-  
 
   // 試合ステータスの位置設定
   .round {
