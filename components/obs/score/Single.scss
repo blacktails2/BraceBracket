@@ -18,7 +18,7 @@
   // スコアの位置指定
   .score {
     position: absolute;
-    top: 7px;
+    top: 13px;
     width: 100px;
     font-family: GTFlexa-Bold, sans-serif;
     font-size: 80px;
@@ -52,7 +52,7 @@
 
     .team {
       position: absolute;
-      top: -16px;
+      top: -12px;
       left: 0;
       z-index: -1;
       width: 330px;
@@ -86,7 +86,7 @@
 
   .box {
     position: absolute;
-    top: 72px;
+    top: 78px;
     left: 460px;
     display: none;
     display: flex;
