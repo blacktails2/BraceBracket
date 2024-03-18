@@ -7,6 +7,7 @@
     position: absolute;
     top: 880px;
     left: 40px;
+    display: none;
     width: 220px;
     height: 80px;
     font-size: 52px;
@@ -20,6 +21,7 @@
     top: 880px;
     left: 300px;
     display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     width: 340px;
@@ -45,6 +47,7 @@
 
     position: absolute;
     top: 980px;
+    display: none;
     width: 60px;
     margin: 0;
     font-size: 40px;
@@ -62,39 +65,55 @@
 
   .player {
     position: absolute;
-    top: 996px;
-    width: 440px;
-    height: 60px;
+    left: 35px;
+    width: 250px;
+    height: 50px;
     margin: 0;
-    text-align: center;
+    text-align: left;
 
     &.p1 {
-      left: 40px;
+      top: 33px;
     }
 
     &.p2 {
-      left: 660px;
+      top: 133px;
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
+      font-family: TPSkyModernStdN-Blk, sans-serif;
+      font-size: 22px;
+      line-height: 22px;
       text-align: center;
       letter-spacing: 1px;
     }
 
     .name {
-      @include blackWeight;
-
       margin-left: 1rem;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
+      font-family: TPSkyModernStdN-Blk, sans-serif;
+      font-size: 22px;
+      line-height: 22px;
       text-align: center;
       letter-spacing: 1px;
+    }
+  }
+
+  .p1 {
+    .team {
+      color: #00ffc8;
+    }
+
+    .name {
+      color: white;
+    }
+  }
+
+  .p2 {
+    .team {
+      color: #8c14ff;
+    }
+
+    .name {
+      color: black;
     }
   }
 
@@ -104,6 +123,7 @@
     position: absolute;
     top: 975px;
     left: 1570px;
+    display: none;
     font-size: 24px;
     line-height: 26px;
     color: var(--sub-color);
@@ -116,6 +136,7 @@
     position: absolute;
     top: 960px;
     right: 57px;
+    display: none;
     font-size: 52px;
     font-variant-numeric: tabular-nums;
     color: var(--sub-color);

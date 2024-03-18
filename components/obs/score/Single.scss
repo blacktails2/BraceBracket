@@ -17,62 +17,57 @@
 .single {
   // スコアの位置指定
   .score {
-    @include score;
-    @include blackWeight;
-
-    top: 44px;
-    width: 60px;
-    font-size: 40px;
+    position: absolute;
+    top: 13px;
+    width: 100px;
+    font-family: GTFlexa-Bold, sans-serif;
+    font-size: 80px;
+    color: white;
+    text-align: center;
 
     &.p1 {
-      left: 800px;
+      left: 460px;
     }
 
     &.p2 {
-      right: 800px;
+      right: 460px;
     }
   }
 
   // プレイヤー名の位置指定
   .player {
     position: absolute;
-    top: 61px;
-    width: 460px;
+    top: 38px;
+    width: 330px;
     height: 60px;
     text-align: center;
 
-    span {
-      margin-left: 10px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
     &.p1 {
-      left: 320px;
+      left: 570px;
     }
 
     &.p2 {
-      right: 320px;
+      right: 570px;
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
+      position: absolute;
+      top: -12px;
+      left: 0;
+      z-index: -1;
+      width: 330px;
+      font-family: GTFlexa-XCompressed-Bold, sans-serif;
+      font-size: 56px;
+      line-height: 56px;
+      color: #00ffc8;
       text-align: center;
-      letter-spacing: 1px;
     }
 
     .name {
-      @include blackWeight;
-
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
+      font-family: TPSkyModernStdN-Blk, sans-serif;
+      font-size: 28px;
+      line-height: 28px;
+      color: black;
       text-align: center;
       letter-spacing: 1px;
     }
@@ -91,19 +86,30 @@
 
   .box {
     position: absolute;
-    top: 45px;
-    left: 65px;
+    top: 78px;
+    left: 460px;
+    display: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 215px;
+    width: 1000px;
     height: 60px;
+    letter-spacing: 0.025em;
   }
 
   // 試合ステータスの位置設定
-  .round,
+  .round {
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    font-family: GTFlexa-Extended-Light, sans-serif;
+    font-size: 54px;
+    color: #00ffc8;
+    text-align: center;
+  }
+
   .matchType {
-    @include status;
+    display: none;
   }
 
   .cameraRight,

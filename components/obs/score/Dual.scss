@@ -2,42 +2,40 @@
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
-  @include blackWeight;
-
   position: absolute;
-  top: 96px;
-  width: 410px;
+  top: 19px;
+  width: 400px;
   margin: 0;
-  font-size: 19px;
-  font-style: italic;
-  color: var(--status-color);
+  font-family: "Mario Maker", sans-serif;
+  font-size: 40px;
+  color: #ffcd00;
   text-align: center;
-  letter-spacing: 1px;
 }
 
 .dual {
   // スコアの位置指定
   .score {
-    @include score;
-    @include blackWeight;
-
-    top: 44px;
-    width: 75px;
-    font-size: 54px;
+    position: absolute;
+    top: 14px;
+    width: 100px;
+    font-family: GTFlexa-Bold, sans-serif;
+    font-size: 80px;
+    color: white;
+    text-align: center;
 
     &.p1 {
-      left: 365px;
+      left: 850px;
     }
 
     &.p2 {
-      right: 365px;
+      right: 850px;
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
-    width: 410px;
+    top: 74px;
+    width: 330px;
     height: 50px;
     margin: 0 0 0 10px;
     text-align: center;
@@ -51,29 +49,27 @@
     }
 
     &.p1 {
-      left: 460px;
+      left: 495px;
     }
 
     &.p2 {
-      right: 460px;
+      right: 505px;
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
+      font-family: TPSkyModernStdN-Blk, sans-serif;
+      font-size: 28px;
+      line-height: 28px;
+      color: #8c14ff;
       text-align: center;
       letter-spacing: 1px;
     }
 
     .name {
-      @include blackWeight;
-
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
+      font-family: TPSkyModernStdN-Blk, sans-serif;
+      font-size: 28px;
+      line-height: 28px;
+      color: black;
       text-align: center;
       letter-spacing: 1px;
     }
@@ -83,13 +79,15 @@
   .round {
     @include status;
 
-    left: 465px;
+    left: 438px;
+    display: none;
   }
 
   .matchType {
     @include status;
 
-    right: 465px;
+    right: 432px;
+    display: none;
   }
 
   .cameraRight,

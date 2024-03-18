@@ -28,6 +28,75 @@
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
 
+@font-face {
+  font-family: GTFlexa-XCompressed-Bold;
+  src: url("/fonts/GT-Flexa-X-Compressed-Bold.otf");
+}
+@font-face {
+  font-family: GTFlexa-Bold;
+  src: url("/fonts/GT-Flexa-Standard-Bold.otf");
+}
+@font-face {
+  font-family: GTFlexa-Extended-Light;
+  src: url("/fonts/GT-Flexa-Extended-Light.otf");
+}
+@font-face {
+  font-family: TPSkyModernStdN-Blk;
+  src: url("/fonts/TPSkyModernStdN-Blk.otf");
+}
+@font-face {
+  font-family: "Mario Maker";
+  src: url("/fonts/Super-Mario-Maker.ttf");
+}
+
+@font-face {
+  font-family: "Nitalago Ruika6";
+  src: url("/fonts/NitalagoRuika-06M.TTF");
+}
+@font-face {
+  font-family: "Euclid Flex Bold";
+  src: url("/fonts/EuclidFlex-Bold.otf");
+}
+
+@font-face {
+  font-family: "Clash Display Medium";
+  src: url("/fonts/ClashDisplay-Medium.woff2");
+}
+
+@font-face {
+  font-family: "Clash Display Medium";
+  src: url("/fonts/ClashDisplay-Medium.woff2");
+}
+
+@font-face {
+  font-family: "Clash Display Bold";
+  src: url("/fonts/ClashDisplay-Bold.woff2");
+}
+@font-face {
+  font-family: "Maru Mega Mini";
+  src: url("/fonts/GT-Maru-Mega-Mini.otf");
+}
+@font-face {
+  font-family: "Maru Black";
+  src: url("/fonts/GT-Maru-Black.otf");
+}
+@font-face {
+  font-family: "Maru Mono Bold";
+  src: url("/fonts/GT-Maru-Mono-Bold.otf");
+}
+@font-face {
+  font-family: "Haitham Display Thin";
+  src: url("/fonts/Haitham-DisplayThin.otf");
+}
+@font-face {
+  font-family: "Haitham Display Bold";
+  src: url("/fonts/Haitham-DisplayBold.otf");
+}
+@font-face {
+  font-family: "Haitham Display SemiBold Italic";
+  src: url("/fonts/Haitham-DisplaySemiBoldItalic.otf");
+}
+
 :root {
   --dark-gray: #111;
   --black: #202025;
@@ -301,4 +370,8 @@ span {
 .scrollbar-hidden::-webkit-scrollbar {
   /* Chrome, Safari 対応 */
   display: none;
+}
+
+.minimal-toolbar_container {
+  display: none !important;
 }
