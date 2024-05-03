@@ -10,6 +10,10 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.png" />
           <link
             rel="stylesheet"
+            href="https://use.typekit.net/obk8xsi.css"
+          ></link>
+          <link
+            rel="stylesheet"
             href="https://api.fontshare.com/css?f[]=satoshi@1,2&display=swap"
           />
           <link

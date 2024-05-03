@@ -17,26 +17,69 @@
 .single {
   // スコアの位置指定
   .score {
-    @include score;
-    @include blackWeight;
-
-    top: 44px;
-    width: 60px;
-    font-size: 40px;
+    position: absolute;
+    width: 120px;
+    font-size: 110px;
+    font-feature-settings: "pnum";
+    font-feature-settings: "pnum";
+    font-feature-settings: "pnum";
+    font-variant-numeric: proportional-nums;
+    text-align: center;
 
     &.p1 {
-      left: 800px;
+      top: 20px;
+      left: 327px;
+      font-family: garamond-premier-pro-subhead, serif;
+      font-style: normal;
+      font-weight: 600;
+      color: #10439f;
     }
 
     &.p2 {
-      right: 800px;
+      top: -5px;
+      right: 324px;
+      font-family: jaf-johannes, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      color: #fc4100;
+      transform: rotate(3deg);
+    }
+  }
+
+  .score_people {
+    position: absolute;
+    width: 30px;
+    font-size: 48px;
+    font-feature-settings: "pnum";
+    font-feature-settings: "pnum";
+    font-feature-settings: "pnum";
+    font-variant-numeric: proportional-nums;
+    text-align: center;
+
+    &.p1 {
+      top: 92px;
+      left: 467px;
+      font-family: garamond-premier-pro-caption, serif;
+      font-style: normal;
+      font-weight: 500;
+      color: #10439f;
+    }
+
+    &.p2 {
+      top: 80px;
+      right: 480px;
+      font-family: jaf-johannes, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      color: #fc4100;
+      transform: rotate(-3deg);
     }
   }
 
   // プレイヤー名の位置指定
   .player {
     position: absolute;
-    top: 61px;
+    top: 53px;
     width: 460px;
     height: 60px;
     text-align: center;
@@ -49,32 +92,36 @@
       }
     }
 
-    &.p1 {
-      left: 320px;
-    }
-
-    &.p2 {
-      right: 320px;
-    }
-
     .team {
-      @include mediumWeight;
-
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
+      font-size: 36px;
+      line-height: 36px;
+      color: black;
       text-align: center;
       letter-spacing: 1px;
     }
 
     .name {
-      @include blackWeight;
-
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
+      font-size: 36px;
+      line-height: 36px;
+      color: black;
       text-align: center;
       letter-spacing: 1px;
+    }
+
+    &.p1 {
+      left: 470px;
+
+      .name {
+        font-family: "Toppan Mincho", serif;
+      }
+    }
+
+    &.p2 {
+      right: 478px;
+
+      .name {
+        font-family: "NitaragoW7 Gothic", sans-serif;
+      }
     }
   }
 
@@ -104,6 +151,8 @@
   .round,
   .matchType {
     @include status;
+
+    display: none;
   }
 
   .cameraRight,

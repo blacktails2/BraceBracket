@@ -27,6 +27,14 @@
   font-family: "Mint Grotesk ExtraBold";
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
+@font-face {
+  font-family: "Toppan Mincho";
+  src: url("/fonts/AP-OTF-BunkyuMdMinStd-EB.otf");
+}
+@font-face {
+  font-family: "NitaragoW7 Gothic";
+  src: url("/fonts/NitalagoRuika-07M.TTF");
+}
 
 :root {
   --dark-gray: #111;
