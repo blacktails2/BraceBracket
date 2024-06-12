@@ -1,4 +1,40 @@
 @import "base";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;900&display=swap");
+@font-face {
+  font-family: "Nikolai Bold";
+  src: url("/fonts/Nikolai-Bold.woff2");
+}
+@font-face {
+  font-family: "Nikolai Bold Italic";
+  src: url("/fonts/Nikolai-BoldItalic.woff2");
+}
+@font-face {
+  font-family: "Nikolai Narrow Bold";
+  src: url("/fonts/Nikolai-NarrowBold.woff2");
+}
+@font-face {
+  font-family: "Nikolai Semi Bold";
+  src: url("/fonts/Nikolai-Semibold.woff2");
+}
+@font-face {
+  font-family: "Gambetta Bold";
+  src: url("/fonts/Gambetta-Bold.woff2");
+  size-adjust: 112%;
+}
+@font-face {
+  font-family: "Gambetta Semi Bold";
+  src: url("/fonts/Gambetta-Semibold.woff2");
+  size-adjust: 112%;
+}
+@font-face {
+  font-family: "Gambetta Regular";
+  src: url("/fonts/Gambetta-Regular.woff2");
+  size-adjust: 112%;
+}
+
+.board {
+  display: none;
+}
 
 .normal {
   .mc1,
@@ -6,14 +42,16 @@
   .mc3,
   .mc4 {
     position: absolute;
-    top: 774px;
+    top: 874px;
     width: 400px;
     height: 60px;
+    font-family: "Gambetta Bold", "Noto Serif JP", serif;
     font-size: 30px;
+    font-weight: 900;
     line-height: 30px;
-    color: var(--main-color);
-    text-align: center;
-    letter-spacing: 2px;
+    color: var(--black);
+    text-align: left;
+    letter-spacing: 1px;
 
     span {
       margin-left: 10px;
@@ -27,10 +65,18 @@
 
   .mc_team {
     @include mediumWeight;
+
+    display: none;
   }
 
   .mc_name {
     @include blackWeight;
+
+    font-family: "Gambetta Bold", "Noto Serif JP", serif;
+    font-style: 30px;
+    font-weight: 900;
+    line-height: 30px;
+    text-align: left;
   }
 
   .id1,
@@ -42,6 +88,7 @@
     position: absolute;
     top: 835px;
     left: 300px;
+    display: none;
     width: 270px;
     height: 30px;
     font-size: 19px;
@@ -53,7 +100,8 @@
 
   .mc1_layout {
     .mc1 {
-      left: 760px;
+      top: 961px;
+      left: 1402px;
     }
 
     .id1 {
@@ -63,7 +111,8 @@
 
   .mc2_layout {
     .mc1 {
-      left: 380px;
+      top: 961px;
+      left: 1405px;
     }
 
     .id1 {
@@ -71,7 +120,8 @@
     }
 
     .mc2 {
-      left: 1140px;
+      top: 1004px;
+      left: 1405px;
     }
 
     .id2 {
@@ -81,7 +131,8 @@
 
   .mc3_layout {
     .mc1 {
-      left: 240px;
+      top: 961px;
+      left: 1405px;
     }
 
     .id1 {
@@ -89,7 +140,8 @@
     }
 
     .mc2 {
-      left: 760px;
+      top: 1004px;
+      left: 1405px;
     }
 
     .id2 {
@@ -98,6 +150,7 @@
 
     .mc3 {
       left: 1280px;
+      display: none;
     }
 
     .id3 {
@@ -107,7 +160,8 @@
 
   .mc4_layout {
     .mc1 {
-      left: 130px;
+      top: 961px;
+      left: 1405px;
     }
 
     .id1 {
@@ -115,7 +169,8 @@
     }
 
     .mc2 {
-      left: 550px;
+      top: 1004px;
+      left: 1405px;
     }
 
     .id2 {
@@ -124,6 +179,7 @@
 
     .mc3 {
       left: 970px;
+      display: none;
     }
 
     .id3 {
@@ -132,6 +188,7 @@
 
     .mc4 {
       left: 1390px;
+      display: none;
     }
 
     .id4 {

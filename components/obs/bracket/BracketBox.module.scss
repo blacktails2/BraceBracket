@@ -1,4 +1,19 @@
 // フォントの設定
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;900&display=swap");
+@font-face {
+  font-family: "Nikolai Bold";
+  src: url("/fonts/Nikolai-Bold.woff2");
+}
+@font-face {
+  font-family: "Gambetta Bold";
+  src: url("/fonts/Gambetta-Bold.woff2");
+  size-adjust: 112%;
+}
+@font-face {
+  font-family: "Gambetta Semi Bold";
+  src: url("/fonts/Gambetta-Semibold.woff2");
+  size-adjust: 112%;
+}
 $regular: "Satoshi", "Noto Sans JP", sans-serif;
 $bold: "Satoshi", "Noto Sans JP", sans-serif;
 $black: "Satoshi", "Noto Sans JP", sans-serif;
@@ -43,7 +58,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 295px;
+  width: 298px;
   height: 85px;
   padding-left: 11px;
 
@@ -63,18 +78,22 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .playerTeam {
   @include mediumWeight;
 
+  font-family: "Gambetta Semi Bold", "Noto Serif JP", serif;
   font-size: 22px;
-  line-height: 42px;
-  color: var(--bb-black);
+  font-weight: 700;
+  line-height: 53px;
+  color: var(--bb-black) !important;
   letter-spacing: 1px;
 }
 
 .playerName {
   @include blackWeight;
 
+  font-family: "Gambetta Bold", "Noto Serif JP", serif;
   font-size: 22px;
-  line-height: 42px;
-  color: var(--bb-black);
+  font-weight: 900;
+  line-height: 53px;
+  color: var(--bb-black) !important;
   letter-spacing: 1px;
 }
 
@@ -83,10 +102,11 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 
   width: 40px;
   margin: 0;
-  font-size: 30px;
+  font-family: "Nikolai Bold", serif;
+  font-size: 44px;
   font-variant-numeric: tabular-nums;
-  line-height: 42px;
-  color: var(--bb-black);
+  line-height: 53px;
+  color: var(--bb-black) !important;
   text-align: center;
 }
 
