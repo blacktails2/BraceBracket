@@ -99,6 +99,7 @@ export type Setting = {
     enabled: boolean
     template: string
   }
+  integrateOBS: boolean
 }
 
 export type PlayerScore = {
@@ -115,11 +116,6 @@ export type Score = {
   round: string
   matchType: string
   uppercase: boolean
-}
-
-export type Scenes = {
-  sceneList: string[]
-  currentScene: string
 }
 
 export type LoadBracket = {
@@ -156,12 +152,55 @@ export type MC = {
   mcList: PlayerScore[]
 }
 
+export type OBSState = {
+  connected: boolean
+  sceneList: string[]
+  currentScene: string
+}
+
+export type OBSOperation = {
+  type: "changeScene"
+  scene: string
+}
+
+export type IntegrateOBS = {
+  createdAt: number | ReturnType<typeof serverTimestamp>
+  state: OBSState
+  operation: {
+    queue: OBSOperation[]
+  }
+  link2BanPick: {
+    enabled: boolean
+    state2SceneName: Record<typeof BanPickState[number], string>
+  }
+}
+
+export type Selection = {
+  type: "BAN" | "PICK"
+  stage: string
+}
+
+export const BanPickState = [
+  "SELECT_MATCH",
+  "SELECT_STARTER",
+  "WAITING_RESULT",
+  "SELECT_COUNTER",
+]
+
+export type BanPick = {
+  createdAt: number | ReturnType<typeof serverTimestamp>
+  state: typeof BanPickState[number]
+  selections: Selection[]
+}
+
 export type Tournament = {
   createdAt: number | ReturnType<typeof serverTimestamp>
   setting: Setting
   score: Score
   loadBracket: LoadBracket
   matchIntervalInfo: MatchIntervalInfo
+  integrateOBS: IntegrateOBS
+  banPick: BanPick
 }
 
 export type Bracket = {
