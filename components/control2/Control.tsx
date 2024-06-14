@@ -8,11 +8,13 @@ import {
   MC as MCType,
   Score,
   Setting,
+  Telop as TelopType,
 } from "../../libs/const"
 
 import MC from "./tabs/MC"
 import Next from "./tabs/Next"
 import ScoreAndCamera from "./tabs/ScoreAndCamera"
+import Telop from "./tabs/Telop"
 import Top8Bracket from "./tabs/Top8Bracket"
 
 export const Control: FC<{
@@ -26,6 +28,8 @@ export const Control: FC<{
   setMC: (mc: MCType) => void
   loadBracket: LoadBracket
   requestLoad: (autoUpdate: boolean) => void
+  telop: TelopType
+  setTelop: (telop: TelopType) => void
 }> = ({
   setting,
   setSetting,
@@ -37,6 +41,8 @@ export const Control: FC<{
   setMC,
   loadBracket,
   requestLoad,
+  telop,
+  setTelop,
 }) => {
   console.log("Control")
   const router = useRouter()
@@ -53,7 +59,7 @@ export const Control: FC<{
   return (
     <div className="flex h-[100vh] flex-col overflow-y-hidden py-[1.5rem] px-[2rem]">
       <div className="mb-[2rem] flex h-fit gap-[1rem]">
-        {["Score", "Interval", "MC", "Bracket"].map((name) => {
+        {["Score", "Interval", "MC", "Bracket", "Telop"].map((name) => {
           return (
             <div
               key={name}
@@ -117,6 +123,13 @@ export const Control: FC<{
           }}
         >
           <Top8Bracket {...{ loadBracket, requestLoad }} />
+        </div>
+        <div
+          style={{
+            display: selectedTab === "Telop" ? "block" : "none",
+          }}
+        >
+          <Telop {...{ telop, setTelop }} />
         </div>
       </div>
     </div>

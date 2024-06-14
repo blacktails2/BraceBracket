@@ -7,6 +7,7 @@ import { useMatchIntervalInfo } from "../hooks/useMatchIntervalInfo"
 import { useMC } from "../hooks/useMC"
 import { useScore } from "../hooks/useScore"
 import { useSetting } from "../hooks/useSetting"
+import { useTelop } from "../hooks/useTelop"
 import { NextPageWithLayout } from "../libs/const"
 
 const ControlPage: NextPageWithLayout = () => {
@@ -18,16 +19,26 @@ const ControlPage: NextPageWithLayout = () => {
     useMatchIntervalInfo(id)
   const [mc, setMC, loadingMC] = useMC(id)
   const [loadBracket, requestLoad, loadingLoadBracket] = useLoadBracket(id)
+  const [telop, setTelop, loadingTelop] = useTelop(id)
 
-  if (!setting || !score || !matchIntervalInfo || !mc || !loadBracket)
+  if (
+    !setting ||
+    !score ||
+    !matchIntervalInfo ||
+    !mc ||
+    !loadBracket ||
+    !telop
+  ) {
     return null
+  }
 
   if (
     loadingSetting ||
     loadingScore ||
     loadingMachIntervalInfo ||
     loadingMC ||
-    loadingLoadBracket
+    loadingLoadBracket ||
+    loadingTelop
   )
     return null
 
@@ -45,6 +56,8 @@ const ControlPage: NextPageWithLayout = () => {
           setMC,
           loadBracket,
           requestLoad,
+          telop,
+          setTelop,
         }}
       />
       <SuggestList setting={setting} />
