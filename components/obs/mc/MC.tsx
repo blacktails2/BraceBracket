@@ -74,9 +74,11 @@ export const MC: FC<{ setting: Setting; mc: MCInfo }> = ({ setting, mc }) => {
                 </Transition>
                 <Transition keyName={`${mc.twitterID}-${idx}`}>
                   <p className={idStyleArray[idx]}>
-                    {mc.twitterID && !mc.twitterID.startsWith("@")
-                      ? `@${mc.twitterID}`
-                      : mc.twitterID}
+                    <p>
+                      {mc.twitterID && !mc.twitterID.startsWith("@")
+                        ? `${mc.twitterID}`
+                        : mc.twitterID}
+                    </p>
                   </p>
                 </Transition>
               </>
