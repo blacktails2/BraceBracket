@@ -95,6 +95,7 @@
     .team {
       @include mediumWeight;
 
+      display: none;
       font-family: "Gambetta Semi Bold", "Noto Serif JP", serif;
       font-size: 27px;
       font-weight: 700;

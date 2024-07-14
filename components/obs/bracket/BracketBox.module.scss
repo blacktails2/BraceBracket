@@ -78,6 +78,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .playerTeam {
   @include mediumWeight;
 
+  display: none;
   font-family: "Gambetta Semi Bold", "Noto Serif JP", serif;
   font-size: 22px;
   font-weight: 700;

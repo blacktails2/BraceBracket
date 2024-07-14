@@ -122,6 +122,7 @@
     .team {
       @include mediumWeight;
 
+      display: none;
       font-family: "Gambetta Regular", "Noto Serif JP", serif;
       font-size: 28px;
       line-height: 28px;
