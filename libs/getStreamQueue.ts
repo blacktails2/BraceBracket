@@ -158,7 +158,7 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
   const res = await fetch(`https://api.smash.gg/gql/alpha`, {
     method: "POST",
     headers: {
-      Authorization: "Bearer b02471b232fafc5d8a67c6e1fe9afd69",
+      Authorization: "Bearer b27e9778c425efba77751add00796217",
       "Content-Type": "application/json",
       Accept: "application/json",
       encoding: "utf-8",
@@ -248,7 +248,7 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
       const res = await fetch(`https://api.smash.gg/gql/alpha`, {
         method: "POST",
         headers: {
-          Authorization: "Bearer b02471b232fafc5d8a67c6e1fe9afd69",
+          Authorization: "Bearer b27e9778c425efba77751add00796217",
           "Content-Type": "application/json",
           Accept: "application/json",
           encoding: "utf-8",
