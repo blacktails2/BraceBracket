@@ -13,7 +13,7 @@ export type Match = {
 export type StreamQueue = Match[]
 
 const fullRoundText2Shorts: { [key: string]: string } = {
-  "Grand Final Reset": "Grand Finals",
+  "Grand Final Reset": "True Finals",
   "Grand Final": "Grand Finals",
   "Winners Final": "Winners Finals",
   "Winners Semi-Final": "Winners Semis",
