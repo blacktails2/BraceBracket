@@ -20,23 +20,25 @@
     @include score;
     @include blackWeight;
 
-    top: 45px;
+    top: 3px;
     width: 60px;
-    font-size: 40px;
+    font-family: "Quicksand Bold", sans-serif;
+    font-size: 72px;
+    color: #eb9500;
 
     &.p1 {
-      left: 770px;
+      left: 755px;
     }
 
     &.p2 {
-      right: 770px;
+      right: 755px;
     }
   }
 
   .player {
     position: absolute;
-    top: 60px;
-    width: 430px;
+    top: 42px;
+    width: 380px;
     height: 60px;
     margin: 0;
     text-align: center;
@@ -50,52 +52,69 @@
     }
 
     &.p1 {
-      left: 320px;
+      left: 375px;
     }
 
     &.p2 {
-      right: 320px;
+      right: 375px;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
+      font-family: "Quicksand Medium", "Genjyu Gothic R", sans-serif;
+      font-size: 32px;
+      line-height: 32px;
+      color: #00d1bd;
       text-align: center;
-      letter-spacing: 1px;
+      letter-spacing: 0.025em;
     }
 
     .name {
       @include blackWeight;
 
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
+      font-family: "Quicksand Bold", "Genjyu Gothic B", sans-serif;
+      font-size: 32px;
+      line-height: 32px;
+      color: black;
       text-align: center;
-      letter-spacing: 1px;
+      letter-spacing: 0.025em;
     }
   }
 
   .box {
     position: absolute;
-    top: 44px;
-    left: 840px;
+    top: 12px;
+    left: 860px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 240px;
+    width: 200px;
     height: 60px;
   }
 
   // 試合ステータスの位置設定
   .round {
     @include status;
+
+    width: 200px;
+    font-family: "Quicksand SemiBold", sans-serif;
+    font-size: 26px;
+    line-height: 24px;
+    text-transform: uppercase;
   }
 
   .matchType {
     @include status;
+
+    position: absolute;
+    top: 72px;
+    width: 200px;
+    font-family: "Quicksand Bold", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    line-height: 18px;
+    text-transform: uppercase;
   }
 
   .cameraRight,

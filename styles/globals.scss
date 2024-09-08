@@ -28,6 +28,33 @@
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
 
+@font-face {
+  font-family: "Quicksand Medium";
+  src: url("/fonts/Quicksand-Medium.woff2");
+}
+
+@font-face {
+  font-family: "Quicksand SemiBold";
+  src: url("/fonts/Quicksand-SemiBold.woff2");
+}
+
+@font-face {
+  font-family: "Quicksand Bold";
+  src: url("/fonts/Quicksand-Bold.woff2");
+}
+
+@font-face {
+  font-family: "Genjyu Gothic B";
+  src: url("/fonts/GenJyuuGothic-Bold.ttf");
+  size-adjust: 98%;
+}
+
+@font-face {
+  font-family: "Genjyu Gothic R";
+  src: url("/fonts/GenJyuuGothic-Normal.ttf");
+  size-adjust: 98%;
+}
+
 :root {
   --dark-gray: #111;
   --black: #202025;

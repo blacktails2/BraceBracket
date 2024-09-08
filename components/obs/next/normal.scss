@@ -5,96 +5,115 @@
     @include mediumWeight;
 
     position: absolute;
-    top: 880px;
-    left: 40px;
+    top: 996px;
+    left: 30px;
     width: 220px;
     height: 80px;
+    font-family: "Quicksand Bold", sans-serif;
     font-size: 52px;
     color: var(--main-color);
-    text-align: center;
+    text-align: left;
     letter-spacing: 0.05em;
   }
 
   .statusBox {
     position: absolute;
-    top: 880px;
-    left: 300px;
+    top: 854px;
+    left: 32px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 340px;
-    height: 80px;
+    width: 150px;
+    height: 200px;
   }
 
-  .round,
+  .round {
+    width: 150px;
+    margin-top: 5px;
+    font-family: "Quicksand SemiBold", sans-serif;
+    font-size: 26px;
+    line-height: 24px;
+    color: black;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
   .bo {
     @include blackWeight;
 
-    width: 320px;
+    width: 150px;
     margin: 0;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 24px;
-    color: var(--sub-color);
+    margin-left: 1px;
+    font-family: "Quicksand Bold", sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    color: black;
     text-align: left;
-    letter-spacing: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .score {
     @include blackWeight;
 
     position: absolute;
-    top: 980px;
     width: 60px;
     margin: 0;
-    font-size: 40px;
-    color: var(--main-color);
-    text-align: center;
+    font-family: "Quicksand Bold", sans-serif;
+    font-size: 60px;
+    color: #eb9500;
+    text-align: right;
 
     &.p1 {
-      left: 500px;
+      top: 887px;
+      left: 585px;
     }
 
     &.p2 {
-      left: 580px;
+      top: 978px;
+      left: 622px;
     }
   }
 
   .player {
     position: absolute;
-    top: 996px;
-    width: 440px;
+    width: 370px;
     height: 60px;
     margin: 0;
-    text-align: center;
+    text-align: left;
 
     &.p1 {
-      left: 40px;
+      top: 918px;
+      left: 250px;
     }
 
     &.p2 {
-      left: 660px;
+      top: 1008px;
+      left: 286px;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
+      font-family: "Quicksand Medium", "Genjyu Gothic R", sans-serif;
+      font-size: 30px;
+      line-height: 30px;
+      color: #00d1bd;
       text-align: center;
-      letter-spacing: 1px;
+      letter-spacing: 0.025em;
     }
 
     .name {
       @include blackWeight;
 
       margin-left: 1rem;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
+      font-family: "Quicksand Bold", "Genjyu Gothic B", sans-serif;
+      font-size: 30px;
+      line-height: 30px;
+      color: black;
       text-align: center;
-      letter-spacing: 1px;
+      letter-spacing: 0.025em;
     }
   }
 
@@ -102,23 +121,26 @@
     @include mediumWeight;
 
     position: absolute;
-    top: 975px;
-    left: 1570px;
-    font-size: 24px;
+    top: 1011px;
+    left: 1672px;
+    font-family: "Quicksand SemiBold", sans-serif;
+    font-size: 26px;
     line-height: 26px;
-    color: var(--sub-color);
-    letter-spacing: 1px;
+    color: black;
+    letter-spacing: 0.05em;
   }
 
   .localtime {
     @include blackWeight;
 
     position: absolute;
-    top: 960px;
-    right: 57px;
+    top: 984px;
+    right: 42px;
+    font-family: "Quicksand Bold", sans-serif;
     font-size: 52px;
     font-variant-numeric: tabular-nums;
-    color: var(--sub-color);
+    color: black;
     text-align: right;
+    letter-spacing: 0.05em;
   }
 }

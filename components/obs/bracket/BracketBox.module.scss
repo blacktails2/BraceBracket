@@ -63,15 +63,17 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .playerTeam {
   @include mediumWeight;
 
+  font-family: "Quicksand Medium", "Genjyu Gothic R", sans-serif;
   font-size: 22px;
   line-height: 42px;
   color: var(--bb-black);
-  letter-spacing: 1px;
+  letter-spacing: 0.025em;
 }
 
 .playerName {
   @include blackWeight;
 
+  font-family: "Quicksand Bold", "Genjyu Gothic B", sans-serif;
   font-size: 22px;
   line-height: 42px;
   color: var(--bb-black);
@@ -81,10 +83,13 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .score {
   @include boldWeight;
 
-  width: 40px;
+  display: inline-block;
+  width: 30px;
+  padding-left: 8px;
   margin: 0;
+  font-family: "Quicksand Bold", sans-serif;
   font-size: 30px;
-  font-variant-numeric: tabular-nums;
+  // font-variant-numeric: tabular-nums;
   line-height: 42px;
   color: var(--bb-black);
   text-align: center;
@@ -94,23 +99,34 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .other.losers {
   .player1 span,
   .player2 span {
-    color: var(--bb-white);
+    color: black;
   }
 }
 
 .other.winners {
-  .player1 span,
-  .player2 span {
-    color: var(--bb-black);
+  .playerTeam {
+    color: #00d1bd;
+  }
+
+  .playerName {
+    color: black;
+  }
+
+  .score {
+    color: #eb9500;
   }
 }
 
 .other.grand {
-  .player1 span {
-    color: var(--bb-black);
+  .player1 .playerTeam {
+    color: #00d1bd;
+  }
+
+  .player1 .playerName {
+    color: black;
   }
 
   .player2 span {
-    color: var(--bb-white);
+    color: black;
   }
 }

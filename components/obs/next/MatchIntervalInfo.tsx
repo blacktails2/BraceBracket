@@ -47,11 +47,11 @@ export const MatchInterval: FC<{
           textTransform: matchIntervalInfo.uppercase ? "uppercase" : "none",
         }}
       >
-        <Transition keyName={matchIntervalInfo.round}>
-          <p className={styles.round}>{matchIntervalInfo.round}</p>
-        </Transition>
         <Transition keyName={matchIntervalInfo.matchType}>
           <p className={styles.bo}>{matchIntervalInfo.matchType}</p>
+        </Transition>
+        <Transition keyName={matchIntervalInfo.round}>
+          <p className={styles.round}>{matchIntervalInfo.round}</p>
         </Transition>
       </div>
       <Transition
@@ -84,11 +84,7 @@ export const MatchInterval: FC<{
           <span className={styles.name}>{matchIntervalInfo.p2.playerName}</span>
         </div>
       </Transition>
-      <p className={styles.localsetting}>
-        Local Time
-        <br />
-        JST
-      </p>
+      <p className={styles.localsetting}>JST</p>
       <Transition keyName={time}>
         <p className={styles.localtime}>{time}</p>
       </Transition>
