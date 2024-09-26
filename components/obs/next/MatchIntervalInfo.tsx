@@ -15,6 +15,8 @@ export const MatchInterval: FC<{
   time: string
 }> = ({ setting, matchIntervalInfo, time }) => {
   const { layout, color } = setting.scoreboard.design
+  const p1AllName = matchIntervalInfo.p1.team + matchIntervalInfo.p1.playerName
+  const p2AllName = matchIntervalInfo.p2.team + matchIntervalInfo.p2.playerName
   useEffect(() => {
     console.log({ matchIntervalInfo })
   }, [matchIntervalInfo])
@@ -58,8 +60,22 @@ export const MatchInterval: FC<{
         keyName={`${matchIntervalInfo.p1.team}-${matchIntervalInfo.p1.playerName}`}
       >
         <div className={`${styles.player} ${styles.p1}`}>
-          <span className={styles.team}>{matchIntervalInfo.p1.team}</span>
-          <span className={styles.name}>{matchIntervalInfo.p1.playerName}</span>
+          <span
+            style={{
+              fontSize: `clamp(18px, ${370 / p1AllName.length}px, 30px)`,
+            }}
+            className={styles.team}
+          >
+            {matchIntervalInfo.p1.team}
+          </span>
+          <span
+            style={{
+              fontSize: `clamp(18px, ${370 / p1AllName.length}px, 30px)`,
+            }}
+            className={styles.name}
+          >
+            {matchIntervalInfo.p1.playerName}
+          </span>
         </div>
       </Transition>
       <Transition
@@ -80,8 +96,22 @@ export const MatchInterval: FC<{
         keyName={`${matchIntervalInfo.p2.team}-${matchIntervalInfo.p2.playerName}`}
       >
         <div className={`${styles.player} ${styles.p2}`}>
-          <span className={styles.team}>{matchIntervalInfo.p2.team}</span>
-          <span className={styles.name}>{matchIntervalInfo.p2.playerName}</span>
+          <span
+            style={{
+              fontSize: `clamp(18px, ${370 / p2AllName.length}px, 30px)`,
+            }}
+            className={styles.team}
+          >
+            {matchIntervalInfo.p2.team}
+          </span>
+          <span
+            style={{
+              fontSize: `clamp(18px, ${370 / p2AllName.length}px, 30px)`,
+            }}
+            className={styles.name}
+          >
+            {matchIntervalInfo.p2.playerName}
+          </span>
         </div>
       </Transition>
       <p className={styles.localsetting}>JST</p>

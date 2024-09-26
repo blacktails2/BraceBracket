@@ -45,6 +45,7 @@
 
     span {
       margin-left: 10px;
+      line-height: 32px;
 
       &:first-child {
         margin-left: 0;
@@ -63,8 +64,6 @@
       @include mediumWeight;
 
       font-family: "Quicksand Medium", "Genjyu Gothic R", sans-serif;
-      font-size: 32px;
-      line-height: 32px;
       color: #00d1bd;
       text-align: center;
       letter-spacing: 0.025em;
@@ -74,8 +73,6 @@
       @include blackWeight;
 
       font-family: "Quicksand Bold", "Genjyu Gothic B", sans-serif;
-      font-size: 32px;
-      line-height: 32px;
       color: black;
       text-align: center;
       letter-spacing: 0.025em;

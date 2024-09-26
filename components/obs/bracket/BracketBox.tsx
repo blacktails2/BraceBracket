@@ -34,6 +34,8 @@ export const BracketBox: FC<{
   useEffect(() => {
     setPlayer2(_player2)
   }, [_player2])
+  const p1AllName = player1.team + player1.name
+  const p2AllName = player2.team + player2.name
   return (
     <div
       className={`${styles.bracketBox} ${
@@ -49,17 +51,45 @@ export const BracketBox: FC<{
         <Transition keyName={`${player1.team}-${player1.name}`}>
           <p className={styles.player1}>
             {player1.team && (
-              <span className={styles.playerTeam}>{player1.team}</span>
+              <span
+                style={{
+                  fontSize: `clamp(15px, ${265 / p1AllName.length}px, 22px)`,
+                }}
+                className={styles.playerTeam}
+              >
+                {player1.team}
+              </span>
             )}
-            <span className={styles.playerName}>{player1.name}</span>
+            <span
+              style={{
+                fontSize: `clamp(15px, ${265 / p1AllName.length}px, 22px)`,
+              }}
+              className={styles.playerName}
+            >
+              {player1.name}
+            </span>
           </p>
         </Transition>
         <Transition keyName={`${player2.team}-${player2.name}`}>
           <p className={styles.player2}>
             {player2.team && (
-              <span className={styles.playerTeam}>{player2.team}</span>
+              <span
+                style={{
+                  fontSize: `clamp(15px, ${265 / p2AllName.length}px, 22px)`,
+                }}
+                className={styles.playerTeam}
+              >
+                {player2.team}
+              </span>
             )}
-            <span className={styles.playerName}>{player2.name}</span>
+            <span
+              style={{
+                fontSize: `clamp(15px, ${265 / p2AllName.length}px, 22px)`,
+              }}
+              className={styles.playerName}
+            >
+              {player2.name}
+            </span>
           </p>
         </Transition>
       </div>

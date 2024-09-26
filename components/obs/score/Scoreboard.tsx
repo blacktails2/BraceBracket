@@ -56,6 +56,8 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
 }) => {
   const { layout, color } = setting.scoreboard.design
   const [logoIdx, setLogoIdx] = useState(0)
+  const p1AllName = score.p1.team + score.p1.playerName
+  const p2AllName = score.p2.team + score.p2.playerName
   useInterval(() => {
     if (
       setting.scoreboard.cameraAndLogo.useLogo &&
@@ -141,9 +143,23 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
         <Transition keyName={`${score.p1.team}-${score.p1.playerName}`}>
           <div>
             {score.p1.team && (
-              <span className={styles.team}>{score.p1.team}</span>
+              <span
+                style={{
+                  fontSize: `clamp(18px, ${380 / p1AllName.length}px, 32px)`,
+                }}
+                className={styles.team}
+              >
+                {score.p1.team}
+              </span>
             )}
-            <span className={styles.name}>{score.p1.playerName}</span>
+            <span
+              style={{
+                fontSize: `clamp(18px, ${380 / p1AllName.length}px, 32px)`,
+              }}
+              className={styles.name}
+            >
+              {score.p1.playerName}
+            </span>
           </div>
         </Transition>
       </div>
@@ -151,9 +167,23 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
         <Transition keyName={`${score.p2.team}-${score.p2.playerName}`}>
           <div>
             {score.p2.team && (
-              <span className={styles.team}>{score.p2.team}</span>
+              <span
+                style={{
+                  fontSize: `clamp(18px, ${380 / p2AllName.length}px, 32px)`,
+                }}
+                className={styles.team}
+              >
+                {score.p2.team}
+              </span>
             )}
-            <span className={styles.name}>{score.p2.playerName}</span>
+            <span
+              style={{
+                fontSize: `clamp(18px, ${380 / p2AllName.length}px, 32px)`,
+              }}
+              className={styles.name}
+            >
+              {score.p2.playerName}
+            </span>
           </div>
         </Transition>
       </div>
