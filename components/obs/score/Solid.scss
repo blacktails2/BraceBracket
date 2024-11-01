@@ -4,11 +4,10 @@
 @mixin status {
   @include blackWeight;
 
-  width: 240px;
+  width: 200px;
   margin: 0;
-  font-size: 19px;
-  font-style: italic;
-  line-height: 21px;
+  font-size: 21px;
+  line-height: 23px;
   color: var(--status-color);
   text-align: center;
   letter-spacing: 1px;
@@ -80,12 +79,12 @@
 
   .box {
     position: absolute;
-    top: 44px;
-    left: 840px;
+    top: 26px;
+    left: 860px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 240px;
+    width: 200px;
     height: 60px;
   }
 
@@ -96,6 +95,8 @@
 
   .matchType {
     @include status;
+
+    margin-top: 23px;
   }
 
   .cameraRight,
