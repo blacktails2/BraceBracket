@@ -5,96 +5,110 @@
     @include mediumWeight;
 
     position: absolute;
-    top: 880px;
-    left: 40px;
-    width: 220px;
+    top: 910px;
+    left: 0;
+    width: 310px;
     height: 80px;
-    font-size: 52px;
-    color: var(--main-color);
+    font-family: "Neue Machina Bold", sans-serif;
+    font-size: 80px;
+    color: white;
     text-align: center;
-    letter-spacing: 0.05em;
+    letter-spacing: -0.05em;
   }
 
-  .statusBox {
+  .round {
     position: absolute;
-    top: 880px;
-    left: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 340px;
-    height: 80px;
+    top: 1036px;
+    left: 0;
+    width: 310px;
+    font-family: "Neue Machina Bold", sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    color: white;
+    text-align: center;
   }
 
-  .round,
   .bo {
     @include blackWeight;
 
-    width: 320px;
+    position: absolute;
+    top: 1026px;
+    left: 910px;
+    width: 100px;
     margin: 0;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 24px;
-    color: var(--sub-color);
+    font-family: "Neue Machina Bold", sans-serif;
+    font-size: 26px;
+    line-height: 26px;
+    color: white;
     text-align: left;
-    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
   }
 
   .score {
     @include blackWeight;
 
     position: absolute;
-    top: 980px;
-    width: 60px;
+    top: 967px;
+    width: 90px;
     margin: 0;
-    font-size: 40px;
-    color: var(--main-color);
+    font-family: "SA Score", sans-serif;
+    font-size: 54px;
+    color: white;
     text-align: center;
 
     &.p1 {
-      left: 500px;
+      left: 815px;
     }
 
     &.p2 {
-      left: 580px;
+      right: 815px;
     }
   }
 
   .player {
     position: absolute;
-    top: 996px;
-    width: 440px;
+    top: 988px;
+    width: 480px;
     height: 60px;
     margin: 0;
     text-align: center;
 
+    span {
+      margin-left: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
     &.p1 {
-      left: 40px;
+      left: 318px;
+      text-align: right;
     }
 
     &.p2 {
-      left: 660px;
+      right: 318px;
+      text-align: left;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      font-family: "Neue Machina Regular", "IBM Plex Sans JP Text", sans-serif;
+      font-size: 36px;
+      line-height: 36px;
+      color: white;
     }
 
     .name {
       @include blackWeight;
 
-      margin-left: 1rem;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      font-family: "Neue Machina Semibold", "IBM Plex Sans JP Bold", sans-serif;
+      font-size: 32px;
+      font-size: 36px;
+      line-height: 36px;
+      color: white;
     }
   }
 
@@ -104,6 +118,7 @@
     position: absolute;
     top: 975px;
     left: 1570px;
+    display: none;
     font-size: 24px;
     line-height: 26px;
     color: var(--sub-color);
@@ -114,11 +129,14 @@
     @include blackWeight;
 
     position: absolute;
-    top: 960px;
-    right: 57px;
-    font-size: 52px;
+    top: 926px;
+    right: 15px;
+    width: 280px;
+    font-family: "Neue Machina Semibold", sans-serif;
+    font-size: 68px;
     font-variant-numeric: tabular-nums;
-    color: var(--sub-color);
-    text-align: right;
+    color: white;
+    text-align: left;
+    letter-spacing: 0.03em;
   }
 }

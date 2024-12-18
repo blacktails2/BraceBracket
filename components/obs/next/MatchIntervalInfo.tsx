@@ -19,6 +19,13 @@ export const MatchInterval: FC<{
     console.log({ matchIntervalInfo })
   }, [matchIntervalInfo])
 
+  const displayMatchType =
+    matchIntervalInfo.matchType === "Best of 3"
+      ? "BO3"
+      : matchIntervalInfo.matchType === "Best of 5"
+      ? "BO5"
+      : matchIntervalInfo.matchType
+
   return (
     <div
       className={`${
@@ -51,7 +58,7 @@ export const MatchInterval: FC<{
           <p className={styles.round}>{matchIntervalInfo.round}</p>
         </Transition>
         <Transition keyName={matchIntervalInfo.matchType}>
-          <p className={styles.bo}>{matchIntervalInfo.matchType}</p>
+          <p className={styles.bo}>{displayMatchType}</p>
         </Transition>
       </div>
       <Transition

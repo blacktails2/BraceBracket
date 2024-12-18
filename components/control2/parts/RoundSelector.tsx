@@ -32,7 +32,14 @@ export const RoundSelector: FC<{
       />
       <div className="mt-[1rem] flex w-fit flex-wrap gap-[0.4rem]">
         {(() => {
-          const values = ["Winners", "Losers", "Pools", "Grand", "Friendlies"]
+          const values = [
+            "Winners",
+            "Losers",
+            "Pools",
+            "Grand",
+            "Friendlies",
+            "True",
+          ]
           return values.map((name) => {
             return (
               <div
@@ -96,6 +103,7 @@ export const RoundSelector: FC<{
             ],
             Pools: ["Finals"],
             Grand: ["Finals", "Finals Reset"],
+            True: ["Finals"],
           }
           const first = round?.split(" ")[0]
           return (values[first] ?? []).map((name) => {

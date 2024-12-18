@@ -8,10 +8,9 @@
   margin: 0;
   font-size: 19px;
   font-style: italic;
-  line-height: 21px;
+  line-height: 32px;
   color: var(--status-color);
   text-align: center;
-  letter-spacing: 1px;
 }
 
 .solid {
@@ -20,24 +19,26 @@
     @include score;
     @include blackWeight;
 
-    top: 45px;
-    width: 60px;
-    font-size: 40px;
+    top: 39px;
+    width: 90px;
+    font-family: "SA Score", sans-serif;
+    font-size: 54px;
+    text-align: center;
 
     &.p1 {
-      left: 770px;
+      left: 773px;
     }
 
     &.p2 {
-      right: 770px;
+      right: 773px;
     }
   }
 
   .player {
     position: absolute;
-    top: 60px;
-    width: 430px;
-    height: 60px;
+    top: 65px;
+    width: 486px;
+    height: 70px;
     margin: 0;
     text-align: center;
 
@@ -50,18 +51,19 @@
     }
 
     &.p1 {
-      left: 320px;
+      left: 300px;
     }
 
     &.p2 {
-      right: 320px;
+      right: 300px;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 29px;
-      line-height: 29px;
+      font-family: "Neue Machina Regular", "IBM Plex Sans JP Text", sans-serif;
+      font-size: 34px;
+      line-height: 34px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -70,8 +72,9 @@
     .name {
       @include blackWeight;
 
-      font-size: 29px;
-      line-height: 29px;
+      font-family: "Neue Machina Semibold", "IBM Plex Sans JP Bold", sans-serif;
+      font-size: 32px;
+      line-height: 32px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -80,7 +83,7 @@
 
   .box {
     position: absolute;
-    top: 44px;
+    top: 38px;
     left: 840px;
     display: flex;
     flex-direction: column;
@@ -92,10 +95,21 @@
   // 試合ステータスの位置設定
   .round {
     @include status;
+
+    font-family: "Neue Machina Semibold", sans-serif;
+    font-size: 19px;
+    color: white;
+    letter-spacing: 0;
   }
 
   .matchType {
     @include status;
+
+    font-family: "Neue Machina Bold", sans-serif;
+    font-size: 16px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
   }
 
   .cameraRight,

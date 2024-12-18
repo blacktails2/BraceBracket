@@ -1,11 +1,6 @@
 import { FC, useEffect, useState } from "react"
 
-import {
-  getMCFilename,
-  MC as MCInfo,
-  PlayerScore,
-  Setting,
-} from "../../../libs/const"
+import { MC as MCInfo, PlayerScore, Setting } from "../../../libs/const"
 import { Transition } from "../../parts/Transition"
 
 import styles from "./MC.module.scss"
@@ -52,15 +47,6 @@ export const MC: FC<{ setting: Setting; mc: MCInfo }> = ({ setting, mc }) => {
     >
       {filteredMCList.length > 0 && (
         <div className={mcLayoutArray[filteredMCList.length - 1]}>
-          <img
-            src={`/image/mc/${getMCFilename(
-              setting.scoreboard.design.layout,
-              setting.scoreboard.design.color,
-              filteredMCList.length
-            )}`}
-            className={styles.board}
-            alt="背景画像"
-          />
           {filteredMCList.map((mc, idx) => {
             return (
               <>

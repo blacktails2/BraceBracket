@@ -6,17 +6,15 @@
   .mc3,
   .mc4 {
     position: absolute;
-    top: 774px;
-    width: 400px;
+    width: 260px;
     height: 60px;
-    font-size: 30px;
-    line-height: 30px;
-    color: var(--main-color);
-    text-align: center;
-    letter-spacing: 2px;
+    font-size: 24px;
+    line-height: 24px;
+    color: white;
+    text-align: left;
 
     span {
-      margin-left: 10px;
+      margin-left: 6px;
       font-size: inherit;
 
       &:first-child {
@@ -27,10 +25,14 @@
 
   .mc_team {
     @include mediumWeight;
+
+    font-family: "Neue Machina Regular", "IBM Plex Sans JP Text", sans-serif;
   }
 
   .mc_name {
     @include blackWeight;
+
+    font-family: "Neue Machina Semibold", "IBM Plex Sans JP Bold", sans-serif;
   }
 
   .id1,
@@ -42,6 +44,7 @@
     position: absolute;
     top: 835px;
     left: 300px;
+    display: none;
     width: 270px;
     height: 30px;
     font-size: 19px;
@@ -53,7 +56,8 @@
 
   .mc1_layout {
     .mc1 {
-      left: 760px;
+      top: 1008px;
+      left: 1653px;
     }
 
     .id1 {
@@ -63,7 +67,8 @@
 
   .mc2_layout {
     .mc1 {
-      left: 380px;
+      top: 1008px;
+      left: 1653px;
     }
 
     .id1 {
@@ -71,7 +76,8 @@
     }
 
     .mc2 {
-      left: 1140px;
+      top: 1042px;
+      left: 1653px;
     }
 
     .id2 {
@@ -81,7 +87,8 @@
 
   .mc3_layout {
     .mc1 {
-      left: 240px;
+      top: 1008px;
+      left: 1653px;
     }
 
     .id1 {
@@ -89,7 +96,8 @@
     }
 
     .mc2 {
-      left: 760px;
+      top: 1042px;
+      left: 1653px;
     }
 
     .id2 {
@@ -98,6 +106,7 @@
 
     .mc3 {
       left: 1280px;
+      display: none;
     }
 
     .id3 {
@@ -107,7 +116,8 @@
 
   .mc4_layout {
     .mc1 {
-      left: 130px;
+      top: 1008px;
+      left: 1653px;
     }
 
     .id1 {
@@ -115,7 +125,8 @@
     }
 
     .mc2 {
-      left: 550px;
+      top: 1042px;
+      left: 1653px;
     }
 
     .id2 {
@@ -124,6 +135,7 @@
 
     .mc3 {
       left: 970px;
+      display: none;
     }
 
     .id3 {
@@ -132,6 +144,7 @@
 
     .mc4 {
       left: 1390px;
+      display: none;
     }
 
     .id4 {

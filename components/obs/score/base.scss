@@ -60,12 +60,13 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   @include boldWeight;
 
   position: absolute;
-  top: 845px;
-  width: 220px;
+  top: 818px;
+  width: 335px;
   height: 30px;
   margin: 0;
-  font-size: 18px;
-  line-height: 18px;
+  font-family: "Neue Machina Semibold", sans-serif;
+  font-size: 20px;
+  line-height: 20px;
   color: var(--player-color);
   text-align: center;
   letter-spacing: 1px;
@@ -74,13 +75,15 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .cameraLeft {
   @include idText;
 
-  left: 20px;
+  left: 45px;
+  text-align: left;
 }
 
 .cameraRight {
   @include idText;
 
-  right: 20px;
+  right: 45px;
+  text-align: right;
 }
 
 .logo {
