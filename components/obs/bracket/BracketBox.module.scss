@@ -43,7 +43,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 295px;
+  width: 296px;
   height: 85px;
   padding-left: 11px;
 
@@ -63,19 +63,20 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .playerTeam {
   @include mediumWeight;
 
+  font-family: "Neue Machina Regular", "IBM Plex Sans JP Text", sans-serif;
   font-size: 22px;
   line-height: 42px;
-  color: var(--bb-black);
-  letter-spacing: 1px;
+  color: white;
+  letter-spacing: 0;
 }
 
 .playerName {
   @include blackWeight;
 
+  font-family: "Neue Machina Semibold", "IBM Plex Sans JP Bold", sans-serif;
   font-size: 22px;
   line-height: 42px;
-  color: var(--bb-black);
-  letter-spacing: 1px;
+  color: white;
 }
 
 .score {
@@ -83,10 +84,11 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 
   width: 40px;
   margin: 0;
-  font-size: 30px;
+  font-family: "SA Score", sans-serif;
+  font-size: 32px;
   font-variant-numeric: tabular-nums;
   line-height: 42px;
-  color: var(--bb-black);
+  color: black;
   text-align: center;
 }
 
@@ -94,23 +96,23 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .other.losers {
   .player1 span,
   .player2 span {
-    color: var(--bb-white);
+    color: black;
   }
 }
 
 .other.winners {
   .player1 span,
   .player2 span {
-    color: var(--bb-black);
+    color: white;
   }
 }
 
 .other.grand {
   .player1 span {
-    color: var(--bb-black);
+    color: white;
   }
 
   .player2 span {
-    color: var(--bb-white);
+    color: black;
   }
 }
