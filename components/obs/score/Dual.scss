@@ -2,7 +2,7 @@
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
-  @include blackWeight;
+  @include mediumWeight;
 
   position: absolute;
   top: 96px;
@@ -19,27 +19,29 @@
   // スコアの位置指定
   .score {
     @include score;
-    @include blackWeight;
+    @include mediumWeight;
 
-    top: 44px;
+    top: 24px;
     width: 75px;
     font-size: 54px;
+    color: black;
 
     &.p1 {
-      left: 365px;
+      right: calc(50% + 8px);
     }
 
     &.p2 {
-      right: 365px;
+      left: calc(50% + 8px);
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
-    width: 410px;
+    top: 26px;
+    width: 450px;
     height: 50px;
     margin: 0 0 0 10px;
+    font-feature-settings: "palt";
     text-align: center;
 
     span {
@@ -51,28 +53,28 @@
     }
 
     &.p1 {
-      left: 460px;
+      right: calc(50% + 140px);
     }
 
     &.p2 {
-      right: 460px;
+      left: calc(50% + 140px);
     }
 
     .team {
-      @include mediumWeight;
+      @include regularWeight;
 
-      font-size: 25px;
-      line-height: 25px;
+      font-size: 48px;
+      line-height: 48px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
     }
 
     .name {
-      @include blackWeight;
+      @include mediumWeight;
 
-      font-size: 25px;
-      line-height: 25px;
+      font-size: 48px;
+      line-height: 48px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -83,13 +85,19 @@
   .round {
     @include status;
 
-    left: 465px;
+    top: 12px;
+    left: calc(50% - 150px);
+    width: 300px;
+    font-size: 28px;
+    font-style: normal;
+    line-height: 28px;
   }
 
   .matchType {
     @include status;
 
     right: 465px;
+    display: none;
   }
 
   .cameraRight,
