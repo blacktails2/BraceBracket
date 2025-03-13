@@ -72,26 +72,28 @@
     text-align: left;
 
     &.p1 {
-      top: 33px;
+      top: 31px;
     }
 
     &.p2 {
-      top: 133px;
+      top: 131px;
     }
 
     .team {
-      font-family: TPSkyModernStdN-Blk, sans-serif;
-      font-size: 22px;
-      line-height: 22px;
+      font-family: stolzl, "Noto Sans Black", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 24px;
       text-align: center;
       letter-spacing: 1px;
     }
 
     .name {
       margin-left: 1rem;
-      font-family: TPSkyModernStdN-Blk, sans-serif;
-      font-size: 22px;
-      line-height: 22px;
+      font-family: stolzl, "Noto Sans Black", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 24px;
       text-align: center;
       letter-spacing: 1px;
     }
@@ -99,7 +101,7 @@
 
   .p1 {
     .team {
-      color: #00ffc8;
+      color: #ffd700;
     }
 
     .name {
@@ -109,7 +111,7 @@
 
   .p2 {
     .team {
-      color: #8c14ff;
+      color: #4353ff;
     }
 
     .name {

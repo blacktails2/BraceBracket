@@ -16,10 +16,11 @@
   // スコアの位置指定
   .score {
     position: absolute;
-    top: 14px;
+    top: 13px;
     width: 100px;
-    font-family: GTFlexa-Bold, sans-serif;
-    font-size: 80px;
+    font-family: stolzl, sans-serif;
+    font-size: 72px;
+    font-weight: 700;
     color: white;
     text-align: center;
 
@@ -34,7 +35,7 @@
 
   .player {
     position: absolute;
-    top: 74px;
+    top: 72px;
     width: 330px;
     height: 50px;
     margin: 0 0 0 10px;
@@ -57,17 +58,19 @@
     }
 
     .team {
-      font-family: TPSkyModernStdN-Blk, sans-serif;
+      font-family: stolzl, "Noto Sans Black", sans-serif;
       font-size: 28px;
+      font-weight: 700;
       line-height: 28px;
-      color: #8c14ff;
+      color: #4353ff;
       text-align: center;
       letter-spacing: 1px;
     }
 
     .name {
-      font-family: TPSkyModernStdN-Blk, sans-serif;
+      font-family: stolzl, "Noto Sans Black", sans-serif;
       font-size: 28px;
+      font-weight: 700;
       line-height: 28px;
       color: black;
       text-align: center;

@@ -18,26 +18,27 @@
   // スコアの位置指定
   .score {
     position: absolute;
-    top: 13px;
-    width: 100px;
-    font-family: GTFlexa-Bold, sans-serif;
-    font-size: 80px;
+    top: 11px;
+    width: 130px;
+    font-family: stolzl, sans-serif;
+    font-size: 72px;
+    font-weight: 700;
     color: white;
     text-align: center;
 
     &.p1 {
-      left: 460px;
+      left: 430px;
     }
 
     &.p2 {
-      right: 460px;
+      right: 430px;
     }
   }
 
   // プレイヤー名の位置指定
   .player {
     position: absolute;
-    top: 38px;
+    top: 34px;
     width: 330px;
     height: 60px;
     text-align: center;
@@ -52,21 +53,22 @@
 
     .team {
       position: absolute;
-      top: -12px;
+      top: -9px;
       left: 0;
       z-index: -1;
       width: 330px;
-      font-family: GTFlexa-XCompressed-Bold, sans-serif;
+      font-family: "New Title Bold", sans-serif;
       font-size: 56px;
       line-height: 56px;
-      color: #00ffc8;
+      color: #ffd700;
       text-align: center;
     }
 
     .name {
-      font-family: TPSkyModernStdN-Blk, sans-serif;
-      font-size: 28px;
-      line-height: 28px;
+      font-family: stolzl, "Noto Sans Black", sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 30px;
       color: black;
       text-align: center;
       letter-spacing: 1px;
@@ -86,7 +88,7 @@
 
   .box {
     position: absolute;
-    top: 78px;
+    top: 70px;
     left: 460px;
     display: none;
     display: flex;
@@ -102,9 +104,10 @@
     position: absolute;
     z-index: -10;
     width: 100%;
-    font-family: GTFlexa-Extended-Light, sans-serif;
-    font-size: 54px;
-    color: #00ffc8;
+    font-family: stolzl, sans-serif;
+    font-size: 46px;
+    font-weight: 200;
+    color: #ffd700;
     text-align: center;
   }
 

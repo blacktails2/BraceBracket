@@ -4,10 +4,46 @@
 @tailwind utilities;
 @import "/node_modules/bulma/sass/grid/columns.sass";
 @import "/node_modules/bulma/sass/helpers/visibility.sass";
-
+@import url("https://p.typekit.net/p.css?s=1&k=mze3wmm&ht=tk&f=32203.32205.32207&a=1596478&app=typekit&e=css");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Zen+Kaku+Gothic+Antique:wght@400;500;700;900&display=swap");
 
 /* stylelint-enable */
+
+@font-face {
+  font-family: stolzl;
+  font-weight: 200;
+  src: url("https://use.typekit.net/af/20fbd1/00000000000000007753c398/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/20fbd1/00000000000000007753c398/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/20fbd1/00000000000000007753c398/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3")
+      format("opentype");
+  size-adjust: 115%;
+}
+
+@font-face {
+  font-family: stolzl;
+  font-weight: 400;
+  src: url("https://use.typekit.net/af/dd9d69/00000000000000007753c395/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/dd9d69/00000000000000007753c395/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/dd9d69/00000000000000007753c395/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("opentype");
+  size-adjust: 115%;
+}
+
+@font-face {
+  font-family: stolzl;
+  font-weight: 700;
+  src: url("https://use.typekit.net/af/3a58ef/00000000000000007753c399/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/3a58ef/00000000000000007753c399/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/3a58ef/00000000000000007753c399/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("opentype");
+  size-adjust: 115%;
+}
 @font-face {
   font-family: "Mint Grotesk Regular";
   src: url("/fonts/Mint-Grotesk-Regular-V13.woff2");
@@ -27,62 +63,18 @@
   font-family: "Mint Grotesk ExtraBold";
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
+@font-face {
+  font-family: "Noto Sans Black";
+  src: url("/fonts/NotoSansJP-Black.otf");
+}
+@font-face {
+  font-family: "New Title Bold";
+  src: url("/fonts/NewTitle-Bold.otf");
+}
 
-@font-face {
-  font-family: GTFlexa-XCompressed-Bold;
-  src: url("/fonts/GT-Flexa-X-Compressed-Bold.otf");
-}
-@font-face {
-  font-family: GTFlexa-Bold;
-  src: url("/fonts/GT-Flexa-Standard-Bold.otf");
-}
-@font-face {
-  font-family: GTFlexa-Extended-Light;
-  src: url("/fonts/GT-Flexa-Extended-Light.otf");
-}
-@font-face {
-  font-family: TPSkyModernStdN-Blk;
-  src: url("/fonts/TPSkyModernStdN-Blk.otf");
-}
 @font-face {
   font-family: "Mario Maker";
   src: url("/fonts/Super-Mario-Maker.ttf");
-}
-
-@font-face {
-  font-family: "Nitalago Ruika6";
-  src: url("/fonts/NitalagoRuika-06M.TTF");
-}
-@font-face {
-  font-family: "Euclid Flex Bold";
-  src: url("/fonts/EuclidFlex-Bold.otf");
-}
-
-@font-face {
-  font-family: "Clash Display Medium";
-  src: url("/fonts/ClashDisplay-Medium.woff2");
-}
-
-@font-face {
-  font-family: "Clash Display Medium";
-  src: url("/fonts/ClashDisplay-Medium.woff2");
-}
-
-@font-face {
-  font-family: "Clash Display Bold";
-  src: url("/fonts/ClashDisplay-Bold.woff2");
-}
-@font-face {
-  font-family: "Maru Mega Mini";
-  src: url("/fonts/GT-Maru-Mega-Mini.otf");
-}
-@font-face {
-  font-family: "Maru Black";
-  src: url("/fonts/GT-Maru-Black.otf");
-}
-@font-face {
-  font-family: "Maru Mono Bold";
-  src: url("/fonts/GT-Maru-Mono-Bold.otf");
 }
 @font-face {
   font-family: "Haitham Display Thin";
