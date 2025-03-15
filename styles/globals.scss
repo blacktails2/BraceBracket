@@ -28,6 +28,21 @@
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
 
+@font-face {
+  font-family: "Noto Sans Black";
+  src: url("/fonts/NotoSansJP-Black.otf");
+}
+
+@font-face {
+  font-family: "Enfilade Display";
+  src: url("/fonts/EnfiladeDisplay-Regular.woff2");
+}
+@font-face {
+  font-family: "Euclid Triangle Bold";
+  src: url("/fonts/EuclidTriangle-Bold-WebXL.woff2");
+  size-adjust: 110%;
+}
+
 :root {
   --dark-gray: #111;
   --black: #202025;

@@ -20,61 +20,89 @@
     @include score;
     @include blackWeight;
 
-    top: 44px;
-    width: 60px;
-    font-size: 40px;
+    top: -3px;
+    width: 95px;
+    font-family: "Enfilade Display", sans-serif;
+    font-size: 80px;
+    color: black;
+    text-align: center;
+    letter-spacing: 0.05em;
 
     &.p1 {
-      left: 800px;
+      left: 810px;
     }
 
     &.p2 {
-      right: 800px;
+      right: 810px;
+    }
+  }
+
+  .score_people {
+    position: absolute;
+    top: -11px;
+    width: 66px;
+    font-family: "Enfilade Display", sans-serif;
+    font-size: 60px;
+    color: white;
+    text-align: center;
+
+    &.p1 {
+      left: 754px;
+    }
+
+    &.p2 {
+      right: 754px;
     }
   }
 
   // プレイヤー名の位置指定
   .player {
     position: absolute;
-    top: 61px;
-    width: 460px;
-    height: 60px;
-    text-align: center;
-
-    span {
-      margin-left: 10px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
-    &.p1 {
-      left: 320px;
-    }
-
-    &.p2 {
-      right: 320px;
-    }
+    top: 48px;
+    width: 485px;
+    height: 100px;
 
     .team {
       @include mediumWeight;
 
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
-      text-align: center;
-      letter-spacing: 1px;
+      position: absolute;
+      top: -30px;
+      font-family: "Euclid Triangle Bold", "Noto Sans Black", sans-serif;
+      font-size: 21px;
+      font-feature-settings: "palt" 1;
+      line-height: 21px;
+      color: #d61c4e;
+      letter-spacing: 0.1em;
+      transform: skewX(-8deg);
     }
 
     .name {
       @include blackWeight;
 
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
-      text-align: center;
-      letter-spacing: 1px;
+      font-family: "Euclid Triangle Bold", "Noto Sans Black", sans-serif;
+      font-size: 32px;
+      font-feature-settings: "palt" 1;
+      line-height: 32px;
+      color: white;
+      letter-spacing: 0.1em;
+    }
+
+    &.p1 {
+      left: 342px;
+      text-align: left;
+
+      .team {
+        left: 1px;
+      }
+    }
+
+    &.p2 {
+      right: 342px;
+      text-align: right;
+
+      .team {
+        right: 1px;
+      }
     }
   }
 
@@ -94,6 +122,7 @@
     top: 45px;
     left: 65px;
     display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     width: 215px;

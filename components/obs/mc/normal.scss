@@ -6,17 +6,17 @@
   .mc3,
   .mc4 {
     position: absolute;
-    top: 774px;
-    width: 400px;
+    top: 836px;
+    width: 450px;
     height: 60px;
+    font-family: "Euclid Triangle Bold", "Noto Sans Black", sans-serif;
     font-size: 30px;
+    font-feature-settings: "palt" 1;
     line-height: 30px;
-    color: var(--main-color);
-    text-align: center;
-    letter-spacing: 2px;
+    color: white;
+    letter-spacing: 0.1em;
 
     span {
-      margin-left: 10px;
       font-size: inherit;
 
       &:first-child {
@@ -42,6 +42,7 @@
     position: absolute;
     top: 835px;
     left: 300px;
+    display: none;
     width: 270px;
     height: 30px;
     font-size: 19px;
@@ -63,7 +64,18 @@
 
   .mc2_layout {
     .mc1 {
-      left: 380px;
+      left: 332px;
+      text-align: left;
+
+      .mc_team {
+        position: absolute;
+        top: -29px;
+        left: 2px;
+        font-family: "Euclid Triangle Bold", "Noto Sans Black", sans-serif;
+        font-size: 18px;
+        color: #d61c4e;
+        transform: skewX(-8deg);
+      }
     }
 
     .id1 {
@@ -71,7 +83,18 @@
     }
 
     .mc2 {
-      left: 1140px;
+      right: 332px;
+      text-align: right;
+
+      .mc_team {
+        position: absolute;
+        top: -29px;
+        right: 2px;
+        font-family: "Euclid Triangle Bold", "Noto Sans Black", sans-serif;
+        font-size: 18px;
+        color: #d61c4e;
+        transform: skewX(-8deg);
+      }
     }
 
     .id2 {
