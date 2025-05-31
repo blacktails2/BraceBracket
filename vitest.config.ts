@@ -12,6 +12,7 @@ export default defineConfig({
       "libs/**/*.{js,ts}",
       "components/**/*.{tsx,ts}",
       "hooks/**/*.{ts,tsx}",
+      "stories/helper/**/*.{js,ts}",
     ],
     setupFiles: ["./test/setup.ts"],
     coverage: {
