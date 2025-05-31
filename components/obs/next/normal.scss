@@ -2,123 +2,130 @@
 
 .other {
   .nextnow {
-    @include mediumWeight;
-
     position: absolute;
-    top: 880px;
-    left: 40px;
-    width: 220px;
-    height: 80px;
-    font-size: 52px;
-    color: var(--main-color);
+    top: 813px;
+    left: 97px;
+    width: 128px;
+    height: 60px;
+    font-family: "Bebas Kai", Satoshi, "Noto Sans JP", sans-serif;
+    font-size: 80px;
+    line-height: 60px;
+    color: #fff;
     text-align: center;
-    letter-spacing: 0.05em;
   }
 
   .statusBox {
     position: absolute;
-    top: 880px;
-    left: 300px;
+    top: 803px;
+    left: 270px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 340px;
     height: 80px;
+    letter-spacing: 0.1px;
   }
 
   .round,
   .bo {
-    @include blackWeight;
-
     width: 320px;
     margin: 0;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 24px;
-    color: var(--sub-color);
+    font-family: "Bebas Kai", Satoshi, "Noto Sans JP", sans-serif;
+    font-size: 45px;
+    line-height: 41px;
+    color: #fff;
     text-align: left;
-    letter-spacing: 2px;
   }
 
   .score {
-    @include blackWeight;
-
     position: absolute;
-    top: 980px;
+    left: 69px;
     width: 60px;
     margin: 0;
-    font-size: 40px;
-    color: var(--main-color);
+    font-family: "Futura PT Heavy", Satoshi, "Noto Sans JP", sans-serif;
+    font-size: 45px;
+    color: #fff;
     text-align: center;
 
     &.p1 {
-      left: 500px;
+      top: 903px;
     }
 
     &.p2 {
-      left: 580px;
+      top: 980px;
     }
   }
 
   .player {
     position: absolute;
-    top: 996px;
+    left: 145px;
     width: 440px;
-    height: 60px;
+    height: 40px;
     margin: 0;
-    text-align: center;
+    text-align: left;
 
     &.p1 {
-      left: 40px;
+      top: 918px;
     }
 
     &.p2 {
-      left: 660px;
+      top: 996px;
+    }
+
+    span {
+      margin-left: 14px;
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP",
+        sans-serif;
+      font-size: 32px;
+      line-height: 32px;
+      color: #a893ff;
+      text-align: left;
     }
 
     .name {
-      @include blackWeight;
-
-      margin-left: 1rem;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP",
+        sans-serif;
+      font-size: 32px;
+      line-height: 32px;
+      color: #fff;
+      text-align: left;
     }
   }
 
   .localsetting {
-    @include mediumWeight;
-
     position: absolute;
     top: 975px;
     left: 1570px;
+    display: none;
+    font-family: "Futura PT Heavy", Satoshi, "Noto Sans JP", sans-serif;
     font-size: 24px;
+    font-variation-settings: "wght" 500;
+    font-weight: 500;
     line-height: 26px;
-    color: var(--sub-color);
+    color: #fff;
     letter-spacing: 1px;
   }
 
   .localtime {
-    @include blackWeight;
-
     position: absolute;
-    top: 960px;
-    right: 57px;
-    font-size: 52px;
+    top: 813px;
+    left: 1680px;
+    width: 126px;
+    height: 80px;
+    font-family: "Bebas Kai", Satoshi, "Noto Sans JP", sans-serif;
+    font-size: 80px;
+    font-variation-settings: "wght" 900;
+    font-weight: 900;
     font-variant-numeric: tabular-nums;
-    color: var(--sub-color);
-    text-align: right;
+    line-height: 60px;
+    color: #fff;
+    text-align: center;
   }
 }

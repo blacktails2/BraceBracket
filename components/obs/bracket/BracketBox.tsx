@@ -63,7 +63,7 @@ export const BracketBox: FC<{
           </p>
         </Transition>
       </div>
-      <div>
+      <div className={styles.scoreBox}>
         <Transition keyName={`${player1.team}-${player1.score}`}>
           <p className={styles.player1}>
             <span className={styles.score}>{player1.score}</span>

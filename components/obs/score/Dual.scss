@@ -19,31 +19,34 @@
   // スコアの位置指定
   .score {
     @include score;
-    @include blackWeight;
 
-    top: 44px;
-    width: 75px;
-    font-size: 54px;
+    top: 36px;
+    width: 42px;
+    font-family: "Futura PT Heavy", Satoshi, "Noto Sans JP", sans-serif;
+    font-size: 50px;
+    font-variation-settings: "wght" 700;
+    font-weight: 700;
+    color: #a893ff;
+    text-align: center;
 
     &.p1 {
-      left: 365px;
+      left: 906px;
     }
 
     &.p2 {
-      right: 365px;
+      right: 906px;
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
-    width: 410px;
-    height: 50px;
-    margin: 0 0 0 10px;
+    top: 44px;
+    width: 520px;
+    height: 70px;
     text-align: center;
 
     span {
-      margin-left: 10px;
+      margin-left: 14px;
 
       &:first-child {
         margin-left: 0;
@@ -51,45 +54,59 @@
     }
 
     &.p1 {
-      left: 460px;
+      left: 344px;
     }
 
     &.p2 {
-      right: 460px;
+      right: 344px;
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
+      font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP",
+        sans-serif;
+      font-size: 32px;
+      line-height: 32px;
+      color: #a893ff;
       text-align: center;
-      letter-spacing: 1px;
     }
 
     .name {
-      @include blackWeight;
-
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
+      font-family: "C4 ゴシック・ドゥ RE 04", Satoshi, "Noto Sans JP",
+        sans-serif;
+      font-size: 32px;
+      line-height: 32px;
+      color: #fff;
       text-align: center;
-      letter-spacing: 1px;
     }
   }
 
   // 試合ステータスの位置設定
   .round {
-    @include status;
-
-    left: 465px;
+    position: absolute;
+    top: 58px;
+    left: 28px;
+    width: 264px;
+    font-family: "Bebas Kai", Satoshi, "Noto Sans JP", sans-serif;
+    font-size: 30px;
+    font-variation-settings: "wght" 900;
+    font-weight: 900;
+    line-height: 36px;
+    color: #fff;
+    text-align: left;
   }
 
   .matchType {
-    @include status;
-
-    right: 465px;
+    position: absolute;
+    top: 25px;
+    left: 876px;
+    width: 170px;
+    font-family: "Bebas Kai", Satoshi, "Noto Sans JP", sans-serif;
+    font-size: 30px;
+    font-variation-settings: "wght" 900;
+    font-weight: 900;
+    line-height: 30px;
+    color: #fff;
+    text-align: center;
   }
 
   .cameraRight,
@@ -101,7 +118,7 @@
     position: absolute;
     top: 48px;
     left: 870px;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     width: 180px;
@@ -111,6 +128,7 @@
   .tournamentName {
     @include mediumWeight;
 
+    display: none;
     font-size: 17px;
     line-height: 19px;
     color: var(--player-color);
@@ -124,7 +142,7 @@
     position: absolute;
     top: 25px;
     left: 850px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 220px;

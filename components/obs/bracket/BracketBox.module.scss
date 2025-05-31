@@ -43,7 +43,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 295px;
+  width: 303px;
   height: 85px;
   padding-left: 11px;
 
@@ -61,56 +61,44 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .playerTeam {
-  @include mediumWeight;
-
-  font-size: 22px;
+  font-family: "FOT-UD角ゴC80 Pro", Satoshi, "Noto Sans JP", sans-serif;
+  font-size: 24px;
+  font-variation-settings: "wght" 700;
+  font-weight: 700;
   line-height: 42px;
-  color: var(--bb-black);
-  letter-spacing: 1px;
+  color: #7255e7;
 }
 
 .playerName {
-  @include blackWeight;
-
-  font-size: 22px;
+  font-family: "FOT-UD角ゴC80 Pro", Satoshi, "Noto Sans JP", sans-serif;
+  font-size: 24px;
+  font-variation-settings: "wght" 700;
+  font-weight: 700;
   line-height: 42px;
-  color: var(--bb-black);
-  letter-spacing: 1px;
+  color: #000;
+}
+
+.name {
+  .player2 {
+    margin-top: 18px;
+  }
 }
 
 .score {
-  @include boldWeight;
-
   width: 40px;
   margin: 0;
-  font-size: 30px;
+  font-family: "Futura PT Heavy", Satoshi, "Noto Sans JP", sans-serif;
+  font-size: 36px;
+  font-variation-settings: "wght" 700;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
   line-height: 42px;
-  color: var(--bb-black);
+  color: #fff;
   text-align: center;
 }
 
-// 色設定
-.other.losers {
-  .player1 span,
-  .player2 span {
-    color: var(--bb-white);
-  }
-}
-
-.other.winners {
-  .player1 span,
-  .player2 span {
-    color: var(--bb-black);
-  }
-}
-
-.other.grand {
-  .player1 span {
-    color: var(--bb-black);
-  }
-
-  .player2 span {
-    color: var(--bb-white);
+.scoreBox {
+  .player2 {
+    margin-top: 18px;
   }
 }
