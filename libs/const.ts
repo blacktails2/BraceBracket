@@ -76,6 +76,22 @@ export const getBracketFilename: (
   return `brackets.png`
 }
 
+export const getTelopFilename: (
+  layout?: ScoreboardLayout,
+  color?: ScoreboardColor,
+  isBottom?: boolean
+) => string = (layout, color, isBottom) => {
+  const pos = isBottom ? "bottom" : "top"
+  if (!layout || !color) {
+    return `telop_${pos}_dark.png`
+  }
+
+  if (layout === "simple") {
+    return `telop_${pos}_simple_${color}.png`
+  }
+  return `telop_${pos}_${color.startsWith("light") ? "light" : "dark"}.png`
+}
+
 export type Setting = {
   createdAt: number | ReturnType<typeof serverTimestamp>
   name: string
@@ -156,12 +172,22 @@ export type MC = {
   mcList: PlayerScore[]
 }
 
+export type Telop = {
+  createdAt: number | ReturnType<typeof serverTimestamp>
+  text1: string
+  text2: string
+  isBottom: boolean
+  isHide: boolean
+}
+
 export type Tournament = {
   createdAt: number | ReturnType<typeof serverTimestamp>
   setting: Setting
   score: Score
   loadBracket: LoadBracket
   matchIntervalInfo: MatchIntervalInfo
+  mc: MC
+  telop: Telop
 }
 
 export type Bracket = {
