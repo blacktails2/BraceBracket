@@ -133,6 +133,16 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
       <Transition keyName={`${score.p1.playerName}-${score.p1.score}`}>
         <div className={`${styles.score} ${styles.p1}`}>{score.p1.score}</div>
       </Transition>
+      <div
+        className={`${styles.score}`}
+        style={{
+          width: "100px",
+          left: "calc(50% - 50px)",
+          top: "22px",
+        }}
+      >
+        -
+      </div>
       {/*2Pスコア*/}
       <Transition keyName={`${score.p2.playerName}-${score.p2.score}`}>
         <div className={`${styles.score} ${styles.p2}`}>{score.p2.score}</div>
