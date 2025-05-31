@@ -29,6 +29,7 @@ export const defaultValue: Setting = {
 {{p1.team}} {{p1.playerName}} {{p1.twitterID}} vs {{p2.team}} {{p2.playerName}} {{p2.twitterID}}
 （配信プラットフォームのURLなど）`,
   },
+  integrateOBS: false,
 }
 
 export const useSetting = genUseDatabaseValue<Setting>(

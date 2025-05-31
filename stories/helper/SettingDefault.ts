@@ -25,4 +25,5 @@ export const settingDefault: Setting = {
     enabled: false,
     template: "",
   },
+  integrateOBS: false,
 }
