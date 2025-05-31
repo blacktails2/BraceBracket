@@ -1,0 +1,18 @@
+.label {
+  display: block;
+  line-height: 1.5;
+}
+
+.input {
+  width: 100%;
+  padding: 4px;
+  font-family: "Mint Grotesk Regular", sans-serif;
+  border: 1px solid var(--light-primary);
+  border-radius: 5px;
+  transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+
+  &:focus {
+    border: 1px solid var(--bb-beige);
+    outline: none;
+  }
+}
