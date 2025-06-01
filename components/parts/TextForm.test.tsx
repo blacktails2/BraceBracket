@@ -49,7 +49,7 @@ describe("TextForm", () => {
       </TestWrapper>
     )
 
-    expect(screen.queryByRole("label")).not.toBeInTheDocument()
+    expect(screen.queryByText("Test Label")).not.toBeInTheDocument()
   })
 
   it("should apply custom className", () => {
