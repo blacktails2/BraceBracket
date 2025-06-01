@@ -14,8 +14,8 @@ export const DisplayCameraAndTwitterID: FC = () => {
         <h4>カメラ及び選手のTwitter IDを表示する</h4>
         <p>
           プレイヤーカメラ自体はOBSなどで配置する必要があります。配置に関しての設定は
-          <Link href="/usage#create__camera" passHref>
-            <a>こちら</a>
+          <Link href="/usage#create__camera">
+            こちら
           </Link>
         </p>
       </label>

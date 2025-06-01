@@ -33,8 +33,8 @@ const getErrorMessages = (errors: FieldErrors): string[] => {
         return error.message
       }
 
-      if (error && typeof error === "object") {
-        return getErrorMessages(error)
+      if (error && typeof error === "object" && "message" in error) {
+        return getErrorMessages(error as FieldErrors)
       }
 
       return ""
