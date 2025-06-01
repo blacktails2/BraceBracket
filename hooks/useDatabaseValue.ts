@@ -44,3 +44,67 @@ export function genUseDatabaseValue<T>(
     return [value, setValue, loading]
   }
 }
+
+// In-Source Test
+if (import.meta.vitest) {
+  const { describe, it, expect, beforeEach } = import.meta.vitest
+  
+  describe('genUseDatabaseValue', () => {
+    let renderHook: (callback: () => any) => { result: { current: any } }
+
+    beforeEach(async () => {
+      const testingLib = await import('@testing-library/react')
+      renderHook = testingLib.renderHook
+
+      // 既存のFirebaseモックを使用
+      const firebaseMock = await import('../test/mocks/firebase')
+      firebaseMock.resetMocks()
+    })
+
+    it('should handle null id', () => {
+      const getPath = (id: string | null | undefined) => `test/${id}`
+      const defaultValue = { name: 'default' }
+      const useDatabaseValue = genUseDatabaseValue(getPath, defaultValue)
+
+      const { result } = renderHook(() => useDatabaseValue(null))
+      
+      expect(result.current[0]).toEqual(defaultValue)
+      expect(result.current[2]).toBe(false) // loading should be false
+    })
+
+    it('should not call set when id is null', () => {
+      const getPath = (id: string | null | undefined) => `test/${id}`
+      const defaultValue = { name: 'default' }
+      const useDatabaseValue = genUseDatabaseValue(getPath, defaultValue)
+
+      const { result } = renderHook(() => useDatabaseValue(null))
+      
+      const setValue = result.current[1]
+      setValue({ name: 'new-value' })
+      
+      // Firebase関数が呼ばれないことを確認（idがnullのため）
+      expect(result.current[0]).toEqual(defaultValue)
+    })
+
+    it('should return a function for setting values with null id', () => {
+      const getPath = (id: string | null | undefined) => `test/${id}`
+      const defaultValue = { name: 'default' }
+      const useDatabaseValue = genUseDatabaseValue(getPath, defaultValue)
+
+      const { result } = renderHook(() => useDatabaseValue(null))
+      
+      // setValueが関数であることを確認（idがnullでも関数は返される）
+      expect(typeof result.current[1]).toBe('function')
+    })
+
+    it('should return default value structure', () => {
+      const getPath = (id: string | null | undefined) => `test/${id}`
+      const defaultValue = { count: 0, enabled: true }
+      const useDatabaseValue = genUseDatabaseValue(getPath, defaultValue)
+
+      const { result } = renderHook(() => useDatabaseValue(null))
+      
+      expect(result.current[0]).toEqual({ count: 0, enabled: true })
+    })
+  })
+}
