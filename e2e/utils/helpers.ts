@@ -15,12 +15,52 @@ export async function wait(ms: number): Promise<void> {
 }
 
 /**
- * Firebase Realtime Databaseの更新を待つ
+ * 要素のテキスト内容が変更されるのを待つ
+ */
+export async function waitForTextChange(
+  page: Page,
+  selector: string,
+  previousText: string,
+  options?: { timeout?: number }
+): Promise<void> {
+  await page.waitForFunction(
+    ({ selector, previousText }) => {
+      const element = document.querySelector(selector)
+      return element && element.textContent !== previousText
+    },
+    { selector, previousText },
+    { timeout: options?.timeout || 10000 }
+  )
+}
+
+/**
+ * 要素の値が変更されるのを待つ
+ */
+export async function waitForValueChange(
+  page: Page,
+  selector: string,
+  previousValue: string,
+  options?: { timeout?: number }
+): Promise<void> {
+  await page.waitForFunction(
+    ({ selector, previousValue }) => {
+      const element = document.querySelector(selector) as HTMLInputElement
+      return element && element.value !== previousValue
+    },
+    { selector, previousValue },
+    { timeout: options?.timeout || 10000 }
+  )
+}
+
+/**
+ * Firebase Realtime Databaseの更新を待つ（非推奨）
+ * @deprecated 代わりにwaitForTextChangeやwaitForValueChangeを使用してください
  */
 export async function waitForRealtimeUpdate(page: Page): Promise<void> {
-  // Firebase Realtime Databaseの更新を待つための一時的な待機
-  // 将来的には、DOMの変更を監視するなど、よりロバストな方法に置き換えることを推奨
-  await page.waitForTimeout(500)
+  // この関数は後方互換性のために残していますが、
+  // 具体的な要素の変更を待つ新しい関数を使用することを推奨します
+  const waitTime = process.env.CI ? 2000 : 500
+  await page.waitForTimeout(waitTime)
 }
 
 /**

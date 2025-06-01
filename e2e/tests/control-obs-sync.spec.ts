@@ -6,7 +6,6 @@ import { LinksPage } from "../pages/links.page"
 import { MCPage } from "../pages/obs/mc.page"
 import { NextPage } from "../pages/obs/next.page"
 import { ScorePage } from "../pages/obs/score.page"
-import { waitForRealtimeUpdate } from "../utils/helpers"
 
 test.describe("コントロール画面からOBS画面への同期テスト", () => {
   let roomId: string
@@ -46,7 +45,10 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
     await controlPage.setPlayer2Name("TestPlayer2")
     // Submit the form to apply changes
     await controlPageTab.getByTestId("score-submit").click()
-    await waitForRealtimeUpdate(obsPageTab)
+
+    // OBS画面でプレイヤー名が更新されるのを待つ
+    await scorePage.waitForNameUpdate("TestPlayer1", "TestPlayer2")
+
     const p1NameElement = await scorePage.getPlayer1Name()
     expect(p1NameElement).toBe("TestPlayer1")
     const p2NameElement = await scorePage.getPlayer2Name()
@@ -58,7 +60,10 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
     await controlPage.incrementPlayer2Score()
     // Submit the form to apply changes
     await controlPageTab.getByTestId("score-submit").click()
-    await waitForRealtimeUpdate(obsPageTab)
+
+    // スコアが更新されるのを待つ
+    await scorePage.waitForScoreUpdate(1, 2)
+
     const p1Score = await scorePage.getPlayer1Score()
     expect(p1Score).toBe(1)
     const p2Score = await scorePage.getPlayer2Score()
@@ -68,7 +73,10 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
     await controlPage.resetScores()
     // Submit the form to apply changes
     await controlPageTab.getByTestId("score-submit").click()
-    await waitForRealtimeUpdate(obsPageTab)
+
+    // スコアが0にリセットされるのを待つ
+    await scorePage.waitForScoreUpdate(0, 0)
+
     const p1ScoreReset = await scorePage.getPlayer1Score()
     const p2ScoreReset = await scorePage.getPlayer2Score()
     expect(p1ScoreReset).toBe(0)
@@ -78,7 +86,10 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
     await controlPage.swapPlayers()
     // Submit the form to apply changes
     await controlPageTab.getByTestId("score-submit").click()
-    await waitForRealtimeUpdate(obsPageTab)
+
+    // プレイヤーが入れ替わるのを待つ
+    await scorePage.waitForNameUpdate("TestPlayer2", "TestPlayer1")
+
     const p1NameSwapped = await scorePage.getPlayer1Name()
     const p2NameSwapped = await scorePage.getPlayer2Name()
     expect(p1NameSwapped).toBe("TestPlayer2")
@@ -131,7 +142,16 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
 
     // Submit the form to apply all changes
     await controlPageTab.getByRole("button", { name: "適用する" }).click()
-    await waitForRealtimeUpdate(obsPageTab)
+
+    // Wait for the first MC entry to update as an indicator that sync is complete
+    await mcPage.page.waitForFunction(
+      ({ expectedText }) => {
+        const element = document.querySelector('[class*="mc1"]')
+        return element && element.textContent?.includes(expectedText)
+      },
+      { expectedText: testPlayers[0].playerName },
+      { timeout: 10000 }
+    )
 
     // Verify all MC entries
     for (let i = 0; i < testPlayers.length; i++) {
@@ -183,7 +203,9 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
 
     // Submit the form to apply changes
     await controlPageTab.getByRole("button", { name: "適用する" }).click()
-    await waitForRealtimeUpdate(obsPageTab)
+
+    // Wait for next match players to update
+    await nextPage.waitForNextMatchUpdate("NextPlayer1", "NextPlayer2")
 
     // Check if the next match players are displayed correctly
     const nextPlayers = await nextPage.getNextMatchPlayers()
@@ -195,7 +217,10 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
     await controlPageTab.getByText("現在の試合状況を表示する").click()
     // Submit the form to apply checkbox change
     await controlPageTab.getByRole("button", { name: "適用する" }).click()
-    await waitForRealtimeUpdate(obsPageTab)
+
+    // Wait for page content to change (checking for intermission message or any state change)
+    await obsPageTab.waitForTimeout(1000) // Brief wait for DOM update
+    await obsPageTab.waitForLoadState("networkidle")
 
     // Clean up
     await context1.close()
@@ -234,7 +259,10 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
     await controlPage.setPlayer2Name("MultiTestPlayer2")
     // Submit the form to apply changes
     await controlPageTab.getByTestId("score-submit").click()
-    await waitForRealtimeUpdate(scorePageTab)
+
+    // Wait for score page to update
+    await scorePage.waitForNameUpdate("MultiTestPlayer1", "MultiTestPlayer2")
+
     const p1NameMulti = await scorePage.getPlayer1Name()
     const p2NameMulti = await scorePage.getPlayer2Name()
     expect(p1NameMulti).toBe("MultiTestPlayer1")
@@ -248,7 +276,17 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
     )
     // Submit the form to apply changes
     await controlPageTab.getByRole("button", { name: "適用する" }).click()
-    await waitForRealtimeUpdate(mcPageTab)
+
+    // Wait for MC text to update
+    await mcPageTab.waitForFunction(
+      ({ expectedText }) => {
+        const element = document.querySelector('[class*="mc1"]')
+        return element && element.textContent?.includes(expectedText)
+      },
+      { expectedText: "Simultaneous update test" },
+      { timeout: 10000 }
+    )
+
     const mcText = await mcPage.getMCText(1)
     expect(mcText).toContain("Simultaneous update test")
 
@@ -281,7 +319,10 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
     }
     // Submit the form to apply score changes
     await controlPageTab.getByTestId("score-submit").click()
-    await waitForRealtimeUpdate(obsPageTab)
+
+    // Wait for score to update to 5
+    await scorePage.waitForScoreUpdate(5, 0)
+
     const rapidScore = await scorePage.getPlayer1Score()
     expect(rapidScore).toBe(5)
 
@@ -292,7 +333,19 @@ test.describe("コントロール画面からOBS画面への同期テスト", ()
     }
     // Submit the form to apply final name change
     await controlPageTab.getByTestId("score-submit").click()
-    await waitForRealtimeUpdate(obsPageTab)
+
+    // Wait for the final name to appear
+    await obsPageTab.waitForFunction(
+      ({ expectedName }) => {
+        const element = document.querySelector(
+          '[class*="player"][class*="p1"] [class*="name"]'
+        )
+        return element && element.textContent === expectedName
+      },
+      { expectedName: "Eve" },
+      { timeout: 10000 }
+    )
+
     const finalName = await scorePage.getPlayer1Name()
     expect(finalName).toBe("Eve")
 
