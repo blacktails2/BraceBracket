@@ -17,16 +17,16 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: 'package.json'
 
       - name: cache node_modules
         id: node_modules_cache_id
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             node_modules
@@ -36,7 +36,7 @@ jobs:
         run: yarn --check-files --frozen-lockfile --non-interactive
 
       - name: Restore next build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: restore-build-cache
         env:
           cache-name: cache-next-build
@@ -63,12 +63,13 @@ jobs:
           path: .next/analyze/__bundle_analysis.json
 
       - name: Download base branch bundle stats
-        uses: dawidd6/action-download-artifact@v3
+        uses: dawidd6/action-download-artifact@v6
         if: success() && github.event.number
         with:
           workflow: nextjs_bundle_analysis.yml
           branch: ${{ github.event.pull_request.base.ref }}
           path: .next/analyze/base
+          if_no_artifact_found: ignore
 
       # And here's the second place - this runs after we have both the current and
       # base branch bundle stats, and will compare them to determine what changed.
@@ -85,7 +86,15 @@ jobs:
       # entry in your package.json file.
       - name: Compare with base branch bundle
         if: success() && github.event.number
-        run: ls -laR .next/analyze/base && npx -p nextjs-bundle-analysis compare
+        run: |
+          if [ -d ".next/analyze/base" ] && [ "$(ls -A .next/analyze/base)" ]; then
+            ls -laR .next/analyze/base && npx -p nextjs-bundle-analysis compare
+          else
+            echo "No base bundle found for comparison, skipping comparison"
+            echo "<!-- __NEXTJS_BUNDLE -->" > .next/analyze/__bundle_analysis_comment.txt
+            echo "## Bundle Analysis" >> .next/analyze/__bundle_analysis_comment.txt
+            echo "No previous bundle found for comparison." >> .next/analyze/__bundle_analysis_comment.txt
+          fi
 
       - name: Get comment body
         id: get-comment-body
@@ -95,10 +104,10 @@ jobs:
           body="${body//'%'/'%25'}"
           body="${body//$'\n'/'%0A'}"
           body="${body//$'\r'/'%0D'}"
-          echo ::set-output name=body::$body
+          echo "body=$body" >> $GITHUB_OUTPUT
 
       - name: Find Comment
-        uses: peter-evans/find-comment@v1
+        uses: peter-evans/find-comment@v3
         if: success() && github.event.number
         id: fc
         with:
@@ -106,14 +115,14 @@ jobs:
           body-includes: '<!-- __NEXTJS_BUNDLE -->'
 
       - name: Create Comment
-        uses: peter-evans/create-or-update-comment@v1.4.4
+        uses: peter-evans/create-or-update-comment@v4
         if: success() && github.event.number && steps.fc.outputs.comment-id == 0
         with:
           issue-number: ${{ github.event.number }}
           body: ${{ steps.get-comment-body.outputs.body }}
 
       - name: Update Comment
-        uses: peter-evans/create-or-update-comment@v1.4.4
+        uses: peter-evans/create-or-update-comment@v4
         if: success() && github.event.number && steps.fc.outputs.comment-id != 0
         with:
           issue-number: ${{ github.event.number }}
