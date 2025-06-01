@@ -1,9 +1,9 @@
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { FormProvider, useForm } from 'react-hook-form'
+import { render, screen } from "@testing-library/react"
+import { userEvent } from "@testing-library/user-event"
+import { FormProvider, useForm } from "react-hook-form"
+import { describe, it, expect, vi } from "vitest"
 
-import { TextForm } from './TextForm'
+import { TextForm } from "./TextForm"
 
 interface TestWrapperProps {
   children: React.ReactNode
@@ -15,149 +15,169 @@ const TestWrapper = ({ children, defaultValues = {} }: TestWrapperProps) => {
   return <FormProvider {...methods}>{children}</FormProvider>
 }
 
-describe('TextForm', () => {
-  it('should render with required props', () => {
+describe("TextForm", () => {
+  it("should render with required props", () => {
     render(
       <TestWrapper>
         <TextForm name="test" placeholder="Enter text" />
       </TestWrapper>
     )
-    
-    const input = screen.getByRole('textbox')
+
+    const input = screen.getByRole("textbox")
     expect(input).toBeInTheDocument()
-    expect(input).toHaveAttribute('type', 'text')
-    expect(input).toHaveAttribute('id', 'test')
-    expect(input).toHaveAttribute('placeholder', 'Enter text')
+    expect(input).toHaveAttribute("type", "text")
+    expect(input).toHaveAttribute("id", "test")
+    expect(input).toHaveAttribute("placeholder", "Enter text")
   })
 
-  it('should render label when provided', () => {
+  it("should render label when provided", () => {
     render(
       <TestWrapper>
         <TextForm name="test" placeholder="Enter text" label="Test Label" />
       </TestWrapper>
     )
-    
-    const label = screen.getByText('Test Label')
+
+    const label = screen.getByText("Test Label")
     expect(label).toBeInTheDocument()
-    expect(label).toHaveAttribute('for', 'test')
+    expect(label).toHaveAttribute("for", "test")
   })
 
-  it('should not render label when not provided', () => {
+  it("should not render label when not provided", () => {
     render(
       <TestWrapper>
         <TextForm name="test" placeholder="Enter text" />
       </TestWrapper>
     )
-    
-    expect(screen.queryByRole('label')).not.toBeInTheDocument()
+
+    expect(screen.queryByText("Test Label")).not.toBeInTheDocument()
   })
 
-  it('should apply custom className', () => {
+  it("should apply custom className", () => {
     render(
       <TestWrapper>
-        <TextForm name="test" placeholder="Enter text" className="bg-yellow-500" />
+        <TextForm
+          name="test"
+          placeholder="Enter text"
+          className="bg-yellow-500"
+        />
       </TestWrapper>
     )
-    
-    const container = screen.getByRole('textbox').parentElement
-    expect(container).toHaveClass('bg-yellow-500')
+
+    const container = screen.getByRole("textbox").parentElement
+    expect(container).toHaveClass("bg-yellow-500")
   })
 
-  it('should handle disabled state', () => {
+  it("should handle disabled state", () => {
     render(
       <TestWrapper>
         <TextForm name="test" placeholder="Enter text" disabled />
       </TestWrapper>
     )
-    
-    const input = screen.getByRole('textbox')
+
+    const input = screen.getByRole("textbox")
     expect(input).toBeDisabled()
   })
 
-  it('should handle autocomplete settings', () => {
+  it("should handle autocomplete settings", () => {
     render(
       <TestWrapper>
-        <TextForm name="test" placeholder="Enter text" autocomplete="username" />
+        <TextForm
+          name="test"
+          placeholder="Enter text"
+          autocomplete="username"
+        />
       </TestWrapper>
     )
-    
-    const input = screen.getByRole('combobox')
-    expect(input).toHaveAttribute('autocomplete', 'on')
-    expect(input).toHaveAttribute('list', 'username')
+
+    const input = screen.getByRole("combobox")
+    expect(input).toHaveAttribute("autocomplete", "on")
+    expect(input).toHaveAttribute("list", "username")
   })
 
-  it('should disable autocomplete when not provided', () => {
+  it("should disable autocomplete when not provided", () => {
     render(
       <TestWrapper>
         <TextForm name="test" placeholder="Enter text" />
       </TestWrapper>
     )
-    
-    const input = screen.getByRole('textbox')
-    expect(input).toHaveAttribute('autocomplete', 'off')
+
+    const input = screen.getByRole("textbox")
+    expect(input).toHaveAttribute("autocomplete", "off")
   })
 
-  it('should apply dirty style when value differs from cleanValue', () => {
+  it("should apply dirty style when value differs from cleanValue", () => {
     render(
-      <TestWrapper defaultValues={{ test: 'current value' }}>
-        <TextForm name="test" placeholder="Enter text" cleanValue="clean value" />
+      <TestWrapper defaultValues={{ test: "current value" }}>
+        <TextForm
+          name="test"
+          placeholder="Enter text"
+          cleanValue="clean value"
+        />
       </TestWrapper>
     )
-    
-    const input = screen.getByRole('textbox')
-    expect(input).toHaveStyle({ backgroundColor: 'var(--bb-dirty)' })
+
+    const input = screen.getByRole("textbox")
+    expect(input).toHaveStyle({ backgroundColor: "var(--bb-dirty)" })
   })
 
-  it('should not apply dirty style when value equals cleanValue', () => {
+  it("should not apply dirty style when value equals cleanValue", () => {
     render(
-      <TestWrapper defaultValues={{ test: 'same value' }}>
-        <TextForm name="test" placeholder="Enter text" cleanValue="same value" />
+      <TestWrapper defaultValues={{ test: "same value" }}>
+        <TextForm
+          name="test"
+          placeholder="Enter text"
+          cleanValue="same value"
+        />
       </TestWrapper>
     )
-    
-    const input = screen.getByRole('textbox')
-    expect(input).not.toHaveStyle({ backgroundColor: 'var(--bb-dirty)' })
+
+    const input = screen.getByRole("textbox")
+    expect(input).not.toHaveStyle({ backgroundColor: "var(--bb-dirty)" })
   })
 
-  it('should not apply dirty style when cleanValue is undefined', () => {
+  it("should not apply dirty style when cleanValue is undefined", () => {
     render(
-      <TestWrapper defaultValues={{ test: 'some value' }}>
+      <TestWrapper defaultValues={{ test: "some value" }}>
         <TextForm name="test" placeholder="Enter text" />
       </TestWrapper>
     )
-    
-    const input = screen.getByRole('textbox')
-    expect(input).not.toHaveStyle({ backgroundColor: 'var(--bb-dirty)' })
+
+    const input = screen.getByRole("textbox")
+    expect(input).not.toHaveStyle({ backgroundColor: "var(--bb-dirty)" })
   })
 
-  it('should call onChange callback when provided', async () => {
+  it("should call onChange callback when provided", async () => {
     const user = userEvent.setup()
     const mockOnChange = vi.fn()
-    
+
     render(
       <TestWrapper>
-        <TextForm name="test" placeholder="Enter text" onChange={mockOnChange} />
+        <TextForm
+          name="test"
+          placeholder="Enter text"
+          onChange={mockOnChange}
+        />
       </TestWrapper>
     )
-    
-    const input = screen.getByRole('textbox')
-    await user.type(input, 'hello')
-    
+
+    const input = screen.getByRole("textbox")
+    await user.type(input, "hello")
+
     expect(mockOnChange).toHaveBeenCalled()
   })
 
-  it('should handle user input correctly', async () => {
+  it("should handle user input correctly", async () => {
     const user = userEvent.setup()
-    
+
     render(
       <TestWrapper>
         <TextForm name="test" placeholder="Enter text" />
       </TestWrapper>
     )
-    
-    const input = screen.getByRole('textbox')
-    await user.type(input, 'test input')
-    
-    expect(input).toHaveValue('test input')
+
+    const input = screen.getByRole("textbox")
+    await user.type(input, "test input")
+
+    expect(input).toHaveValue("test input")
   })
 })
