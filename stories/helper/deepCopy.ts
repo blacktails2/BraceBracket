@@ -48,6 +48,10 @@ if (import.meta.vitest) {
       expect(deepCopy(null)).toBe(null)
     })
 
+    // Note: deepCopy does not handle undefined correctly due to JSON.stringify behavior
+    // JSON.stringify(undefined) returns undefined, not "undefined"
+    // This is a known limitation of the JSON-based deep copy approach
+
     it("should handle complex mixed data structures", () => {
       const original = {
         name: "test",
