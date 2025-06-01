@@ -1,0 +1,42 @@
+yarn run v1.22.22
+$ next dev
+   ▲ Next.js 15.3.3
+   - Local:        http://localhost:3000
+   - Network:      http://127.0.2.2:3000
+   - Experiments (use with caution):
+     ⨯ reactCompiler
+
+ ✓ Starting...
+ ✓ Ready in 1379ms
+ ✓ Compiled / in 312ms (419 modules)
+ GET / 200 in 819ms
+ GET / 200 in 423ms
+ ○ Compiling /create ...
+ ✓ Compiled /create in 1493ms (597 modules)
+ GET /create/ 200 in 2251ms
+ GET /create/ 200 in 1569ms
+ GET /create/ 200 in 686ms
+ GET /create/ 200 in 1573ms
+ GET /create/ 200 in 2265ms
+ GET /create/ 200 in 420ms
+ GET /create/ 200 in 415ms
+Browserslist: caniuse-lite is outdated. Please run:
+  npx browserslist@latest --update-db
+  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+ ✓ Compiled in 1473ms (588 modules)
+ GET /create/ 200 in 475ms
+ ✓ Compiled / in 82ms (597 modules)
+ GET / 200 in 521ms
+ GET / 200 in 423ms
+ GET /create/ 200 in 434ms
+ GET /create/ 200 in 434ms
+ GET /create/ 200 in 426ms
+ GET /create/ 200 in 426ms
+ GET /create/ 200 in 428ms
+ GET / 200 in 415ms
+ GET / 200 in 415ms
+ GET /create/ 200 in 432ms
+ GET /create/ 200 in 416ms
+ GET /create/ 200 in 417ms
+ GET /create/ 200 in 415ms
+ GET /create/ 200 in 418ms
