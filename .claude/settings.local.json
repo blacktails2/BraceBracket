@@ -4,6 +4,8 @@
       "Bash(gh pr view:*)",
       "Bash(npm test:*)",
       "Bash(git stash:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
       "Bash(touch:*)",
       "Bash(yarn playwright test:*)",
       "Bash(npx playwright test:*)",
@@ -12,7 +14,10 @@
       "Bash(npx tsc:*)",
       "Bash(npm outdated)",
       "Bash(npm run lint)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(yarn upgrade:*)",
+      "Bash(yarn add:*)",
+      "Bash(yarn remove:*)"
     ],
     "deny": []
   }
