@@ -135,7 +135,7 @@ const getRoundText = (set: any): string => {
     if (fullRoundText.startsWith("Winners")) {
       return `Winners Top${(set.lPlacement - 1) * 2}`
     } else if (fullRoundText.startsWith("Losers")) {
-      return `Losers Top${(set.wPlacement - 1) * 2}`
+      return `Losers Top${set.lPlacement - 1}`
     }
   }
 
