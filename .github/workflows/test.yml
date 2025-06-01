@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version-file: 'package.json'
       - run: yarn install
       - run: yarn test:unit
       - run: yarn test:coverage
@@ -24,11 +24,11 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version-file: 'package.json'
       - run: yarn install
       - run: npx playwright install --with-deps
       - run: yarn test:e2e
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
