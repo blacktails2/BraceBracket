@@ -27,7 +27,7 @@ export default defineConfig({
     },
   },
   define: {
-    "import.meta.vitest": "undefined",
+    "import.meta.vitest": undefined,
   },
   resolve: {
     alias: {
