@@ -32,6 +32,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
             <TextboxWithCopy
               text={`${origin}/control/?id=${id}`}
               className="mb-[10px] min-w-[50px] max-w-[400px]"
+              data-testid="control-url"
             />
           </div>
           <div className="mb-[3rem]">
@@ -91,6 +92,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
               <TextboxWithCopy
                 text={`${origin}/obs/score/?id=${id}`}
                 className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
+                data-testid="score-url"
               />
             </div>
             <div className="w-full max-w-[345px]">
@@ -102,6 +104,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
               <TextboxWithCopy
                 text={`${origin}/obs/next/?id=${id}`}
                 className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
+                data-testid="next-url"
               />
             </div>
           </div>
@@ -115,6 +118,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
               <TextboxWithCopy
                 text={`${origin}/obs/mc/?id=${id}`}
                 className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
+                data-testid="mc-url"
               />
             </div>
             <div className="w-full max-w-[345px]">
@@ -126,6 +130,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
               <TextboxWithCopy
                 text={`${origin}/obs/bracket/?id=${id}`}
                 className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
+                data-testid="bracket-url"
               />
             </div>
           </div>
