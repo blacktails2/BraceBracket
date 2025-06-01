@@ -109,6 +109,6 @@
     "showDetails": true
   },
   "engines": {
-    "node": "22.x"
+    "node": ">=22.1.0"
   }
 }
