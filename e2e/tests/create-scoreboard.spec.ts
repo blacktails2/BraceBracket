@@ -18,18 +18,23 @@ test.describe("スコアボード作成フロー", () => {
     // React 19の互換性問題で一時的にtext contentを使用（最初のボタンをクリック）
     await page.locator('button:has-text("スコアボードを作成")').first().click()
 
-    // URLが生成されることを確認
-    await expect(page.getByTestId("score-url")).toHaveValue(
-      /\/obs\/score\/\?id=/
-    )
-    await expect(page.getByTestId("control-url")).toHaveValue(
+    // URLが生成されることを確認 (data-testidがReact 19で動作しないため代替方法を使用)
+    // コントロールURL（最初のTextboxWithCopy）
+    await expect(page.locator('input[readonly]').first()).toHaveValue(
       /\/control\/\?id=/
     )
-    await expect(page.getByTestId("mc-url")).toHaveValue(/\/obs\/mc\/\?id=/)
-    await expect(page.getByTestId("bracket-url")).toHaveValue(
+    // スコアURL（2番目のTextboxWithCopy）
+    await expect(page.locator('input[readonly]').nth(1)).toHaveValue(
+      /\/obs\/score\/\?id=/
+    )
+    // NextURL（3番目のTextboxWithCopy）
+    await expect(page.locator('input[readonly]').nth(2)).toHaveValue(/\/obs\/next\/\?id=/)
+    // MCURL（4番目のTextboxWithCopy）
+    await expect(page.locator('input[readonly]').nth(3)).toHaveValue(/\/obs\/mc\/\?id=/)
+    // BracketURL（5番目のTextboxWithCopy）
+    await expect(page.locator('input[readonly]').nth(4)).toHaveValue(
       /\/obs\/bracket\/\?id=/
     )
-    await expect(page.getByTestId("next-url")).toHaveValue(/\/obs\/next\/\?id=/)
   })
 
   test.skip("カスタムカラーを設定できる", async ({ page }) => {

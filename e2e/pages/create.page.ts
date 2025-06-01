@@ -83,7 +83,7 @@ export class CreatePage extends BasePage {
 
   // URL生成
   async generateURL() {
-    await this.page.getByTestId("create-submit-button").click()
+    await this.page.locator('button:has-text("スコアボードを作成")').first().click()
   }
 
   // プレビュー確認

@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import { Scoreboard } from "../components/obs/score/Scoreboard"
 
@@ -6,7 +6,7 @@ import deepCopy from "./helper/deepCopy"
 import { scoreDefault } from "./helper/ScoreDefault"
 import { settingDefault } from "./helper/SettingDefault"
 
-export default {
+const meta: Meta<typeof Scoreboard> = {
   title: "OBS/Score",
   component: Scoreboard,
   parameters: {
@@ -23,9 +23,6 @@ export default {
       defaultViewport: "Screen",
     },
   },
-  chromatic: {
-    delay: 1000,
-  },
   decorators: [
     (Story) => (
       <div style={{ width: "1920px", height: "1080px", position: "relative" }}>
@@ -33,16 +30,16 @@ export default {
       </div>
     ),
   ],
-} as ComponentMeta<typeof Scoreboard>
+}
 
-const Template: ComponentStory<typeof Scoreboard> = (args) => (
-  <Scoreboard {...args} />
-)
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const DualDarkColor = Template.bind({})
-DualDarkColor.args = {
-  score: deepCopy(scoreDefault),
-  setting: deepCopy(settingDefault),
+export const DualDarkColor: Story = {
+  args: {
+    score: deepCopy(scoreDefault),
+    setting: deepCopy(settingDefault),
+  },
 }
 
 export const DualDarkMono = Template.bind({})

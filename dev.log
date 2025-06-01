@@ -74,3 +74,293 @@ Browserslist: caniuse-lite is outdated. Please run:
  ⨯ The requested resource isn't a valid image for /image/create/samples/layout/undefined/undefined_undefined.png received text/html; charset=utf-8
  GET /image/create/samples/mc/MC_dark_color.png 404 in 421ms
  ⨯ The requested resource isn't a valid image for /image/create/samples/mc/MC_dark_color.png received text/html; charset=utf-8
+ ✓ Compiled in 947ms (604 modules)
+ ⨯ ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[9].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[9].use[3]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[9].use[4]!./components/layouts/DefaultLayout.module.scss
+Error: ENOENT: no such file or directory, open '/Users/to-hutohu/workspace/BraceBracket/node_modules/tailwindcss/lib/css/preflight.css'
+Import trace for requested module:
+./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[9].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[9].use[3]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[9].use[4]!./components/layouts/DefaultLayout.module.scss
+./components/layouts/DefaultLayout.module.scss
+./components/layouts/DefaultLayout.tsx
+ ✓ Compiled in 2.3s (604 modules)
+ ⨯ ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[2]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[14].use[3]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[14].use[4]!./styles/globals.scss
+Error: ENOENT: no such file or directory, open '/Users/to-hutohu/workspace/BraceBracket/node_modules/tailwindcss/lib/css/preflight.css'
+Import trace for requested module:
+./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[2]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[14].use[3]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[14].use[4]!./styles/globals.scss
+./styles/globals.scss
+ ⨯ ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[2]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[14].use[3]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[14].use[4]!./styles/globals.scss
+Error: ENOENT: no such file or directory, open '/Users/to-hutohu/workspace/BraceBracket/node_modules/tailwindcss/lib/css/preflight.css'
+Import trace for requested module:
+./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[2]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[14].use[3]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[14].use[4]!./styles/globals.scss
+./styles/globals.scss
+ ⨯ ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[2]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[14].use[3]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[14].use[4]!./styles/globals.scss
+Error: ENOENT: no such file or directory, open '/Users/to-hutohu/workspace/BraceBracket/node_modules/tailwindcss/lib/css/preflight.css'
+Import trace for requested module:
+./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[2]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[14].use[3]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[14].use[4]!./styles/globals.scss
+./styles/globals.scss
+ ⨯ ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[2]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[14].use[3]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[14].use[4]!./styles/globals.scss
+Error: ENOENT: no such file or directory, open '/Users/to-hutohu/workspace/BraceBracket/node_modules/tailwindcss/lib/css/preflight.css'
+Import trace for requested module:
+./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[1]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[14].use[2]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[14].use[3]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[14].use[4]!./styles/globals.scss
+./styles/globals.scss
+ ○ Compiling / ...
+ ✓ Compiled / in 1039ms (613 modules)
+ ⨯ Error: Cannot find module './chunks/vendor-chunks/next.js'
+Require stack:
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/webpack-runtime.js
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/pages/_document.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/require.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/load-components.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/utils.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/options.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/index.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-server.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/start-server.js
+    at o.f.require (.next/server/webpack-runtime.js:1:1888)
+    at <unknown> (.next/server/webpack-runtime.js:1:1361)
+    at Array.reduce (<anonymous>)
+    at o.e (.next/server/webpack-runtime.js:1:1340)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ✓ Compiled /_error in 147ms (663 modules)
+ GET / 500 in 1305ms
+ ⨯ Error: Cannot find module './chunks/vendor-chunks/next.js'
+Require stack:
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/webpack-runtime.js
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/pages/_document.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/require.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/load-components.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/utils.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/options.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/index.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-server.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/start-server.js
+    at o.f.require (.next/server/webpack-runtime.js:1:1888)
+    at <unknown> (.next/server/webpack-runtime.js:1:1361)
+    at Array.reduce (<anonymous>)
+    at o.e (.next/server/webpack-runtime.js:1:1340)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 8ms
+ ⨯ Error: Cannot find module './chunks/vendor-chunks/next.js'
+Require stack:
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/webpack-runtime.js
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/pages/_document.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/require.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/load-components.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/utils.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/options.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/index.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-server.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/start-server.js
+    at o.f.require (.next/server/webpack-runtime.js:1:1888)
+    at <unknown> (.next/server/webpack-runtime.js:1:1361)
+    at Array.reduce (<anonymous>)
+    at o.e (.next/server/webpack-runtime.js:1:1340)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 13ms
+ ⨯ Error: Cannot find module './chunks/vendor-chunks/next.js'
+Require stack:
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/webpack-runtime.js
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/pages/_document.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/require.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/load-components.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/utils.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/options.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/index.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-server.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/start-server.js
+    at o.f.require (.next/server/webpack-runtime.js:1:1888)
+    at <unknown> (.next/server/webpack-runtime.js:1:1361)
+    at Array.reduce (<anonymous>)
+    at o.e (.next/server/webpack-runtime.js:1:1340)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 8ms
+ ⨯ Error: Cannot find module './chunks/vendor-chunks/next.js'
+Require stack:
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/webpack-runtime.js
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/pages/_document.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/require.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/load-components.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/utils.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/options.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/index.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-server.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/start-server.js
+    at o.f.require (.next/server/webpack-runtime.js:1:1888)
+    at <unknown> (.next/server/webpack-runtime.js:1:1361)
+    at Array.reduce (<anonymous>)
+    at o.e (.next/server/webpack-runtime.js:1:1340)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 10ms
+ ⨯ Error: Cannot find module './chunks/vendor-chunks/next.js'
+Require stack:
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/webpack-runtime.js
+- /Users/to-hutohu/workspace/BraceBracket/.next/server/pages/_document.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/require.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/load-components.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/utils.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/options.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/swc/index.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/router-server.js
+- /Users/to-hutohu/workspace/BraceBracket/node_modules/next/dist/server/lib/start-server.js
+    at o.f.require (.next/server/webpack-runtime.js:1:1888)
+    at <unknown> (.next/server/webpack-runtime.js:1:1361)
+    at Array.reduce (<anonymous>)
+    at o.e (.next/server/webpack-runtime.js:1:1340)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 8ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 6ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 6ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 6ms
+ GET / 404 in 6ms
+ GET / 404 in 3ms
+ GET / 404 in 6ms
+ GET / 404 in 4ms
+ GET / 404 in 6ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 8ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 6ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 2ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 2ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 9ms
+ GET / 404 in 6ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 5ms
+ GET / 404 in 3ms
+ GET / 404 in 5ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+ GET / 404 in 4ms
+ GET / 404 in 4ms
+ GET / 404 in 3ms
+Done in 2783.39s.
