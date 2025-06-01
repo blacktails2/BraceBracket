@@ -151,7 +151,7 @@ if (import.meta.vitest) {
       expect(result).toBe("")
     })
 
-    it("should return empty string for short URL", () => {
+    it("should return 'tournament/' for short URL", () => {
       const url = "https://www.start.gg/tournament/"
       const result = getTournarySlug(url)
       expect(result).toBe("tournament/")
