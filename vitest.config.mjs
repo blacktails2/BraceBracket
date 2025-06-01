@@ -17,6 +17,13 @@ export default defineConfig({
       "hooks/**/*.{ts,tsx}",
       "stories/helper/**/*.{js,ts}",
     ],
+    exclude: [
+      "node_modules/**",
+      ".next/**",
+      "e2e/**",
+      "playwright-report/**",
+      "test-results/**",
+    ],
     setupFiles: ["./test/setup.ts"],
     coverage: {
       reporter: ["text", "json", "html"],
@@ -27,6 +34,7 @@ export default defineConfig({
         "**/*.config.*",
         "**/*.stories.*",
         ".next/",
+        "e2e/**",
       ],
     },
   },
