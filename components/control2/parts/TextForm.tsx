@@ -12,6 +12,7 @@ export const TextForm: FC<{
   disabled?: boolean
   cleanValue?: string
   onChange?: () => void
+  "data-testid"?: string
 }> = ({
   label,
   name,
@@ -21,6 +22,7 @@ export const TextForm: FC<{
   disabled,
   cleanValue,
   onChange,
+  "data-testid": dataTestId,
 }) => {
   const { register, watch, getValues } = useFormContext()
   if (cleanValue !== undefined) {
@@ -42,6 +44,7 @@ export const TextForm: FC<{
         autoComplete={autocomplete ? "on" : "off"}
         list={autocomplete}
         disabled={disabled}
+        data-testid={dataTestId || `textform-${name}`}
         style={
           cleanValue !== undefined && getValues(name) !== cleanValue
             ? { backgroundColor: "var(--bb-dirty)" }
