@@ -29,7 +29,11 @@ jobs:
       - run: yarn install
       - run: npx playwright install --with-deps
       - run: yarn build
-      - run: yarn test:e2e
+      - name: Run E2E tests
+        run: yarn test:e2e
+        env:
+          CI: true
+          NODE_ENV: production
       - uses: actions/upload-artifact@v4
         if: always()
         with:
