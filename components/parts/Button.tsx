@@ -13,6 +13,7 @@ export const Button: FC<{
   tooltipText?: string
   showTooltip?: boolean
   full?: boolean
+  "data-testid"?: string
 }> = ({
   children,
   onClick,
@@ -23,6 +24,7 @@ export const Button: FC<{
   tooltipText,
   showTooltip,
   full,
+  "data-testid": dataTestId,
 }) => {
   const tooltipNodeRef = useRef(null)
   const modes = {
@@ -40,6 +42,7 @@ export const Button: FC<{
           onClick={onClick}
           type={type}
           style={full ? { width: "100%" } : {}}
+          data-testid={dataTestId}
         >
           {children}
         </button>
