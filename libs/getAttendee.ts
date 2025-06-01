@@ -57,13 +57,15 @@ export const getAttendee = async (url?: string): Promise<Attendee> => {
     }
 
     totalPages = res?.data?.event?.entrants?.pageInfo?.totalPages
-    const attendee = res?.data?.event?.entrants?.nodes?.map((entrant: any) => {
-      const { team, name } = getNameAndTeamtag(entrant?.name ?? "")
-      return {
-        team,
-        playerName: name,
+    const attendee = res?.data?.event?.entrants?.nodes?.map(
+      (entrant: { name?: string }) => {
+        const { team, name } = getNameAndTeamtag(entrant?.name ?? "")
+        return {
+          team,
+          playerName: name,
+        }
       }
-    })
+    )
     totalAttendee = [...totalAttendee, ...attendee]
   }
   if (!totalAttendee) {
