@@ -1,7 +1,14 @@
+// eslint-disable-next-line import/no-unresolved
 import "@testing-library/jest-dom"
 import { vi } from "vitest"
 
 // Mock Firebase for testing
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mockRef: any = {
+  child: vi.fn(),
+}
+mockRef.child.mockReturnValue(mockRef)
+
 const mockDatabase = {
   ref: vi.fn(() => mockRef),
   get: vi.fn(() => Promise.resolve(mockSnapshot)),
@@ -12,10 +19,6 @@ const mockDatabase = {
     return () => {} // unsubscribe function
   }),
   off: vi.fn(),
-}
-
-const mockRef = {
-  child: vi.fn(() => mockRef),
 }
 
 const mockSnapshot = {

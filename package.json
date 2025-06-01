@@ -94,7 +94,7 @@
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.2.0",
     "tailwindcss": "^0.0.0-insiders.50024e4",
-    "typescript": "4.6.4",
+    "typescript": "^4.9.5",
     "vitest": "^3.1.4"
   },
   "nextBundleAnalysis": {
