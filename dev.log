@@ -40,3 +40,37 @@ Browserslist: caniuse-lite is outdated. Please run:
  GET /create/ 200 in 417ms
  GET /create/ 200 in 415ms
  GET /create/ 200 in 418ms
+ GET /create/ 200 in 415ms
+ ✓ Compiled in 679ms (588 modules)
+ ✓ Compiled in 625ms (588 modules)
+ GET /create/ 200 in 474ms
+ ✓ Compiled / in 69ms (597 modules)
+ GET / 200 in 538ms
+ GET / 200 in 421ms
+ GET /create/ 200 in 474ms
+ GET /create/ 200 in 474ms
+ GET /create/ 200 in 416ms
+ GET /create/ 200 in 417ms
+ GET /create/ 200 in 486ms
+ GET / 200 in 417ms
+ GET / 200 in 422ms
+ GET /create/ 200 in 454ms
+ GET /create/ 200 in 454ms
+ GET /create/ 200 in 415ms
+ GET /create/ 200 in 416ms
+ ○ Compiling /links ...
+ GET /create/ 200 in 709ms
+ ✓ Compiled /links in 1130ms (613 modules)
+ ✓ Compiled /_error in 214ms (663 modules)
+ GET /image/create/samples/layout/undefined/undefined_undefined.png 404 in 689ms
+ ⨯ The requested resource isn't a valid image for /image/create/samples/layout/undefined/undefined_undefined.png received text/html; charset=utf-8
+ GET /image/create/samples/mc/MC_dark_color.png 404 in 692ms
+ ⨯ The requested resource isn't a valid image for /image/create/samples/mc/MC_dark_color.png received text/html; charset=utf-8
+ GET /image/create/samples/layout/undefined/undefined_undefined.png 404 in 701ms
+ ⨯ The requested resource isn't a valid image for /image/create/samples/layout/undefined/undefined_undefined.png received text/html; charset=utf-8
+ GET /image/create/samples/mc/MC_dark_color.png 404 in 704ms
+ ⨯ The requested resource isn't a valid image for /image/create/samples/mc/MC_dark_color.png received text/html; charset=utf-8
+ GET /image/create/samples/layout/undefined/undefined_undefined.png 404 in 415ms
+ ⨯ The requested resource isn't a valid image for /image/create/samples/layout/undefined/undefined_undefined.png received text/html; charset=utf-8
+ GET /image/create/samples/mc/MC_dark_color.png 404 in 421ms
+ ⨯ The requested resource isn't a valid image for /image/create/samples/mc/MC_dark_color.png received text/html; charset=utf-8

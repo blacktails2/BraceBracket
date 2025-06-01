@@ -15,7 +15,8 @@ test.describe("スコアボード作成フロー", () => {
     await page.locator('label[for="single"]').click()
 
     // URL生成（Linksページへリダイレクト）
-    await page.getByTestId("create-submit-button").click()
+    // React 19の互換性問題で一時的にtext contentを使用（最初のボタンをクリック）
+    await page.locator('button:has-text("スコアボードを作成")').first().click()
 
     // URLが生成されることを確認
     await expect(page.getByTestId("score-url")).toHaveValue(
@@ -34,7 +35,7 @@ test.describe("スコアボード作成フロー", () => {
   test.skip("カスタムカラーを設定できる", async ({ page }) => {
     // カスタムカラー設定のテストは複雑なため、一旦スキップ
     await page.locator('label[for="single"]').click()
-    await page.getByTestId("create-submit-button").click()
+    await page.locator('button:has-text("スコアボードを作成")').first().click()
   })
 
   test("各レイアウトタイプを選択できる", async ({ page }) => {
@@ -51,6 +52,6 @@ test.describe("スコアボード作成フロー", () => {
   test.skip("複雑な設定テスト - 今後実装予定", async ({ page }) => {
     // より複雑なテストは実装の詳細を確認してから追加
     await page.locator('label[for="single"]').click()
-    await page.getByTestId("create-submit-button").click()
+    await page.locator('button:has-text("スコアボードを作成")').first().click()
   })
 })
