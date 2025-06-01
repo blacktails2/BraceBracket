@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { vi } from 'vitest'
 
 // Firebase database snapshot のモック
 export const mockSnapshot = {
-  val: vi.fn(() => ({})),
+  val: vi.fn(() => ({} as Record<string, unknown> | null)),
   exists: vi.fn(() => true),
 }
 
 // Firebase database reference のモック
-export const mockRef = {
+export const mockRef: any = {
   child: vi.fn(() => mockRef),
 }
 
@@ -18,19 +20,19 @@ export const mockDatabase = {
   set: vi.fn(() => Promise.resolve()),
   onValue: vi.fn((ref, callback) => {
     callback(mockSnapshot)
-    return () => {} // unsubscribe function
+    return () => {}
   }),
   off: vi.fn(),
 }
 
 // Firebase database functions のモック
 export const mockFirebaseFunctions = {
-  ref: vi.fn((db, path) => mockRef),
-  get: vi.fn((ref) => Promise.resolve(mockSnapshot)),
-  set: vi.fn((ref, value) => Promise.resolve()),
-  onValue: vi.fn((ref, callback) => {
+  ref: vi.fn((_db, _path) => mockRef),
+  get: vi.fn((_ref) => Promise.resolve(mockSnapshot)),
+  set: vi.fn((_ref, _value) => Promise.resolve()),
+  onValue: vi.fn((_ref, callback) => {
     callback(mockSnapshot)
-    return () => {} // unsubscribe function
+    return () => {}
   }),
   off: vi.fn(),
 }
@@ -46,11 +48,11 @@ vi.mock('@/libs/firebase', () => ({
 // テストヘルパー関数
 export const resetMocks = () => {
   vi.clearAllMocks()
-  mockSnapshot.val.mockReturnValue({})
+  mockSnapshot.val.mockReturnValue({} as Record<string, unknown>)
   mockSnapshot.exists.mockReturnValue(true)
 }
 
-export const mockDatabaseValue = (value: any) => {
+export const mockDatabaseValue = (value: Record<string, unknown> | null) => {
   mockSnapshot.val.mockReturnValue(value)
   mockSnapshot.exists.mockReturnValue(!!value)
 }
