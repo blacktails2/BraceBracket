@@ -17,7 +17,8 @@
       "Bash(npm run build:*)",
       "Bash(yarn upgrade:*)",
       "Bash(yarn add:*)",
-      "Bash(yarn remove:*)"
+      "Bash(yarn remove:*)",
+      "Bash(yarn list:*)"
     ],
     "deny": []
   }
