@@ -50,6 +50,7 @@ const ScoreAndCamera: FC<{
                   mode="small"
                   tooltipText="Changed!"
                   showTooltip={showTooltip}
+                  data-testid="score-submit"
                 >
                   適用する
                 </Button>
@@ -61,6 +62,7 @@ const ScoreAndCamera: FC<{
                     streamQueueTableRef.current.disableTrack()
                     form.reset()
                   }}
+                  data-testid="score-reset"
                 >
                   変更をリセット
                 </Button>
@@ -147,6 +149,7 @@ const ScoreAndCamera: FC<{
                       placeholder="1P Team"
                       autocomplete="team"
                       cleanValue={score?.p1.team}
+                      data-testid="p1-team"
                       onChange={() => {
                         streamQueueTableRef.current.disableTrack()
                       }}
@@ -156,6 +159,7 @@ const ScoreAndCamera: FC<{
                       placeholder="1P Player"
                       autocomplete="playerName"
                       cleanValue={score?.p1.playerName}
+                      data-testid="p1-name"
                       onChange={() => {
                         streamQueueTableRef.current.disableTrack()
                       }}
@@ -190,11 +194,13 @@ const ScoreAndCamera: FC<{
                             backgroundSize: "1.6rem",
                           }}
                           mode="primary"
+                          data-testid="p1-score-increment"
                         />
                         <NumberForm
                           className="w-[2.8rem]"
                           name={"p1.score"}
                           cleanValue={score?.p1.score}
+                          data-testid="p1-score"
                         />
                         <IconButton
                           onClick={() =>
@@ -208,6 +214,7 @@ const ScoreAndCamera: FC<{
                             backgroundSize: "1.6rem",
                           }}
                           mode="primary"
+                          data-testid="p1-score-decrement"
                         />
                       </div>
                     </div>
@@ -239,6 +246,7 @@ const ScoreAndCamera: FC<{
                             form.setValue("p2", p1)
                           }}
                           icon="/icons/swap_horiz.svg"
+                          data-testid="swap-players"
                         />
                         <IconButton
                           onClick={() => {
@@ -253,6 +261,7 @@ const ScoreAndCamera: FC<{
                             })
                           }}
                           icon="/icons/exposure.svg"
+                          data-testid="reset-scores"
                         />
                       </div>
                     </div>
@@ -270,11 +279,13 @@ const ScoreAndCamera: FC<{
                             backgroundSize: "1.6rem",
                           }}
                           mode="primary"
+                          data-testid="p2-score-increment"
                         />
                         <NumberForm
                           className="w-[2.8rem]"
                           name={"p2.score"}
                           cleanValue={score?.p2.score}
+                          data-testid="p2-score"
                         />
                         <IconButton
                           onClick={() =>
@@ -288,6 +299,7 @@ const ScoreAndCamera: FC<{
                             backgroundSize: "1.6rem",
                           }}
                           mode="primary"
+                          data-testid="p2-score-decrement"
                         />
                       </div>
                     </div>
@@ -302,6 +314,7 @@ const ScoreAndCamera: FC<{
                       placeholder="2P Team"
                       autocomplete="team"
                       cleanValue={score?.p2.team}
+                      data-testid="p2-team"
                       onChange={() => {
                         streamQueueTableRef.current.disableTrack()
                       }}
@@ -311,6 +324,7 @@ const ScoreAndCamera: FC<{
                       placeholder="2P Player"
                       autocomplete="playerName"
                       cleanValue={score?.p2.playerName}
+                      data-testid="p2-name"
                       onChange={() => {
                         streamQueueTableRef.current.disableTrack()
                       }}

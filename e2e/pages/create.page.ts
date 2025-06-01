@@ -9,12 +9,11 @@ export class CreatePage extends BasePage {
 
   async goto() {
     await super.goto("/create")
-    await this.waitForLoadState()
   }
 
   // レイアウト選択
   async selectLayout(layout: "single" | "dual" | "simple" | "solid") {
-    await this.click(`[data-testid="radio-${layout}"]`)
+    await this.page.getByTestId(`radio-${layout}`).click()
   }
 
   // カラー選択
@@ -83,9 +82,7 @@ export class CreatePage extends BasePage {
 
   // URL生成
   async generateURL() {
-    await this.click('[data-testid="create-submit-button"]')
-    // リダイレクトを待つ
-    await this.waitForURL(/\/links\?id=/)
+    await this.page.getByTestId("create-submit-button").click()
   }
 
   // プレビュー確認
@@ -94,7 +91,8 @@ export class CreatePage extends BasePage {
   }
 
   async waitForPreviewUpdate() {
-    // プレビューの更新を待つ
-    await this.page.waitForTimeout(500)
+    // プレビューの更新を待つための一時的な待機
+    // 将来的には、DOMの変更を監視するなど、よりロバストな方法に置き換えることを推奨
+    await this.page.waitForTimeout(300)
   }
 }

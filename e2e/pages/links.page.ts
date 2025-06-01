@@ -9,28 +9,27 @@ export class LinksPage extends BasePage {
 
   async goto(roomId: string) {
     await super.goto(`/links?id=${roomId}`)
-    await this.waitForLoadState()
   }
 
   // URLを取得
   async getControlURL() {
-    return await this.page.getAttribute('[data-testid="control-url"]', "value")
+    return await this.page.getByTestId("control-url").getAttribute("value")
   }
 
   async getScoreURL() {
-    return await this.page.getAttribute('[data-testid="score-url"]', "value")
+    return await this.page.getByTestId("score-url").getAttribute("value")
   }
 
   async getMCURL() {
-    return await this.page.getAttribute('[data-testid="mc-url"]', "value")
+    return await this.page.getByTestId("mc-url").getAttribute("value")
   }
 
   async getBracketURL() {
-    return await this.page.getAttribute('[data-testid="bracket-url"]', "value")
+    return await this.page.getByTestId("bracket-url").getAttribute("value")
   }
 
   async getNextURL() {
-    return await this.page.getAttribute('[data-testid="next-url"]', "value")
+    return await this.page.getByTestId("next-url").getAttribute("value")
   }
 
   // すべてのURLを取得
@@ -58,6 +57,5 @@ export class LinksPage extends BasePage {
   // 設定変更ボタンをクリック
   async goToSettings() {
     await this.page.click('button:has-text("設定を変更")')
-    await this.waitForURL(/\/create\?id=/)
   }
 }

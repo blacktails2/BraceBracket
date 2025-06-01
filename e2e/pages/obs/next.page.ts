@@ -9,13 +9,20 @@ export class NextPage extends BasePage {
 
   async goto(roomId: string) {
     await super.goto(`/obs/next?id=${roomId}`)
-    await this.waitForLoadState()
   }
 
   async getNextMatchPlayers() {
+    // Find player names using CSS module class patterns
+    const p1Element = this.page.locator(
+      '[class*="player"][class*="p1"] [class*="name"]'
+    )
+    const p2Element = this.page.locator(
+      '[class*="player"][class*="p2"] [class*="name"]'
+    )
+
     return {
-      player1: await this.getText(".next-player1-name"),
-      player2: await this.getText(".next-player2-name"),
+      player1: (await p1Element.textContent()) || "",
+      player2: (await p2Element.textContent()) || "",
     }
   }
 
@@ -68,8 +75,12 @@ export class NextPage extends BasePage {
   ) {
     await this.page.waitForFunction(
       ({ p1, p2 }) => {
-        const p1Element = document.querySelector(".next-player1-name")
-        const p2Element = document.querySelector(".next-player2-name")
+        const p1Element = document.querySelector(
+          '[class*="player"][class*="p1"] [class*="name"]'
+        )
+        const p2Element = document.querySelector(
+          '[class*="player"][class*="p2"] [class*="name"]'
+        )
         return p1Element?.textContent === p1 && p2Element?.textContent === p2
       },
       { p1: expectedPlayer1, p2: expectedPlayer2 },
@@ -86,6 +97,8 @@ export class NextPage extends BasePage {
   }
 
   async waitForCountdownToStart() {
-    await this.waitForSelector(".countdown-timer", { timeout: 5000 })
+    await this.page
+      .locator(".countdown-timer")
+      .waitFor({ state: "visible", timeout: 5000 })
   }
 }

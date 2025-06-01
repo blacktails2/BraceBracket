@@ -68,6 +68,7 @@ export const Control: FC<{
               onClick={() => {
                 setSelectedTab(name)
               }}
+              data-testid={`tab-${name.toLowerCase()}`}
             >
               {name}
             </div>

@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test"
+import { Page, expect } from "@playwright/test"
 
 import { BasePage } from "./base.page"
 
@@ -10,53 +10,75 @@ export class ControlPage extends BasePage {
   async goto(roomId?: string) {
     const path = roomId ? `/control?id=${roomId}` : "/control"
     await super.goto(path)
-    await this.waitForLoadState()
   }
 
   // タブ切り替え
-  async switchToTab(tab: "score" | "mc" | "next" | "bracket") {
-    await this.click(`button[data-tab="${tab}"]`)
+  async switchToTab(tab: "score" | "mc" | "interval" | "bracket") {
+    await this.page.getByTestId(`tab-${tab}`).click()
+  }
+
+  async selectTab(
+    tab: "score" | "mc" | "interval" | "bracket" | "MC" | "Next" | "Top8Bracket"
+  ) {
+    // Map the tab names to the actual testids
+    const tabMap: Record<string, string> = {
+      score: "score",
+      mc: "mc",
+      MC: "mc",
+      interval: "interval",
+      Next: "interval",
+      bracket: "bracket",
+      Top8Bracket: "bracket",
+    }
+    const actualTab = tabMap[tab] || tab.toLowerCase()
+    await this.page.getByTestId(`tab-${actualTab}`).click()
   }
 
   // スコアボード操作
   async setPlayer1Name(name: string) {
-    await this.fill('input[name="player1Name"]', name)
+    await this.page.getByTestId("p1-name").fill(name)
   }
 
   async setPlayer2Name(name: string) {
-    await this.fill('input[name="player2Name"]', name)
+    await this.page.getByTestId("p2-name").fill(name)
   }
 
   async setPlayer1Score(score: number) {
-    await this.fill('input[name="player1Score"]', score.toString())
+    await this.page.getByTestId("p1-score").fill(score.toString())
   }
 
   async setPlayer2Score(score: number) {
-    await this.fill('input[name="player2Score"]', score.toString())
+    await this.page.getByTestId("p2-score").fill(score.toString())
   }
 
   async incrementPlayer1Score() {
-    await this.click('button[data-action="p1-increment"]')
+    await this.page.getByTestId("p1-score-increment").click()
   }
 
   async decrementPlayer1Score() {
-    await this.click('button[data-action="p1-decrement"]')
+    await this.page.getByTestId("p1-score-decrement").click()
   }
 
   async incrementPlayer2Score() {
-    await this.click('button[data-action="p2-increment"]')
+    await this.page.getByTestId("p2-score-increment").click()
   }
 
   async decrementPlayer2Score() {
-    await this.click('button[data-action="p2-decrement"]')
+    await this.page.getByTestId("p2-score-decrement").click()
   }
 
   async swapPlayers() {
-    await this.click('button[data-action="swap"]')
+    await this.page.getByTestId("swap-players").click()
   }
 
   async resetScores() {
-    await this.click('button[data-action="reset"]')
+    await this.page.getByTestId("reset-scores").click()
+  }
+
+  async submitScoreChanges() {
+    await this.page.getByTestId("score-submit").click()
+    // tooltip "Changed!" が表示されるのを待つ
+    await this.page.getByText("Changed!").waitFor({ timeout: 3000 })
   }
 
   // ラウンド選択
@@ -111,8 +133,8 @@ export class ControlPage extends BasePage {
 
   // 現在の値を取得
   async getCurrentScores() {
-    const p1Score = await this.getValue('input[name="player1Score"]')
-    const p2Score = await this.getValue('input[name="player2Score"]')
+    const p1Score = await this.page.getByTestId("p1-score").inputValue()
+    const p2Score = await this.page.getByTestId("p2-score").inputValue()
     return {
       player1: parseInt(p1Score || "0"),
       player2: parseInt(p2Score || "0"),
@@ -120,12 +142,27 @@ export class ControlPage extends BasePage {
   }
 
   async getCurrentPlayerNames() {
-    const p1Name = await this.getValue('input[name="player1Name"]')
-    const p2Name = await this.getValue('input[name="player2Name"]')
+    const p1Name = await this.page.getByTestId("p1-name").inputValue()
+    const p2Name = await this.page.getByTestId("p2-name").inputValue()
     return {
-      player1: p1Name,
-      player2: p2Name,
+      player1: p1Name || "",
+      player2: p2Name || "",
     }
+  }
+
+  // Auto-waitingを活用したアサーション
+  async expectCurrentScores(player1Score: number, player2Score: number) {
+    await expect(this.page.getByTestId("p1-score")).toHaveValue(
+      player1Score.toString()
+    )
+    await expect(this.page.getByTestId("p2-score")).toHaveValue(
+      player2Score.toString()
+    )
+  }
+
+  async expectCurrentPlayerNames(player1Name: string, player2Name: string) {
+    await expect(this.page.getByTestId("p1-name")).toHaveValue(player1Name)
+    await expect(this.page.getByTestId("p2-name")).toHaveValue(player2Name)
   }
 
   async getCurrentRound() {
