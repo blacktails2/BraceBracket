@@ -11,6 +11,13 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/e2e/**",
+      "**/.{idea,git,cache,output,temp}/**",
+      "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*"
+    ],
     includeSource: [
       "libs/**/*.{js,ts}",
       "components/**/*.{tsx,ts}",
@@ -23,6 +30,7 @@ export default defineConfig({
       exclude: [
         "node_modules/",
         "test/",
+        "e2e/",
         "**/*.d.ts",
         "**/*.config.*",
         "**/*.stories.*",
