@@ -40,3 +40,6 @@ build-storybook.log
 
 # Claude instructions - should not be committed
 CLAUDE.md
+
+# Claude local settings - should not be committed
+.claude/settings.local.json
