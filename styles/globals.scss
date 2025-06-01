@@ -228,12 +228,11 @@ span {
   }
 
   ol {
-    @apply list-decimal;
-
     margin-top: 3rem;
     margin-bottom: 2rem;
     font-size: 1.4rem;
     line-height: 1.7;
+    list-style-type: decimal;
   }
 
   p,
@@ -272,12 +271,12 @@ span {
 }
 
 .markdown ul {
-  @apply list-disc;
+  list-style-type: disc;
 }
 
 .markdown ul,
 .markdown ol {
-  @apply ml-8;
+  margin-left: 2rem;
 }
 
 .markdown img {
@@ -290,7 +289,7 @@ span {
 .markdown li > p,
 .markdown li > ul,
 .markdown li > ol {
-  @apply mb-0;
+  margin-bottom: 0;
 }
 
 .scrollbar-hidden {

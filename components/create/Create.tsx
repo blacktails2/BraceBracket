@@ -29,12 +29,12 @@ import { UseLogo } from "./settingForms/UseLogo"
 const getErrorMessages = (errors: FieldErrors): string[] => {
   return Object.values(errors)
     .flatMap((error): string | string[] => {
-      if (error.message && typeof error.message === "string") {
+      if (error?.message && typeof error.message === "string") {
         return error.message
       }
 
-      if (typeof error === "object") {
-        return getErrorMessages(error)
+      if (error && typeof error === "object" && "message" in error) {
+        return getErrorMessages(error as FieldErrors)
       }
 
       return ""

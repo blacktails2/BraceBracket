@@ -3,7 +3,7 @@ import { CSSTransition } from "react-transition-group"
 
 import styles from "./Button.module.scss"
 
-export const Button: FC<{
+interface ButtonProps {
   children?: ReactNode
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   type?: "button" | "submit" | "reset"
@@ -14,7 +14,9 @@ export const Button: FC<{
   showTooltip?: boolean
   full?: boolean
   "data-testid"?: string
-}> = ({
+}
+
+export const Button: FC<ButtonProps> = ({
   children,
   onClick,
   type,
@@ -24,7 +26,7 @@ export const Button: FC<{
   tooltipText,
   showTooltip,
   full,
-  "data-testid": dataTestId,
+  ...rest
 }) => {
   const tooltipNodeRef = useRef(null)
   const modes = {
@@ -42,7 +44,7 @@ export const Button: FC<{
           onClick={onClick}
           type={type}
           style={full ? { width: "100%" } : {}}
-          data-testid={dataTestId}
+          {...rest}
         >
           {children}
         </button>

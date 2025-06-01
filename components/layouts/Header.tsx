@@ -9,17 +9,16 @@ export const Header: FC = () => {
       <div>
         <nav className={styles.navbar}>
           <div className={styles.navbarLeft}>
-            <Link href="/">
-              <a className={styles.topLink}></a>
+            <Link href="/" className={styles.topLink}>
             </Link>
           </div>
           <div className={styles.navbarRight}>
             <div className={styles.headerLinkContainer}>
-              <Link href="/usage" passHref>
-                <a className={styles.headerLink}>How to Use</a>
+              <Link href="/usage" className={styles.headerLink}>
+                How to Use
               </Link>
-              <Link href="/help" passHref>
-                <a className={styles.headerLink}>Help</a>
+              <Link href="/help" className={styles.headerLink}>
+                Help
               </Link>
               <a
                 href="https://github.com/blacktails2/BraceBracket"
@@ -38,8 +37,8 @@ export const Header: FC = () => {
                 Discord
               </a>
             </div>
-            <Link href={`/create`}>
-              <a className={styles.createLink}>スコアボードを作成</a>
+            <Link href={`/create`} className={styles.createLink}>
+              スコアボードを作成
             </Link>
             <div className={styles.hamburgerMenu}>
               <input
@@ -53,13 +52,13 @@ export const Header: FC = () => {
               <div className={styles.menuContent}>
                 <ul>
                   <li>
-                    <Link href="/usage" passHref>
-                      <a>How to Use</a>
+                    <Link href="/usage">
+                      How to Use
                     </Link>
                   </li>
                   <li>
-                    <Link href="/help" passHref>
-                      <a>Help</a>
+                    <Link href="/help">
+                      Help
                     </Link>
                   </li>
                   <li>

@@ -22,7 +22,10 @@ export function DesignRadioButton<T extends string>({
     >
       <input
         type="radio"
-        {...field}
+        name={field.name}
+        onChange={field.onChange}
+        onBlur={field.onBlur}
+        ref={field.ref}
         value={value}
         checked={field.value === value}
         id={value}

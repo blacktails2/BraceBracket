@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import { Control as Component } from "../components/control2/Control"
 import { MatchIntervalInfo, MC, Score, Setting } from "../libs/const"
@@ -9,47 +9,43 @@ import { mcDefault } from "./helper/MCDefault"
 import { scoreDefault } from "./helper/ScoreDefault"
 import { settingDefault } from "./helper/SettingDefault"
 
-export default {
+const meta: Meta<typeof Component> = {
   title: "Control",
   component: Component,
-  chromatic: {
-    delay: 1000,
-    viewports: [1200, 480],
-  },
-} as ComponentMeta<typeof Component>
+}
 
-const Template: ComponentStory<typeof Component> = (args) => (
-  <Component {...args} />
-)
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const Control = Template.bind({})
-Control.args = {
-  setting: (() => {
-    const setting = deepCopy(settingDefault)
-    setting.integrateStartGG.enabled = true
-    return setting
-  })(),
-  setSetting: (v: Setting) => {
-    return
-  },
-  score: deepCopy(scoreDefault),
-  setScore: (v: Score) => {
-    return
-  },
-  matchIntervalInfo: deepCopy(matchIntervalInfoDefault),
-  setMatchIntervalInfo: (v: MatchIntervalInfo) => {
-    return
-  },
-  mc: deepCopy(mcDefault),
-  setMC: (v: MC) => {
-    return
-  },
-  loadBracket: deepCopy({
-    createdAt: 0,
-    lastRequestedAt: 0,
-    autoUpdate: false,
-  }),
-  requestLoad: (v: boolean) => {
-    return
+export const Control: Story = {
+  args: {
+    setting: (() => {
+      const setting = deepCopy(settingDefault)
+      setting.integrateStartGG.enabled = true
+      return setting
+    })(),
+    setSetting: (_v: Setting) => {
+      return
+    },
+    score: deepCopy(scoreDefault),
+    setScore: (_v: Score) => {
+      return
+    },
+    matchIntervalInfo: deepCopy(matchIntervalInfoDefault),
+    setMatchIntervalInfo: (_v: MatchIntervalInfo) => {
+      return
+    },
+    mc: deepCopy(mcDefault),
+    setMC: (_v: MC) => {
+      return
+    },
+    loadBracket: deepCopy({
+      createdAt: 0,
+      lastRequestedAt: 0,
+      autoUpdate: false,
+    }),
+    requestLoad: (_v: boolean) => {
+      return
+    },
   },
 }
