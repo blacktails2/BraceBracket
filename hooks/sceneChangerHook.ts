@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState } from "react"
 import { set } from "@firebase/database"
 import { onValue, ref } from "firebase/database"
-import { JsonObject } from "type-fest"
 import OBSWebSocket, { OBSResponseTypes } from "obs-websocket-js"
+import { useCallback, useEffect, useState } from "react"
 import { useAsync } from "react-use"
+import { JsonObject } from "type-fest"
 
 import { db } from "../libs/firebase"
 
@@ -102,7 +102,7 @@ export const useSceneChanger = (
     if (sceneList.includes(currentScene)) {
       set(obsCurrentSceneRef, currentScene)
     }
-  }, [id, currentScene])
+  }, [id, currentScene, sceneList])
 
   useEffect(() => {
     if (!id || !connect) return
@@ -118,90 +118,104 @@ export const useSceneChanger = (
 if (import.meta.vitest) {
   const { describe, it, expect, beforeEach, vi } = import.meta.vitest
 
-  describe('useSceneChanger', () => {
-    let renderHook: (callback: () => any) => { result: { current: any } }
+  describe("useSceneChanger", () => {
+    let renderHook: (callback: () => ReturnType<typeof useSceneChanger>) => {
+      result: { current: ReturnType<typeof useSceneChanger> }
+    }
 
     beforeEach(async () => {
-      const testingLib = await import('@testing-library/react')
+      const testingLib = await import("@testing-library/react")
       renderHook = testingLib.renderHook
 
-      const firebaseMock = await import('../test/mocks/firebase')
+      const firebaseMock = await import("../test/mocks/firebase")
       firebaseMock.resetMocks()
 
       // Mock OBS WebSocket
-      vi.doMock('obs-websocket-js', () => ({
+      vi.doMock("obs-websocket-js", () => ({
         default: vi.fn(() => ({
           identified: false,
-          connect: vi.fn(() => Promise.resolve({
-            obsWebSocketVersion: '5.0.0',
-            negotiatedRpcVersion: 1
-          })),
+          connect: vi.fn(() =>
+            Promise.resolve({
+              obsWebSocketVersion: "5.0.0",
+              negotiatedRpcVersion: 1,
+            })
+          ),
           disconnect: vi.fn(() => Promise.resolve()),
-          call: vi.fn(() => Promise.resolve({
-            scenes: [],
-            currentProgramSceneName: ''
-          }))
-        }))
+          call: vi.fn(() =>
+            Promise.resolve({
+              scenes: [],
+              currentProgramSceneName: "",
+            })
+          ),
+        })),
       }))
 
       // Mock react-use
-      vi.doMock('react-use', () => ({
-        useAsync: vi.fn()
+      vi.doMock("react-use", () => ({
+        useAsync: vi.fn(),
       }))
 
       // Mock console methods
-      vi.spyOn(console, 'log').mockImplementation(() => {})
-      vi.spyOn(console, 'error').mockImplementation(() => {})
+      vi.spyOn(console, "log").mockImplementation(() => {
+        // Empty implementation for test
+      })
+      vi.spyOn(console, "error").mockImplementation(() => {
+        // Empty implementation for test
+      })
     })
 
-    it('should return initial state with null id', () => {
+    it("should return initial state with null id", () => {
       const { result } = renderHook(() => useSceneChanger(null, false))
-      
-      expect(result.current[0]).toBe('') // currentScene
-      expect(typeof result.current[1]).toBe('function') // setCurrentScene
+
+      expect(result.current[0]).toBe("") // currentScene
+      expect(typeof result.current[1]).toBe("function") // setCurrentScene
       expect(Array.isArray(result.current[2])).toBe(true) // sceneList
       expect(result.current[2]).toHaveLength(0)
     })
 
-    it('should return initial state with undefined id', () => {
+    it("should return initial state with undefined id", () => {
       const { result } = renderHook(() => useSceneChanger(undefined, false))
-      
-      expect(result.current[0]).toBe('')
-      expect(typeof result.current[1]).toBe('function')
+
+      expect(result.current[0]).toBe("")
+      expect(typeof result.current[1]).toBe("function")
       expect(Array.isArray(result.current[2])).toBe(true)
       expect(result.current[2]).toHaveLength(0)
     })
 
-    it('should handle setCurrentScene with null id', () => {
+    it("should handle setCurrentScene with null id", () => {
       const { result } = renderHook(() => useSceneChanger(null, false))
-      
+
       const setCurrentScene = result.current[1]
-      
+
       // Should not throw with null id
-      expect(() => setCurrentScene('Scene1')).not.toThrow()
+      expect(() => setCurrentScene("Scene1")).not.toThrow()
     })
 
-    it('should handle basic function signature', () => {
+    it("should handle basic function signature", () => {
       // Only test with null/undefined to avoid Firebase dependency
       const { result } = renderHook(() => useSceneChanger(null, false))
-      
+
       expect(Array.isArray(result.current)).toBe(true)
       expect(result.current).toHaveLength(3)
-      
+
       // Check types
-      expect(typeof result.current[0]).toBe('string')    // currentScene
-      expect(typeof result.current[1]).toBe('function')  // setCurrentScene
+      expect(typeof result.current[0]).toBe("string") // currentScene
+      expect(typeof result.current[1]).toBe("function") // setCurrentScene
       expect(Array.isArray(result.current[2])).toBe(true) // sceneList
     })
 
-    it('should handle both connect boolean values with null id', () => {
+    it("should handle both connect boolean values with null id", () => {
       // Test with connect: false
-      const { result: resultNoConnect } = renderHook(() => useSceneChanger(null, false))
-      expect(typeof resultNoConnect.current[1]).toBe('function')
-      
-      // Test with connect: true  
-      const { result: resultConnect } = renderHook(() => useSceneChanger(null, true))
-      expect(typeof resultConnect.current[1]).toBe('function')
+      const { result: resultNoConnect } = renderHook(() =>
+        useSceneChanger(null, false)
+      )
+      expect(typeof resultNoConnect.current[1]).toBe("function")
+
+      // Test with connect: true
+      const { result: resultConnect } = renderHook(() =>
+        useSceneChanger(null, true)
+      )
+      expect(typeof resultConnect.current[1]).toBe("function")
     })
   })
 }
