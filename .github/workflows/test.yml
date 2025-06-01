@@ -20,6 +20,7 @@ jobs:
 
   e2e-test:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -27,10 +28,17 @@ jobs:
           node-version-file: 'package.json'
       - run: yarn install
       - run: npx playwright install --with-deps
+      - run: yarn build
       - run: yarn test:e2e
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
           path: playwright-report/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results/
           retention-days: 30
