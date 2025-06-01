@@ -9,25 +9,36 @@ export class ScorePage extends BasePage {
 
   async goto(roomId: string) {
     await super.goto(`/obs/score?id=${roomId}`)
-    await this.waitForLoadState()
   }
 
   async getPlayer1Name() {
-    return await this.getText(".player1-name")
+    // Look for player 1's name within the player container
+    const nameElement = this.page.locator(
+      '[class*="player"][class*="p1"] [class*="name"]'
+    )
+    return (await nameElement.textContent()) || ""
   }
 
   async getPlayer2Name() {
-    return await this.getText(".player2-name")
+    // Look for player 2's name within the player container
+    const nameElement = this.page.locator(
+      '[class*="player"][class*="p2"] [class*="name"]'
+    )
+    return (await nameElement.textContent()) || ""
   }
 
   async getPlayer1Score() {
-    const scoreText = await this.getText(".player1-score")
-    return parseInt(scoreText || "0")
+    // Look for player 1's score
+    const scoreElement = this.page.locator('[class*="score"][class*="p1"]')
+    const scoreText = (await scoreElement.textContent()) || "0"
+    return parseInt(scoreText)
   }
 
   async getPlayer2Score() {
-    const scoreText = await this.getText(".player2-score")
-    return parseInt(scoreText || "0")
+    // Look for player 2's score
+    const scoreElement = this.page.locator('[class*="score"][class*="p2"]')
+    const scoreText = (await scoreElement.textContent()) || "0"
+    return parseInt(scoreText)
   }
 
   async getRoundText() {
@@ -52,8 +63,12 @@ export class ScorePage extends BasePage {
   async waitForScoreUpdate(expectedP1Score: number, expectedP2Score: number) {
     await this.page.waitForFunction(
       ({ p1, p2 }) => {
-        const p1Element = document.querySelector(".player1-score")
-        const p2Element = document.querySelector(".player2-score")
+        const p1Element = document.querySelector(
+          '[class*="score"][class*="p1"]'
+        )
+        const p2Element = document.querySelector(
+          '[class*="score"][class*="p2"]'
+        )
         return (
           p1Element?.textContent === p1.toString() &&
           p2Element?.textContent === p2.toString()
@@ -67,8 +82,12 @@ export class ScorePage extends BasePage {
   async waitForNameUpdate(expectedP1Name: string, expectedP2Name: string) {
     await this.page.waitForFunction(
       ({ p1, p2 }) => {
-        const p1Element = document.querySelector(".player1-name")
-        const p2Element = document.querySelector(".player2-name")
+        const p1Element = document.querySelector(
+          '[class*="player"][class*="p1"] [class*="name"]'
+        )
+        const p2Element = document.querySelector(
+          '[class*="player"][class*="p2"] [class*="name"]'
+        )
         return p1Element?.textContent === p1 && p2Element?.textContent === p2
       },
       { p1: expectedP1Name, p2: expectedP2Name },

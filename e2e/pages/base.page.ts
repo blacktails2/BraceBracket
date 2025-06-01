@@ -11,10 +11,6 @@ export class BasePage {
     await this.page.goto(path)
   }
 
-  async waitForLoadState() {
-    await this.page.waitForLoadState("networkidle")
-  }
-
   async getTitle() {
     return await this.page.title()
   }
@@ -26,35 +22,27 @@ export class BasePage {
     })
   }
 
-  async waitForSelector(selector: string, options?: { timeout?: number }) {
-    await this.page.waitForSelector(selector, options)
-  }
-
   async click(selector: string) {
-    await this.page.click(selector)
+    await this.page.locator(selector).click()
   }
 
   async fill(selector: string, value: string) {
-    await this.page.fill(selector, value)
+    await this.page.locator(selector).fill(value)
   }
 
   async selectOption(selector: string, value: string) {
-    await this.page.selectOption(selector, value)
+    await this.page.locator(selector).selectOption(value)
   }
 
   async isVisible(selector: string) {
-    return await this.page.isVisible(selector)
+    return await this.page.locator(selector).isVisible()
   }
 
   async getText(selector: string) {
-    return await this.page.textContent(selector)
+    return await this.page.locator(selector).textContent()
   }
 
   async getValue(selector: string) {
-    return await this.page.inputValue(selector)
-  }
-
-  async waitForURL(url: string | RegExp) {
-    await this.page.waitForURL(url)
+    return await this.page.locator(selector).inputValue()
   }
 }

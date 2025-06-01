@@ -9,17 +9,27 @@ export class MCPage extends BasePage {
 
   async goto(roomId: string) {
     await super.goto(`/obs/mc?id=${roomId}`)
-    await this.waitForLoadState()
   }
 
   async getMCText(line: number) {
-    return await this.getText(`.mc-line-${line}`)
+    // MC component uses indexed classes from the CSS module
+    // The actual class name pattern might be like "MC_mc1__[hash]"
+    const mcElement = this.page.locator(`[class*="mc${line}"]`).first()
+    const idElement = this.page.locator(`[class*="id${line}"]`).first()
+
+    try {
+      const mcText = (await mcElement.textContent()) || ""
+      const idText = (await idElement.textContent()) || ""
+      return `${mcText} ${idText}`.trim()
+    } catch {
+      return null
+    }
   }
 
   async getAllMCText() {
     const lines = []
     for (let i = 1; i <= 4; i++) {
-      const text = await this.getText(`.mc-line-${i}`)
+      const text = await this.getMCText(i)
       if (text) lines.push(text)
     }
     return lines

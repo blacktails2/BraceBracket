@@ -60,6 +60,7 @@ export const CheckBoxForm: FC<{
               id={id ?? name}
               className={styles.input}
               disabled={disabled}
+              data-testid={`checkboxform-${name}`}
             />
           ) : (
             <input
@@ -69,6 +70,7 @@ export const CheckBoxForm: FC<{
               disabled={disabled}
               checked={checked}
               onChange={onChange}
+              data-testid={id ? `checkboxform-${id}` : "checkboxform"}
             />
           )}
           <label

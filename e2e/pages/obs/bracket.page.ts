@@ -9,17 +9,18 @@ export class BracketPage extends BasePage {
 
   async goto(roomId: string) {
     await super.goto(`/obs/bracket?id=${roomId}`)
-    await this.waitForLoadState()
   }
 
   async getPlayerName(position: string) {
-    return await this.getText(`[data-testid="bracket-player-${position}"]`)
+    return await this.page
+      .getByTestId(`bracket-player-${position}`)
+      .textContent()
   }
 
   async getScore(matchId: string, player: 1 | 2) {
-    return await this.getText(
-      `[data-testid="bracket-score-${matchId}-p${player}"]`
-    )
+    return await this.page
+      .getByTestId(`bracket-score-${matchId}-p${player}`)
+      .textContent()
   }
 
   async getWinnersFinalistNames() {
@@ -55,6 +56,9 @@ export class BracketPage extends BasePage {
   }
 
   async waitForPlayerUpdate(position: string, expectedName: string) {
+    await this.page
+      .getByTestId(`bracket-player-${position}`)
+      .waitFor({ state: "visible" })
     await this.page.waitForFunction(
       ({ pos, name }) => {
         const element = document.querySelector(

@@ -8,13 +8,22 @@ export const IconButton: FC<{
   icon: string
   mode?: "primary" | "light"
   rotation?: boolean
-}> = ({ onClick, style = {}, icon, mode = "light", rotation }) => {
+  "data-testid"?: string
+}> = ({
+  onClick,
+  style = {},
+  icon,
+  mode = "light",
+  rotation,
+  "data-testid": dataTestId,
+}) => {
   return (
     <div
       className={`${styles.button} ${
         mode === "primary" ? styles.primary : styles.light
       } ${rotation ? styles.rotation : ""}`}
       onClick={onClick}
+      data-testid={dataTestId}
       style={Object.assign(
         {
           backgroundImage: `url("${icon}")`,
