@@ -1,7 +1,10 @@
 import path from "path"
+import { fileURLToPath } from 'url'
 
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vitest/config"
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [react()],
@@ -12,6 +15,7 @@ export default defineConfig({
       "libs/**/*.{js,ts}",
       "components/**/*.{tsx,ts}",
       "hooks/**/*.{ts,tsx}",
+      "stories/helper/**/*.{js,ts}",
     ],
     setupFiles: ["./test/setup.ts"],
     coverage: {
