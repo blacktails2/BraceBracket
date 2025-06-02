@@ -27,6 +27,9 @@ export default defineConfig({
     screenshot: "only-on-failure",
   },
 
+  /* Global Setup */
+  globalSetup: require.resolve("./e2e/utils/global-setup.ts"),
+
   /* Configure projects for major browsers */
   projects: [
     {

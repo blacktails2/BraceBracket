@@ -45,7 +45,7 @@ export const getMCFilename: (
   count?: number
 ) => string = (layout, color, count = 2) => {
   if (!layout || !color) {
-    return "MC_dark_color.png"
+    return "MC_2_dark.png"
   }
   if (layout === "simple") {
     return `MC_simple_${count}_${color}.png`
@@ -74,6 +74,16 @@ export const getBracketFilename: (
     return `brackets_simple.png`
   }
   return `brackets.png`
+}
+
+export const getScoreboardFilename: (
+  layout?: ScoreboardLayout,
+  color?: ScoreboardColor
+) => string = (layout, color) => {
+  if (!layout || !color) {
+    return "single_dark_color.png"
+  }
+  return `${layout}_${color}.png`
 }
 
 export type Setting = {

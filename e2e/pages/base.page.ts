@@ -5,6 +5,35 @@ export class BasePage {
 
   constructor(page: Page) {
     this.page = page
+    this.setupImageRequestHandling()
+  }
+
+  private setupImageRequestHandling() {
+    // サンプル画像リクエストをブロックしてエラーログを防ぐ
+    this.page.route("**/image/create/samples/**", async (route) => {
+      const url = route.request().url()
+
+      // 存在しない可能性のある画像パスをブロック
+      if (
+        url.includes("undefined") ||
+        url.includes("MC_simple_") ||
+        url.includes("upnext_simple_dark_color") ||
+        url.includes("solid_white") ||
+        url.includes("MC_dark_color.png")
+      ) {
+        // 1x1の透明画像を返す
+        const transparentPng = Buffer.from(
+          "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+          "base64"
+        )
+        await route.fulfill({
+          contentType: "image/png",
+          body: transparentPng,
+        })
+      } else {
+        await route.continue()
+      }
+    })
   }
 
   async goto(path: string) {

@@ -6,6 +6,7 @@ import {
   getCameraFilename,
   getMCFilename,
   getNextFilename,
+  getScoreboardFilename,
 } from "../../libs/const"
 import styles from "../create/parts/Preview.module.scss"
 
@@ -40,7 +41,9 @@ export const PreviewScore: FC<{
         </div>
       )}
       <Image
-        src={`/image/create/samples/layout/${layout}/${layout}_${color}.png`}
+        src={`/image/create/samples/layout/${
+          layout || "single"
+        }/${getScoreboardFilename(layout, color)}`}
         width={340}
         height={190}
         alt="スコアボードプレビュー"
