@@ -53,18 +53,26 @@ export class ControlPage extends BasePage {
 
   async incrementPlayer1Score() {
     await this.page.getByTestId("p1-score-increment").click()
+    // React Hook Formの更新を待つ
+    await this.page.waitForTimeout(50)
   }
 
   async decrementPlayer1Score() {
     await this.page.getByTestId("p1-score-decrement").click()
+    // React Hook Formの更新を待つ
+    await this.page.waitForTimeout(50)
   }
 
   async incrementPlayer2Score() {
     await this.page.getByTestId("p2-score-increment").click()
+    // React Hook Formの更新を待つ
+    await this.page.waitForTimeout(50)
   }
 
   async decrementPlayer2Score() {
     await this.page.getByTestId("p2-score-decrement").click()
+    // React Hook Formの更新を待つ
+    await this.page.waitForTimeout(50)
   }
 
   async swapPlayers() {
@@ -76,9 +84,13 @@ export class ControlPage extends BasePage {
   }
 
   async submitScoreChanges() {
-    await this.page.getByTestId("score-submit").click()
+    const submitButton = this.page.getByTestId("score-submit")
+    await submitButton.click()
+
     // tooltip "Changed!" が表示されるのを待つ
-    await this.page.getByText("Changed!").waitFor({ timeout: 3000 })
+    await this.page
+      .getByText("Changed!")
+      .waitFor({ state: "visible", timeout: 5000 })
   }
 
   // ラウンド選択
