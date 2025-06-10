@@ -13,7 +13,8 @@ export class CreatePage extends BasePage {
 
   // レイアウト選択
   async selectLayout(layout: "single" | "dual" | "simple" | "solid") {
-    await this.page.getByTestId(`radio-${layout}`).click()
+    // React 19の互換性問題で一時的にlabelセレクターを使用
+    await this.page.locator(`label[for="${layout}"]`).click()
   }
 
   // カラー選択
@@ -82,7 +83,7 @@ export class CreatePage extends BasePage {
 
   // URL生成
   async generateURL() {
-    await this.page.getByTestId("create-submit-button").click()
+    await this.page.locator('button:has-text("スコアボードを作成")').first().click()
   }
 
   // プレビュー確認
