@@ -1,7 +1,9 @@
-import { LoadBracket } from "../libs/const"
-import { genUseDatabaseValue } from "./useDatabaseValue"
 import { useCallback } from "react"
 import { serverTimestamp } from "firebase/database"
+
+import { LoadBracket } from "../libs/const"
+
+import { genUseDatabaseValue } from "./useDatabaseValue"
 
 const defaultValue: LoadBracket = {
   createdAt: serverTimestamp(),
@@ -33,4 +35,94 @@ export const useLoadBracket = (
   )
 
   return [loadBracket, requestLoad, loading]
+}
+
+// In-Source Test
+if (import.meta.vitest) {
+  const { describe, it, expect, beforeEach, vi } = import.meta.vitest
+
+  describe('useLoadBracket', () => {
+    let renderHook: (callback: () => any) => { result: { current: any } }
+
+    beforeEach(async () => {
+      const testingLib = await import('@testing-library/react')
+      renderHook = testingLib.renderHook
+
+      const firebaseMock = await import('../test/mocks/firebase')
+      firebaseMock.resetMocks()
+    })
+
+    it('should have correct default values', () => {
+      expect(defaultValue).toHaveProperty('createdAt')
+      expect(defaultValue).toHaveProperty('autoUpdate')
+      expect(defaultValue).toHaveProperty('lastRequestedAt')
+      
+      expect(defaultValue.autoUpdate).toBe(false)
+      expect(defaultValue.lastRequestedAt).toBe(0)
+    })
+
+    it('should return hook with null id', () => {
+      const { result } = renderHook(() => useLoadBracket(null))
+      
+      expect(result.current[0]).toEqual(defaultValue)
+      expect(typeof result.current[1]).toBe('function')
+      expect(result.current[2]).toBe(false) // loading should be false for null id
+    })
+
+    it('should return hook with undefined id', () => {
+      const { result } = renderHook(() => useLoadBracket(undefined))
+      
+      expect(result.current[0]).toEqual(defaultValue)
+      expect(typeof result.current[1]).toBe('function')
+      expect(result.current[2]).toBe(false)
+    })
+
+    it('should not call requestLoad with null id', () => {
+      const { result } = renderHook(() => useLoadBracket(null))
+      
+      const requestLoad = result.current[1]
+      
+      // Should not throw when called with null id
+      expect(() => requestLoad(true)).not.toThrow()
+      expect(() => requestLoad(false)).not.toThrow()
+    })
+
+    it('should handle different boolean values for autoUpdate', () => {
+      const { result } = renderHook(() => useLoadBracket(null))
+      
+      const requestLoad = result.current[1]
+      
+      expect(() => requestLoad(true)).not.toThrow()
+      expect(() => requestLoad(false)).not.toThrow()
+    })
+
+    it('should return correct function signature with null id', () => {
+      const { result } = renderHook(() => useLoadBracket(null))
+      
+      // Check return array structure
+      expect(Array.isArray(result.current)).toBe(true)
+      expect(result.current).toHaveLength(3)
+      
+      // Check types
+      expect(typeof result.current[1]).toBe('function') // requestLoad function
+      expect(typeof result.current[2]).toBe('boolean')  // loading state
+    })
+
+    it('should handle Date.valueOf() correctly in requestLoad logic', () => {
+      // Mock Date.valueOf()
+      const mockDate = new Date('2023-01-01T00:00:00.000Z')
+      const originalDate = global.Date
+      global.Date = vi.fn(() => mockDate) as any
+      global.Date.valueOf = vi.fn(() => mockDate.valueOf())
+      
+      const { result } = renderHook(() => useLoadBracket(null))
+      const requestLoad = result.current[1]
+      
+      // Should not throw even with mocked Date
+      expect(() => requestLoad(true)).not.toThrow()
+      
+      // Restore original Date
+      global.Date = originalDate
+    })
+  })
 }
