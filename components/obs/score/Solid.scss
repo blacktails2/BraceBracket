@@ -4,14 +4,11 @@
 @mixin status {
   @include blackWeight;
 
-  width: 240px;
   margin: 0;
-  font-size: 19px;
-  font-style: italic;
-  line-height: 21px;
-  color: var(--status-color);
-  text-align: center;
-  letter-spacing: 1px;
+  font-family: GenEiLateGo, sans-serif;
+  font-size: 17px;
+  line-height: 17px;
+  color: white;
 }
 
 .solid {
@@ -20,23 +17,24 @@
     @include score;
     @include blackWeight;
 
-    top: 45px;
-    width: 60px;
-    font-size: 40px;
+    top: 29px;
+    width: 100px;
+    font-family: GenEiLateGo, sans-serif;
+    font-size: 54px;
 
     &.p1 {
-      left: 770px;
+      left: 360px;
     }
 
     &.p2 {
-      right: 770px;
+      right: 360px;
     }
   }
 
   .player {
     position: absolute;
     top: 60px;
-    width: 430px;
+    width: 380px;
     height: 60px;
     margin: 0;
     text-align: center;
@@ -50,18 +48,21 @@
     }
 
     &.p1 {
-      left: 320px;
+      left: 370px;
+      text-align: right;
     }
 
     &.p2 {
-      right: 320px;
+      right: 370px;
+      text-align: left;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 29px;
-      line-height: 29px;
+      font-family: GenEiLateGo, sans-serif;
+      font-size: 23px;
+      line-height: 23px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -70,8 +71,9 @@
     .name {
       @include blackWeight;
 
-      font-size: 29px;
-      line-height: 29px;
+      font-family: GenEiLateGo, sans-serif;
+      font-size: 23px;
+      line-height: 23px;
       color: var(--player-color);
       text-align: center;
       letter-spacing: 1px;
@@ -80,12 +82,12 @@
 
   .box {
     position: absolute;
-    top: 44px;
-    left: 840px;
+    top: 65px;
+    left: 800px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    width: 240px;
+    width: 320px;
     height: 60px;
   }
 
@@ -96,6 +98,8 @@
 
   .matchType {
     @include status;
+
+    display: none;
   }
 
   .cameraRight,
