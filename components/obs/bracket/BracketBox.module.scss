@@ -43,9 +43,11 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 295px;
-  height: 85px;
+  width: 292px;
+  height: 76px;
   padding-left: 11px;
+  font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
+  font-weight: 500;
 
   p {
     margin: 0;
@@ -61,31 +63,29 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .playerTeam {
-  @include mediumWeight;
-
+  font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
   font-size: 22px;
-  line-height: 42px;
+  font-weight: 500;
+  line-height: 38px;
   color: var(--bb-black);
-  letter-spacing: 1px;
 }
 
 .playerName {
-  @include blackWeight;
-
+  font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
   font-size: 22px;
-  line-height: 42px;
+  font-weight: 500;
+  line-height: 38px;
   color: var(--bb-black);
-  letter-spacing: 1px;
 }
 
 .score {
-  @include boldWeight;
-
   width: 40px;
   margin: 0;
-  font-size: 30px;
+  font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
+  font-size: 20px;
+  font-weight: bold;
   font-variant-numeric: tabular-nums;
-  line-height: 42px;
+  line-height: 38px;
   color: var(--bb-black);
   text-align: center;
 }
@@ -94,23 +94,30 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .other.losers {
   .player1 span,
   .player2 span {
-    color: var(--bb-white);
+    color: #141414;
   }
 }
 
 .other.winners {
   .player1 span,
   .player2 span {
-    color: var(--bb-black);
+    color: #fff;
   }
 }
 
 .other.grand {
+  width: 341px;
+
   .player1 span {
-    color: var(--bb-black);
+    color: #fff;
   }
 
   .player2 span {
-    color: var(--bb-white);
+    color: #fff;
   }
+}
+
+.scoreRoot {
+  display: flex;
+  gap: 30px;
 }

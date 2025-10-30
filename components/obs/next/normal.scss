@@ -2,23 +2,23 @@
 
 .other {
   .nextnow {
-    @include mediumWeight;
+    @include blackWeight;
 
     position: absolute;
-    top: 880px;
-    left: 40px;
-    width: 220px;
+    top: 943px;
+    left: 42px;
+    width: 196px;
     height: 80px;
-    font-size: 52px;
-    color: var(--main-color);
-    text-align: center;
-    letter-spacing: 0.05em;
+    font-size: 63px;
+    color: #be1e28;
+    text-align: left;
+    letter-spacing: -1px;
   }
 
   .statusBox {
     position: absolute;
-    top: 880px;
-    left: 300px;
+    top: 999px;
+    left: 46px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,69 +32,78 @@
 
     width: 320px;
     margin: 0;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 24px;
-    color: var(--sub-color);
+    font-size: 18px;
+    line-height: 19px;
+    color: #141414;
     text-align: left;
-    letter-spacing: 2px;
+    letter-spacing: -0.7px;
   }
 
   .score {
     @include blackWeight;
 
     position: absolute;
-    top: 980px;
+    top: 950px;
     width: 60px;
     margin: 0;
-    font-size: 40px;
-    color: var(--main-color);
+    font-size: 80px;
+    font-variant-numeric: tabular-nums;
+    color: var(--white);
     text-align: center;
 
     &.p1 {
-      left: 500px;
+      left: 871px;
     }
 
     &.p2 {
-      left: 580px;
+      right: 871px;
     }
   }
 
   .player {
     position: absolute;
-    top: 996px;
-    width: 440px;
+    top: 967px;
+    display: flex;
+    flex-direction: column;
+    width: 540px;
     height: 60px;
     margin: 0;
     text-align: center;
 
     &.p1 {
-      left: 40px;
+      left: 296px;
+      text-align: right;
     }
 
     &.p2 {
-      left: 660px;
+      right: 296px;
+      text-align: left;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      width: 100%;
+      padding-right: 2px;
+      padding-bottom: 2px;
+      padding-left: 2px;
+      font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
+      font-size: 20px;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      line-height: 22px;
+      color: var(--white);
     }
 
     .name {
       @include blackWeight;
 
-      margin-left: 1rem;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      width: 100%;
+      font-size: 40px;
+      font-feature-settings: "palt";
+      line-height: 40px;
+      color: var(--white);
+      letter-spacing: -0.5px;
     }
   }
 
@@ -102,23 +111,24 @@
     @include mediumWeight;
 
     position: absolute;
-    top: 975px;
-    left: 1570px;
-    font-size: 24px;
+    top: 967px;
+    right: 40px;
+    font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
+    font-size: 26px;
+    font-weight: 500;
     line-height: 26px;
-    color: var(--sub-color);
-    letter-spacing: 1px;
+    color: var(--white);
   }
 
   .localtime {
     @include blackWeight;
 
     position: absolute;
-    top: 960px;
-    right: 57px;
-    font-size: 52px;
+    top: 968px;
+    right: 38px;
+    font-size: 75px;
     font-variant-numeric: tabular-nums;
-    color: var(--sub-color);
+    color: var(--white);
     text-align: right;
   }
 }

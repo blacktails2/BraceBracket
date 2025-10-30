@@ -9,22 +9,22 @@ import {
 import { BracketBox } from "./BracketBox"
 
 const keys2Pos: { [key: string]: { top: string; left: string }[] } = {
-  grandFinalReset: [{ top: "400px", left: "1498px" }],
-  grandFinal: [{ top: "400px", left: "1498px" }],
-  winnersFinal: [{ top: "199px", left: "807px" }],
+  grandFinalReset: [{ top: "404px", left: "1498px" }],
+  grandFinal: [{ top: "404px", left: "1496px" }],
+  winnersFinal: [{ top: "404px", left: "775px" }],
   winnersSemiFinal: [
-    { top: "122px", left: "117px" },
-    { top: "276px", left: "117px" },
+    { top: "326px", left: "61px" },
+    { top: "480px", left: "61px" },
   ],
-  losersFinal: [{ top: "601px", left: "1152px" }],
-  losersSemiFinal: [{ top: "601px", left: "807px" }],
+  losersFinal: [{ top: "779px", left: "1122px" }],
+  losersSemiFinal: [{ top: "779px", left: "775px" }],
   losersQuarterFinal: [
-    { top: "524px", left: "462px" },
-    { top: "678px", left: "462px" },
+    { top: "704px", left: "406px" },
+    { top: "854px", left: "406px" },
   ],
   losersRound: [
-    { top: "524px", left: "117px" },
-    { top: "678px", left: "117px" },
+    { top: "725px", left: "61px" },
+    { top: "880px", left: "61px" },
   ],
 }
 

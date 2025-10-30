@@ -6,22 +6,17 @@
   .mc3,
   .mc4 {
     position: absolute;
-    top: 774px;
+    top: 776px;
     width: 400px;
     height: 60px;
-    font-size: 30px;
-    line-height: 30px;
-    color: var(--main-color);
+    font-size: 40px;
+    font-feature-settings: "palt";
+    line-height: 40px;
+    color: var(--white);
     text-align: center;
-    letter-spacing: 2px;
 
     span {
-      margin-left: 10px;
       font-size: inherit;
-
-      &:first-child {
-        margin-left: 0;
-      }
     }
   }
 
@@ -40,15 +35,17 @@
     @include boldWeight;
 
     position: absolute;
-    top: 835px;
+    top: 837px;
     left: 300px;
-    width: 270px;
+    width: 370px;
     height: 30px;
+    font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
     font-size: 19px;
+    font-weight: 500;
     line-height: 19px;
-    color: var(--sub-color);
+    color: #141414;
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 0.1px;
   }
 
   .mc1_layout {
@@ -63,19 +60,19 @@
 
   .mc2_layout {
     .mc1 {
-      left: 380px;
+      left: 254px;
     }
 
     .id1 {
-      left: 325px;
+      left: 272px;
     }
 
     .mc2 {
-      left: 1140px;
+      left: 1270px;
     }
 
     .id2 {
-      left: 1325px;
+      left: 1277px;
     }
   }
 
