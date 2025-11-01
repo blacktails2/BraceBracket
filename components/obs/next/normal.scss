@@ -10,6 +10,7 @@
     width: 196px;
     height: 80px;
     font-size: 63px;
+    font-feature-settings: "ss01", "ss02", "ss04";
     color: #be1e28;
     text-align: left;
     letter-spacing: -1px;
@@ -28,7 +29,7 @@
 
   .round,
   .bo {
-    @include blackWeight;
+    @include mediumWeight;
 
     width: 320px;
     margin: 0;
@@ -87,12 +88,11 @@
       padding-right: 2px;
       padding-bottom: 2px;
       padding-left: 2px;
-      font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
       font-size: 20px;
       font-weight: 500;
-      font-variant-numeric: tabular-nums;
       line-height: 22px;
       color: var(--white);
+      letter-spacing: -0.03em;
     }
 
     .name {
@@ -100,20 +100,19 @@
 
       width: 100%;
       font-size: 40px;
-      font-feature-settings: "palt";
+      font-feature-settings: "ss01", "ss02", "ss04", "palt";
       line-height: 40px;
       color: var(--white);
-      letter-spacing: -0.5px;
+      letter-spacing: -0.03em;
     }
   }
 
   .localsetting {
-    @include mediumWeight;
+    @include regularWeight;
 
     position: absolute;
     top: 967px;
     right: 40px;
-    font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
     font-size: 26px;
     font-weight: 500;
     line-height: 26px;

@@ -7,7 +7,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 @mixin regularWeight {
   font-family: "Doppo V6 Medium", "toppan-bunkyu-gothic-pr6n", serif;
   font-style: normal;
-  font-weight: 600;
+  font-feature-settings: "ss01", "ss02", "ss04", "palt";
 }
 
 // フォントの太さの設定（ミディアムウェイト）
@@ -27,5 +27,5 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 @mixin blackWeight {
   font-family: "Doppo V6 Extrabold", toppan-bunkyu-midashi-go-std, sans-serif;
   font-style: normal;
-  font-weight: 900;
+  font-feature-settings: "ss01", "ss02", "ss04", "palt";
 }

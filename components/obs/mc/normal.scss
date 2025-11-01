@@ -10,7 +10,7 @@
     width: 400px;
     height: 60px;
     font-size: 40px;
-    font-feature-settings: "palt";
+    font-feature-settings: "ss01", "ss02", "ss04", "palt";
     line-height: 40px;
     color: var(--white);
     text-align: center;
@@ -21,7 +21,20 @@
   }
 
   .mc_team {
-    @include mediumWeight;
+    @include blackWeight;
+
+    position: relative;
+    margin-right: 12px;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: -6px;
+      width: 2px;
+      height: 100%;
+      content: "";
+      background-color: var(--white);
+    }
   }
 
   .mc_name {
@@ -32,14 +45,13 @@
   .id2,
   .id3,
   .id4 {
-    @include boldWeight;
+    @include regularWeight;
 
     position: absolute;
     top: 837px;
     left: 300px;
     width: 370px;
     height: 30px;
-    font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
     font-size: 19px;
     font-weight: 500;
     line-height: 19px;

@@ -59,12 +59,24 @@
     }
 
     .team {
-      @include mediumWeight;
+      @include blackWeight;
 
+      position: relative;
+      margin-right: 10px;
       font-size: 24px;
       line-height: 24px;
       color: var(--player-color);
       text-align: center;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: -5px;
+        width: 2px;
+        height: 100%;
+        content: "";
+        background-color: var(--player-color);
+      }
     }
 
     .name {
@@ -85,14 +97,14 @@
     top: 48px;
     left: 51px;
     width: 270px;
-    font-family: "Doppo V6", toppan-bunkyu-midashi-go-std, sans-serif;
+    font-family: "Doppo V6 Extrabold", toppan-bunkyu-midashi-go-std, sans-serif;
     font-size: 21px;
     font-style: normal;
-    font-weight: bold;
     font-feature-settings: "palt";
+    font-feature-settings: "ss01", "ss02", "ss04";
     color: var(--score-color);
     text-transform: uppercase !important;
-    letter-spacing: -0.6px;
+    letter-spacing: -0.03em;
   }
 
   .matchType {
@@ -101,10 +113,11 @@
     top: 82px;
     left: 51px;
     width: 270px;
-    font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
+    font-family: "Doppo V6 Medium", "toppan-bunkyu-gothic-pr6n", serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
+    font-feature-settings: "ss01", "ss02", "ss04";
     letter-spacing: -0.5px;
   }
 
@@ -114,6 +127,7 @@
 
     top: 856px;
     font-size: 16px;
+    font-feature-settings: "ss01", "ss02", "ss04";
     color: var(--player-color);
     letter-spacing: -0.5px;
   }

@@ -16,6 +16,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   font-family: $medium;
   font-variation-settings: "wght" 500;
   font-weight: 500;
+  font-feature-settings: "ss01", "ss02", "ss04", "palt";
 }
 
 @mixin boldWeight {
@@ -29,6 +30,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   font-family: "Doppo V6 Extrabold", toppan-bunkyu-midashi-go-std, sans-serif;
   font-style: normal;
   font-weight: 900;
+  font-feature-settings: "ss01", "ss02", "ss04", "palt";
 }
 
 @mixin score {

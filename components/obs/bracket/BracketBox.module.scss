@@ -1,7 +1,7 @@
 // フォントの設定
-$regular: "Satoshi", "Noto Sans JP", sans-serif;
+$regular: "Doppo V6 Medium", "toppan-bunkyu-gothic-pr6n", serif;
 $bold: "Satoshi", "Noto Sans JP", sans-serif;
-$black: "Satoshi", "Noto Sans JP", sans-serif;
+$black: "Doppo V6 Extrabold", toppan-bunkyu-midashi-go-std, sans-serif;
 
 .board {
   position: absolute;
@@ -15,8 +15,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 // フォントの太さの設定（ライトウェイト）
 @mixin regularWeight {
   font-family: $regular;
-  font-variation-settings: "wght" 400;
-  font-weight: 400;
+  font-feature-settings: "ss01", "ss02", "ss04", "palt";
 }
 
 // フォントの太さの設定（ミディアムウェイト）
@@ -35,15 +34,15 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 // フォントの太さの設定（ブラックウェイト）
 @mixin blackWeight {
   font-family: $black;
-  font-variation-settings: "wght" 900;
-  font-weight: 900;
+  font-feature-settings: "ss01", "ss02", "ss04", "palt";
+  font-variant-numeric: tabular-nums;
 }
 
 .bracketBox {
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 292px;
+  width: 294px;
   height: 76px;
   padding-left: 11px;
   font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
@@ -63,7 +62,8 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .playerTeam {
-  font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
+  @include regularWeight;
+
   font-size: 22px;
   font-weight: 500;
   line-height: 38px;
@@ -71,7 +71,8 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .playerName {
-  font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
+  @include regularWeight;
+
   font-size: 22px;
   font-weight: 500;
   line-height: 38px;
@@ -79,10 +80,11 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .score {
+  @include blackWeight;
+
   width: 40px;
   margin: 0;
-  font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
-  font-size: 20px;
+  font-size: 27px;
   font-weight: bold;
   font-variant-numeric: tabular-nums;
   line-height: 38px;
@@ -106,7 +108,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .other.grand {
-  width: 341px;
+  width: 338px;
 
   .player1 span {
     color: #fff;
@@ -119,5 +121,5 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 
 .scoreRoot {
   display: flex;
-  gap: 30px;
+  gap: 26px;
 }
