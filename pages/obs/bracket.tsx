@@ -85,7 +85,7 @@ const fullRoundText2Keys: { [key: string]: keyof BracketType } = {
 }
 
 const loadTop8Bracket = async (phaseGroupId: string) => {
-  const res = (await fetch("https://api.smash.gg/gql/alpha", {
+  const res = (await fetch("https://api.start.gg/gql/alpha", {
     method: "POST",
     headers: {
       Authorization: "Bearer 2d1a68f32b1baf8b2b25aae5569f9dca",
