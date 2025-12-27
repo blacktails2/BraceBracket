@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react"
+import { set } from "@firebase/database"
 import { onValue, ref } from "firebase/database"
-import { db } from "../libs/firebase"
+import { JsonObject } from "type-fest"
 import OBSWebSocket, { OBSResponseTypes } from "obs-websocket-js"
 import { useAsync } from "react-use"
-import { JsonObject } from "type-fest"
-import { set } from "@firebase/database"
+
+import { db } from "../libs/firebase"
 
 export const useSceneChanger = (
   id: string | undefined | null,
@@ -111,4 +112,96 @@ export const useSceneChanger = (
   }, [id, connect, sceneList, currentScene])
 
   return [currentScene, setCurrentScene, sceneList]
+}
+
+// In-Source Test
+if (import.meta.vitest) {
+  const { describe, it, expect, beforeEach, vi } = import.meta.vitest
+
+  describe('useSceneChanger', () => {
+    let renderHook: (callback: () => any) => { result: { current: any } }
+
+    beforeEach(async () => {
+      const testingLib = await import('@testing-library/react')
+      renderHook = testingLib.renderHook
+
+      const firebaseMock = await import('../test/mocks/firebase')
+      firebaseMock.resetMocks()
+
+      // Mock OBS WebSocket
+      vi.doMock('obs-websocket-js', () => ({
+        default: vi.fn(() => ({
+          identified: false,
+          connect: vi.fn(() => Promise.resolve({
+            obsWebSocketVersion: '5.0.0',
+            negotiatedRpcVersion: 1
+          })),
+          disconnect: vi.fn(() => Promise.resolve()),
+          call: vi.fn(() => Promise.resolve({
+            scenes: [],
+            currentProgramSceneName: ''
+          }))
+        }))
+      }))
+
+      // Mock react-use
+      vi.doMock('react-use', () => ({
+        useAsync: vi.fn()
+      }))
+
+      // Mock console methods
+      vi.spyOn(console, 'log').mockImplementation(() => {})
+      vi.spyOn(console, 'error').mockImplementation(() => {})
+    })
+
+    it('should return initial state with null id', () => {
+      const { result } = renderHook(() => useSceneChanger(null, false))
+      
+      expect(result.current[0]).toBe('') // currentScene
+      expect(typeof result.current[1]).toBe('function') // setCurrentScene
+      expect(Array.isArray(result.current[2])).toBe(true) // sceneList
+      expect(result.current[2]).toHaveLength(0)
+    })
+
+    it('should return initial state with undefined id', () => {
+      const { result } = renderHook(() => useSceneChanger(undefined, false))
+      
+      expect(result.current[0]).toBe('')
+      expect(typeof result.current[1]).toBe('function')
+      expect(Array.isArray(result.current[2])).toBe(true)
+      expect(result.current[2]).toHaveLength(0)
+    })
+
+    it('should handle setCurrentScene with null id', () => {
+      const { result } = renderHook(() => useSceneChanger(null, false))
+      
+      const setCurrentScene = result.current[1]
+      
+      // Should not throw with null id
+      expect(() => setCurrentScene('Scene1')).not.toThrow()
+    })
+
+    it('should handle basic function signature', () => {
+      // Only test with null/undefined to avoid Firebase dependency
+      const { result } = renderHook(() => useSceneChanger(null, false))
+      
+      expect(Array.isArray(result.current)).toBe(true)
+      expect(result.current).toHaveLength(3)
+      
+      // Check types
+      expect(typeof result.current[0]).toBe('string')    // currentScene
+      expect(typeof result.current[1]).toBe('function')  // setCurrentScene
+      expect(Array.isArray(result.current[2])).toBe(true) // sceneList
+    })
+
+    it('should handle both connect boolean values with null id', () => {
+      // Test with connect: false
+      const { result: resultNoConnect } = renderHook(() => useSceneChanger(null, false))
+      expect(typeof resultNoConnect.current[1]).toBe('function')
+      
+      // Test with connect: true  
+      const { result: resultConnect } = renderHook(() => useSceneChanger(null, true))
+      expect(typeof resultConnect.current[1]).toBe('function')
+    })
+  })
 }
