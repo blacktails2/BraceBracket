@@ -28,6 +28,20 @@
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
 
+@font-face {
+  font-family: "General Sans SemiBold";
+  src: url("/fonts/GeneralSans-SemiBold.woff2");
+}
+
+@font-face {
+  font-family: "General Sans Bold";
+  src: url("/fonts/GeneralSans-Bold.woff2");
+}
+@font-face {
+  font-family: "Switzer Bold";
+  src: url("/fonts/Switzer-Bold.woff2");
+}
+
 :root {
   --dark-gray: #111;
   --black: #202025;

@@ -2,14 +2,12 @@
 
 // 試合ステータス（Winners Semis, Best of 3など）の設定
 @mixin status {
-  font-family: "Work Sans", sans-serif;
-  font-size: 21px;
+  font-family: "General Sans Bold", sans-serif;
+  font-size: 20px;
   font-variation-settings: "wght" 600;
-  font-style: italic;
-  line-height: 21px;
+  line-height: 20px;
   color: var(--status-color);
   text-transform: uppercase;
-  letter-spacing: 0.025em;
 }
 
 .simple {
@@ -18,11 +16,11 @@
     @include score;
     @include boldWeight;
 
-    top: 33px;
-    width: 90px;
-    font-family: "Work Sans", sans-serif;
-    font-size: 80px;
-    font-variation-settings: "wght" 800;
+    top: 18px;
+    width: 92px;
+    font-family: "Switzer Bold", sans-serif;
+    font-size: 96px;
+    font-variant-numeric: tabular-nums;
     color: black;
     text-align: center;
 
@@ -37,7 +35,7 @@
 
   .player {
     position: absolute;
-    top: 60px;
+    top: 78px;
     width: 500px;
     height: 50px;
     margin: 0;
@@ -49,39 +47,36 @@
     }
 
     &.p1 {
-      left: 430px;
+      left: 440px;
       text-align: left;
     }
 
     &.p2 {
-      right: 430px;
-      text-align-last: right;
+      right: 440px;
+      text-align: right;
     }
 
     .team {
-      font-family: "Work Sans", "Zen Kaku Gothic Antique", sans-serif;
-      font-size: 23px;
-      font-variation-settings: "wght" 500;
+      margin-right: 8px;
+      font-family: "General Sans SemiBold", "Noto Sans JP", sans-serif;
+      font-size: 28px;
       font-weight: 700;
-      line-height: 30px;
-      color: black;
-      letter-spacing: 0.025em;
+      line-height: 28px;
+      color: white;
     }
 
     .name {
-      font-family: "Work Sans", "Zen Kaku Gothic Antique", sans-serif;
-      font-size: 34px;
-      font-variation-settings: "wght" 700;
-      font-weight: 900;
-      line-height: 35px;
+      font-family: "General Sans SemiBold", "Noto Sans JP", sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 28px;
       color: white;
-      letter-spacing: 1px;
     }
   }
 
   .box {
     position: absolute;
-    top: 159px;
+    top: 163px;
     left: 660px;
     display: flex;
     justify-content: center;
@@ -98,20 +93,15 @@
     margin-right: 3px;
 
     &::after {
-      margin-left: 5px;
+      margin-left: 3px;
       content: "/";
     }
   }
 
   .matchType {
-    font-family: "Work Sans", sans-serif;
-    font-size: 21px;
-    font-variation-settings: "wght" 600;
-    font-style: italic;
-    line-height: 21px;
+    @include status;
+
     color: var(--status-color);
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
   }
 
   // 選手IDの位置設定
@@ -120,17 +110,16 @@
     width: 320px;
     height: 22px;
     margin: 0;
-    font-family: "Work Sans", sans-serif;
-    font-size: 24px;
-    font-variation-settings: "wght" 600;
-    line-height: 24px;
+    font-family: "General Sans SemiBold", sans-serif;
+    font-size: 18px;
+    line-height: 18px;
     color: white;
   }
 
   .cameraLeft {
     @include idText;
 
-    top: 842px;
+    top: 844px;
     left: 26px;
     text-align: left;
   }
@@ -138,7 +127,7 @@
   .cameraRight {
     @include idText;
 
-    top: 842px;
+    top: 844px;
     right: 26px;
     text-align: right;
   }

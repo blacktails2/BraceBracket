@@ -3,23 +3,20 @@
 .simple {
   .nextnow {
     position: absolute;
-    top: 852px;
+    top: 856px;
     left: 38px;
-    width: 260px;
-    height: 95px;
-    font-family: "Work Sans", sans-serif;
-    font-size: 90px;
-    font-variation-settings: "wght" 400;
-    font-style: italic;
-    color: var(--sub-color);
+    width: 267px;
+    height: 72px;
+    font-family: "General Sans SemiBold", sans-serif;
+    font-size: 72px;
+    color: white;
     text-align: center;
-    letter-spacing: 0.025em;
   }
 
   .statusBox {
     position: absolute;
-    top: 865px;
-    left: 333px;
+    top: 858px;
+    left: 335px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,89 +25,81 @@
   }
 
   .round {
-    width: 320px;
+    width: 348px;
     margin: 0;
-    font-family: "Work Sans", sans-serif;
+    font-family: "General Sans SemiBold", sans-serif;
     font-size: 26px;
-    font-variation-settings: "wght" 600;
     font-style: italic;
-    line-height: 25px;
+    line-height: 26px;
     color: white;
     text-align: left;
-    letter-spacing: 0.01em;
   }
 
   .bo {
-    width: 320px;
+    width: 348px;
     margin: 0;
-    font-family: "Work Sans", sans-serif;
+    font-family: "General Sans SemiBold", sans-serif;
     font-size: 26px;
     font-variation-settings: "wght" 600;
-    font-style: italic;
-    line-height: 25px;
+    line-height: 26px;
     color: white;
     text-align: left;
-    letter-spacing: 0.01em;
   }
 
   // スコアの位置指定
   .score {
     position: absolute;
-    top: 935px;
+    top: 918px;
     width: 100px;
     margin: 0;
-    font-family: "Work Sans", sans-serif;
-    font-size: 80px;
+    font-family: "Switzer Bold", sans-serif;
+    font-size: 96px;
     font-variation-settings: "wght" 800;
     font-variant-numeric: tabular-nums;
     color: var(--sub-color);
     text-align: center;
 
     &.p1 {
-      left: 453px;
+      left: 454px;
     }
 
     &.p2 {
-      left: 568px;
+      left: 573px;
     }
   }
 
   .player {
     position: absolute;
-    top: 1005px;
-    width: 420px;
+    top: 998px;
+    width: 400px;
     height: 50px;
     margin: 0;
 
     &.p1 {
-      left: 0;
-      text-align: right;
+      left: 35px;
+      text-align: center;
     }
 
     &.p2 {
-      left: 698px;
-      text-align: left;
+      left: 690px;
+      text-align: center;
     }
 
     .team {
-      font-family: "Work Sans", "Zen Kaku Gothic Antique", sans-serif;
-      font-size: 29px;
-      font-variation-settings: "wght" 500;
+      font-family: "General Sans SemiBold", "Noto Sans JP", sans-serif;
+      font-size: 36px;
       font-weight: 700;
-      line-height: 29px;
+      line-height: 32px;
       color: white;
-      letter-spacing: 0.025em;
     }
 
     .name {
       margin-left: 1rem;
-      font-family: "Work Sans", "Zen Kaku Gothic Antique", sans-serif;
-      font-size: 29px;
-      font-variation-settings: "wght" 700;
-      font-weight: 900;
-      line-height: 29px;
+      font-family: "General Sans SemiBold", "Noto Sans JP", sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 32px;
       color: white;
-      letter-spacing: 0.025em;
     }
   }
 
@@ -130,13 +119,12 @@
 
   .localtime {
     position: absolute;
-    top: 935px;
-    right: 52px;
-    font-family: "Work Sans", sans-serif;
-    font-size: 80px;
-    font-variation-settings: "wght" 700;
+    top: 925px;
+    right: 55px;
+    font-family: "Switzer Bold", sans-serif;
+    font-size: 82px;
     font-variant-numeric: tabular-nums;
-    color: var(--sub-color);
+    color: white;
     text-align: right;
   }
 }
