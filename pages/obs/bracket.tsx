@@ -88,7 +88,7 @@ const loadTop8Bracket = async (phaseGroupId: string) => {
   const res = (await fetch("https://api.smash.gg/gql/alpha", {
     method: "POST",
     headers: {
-      Authorization: "Bearer b02471b232fafc5d8a67c6e1fe9afd69",
+      Authorization: "Bearer 2d1a68f32b1baf8b2b25aae5569f9dca",
       "content-Type": "application/json",
       Accept: "application/json",
       encoding: "utf-8",
