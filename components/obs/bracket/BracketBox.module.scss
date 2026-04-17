@@ -66,7 +66,6 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   font-variation-settings: "wght" 500;
   font-weight: 700;
   line-height: 53px;
-  color: white;
 }
 
 .playerName {
@@ -75,7 +74,6 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   font-variation-settings: "wght" 700;
   font-weight: 700;
   line-height: 53px;
-  color: white;
 }
 
 .score {
@@ -85,28 +83,27 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   font-size: 42px;
   font-variant-numeric: tabular-nums;
   line-height: 53px;
-  color: white;
   text-align: center;
 }
 
 // 色設定
-.other.losers {
+.bracketBox.losers {
   .player1 span,
   .player2 span {
     color: white;
   }
 }
 
-.other.winners {
+.bracketBox.winners {
   .player1 span,
   .player2 span {
-    color: white;
+    color: black;
   }
 }
 
-.other.grand {
+.bracketBox.grand {
   .player1 span {
-    color: white;
+    color: black;
   }
 
   .player2 span {
