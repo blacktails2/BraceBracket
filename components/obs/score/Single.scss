@@ -4,14 +4,13 @@
 @mixin status {
   @include blackWeight;
 
-  width: 215px;
-  margin: 0 0 0 5px;
-  font-size: 19px;
+  width: 264px;
+  margin: 0;
+  font-size: 20px;
   font-style: italic;
   line-height: 21px;
-  color: var(--status-color);
+  color: #ecdbbe;
   text-align: left;
-  letter-spacing: 1px;
 }
 
 .single {
@@ -21,23 +20,29 @@
     @include blackWeight;
 
     top: 44px;
+    top: 63px;
     width: 60px;
-    font-size: 40px;
+    font-family: helvetica-neue-lt-pro, sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    color: #be1e28;
+    text-align: center;
 
     &.p1 {
-      left: 800px;
+      left: 872px;
     }
 
     &.p2 {
-      right: 800px;
+      right: 918px;
     }
   }
 
   // プレイヤー名の位置指定
   .player {
     position: absolute;
-    top: 61px;
-    width: 460px;
+    top: 60px;
+    width: 350px;
     height: 60px;
     text-align: center;
 
@@ -50,16 +55,17 @@
     }
 
     &.p1 {
-      left: 320px;
+      left: 494px;
     }
 
     &.p2 {
-      right: 320px;
+      right: 540px;
     }
 
     .team {
       @include mediumWeight;
 
+      display: none;
       font-size: 29px;
       line-height: 29px;
       color: var(--player-color);
@@ -70,11 +76,14 @@
     .name {
       @include blackWeight;
 
-      font-size: 29px;
-      line-height: 29px;
-      color: var(--player-color);
+      margin-left: 0 !important;
+      font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      font-feature-settings: "palt";
+      line-height: 24px;
+      color: #ecdbbe;
       text-align: center;
-      letter-spacing: 1px;
     }
   }
 
@@ -89,26 +98,39 @@
     height: 60px;
   }
 
-  .box {
+  // 試合ステータスの位置設定
+  .round {
     position: absolute;
-    top: 45px;
-    left: 65px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 215px;
-    height: 60px;
+    top: 61px;
+    left: 41px;
+    width: 264px;
+    font-family: helvetica-neue-lt-pro, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1;
+    color: #ecdbbe;
+    text-align: center;
+    text-transform: uppercase;
   }
 
-  // 試合ステータスの位置設定
-  .round,
   .matchType {
-    @include status;
+    position: absolute;
+    top: 48px;
+    left: 891px;
+    width: 92px;
+    font-family: helvetica-neue-lt-pro, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1;
+    color: #be1e28;
+    text-align: center;
   }
 
   .cameraRight,
   .cameraLeft {
-    color: var(--bb-white);
+    color: #ecdbbe;
   }
 
   .logobox {

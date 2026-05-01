@@ -38,7 +38,7 @@ export const MatchInterval: FC<{
       />
       <Transition keyName={`${matchIntervalInfo.isNow}`}>
         <p className={styles.nextnow}>
-          {matchIntervalInfo.isNow ? "NOW" : "NEXT"}
+          {matchIntervalInfo.isNow ? "current match" : "next match"}
         </p>
       </Transition>
       <div
@@ -84,11 +84,7 @@ export const MatchInterval: FC<{
           <span className={styles.name}>{matchIntervalInfo.p2.playerName}</span>
         </div>
       </Transition>
-      <p className={styles.localsetting}>
-        Local Time
-        <br />
-        JST
-      </p>
+      <p className={styles.localsetting}>JST</p>
       <Transition keyName={time}>
         <p className={styles.localtime}>{time}</p>
       </Transition>

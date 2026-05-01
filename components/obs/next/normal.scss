@@ -5,20 +5,23 @@
     @include mediumWeight;
 
     position: absolute;
-    top: 880px;
+    top: 947px;
     left: 40px;
     width: 220px;
     height: 80px;
-    font-size: 52px;
-    color: var(--main-color);
-    text-align: center;
-    letter-spacing: 0.05em;
+    font-family: helvetica-neue-lt-pro, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    color: #ecdbbe;
+    text-align: left;
+    text-transform: uppercase;
   }
 
   .statusBox {
     position: absolute;
-    top: 880px;
-    left: 300px;
+    top: 988px;
+    left: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,55 +35,63 @@
 
     width: 320px;
     margin: 0;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 24px;
-    color: var(--sub-color);
+    font-family: helvetica-neue-lt-pro, sans-serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px;
+    color: #ecdbbe;
     text-align: left;
-    letter-spacing: 2px;
+    text-transform: uppercase;
   }
 
   .score {
     @include blackWeight;
 
     position: absolute;
-    top: 980px;
-    width: 60px;
+    top: 945px;
+    width: 80px;
     margin: 0;
-    font-size: 40px;
-    color: var(--main-color);
+    font-family: helvetica-neue-lt-pro, sans-serif;
+    font-size: 78px;
+    font-style: normal;
+    font-weight: 700;
+    color: #be1e28;
     text-align: center;
 
     &.p1 {
-      left: 500px;
+      left: 870px;
     }
 
     &.p2 {
-      left: 580px;
+      left: 986px;
     }
   }
 
   .player {
     position: absolute;
-    top: 996px;
-    width: 440px;
+    top: 986px;
+    width: 430px;
     height: 60px;
     margin: 0;
     text-align: center;
 
     &.p1 {
-      left: 40px;
+      left: 395px;
+      text-align: right;
     }
 
     &.p2 {
-      left: 660px;
+      left: 1105px;
+      text-align: left;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 28px;
-      line-height: 28px;
+      display: none;
+      font-size: 38px;
+      line-height: 38px;
       color: var(--sub-color);
       text-align: center;
       letter-spacing: 1px;
@@ -89,12 +100,13 @@
     .name {
       @include blackWeight;
 
-      margin-left: 1rem;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      margin-left: 0 !important;
+      font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+      font-size: 38px;
+      font-weight: 900;
+      font-feature-settings: "palt";
+      line-height: 38px;
+      color: #be1e28;
     }
   }
 
@@ -102,23 +114,29 @@
     @include mediumWeight;
 
     position: absolute;
-    top: 975px;
-    left: 1570px;
-    font-size: 24px;
-    line-height: 26px;
-    color: var(--sub-color);
-    letter-spacing: 1px;
+    top: 950px;
+    right: 40px;
+    font-family: helvetica-neue-lt-pro, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    color: #ecdbbe;
+    text-align: right;
   }
 
   .localtime {
     @include blackWeight;
 
     position: absolute;
-    top: 960px;
-    right: 57px;
-    font-size: 52px;
+    top: 968px;
+    right: 38px;
+    font-family: helvetica-neue-lt-pro, sans-serif;
+    font-size: 78px;
+    font-style: normal;
+    font-weight: 700;
     font-variant-numeric: tabular-nums;
-    color: var(--sub-color);
+    color: #ecdbbe;
     text-align: right;
   }
 }
