@@ -43,28 +43,21 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 295px;
+  width: 290px;
   height: 85px;
-  padding-left: 11px;
+  padding-left: 10px;
 
   p {
     margin: 0;
-
-    span {
-      margin-left: 6px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
   }
 }
 
 .playerTeam {
   @include mediumWeight;
 
+  display: none;
   font-size: 22px;
-  line-height: 42px;
+  line-height: 37px;
   color: var(--bb-black);
   letter-spacing: 1px;
 }
@@ -72,10 +65,13 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .playerName {
   @include blackWeight;
 
-  font-size: 22px;
-  line-height: 42px;
-  color: var(--bb-black);
-  letter-spacing: 1px;
+  margin-left: 0 !important;
+  font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  font-feature-settings: "palt";
+  line-height: 37px;
+  color: #ecdbbe !important;
 }
 
 .score {
@@ -83,10 +79,13 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 
   width: 40px;
   margin: 0;
-  font-size: 30px;
+  font-family: helvetica-neue-lt-pro, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
-  line-height: 42px;
-  color: var(--bb-black);
+  line-height: 37px;
+  color: #ecdbbe !important;
   text-align: center;
 }
 
