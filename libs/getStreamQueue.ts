@@ -55,7 +55,7 @@ query StreamQueueOnTournament($tourneySlug: String!, $eventSlug: String!) {
     }
   }
   event(slug: $eventSlug) {
-    sets(perPage: 50, filters: {state: [1, 2], hideEmpty: true}) {
+    sets(perPage: 10, filters: {state: [1, 2], hideEmpty: true}) {
       pageInfo {
         totalPages
         total
@@ -86,7 +86,7 @@ query StreamQueueOnTournament($tourneySlug: String!, $eventSlug: String!) {
 const nextQuery = `
 query StreamQueueOnTournament($eventSlug: String!, $page: Int!) {
   event(slug: $eventSlug) {
-    sets(perPage: 50, page: $page, filters: {state: [1, 2], hideEmpty: true}) {
+    sets(perPage: 10, page: $page, filters: {state: [1, 2], hideEmpty: true}) {
       pageInfo {
         totalPages
         total
@@ -155,7 +155,7 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
     tourneySlug: tournarySlug,
     eventSlug: eventSlug,
   }
-  const res = await fetch(`https://api.smash.gg/gql/alpha`, {
+  const res = await fetch(`https://api.start.gg/gql/alpha`, {
     method: "POST",
     headers: {
       Authorization: "Bearer a46003b90d4efcb422cccf319adaed49",
@@ -245,7 +245,7 @@ export const getStreamQueue = async (url?: string): Promise<StreamQueue> => {
         eventSlug: eventSlug,
         page: i,
       }
-      const res = await fetch(`https://api.smash.gg/gql/alpha`, {
+      const res = await fetch(`https://api.start.gg/gql/alpha`, {
         method: "POST",
         headers: {
           Authorization: "Bearer a46003b90d4efcb422cccf319adaed49",

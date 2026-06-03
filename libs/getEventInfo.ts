@@ -96,7 +96,7 @@ const fetchEventsInfo = async (variables: {
   phaseGroupId: string
   setsPage: number
 }): Promise<QueryResponse> => {
-  return await fetch(`https://api.smash.gg/gql/alpha`, {
+  return await fetch(`https://api.start.gg/gql/alpha`, {
     method: "POST",
     headers: {
       Authorization: "Bearer a46003b90d4efcb422cccf319adaed49",
