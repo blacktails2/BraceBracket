@@ -4,14 +4,13 @@
 @mixin status {
   @include blackWeight;
 
-  width: 240px;
+  width: 260px;
   margin: 0;
-  font-size: 19px;
-  font-style: italic;
-  line-height: 21px;
+  font-family: "Clash Display Bold", sans-serif;
+  font-size: 24px;
+  line-height: 24px;
   color: var(--status-color);
   text-align: center;
-  letter-spacing: 1px;
 }
 
 .solid {
@@ -20,23 +19,26 @@
     @include score;
     @include blackWeight;
 
-    top: 45px;
+    top: 55px;
     width: 60px;
-    font-size: 40px;
+    font-family: "Clash Display Bold", sans-serif;
+    font-size: 48px;
+    color: #000;
+    text-align: center;
 
     &.p1 {
-      left: 770px;
+      left: 325px;
     }
 
     &.p2 {
-      right: 770px;
+      right: 325px;
     }
   }
 
   .player {
     position: absolute;
-    top: 60px;
-    width: 430px;
+    top: 74px;
+    width: 380px;
     height: 60px;
     margin: 0;
     text-align: center;
@@ -50,42 +52,40 @@
     }
 
     &.p1 {
-      left: 320px;
+      left: 452px;
     }
 
     &.p2 {
-      right: 320px;
+      right: 452px;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 29px;
-      line-height: 29px;
+      font-size: 27px;
+      line-height: 27px;
       color: var(--player-color);
       text-align: center;
-      letter-spacing: 1px;
     }
 
     .name {
       @include blackWeight;
 
-      font-size: 29px;
-      line-height: 29px;
+      font-size: 27px;
+      line-height: 27px;
       color: var(--player-color);
       text-align: center;
-      letter-spacing: 1px;
     }
   }
 
   .box {
     position: absolute;
-    top: 44px;
-    left: 840px;
+    top: 57px;
+    left: 830px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 240px;
+    width: 260px;
     height: 60px;
   }
 

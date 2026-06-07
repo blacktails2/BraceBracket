@@ -28,6 +28,11 @@
   src: url("/fonts/Mint-Grotesk-ExtraBold-V13.woff2");
 }
 
+@font-face {
+  font-family: "Clash Display Bold";
+  src: url("/fonts/ClashDisplay-Bold.woff2");
+}
+
 :root {
   --dark-gray: #111;
   --black: #202025;
