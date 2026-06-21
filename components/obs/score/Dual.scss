@@ -21,61 +21,72 @@
     @include score;
     @include blackWeight;
 
-    top: 44px;
+    top: 37px;
     width: 75px;
-    font-size: 54px;
+    font-size: 48px;
+    font-variant-numeric: tabular-nums;
 
     &.p1 {
-      left: 365px;
+      left: 787px;
     }
 
     &.p2 {
-      right: 365px;
+      right: 787px;
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
+    top: 61px;
     width: 410px;
     height: 50px;
-    margin: 0 0 0 10px;
     text-align: center;
 
-    span {
-      margin-left: 10px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
+    //span {
+    //  margin-left: 10px;
+    //
+    //  &:first-child {
+    //    margin-left: 0;
+    //  }
+    //}
 
     &.p1 {
-      left: 460px;
+      left: 382px;
     }
 
     &.p2 {
-      right: 460px;
+      right: 382px;
     }
 
     .team {
-      @include mediumWeight;
+      @include blackWeight;
 
-      font-size: 25px;
-      line-height: 25px;
+      position: relative;
+      margin-right: 10px;
+      font-size: 24px;
+      line-height: 24px;
       color: var(--player-color);
       text-align: center;
-      letter-spacing: 1px;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: -5px;
+        width: 2px;
+        height: 100%;
+        content: "";
+        background-color: var(--player-color);
+      }
     }
 
     .name {
       @include blackWeight;
 
-      font-size: 25px;
-      line-height: 25px;
+      font-size: 24px;
+      font-feature-settings: "palt";
+      line-height: 24px;
       color: var(--player-color);
       text-align: center;
-      letter-spacing: 1px;
     }
   }
 
@@ -83,18 +94,50 @@
   .round {
     @include status;
 
-    left: 465px;
+    top: 48px;
+    left: 51px;
+    width: 270px;
+    font-family: "Doppo V6 Extrabold", toppan-bunkyu-midashi-go-std, sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-feature-settings: "palt";
+    font-feature-settings: "ss01", "ss02", "ss04";
+    color: var(--score-color);
+    text-transform: uppercase !important;
+    letter-spacing: -0.03em;
   }
 
   .matchType {
     @include status;
 
-    right: 465px;
+    top: 82px;
+    left: 51px;
+    width: 270px;
+    font-family: "Doppo V6 Medium", "toppan-bunkyu-gothic-pr6n", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    font-feature-settings: "ss01", "ss02", "ss04";
+    letter-spacing: -0.5px;
   }
 
   .cameraRight,
   .cameraLeft {
-    color: var(--bb-white);
+    @include blackWeight;
+
+    top: 856px;
+    font-size: 16px;
+    font-feature-settings: "ss01", "ss02", "ss04";
+    color: var(--player-color);
+    letter-spacing: -0.5px;
+  }
+
+  .cameraRight {
+    text-align: right;
+  }
+
+  .cameraLeft {
+    text-align: left;
   }
 
   .tournamentNameBox {

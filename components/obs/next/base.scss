@@ -6,16 +6,16 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 
 // フォントの太さの設定（ライトウェイト）
 @mixin regularWeight {
-  font-family: $regular;
-  font-variation-settings: "wght" 400;
-  font-weight: 400;
+  font-family: "Doppo V6 Medium", "toppan-bunkyu-gothic-pr6n", serif;
+  font-style: normal;
+  font-weight: 600;
+  font-feature-settings: "ss01", "ss02", "ss04";
 }
 
 // フォントの太さの設定（ミディアムウェイト）
 @mixin mediumWeight {
-  font-family: $medium;
-  font-variation-settings: "wght" 500;
-  font-weight: 500;
+  font-family: "Doppo V6 Extrabold", toppan-bunkyu-midashi-go-std, sans-serif;
+  font-feature-settings: "ss01", "ss02", "ss04";
 }
 
 @mixin boldWeight {
@@ -26,7 +26,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 
 // フォントの太さの設定（ブラックウェイト）
 @mixin blackWeight {
-  font-family: $black;
-  font-variation-settings: "wght" 900;
-  font-weight: 900;
+  font-family: "Doppo V6 Extrabold", toppan-bunkyu-midashi-go-std, sans-serif;
+  font-style: normal;
+  font-feature-settings: "ss01", "ss02", "ss04";
 }

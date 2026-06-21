@@ -100,7 +100,7 @@ const loadTop8Bracket = async (phaseGroupId: string) => {
   }).then((res) => res.json())) as Data
   const maxLosersRound = getMaxLosersRound(res)
   const rounds = [
-    // "Grand Final Reset",
+    "Grand Final Reset",
     "Grand Final",
     "Winners Final",
     "Winners Semi-Final",
@@ -124,6 +124,7 @@ const loadTop8Bracket = async (phaseGroupId: string) => {
   }
   res.data.phaseGroup.sets.nodes.forEach((n) => {
     if (!rounds.includes(n.fullRoundText)) return
+
     const key = rounds2Key[n.fullRoundText]
     const players = n.slots.map((s) => {
       const { team, name } = getNameAndTeamtag(s?.entrant?.name)
@@ -133,6 +134,18 @@ const loadTop8Bracket = async (phaseGroupId: string) => {
         score: s?.standing?.stats?.score?.value,
       }
     })
+
+    if (key === "grandFinalReset") {
+      if (players[0].name === bracket["grandFinal"][0]?.player1.name) {
+        bracket["grandFinal"][0].player1.exScore = players[0].score
+        bracket["grandFinal"][0].player2.exScore = players[1].score
+      } else {
+        bracket["grandFinal"][0].player1.exScore = players[1].score
+        bracket["grandFinal"][0].player2.exScore = players[0].score
+      }
+      return
+    }
+
     const score: BracketScore = {
       player1: {
         team: players[0]?.team,

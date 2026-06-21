@@ -36,9 +36,15 @@ export const MatchInterval: FC<{
         src={`/image/next/${getNextFilename(layout, color)}`}
         alt=""
       />
+      {/*<img*/}
+      {/*  className={styles.board}*/}
+      {/*  src={`/image/next/NextMatch_sample.png`}*/}
+      {/*  style={{ opacity: 0.5 }}*/}
+      {/*  alt=""*/}
+      {/*/>*/}
       <Transition keyName={`${matchIntervalInfo.isNow}`}>
         <p className={styles.nextnow}>
-          {matchIntervalInfo.isNow ? "NOW" : "NEXT"}
+          {matchIntervalInfo.isNow ? "Now:" : "Next:"}
         </p>
       </Transition>
       <div
@@ -84,11 +90,7 @@ export const MatchInterval: FC<{
           <span className={styles.name}>{matchIntervalInfo.p2.playerName}</span>
         </div>
       </Transition>
-      <p className={styles.localsetting}>
-        Local Time
-        <br />
-        JST
-      </p>
+      <p className={styles.localsetting}>JST</p>
       <Transition keyName={time}>
         <p className={styles.localtime}>{time}</p>
       </Transition>

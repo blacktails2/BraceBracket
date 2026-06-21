@@ -22,6 +22,7 @@ export const BracketBox: FC<{
     team: string
     name: string
     score?: number
+    exScore?: number
   }>({ team: "", name: "" })
   useEffect(() => {
     setPlayer1(_player1)
@@ -30,6 +31,7 @@ export const BracketBox: FC<{
     team: string
     name: string
     score?: number
+    exScore?: number
   }>({ team: "", name: "" })
   useEffect(() => {
     setPlayer2(_player2)
@@ -63,17 +65,33 @@ export const BracketBox: FC<{
           </p>
         </Transition>
       </div>
-      <div>
-        <Transition keyName={`${player1.team}-${player1.score}`}>
-          <p className={styles.player1}>
-            <span className={styles.score}>{player1.score}</span>
-          </p>
-        </Transition>
-        <Transition keyName={`${player1.team}-${player1.score}`}>
-          <p className={styles.player2}>
-            <span className={styles.score}>{player2.score}</span>
-          </p>
-        </Transition>
+      <div className={styles.scoreRoot}>
+        <div>
+          <Transition keyName={`${player1.team}-${player1.score}`}>
+            <p className={styles.player1}>
+              <span className={styles.score}>{player1.score}</span>
+            </p>
+          </Transition>
+          <Transition keyName={`${player2.team}-${player2.score}`}>
+            <p className={styles.player2}>
+              <span className={styles.score}>{player2.score}</span>
+            </p>
+          </Transition>
+        </div>
+        {round.startsWith("grand") && (
+          <div style={{ width: "20px" }}>
+            <Transition keyName={`${player1.team}-ex-${player1.score}`}>
+              <p className={styles.player1}>
+                <span className={styles.score}>{player1.exScore}</span>
+              </p>
+            </Transition>
+            <Transition keyName={`${player2.team}-ex-${player2.score}`}>
+              <p className={styles.player2}>
+                <span className={styles.score}>{player2.exScore}</span>
+              </p>
+            </Transition>
+          </div>
+        )}
       </div>
     </div>
   )

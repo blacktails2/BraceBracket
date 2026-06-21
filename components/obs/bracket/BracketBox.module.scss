@@ -1,7 +1,7 @@
 // フォントの設定
-$regular: "Satoshi", "Noto Sans JP", sans-serif;
+$regular: "Doppo V6 Medium", "toppan-bunkyu-gothic-pr6n", serif;
 $bold: "Satoshi", "Noto Sans JP", sans-serif;
-$black: "Satoshi", "Noto Sans JP", sans-serif;
+$black: "Doppo V6 Extrabold", toppan-bunkyu-midashi-go-std, sans-serif;
 
 .board {
   position: absolute;
@@ -15,8 +15,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 // フォントの太さの設定（ライトウェイト）
 @mixin regularWeight {
   font-family: $regular;
-  font-variation-settings: "wght" 400;
-  font-weight: 400;
+  font-feature-settings: "ss01", "ss02", "ss04", "palt";
 }
 
 // フォントの太さの設定（ミディアムウェイト）
@@ -35,17 +34,19 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 // フォントの太さの設定（ブラックウェイト）
 @mixin blackWeight {
   font-family: $black;
-  font-variation-settings: "wght" 900;
-  font-weight: 900;
+  font-feature-settings: "ss01", "ss02", "ss04", "palt";
+  font-variant-numeric: tabular-nums;
 }
 
 .bracketBox {
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 295px;
-  height: 85px;
+  width: 294px;
+  height: 76px;
   padding-left: 11px;
+  font-family: "Doppo V6", "toppan-bunkyu-gothic-pr6n", serif;
+  font-weight: 500;
 
   p {
     margin: 0;
@@ -61,31 +62,32 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .playerTeam {
-  @include mediumWeight;
+  @include regularWeight;
 
   font-size: 22px;
-  line-height: 42px;
+  font-weight: 500;
+  line-height: 38px;
   color: var(--bb-black);
-  letter-spacing: 1px;
 }
 
 .playerName {
-  @include blackWeight;
+  @include regularWeight;
 
   font-size: 22px;
-  line-height: 42px;
+  font-weight: 500;
+  line-height: 38px;
   color: var(--bb-black);
-  letter-spacing: 1px;
 }
 
 .score {
-  @include boldWeight;
+  @include blackWeight;
 
   width: 40px;
   margin: 0;
-  font-size: 30px;
+  font-size: 27px;
+  font-weight: bold;
   font-variant-numeric: tabular-nums;
-  line-height: 42px;
+  line-height: 38px;
   color: var(--bb-black);
   text-align: center;
 }
@@ -94,23 +96,30 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .other.losers {
   .player1 span,
   .player2 span {
-    color: var(--bb-white);
+    color: #141414;
   }
 }
 
 .other.winners {
   .player1 span,
   .player2 span {
-    color: var(--bb-black);
+    color: #fff;
   }
 }
 
 .other.grand {
+  width: 338px;
+
   .player1 span {
-    color: var(--bb-black);
+    color: #fff;
   }
 
   .player2 span {
-    color: var(--bb-white);
+    color: #fff;
   }
+}
+
+.scoreRoot {
+  display: flex;
+  gap: 26px;
 }

@@ -61,6 +61,11 @@ export const MC: FC<{ setting: Setting; mc: MCInfo }> = ({ setting, mc }) => {
             className={styles.board}
             alt="背景画像"
           />
+          {/*<img*/}
+          {/*  src={`/image/mc/MC_Name_sample.png`}*/}
+          {/*  style={{ opacity: 0.5 }}*/}
+          {/*  alt=""*/}
+          {/*/>*/}
           {filteredMCList.map((mc, idx) => {
             return (
               <>

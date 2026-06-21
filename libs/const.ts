@@ -133,11 +133,13 @@ export type BracketScore = {
     team: string
     name: string
     score?: number
+    exScore?: number
   }
   player2: {
     team: string
     name: string
     score?: number
+    exScore?: number
   }
 }
 
