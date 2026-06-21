@@ -123,7 +123,11 @@ export const Create: FC<{ setting: Setting }> = ({ setting }) => {
             <h3>外部ツール連携</h3>
             <IntegrateStartGG />
             <TweetMatch />
-            <Button type="submit" mode="primary">
+            <Button
+              type="submit"
+              mode="primary"
+              data-testid="create-submit-button"
+            >
               {submitText}
             </Button>
             <div className="absolute">

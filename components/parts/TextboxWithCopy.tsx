@@ -2,10 +2,11 @@ import { FC, useEffect, useState } from "react"
 
 import styles from "./TextboxWithCopy.module.scss"
 
-export const TextboxWithCopy: FC<{ text: string; className?: string }> = ({
-  text,
-  className,
-}) => {
+export const TextboxWithCopy: FC<{
+  text: string
+  className?: string
+  "data-testid"?: string
+}> = ({ text, className, "data-testid": dataTestId }) => {
   const [showTooltip, setShowTooltip] = useState(false)
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -18,7 +19,13 @@ export const TextboxWithCopy: FC<{ text: string; className?: string }> = ({
   return (
     <div className={className}>
       <div className={styles.container}>
-        <input type="text" value={text} readOnly className={styles.text} />
+        <input
+          type="text"
+          value={text}
+          readOnly
+          className={styles.text}
+          data-testid={dataTestId}
+        />
         <div className="relative flex">
           <button
             className={styles.button}
