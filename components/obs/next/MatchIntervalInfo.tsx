@@ -38,7 +38,7 @@ export const MatchInterval: FC<{
       />
       <Transition keyName={`${matchIntervalInfo.isNow}`}>
         <p className={styles.nextnow}>
-          {matchIntervalInfo.isNow ? "NOW" : "NEXT"}
+          {matchIntervalInfo.isNow ? "Now" : "Next"}
         </p>
       </Transition>
       <div
@@ -58,7 +58,9 @@ export const MatchInterval: FC<{
         keyName={`${matchIntervalInfo.p1.team}-${matchIntervalInfo.p1.playerName}`}
       >
         <div className={`${styles.player} ${styles.p1}`}>
-          <span className={styles.team}>{matchIntervalInfo.p1.team}</span>
+          {matchIntervalInfo.p1.team && (
+            <span className={styles.team}>{matchIntervalInfo.p1.team}</span>
+          )}
           <span className={styles.name}>{matchIntervalInfo.p1.playerName}</span>
         </div>
       </Transition>
@@ -80,7 +82,9 @@ export const MatchInterval: FC<{
         keyName={`${matchIntervalInfo.p2.team}-${matchIntervalInfo.p2.playerName}`}
       >
         <div className={`${styles.player} ${styles.p2}`}>
-          <span className={styles.team}>{matchIntervalInfo.p2.team}</span>
+          {matchIntervalInfo.p2.team && (
+            <span className={styles.team}>{matchIntervalInfo.p2.team}</span>
+          )}
           <span className={styles.name}>{matchIntervalInfo.p2.playerName}</span>
         </div>
       </Transition>

@@ -61,6 +61,7 @@
     .team {
       @include mediumWeight;
 
+      display: none;
       font-size: 25px;
       line-height: 25px;
       color: var(--player-color);
