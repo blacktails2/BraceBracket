@@ -5,14 +5,14 @@
   @include blackWeight;
 
   position: absolute;
-  top: 96px;
-  width: 410px;
+  top: 92px;
+  width: 480px;
   margin: 0;
-  font-size: 19px;
-  font-style: italic;
+  font-family: ads-strong, sans-serif;
+  font-size: 20px;
   color: var(--status-color);
   text-align: center;
-  letter-spacing: 1px;
+  scale: 0.72 1;
 }
 
 .dual {
@@ -21,29 +21,31 @@
     @include score;
     @include blackWeight;
 
-    top: 44px;
+    top: 23px;
     width: 75px;
-    font-size: 54px;
+    font-family: ads-strong, sans-serif;
+    font-size: 48px;
 
     &.p1 {
-      left: 365px;
+      left: 354px;
     }
 
     &.p2 {
-      right: 365px;
+      right: 354px;
     }
   }
 
   .player {
     position: absolute;
-    top: 59px;
-    width: 410px;
+    top: 38px;
+    width: 540px;
     height: 50px;
     margin: 0 0 0 10px;
     text-align: center;
+    scale: 0.72 1;
 
     span {
-      margin-left: 10px;
+      margin-left: 20px;
 
       &:first-child {
         margin-left: 0;
@@ -51,31 +53,31 @@
     }
 
     &.p1 {
-      left: 460px;
+      left: 435px;
     }
 
     &.p2 {
-      right: 460px;
+      right: 435px;
     }
 
     .team {
       @include mediumWeight;
 
-      font-size: 25px;
-      line-height: 25px;
+      font-family: ads-strong, sans-serif;
+      font-size: 43px;
+      line-height: 43px;
       color: var(--player-color);
       text-align: center;
-      letter-spacing: 1px;
     }
 
     .name {
       @include blackWeight;
 
-      font-size: 25px;
-      line-height: 25px;
+      font-family: ads-strong, sans-serif;
+      font-size: 43px;
+      line-height: 43px;
       color: var(--player-color);
       text-align: center;
-      letter-spacing: 1px;
     }
   }
 
@@ -83,13 +85,13 @@
   .round {
     @include status;
 
-    left: 465px;
+    left: 431px;
   }
 
   .matchType {
     @include status;
 
-    right: 465px;
+    right: 431px;
   }
 
   .cameraRight,
