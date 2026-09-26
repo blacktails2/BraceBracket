@@ -43,7 +43,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 295px;
+  width: 301px;
   height: 85px;
   padding-left: 11px;
 
@@ -61,10 +61,11 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 }
 
 .playerTeam {
-  @include mediumWeight;
-
-  font-size: 22px;
-  line-height: 42px;
+  font-family: "Poppins Variable", "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 21px;
+  font-variation-settings: "wght" 700;
+  font-weight: 900;
+  line-height: 46px;
   color: var(--bb-black);
   letter-spacing: 1px;
 }
@@ -72,20 +73,21 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .playerName {
   @include blackWeight;
 
-  font-size: 22px;
-  line-height: 42px;
+  font-size: 21px;
+  line-height: 46px;
   color: var(--bb-black);
   letter-spacing: 1px;
 }
 
 .score {
-  @include boldWeight;
-
+  display: inline-block;
   width: 40px;
-  margin: 0;
-  font-size: 30px;
+  margin-top: 2px;
+  font-family: Cinzel, serif;
+  font-size: 36px;
+  font-weight: bold;
   font-variant-numeric: tabular-nums;
-  line-height: 42px;
+  line-height: 46px;
   color: var(--bb-black);
   text-align: center;
 }
@@ -94,7 +96,7 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
 .other.losers {
   .player1 span,
   .player2 span {
-    color: var(--bb-white);
+    color: black;
   }
 }
 
@@ -111,6 +113,6 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   }
 
   .player2 span {
-    color: var(--bb-white);
+    color: black;
   }
 }
