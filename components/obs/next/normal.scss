@@ -2,99 +2,112 @@
 
 .other {
   .nextnow {
-    @include mediumWeight;
-
     position: absolute;
-    top: 880px;
+    top: 920px;
     left: 40px;
-    width: 220px;
+    width: auto;
     height: 80px;
-    font-size: 52px;
-    color: var(--main-color);
-    text-align: center;
-    letter-spacing: 0.05em;
+    font-family: Cinzel, serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: transparent;
+    text-align: left;
+    letter-spacing: 0.2em;
+    background: linear-gradient(to bottom left, #f9eb21, #c7a200);
+    background-clip: text;
+    background-clip: text;
   }
 
   .statusBox {
     position: absolute;
-    top: 880px;
-    left: 300px;
+    top: 993px;
+    left: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 340px;
-    height: 80px;
   }
 
   .round,
   .bo {
-    @include blackWeight;
-
-    width: 320px;
     margin: 0;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 24px;
-    color: var(--sub-color);
+    font-family: Cinzel, serif;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 26px;
+    color: white;
     text-align: left;
-    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em;
   }
 
   .score {
-    @include blackWeight;
-
     position: absolute;
-    top: 980px;
-    width: 60px;
+    top: 923px;
+    display: inline-block;
     margin: 0;
-    font-size: 40px;
-    color: var(--main-color);
-    text-align: center;
+    font-family: Cinzel, serif;
+    font-size: 48px;
+    font-variation-settings: "wght" 600;
+    font-weight: 600;
 
     &.p1 {
-      left: 500px;
+      right: 1008px;
+      color: transparent;
+      text-align: right;
+      background: linear-gradient(to bottom left, #f9eb21, #c7a200);
+      background-clip: text;
+      background-clip: text;
     }
 
     &.p2 {
-      left: 580px;
+      left: 1008px;
+      color: transparent;
+      text-align: left;
+      background: linear-gradient(to bottom right, #f9eb21, #c7a200);
+      background-clip: text;
+      background-clip: text;
     }
   }
 
   .player {
     position: absolute;
-    top: 996px;
+    top: 943px;
     width: 440px;
     height: 60px;
     margin: 0;
-    text-align: center;
 
     &.p1 {
-      left: 40px;
+      left: 395px;
+      text-align: left;
     }
 
     &.p2 {
-      left: 660px;
+      right: 395px;
+      text-align: right;
     }
 
     .team {
-      @include mediumWeight;
-
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      font-family: "Poppins Variable", "Zen Kaku Gothic Antique", sans-serif;
+      font-size: 31px;
+      font-variation-settings: "wght" 700;
+      font-weight: 900;
+      line-height: 31px;
+      color: transparent;
+      letter-spacing: 0.1em;
+      background: linear-gradient(to bottom, #f9eb21, #c7a200);
+      background-clip: text;
+      background-clip: text;
     }
 
     .name {
-      @include blackWeight;
-
       margin-left: 1rem;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      font-family: "Poppins Variable", "Zen Kaku Gothic Antique", sans-serif;
+      font-size: 31px;
+      font-variation-settings: "wght" 700;
+      font-weight: 900;
+      line-height: 31px;
+      color: white;
+      letter-spacing: 0.1em;
     }
   }
 
@@ -104,6 +117,7 @@
     position: absolute;
     top: 975px;
     left: 1570px;
+    display: none;
     font-size: 24px;
     line-height: 26px;
     color: var(--sub-color);
@@ -111,14 +125,19 @@
   }
 
   .localtime {
-    @include blackWeight;
-
     position: absolute;
-    top: 960px;
-    right: 57px;
-    font-size: 52px;
+    top: 967px;
+    right: 40px;
+    display: inline-block;
+    font-family: Cinzel, serif;
+    font-size: 72px;
+    font-weight: bold;
     font-variant-numeric: tabular-nums;
-    color: var(--sub-color);
+    color: transparent;
     text-align: right;
+    letter-spacing: 0.05em;
+    background: linear-gradient(to bottom, #f9eb21, #c7a200);
+    background-clip: text;
+    background-clip: text;
   }
 }
