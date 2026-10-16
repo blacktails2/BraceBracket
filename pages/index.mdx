@@ -1,6 +1,6 @@
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import Head from "next/head"
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import styles from "./index.module.scss"
 
@@ -10,9 +10,7 @@ import styles from "./index.module.scss"
   ブラウザ上でデザインを選択、ロゴを配置、start.ggとの連携まで。  
   場所を問わずスコアの編集ができるスコアボード、BraceBracket（ブレースブラケット）
 
-  <Link href={`/create`}>
-      <a className={styles.createLink}>スコアボードを作成</a>
-  </Link>
+  <Link href={`/create`} className={styles.createLink}>スコアボードを作成</Link>
   <div className="columns is-centered">
     <div className="column is-12-desktop is-10-widescreen is-9-fullhd">
       <video autoPlay loop muted playsInline className="is-hidden-mobile">

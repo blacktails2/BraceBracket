@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/legacy/image"
 import { Controller, useFormContext } from "react-hook-form"
 
 import { DesignRadioButton } from "../parts/DesignRadioButton"
