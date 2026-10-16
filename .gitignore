@@ -10,6 +10,10 @@
 /test-results/
 /playwright-report/
 
+# firebase emulator
+firebase-debug.log
+database-debug.log
+
 # next.js
 /.next/
 /out/

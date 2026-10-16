@@ -18,7 +18,8 @@
     "test:watch": "vitest watch",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test --project=chromium --project=firefox --project=webkit",
+    "test:e2e:visual": "playwright test --project=visual",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:debug": "playwright test --debug"
   },
@@ -70,6 +71,7 @@
     "eslint-plugin-tailwindcss": "^3.5.2",
     "eslint-plugin-unused-imports": "^2.0.0",
     "firebase": "^9.8.1",
+    "firebase-tools": "15.34.0",
     "happy-dom": "^17.5.6",
     "husky": ">=6",
     "imgur": "^2.2.0",
