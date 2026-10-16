@@ -1,9 +1,10 @@
-import Image from "next/legacy/image"
+import Image from "next/image"
 import { FC } from "react"
 import { Controller, useFormContext } from "react-hook-form"
 
 import { ScoreboardLayouts } from "../../../libs/const"
 import { capitalize } from "../../../libs/utils"
+import { intrinsicImageStyle } from "../../parts/imageStyle"
 import { DesignRadioButton } from "../parts/DesignRadioButton"
 
 import styles from "./Layout.module.scss"
@@ -30,6 +31,7 @@ export const Layout: FC = () => {
                           width={274}
                           height={80}
                           alt={`${layout}_image.png`}
+                          style={intrinsicImageStyle(274, 80)}
                         />
                       }
                       label={`${capitalize(layout)} Layout`}

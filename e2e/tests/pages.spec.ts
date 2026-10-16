@@ -1,4 +1,5 @@
 import { expect, test } from "../support/fixtures"
+import { expectImageLoaded } from "../support/obs"
 
 /**
  * トップページ・使い方・ヘルプなどの静的ページと、全ページ共通の確認
@@ -80,6 +81,24 @@ test.describe("静的ページ", () => {
     await expect(
       page.getByRole("contentinfo").getByText("Copyright 2022 BraceBracket")
     ).toBeVisible()
+  })
+
+  test("フッターのロゴ（SVG）と各ページの画像が読み込まれる", async ({
+    page,
+  }) => {
+    for (const path of ["/", "/usage/", "/help/", "/create/"]) {
+      await page.goto(path)
+      const logo = page.getByRole("contentinfo").getByAltText("ロゴ")
+      await logo.scrollIntoViewIfNeeded()
+      await expectImageLoaded(logo)
+    }
+    // next/image で最適化される画像
+    await page.goto("/")
+    const sample = page.getByAltText(
+      "プレイヤーとスコア、カメラを表示するScoreレイアウト"
+    )
+    await sample.scrollIntoViewIfNeeded()
+    await expectImageLoaded(sample)
   })
 
   test("使い方ページの目次からページ内の項目にスクロールできる", async ({

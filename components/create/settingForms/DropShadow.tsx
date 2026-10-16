@@ -1,6 +1,7 @@
-import Image from "next/legacy/image"
+import Image from "next/image"
 import { Controller, useFormContext } from "react-hook-form"
 
+import { intrinsicImageStyle } from "../../parts/imageStyle"
 import { DesignRadioButton } from "../parts/DesignRadioButton"
 
 import styles from "./DropShadow.module.scss"
@@ -34,6 +35,7 @@ export const DropShadow = () => {
                         width={110}
                         height={53}
                         alt="symbol"
+                        style={intrinsicImageStyle(110, 53)}
                       />
                     </div>
                   }
@@ -56,6 +58,7 @@ export const DropShadow = () => {
                         height={53}
                         alt="symbol"
                         className="fill-black"
+                        style={intrinsicImageStyle(110, 53)}
                       />
                     </div>
                   }
@@ -78,6 +81,7 @@ export const DropShadow = () => {
                         height={53}
                         alt="symbol"
                         className="fill-black"
+                        style={intrinsicImageStyle(110, 53)}
                       />
                     </div>
                   }
