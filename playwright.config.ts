@@ -8,6 +8,7 @@ import { DATABASE_EMULATOR_HOST, E2E_PORT } from "./e2e/support/env"
  * - Firebase Realtime Database は本番ではなくローカルのエミュレータ（firebase.json で設定）を使う
  * - Next.js は本番相当のビルド（next build && next start）に対してテストする
  *   E2E_SKIP_BUILD=1 を指定すると既存のビルド成果物を使って起動のみ行う
+ *   E2E_DEV=1 を指定すると開発サーバー（next dev）に対してテストする
  * - start.gg / Imgur / Webフォントなどの外部通信はすべてテスト側でモックする（e2e/support/fixtures.ts）
  *
  * プロジェクト:
@@ -17,7 +18,9 @@ import { DATABASE_EMULATOR_HOST, E2E_PORT } from "./e2e/support/env"
  */
 const baseURL = `http://localhost:${E2E_PORT}`
 
-const nextCommand = process.env.E2E_SKIP_BUILD
+const nextCommand = process.env.E2E_DEV
+  ? `next dev -p ${E2E_PORT}`
+  : process.env.E2E_SKIP_BUILD
   ? `next start -p ${E2E_PORT}`
   : `next build && next start -p ${E2E_PORT}`
 

@@ -2,8 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "/node_modules/bulma/sass/grid/columns.sass";
-@import "/node_modules/bulma/sass/helpers/visibility.sass";
+@import "bulma/sass/grid/columns.sass";
+@import "bulma/sass/helpers/visibility.sass";
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Zen+Kaku+Gothic+Antique:wght@400;500;700;900&display=swap");
 

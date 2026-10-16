@@ -1,15 +1,14 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-
-import { MC } from "../components/obs/mc/MC"
 import { MatchInterval } from "../components/obs/next/MatchIntervalInfo"
 import { defaultValue as defaultSetting } from "../hooks/useSetting"
 
 import deepCopy from "./helper/deepCopy"
 import { matchIntervalInfoDefault } from "./helper/MatchIntervalInfoDefault"
 
+import type { Meta, StoryFn } from "@storybook/nextjs"
+
 export default {
   title: "OBS/Next",
-  component: MC,
+  component: MatchInterval,
   parameters: {
     viewport: {
       viewports: {
@@ -34,9 +33,9 @@ export default {
       </div>
     ),
   ],
-} as ComponentMeta<typeof MatchInterval>
+} as Meta<typeof MatchInterval>
 
-const Template: ComponentStory<typeof MatchInterval> = (args) => (
+const Template: StoryFn<typeof MatchInterval> = (args) => (
   <MatchInterval {...args} />
 )
 export const OtherDarkNext = Template.bind({})

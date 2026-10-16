@@ -16,8 +16,31 @@ const adminHeaders = {
   "Content-Type": "application/json",
 }
 
+/**
+ * エミュレータへの接続が一時的に失敗することがある（並列実行時の接続リセットなど）ため、
+ * ネットワークエラーのときだけ数回リトライする
+ */
+const fetchWithRetry = async (
+  input: string,
+  init: RequestInit,
+  retries = 3
+): Promise<Response> => {
+  try {
+    return await fetch(input, init)
+  } catch (e) {
+    if (retries <= 0) {
+      const cause = (e as { cause?: unknown }).cause
+      throw new Error(`Database emulator request failed: ${input}`, {
+        cause: cause ?? e,
+      })
+    }
+    await new Promise((r) => setTimeout(r, 200))
+    return fetchWithRetry(input, init, retries - 1)
+  }
+}
+
 const request = async (method: string, path: string, body?: unknown) => {
-  const res = await fetch(url(path), {
+  const res = await fetchWithRetry(url(path), {
     method,
     headers: adminHeaders,
     body: body === undefined ? undefined : JSON.stringify(body),
@@ -46,7 +69,7 @@ export const dbUpdate = (path: string, value: Record<string, unknown>) =>
  * ルールの回帰確認に使う。
  */
 export const dbSetAsGuest = async (path: string, value: unknown) => {
-  const res = await fetch(url(path), {
+  const res = await fetchWithRetry(url(path), {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(value),

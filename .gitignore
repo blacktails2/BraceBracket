@@ -47,3 +47,5 @@ CLAUDE.md
 
 # Claude local settings - should not be committed
 .claude/settings.local.json
+# storybook
+/storybook-static

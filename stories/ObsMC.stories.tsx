@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-
 import { MC } from "../components/obs/mc/MC"
 import { defaultValue as defaultSetting } from "../hooks/useSetting"
 
 import deepCopy from "./helper/deepCopy"
 import { mcDefault } from "./helper/MCDefault"
+
+import type { Meta, StoryFn } from "@storybook/nextjs"
 
 export default {
   title: "OBS/MC",
@@ -33,9 +33,9 @@ export default {
       </div>
     ),
   ],
-} as ComponentMeta<typeof MC>
+} as Meta<typeof MC>
 
-const Template: ComponentStory<typeof MC> = (args) => <MC {...args} />
+const Template: StoryFn<typeof MC> = (args) => <MC {...args} />
 
 export const SimpleWhite1 = Template.bind({})
 SimpleWhite1.args = {
