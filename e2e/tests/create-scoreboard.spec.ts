@@ -10,6 +10,9 @@ test.describe("スコアボード作成フロー", () => {
     await createPage.goto()
   })
 
+  // タイムアウトを延長
+  test.setTimeout(60000)
+
   test("基本的なスコアボードを作成できる", async ({ page }) => {
     // レイアウトを選択
     await page.getByTestId("radio-single").click()

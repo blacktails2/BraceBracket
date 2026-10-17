@@ -20,7 +20,7 @@ export async function wait(ms: number): Promise<void> {
 export async function waitForRealtimeUpdate(page: Page): Promise<void> {
   // Firebase Realtime Databaseの更新を待つための一時的な待機
   // 将来的には、DOMの変更を監視するなど、よりロバストな方法に置き換えることを推奨
-  await page.waitForTimeout(500)
+  await page.waitForTimeout(2000)
 }
 
 /**

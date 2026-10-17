@@ -19,7 +19,10 @@ export class BasePage {
         url.includes("MC_simple_") ||
         url.includes("upnext_simple_dark_color") ||
         url.includes("solid_white") ||
-        url.includes("MC_dark_color.png")
+        url.includes("MC_dark_color.png") ||
+        url.includes("simple_dark_color.png") ||
+        url.includes("MC_simple_2_dark_color.png") ||
+        url.includes("upnext_simple_dark_color.png")
       ) {
         // 1x1の透明画像を返す
         const transparentPng = Buffer.from(
