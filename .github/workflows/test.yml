@@ -19,7 +19,8 @@ jobs:
       - run: yarn test:coverage
 
   e2e-test:
-    runs-on: ubuntu-latest
+    # Playwright 1.52 は ubuntu-latest（26.04）のブラウザ依存パッケージに未対応のため固定する
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
