@@ -3,6 +3,9 @@ import { dbUpdate } from "../support/db"
 import { expect, test } from "../support/fixtures"
 import { expectImageLoaded, imageBySrc, OBS_VIEWPORT } from "../support/obs"
 import { BRACKET_URL } from "../support/startgg"
+import { watchDatabaseSync } from "../support/sync"
+
+import type { Page } from "@playwright/test"
 
 /**
  * 配信画面: Top8 トーナメント表（/obs/bracket）
@@ -29,8 +32,19 @@ const requestLoad = (id: string, autoUpdate = false) =>
     autoUpdate,
   })
 
+/**
+ * 配信画面を開き、DB の設定と更新要求を受け取り終えるまで待つ。
+ * 受け取る前に更新要求を出したり時計を進めたりすると、取得処理やタイマーの登録と競合するため。
+ */
+const openBracket = async (page: Page, id: string) => {
+  const synced = watchDatabaseSync(page, id, ["setting", "loadBracket"])
+  await page.goto(`/obs/bracket/?id=${id}`)
+  await synced()
+  await expectImageLoaded(imageBySrc(page, "/image/bracket/brackets.png"))
+}
+
 /** トーナメント表の枠（プレイヤー名を含むボックス）の位置 */
-const boxPosition = (page: import("@playwright/test").Page, name: string) =>
+const boxPosition = (page: Page, name: string) =>
   page
     .getByText(name, { exact: true })
     .first()
@@ -57,8 +71,7 @@ test.describe("配信画面 Top8", () => {
     startgg,
   }) => {
     const id = await seedIntegrated()
-    await page.goto(`/obs/bracket/?id=${id}`)
-    await expectImageLoaded(imageBySrc(page, "/image/bracket/brackets.png"))
+    await openBracket(page, id)
     // 取得処理が走る猶予を置いても呼ばれない
     await page.waitForTimeout(1_000)
     expect(startgg.callCount("PhaseGroupSets")).toBe(0)
@@ -70,8 +83,7 @@ test.describe("配信画面 Top8", () => {
     startgg,
   }) => {
     const id = await seedIntegrated()
-    await page.goto(`/obs/bracket/?id=${id}`)
-    await expectImageLoaded(imageBySrc(page, "/image/bracket/brackets.png"))
+    await openBracket(page, id)
 
     await requestLoad(id)
 
@@ -99,8 +111,7 @@ test.describe("配信画面 Top8", () => {
     const id = await seedTournament({
       loadBracket: { lastRequestedAt: PAST_REQUEST },
     })
-    await page.goto(`/obs/bracket/?id=${id}`)
-    await expectImageLoaded(imageBySrc(page, "/image/bracket/brackets.png"))
+    await openBracket(page, id)
 
     await requestLoad(id)
     await page.waitForTimeout(1_000)
@@ -116,8 +127,7 @@ test.describe("配信画面 Top8", () => {
       loadBracket: { lastRequestedAt: PAST_REQUEST, autoUpdate: true },
     })
     await page.clock.install()
-    await page.goto(`/obs/bracket/?id=${id}`)
-    await expectImageLoaded(imageBySrc(page, "/image/bracket/brackets.png"))
+    await openBracket(page, id)
 
     await page.clock.runFor(10_500)
     await expect.poll(() => startgg.callCount("PhaseGroupSets")).toBe(1)

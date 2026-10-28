@@ -1,5 +1,7 @@
 import { expect, Locator, Page } from "@playwright/test"
 
+import { watchDatabaseSync } from "./sync"
+
 /**
  * 操作画面（/control）のページオブジェクト
  *
@@ -15,7 +17,9 @@ export class ControlPage {
   constructor(readonly page: Page) {}
 
   async goto(id: string) {
+    const synced = watchDatabaseSync(this.page, id)
     await this.page.goto(`/control/?id=${id}`)
+    await synced()
     await expect(this.tab("Score")).toBeVisible()
     await expect(this.applyButton).toBeVisible()
   }
