@@ -1,6 +1,7 @@
 import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import Head from "next/head"
 import Image from 'next/image'
+import { intrinsicImageStyle } from '../components/parts/imageStyle'
 import Link from 'next/link'
 import styles from "./index.module.scss"
 
@@ -10,9 +11,7 @@ import styles from "./index.module.scss"
   ブラウザ上でデザインを選択、ロゴを配置、start.ggとの連携まで。  
   場所を問わずスコアの編集ができるスコアボード、BraceBracket（ブレースブラケット）
 
-  <Link href={`/create`}>
-      <a className={styles.createLink}>スコアボードを作成</a>
-  </Link>
+  <Link href={`/create`} className={styles.createLink}>スコアボードを作成</Link>
   <div className="columns is-centered">
     <div className="column is-12-desktop is-10-widescreen is-9-fullhd">
       <video autoPlay loop muted playsInline className="is-hidden-mobile">
@@ -42,6 +41,7 @@ import styles from "./index.module.scss"
           alt="プレイヤーとスコア、カメラを表示するScoreレイアウト"
           width="1920"
           height="1080"
+          style={intrinsicImageStyle(1920, 1080)}
           />
           ### Score Layout
 
@@ -55,6 +55,7 @@ import styles from "./index.module.scss"
           alt="試合間に試合の状況や次の試合の情報を表すIntervalレイアウト"
           width="1920"
           height="1080"
+          style={intrinsicImageStyle(1920, 1080)}
           />
           ### Interval Layout
 
@@ -68,6 +69,7 @@ import styles from "./index.module.scss"
           alt="実況と解説の情報を表すMCレイアウト"
           width="1920"
           height="1080"
+          style={intrinsicImageStyle(1920, 1080)}
           />
           ### MC Layout
 
@@ -79,6 +81,7 @@ import styles from "./index.module.scss"
           alt="start.ggと連携してtop8の情報を表すTop8レイアウト"
           width="1920"
           height="1080"
+          style={intrinsicImageStyle(1920, 1080)}
           />
           ### Top8 Layout
 
@@ -97,6 +100,7 @@ import styles from "./index.module.scss"
           alt="デザインの選択から編集までをブラウザで"
           width="1280"
           height="800"
+          style={intrinsicImageStyle(1280, 800)}
           />
 
       ### デザインから編集まで<br/>Webで完結
@@ -108,6 +112,7 @@ import styles from "./index.module.scss"
           alt="デザインの選択から編集までをブラウザで"
           width="1280"
           height="800"
+          style={intrinsicImageStyle(1280, 800)}
           />
       ### URLを共有し、<br/>どこでも編集可能
       編集画面のURLを共有することで、配信用のPCとは別の端末でのスコアの編集や、配信を見ているモデレーターなどに編集を委託することが可能です。リモート編集機能によって、スコアミスの素早い修正やオンライン上でのスコアボード実装がより手軽になります。
@@ -119,6 +124,7 @@ import styles from "./index.module.scss"
           alt="デザインの選択から編集までをブラウザで"
           width="1280"
           height="800"
+          style={intrinsicImageStyle(1280, 800)}
           />
       ### start.ggと連携<br/>簡単・正確に情報を表示
       start.ggのAPIを利用して、Stream Queueの試合や進行中の試合の情報を手軽に適用することができます。チームや選手名のスペルミスから解放され、より配信オペレーションに集中することが可能です。
@@ -142,6 +148,7 @@ import styles from "./index.module.scss"
           width="60"
           height="60"
           className={styles.reflex__icon}
+          style={intrinsicImageStyle(60, 60)}
           />
         <div className={styles.reflex__name}>
 
@@ -161,6 +168,7 @@ import styles from "./index.module.scss"
           width="60"
           height="60"
           className={styles.reflex__icon}
+          style={intrinsicImageStyle(60, 60)}
           />
         <div className={styles.reflex__name}>
           #### NUMASUMA
@@ -180,6 +188,7 @@ import styles from "./index.module.scss"
           width="60"
           height="60"
           className={styles.reflex__icon}
+          style={intrinsicImageStyle(60, 60)}
           />
         <div className={styles.reflex__name}>
           #### 西武撃
@@ -198,6 +207,7 @@ import styles from "./index.module.scss"
           width="60"
           height="60"
           className={styles.reflex__icon}
+          style={intrinsicImageStyle(60, 60)}
           />
         <div className={styles.reflex__name}>
           #### スマパ！

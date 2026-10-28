@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-
 import { Scoreboard } from "../components/obs/score/Scoreboard"
 
 import deepCopy from "./helper/deepCopy"
 import { scoreDefault } from "./helper/ScoreDefault"
 import { settingDefault } from "./helper/SettingDefault"
+
+import type { Meta, StoryFn } from "@storybook/nextjs"
 
 export default {
   title: "OBS/Score",
@@ -33,11 +33,9 @@ export default {
       </div>
     ),
   ],
-} as ComponentMeta<typeof Scoreboard>
+} as Meta<typeof Scoreboard>
 
-const Template: ComponentStory<typeof Scoreboard> = (args) => (
-  <Scoreboard {...args} />
-)
+const Template: StoryFn<typeof Scoreboard> = (args) => <Scoreboard {...args} />
 
 export const DualDarkColor = Template.bind({})
 DualDarkColor.args = {

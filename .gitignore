@@ -10,6 +10,10 @@
 /test-results/
 /playwright-report/
 
+# firebase emulator
+firebase-debug.log
+database-debug.log
+
 # next.js
 /.next/
 /out/
@@ -43,3 +47,5 @@ CLAUDE.md
 
 # Claude local settings - should not be committed
 .claude/settings.local.json
+# storybook
+/storybook-static

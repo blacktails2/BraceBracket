@@ -6,7 +6,7 @@ import { NumberForm } from "./NumberForm"
 
 interface TestWrapperProps {
   children: React.ReactNode
-  defaultValues?: Record<string, unknown>
+  defaultValues?: Record<string, number | string | undefined>
 }
 
 const TestWrapper = ({ children, defaultValues = {} }: TestWrapperProps) => {

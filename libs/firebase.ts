@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app"
-import { getDatabase } from "firebase/database"
+import { connectDatabaseEmulator, getDatabase } from "firebase/database"
 
 // Firebase 設定（公開してもよい）
 const firebaseConfig = {
@@ -16,3 +16,10 @@ const firebaseConfig = {
 // Firebase の初期化
 const app = initializeApp(firebaseConfig)
 export const db = getDatabase(app)
+
+// E2Eテストなどでローカルのエミュレータに接続する（例: "127.0.0.1:9410"）
+const emulatorHost = process.env.NEXT_PUBLIC_FIREBASE_DATABASE_EMULATOR_HOST
+if (emulatorHost) {
+  const [host, port] = emulatorHost.split(":")
+  connectDatabaseEmulator(db, host, Number(port))
+}

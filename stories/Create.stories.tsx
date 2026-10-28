@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-
 import { Create as Component } from "../components/create/Create"
 
 import deepCopy from "./helper/deepCopy"
 import { settingDefault } from "./helper/SettingDefault"
+
+import type { Meta, StoryFn } from "@storybook/nextjs"
 
 export default {
   title: "Create",
@@ -12,11 +12,9 @@ export default {
     delay: 1000,
     viewports: [1200, 480],
   },
-} as ComponentMeta<typeof Component>
+} as Meta<typeof Component>
 
-const Template: ComponentStory<typeof Component> = (args) => (
-  <Component {...args} />
-)
+const Template: StoryFn<typeof Component> = (args) => <Component {...args} />
 
 export const Create = Template.bind({})
 Create.args = {

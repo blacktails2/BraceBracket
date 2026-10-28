@@ -9,6 +9,38 @@ import {
 } from "../../libs/const"
 import styles from "../create/parts/Preview.module.scss"
 
+import { intrinsicImageStyle } from "./imageStyle"
+
+/**
+ * デザイン（レイアウト・カラー）に応じて切り替わるプレビュー画像
+ * 設定の読み込み前（layout / color が未確定）は存在しない画像を要求しないよう、同じ大きさの空白にする
+ */
+const DesignImage: FC<{
+  src: string
+  alt: string
+  ready: boolean
+  className?: string
+}> = ({ src, alt, ready, className }) => {
+  if (!ready) {
+    return (
+      <span
+        className={className}
+        style={{ ...intrinsicImageStyle(340, 190), width: 340 }}
+      />
+    )
+  }
+  return (
+    <Image
+      src={src}
+      width={340}
+      height={190}
+      className={className}
+      alt={alt}
+      style={intrinsicImageStyle(340, 190)}
+    />
+  )
+}
+
 export const PreviewScore: FC<{
   displayCameraAndTwitterID?: boolean
   layout?: string
@@ -23,27 +55,26 @@ export const PreviewScore: FC<{
           height={190}
           className="w-full rounded-lg"
           alt="カメラ"
+          style={intrinsicImageStyle(340, 190)}
         />
       </div>
       {displayCameraAndTwitterID && (
         <div className="absolute z-10">
-          <Image
+          <DesignImage
             src={`/image/create/samples/camera/${getCameraFilename(
               layout,
               color
             )}`}
-            width={340}
-            height={190}
             className="w-full rounded-lg"
             alt="カメラ"
+            ready={!!layout && !!color}
           />
         </div>
       )}
-      <Image
+      <DesignImage
         src={`/image/create/samples/layout/${layout}/${layout}_${color}.png`}
-        width={340}
-        height={190}
         alt="スコアボードプレビュー"
+        ready={!!layout && !!color}
       />
     </div>
   )
@@ -63,25 +94,24 @@ export const PreviewInterval: FC<{
           height={190}
           className="w-full rounded-lg"
           alt="カメラ"
+          style={intrinsicImageStyle(340, 190)}
         />
       </div>
       {onMC && (
         <div className="absolute z-10">
-          <Image
+          <DesignImage
             src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
-            width={340}
-            height={190}
             className="w-full rounded-lg"
             alt="MCプレビュー"
+            ready={!!layout && !!color}
           />
         </div>
       )}
       <div className={styles.outer}>
-        <Image
+        <DesignImage
           src={`/image/create/samples/next/${getNextFilename(layout, color)}`}
-          width={340}
-          height={190}
           alt="Nextプレビュー"
+          ready={!!layout && !!color}
         />
       </div>
     </div>
@@ -101,14 +131,14 @@ export const PreviewMC: FC<{
           height={190}
           className="w-full rounded-lg"
           alt="カメラ"
+          style={intrinsicImageStyle(340, 190)}
         />
       </div>
       <div className={styles.outer}>
-        <Image
+        <DesignImage
           src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
-          width={340}
-          height={190}
           alt="MCプレビュー"
+          ready={!!layout && !!color}
         />
       </div>
     </div>
@@ -128,13 +158,13 @@ export const PreviewBracket: FC<{ layout?: string; color?: string }> = ({
           height={190}
           className="w-full rounded-lg"
           alt="カメラ"
+          style={intrinsicImageStyle(340, 190)}
         />
       </div>
-      <Image
+      <DesignImage
         src={`/image/create/samples/top8/${getBracketFilename(layout, color)}`}
-        width={340}
-        height={190}
         alt="Top8プレビュー"
+        ready={!!layout && !!color}
       />
     </div>
   )

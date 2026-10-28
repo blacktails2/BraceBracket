@@ -4,6 +4,7 @@ import { Controller, useFormContext } from "react-hook-form"
 
 import { ScoreboardColorsMap } from "../../../libs/const"
 import { capitalize } from "../../../libs/utils"
+import { intrinsicImageStyle } from "../../parts/imageStyle"
 import { DesignRadioButton } from "../parts/DesignRadioButton"
 
 import styles from "./Color.module.scss"
@@ -47,6 +48,7 @@ export const Color: FC<{ selectedLayout: string }> = ({ selectedLayout }) => {
                           width={200}
                           height={80}
                           alt={`${selectedLayout}_${color}.png`}
+                          style={intrinsicImageStyle(200, 80)}
                         />
                       }
                     />

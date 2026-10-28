@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-
 import { Bracket } from "../components/obs/bracket/Bracket"
 import { defaultValue as defaultSetting } from "../hooks/useSetting"
 
 import { bracketDefault } from "./helper/BracketDefault"
 import deepCopy from "./helper/deepCopy"
+
+import type { Meta, StoryFn } from "@storybook/nextjs"
 
 export default {
   title: "OBS/Bracket",
@@ -33,9 +33,9 @@ export default {
       </div>
     ),
   ],
-} as ComponentMeta<typeof Bracket>
+} as Meta<typeof Bracket>
 
-const Template: ComponentStory<typeof Bracket> = (args) => <Bracket {...args} />
+const Template: StoryFn<typeof Bracket> = (args) => <Bracket {...args} />
 
 export const Simple = Template.bind({})
 Simple.args = {

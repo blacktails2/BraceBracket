@@ -2,6 +2,7 @@ import { DefaultLayout } from "../components/layouts/DefaultLayout"
 import Head from "next/head"
 import styles from "./help.module.scss"
 import Image from 'next/image'
+import { intrinsicImageStyle } from '../components/parts/imageStyle'
 
 ## Help
 
@@ -51,6 +52,7 @@ import Image from 'next/image'
           width="564"
           height="406"
           className={styles.helpimage}
+          style={intrinsicImageStyle(564, 406)}
           />
 
         一般的な16:9の比のカメラの場合、配置した後以下の操作を行ってください。

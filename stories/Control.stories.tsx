@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-
 import { Control as Component } from "../components/control2/Control"
 import { MatchIntervalInfo, MC, Score, Setting } from "../libs/const"
 
@@ -9,6 +7,8 @@ import { mcDefault } from "./helper/MCDefault"
 import { scoreDefault } from "./helper/ScoreDefault"
 import { settingDefault } from "./helper/SettingDefault"
 
+import type { Meta, StoryFn } from "@storybook/nextjs"
+
 export default {
   title: "Control",
   component: Component,
@@ -16,11 +16,9 @@ export default {
     delay: 1000,
     viewports: [1200, 480],
   },
-} as ComponentMeta<typeof Component>
+} as Meta<typeof Component>
 
-const Template: ComponentStory<typeof Component> = (args) => (
-  <Component {...args} />
-)
+const Template: StoryFn<typeof Component> = (args) => <Component {...args} />
 
 export const Control = Template.bind({})
 Control.args = {

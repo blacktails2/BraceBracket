@@ -1,8 +1,8 @@
 import path from "path"
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from "url"
 
 import react from "@vitejs/plugin-react"
-import { defineConfig } from "vitest/config"
+import { configDefaults, defineConfig } from "vitest/config"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -18,6 +18,8 @@ export default defineConfig({
       "stories/helper/**/*.{js,ts}",
     ],
     setupFiles: ["./test/setup.ts"],
+    // e2e/ 配下は Playwright のテストなので Vitest の対象から除外する
+    exclude: [...configDefaults.exclude, "e2e/**"],
     coverage: {
       reporter: ["text", "json", "html"],
       exclude: [

@@ -2,9 +2,10 @@
   display: flex;
   margin-bottom: 50px;
 
+  // create.module.scss の .settingFormContainer h4 と同じ値にして、CSSの読み込み順に依存しないようにする
   h4 {
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   p {
