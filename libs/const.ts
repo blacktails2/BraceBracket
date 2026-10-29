@@ -11,70 +11,19 @@ export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-export const ScoreboardLayouts = ["dual", "single", "solid", "simple"]
+// custom-template ではレイアウト・カラーは固定
+// Firebaseに他のレイアウトの値が保存されていても、表示は常にcustomになる
+export const ScoreboardLayouts = ["custom"]
 
 export type ScoreboardLayout = typeof ScoreboardLayouts[number]
 
 export const ScoreboardColorsMap: {
   [string: ScoreboardLayout]: string[]
 } = {
-  dual: ["dark_color", "dark_mono", "light_color", "light_mono", "gradient"],
-  single: ["dark_color", "dark_mono", "light_color", "light_mono", "beige"],
-  solid: ["dark_color", "dark_mono", "light_color", "light_mono", "beige"],
-  simple: ["white", "black"],
+  custom: ["default"],
 }
 export type ScoreboardColor =
   typeof ScoreboardColorsMap[ScoreboardLayout][number]
-
-export const getCameraFilename: (
-  layout?: ScoreboardLayout,
-  color?: ScoreboardColor
-) => string = (layout, color) => {
-  if (!layout || !color) {
-    return "camera_black.png"
-  }
-  if (layout === "simple") {
-    return `simple_camera_${color}.png`
-  }
-  return `camera_black.png`
-}
-
-export const getMCFilename: (
-  layout?: ScoreboardLayout,
-  color?: ScoreboardColor,
-  count?: number
-) => string = (layout, color, count = 2) => {
-  if (!layout || !color) {
-    return "MC_dark_color.png"
-  }
-  if (layout === "simple") {
-    return `MC_simple_${count}_${color}.png`
-  }
-  return `MC_${count}_${color.startsWith("light") ? "light" : "dark"}.png`
-}
-
-export const getNextFilename: (
-  layout?: ScoreboardLayout,
-  color?: ScoreboardColor
-) => string = (layout, color) => {
-  if (!layout || !color) {
-    return "upnext_dark.png"
-  }
-  if (layout === "simple") {
-    return `upnext_simple_${color}.png`
-  }
-  return `upnext_${color.startsWith("light") ? "light" : "dark"}.png`
-}
-
-export const getBracketFilename: (
-  layout?: ScoreboardLayout,
-  color?: ScoreboardColor
-) => string = (layout, color) => {
-  if (layout === "simple") {
-    return `brackets_simple.png`
-  }
-  return `brackets.png`
-}
 
 export type Setting = {
   createdAt: number | ReturnType<typeof serverTimestamp>

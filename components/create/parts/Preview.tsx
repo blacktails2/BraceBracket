@@ -15,13 +15,9 @@ export const Preview: FC = () => {
   const router = useRouter()
   const id = router.query.id as string
   const { watch, getValues } = useFormContext()
-  const [layout, setLayout] = useState("")
-  const [color, setColor] = useState("")
   const [displayCameraAndTwitterID, setDisplayCameraAndTwitterID] =
     useState(false)
   watch(() => {
-    setLayout(getValues("scoreboard.design.layout"))
-    setColor(getValues("scoreboard.design.color"))
     setDisplayCameraAndTwitterID(
       getValues("scoreboard.cameraAndLogo.displayCameraAndTwitterID")
     )
@@ -37,13 +33,9 @@ export const Preview: FC = () => {
     <div className={styles.container}>
       <div className={styles.previewContainer}>
         <div>
-          <PreviewScore
-            displayCameraAndTwitterID={displayCameraAndTwitterID}
-            layout={layout}
-            color={color}
-          />
-          <PreviewInterval layout={layout} color={color} onMC={true} />
-          <PreviewBracket layout={layout} color={color} />
+          <PreviewScore displayCameraAndTwitterID={displayCameraAndTwitterID} />
+          <PreviewInterval onMC={true} />
+          <PreviewBracket />
           <Button mode="primary" type="submit">
             {submitText}
           </Button>

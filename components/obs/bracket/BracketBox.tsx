@@ -10,12 +10,10 @@ export const BracketBox: FC<{
   pos: { top: string; left: string }
   delay?: number
   round: string
-  layout: string
 }> = ({
   score: { player1: _player1, player2: _player2 },
   pos,
   delay,
-  layout,
   round,
 }) => {
   const [player1, setPlayer1] = useState<{
@@ -42,7 +40,7 @@ export const BracketBox: FC<{
           : round.startsWith("winners")
           ? styles.winners
           : styles.grand
-      } ${layout === "simple" ? styles.simple : styles.other}`}
+      } ${styles.custom}`}
       style={pos}
     >
       <div className={styles.name}>

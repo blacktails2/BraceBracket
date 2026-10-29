@@ -1,10 +1,7 @@
 import { FC, useEffect } from "react"
 
-import {
-  Setting,
-  MatchIntervalInfo,
-  getNextFilename,
-} from "../../../libs/const"
+import { customConfig, customImage } from "../../../custom/config"
+import { Setting, MatchIntervalInfo } from "../../../libs/const"
 import { Transition } from "../../parts/Transition"
 
 import styles from "./MatchIntervalInfo.module.scss"
@@ -14,31 +11,18 @@ export const MatchInterval: FC<{
   matchIntervalInfo: MatchIntervalInfo
   time: string
 }> = ({ setting, matchIntervalInfo, time }) => {
-  const { layout, color } = setting.scoreboard.design
   useEffect(() => {
     console.log({ matchIntervalInfo })
   }, [matchIntervalInfo])
 
   return (
-    <div
-      className={`${
-        layout === "simple" ? styles.simple : styles.other
-      } ${(() => {
-        if (layout === "simple") {
-          return color === "white" ? styles.white : styles.black
-        } else {
-          return color.startsWith("light") ? styles.light : styles.dark
-        }
-      })()}`}
-    >
-      <img
-        className={styles.board}
-        src={`/image/next/${getNextFilename(layout, color)}`}
-        alt=""
-      />
+    <div className={styles.custom}>
+      <img className={styles.board} src={customImage.next} alt="" />
       <Transition keyName={`${matchIntervalInfo.isNow}`}>
         <p className={styles.nextnow}>
-          {matchIntervalInfo.isNow ? "NOW" : "NEXT"}
+          {matchIntervalInfo.isNow
+            ? customConfig.next.now
+            : customConfig.next.next}
         </p>
       </Transition>
       <div
@@ -85,9 +69,9 @@ export const MatchInterval: FC<{
         </div>
       </Transition>
       <p className={styles.localsetting}>
-        Local Time
+        {customConfig.next.localTime}
         <br />
-        JST
+        {customConfig.next.timezone}
       </p>
       <Transition keyName={time}>
         <p className={styles.localtime}>{time}</p>

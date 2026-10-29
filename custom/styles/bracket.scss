@@ -1,0 +1,27 @@
+// Top8ブラケットのカスタムスタイル
+@import "fonts";
+
+// 文字色の設定
+.custom.losers {
+  .player1 span,
+  .player2 span {
+    color: var(--bb-white);
+  }
+}
+
+.custom.winners {
+  .player1 span,
+  .player2 span {
+    color: var(--bb-black);
+  }
+}
+
+.custom.grand {
+  .player1 span {
+    color: var(--bb-black);
+  }
+
+  .player2 span {
+    color: var(--bb-white);
+  }
+}

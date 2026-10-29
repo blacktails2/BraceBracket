@@ -1,60 +1,16 @@
 import { FC, useState } from "react"
 import { useInterval } from "react-use"
 
-import {
-  getCameraFilename,
-  Score,
-  ScoreboardColor,
-  ScoreboardLayout,
-  Setting,
-} from "../../../libs/const"
+import { customImage } from "../../../custom/config"
+import { Score, Setting } from "../../../libs/const"
 import { Transition } from "../../parts/Transition"
 
 import styles from "./Score.module.scss"
-
-const getLayoutClass = (layout: ScoreboardLayout) => {
-  switch (layout) {
-    case "dual":
-      return styles.dual
-    case "single":
-      return styles.single
-    case "solid":
-      return styles.solid
-    case "simple":
-      return styles.simple
-    default:
-      return styles.dual
-  }
-}
-
-const getColorClass = (layout: ScoreboardColor) => {
-  switch (layout) {
-    case "dark_color":
-      return styles.darkColor
-    case "dark_mono":
-      return styles.darkMono
-    case "light_color":
-      return styles.lightColor
-    case "light_mono":
-      return styles.lightMono
-    case "beige":
-      return styles.beige
-    case "gradient":
-      return styles.gradient
-    case "black":
-      return styles.black
-    case "white":
-      return styles.white
-    default:
-      return styles.darkColor
-  }
-}
 
 export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
   setting,
   score,
 }) => {
-  const { layout, color } = setting.scoreboard.design
   const [logoIdx, setLogoIdx] = useState(0)
   useInterval(() => {
     if (
@@ -68,24 +24,12 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
   }, 5000)
 
   return (
-    <div
-      className={`${styles.container} ${getLayoutClass(layout)} ${getColorClass(
-        color
-      )}`}
-    >
+    <div className={`${styles.container} ${styles.custom}`}>
       {/*スコアボードのデザインの画像*/}
-      <img
-        className={styles.board}
-        src={`/image/scoreboards/${layout}/${layout}_${color}.png`}
-        alt=""
-      />
+      <img className={styles.board} src={customImage.scoreboard} alt="" />
       {setting.scoreboard.cameraAndLogo.displayCameraAndTwitterID && (
         <div>
-          <img
-            className={styles.board}
-            src={`/image/camera/${getCameraFilename(layout, color)}`}
-            alt=""
-          />
+          <img className={styles.board} src={customImage.camera} alt="" />
           {score.p1.twitterID && (
             <Transition keyName={score.p1.twitterID}>
               <p className={styles.cameraLeft}>
@@ -157,61 +101,36 @@ export const Scoreboard: FC<{ setting: Setting; score: Score }> = ({
           </div>
         </Transition>
       </div>
-      {((layout: string) => {
-        switch (layout) {
-          case "dual":
-            return (
-              <>
-                <Transition keyName={score.round}>
-                  <div
-                    className={styles.round}
-                    style={{
-                      textTransform: score.uppercase ? "uppercase" : "none",
-                    }}
-                  >
-                    {score.round}
-                  </div>
-                </Transition>
-                <Transition keyName={score.matchType}>
-                  <div
-                    className={styles.matchType}
-                    style={{
-                      textTransform: score.uppercase ? "uppercase" : "none",
-                    }}
-                  >
-                    {score.matchType}
-                  </div>
-                </Transition>
-                {!(
-                  setting.scoreboard.cameraAndLogo.useLogo &&
-                  setting.scoreboard.cameraAndLogo.logoURLs.length > 0
-                ) && (
-                  <Transition keyName={setting.name}>
-                    <div className={styles.tournamentNameBox}>
-                      <div className={styles.tournamentName}>
-                        {setting.name}
-                      </div>
-                    </div>
-                  </Transition>
-                )}
-              </>
-            )
-          case "single":
-          case "solid":
-          case "simple":
-            return (
-              <div
-                className={styles.box}
-                style={{
-                  textTransform: score.uppercase ? "uppercase" : "none",
-                }}
-              >
-                <p className={styles.round}>{score.round}</p>
-                <p className={styles.matchType}>{score.matchType}</p>
-              </div>
-            )
-        }
-      })(layout)}
+      <Transition keyName={score.round}>
+        <div
+          className={styles.round}
+          style={{
+            textTransform: score.uppercase ? "uppercase" : "none",
+          }}
+        >
+          {score.round}
+        </div>
+      </Transition>
+      <Transition keyName={score.matchType}>
+        <div
+          className={styles.matchType}
+          style={{
+            textTransform: score.uppercase ? "uppercase" : "none",
+          }}
+        >
+          {score.matchType}
+        </div>
+      </Transition>
+      {!(
+        setting.scoreboard.cameraAndLogo.useLogo &&
+        setting.scoreboard.cameraAndLogo.logoURLs.length > 0
+      ) && (
+        <Transition keyName={setting.name}>
+          <div className={styles.tournamentNameBox}>
+            <div className={styles.tournamentName}>{setting.name}</div>
+          </div>
+        </Transition>
+      )}
     </div>
   )
 }

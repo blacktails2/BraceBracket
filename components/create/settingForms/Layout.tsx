@@ -2,8 +2,8 @@ import Image from "next/image"
 import { FC } from "react"
 import { Controller, useFormContext } from "react-hook-form"
 
+import { customConfig, customImage } from "../../../custom/config"
 import { ScoreboardLayouts } from "../../../libs/const"
-import { capitalize } from "../../../libs/utils"
 import { DesignRadioButton } from "../parts/DesignRadioButton"
 
 import styles from "./Layout.module.scss"
@@ -26,13 +26,13 @@ export const Layout: FC = () => {
                       key={layout}
                       imageSrc={
                         <Image
-                          src={`/image/create/${layout}/${layout}_image.png`}
+                          src={customImage.thumbnail}
                           width={274}
                           height={80}
-                          alt={`${layout}_image.png`}
+                          alt={customConfig.label}
                         />
                       }
-                      label={`${capitalize(layout)} Layout`}
+                      label={customConfig.label}
                       value={layout}
                       field={field}
                     />

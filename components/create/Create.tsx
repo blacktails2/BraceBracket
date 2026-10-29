@@ -10,6 +10,7 @@ import {
   useForm,
 } from "react-hook-form"
 
+import { defaultValue } from "../../hooks/useSetting"
 import { Setting } from "../../libs/const"
 import { db } from "../../libs/firebase"
 import { TextForm } from "../control2/parts/TextForm"
@@ -17,7 +18,6 @@ import { Button } from "../parts/Button"
 
 import styles from "./create.module.scss"
 import { Preview } from "./parts/Preview"
-import { Color } from "./settingForms/Color"
 import { DisplayCameraAndTwitterID } from "./settingForms/DisplayCameraAndTwitterID"
 import { DropShadow } from "./settingForms/DropShadow"
 import { IntegrateStartGG } from "./settingForms/IntegrateStartGG"
@@ -41,13 +41,21 @@ const getErrorMessages = (errors: FieldErrors): string[] => {
     })
     .filter((message) => message !== "")
 }
+// 他のレイアウトで作成された設定を読み込んでも、デザインはcustomに置き換える
+const withCustomDesign = (setting: Setting): Setting => ({
+  ...setting,
+  scoreboard: {
+    ...setting.scoreboard,
+    design: defaultValue.scoreboard.design,
+  },
+})
+
 export const Create: FC<{ setting: Setting }> = ({ setting }) => {
   const router = useRouter()
   const id = router.query.id as string
   const createForm = useForm<Setting>({
-    defaultValues: setting,
+    defaultValues: withCustomDesign(setting),
   })
-  createForm.watch("scoreboard.design.layout")
   createForm.watch("scoreboard.cameraAndLogo.useLogo")
   const {
     formState: { errors },
@@ -84,7 +92,7 @@ export const Create: FC<{ setting: Setting }> = ({ setting }) => {
 
   useEffect(() => {
     if (!createForm || !setting) return
-    createForm.reset(setting)
+    createForm.reset(withCustomDesign(setting))
   }, [createForm, setting])
 
   return (
@@ -95,9 +103,6 @@ export const Create: FC<{ setting: Setting }> = ({ setting }) => {
             <h2>{submitText}</h2>
             <h3>デザイン</h3>
             <Layout />
-            <Color
-              selectedLayout={createForm.getValues("scoreboard.design.layout")}
-            />
             <hr />
             <h3>カメラ・大会設定</h3>
             <div className="mb-[5rem]">

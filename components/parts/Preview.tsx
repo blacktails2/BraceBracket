@@ -1,19 +1,12 @@
 import Image from "next/image"
 import { FC } from "react"
 
-import {
-  getBracketFilename,
-  getCameraFilename,
-  getMCFilename,
-  getNextFilename,
-} from "../../libs/const"
+import { customImage } from "../../custom/config"
 import styles from "../create/parts/Preview.module.scss"
 
 export const PreviewScore: FC<{
   displayCameraAndTwitterID?: boolean
-  layout?: string
-  color?: string
-}> = ({ displayCameraAndTwitterID, layout, color }) => {
+}> = ({ displayCameraAndTwitterID }) => {
   return (
     <div className="relative w-full">
       <div className="absolute">
@@ -28,10 +21,7 @@ export const PreviewScore: FC<{
       {displayCameraAndTwitterID && (
         <div className="absolute z-10">
           <Image
-            src={`/image/create/samples/camera/${getCameraFilename(
-              layout,
-              color
-            )}`}
+            src={customImage.camera}
             width={340}
             height={190}
             className="w-full rounded-lg"
@@ -40,7 +30,7 @@ export const PreviewScore: FC<{
         </div>
       )}
       <Image
-        src={`/image/create/samples/layout/${layout}/${layout}_${color}.png`}
+        src={customImage.scoreboard}
         width={340}
         height={190}
         alt="スコアボードプレビュー"
@@ -50,10 +40,8 @@ export const PreviewScore: FC<{
 }
 
 export const PreviewInterval: FC<{
-  layout?: string
-  color?: string
   onMC?: boolean
-}> = ({ layout, color, onMC }) => {
+}> = ({ onMC }) => {
   return (
     <div className="relative w-full">
       <div className="absolute">
@@ -68,7 +56,7 @@ export const PreviewInterval: FC<{
       {onMC && (
         <div className="absolute z-10">
           <Image
-            src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
+            src={customImage.mc(2)}
             width={340}
             height={190}
             className="w-full rounded-lg"
@@ -78,7 +66,7 @@ export const PreviewInterval: FC<{
       )}
       <div className={styles.outer}>
         <Image
-          src={`/image/create/samples/next/${getNextFilename(layout, color)}`}
+          src={customImage.next}
           width={340}
           height={190}
           alt="Nextプレビュー"
@@ -88,10 +76,7 @@ export const PreviewInterval: FC<{
   )
 }
 
-export const PreviewMC: FC<{
-  layout?: string
-  color?: string
-}> = ({ layout, color }) => {
+export const PreviewMC: FC = () => {
   return (
     <div className="relative w-full">
       <div className="absolute">
@@ -105,7 +90,7 @@ export const PreviewMC: FC<{
       </div>
       <div className={styles.outer}>
         <Image
-          src={`/image/create/samples/mc/${getMCFilename(layout, color)}`}
+          src={customImage.mc(2)}
           width={340}
           height={190}
           alt="MCプレビュー"
@@ -115,10 +100,7 @@ export const PreviewMC: FC<{
   )
 }
 
-export const PreviewBracket: FC<{ layout?: string; color?: string }> = ({
-  layout,
-  color,
-}) => {
+export const PreviewBracket: FC = () => {
   return (
     <div className="relative w-full">
       <div className="absolute">
@@ -131,7 +113,7 @@ export const PreviewBracket: FC<{ layout?: string; color?: string }> = ({
         />
       </div>
       <Image
-        src={`/image/create/samples/top8/${getBracketFilename(layout, color)}`}
+        src={customImage.bracket}
         width={340}
         height={190}
         alt="Top8プレビュー"

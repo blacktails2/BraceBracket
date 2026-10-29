@@ -1,0 +1,129 @@
+// Next画面のカスタムスタイル
+@import "fonts";
+
+.custom {
+  // 文字色の設定
+  --main-color: var(--dark-gray);
+  --sub-color: var(--white);
+
+  .nextnow {
+    @include mediumWeight;
+
+    position: absolute;
+    top: 880px;
+    left: 40px;
+    width: 220px;
+    height: 80px;
+    font-size: 52px;
+    color: var(--main-color);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  .statusBox {
+    position: absolute;
+    top: 880px;
+    left: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 340px;
+    height: 80px;
+  }
+
+  .round,
+  .bo {
+    @include blackWeight;
+
+    width: 320px;
+    margin: 0;
+    font-size: 24px;
+    font-style: italic;
+    line-height: 24px;
+    color: var(--sub-color);
+    text-align: left;
+    letter-spacing: 2px;
+  }
+
+  .score {
+    @include blackWeight;
+
+    position: absolute;
+    top: 980px;
+    width: 60px;
+    margin: 0;
+    font-size: 40px;
+    color: var(--main-color);
+    text-align: center;
+
+    &.p1 {
+      left: 500px;
+    }
+
+    &.p2 {
+      left: 580px;
+    }
+  }
+
+  .player {
+    position: absolute;
+    top: 996px;
+    width: 440px;
+    height: 60px;
+    margin: 0;
+    text-align: center;
+
+    &.p1 {
+      left: 40px;
+    }
+
+    &.p2 {
+      left: 660px;
+    }
+
+    .team {
+      @include mediumWeight;
+
+      font-size: 28px;
+      line-height: 28px;
+      color: var(--sub-color);
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .name {
+      @include blackWeight;
+
+      margin-left: 1rem;
+      font-size: 28px;
+      line-height: 28px;
+      color: var(--sub-color);
+      text-align: center;
+      letter-spacing: 1px;
+    }
+  }
+
+  .localsetting {
+    @include mediumWeight;
+
+    position: absolute;
+    top: 975px;
+    left: 1570px;
+    font-size: 24px;
+    line-height: 26px;
+    color: var(--sub-color);
+    letter-spacing: 1px;
+  }
+
+  .localtime {
+    @include blackWeight;
+
+    position: absolute;
+    top: 960px;
+    right: 57px;
+    font-size: 52px;
+    font-variant-numeric: tabular-nums;
+    color: var(--sub-color);
+    text-align: right;
+  }
+}

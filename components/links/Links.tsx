@@ -85,8 +85,6 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
                 displayCameraAndTwitterID={
                   setting?.scoreboard.cameraAndLogo.displayCameraAndTwitterID
                 }
-                layout={setting?.scoreboard.design.layout}
-                color={setting?.scoreboard.design.color}
               />
               <TextboxWithCopy
                 text={`${origin}/obs/score/?id=${id}`}
@@ -95,10 +93,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
             </div>
             <div className="w-full max-w-[345px]">
               <h4 className="mb-[0.8rem]">Interval Layout</h4>
-              <PreviewInterval
-                layout={setting?.scoreboard.design.layout}
-                color={setting?.scoreboard.design.color}
-              />
+              <PreviewInterval />
               <TextboxWithCopy
                 text={`${origin}/obs/next/?id=${id}`}
                 className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
@@ -108,10 +103,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
           <div className="flex gap-[1rem] md:flex-nowrap md:gap-[3rem]">
             <div className="w-full max-w-[345px]">
               <h4 className="mb-[0.8rem]">MC Layout</h4>
-              <PreviewMC
-                layout={setting?.scoreboard.design.layout}
-                color={setting?.scoreboard.design.color}
-              />
+              <PreviewMC />
               <TextboxWithCopy
                 text={`${origin}/obs/mc/?id=${id}`}
                 className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"
@@ -119,10 +111,7 @@ export const Links: FC<{ origin: string; id: string; setting?: Setting }> = ({
             </div>
             <div className="w-full max-w-[345px]">
               <h4 className="mb-[0.8rem]">Top8 Layout</h4>
-              <PreviewBracket
-                layout={setting?.scoreboard.design.layout}
-                color={setting?.scoreboard.design.color}
-              />
+              <PreviewBracket />
               <TextboxWithCopy
                 text={`${origin}/obs/bracket/?id=${id}`}
                 className="mt-[0.5rem] w-full min-w-[50px] max-w-[100%]"

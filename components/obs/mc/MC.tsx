@@ -1,11 +1,7 @@
 import { FC, useEffect, useState } from "react"
 
-import {
-  getMCFilename,
-  MC as MCInfo,
-  PlayerScore,
-  Setting,
-} from "../../../libs/const"
+import { customImage } from "../../../custom/config"
+import { MC as MCInfo, PlayerScore, Setting } from "../../../libs/const"
 import { Transition } from "../../parts/Transition"
 
 import styles from "./MC.module.scss"
@@ -21,7 +17,7 @@ const mcStyleArray = [styles.mc1, styles.mc2, styles.mc3, styles.mc4]
 
 const idStyleArray = [styles.id1, styles.id2, styles.id3, styles.id4]
 
-export const MC: FC<{ setting: Setting; mc: MCInfo }> = ({ setting, mc }) => {
+export const MC: FC<{ setting: Setting; mc: MCInfo }> = ({ mc }) => {
   const [filteredMCList, setFilteredMCList] = useState<PlayerScore[]>([])
   useEffect(() => {
     console.log(mc)
@@ -33,31 +29,11 @@ export const MC: FC<{ setting: Setting; mc: MCInfo }> = ({ setting, mc }) => {
   }, [mc])
 
   return (
-    <div
-      className={`${
-        setting.scoreboard.design.layout === "simple"
-          ? styles.simple
-          : styles.normal
-      } ${(() => {
-        if (setting.scoreboard.design.layout === "simple") {
-          return setting.scoreboard.design.color === "white"
-            ? styles.white
-            : styles.black
-        } else {
-          return setting.scoreboard.design.color.startsWith("light")
-            ? styles.light
-            : styles.dark
-        }
-      })()}`}
-    >
+    <div className={styles.custom}>
       {filteredMCList.length > 0 && (
         <div className={mcLayoutArray[filteredMCList.length - 1]}>
           <img
-            src={`/image/mc/${getMCFilename(
-              setting.scoreboard.design.layout,
-              setting.scoreboard.design.color,
-              filteredMCList.length
-            )}`}
+            src={customImage.mc(filteredMCList.length)}
             className={styles.board}
             alt="背景画像"
           />
