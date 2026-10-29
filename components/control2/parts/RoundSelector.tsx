@@ -1,5 +1,7 @@
 import { FC } from "react"
 
+import { customConfig } from "../../../custom/config"
+
 import { TextForm } from "./TextForm"
 
 export const RoundSelector: FC<{
@@ -32,7 +34,7 @@ export const RoundSelector: FC<{
       />
       <div className="mt-[1rem] flex w-fit flex-wrap gap-[0.4rem]">
         {(() => {
-          const values = ["Winners", "Losers", "Pools", "Grand", "Friendlies"]
+          const values = Object.keys(customConfig.rounds)
           return values.map((name) => {
             return (
               <div
@@ -61,42 +63,7 @@ export const RoundSelector: FC<{
       </div>
       <div className="mt-[1rem] flex flex-wrap gap-[0.4rem]">
         {(() => {
-          const values: Record<string, string[]> = {
-            Winners: [
-              "Top256",
-              "Top192",
-              "Top128",
-              "Top96",
-              "Top64",
-              "Top48",
-              "Top32",
-              "Top24",
-              "Top16",
-              "Top12",
-              "Top8",
-              "Quarters",
-              "Semis",
-              "Finals",
-            ],
-            Losers: [
-              "Top256",
-              "Top192",
-              "Top128",
-              "Top96",
-              "Top64",
-              "Top48",
-              "Top32",
-              "Top24",
-              "Top16",
-              "Top12",
-              "Top8",
-              "Quarters",
-              "Semis",
-              "Finals",
-            ],
-            Pools: ["Finals"],
-            Grand: ["Finals", "Finals Reset"],
-          }
+          const values = customConfig.rounds
           const first = round?.split(" ")[0]
           return (values[first] ?? []).map((name) => {
             return (

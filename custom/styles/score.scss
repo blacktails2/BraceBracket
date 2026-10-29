@@ -1,146 +1,139 @@
 // スコアボードのカスタムスタイル
+// 座標は1920x1080基準。文字はline-height: 1で、上端をtopで指定する
 @import "fonts";
-
-@mixin score {
-  position: absolute;
-  margin: 0;
-  color: var(--score-color);
-  text-align: center;
-}
-
-// 試合ステータス（Winners Semis, Best of 3など）の設定
-@mixin status {
-  @include blackWeight;
-
-  position: absolute;
-  top: 96px;
-  width: 410px;
-  margin: 0;
-  font-size: 19px;
-  font-style: italic;
-  color: var(--status-color);
-  text-align: center;
-  letter-spacing: 1px;
-}
 
 .custom {
   // 文字色の設定
   --score-color: var(--white);
-  --player-color: var(--white);
-  --status-color: var(--dark-gray);
+  --player-color: #{$navy};
+  --status-color: var(--white);
 
-  // スコアの位置指定
+  p {
+    margin: 0;
+  }
+
+  // スコア（オレンジの枠） Nippo Medium 68pt
   .score {
-    @include score;
-    @include blackWeight;
+    @include nippo;
 
-    top: 44px;
-    width: 75px;
-    font-size: 54px;
+    position: absolute;
+    top: 45px;
+    width: 60px;
+    margin: 0;
+    font-size: 68px;
+    line-height: 1;
+    color: var(--score-color);
+    text-align: center;
 
     &.p1 {
-      left: 365px;
+      left: 300px;
     }
 
     &.p2 {
-      right: 365px;
+      left: 1560px;
     }
   }
 
+  // 選手名（白い枠） IBM Plex Sans JP Bold 28pt（チームはMedium） トラッキング25 プロポーショナルメトリクス
   .player {
     position: absolute;
-    top: 59px;
+    top: 63px;
     width: 410px;
-    height: 50px;
-    margin: 0 0 0 10px;
+    font-size: 28px;
+    font-feature-settings: "palt";
+    line-height: 1;
+    color: var(--player-color);
     text-align: center;
-
-    span {
-      margin-left: 10px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
+    letter-spacing: 0.025em;
+    white-space: nowrap;
 
     &.p1 {
-      left: 460px;
+      left: 390px;
     }
 
     &.p2 {
-      right: 460px;
+      left: 1120px;
+    }
+
+    // globals.scss の span の指定を打ち消す
+    // （間にアニメーション用のdivが挟まるため inherit ではなく直接指定する）
+    .team,
+    .name {
+      font-size: 28px;
     }
 
     .team {
-      @include mediumWeight;
+      @include plex(500);
 
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
-      text-align: center;
-      letter-spacing: 1px;
+      margin-right: 0.5em;
     }
 
     .name {
-      @include blackWeight;
-
-      font-size: 25px;
-      line-height: 25px;
-      color: var(--player-color);
-      text-align: center;
-      letter-spacing: 1px;
+      @include plex(700);
     }
   }
 
-  // 試合ステータスの位置設定
-  .round {
-    @include status;
-
-    left: 465px;
-  }
-
+  // 試合ステータス（中央の紺の枠）
+  .round,
   .matchType {
-    @include status;
-
-    right: 465px;
-  }
-
-  .cameraRight,
-  .cameraLeft {
-    color: var(--bb-white);
-  }
-
-  .tournamentNameBox {
     position: absolute;
-    top: 48px;
-    left: 870px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 180px;
-    height: 50px;
-  }
-
-  .tournamentName {
-    @include mediumWeight;
-
-    font-size: 17px;
-    line-height: 19px;
-    color: var(--player-color);
+    left: 800px;
+    width: 320px;
+    line-height: 1;
+    color: var(--status-color);
     text-align: center;
-    letter-spacing: 2px;
-    white-space: pre;
+    white-space: nowrap;
   }
 
-  // 大会ロゴの設定
+  // ラウンド Geist Bold 26pt トラッキング25
+  .round {
+    @include geist(700);
+
+    top: 56px;
+    font-size: 26px;
+    letter-spacing: 0.025em;
+  }
+
+  // Best of Geist Bold 19pt トラッキング200
+  .matchType {
+    @include geist(700);
+
+    top: 82px;
+    // 末尾の字間の分だけ左に余白を足して中央を揃える
+    padding-left: 0.2em;
+    font-size: 19px;
+    // デザイン上、Best ofは常に大文字
+    text-transform: uppercase !important;
+    letter-spacing: 0.2em;
+  }
+
+  // 選手ID（カメラ枠の上） Geist Medium 24pt
+  .cameraLeft,
+  .cameraRight {
+    @include geist(500);
+
+    top: 841px;
+    width: 400px;
+    height: auto;
+    font-size: 24px;
+    line-height: 1;
+    color: var(--player-color);
+    letter-spacing: 0;
+  }
+
+  .cameraLeft {
+    left: 27px;
+    text-align: left;
+  }
+
+  .cameraRight {
+    right: 27px;
+    text-align: right;
+  }
+
+  // 大会名・大会ロゴはこのデザインでは表示しない
+  .tournamentNameBox,
   .logobox {
-    position: absolute;
-    top: 25px;
-    left: 850px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 220px;
-    height: 120px;
+    display: none;
   }
 }

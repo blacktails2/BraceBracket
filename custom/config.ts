@@ -4,7 +4,7 @@
 
 export const customConfig = {
   // create画面のレイアウト選択肢に表示する名前
-  label: "Custom Layout",
+  label: "SMASH NEXT",
   // Adobe Fontsを使う場合のキットID（使わない場合は空文字）
   typekitKitId: "",
   // Next画面の文言
@@ -14,24 +14,64 @@ export const customConfig = {
     localTime: "Local Time",
     timezone: "JST",
   },
+  // 操作画面のラウンド選択ボタン
+  // キーが1段目のボタン、値が2段目のボタン（"区分 選択肢" の形でラウンド名になる）
+  rounds: {
+    Winners: [
+      "Top256",
+      "Top192",
+      "Top128",
+      "Top96",
+      "Top64",
+      "Top48",
+      "Top32",
+      "Top24",
+      "Top16",
+      "Top12",
+      "Top8",
+      "Quarters",
+      "Semis",
+      "Finals",
+    ],
+    Losers: [
+      "Top256",
+      "Top192",
+      "Top128",
+      "Top96",
+      "Top64",
+      "Top48",
+      "Top32",
+      "Top24",
+      "Top16",
+      "Top12",
+      "Top8",
+      "Quarters",
+      "Semis",
+      "Finals",
+    ],
+    Pools: ["Finals"],
+    Grand: ["Finals", "Finals Reset"],
+    True: ["Finals"],
+    Friendlies: [],
+  } as Record<string, string[]>,
   // Top8ブラケットの各枠の位置
   bracketPositions: {
-    grandFinalReset: [{ top: "400px", left: "1498px" }],
-    grandFinal: [{ top: "400px", left: "1498px" }],
-    winnersFinal: [{ top: "199px", left: "807px" }],
+    grandFinalReset: [{ top: "438px", left: "1505px" }],
+    grandFinal: [{ top: "438px", left: "1505px" }],
+    winnersFinal: [{ top: "217px", left: "801px" }],
     winnersSemiFinal: [
-      { top: "122px", left: "117px" },
-      { top: "276px", left: "117px" },
+      { top: "120px", left: "110px" },
+      { top: "314px", left: "110px" },
     ],
-    losersFinal: [{ top: "601px", left: "1152px" }],
-    losersSemiFinal: [{ top: "601px", left: "807px" }],
+    losersFinal: [{ top: "780px", left: "1146px" }],
+    losersSemiFinal: [{ top: "780px", left: "801px" }],
     losersQuarterFinal: [
-      { top: "524px", left: "462px" },
-      { top: "678px", left: "462px" },
+      { top: "683px", left: "456px" },
+      { top: "877px", left: "456px" },
     ],
     losersRound: [
-      { top: "524px", left: "117px" },
-      { top: "678px", left: "117px" },
+      { top: "683px", left: "110px" },
+      { top: "877px", left: "110px" },
     ],
   } as { [key: string]: { top: string; left: string }[] },
 }

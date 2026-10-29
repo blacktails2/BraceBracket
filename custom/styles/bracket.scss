@@ -1,27 +1,78 @@
 // Top8ブラケットのカスタムスタイル
+// 各枠の位置は custom/config.ts の bracketPositions で指定する
+// ラウンド名・タイトルは bracket.png に含まれる
 @import "fonts";
 
-// 文字色の設定
-.custom.losers {
+.bracketBox.custom {
+  // 名前の枠(254px) + 隙間(11px) + スコアの枠(39px)
+  width: 304px;
+  height: 104px;
+  padding-left: 12px;
+  // プロポーショナルメトリクス
+  font-feature-settings: "palt";
+
+  p {
+    height: 52px;
+    margin: 0;
+    line-height: 52px;
+    white-space: nowrap;
+  }
+
+  // デザイン上、1段目の文字は2px上に配置されている
+  .player1 {
+    position: relative;
+    top: -1px;
+  }
+
+  // 選手名 IBM Plex Sans JP Bold 24pt トラッキング25
+  .playerTeam {
+    @include plex(500);
+
+    font-size: 24px;
+    line-height: inherit;
+    letter-spacing: 0.025em;
+  }
+
+  .playerName {
+    @include plex(700);
+
+    font-size: 24px;
+    line-height: inherit;
+    letter-spacing: 0.025em;
+  }
+
+  // スコア Nippo Medium 44pt
+  .score {
+    @include nippo;
+
+    display: block;
+    width: 39px;
+    font-size: 44px;
+    line-height: inherit;
+  }
+}
+
+// 文字色の設定（Winnersはオレンジの枠、Losersは白い枠）
+.custom.winners {
   .player1 span,
   .player2 span {
     color: var(--bb-white);
   }
 }
 
-.custom.winners {
+.custom.losers {
   .player1 span,
   .player2 span {
-    color: var(--bb-black);
+    color: $navy;
   }
 }
 
 .custom.grand {
   .player1 span {
-    color: var(--bb-black);
+    color: var(--bb-white);
   }
 
   .player2 span {
-    color: var(--bb-white);
+    color: $navy;
   }
 }

@@ -1,32 +1,50 @@
 // フォントの設定
-$regular: "Satoshi", "Noto Sans JP", sans-serif;
-$medium: "Satoshi", "Noto Sans JP", sans-serif;
-$bold: "Satoshi", "Noto Sans JP", sans-serif;
-$black: "Satoshi", "Noto Sans JP", sans-serif;
+// デザインの指定（pt）は1920x1080基準のpxと同じ値で指定する
+// トラッキングは1/1000em単位なので、25 → 0.025em
+$plex: "IBM Plex Sans JP", "Noto Sans JP", sans-serif;
+$geist: geist, "IBM Plex Sans JP", sans-serif;
+$nippo: nippo, "IBM Plex Sans JP", sans-serif;
+
+// 大会カラー
+$navy: #00007d;
+$orange: #ffad29;
+
+// 選手名など（日本語を含む文字）
+@mixin plex($weight: 700) {
+  font-family: $plex;
+  font-weight: $weight;
+}
+
+// ラウンド名・Best of・選手IDなど（英字）
+@mixin geist($weight: 700) {
+  font-family: $geist;
+  font-weight: $weight;
+}
+
+// スコアの数字・NEXT
+@mixin nippo {
+  font-family: $nippo;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+// 以下はデザイン未調整の画面（MC）用
 
 // フォントの太さの設定（ライトウェイト）
 @mixin regularWeight {
-  font-family: $regular;
-  font-variation-settings: "wght" 400;
-  font-weight: 400;
+  @include plex(500);
 }
 
 // フォントの太さの設定（ミディアムウェイト）
 @mixin mediumWeight {
-  font-family: $medium;
-  font-variation-settings: "wght" 500;
-  font-weight: 500;
+  @include plex(500);
 }
 
 @mixin boldWeight {
-  font-family: $bold;
-  font-variation-settings: "wght" 700;
-  font-weight: 700;
+  @include plex(700);
 }
 
 // フォントの太さの設定（ブラックウェイト）
 @mixin blackWeight {
-  font-family: $black;
-  font-variation-settings: "wght" 900;
-  font-weight: 900;
+  @include plex(700);
 }

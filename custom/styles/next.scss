@@ -1,129 +1,144 @@
 // Next画面のカスタムスタイル
+// 座標は1920x1080基準。文字はline-height: 1で、上端をtopで指定する
 @import "fonts";
 
 .custom {
-  // 文字色の設定
-  --main-color: var(--dark-gray);
-  --sub-color: var(--white);
+  // プロポーショナルメトリクス
+  font-feature-settings: "palt";
 
+  // 文字色の設定
+  --main-color: #{$navy};
+  --sub-color: white;
+
+  p {
+    margin: 0;
+  }
+
+  // NEXT / NOW（左上のオレンジの枠） Nippo Medium 82pt トラッキング50 中央揃え
   .nextnow {
-    @include mediumWeight;
+    @include nippo;
 
     position: absolute;
-    top: 880px;
-    left: 40px;
-    width: 220px;
-    height: 80px;
-    font-size: 52px;
-    color: var(--main-color);
+    top: 879px;
+    left: 50px;
+    width: 259px;
+    // 末尾の字間の分だけ左に余白を足して中央を揃える
+    padding-left: 0.05em;
+    font-size: 82px;
+    line-height: 1;
+    color: var(--sub-color);
     text-align: center;
     letter-spacing: 0.05em;
   }
 
+  // ラウンド・Best of（右上の紺の枠） Geist SemiBold 26pt トラッキング25
   .statusBox {
     position: absolute;
-    top: 880px;
-    left: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 340px;
-    height: 80px;
+    top: 889px;
+    left: 836px;
+    width: 240px;
   }
 
   .round,
   .bo {
-    @include blackWeight;
+    @include geist(600);
 
-    width: 320px;
-    margin: 0;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 24px;
+    font-size: 26px;
+    line-height: 32px;
     color: var(--sub-color);
-    text-align: left;
-    letter-spacing: 2px;
+    letter-spacing: 0.025em;
+    white-space: nowrap;
   }
 
+  // スコア（中央のオレンジの枠） Nippo Medium 78pt
   .score {
-    @include blackWeight;
+    @include nippo;
 
     position: absolute;
-    top: 980px;
-    width: 60px;
-    margin: 0;
-    font-size: 40px;
-    color: var(--main-color);
+    top: 950px;
+    width: 83px;
+    font-size: 78px;
+    line-height: 1;
+    color: var(--sub-color);
     text-align: center;
 
     &.p1 {
-      left: 500px;
+      left: 480px;
     }
 
     &.p2 {
-      left: 580px;
+      left: 566px;
     }
   }
 
+  // 選手名（白い枠） スコアボードと同じ指定。1Pは右寄せ、2Pは左寄せ
   .player {
     position: absolute;
-    top: 996px;
-    width: 440px;
-    height: 60px;
-    margin: 0;
-    text-align: center;
+    top: 990px;
+    width: 408px;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--main-color);
+    letter-spacing: 0.025em;
+    white-space: nowrap;
 
     &.p1 {
-      left: 40px;
+      left: 50px;
+      text-align: right;
     }
 
     &.p2 {
-      left: 660px;
+      left: 672px;
+      text-align: left;
+    }
+
+    // globals.scss の span の指定を打ち消す
+    .team,
+    .name {
+      font-size: inherit;
     }
 
     .team {
-      @include mediumWeight;
+      @include plex(500);
 
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      margin-right: 0.5em;
+
+      &:empty {
+        display: none;
+      }
     }
 
     .name {
-      @include blackWeight;
-
-      margin-left: 1rem;
-      font-size: 28px;
-      line-height: 28px;
-      color: var(--sub-color);
-      text-align: center;
-      letter-spacing: 1px;
+      @include plex(700);
     }
   }
 
+  // Local Time / JST（右下の紺の枠） Geist SemiBold 24pt トラッキング25 行送り25pt
   .localsetting {
-    @include mediumWeight;
+    @include geist(600);
 
     position: absolute;
-    top: 975px;
-    left: 1570px;
+    top: 963px;
+    right: 235px;
     font-size: 24px;
-    line-height: 26px;
-    color: var(--sub-color);
-    letter-spacing: 1px;
-  }
-
-  .localtime {
-    @include blackWeight;
-
-    position: absolute;
-    top: 960px;
-    right: 57px;
-    font-size: 52px;
-    font-variant-numeric: tabular-nums;
+    line-height: 25px;
     color: var(--sub-color);
     text-align: right;
+    letter-spacing: 0.025em;
+  }
+
+  // 時刻 IBM Plex Sans JP Bold 48pt トラッキング25
+  .localtime {
+    @include plex(700);
+
+    position: absolute;
+    top: 964px;
+    right: 69px;
+    font-size: 48px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    color: var(--sub-color);
+    text-align: right;
+    letter-spacing: 0.025em;
   }
 }
