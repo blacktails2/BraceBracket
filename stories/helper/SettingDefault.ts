@@ -7,8 +7,8 @@ export const settingDefault: Setting = {
   name: "Tournament Name",
   scoreboard: {
     design: {
-      layout: "dual",
-      color: ScoreboardColorsMap["dual"][0],
+      layout: "custom",
+      color: ScoreboardColorsMap["custom"][0],
     },
     cameraAndLogo: {
       displayCameraAndTwitterID: true,

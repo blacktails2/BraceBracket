@@ -37,24 +37,8 @@ export default {
 
 const Template: ComponentStory<typeof Bracket> = (args) => <Bracket {...args} />
 
-export const Simple = Template.bind({})
-Simple.args = {
-  setting: (() => {
-    const setting = deepCopy(defaultSetting)
-    setting.scoreboard.design.layout = "simple"
-    setting.scoreboard.design.color = "white"
-    return setting
-  })(),
-  bracket: deepCopy(bracketDefault),
-}
-
-export const Other = Template.bind({})
-Other.args = {
-  setting: (() => {
-    const setting = deepCopy(defaultSetting)
-    setting.scoreboard.design.layout = "dual"
-    setting.scoreboard.design.color = "dark_color"
-    return setting
-  })(),
+export const Default = Template.bind({})
+Default.args = {
+  setting: deepCopy(defaultSetting),
   bracket: deepCopy(bracketDefault),
 }
