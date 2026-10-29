@@ -91,28 +91,3 @@ $black: "Satoshi", "Noto Sans JP", sans-serif;
   color: var(--bb-black);
   text-align: center;
 }
-
-// 色設定
-.other.losers {
-  .player1 span,
-  .player2 span {
-    color: var(--bb-white);
-  }
-}
-
-.other.winners {
-  .player1 span,
-  .player2 span {
-    color: var(--bb-black);
-  }
-}
-
-.other.grand {
-  .player1 span {
-    color: var(--bb-black);
-  }
-
-  .player2 span {
-    color: var(--bb-white);
-  }
-}

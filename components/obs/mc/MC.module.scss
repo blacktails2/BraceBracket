@@ -1,5 +1,3 @@
-@import "normal";
-@import "simple";
 @import "../../../custom/styles/mc";
 
 .board {
@@ -9,28 +7,4 @@
   z-index: -1;
   width: 100%;
   opacity: 1;
-}
-
-.normal {
-  &.light {
-    --main-color: #111;
-    --sub-color: #fff;
-  }
-
-  &.dark {
-    --main-color: #fff;
-    --sub-color: #111;
-  }
-}
-
-.simple {
-  &.black {
-    --main-color: #111;
-    --sub-color: #fff;
-  }
-
-  &.white {
-    --main-color: #fff;
-    --sub-color: #111;
-  }
 }
