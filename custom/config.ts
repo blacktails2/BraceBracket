@@ -5,6 +5,8 @@
 export const customConfig = {
   // create画面のレイアウト選択肢に表示する名前
   label: "Custom Layout",
+  // Adobe Fontsを使う場合のキットID（使わない場合は空文字）
+  typekitKitId: "",
   // Next画面の文言
   next: {
     now: "NOW",
